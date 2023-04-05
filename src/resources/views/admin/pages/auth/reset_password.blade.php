@@ -18,22 +18,11 @@
                     @csrf
 
                         <div class="mb-3">
-                            <label class="form-label" for="password">Password</label>
-                            <div class="position-relative auth-pass-inputgroup mb-3">
-                                <input type="password" class="form-control pe-5" placeholder="Enter password" id="password" name="password">
-                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
-                            </div>
-                            @error('password')
-                                <div class="invalid-message">{{ $message }}</div>
-                            @enderror
+                            @include('admin.includes.password_input', ['key'=>'password', 'label'=>'Password', 'value'=>''])
                         </div>
 
                         <div class="mb-3">
-                            <label for="confirm_password" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Enter the password again">
-                            @error('confirm_password')
-                                <div class="invalid-message">{{ $message }}</div>
-                            @enderror
+                            @include('admin.includes.password_input', ['key'=>'confirm_password', 'label'=>'Confirm Password', 'value'=>''])
                         </div>
 
                         <div class="mt-4">

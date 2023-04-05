@@ -40,24 +40,15 @@
                                 <form action="javascript:void(0);" id="profileForm">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="name" class="form-label">Name</label>
-                                                <input type="text" class="form-control" id="name"
-                                                    placeholder="Enter your name" value="{{Auth::user()->name}}">
-                                            </div>
+                                            @include('admin.includes.input', ['key'=>'name', 'label'=>'Name', 'value'=>Auth::user()->name])
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="email" class="form-label">Email
-                                                    Address</label>
-                                                <input type="email" class="form-control" id="email"
-                                                    placeholder="Enter your email" value="{{Auth::user()->email}}">
-                                            </div>
+                                            @include('admin.includes.input', ['key'=>'email', 'label'=>'Email', 'value'=>Auth::user()->email])
                                         </div>
                                         <!--end col-->
 
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-12 mt-2">
                                             <div class="hstack gap-2 justify-content-end">
                                                 <button type="submit" class="btn btn-primary" id="submitBtn">Update</button>
                                             </div>
@@ -73,28 +64,19 @@
                                     <div class="row g-2">
                                         <div class="col-lg-4">
                                             <div>
-                                                <label for="old_password" class="form-label">Old
-                                                    Password*</label>
-                                                <input type="password" class="form-control" name="old_password" id="old_password"
-                                                    placeholder="Enter current password">
+                                                @include('admin.includes.password_input', ['key'=>'old_password', 'label'=>'Old Password', 'value'=>''])
                                             </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-4">
                                             <div>
-                                                <label for="password" class="form-label">New
-                                                    Password*</label>
-                                                <input type="password" class="form-control" name="password" id="password"
-                                                    placeholder="Enter new password">
+                                                @include('admin.includes.password_input', ['key'=>'password', 'label'=>'Password', 'value'=>''])
                                             </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-4">
                                             <div>
-                                                <label for="confirm_password" class="form-label">Confirm
-                                                    Password*</label>
-                                                <input type="password" class="form-control" name="confirm_password" id="confirm_password"
-                                                    placeholder="Confirm password">
+                                                @include('admin.includes.password_input', ['key'=>'confirm_password', 'label'=>'Confirm Password', 'value'=>''])
                                             </div>
                                         </div>
                                         <!--end col-->
@@ -234,6 +216,7 @@ validationPassword
         formData.append('confirm_password',document.getElementById('confirm_password').value)
         const response = await axios.post('{{route('password.post')}}', formData)
         successToast(response.data.message)
+        event.target.reset();
     }catch (error){
         if(error?.response?.data?.form_error?.old_password){
             errorToast(error?.response?.data?.form_error?.old_password[0])

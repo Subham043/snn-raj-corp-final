@@ -29,11 +29,7 @@
                     <form id="forgotPasswordForm" method="post" action="{{route('forgot_password.post')}}">
                     @csrf
                         <div class="mb-4">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}" placeholder="Enter Email">
-                            @error('email')
-                                <div class="invalid-message">{{ $message }}</div>
-                            @enderror
+                            @include('admin.includes.input', ['key'=>'email', 'label'=>'Email', 'value'=>old('name')])
                         </div>
 
                         <div class="text-center mt-4">

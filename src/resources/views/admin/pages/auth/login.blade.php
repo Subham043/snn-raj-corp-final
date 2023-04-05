@@ -17,25 +17,14 @@
                     <form id="loginForm" method="post" action="{{route('login.post')}}">
                     @csrf
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}" placeholder="Enter email">
-                            @error('email')
-                                <div class="invalid-message">{{ $message }}</div>
-                            @enderror
+                            @include('admin.includes.input', ['key'=>'email', 'label'=>'Email', 'value'=>old('name')])
                         </div>
 
                         <div class="mb-3">
                             <div class="float-end">
                                 <a href="{{route('forgot_password.get')}}" class="text-muted">Forgot password?</a>
                             </div>
-                            <label class="form-label" for="password">Password</label>
-                            <div class="position-relative auth-pass-inputgroup mb-3">
-                                <input type="password" class="form-control pe-5" placeholder="Enter password" id="password" name="password">
-                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
-                            </div>
-                            @error('password')
-                                <div class="invalid-message">{{ $message }}</div>
-                            @enderror
+                            @include('admin.includes.password_input', ['key'=>'password', 'label'=>'Password', 'value'=>''])
                         </div>
 
                         <div class="form-check">
