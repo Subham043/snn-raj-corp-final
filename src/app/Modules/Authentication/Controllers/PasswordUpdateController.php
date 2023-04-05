@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Modules\Authentication\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Modules\Authentication\Services\UserService;
+use App\Modules\Authentication\Services\AuthService;
+use App\Modules\Authentication\Requests\PasswordPostRequest;
+
+class PasswordUpdateController extends Controller
+{
+    private $userService;
+    private $authService;
+
+    public function __construct(UserService $userService, AuthService $authService)
+    {
+        $this->userService = $userService;
+        $this->authService = $authService;
+    }
+
+    public function post(PasswordPostRequest $request)
+    {
+        try {
+            //code...
+            $user = $this->authService->authenticated_user();
+            $this->userService->update(
+                $request->only('password'),
+                $user
+            );
+            return response()->json(["message" => "Password Updated successfully."], 200);
+        } catch (\Throwable $th) {
+            // throw $th;
+            return response()->json(["error"=>"something went wrong. Please try again"], 400);
+        }
+
+    }
+}
