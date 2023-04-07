@@ -42,6 +42,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $append = [
+        'current_role',
+    ];
+
     /**
      * The attributes that should be cast.
      *
@@ -50,6 +54,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected function currentRole(): Attribute
+    {
+        $roles_array = $this->getRoleNames();
+        $currentRole = count($roles_array) > 0 ? $roles_array[0] : null;
+        return Attribute::make(
+            get: fn () => $currentRole,
+        );
+    }
 
     protected function password(): Attribute
     {

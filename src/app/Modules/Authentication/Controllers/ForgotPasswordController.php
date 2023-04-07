@@ -4,14 +4,10 @@ namespace App\Modules\Authentication\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Authentication\Requests\ForgotPasswordPostRequest;
-use App\Modules\Authentication\Services\UserService;
 use Illuminate\Support\Facades\Password;
 
 class ForgotPasswordController extends Controller
 {
-
-    public function __construct(protected UserService $userService)
-    {}
 
     public function get(){
         return view('admin.pages.auth.forgotpassword');

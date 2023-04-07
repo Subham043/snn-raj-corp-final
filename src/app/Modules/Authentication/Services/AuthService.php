@@ -5,7 +5,7 @@ namespace App\Modules\Authentication\Services;
 use Illuminate\Support\Facades\Auth;
 use App\Modules\Authentication\Models\User;
 
-class AuthService extends UserService
+class AuthService
 {
 
     public function logout(): void

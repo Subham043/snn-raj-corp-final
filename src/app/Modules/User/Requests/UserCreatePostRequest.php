@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Modules\Authentication\Requests;
+namespace App\Modules\User\Requests;
 
-use Stevebauman\Purify\Facades\Purify;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Stevebauman\Purify\Facades\Purify;
 use Illuminate\Validation\Rules\Password;
 
-class ResetPasswordPostRequest extends FormRequest
+
+class UserCreatePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +17,7 @@ class ResetPasswordPostRequest extends FormRequest
      */
     public function authorize()
     {
-        return !$this->hasValidSignature();
+        return Auth::check();
     }
 
     /**
@@ -26,7 +28,9 @@ class ResetPasswordPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required','string','email','max:255','exists:App\Modules\Authentication\Models\User,email'],
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'role' => 'required|string|exists:Spatie\Permission\Models\Role,name',
             'password_confirmation' => 'string|min:8|required_with:password|same:password',
             'password' => ['required',
                 'string',

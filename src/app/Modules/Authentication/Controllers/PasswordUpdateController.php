@@ -3,7 +3,7 @@
 namespace App\Modules\Authentication\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Authentication\Services\UserService;
+use App\Modules\User\Services\UserService;
 use App\Modules\Authentication\Services\AuthService;
 use App\Modules\Authentication\Requests\PasswordPostRequest;
 
