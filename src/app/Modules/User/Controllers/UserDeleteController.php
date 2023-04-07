@@ -11,6 +11,7 @@ class UserDeleteController extends Controller
 
     public function __construct(UserService $userService)
     {
+        $this->middleware('permission:delete users', ['only' => ['get']]);
         $this->userService = $userService;
     }
 

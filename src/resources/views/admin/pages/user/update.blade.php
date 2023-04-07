@@ -7,7 +7,9 @@
     <div class="container-fluid">
 
         <!-- start page title -->
+        @can('list users')
         @include('admin.includes.breadcrumb', ['page'=>'User', 'page_link'=>route('user.paginate.get'), 'list'=>['Create']])
+        @endcan
         <!-- end page title -->
 
         <div class="row">

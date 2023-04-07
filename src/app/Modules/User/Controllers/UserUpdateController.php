@@ -14,6 +14,7 @@ class UserUpdateController extends Controller
 
     public function __construct(UserService $userService, RoleService $roleService)
     {
+        $this->middleware('permission:edit users', ['only' => ['get', 'post']]);
         $this->userService = $userService;
         $this->roleService = $roleService;
     }
@@ -27,11 +28,12 @@ class UserUpdateController extends Controller
 
     public function post(UserUpdatePostRequest $request, $id){
         $user = $this->userService->getById($id);
+        $password = empty($request->password) ? [] : $request->only('password');
 
         try {
             //code...
             $this->userService->update(
-                $request->except('role'),
+                [...$request->except(['password', 'role']), ...$password],
                 $user
             );
             $this->userService->removeRole($user);

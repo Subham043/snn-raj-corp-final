@@ -23,7 +23,9 @@
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
                                     <div>
+                                        @can('create users')
                                         <a href="{{route('user.create.get')}}" style="background:green;border-color:green;" type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
+                                        @endcan
                                     </div>
                                 </div>
                                 <div class="col-sm">
@@ -51,12 +53,17 @@
                                             <td class="date">{{$item->created_at->diffForHumans()}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
+                                                    @can('edit users')
                                                     <div class="edit">
                                                         <a href="{{route('user.update.get', $item->id)}}" style="background:yellow;color:black;border-color:yellow;" class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                                     </div>
+                                                    @endcan
+
+                                                    @can('delete users')
                                                     <div class="remove">
                                                         <button class="btn btn-sm btn-danger remove-item-btn" style="background:red" onclick="deleteHandler('{{route('user.delete.get', $item->id)}}')">Delete</button>
                                                     </div>
+                                                    @endcan
                                                 </div>
                                             </td>
                                         </tr>
