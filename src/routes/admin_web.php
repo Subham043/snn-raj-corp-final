@@ -13,6 +13,7 @@ use App\Modules\Role\Controllers\RoleCreateController;
 use App\Modules\Role\Controllers\RoleDeleteController;
 use App\Modules\Role\Controllers\RolePaginateController;
 use App\Modules\Role\Controllers\RoleUpdateController;
+use App\Modules\Settings\Controllers\ApplicationBackupController;
 use App\Modules\User\Controllers\UserCreateController;
 use App\Modules\User\Controllers\UserDeleteController;
 use App\Modules\User\Controllers\UserPaginateController;
@@ -42,6 +43,10 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
 
     Route::get('health', HealthCheckResultsController::class);
+
+    Route::prefix('/setting')->group(function () {
+        Route::get('/back-up', [ApplicationBackupController::class, 'get', 'as' => 'back_up.get'])->name('back_up.get');
+    });
 
     Route::prefix('/profile')->group(function () {
         Route::get('/', [ProfileController::class, 'get', 'as' => 'profile.get'])->name('profile.get');

@@ -198,6 +198,7 @@ return [
         'Barryvdh\Debugbar\ServiceProvider',
         App\Providers\HealthServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
     ],
 
