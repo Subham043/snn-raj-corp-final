@@ -17,6 +17,10 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // create permissions
+        Permission::create(['name' => 'edit roles']);
+        Permission::create(['name' => 'delete roles']);
+        Permission::create(['name' => 'create roles']);
+        Permission::create(['name' => 'list roles']);
         Permission::create(['name' => 'edit users']);
         Permission::create(['name' => 'delete users']);
         Permission::create(['name' => 'create users']);
@@ -27,7 +31,7 @@ class UserSeeder extends Seeder
 
         // create roles and assign created permissions
         Role::create(['name' => 'staff'])
-            ->givePermissionTo(['list users']);
+            ->givePermissionTo(['list users', 'list roles']);
 
         // create admin
         User::factory()->create([

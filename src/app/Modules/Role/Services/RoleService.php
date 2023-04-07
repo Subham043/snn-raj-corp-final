@@ -3,10 +3,12 @@
 namespace App\Modules\Role\Services;
 
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Spatie\QueryBuilder\AllowedFilter;
 
 class RoleService
@@ -17,9 +19,15 @@ class RoleService
         return Role::all();
     }
 
-    public function paginate(Int $total = 10): Collection
+    public function allPermissions(): Collection
     {
-        return QueryBuilder::for(Role::class)
+        return Permission::all();
+    }
+
+    public function paginate(Int $total = 10): LengthAwarePaginator
+    {
+        $query = Role::whereNot('name', 'Super-Admin');
+        return QueryBuilder::for($query)
                 ->allowedFilters([
                     AllowedFilter::custom('search', new CommonFilter),
                 ])
@@ -28,7 +36,7 @@ class RoleService
 
     public function getById(Int $id): Role
     {
-        return Role::findOrFail($id);
+        return Role::whereNot('name', 'Super-Admin')->findOrFail($id);
     }
 
     public function create(array $data): Role
@@ -40,6 +48,11 @@ class RoleService
     {
         $role->update($data);
         return $role;
+    }
+
+    public function syncPermissions(?array $permissions = [], Role $role): void
+    {
+        $role->syncPermissions($permissions);
     }
 
     public function delete(Role $data): bool|null

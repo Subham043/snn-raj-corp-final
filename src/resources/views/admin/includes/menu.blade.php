@@ -33,16 +33,22 @@
                         </div>
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="menu-title"><span data-key="t-menu">Menu</span></li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),route('enquiry_list.get')) !== false ? 'active' : ''}}" href="{{route('enquiry_list.get')}}">
-                                    <i class="ri-message-fill"></i> <span data-key="t-widgets">Enquiries</span>
+
+                            @can('list roles')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('role.paginate.get')) !== false ? 'active' : ''}}" href="{{route('role.paginate.get')}}">
+                                    <i class="ri-shield-user-fill"></i> <span data-key="t-widgets">Roles</span>
                                 </a>
                             </li>
+                            @endcan
+
+                            @can('list users')
                             <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),route('project_list.get')) !== false ? 'active' : ''}}" href="{{route('project_list.get')}}">
-                                    <i class="ri-building-fill"></i> <span data-key="t-widgets">Projects</span>
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('user.paginate.get')) !== false ? 'active' : ''}}" href="{{route('user.paginate.get')}}">
+                                    <i class="ri-user-add-fill"></i> <span data-key="t-widgets">Users</span>
                                 </a>
-                            </li> --}}
+                            </li>
+                            @endcan
                             {{-- <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'admin/image') !== false || strpos(url()->current(),'admin/audio') !== false || strpos(url()->current(),'admin/video') !== false || strpos(url()->current(),'admin/document') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'admin/image') !== false || strpos(url()->current(),'admin/audio') !== false || strpos(url()->current(),'admin/video') !== false || strpos(url()->current(),'admin/document') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">
