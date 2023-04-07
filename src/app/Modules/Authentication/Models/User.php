@@ -14,6 +14,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Hash;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
@@ -57,6 +58,10 @@ class User extends Authenticatable
         );
     }
 
+    /**
+     * User Factory.
+     *
+     */
     protected static function newFactory(): Factory
     {
         return UserFactory::new();

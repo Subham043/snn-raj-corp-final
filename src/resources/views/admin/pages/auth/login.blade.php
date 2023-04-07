@@ -17,7 +17,7 @@
                     <form id="loginForm" method="post" action="{{route('login.post')}}">
                     @csrf
                         <div class="mb-3">
-                            @include('admin.includes.input', ['key'=>'email', 'label'=>'Email', 'value'=>old('name')])
+                            @include('admin.includes.input', ['key'=>'email', 'label'=>'Email', 'value'=>old('email')])
                         </div>
 
                         <div class="mb-3">

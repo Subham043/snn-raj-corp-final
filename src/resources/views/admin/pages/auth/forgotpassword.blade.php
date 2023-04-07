@@ -29,7 +29,7 @@
                     <form id="forgotPasswordForm" method="post" action="{{route('forgot_password.post')}}">
                     @csrf
                         <div class="mb-4">
-                            @include('admin.includes.input', ['key'=>'email', 'label'=>'Email', 'value'=>old('name')])
+                            @include('admin.includes.input', ['key'=>'email', 'label'=>'Email', 'value'=>old('email')])
                         </div>
 
                         <div class="text-center mt-4">

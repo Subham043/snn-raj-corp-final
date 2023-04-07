@@ -16,7 +16,7 @@ class ResetPasswordPostRequest extends FormRequest
     public function authorize()
     {
         return true;
-        return !$this->hasValidSignature();
+        // return !$this->hasValidSignature();
     }
 
     /**
@@ -27,7 +27,8 @@ class ResetPasswordPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'confirm_password' => 'string|min:8|required_with:password|same:password',
+            'email' => ['required','string','email','max:255','exists:App\Modules\Authentication\Models\User,email'],
+            'password_confirmation' => 'string|min:8|required_with:password|same:password',
             'password' => ['required',
                 'string',
                 Password::min(8)

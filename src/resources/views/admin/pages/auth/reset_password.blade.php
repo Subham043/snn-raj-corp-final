@@ -18,11 +18,15 @@
                     @csrf
 
                         <div class="mb-3">
+                            @include('admin.includes.input', ['key'=>'email', 'label'=>'Email', 'value'=>old('email')])
+                        </div>
+
+                        <div class="mb-3">
                             @include('admin.includes.password_input', ['key'=>'password', 'label'=>'Password', 'value'=>''])
                         </div>
 
                         <div class="mb-3">
-                            @include('admin.includes.password_input', ['key'=>'confirm_password', 'label'=>'Confirm Password', 'value'=>''])
+                            @include('admin.includes.password_input', ['key'=>'password_confirmation', 'label'=>'Confirm Password', 'value'=>''])
                         </div>
 
                         <div class="mt-4">
@@ -54,13 +58,23 @@ const validation = new JustValidate('#loginForm', {
 });
 // apply rules to form fields
 validation
+    .addField('#email', [
+        {
+        rule: 'required',
+        errorMessage: 'Email is required',
+        },
+        {
+        rule: 'email',
+        errorMessage: 'Email is invalid!',
+        },
+  ])
   .addField('#password', [
     {
       rule: 'required',
       errorMessage: 'Password is required',
     }
   ])
-  .addField('#confirm_password', [
+  .addField('#password_confirmation', [
     {
       rule: 'required',
       errorMessage: 'Confirm Password is required',
