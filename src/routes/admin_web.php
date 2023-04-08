@@ -7,6 +7,7 @@ use App\Modules\Authentication\Controllers\LoginController;
 use App\Modules\Authentication\Controllers\LogoutController;
 use App\Modules\Authentication\Controllers\ProfileController;
 use App\Modules\Authentication\Controllers\ResetPasswordController;
+use App\Modules\Dashboard\Controllers\DashboardController;
 use App\Modules\Enquiries\Controllers\EnquiryDeleteController;
 use App\Modules\Enquiries\Controllers\EnquiryPaginateController;
 use App\Modules\Role\Controllers\RoleCreateController;
@@ -42,7 +43,7 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('health', HealthCheckResultsController::class);
+    Route::get('/dashboard', [DashboardController::class, 'get', 'as' => 'dashboard.get'])->name('dashboard.get');
 
     Route::prefix('/setting')->group(function () {
         Route::get('/back-up', [ApplicationBackupController::class, 'get', 'as' => 'back_up.get'])->name('back_up.get');
