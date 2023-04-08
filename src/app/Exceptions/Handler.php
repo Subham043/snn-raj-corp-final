@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Auth;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -44,5 +45,30 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($this->isHttpException($exception) &&!$request->wantsJson()) {
+            if(request()->is('admin/*')){
+                if(Auth::check()){
+                    return response()
+                        ->view('errors.admin.authenticated_error',
+                            ['exception' => $exception],
+                            $exception->getStatusCode(),
+                            $exception->getHeaders()
+                        );
+                }else{
+                    return response()
+                        ->view('errors.admin.unauthenticated_error',
+                        ['exception' => $exception],
+                        $exception->getStatusCode(),
+                        $exception->getHeaders()
+                    );
+                }
+
+            }
+        }
+        return parent::render($request, $exception);
     }
 }
