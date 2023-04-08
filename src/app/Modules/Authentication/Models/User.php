@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -55,6 +56,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            'Spatie\Permission\Models\Role',
+            'App\Modules\User\Models\UserRole',
+            'model_id',
+            'role_id'
+        );
+    }
+
     protected function currentRole(): Attribute
     {
         $roles_array = $this->getRoleNames();
@@ -63,6 +74,7 @@ class User extends Authenticatable
             get: fn () => $currentRole,
         );
     }
+
 
     protected function password(): Attribute
     {

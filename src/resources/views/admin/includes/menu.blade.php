@@ -34,6 +34,12 @@
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('dashboard.get')) !== false ? 'active' : ''}}" href="{{route('dashboard.get')}}">
+                                    <i class="ri-dashboard-fill"></i> <span data-key="t-widgets">Dashboard</span>
+                                </a>
+                            </li>
+
                             @can('list roles')
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('role.paginate.get')) !== false ? 'active' : ''}}" href="{{route('role.paginate.get')}}">
@@ -49,28 +55,23 @@
                                 </a>
                             </li>
                             @endcan
-                            {{-- <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),'admin/image') !== false || strpos(url()->current(),'admin/audio') !== false || strpos(url()->current(),'admin/video') !== false || strpos(url()->current(),'admin/document') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="{{strpos(url()->current(),'admin/image') !== false || strpos(url()->current(),'admin/audio') !== false || strpos(url()->current(),'admin/video') !== false || strpos(url()->current(),'admin/document') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">
-                                    <i class="ri-image-fill"></i> <span data-key="t-dashboards">Media Content</span>
+
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'setting') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'setting') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">
+                                    <i class="ri-list-settings-line"></i> <span data-key="t-dashboards">Application Settings</span>
                                 </a>
-                                <div class="collapse menu-dropdown {{strpos(url()->current(),'admin/image') !== false || strpos(url()->current(),'admin/audio') !== false || strpos(url()->current(),'admin/video') !== false || strpos(url()->current(),'admin/document') !== false ? 'show' : ''}}" id="sidebarDashboards6">
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'setting') !== false ? 'show' : ''}}" id="sidebarDashboards6">
                                     <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="{{route('image_view')}}" class="nav-link {{strpos(url()->current(),'admin/image') !== false ? 'active' : ''}}" data-key="t-analytics"> Image </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{route('audio_view')}}" class="nav-link {{strpos(url()->current(),'admin/audio') !== false ? 'active' : ''}}" data-key="t-analytics"> Audio </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{route('video_view')}}" class="nav-link {{strpos(url()->current(),'admin/video') !== false ? 'active' : ''}}" data-key="t-analytics"> Video </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{route('document_view')}}" class="nav-link {{strpos(url()->current(),'admin/document') !== false ? 'active' : ''}}" data-key="t-analytics"> Document </a>
-                                        </li>
+                                        @can('view application error logs')
+                                            <li class="nav-item">
+                                                <a href="{{route('error_log.get')}}" class="nav-link {{strpos(url()->current(), route('error_log.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Error Logs </a>
+                                            </li>
+                                        @endcan
                                     </ul>
                                 </div>
-                            </li>  --}}
+                            </li>
+
                         </ul>
                     </div>
                     <!-- Sidebar -->

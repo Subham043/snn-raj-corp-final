@@ -15,6 +15,7 @@ use App\Modules\Role\Controllers\RoleDeleteController;
 use App\Modules\Role\Controllers\RolePaginateController;
 use App\Modules\Role\Controllers\RoleUpdateController;
 use App\Modules\Settings\Controllers\ApplicationBackupController;
+use App\Modules\Settings\Controllers\ErrorLogController;
 use App\Modules\User\Controllers\UserCreateController;
 use App\Modules\User\Controllers\UserDeleteController;
 use App\Modules\User\Controllers\UserPaginateController;
@@ -47,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/setting')->group(function () {
         Route::get('/back-up', [ApplicationBackupController::class, 'get', 'as' => 'back_up.get'])->name('back_up.get');
+        Route::get('/error-log', [ErrorLogController::class, 'get', 'as' => 'error_log.get'])->name('error_log.get');
     });
 
     Route::prefix('/profile')->group(function () {

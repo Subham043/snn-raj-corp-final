@@ -20,7 +20,8 @@ class UserService
 
     public function paginate(Int $total = 10): LengthAwarePaginator
     {
-        return QueryBuilder::for(User::class)
+        $query = User::with('roles');
+        return QueryBuilder::for($query)
                 ->allowedFilters([
                     AllowedFilter::custom('search', new CommonFilter),
                 ])
@@ -30,7 +31,7 @@ class UserService
 
     public function getById(Int $id): User
     {
-        return User::findOrFail($id);
+        return User::with('roles')->findOrFail($id);
     }
 
     public function getByEmail(String $email): User
