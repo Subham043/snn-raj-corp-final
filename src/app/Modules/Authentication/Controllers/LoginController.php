@@ -3,6 +3,7 @@
 namespace App\Modules\Authentication\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\RateLimitService;
 use App\Modules\Authentication\Requests\LoginPostRequest;
 use App\Modules\Authentication\Services\AuthService;
 
@@ -21,9 +22,12 @@ class LoginController extends Controller
 
     public function post(LoginPostRequest $request){
 
+        (new RateLimitService($request))->ensureIsNotRateLimited(3);
+
         $is_authenticated = $this->authService->login($request->validated());
 
         if ($is_authenticated) {
+            (new RateLimitService($request))->clearRateLimit();
             return redirect()->intended(route('dashboard.get'))->with('success_status', 'Logged in successfully.');
         }
 

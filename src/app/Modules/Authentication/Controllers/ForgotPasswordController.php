@@ -3,6 +3,7 @@
 namespace App\Modules\Authentication\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\RateLimitService;
 use App\Modules\Authentication\Requests\ForgotPasswordPostRequest;
 use Illuminate\Support\Facades\Password;
 
@@ -15,12 +16,16 @@ class ForgotPasswordController extends Controller
 
     public function post(ForgotPasswordPostRequest $request){
 
+        (new RateLimitService($request))->ensureIsNotRateLimited(3);
+
         $status = Password::sendResetLink(
             $request->only('email')
         );
-        return $status === Password::RESET_LINK_SENT
-                ? redirect(route('forgot_password.get'))->with(['success_status' => __($status)])
-                : redirect(route('forgot_password.get'))->with(['error_status' => __($status)]);
+        if($status === Password::RESET_LINK_SENT){
+            (new RateLimitService($request))->clearRateLimit();
+            return redirect(route('forgot_password.get'))->with(['success_status' => __($status)]);
+        }
+        return redirect(route('forgot_password.get'))->with(['error_status' => __($status)]);
 
     }
 }

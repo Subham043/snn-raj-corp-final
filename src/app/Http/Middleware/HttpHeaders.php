@@ -26,7 +26,7 @@ class HttpHeaders
             $response->headers->set('Referrer-Policy', 'strict-origin-when-cross-origin');
             $response->headers->set('Content-Type', 'text/html; charset=UTF-8');
             $response->headers->set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
-            $response->headers->set('Cache-Control', 'max-age=86400, must-revalidate');
+            // $response->headers->set('Cache-Control', 'max-age=86400, must-revalidate');
             if (function_exists('header_remove')) {
                 header_remove('X-Powered-By'); // PHP 5.3+
             } else {

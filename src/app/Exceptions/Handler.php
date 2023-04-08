@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\CustomExceptions\RateLimitException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Auth;
 use Throwable;
@@ -68,6 +69,13 @@ class Handler extends ExceptionHandler
                 }
 
             }
+        }
+        if ($exception instanceof RateLimitException && $request->wantsJson()) {
+            return response()->json([
+                'message' => $exception->showMessage(),
+            ], $exception->showStatusCode());
+        }else{
+            return redirect()->back()->with('error_status', $exception->showMessage());
         }
         return parent::render($request, $exception);
     }
