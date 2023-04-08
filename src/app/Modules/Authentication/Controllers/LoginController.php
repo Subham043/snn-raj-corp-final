@@ -24,7 +24,7 @@ class LoginController extends Controller
         $is_authenticated = $this->authService->login($request->validated());
 
         if ($is_authenticated) {
-            return redirect()->intended(route('profile.get'))->with('success_status', 'Logged in successfully.');
+            return redirect()->intended(route('dashboard.get'))->with('success_status', 'Logged in successfully.');
         }
 
         return redirect(route('login.get'))->with('error_status', 'Oops! You have entered invalid credentials');

@@ -18,6 +18,8 @@ class DashboardService
     }
 
     public function getAppHealthResult(Request $request){
+
+        //code taken from spatie health
         if ($request->has('fresh')) {
             Artisan::call(RunHealthChecksCommand::class);
         }

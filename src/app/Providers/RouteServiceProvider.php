@@ -32,7 +32,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
 
             Route::middleware(['web', 'csp.policy'])->group(base_path('routes/web.php'));
-            Route::middleware(['web', 'csp.policy'])->prefix('admin')->group(base_path('routes/admin_web.php'));
+            Route::middleware(['web', 'csp.policy', 'custom.headers'])->prefix('admin')->group(base_path('routes/admin_web.php'));
         });
     }
 

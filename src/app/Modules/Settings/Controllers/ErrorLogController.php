@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Rap2hpoutre\LaravelLogViewer\LaravelLogViewer;
 
+//code taken from laravel log viewer
 class ErrorLogController extends Controller
 {
     private $laravelLogViewer;

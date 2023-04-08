@@ -107,17 +107,8 @@
                 @endcan
             </div>
         </div>
-
     </div>
     <!-- container-fluid -->
 </div><!-- End Page-content -->
 
-@stop
-
-
-@section('javascript')
-
-<script type="text/javascript" nonce="{{ csp_nonce() }}">
-
-</script>
 @stop

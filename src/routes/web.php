@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 
 use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
@@ -35,4 +34,3 @@ Route::get('/test-sitemap', function () {
 });
 
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
-Route::get('health', HealthCheckResultsController::class);
