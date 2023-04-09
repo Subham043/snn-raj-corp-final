@@ -14,6 +14,8 @@ use App\Modules\Role\Controllers\RoleCreateController;
 use App\Modules\Role\Controllers\RoleDeleteController;
 use App\Modules\Role\Controllers\RolePaginateController;
 use App\Modules\Role\Controllers\RoleUpdateController;
+use App\Modules\Settings\Controllers\ActivityLog\ActivityLogDetailController;
+use App\Modules\Settings\Controllers\ActivityLog\ActivityLogPaginateController;
 use App\Modules\Settings\Controllers\ApplicationBackupController;
 use App\Modules\Settings\Controllers\ErrorLogController;
 use App\Modules\User\Controllers\UserCreateController;
@@ -49,6 +51,11 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('/setting')->group(function () {
         Route::get('/back-up', [ApplicationBackupController::class, 'get', 'as' => 'back_up.get'])->name('back_up.get');
         Route::get('/error-log', [ErrorLogController::class, 'get', 'as' => 'error_log.get'])->name('error_log.get');
+        Route::prefix('/activity-log')->group(function () {
+            Route::get('/', [ActivityLogPaginateController::class, 'get', 'as' => 'activity_log.paginate.get'])->name('activity_log.paginate.get');
+            Route::get('/{id}', [ActivityLogDetailController::class, 'get', 'as' => 'activity_log.detail.get'])->name('activity_log.detail.get');
+
+        });
     });
 
     Route::prefix('/profile')->group(function () {

@@ -104,6 +104,11 @@ validation
       errorMessage: 'Please select a role',
     },
   ])
+  .addField('#password', [
+    {
+      rule: 'strongPassword',
+    }
+  ])
   .onSuccess(async (event) => {
     event.target.submit();
   });

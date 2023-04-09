@@ -13,11 +13,13 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, LogsActivity;
 
     protected $table = 'users';
 
@@ -55,6 +57,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //only the `deleted` event will get logged automatically
+    protected static $recordEvents = ['created', 'updated', 'deleted'];
+
     // public function roles(): BelongsToMany
     // {
     //     return $this->belongsToMany(
@@ -89,6 +94,19 @@ class User extends Authenticatable
     protected static function newFactory(): Factory
     {
         return UserFactory::new();
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->useLogName('user')
+        ->setDescriptionForEvent(
+            fn(string $eventName) => $this->name."<".$this->email.">  has been {$eventName} by ".auth()->user()->name."<".auth()->user()->email.">"
+            )
+        ->logOnly(['name', 'email'])
+        ->logOnlyDirty();
+        // ->logFillable();
+        // Chain fluent methods for configuration options
     }
 
 }

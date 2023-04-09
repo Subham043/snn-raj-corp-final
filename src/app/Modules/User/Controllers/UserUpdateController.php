@@ -39,6 +39,7 @@ class UserUpdateController extends Controller
             $this->userService->syncRoles([$request->role], $user);
             return redirect()->intended(route('user.update.get', $user->id))->with('success_status', 'User updated successfully.');
         } catch (\Throwable $th) {
+            throw $th;
             return redirect()->intended(route('user.update.get', $user->id))->with('error_status', 'Something went wrong. Please try again');
         }
 

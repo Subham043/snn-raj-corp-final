@@ -110,6 +110,9 @@ validation
       errorMessage: 'Password is required',
     },
     {
+      rule: 'strongPassword',
+    },
+    {
         rule: 'customRegexp',
         value: COMMON_REGEX,
         errorMessage: 'Password is invalid',

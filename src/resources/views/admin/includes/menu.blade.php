@@ -63,11 +63,18 @@
                                 </a>
                                 <div class="collapse menu-dropdown {{strpos(url()->current(),'setting') !== false ? 'show' : ''}}" id="sidebarDashboards6">
                                     <ul class="nav nav-sm flex-column">
+                                        @can('list activity logs')
+                                            <li class="nav-item">
+                                                <a href="{{route('activity_log.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('activity_log.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Activity Logs </a>
+                                            </li>
+                                        @endcan
+
                                         @can('view application error logs')
                                             <li class="nav-item">
                                                 <a href="{{route('error_log.get')}}" class="nav-link {{strpos(url()->current(), route('error_log.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Error Logs </a>
                                             </li>
                                         @endcan
+
                                     </ul>
                                 </div>
                             </li>

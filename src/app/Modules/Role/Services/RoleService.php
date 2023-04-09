@@ -26,7 +26,7 @@ class RoleService
 
     public function paginate(Int $total = 10): LengthAwarePaginator
     {
-        $query = Role::with(['permissions'])->whereNot('name', 'Super-Admin');
+        $query = Role::with(['permissions'])->whereNot('name', 'Super-Admin')->latest();
         return QueryBuilder::for($query)
                 ->allowedFilters([
                     AllowedFilter::custom('search', new CommonFilter),

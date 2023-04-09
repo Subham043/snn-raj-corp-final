@@ -20,7 +20,7 @@ class UserService
 
     public function paginate(Int $total = 10): LengthAwarePaginator
     {
-        $query = User::with('roles');
+        $query = User::with('roles')->latest();
         return QueryBuilder::for($query)
                 ->allowedFilters([
                     AllowedFilter::custom('search', new CommonFilter),
