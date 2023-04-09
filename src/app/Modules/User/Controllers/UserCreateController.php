@@ -31,7 +31,7 @@ class UserCreateController extends Controller
             $user = $this->userService->create(
                 $request->except('role')
             );
-            $this->userService->assignRole($request->role, $user);
+            $this->userService->syncRoles([$request->role], $user);
             return redirect()->intended(route('user.create.get'))->with('success_status', 'User created successfully.');
         } catch (\Throwable $th) {
             return redirect()->intended(route('user.create.get'))->with('error_status', 'Something went wrong. Please try again');

@@ -50,14 +50,9 @@ class UserService
         return $user;
     }
 
-    public function assignRole(String $role, User $user): void
+    public function syncRoles(array $roles = [], User $user): void
     {
-        $user->assignRole($role);
-    }
-
-    public function removeRole(User $user): void
-    {
-        $user->syncRoles([]);
+        $user->syncRoles($roles);
     }
 
     public function delete(User $data): bool|null

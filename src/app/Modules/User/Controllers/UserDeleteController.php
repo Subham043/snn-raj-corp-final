@@ -23,7 +23,7 @@ class UserDeleteController extends Controller
             $this->userService->delete(
                 $user
             );
-            $this->userService->removeRole($user);
+            $this->userService->syncRoles([], $user);
             return redirect()->back()->with('success_status', 'User deleted successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error_status', 'Something went wrong. Please try again');

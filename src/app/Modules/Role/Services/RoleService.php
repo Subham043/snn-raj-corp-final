@@ -26,7 +26,7 @@ class RoleService
 
     public function paginate(Int $total = 10): LengthAwarePaginator
     {
-        $query = Role::whereNot('name', 'Super-Admin');
+        $query = Role::with(['permissions'])->whereNot('name', 'Super-Admin');
         return QueryBuilder::for($query)
                 ->allowedFilters([
                     AllowedFilter::custom('search', new CommonFilter),
@@ -36,7 +36,7 @@ class RoleService
 
     public function getById(Int $id): Role
     {
-        return Role::whereNot('name', 'Super-Admin')->findOrFail($id);
+        return Role::with(['permissions'])->whereNot('name', 'Super-Admin')->findOrFail($id);
     }
 
     public function create(array $data): Role
