@@ -16,8 +16,6 @@ class ForgotPasswordController extends Controller
 
     public function post(ForgotPasswordPostRequest $request){
 
-        (new RateLimitService($request))->ensureIsNotRateLimited(3);
-
         $status = Password::sendResetLink(
             $request->only('email')
         );

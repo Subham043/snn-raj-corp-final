@@ -5,6 +5,7 @@ namespace App\Modules\Authentication\Requests;
 use Stevebauman\Purify\Facades\Purify;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
+use App\Http\Services\RateLimitService;
 
 class ResetPasswordPostRequest extends FormRequest
 {
@@ -15,6 +16,7 @@ class ResetPasswordPostRequest extends FormRequest
      */
     public function authorize()
     {
+        (new RateLimitService($this))->ensureIsNotRateLimited(3);
         return !$this->hasValidSignature();
     }
 

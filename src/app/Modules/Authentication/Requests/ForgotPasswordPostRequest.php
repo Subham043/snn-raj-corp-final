@@ -4,6 +4,7 @@ namespace App\Modules\Authentication\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Stevebauman\Purify\Facades\Purify;
+use App\Http\Services\RateLimitService;
 
 class ForgotPasswordPostRequest extends FormRequest
 {
@@ -14,6 +15,7 @@ class ForgotPasswordPostRequest extends FormRequest
      */
     public function authorize()
     {
+        (new RateLimitService($this))->ensureIsNotRateLimited(3);
         return true;
     }
 

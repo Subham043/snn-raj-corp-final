@@ -3,6 +3,7 @@
 namespace App\Modules\Authentication\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\RateLimitService;
 use App\Modules\Authentication\Requests\ProfilePostRequest;
 use App\Modules\Authentication\Services\AuthService;
 use App\Modules\User\Services\UserService;
@@ -31,6 +32,7 @@ class ProfileController extends Controller
                 $request->validated(),
                 $user
             );
+            (new RateLimitService($request))->clearRateLimit();
             return response()->json(["message" => "Profile Updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["error"=>"something went wrong. Please try again"], 400);

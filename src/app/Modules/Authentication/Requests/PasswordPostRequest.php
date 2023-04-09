@@ -2,6 +2,7 @@
 
 namespace App\Modules\Authentication\Requests;
 
+use App\Http\Services\RateLimitService;
 use Stevebauman\Purify\Facades\Purify;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,7 @@ class PasswordPostRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        (new RateLimitService($this))->ensureIsNotRateLimited(3);
         return Auth::check();
     }
 

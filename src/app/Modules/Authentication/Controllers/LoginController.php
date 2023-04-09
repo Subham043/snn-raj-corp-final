@@ -22,8 +22,6 @@ class LoginController extends Controller
 
     public function post(LoginPostRequest $request){
 
-        (new RateLimitService($request))->ensureIsNotRateLimited(3);
-
         $is_authenticated = $this->authService->login($request->validated());
 
         if ($is_authenticated) {

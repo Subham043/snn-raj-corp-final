@@ -22,8 +22,6 @@ class ResetPasswordController extends Controller
     public function post(ResetPasswordPostRequest $request, $token){
         //code...
 
-        (new RateLimitService($request))->ensureIsNotRateLimited(3);
-
         $status = Password::reset(
             [...$request->only('email', 'password', 'password_confirmation'), 'token' => $token],
             function (User $user, string $password) {

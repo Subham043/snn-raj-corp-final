@@ -2,7 +2,7 @@
 
 namespace App\Exceptions;
 
-use App\Exceptions\CustomExceptions\RateLimitException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Auth;
 use Throwable;
@@ -44,11 +44,11 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->reportable(function (Throwable $e) {
-            //
+
         });
     }
 
-    public function render($request, Throwable $exception)
+    public function render($request, HttpException|Throwable $exception)
     {
         if ($this->isHttpException($exception) &&!$request->wantsJson()) {
             if(request()->is('admin/*')){
@@ -70,13 +70,7 @@ class Handler extends ExceptionHandler
 
             }
         }
-        if ($exception instanceof RateLimitException && $request->wantsJson()) {
-            return response()->json([
-                'message' => $exception->showMessage(),
-            ], $exception->showStatusCode());
-        }else{
-            return redirect()->back()->with('error_status', $exception->showMessage());
-        }
         return parent::render($request, $exception);
     }
+
 }

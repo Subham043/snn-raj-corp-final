@@ -21,7 +21,6 @@ class PasswordUpdateController extends Controller
 
     public function post(PasswordPostRequest $request)
     {
-        (new RateLimitService($request))->ensureIsNotRateLimited(3);
         try {
             //code...
             $user = $this->authService->authenticated_user();

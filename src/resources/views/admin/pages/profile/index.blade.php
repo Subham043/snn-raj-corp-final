@@ -110,7 +110,6 @@
 
 
 @section('javascript')
-
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 
 // initialize the validation library
@@ -153,19 +152,22 @@ validation
         const response = await axios.post('{{route('profile.post')}}', formData)
         successToast(response.data.message)
     }catch (error){
-        if(error?.response?.data?.form_error?.name){
-            errorToast(error?.response?.data?.form_error?.name[0])
+        if(error?.response?.data?.errors?.name){
+            validation.showErrors({'#name': error?.response?.data?.errors?.name[0]})
         }
-        if(error?.response?.data?.form_error?.email){
-            errorToast(error?.response?.data?.form_error?.email[0])
+        if(error?.response?.data?.errors?.email){
+            validation.showErrors({'#email': error?.response?.data?.errors?.email[0]})
+        }
+        if(error?.response?.data?.message){
+            errorToast(error?.response?.data?.message)
         }
     }finally{
         submitBtn.innerHTML =  `
-            Update
-            `
+        Update
+        `
         submitBtn.disabled = false;
     }
-  })
+})
 
   // initialize the validation library
 const validationPassword = new JustValidate('#passwordForm', {
@@ -179,6 +181,9 @@ validationPassword
     {
       rule: 'required',
       errorMessage: 'Password is required',
+    },
+    {
+      rule: 'strongPassword',
     }
   ])
   .addField('#confirm_password', [
@@ -218,14 +223,14 @@ validationPassword
         successToast(response.data.message)
         event.target.reset();
     }catch (error){
-        if(error?.response?.data?.form_error?.old_password){
-            errorToast(error?.response?.data?.form_error?.old_password[0])
+        if(error?.response?.data?.errors?.old_password){
+            validationPassword.showErrors({'#old_password': error?.response?.data?.errors?.old_password[0]})
         }
-        if(error?.response?.data?.form_error?.password){
-            errorToast(error?.response?.data?.form_error?.password[0])
+        if(error?.response?.data?.errors?.password){
+            validationPassword.showErrors({'#password': error?.response?.data?.errors?.password[0]})
         }
-        if(error?.response?.data?.form_error?.confirm_password){
-            errorToast(error?.response?.data?.form_error?.confirm_password[0])
+        if(error?.response?.data?.errors?.confirm_password){
+            validationPassword.showErrors({'#confirm_password': error?.response?.data?.errors?.confirm_password[0]})
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)

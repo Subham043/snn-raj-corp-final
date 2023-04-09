@@ -3,6 +3,10 @@
 namespace App\Exceptions\CustomExceptions;
 
 use Exception;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RateLimitException extends Exception
 {
@@ -25,5 +29,28 @@ class RateLimitException extends Exception
     {
         return $this->status_code;
     }
+
+    /**
+     * Report the exception.
+     */
+    public function report(): void
+    {
+
+    }
+
+    /**
+     * Render the exception into an HTTP response.
+     */
+    public function render(Request $request): Response|RedirectResponse|JsonResponse
+    {
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => $this->showMessage(),
+            ], $this->showStatusCode());
+        }else{
+            return redirect()->back()->with('error_status', $this->showMessage());
+        }
+    }
+
 
 }
