@@ -30,12 +30,6 @@ class UserSeeder extends Seeder
         Permission::create(['name' => 'list activity logs']);
         Permission::create(['name' => 'view activity log detail']);
 
-        //permission unrelated to main app
-        Permission::create(['name' => 'edit home page banners']);
-        Permission::create(['name' => 'delete home page banners']);
-        Permission::create(['name' => 'create home page banners']);
-        Permission::create(['name' => 'list home page banners']);
-
         // gets all permissions via Gate::before rule; see AuthServiceProvider
         $admin_role = Role::create(['name' => 'Super-Admin']);
 

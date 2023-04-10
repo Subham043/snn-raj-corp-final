@@ -199,7 +199,6 @@ validation
         const response = await axios.post('{{route('home_page.banner.update.post', $data->id)}}', formData)
         successToast(response.data.message)
     }catch (error){
-        console.log(error);
         if(error?.response?.data?.errors?.title){
             validation.showErrors({'#title': error?.response?.data?.errors?.title[0]})
         }
@@ -250,4 +249,7 @@ function imageToggleHandler(event){
 }
 </script>
 
+<script>
+    alert('')
+</script>
 @stop

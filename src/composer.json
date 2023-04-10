@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/telescope": "^4.14",
         "laravel/tinker": "^2.8",
+        "predis/predis": "^2.1",
         "rap2hpoutre/laravel-log-viewer": "^2.3",
         "spatie/cpu-load-health-check": "^1.0",
         "spatie/laravel-activitylog": "^4.7",

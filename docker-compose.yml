@@ -33,3 +33,12 @@ services:
       - .env
     networks:
       - corp_raj_snn_laravel
+
+  redis:
+    image: redis:alpine
+    container_name: corp_raj_snn_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - corp_raj_snn_laravel

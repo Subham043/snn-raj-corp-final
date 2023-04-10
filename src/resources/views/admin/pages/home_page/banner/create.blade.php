@@ -201,7 +201,6 @@ validation
         event.target.reset();
         imageToggleHandler()
     }catch (error){
-        console.log(error);
         if(error?.response?.data?.errors?.title){
             validation.showErrors({'#title': error?.response?.data?.errors?.title[0]})
         }

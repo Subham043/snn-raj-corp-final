@@ -25,6 +25,7 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::FRAME, 'www.google.com')
         ->addDirective(Directive::FRAME, 'www.youtube.com');
     }
+
 }
 
 ?>
