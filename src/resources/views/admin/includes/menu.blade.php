@@ -57,6 +57,23 @@
                             @endcan
 
                             <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'home-page') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'home-page') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">
+                                    <i class="ri-home-4-line"></i> <span data-key="t-dashboards">Home Page</span>
+                                </a>
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'home-page') !== false ? 'show' : ''}}" id="sidebarDashboards6">
+                                    <ul class="nav nav-sm flex-column">
+                                        @can('list home page banners')
+                                            <li class="nav-item">
+                                                <a href="{{route('home_page.banner.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('home_page.banner.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Banners </a>
+                                            </li>
+                                        @endcan
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'setting') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'setting') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">
                                     <i class="ri-list-settings-line"></i> <span data-key="t-dashboards">Application Settings</span>

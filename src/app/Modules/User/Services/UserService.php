@@ -55,9 +55,9 @@ class UserService
         $user->syncRoles($roles);
     }
 
-    public function delete(User $data): bool|null
+    public function delete(User $user): bool|null
     {
-        return $data->delete();
+        return $user->delete();
     }
 
 }

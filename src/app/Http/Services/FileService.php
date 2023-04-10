@@ -2,17 +2,16 @@
 
 namespace App\Http\Services;
 
-use Uuid;
 use Illuminate\Http\Request;
 
 class FileService
 {
 
-    public function save_file(Request $request, String $file_type, String $path): string|null
+    public function save_file(String $file_key_name, String $path): string|null
     {
-        if($request->hasFile($file_type) && $request->file($file_type)->isValid()){
-            $image = $request[$file_type]->hashName();
-            $request[$file_type]->storeAs($path,$image);
+        if(request()->hasFile($file_key_name) && request()->file($file_key_name)->isValid()){
+            $image = request()[$file_key_name]->hashName();
+            request()[$file_key_name]->storeAs($path,$image);
             return $image;
         }
 

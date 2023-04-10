@@ -55,9 +55,9 @@ class RoleService
         $role->syncPermissions($permissions);
     }
 
-    public function delete(Role $data): bool|null
+    public function delete(Role $role): bool|null
     {
-        return $data->delete();
+        return $role->delete();
     }
 
 }

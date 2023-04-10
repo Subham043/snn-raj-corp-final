@@ -23,7 +23,7 @@
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
                                     <div>
-                                        @can('create permissions')
+                                        @can('create roles')
                                         <a href="{{route('role.create.get')}}" type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
                                         @endcan
                                     </div>
@@ -56,15 +56,15 @@
                                                     <td class="date">{{$item->created_at->diffForHumans()}}</td>
                                                     <td>
                                                         <div class="d-flex gap-2">
-                                                            @can('edit permissions')
+                                                            @can('edit roles')
                                                             <div class="edit">
                                                                 <a href="{{route('role.update.get', $item->id)}}" class="btn btn-sm btn-primary edit-item-btn">Edit</a>
                                                             </div>
                                                             @endcan
 
-                                                            @can('delete permissions')
+                                                            @can('delete roles')
                                                             <div class="remove">
-                                                                <button class="btn btn-sm btn-danger remove-item-btn" onclick="deleteHandler('{{route('role.delete.get', $item->id)}}')">Delete</button>
+                                                                <button class="btn btn-sm btn-danger remove-item-btn" data-link="{{route('role.delete.get', $item->id)}}">Delete</button>
                                                             </div>
                                                             @endcan
                                                         </div>

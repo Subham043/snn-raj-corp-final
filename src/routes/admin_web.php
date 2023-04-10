@@ -10,6 +10,10 @@ use App\Modules\Authentication\Controllers\ResetPasswordController;
 use App\Modules\Dashboard\Controllers\DashboardController;
 use App\Modules\Enquiries\Controllers\EnquiryDeleteController;
 use App\Modules\Enquiries\Controllers\EnquiryPaginateController;
+use App\Modules\HomePage\Banner\Controllers\BannerCreateController;
+use App\Modules\HomePage\Banner\Controllers\BannerDeleteController;
+use App\Modules\HomePage\Banner\Controllers\BannerPaginateController;
+use App\Modules\HomePage\Banner\Controllers\BannerUpdateController;
 use App\Modules\Role\Controllers\RoleCreateController;
 use App\Modules\Role\Controllers\RoleDeleteController;
 use App\Modules\Role\Controllers\RolePaginateController;
@@ -54,6 +58,18 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/activity-log')->group(function () {
             Route::get('/', [ActivityLogPaginateController::class, 'get', 'as' => 'activity_log.paginate.get'])->name('activity_log.paginate.get');
             Route::get('/{id}', [ActivityLogDetailController::class, 'get', 'as' => 'activity_log.detail.get'])->name('activity_log.detail.get');
+
+        });
+    });
+
+    Route::prefix('/home-page')->group(function () {
+        Route::prefix('/banner')->group(function () {
+            Route::get('/', [BannerPaginateController::class, 'get', 'as' => 'home_page.banner.paginate.get'])->name('home_page.banner.paginate.get');
+            Route::get('/create', [BannerCreateController::class, 'get', 'as' => 'home_page.banner.create.get'])->name('home_page.banner.create.get');
+            Route::post('/create', [BannerCreateController::class, 'post', 'as' => 'home_page.banner.create.post'])->name('home_page.banner.create.post');
+            Route::get('/update/{id}', [BannerUpdateController::class, 'get', 'as' => 'home_page.banner.update.get'])->name('home_page.banner.update.get');
+            Route::post('/update/{id}', [BannerUpdateController::class, 'post', 'as' => 'home_page.banner.update.post'])->name('home_page.banner.update.post');
+            Route::get('/delete/{id}', [BannerDeleteController::class, 'get', 'as' => 'home_page.banner.delete.get'])->name('home_page.banner.delete.get');
 
         });
     });
