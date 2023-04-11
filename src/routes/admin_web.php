@@ -12,6 +12,10 @@ use App\Modules\Awards\Controllers\AwardCreateController;
 use App\Modules\Awards\Controllers\AwardDeleteController;
 use App\Modules\Awards\Controllers\AwardPaginateController;
 use App\Modules\Awards\Controllers\AwardUpdateController;
+use App\Modules\Counter\Controllers\CounterCreateController;
+use App\Modules\Counter\Controllers\CounterDeleteController;
+use App\Modules\Counter\Controllers\CounterPaginateController;
+use App\Modules\Counter\Controllers\CounterUpdateController;
 use App\Modules\Dashboard\Controllers\DashboardController;
 use App\Modules\Enquiries\Controllers\EnquiryDeleteController;
 use App\Modules\Enquiries\Controllers\EnquiryPaginateController;
@@ -163,6 +167,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [PartnerUpdateController::class, 'get', 'as' => 'partner.update.get'])->name('partner.update.get');
         Route::post('/update/{id}', [PartnerUpdateController::class, 'post', 'as' => 'partner.update.post'])->name('partner.update.post');
         Route::get('/delete/{id}', [PartnerDeleteController::class, 'get', 'as' => 'partner.delete.get'])->name('partner.delete.get');
+
+    });
+
+    Route::prefix('/counter')->group(function () {
+        Route::get('/', [CounterPaginateController::class, 'get', 'as' => 'counter.paginate.get'])->name('counter.paginate.get');
+        Route::get('/create', [CounterCreateController::class, 'get', 'as' => 'counter.create.get'])->name('counter.create.get');
+        Route::post('/create', [CounterCreateController::class, 'post', 'as' => 'counter.create.post'])->name('counter.create.post');
+        Route::get('/update/{id}', [CounterUpdateController::class, 'get', 'as' => 'counter.update.get'])->name('counter.update.get');
+        Route::post('/update/{id}', [CounterUpdateController::class, 'post', 'as' => 'counter.update.post'])->name('counter.update.post');
+        Route::get('/delete/{id}', [CounterDeleteController::class, 'get', 'as' => 'counter.delete.get'])->name('counter.delete.get');
 
     });
 

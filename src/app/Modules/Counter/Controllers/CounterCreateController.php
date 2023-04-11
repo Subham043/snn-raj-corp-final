@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Modules\Counter\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Modules\Counter\Requests\CounterRequest;
+use App\Modules\Counter\Services\CounterService;
+
+class CounterCreateController extends Controller
+{
+    private $counterService;
+
+    public function __construct(CounterService $counterService)
+    {
+        $this->middleware('permission:create counters', ['only' => ['get','post']]);
+        $this->counterService = $counterService;
+    }
+
+    public function get(){
+        return view('admin.pages.counter.create');
+    }
+
+    public function post(CounterRequest $request){
+
+        try {
+            //code...
+            $this->counterService->create(
+                $request->except('image')
+            );
+            return response()->json(["message" => "Counter created successfully."], 201);
+        } catch (\Throwable $th) {
+            return response()->json(["message" => "Something went wrong. Please try again"], 400);
+        }
+
+    }
+}

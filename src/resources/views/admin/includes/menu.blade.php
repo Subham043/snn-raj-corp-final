@@ -72,10 +72,18 @@
                             </li>
                             @endcan
 
+                            @can('list counters')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('counter.paginate.get')) !== false ? 'active' : ''}}" href="{{route('counter.paginate.get')}}">
+                                    <i class="ri-timer-flash-line"></i> <span data-key="t-widgets">Counters</span>
+                                </a>
+                            </li>
+                            @endcan
+
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'about') !== false ? 'active' : ''}}" href="#sidebarDashboards4" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'about') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards4">
-                                    <i class="ri-slideshow-line"></i> <span data-key="t-dashboards">About</span>
+                                    <i class="ri-slideshow-line"></i> <span data-key="t-dashboards">About Page</span>
                                 </a>
                                 <div class="collapse menu-dropdown {{strpos(url()->current(),'about') !== false ? 'show' : ''}}" id="sidebarDashboards4">
                                     <ul class="nav nav-sm flex-column">
@@ -128,7 +136,7 @@
                                     <ul class="nav nav-sm flex-column">
                                         @can('list home page banners')
                                             <li class="nav-item">
-                                                <a href="{{route('home_page.banner.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('home_page.banner.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Banners </a>
+                                                <a href="{{route('home_page.banner.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('home_page.banner.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Banners Section </a>
                                             </li>
                                         @endcan
 
@@ -140,7 +148,7 @@
 
                                         @can('list home page testimonials')
                                             <li class="nav-item">
-                                                <a href="{{route('home_page.testimonial.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('home_page.testimonial.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Testimonials </a>
+                                                <a href="{{route('home_page.testimonial.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('home_page.testimonial.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Testimonials Section </a>
                                             </li>
                                         @endcan
 
