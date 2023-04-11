@@ -27,7 +27,7 @@
                                         @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>$data->title])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'sub_title', 'label'=>'Designation', 'value'=>$data->sub_title])
+                                        @include('admin.includes.input', ['key'=>'sub_title', 'label'=>'Sub Title', 'value'=>$data->sub_title])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.select', ['key'=>'year', 'label'=>'Year'])
@@ -144,6 +144,11 @@ validation
         },
     },
   ])
+  .addField('#description', [
+    {
+        validator: (value, fields) => true,
+    },
+  ])
   .onSuccess(async (event) => {
     var submitBtn = document.getElementById('submitBtn')
     submitBtn.innerHTML = spinner
@@ -208,9 +213,5 @@ validation
         shouldSort: false,
         shouldSortItems: false,
     });
-</script>
-
-<script>
-    alert('')
 </script>
 @stop

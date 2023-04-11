@@ -1,5 +1,18 @@
 @extends('admin.layouts.dashboard')
 
+@section('css')
+<link href="{{ asset('admin/libs/quill/quill.core.css' ) }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('admin/libs/quill/quill.bubble.css' ) }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('admin/libs/quill/quill.snow.css' ) }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{ asset('admin/css/image-previewer.css')}}" type="text/css" />
+
+<style nonce="{{ csp_nonce() }}">
+    #description_quill{
+        min-height: 200px;
+    }
+</style>
+@stop
+
 @section('content')
 
 <div class="page-content">
@@ -7,18 +20,18 @@
 
         <!-- start page title -->
         @can('list users')
-        @include('admin.includes.breadcrumb', ['page'=>'Testimonial', 'page_link'=>route('home_page.testimonial.paginate.get'), 'list'=>['Update']])
+        @include('admin.includes.breadcrumb', ['page'=>'Managements', 'page_link'=>route('team_member.management.paginate.get'), 'list'=>['Update']])
         @endcan
         <!-- end page title -->
 
         <div class="row">
-            @include('admin.includes.back_button', ['link'=>route('home_page.testimonial.paginate.get')])
+            @include('admin.includes.back_button', ['link'=>route('team_member.management.paginate.get')])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('home_page.testimonial.update.post', $data->id)}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('team_member.management.update.post', $data->id)}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Testimonial Detail</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Managements Detail</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
@@ -33,14 +46,14 @@
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.textarea', ['key'=>'message', 'label'=>'Message', 'value'=>$data->message])
+                                        @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>$data->description])
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="mt-4 mt-md-0">
                                             <div>
                                                 <div class="form-check form-switch form-check-right mb-2">
                                                     <input class="form-check-input" type="checkbox" role="switch" id="is_draft" name="is_draft" {{$data->is_draft==false ? '' : 'checked'}}>
-                                                    <label class="form-check-label" for="is_draft">Testimonial Status</label>
+                                                    <label class="form-check-label" for="is_draft">Management Status</label>
                                                 </div>
                                             </div>
 
@@ -74,8 +87,19 @@
 
 
 @section('javascript')
+<script src="{{ asset('admin/libs/quill/quill.min.js' ) }}"></script>
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
+
+var quillDescription = new Quill('#description_quill', {
+    theme: 'snow'
+});
+
+quillDescription.on('text-change', function(delta, oldDelta, source) {
+  if (source == 'user') {
+    document.getElementById('description').value = quillDescription.root.innerHTML
+  }
+});
 
 // initialize the validation library
 const validation = new JustValidate('#countryForm', {
@@ -83,7 +107,7 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
-.addField('#name', [
+  .addField('#name', [
     {
       rule: 'required',
       errorMessage: 'Name is required',
@@ -105,10 +129,10 @@ validation
         errorMessage: 'Designation is invalid',
     },
   ])
-  .addField('#message', [
+  .addField('#description', [
     {
         rule: 'required',
-        errorMessage: 'Message is required',
+        errorMessage: 'Description is required',
     },
   ])
   .addField('#image', [
@@ -141,12 +165,13 @@ validation
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
         formData.append('name',document.getElementById('name').value)
         formData.append('designation',document.getElementById('designation').value)
-        formData.append('message',document.getElementById('message').value)
+        formData.append('description',quillDescription.root.innerHTML)
+        formData.append('description_unfiltered',quillDescription.getText())
         if((document.getElementById('image').files).length>0){
             formData.append('image',document.getElementById('image').files[0])
         }
 
-        const response = await axios.post('{{route('home_page.testimonial.update.post', $data->id)}}', formData)
+        const response = await axios.post('{{route('team_member.management.update.post', $data->id)}}', formData)
         successToast(response.data.message)
     }catch (error){
         if(error?.response?.data?.errors?.name){
@@ -155,8 +180,8 @@ validation
         if(error?.response?.data?.errors?.designation){
             validation.showErrors({'#designation': error?.response?.data?.errors?.designation[0]})
         }
-        if(error?.response?.data?.errors?.message){
-            validation.showErrors({'#message': error?.response?.data?.errors?.message[0]})
+        if(error?.response?.data?.errors?.description){
+            validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
         }
         if(error?.response?.data?.errors?.image){
             validation.showErrors({'#image': error?.response?.data?.errors?.image[0]})
@@ -171,6 +196,6 @@ validation
         submitBtn.disabled = false;
     }
   });
-
 </script>
+
 @stop

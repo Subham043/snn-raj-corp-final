@@ -65,6 +65,23 @@
                             @endcan
 
                             <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'team-member') !== false ? 'active' : ''}}" href="#sidebarDashboards3" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'team-member') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards3">
+                                    <i class="ri-group-line"></i> <span data-key="t-dashboards">Team Members</span>
+                                </a>
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'team-member') !== false ? 'show' : ''}}" id="sidebarDashboards3">
+                                    <ul class="nav nav-sm flex-column">
+                                        @can('list team member managements')
+                                            <li class="nav-item">
+                                                <a href="{{route('team_member.management.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('team_member.management.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Management </a>
+                                            </li>
+                                        @endcan
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'home-page') !== false ? 'active' : ''}}" href="#sidebarDashboards1" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'home-page') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards1">
                                     <i class="ri-home-4-line"></i> <span data-key="t-dashboards">Home Page</span>

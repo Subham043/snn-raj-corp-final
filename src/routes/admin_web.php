@@ -30,6 +30,10 @@ use App\Modules\Settings\Controllers\ActivityLog\ActivityLogDetailController;
 use App\Modules\Settings\Controllers\ActivityLog\ActivityLogPaginateController;
 use App\Modules\Settings\Controllers\ApplicationBackupController;
 use App\Modules\Settings\Controllers\ErrorLogController;
+use App\Modules\TeamMember\Management\Controllers\ManagementCreateController;
+use App\Modules\TeamMember\Management\Controllers\ManagementDeleteController;
+use App\Modules\TeamMember\Management\Controllers\ManagementPaginateController;
+use App\Modules\TeamMember\Management\Controllers\ManagementUpdateController;
 use App\Modules\User\Controllers\UserCreateController;
 use App\Modules\User\Controllers\UserDeleteController;
 use App\Modules\User\Controllers\UserPaginateController;
@@ -90,6 +94,20 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [TestimonialDeleteController::class, 'get', 'as' => 'home_page.testimonial.delete.get'])->name('home_page.testimonial.delete.get');
 
         });
+    });
+
+    Route::prefix('/team-member')->group(function () {
+
+        Route::prefix('/management')->group(function () {
+            Route::get('/', [ManagementPaginateController::class, 'get', 'as' => 'team_member.management.paginate.get'])->name('team_member.management.paginate.get');
+            Route::get('/create', [ManagementCreateController::class, 'get', 'as' => 'team_member.management.create.get'])->name('team_member.management.create.get');
+            Route::post('/create', [ManagementCreateController::class, 'post', 'as' => 'team_member.management.create.post'])->name('team_member.management.create.post');
+            Route::get('/update/{id}', [ManagementUpdateController::class, 'get', 'as' => 'team_member.management.update.get'])->name('team_member.management.update.get');
+            Route::post('/update/{id}', [ManagementUpdateController::class, 'post', 'as' => 'team_member.management.update.post'])->name('team_member.management.update.post');
+            Route::get('/delete/{id}', [ManagementDeleteController::class, 'get', 'as' => 'team_member.management.delete.get'])->name('team_member.management.delete.get');
+
+        });
+
     });
 
     Route::prefix('/award')->group(function () {

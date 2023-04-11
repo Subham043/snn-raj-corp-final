@@ -27,7 +27,7 @@
                                         @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>old('title')])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'sub_title', 'label'=>'Designation', 'value'=>old('sub_title')])
+                                        @include('admin.includes.input', ['key'=>'sub_title', 'label'=>'Sub Title', 'value'=>old('sub_title')])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.select', ['key'=>'year', 'label'=>'Year'])
