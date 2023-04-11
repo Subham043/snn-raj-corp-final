@@ -38,6 +38,12 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create awards']);
         Permission::create(['name' => 'list awards']);
 
+        //permission for partners
+        Permission::create(['name' => 'edit partners']);
+        Permission::create(['name' => 'delete partners']);
+        Permission::create(['name' => 'create partners']);
+        Permission::create(['name' => 'list partners']);
+
         //permission for team member managements
         Permission::create(['name' => 'edit team member managements']);
         Permission::create(['name' => 'delete team member managements']);

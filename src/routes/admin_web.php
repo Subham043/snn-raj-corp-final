@@ -24,6 +24,10 @@ use App\Modules\HomePage\Testimonial\Controllers\TestimonialCreateController;
 use App\Modules\HomePage\Testimonial\Controllers\TestimonialDeleteController;
 use App\Modules\HomePage\Testimonial\Controllers\TestimonialPaginateController;
 use App\Modules\HomePage\Testimonial\Controllers\TestimonialUpdateController;
+use App\Modules\Partner\Controllers\PartnerCreateController;
+use App\Modules\Partner\Controllers\PartnerDeleteController;
+use App\Modules\Partner\Controllers\PartnerPaginateController;
+use App\Modules\Partner\Controllers\PartnerUpdateController;
 use App\Modules\Role\Controllers\RoleCreateController;
 use App\Modules\Role\Controllers\RoleDeleteController;
 use App\Modules\Role\Controllers\RolePaginateController;
@@ -149,6 +153,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [AwardUpdateController::class, 'get', 'as' => 'award.update.get'])->name('award.update.get');
         Route::post('/update/{id}', [AwardUpdateController::class, 'post', 'as' => 'award.update.post'])->name('award.update.post');
         Route::get('/delete/{id}', [AwardDeleteController::class, 'get', 'as' => 'award.delete.get'])->name('award.delete.get');
+
+    });
+
+    Route::prefix('/partner')->group(function () {
+        Route::get('/', [PartnerPaginateController::class, 'get', 'as' => 'partner.paginate.get'])->name('partner.paginate.get');
+        Route::get('/create', [PartnerCreateController::class, 'get', 'as' => 'partner.create.get'])->name('partner.create.get');
+        Route::post('/create', [PartnerCreateController::class, 'post', 'as' => 'partner.create.post'])->name('partner.create.post');
+        Route::get('/update/{id}', [PartnerUpdateController::class, 'get', 'as' => 'partner.update.get'])->name('partner.update.get');
+        Route::post('/update/{id}', [PartnerUpdateController::class, 'post', 'as' => 'partner.update.post'])->name('partner.update.post');
+        Route::get('/delete/{id}', [PartnerDeleteController::class, 'get', 'as' => 'partner.delete.get'])->name('partner.delete.get');
 
     });
 

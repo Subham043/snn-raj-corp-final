@@ -64,6 +64,14 @@
                             </li>
                             @endcan
 
+                            @can('list partners')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('partner.paginate.get')) !== false ? 'active' : ''}}" href="{{route('partner.paginate.get')}}">
+                                    <i class="ri-user-5-line"></i> <span data-key="t-widgets">Partners</span>
+                                </a>
+                            </li>
+                            @endcan
+
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'about') !== false ? 'active' : ''}}" href="#sidebarDashboards4" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'about') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards4">
