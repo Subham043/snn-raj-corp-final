@@ -1,10 +1,7 @@
 @extends('admin.layouts.dashboard')
 
 @section('css')
-<link href="{{ asset('admin/libs/quill/quill.core.css' ) }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('admin/libs/quill/quill.bubble.css' ) }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('admin/libs/quill/quill.snow.css' ) }}" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="{{ asset('admin/css/image-previewer.css')}}" type="text/css" />
 
 <style nonce="{{ csp_nonce() }}">
     #description_quill{

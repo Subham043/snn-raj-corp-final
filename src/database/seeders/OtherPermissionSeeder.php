@@ -50,5 +50,8 @@ class OtherPermissionSeeder extends Seeder
         //permission for about banner
         Permission::create(['name' => 'edit about banner']);
 
+        //permission for about main
+        Permission::create(['name' => 'edit about main']);
+
     }
 }

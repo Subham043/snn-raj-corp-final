@@ -17,47 +17,33 @@
 
         <!-- start page title -->
         @can('list users')
-        @include('admin.includes.breadcrumb', ['page'=>'Management', 'page_link'=>route('team_member.management.paginate.get'), 'list'=>['Create']])
+        @include('admin.includes.breadcrumb', ['page'=>'Main', 'page_link'=>route('about.main.get'), 'list'=>['Update']])
         @endcan
         <!-- end page title -->
 
         <div class="row">
-            @include('admin.includes.back_button', ['link'=>route('team_member.management.paginate.get')])
+            @include('admin.includes.back_button', ['link'=>route('about.main.get')])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('team_member.management.create.post')}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('about.main.post')}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Management Detail</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Main Detail</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'name', 'label'=>'Name', 'value'=>old('name')])
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>!empty($data) ? (old('heading') ? old('heading') : $data->heading) : old('heading')])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'designation', 'label'=>'Designation', 'value'=>old('designation')])
-                                    </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>old('description')])
-                                    </div>
-                                    <div class="col-lg-12 col-md-12">
-                                        <div class="mt-4 mt-md-0">
-                                            <div>
-                                                <div class="form-check form-switch form-check-right mb-2">
-                                                    <input class="form-check-input" type="checkbox" role="switch" id="is_draft" name="is_draft" checked>
-                                                    <label class="form-check-label" for="is_draft">Management Status</label>
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                        @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>!empty($data) ? (old('description') ? old('description') : $data->description) : old('description')])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Create</button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
                                     </div>
 
                                 </div>
@@ -104,42 +90,27 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
-  .addField('#name', [
+.addField('#heading', [
     {
       rule: 'required',
-      errorMessage: 'Name is required',
+      errorMessage: 'Heading is required',
     },
     {
         rule: 'customRegexp',
         value: COMMON_REGEX,
-        errorMessage: 'Name is invalid',
-    },
-  ])
-  .addField('#designation', [
-    {
-      rule: 'required',
-      errorMessage: 'Designation is required',
-    },
-    {
-        rule: 'customRegexp',
-        value: COMMON_REGEX,
-        errorMessage: 'Designation is invalid',
+        errorMessage: 'Heading is invalid',
     },
   ])
   .addField('#description', [
     {
         rule: 'required',
-        errorMessage: 'Description is required',
+        errorMessage: 'Description Link is required',
     },
   ])
   .addField('#image', [
     {
-      rule: 'required',
-      errorMessage: 'Image is required',
-    },
-    {
         rule: 'minFilesCount',
-        value: 1,
+        value: 0,
     },
     {
         rule: 'maxFilesCount',
@@ -163,25 +134,18 @@ validation
     submitBtn.disabled = true;
     try {
         var formData = new FormData();
-        formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
-        formData.append('name',document.getElementById('name').value)
-        formData.append('designation',document.getElementById('designation').value)
+        formData.append('heading',document.getElementById('heading').value)
         formData.append('description',quillDescription.root.innerHTML)
         formData.append('description_unfiltered',quillDescription.getText())
         if((document.getElementById('image').files).length>0){
             formData.append('image',document.getElementById('image').files[0])
         }
 
-        const response = await axios.post('{{route('team_member.management.create.post')}}', formData)
+        const response = await axios.post('{{route('about.main.post')}}', formData)
         successToast(response.data.message)
-        event.target.reset();
-        quillDescription.root.innerHTML = '';
     }catch (error){
-        if(error?.response?.data?.errors?.name){
-            validation.showErrors({'#name': error?.response?.data?.errors?.name[0]})
-        }
-        if(error?.response?.data?.errors?.designation){
-            validation.showErrors({'#designation': error?.response?.data?.errors?.designation[0]})
+        if(error?.response?.data?.errors?.heading){
+            validation.showErrors({'#heading': error?.response?.data?.errors?.heading[0]})
         }
         if(error?.response?.data?.errors?.description){
             validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
@@ -194,12 +158,10 @@ validation
         }
     }finally{
         submitBtn.innerHTML =  `
-            Create
+            Update
             `
         submitBtn.disabled = false;
     }
   });
-
 </script>
-
 @stop

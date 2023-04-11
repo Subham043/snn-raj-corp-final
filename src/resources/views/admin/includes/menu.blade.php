@@ -71,6 +71,12 @@
                                 </a>
                                 <div class="collapse menu-dropdown {{strpos(url()->current(),'about') !== false ? 'show' : ''}}" id="sidebarDashboards4">
                                     <ul class="nav nav-sm flex-column">
+                                        @can('edit about main')
+                                            <li class="nav-item">
+                                                <a href="{{route('about.main.get')}}" class="nav-link {{strpos(url()->current(), route('about.main.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Main </a>
+                                            </li>
+                                        @endcan
+
                                         @can('edit about banner')
                                             <li class="nav-item">
                                                 <a href="{{route('about.banner.get')}}" class="nav-link {{strpos(url()->current(), route('about.banner.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Banner </a>

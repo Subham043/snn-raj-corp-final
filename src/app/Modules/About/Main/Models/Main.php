@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\About\Banner\Models;
+namespace App\Modules\About\Main\Models;
 
 use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class Banner extends Model
+class Main extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected $table = 'about_banners';
+    protected $table = 'about_mains';
 
     /**
      * The attributes that are mass assignable.
@@ -22,11 +22,8 @@ class Banner extends Model
      */
     protected $fillable = [
         'heading',
-        'mission',
-        'vission',
-        'button_text',
-        'button_link',
         'description',
+        'description_unfiltered',
         'image',
     ];
 
@@ -35,7 +32,7 @@ class Banner extends Model
         'updated_at' => 'datetime',
     ];
 
-    public $image_path = 'about_banners';
+    public $image_path = 'about_mains';
 
     protected $appends = ['image_link'];
 
@@ -63,7 +60,7 @@ class Banner extends Model
         return LogOptions::defaults()
         ->useLogName('user')
         ->setDescriptionForEvent(
-            fn(string $eventName) => "This about page banner detail has been {$eventName} by ".auth()->user()->name."<".auth()->user()->email.">"
+            fn(string $eventName) => "This about page detail has been {$eventName} by ".auth()->user()->name."<".auth()->user()->email.">"
             )
         ->logFillable()
         ->logOnlyDirty();

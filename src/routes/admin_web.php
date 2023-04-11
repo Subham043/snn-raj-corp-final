@@ -1,6 +1,7 @@
 <?php
 
 use App\Modules\About\Banner\Controllers\BannerController;
+use App\Modules\About\Main\Controllers\AboutMainController;
 use App\Modules\Authentication\Controllers\PasswordUpdateController;
 use App\Modules\Authentication\Controllers\ForgotPasswordController;
 use App\Modules\Authentication\Controllers\LoginController;
@@ -101,6 +102,10 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::prefix('/about')->group(function () {
+        Route::prefix('/main')->group(function () {
+            Route::get('/', [AboutMainController::class, 'get', 'as' => 'about.main.get'])->name('about.main.get');
+            Route::post('/', [AboutMainController::class, 'post', 'as' => 'about.main.post'])->name('about.main.post');
+        });
         Route::prefix('/banner')->group(function () {
             Route::get('/', [BannerController::class, 'get', 'as' => 'about.banner.get'])->name('about.banner.get');
             Route::post('/', [BannerController::class, 'post', 'as' => 'about.banner.post'])->name('about.banner.post');
