@@ -34,6 +34,10 @@ use App\Modules\TeamMember\Management\Controllers\ManagementCreateController;
 use App\Modules\TeamMember\Management\Controllers\ManagementDeleteController;
 use App\Modules\TeamMember\Management\Controllers\ManagementPaginateController;
 use App\Modules\TeamMember\Management\Controllers\ManagementUpdateController;
+use App\Modules\TeamMember\Staff\Controllers\StaffCreateController;
+use App\Modules\TeamMember\Staff\Controllers\StaffDeleteController;
+use App\Modules\TeamMember\Staff\Controllers\StaffPaginateController;
+use App\Modules\TeamMember\Staff\Controllers\StaffUpdateController;
 use App\Modules\User\Controllers\UserCreateController;
 use App\Modules\User\Controllers\UserDeleteController;
 use App\Modules\User\Controllers\UserPaginateController;
@@ -105,6 +109,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [ManagementUpdateController::class, 'get', 'as' => 'team_member.management.update.get'])->name('team_member.management.update.get');
             Route::post('/update/{id}', [ManagementUpdateController::class, 'post', 'as' => 'team_member.management.update.post'])->name('team_member.management.update.post');
             Route::get('/delete/{id}', [ManagementDeleteController::class, 'get', 'as' => 'team_member.management.delete.get'])->name('team_member.management.delete.get');
+
+        });
+
+        Route::prefix('/staff')->group(function () {
+            Route::get('/', [StaffPaginateController::class, 'get', 'as' => 'team_member.staff.paginate.get'])->name('team_member.staff.paginate.get');
+            Route::get('/create', [StaffCreateController::class, 'get', 'as' => 'team_member.staff.create.get'])->name('team_member.staff.create.get');
+            Route::post('/create', [StaffCreateController::class, 'post', 'as' => 'team_member.staff.create.post'])->name('team_member.staff.create.post');
+            Route::get('/update/{id}', [StaffUpdateController::class, 'get', 'as' => 'team_member.staff.update.get'])->name('team_member.staff.update.get');
+            Route::post('/update/{id}', [StaffUpdateController::class, 'post', 'as' => 'team_member.staff.update.post'])->name('team_member.staff.update.post');
+            Route::get('/delete/{id}', [StaffDeleteController::class, 'get', 'as' => 'team_member.staff.delete.get'])->name('team_member.staff.delete.get');
 
         });
 

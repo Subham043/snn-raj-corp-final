@@ -41,5 +41,11 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create team member managements']);
         Permission::create(['name' => 'list team member managements']);
 
+        //permission for team member staffs
+        Permission::create(['name' => 'edit team member staffs']);
+        Permission::create(['name' => 'delete team member staffs']);
+        Permission::create(['name' => 'create team member staffs']);
+        Permission::create(['name' => 'list team member staffs']);
+
     }
 }

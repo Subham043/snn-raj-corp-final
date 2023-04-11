@@ -77,6 +77,12 @@
                                             </li>
                                         @endcan
 
+                                        @can('list team member staffs')
+                                            <li class="nav-item">
+                                                <a href="{{route('team_member.staff.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('team_member.staff.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Staffs </a>
+                                            </li>
+                                        @endcan
+
                                     </ul>
                                 </div>
                             </li>
