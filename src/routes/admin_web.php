@@ -15,6 +15,7 @@ use App\Modules\Awards\Controllers\AwardUpdateController;
 use App\Modules\Dashboard\Controllers\DashboardController;
 use App\Modules\Enquiries\Controllers\EnquiryDeleteController;
 use App\Modules\Enquiries\Controllers\EnquiryPaginateController;
+use App\Modules\HomePage\About\Controllers\AboutController;
 use App\Modules\HomePage\Banner\Controllers\BannerCreateController;
 use App\Modules\HomePage\Banner\Controllers\BannerDeleteController;
 use App\Modules\HomePage\Banner\Controllers\BannerPaginateController;
@@ -98,6 +99,11 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/update/{id}', [TestimonialUpdateController::class, 'post', 'as' => 'home_page.testimonial.update.post'])->name('home_page.testimonial.update.post');
             Route::get('/delete/{id}', [TestimonialDeleteController::class, 'get', 'as' => 'home_page.testimonial.delete.get'])->name('home_page.testimonial.delete.get');
 
+        });
+
+        Route::prefix('/about-section')->group(function () {
+            Route::get('/', [AboutController::class, 'get', 'as' => 'home_page.about.get'])->name('home_page.about.get');
+            Route::post('/', [AboutController::class, 'post', 'as' => 'home_page.about.post'])->name('home_page.about.post');
         });
     });
 

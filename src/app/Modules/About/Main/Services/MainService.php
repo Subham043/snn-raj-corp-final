@@ -21,20 +21,20 @@ class MainService
         );
     }
 
-    public function saveImage(Main $banner): Main
+    public function saveImage(Main $main): Main
     {
-        $this->deleteImage($banner);
+        $this->deleteImage($main);
         $image = (new FileService)->save_file('image', (new Main)->image_path);
-        $banner->update([
+        $main->update([
             'image' => $image,
         ]);
-        return $banner;
+        return $main;
     }
 
-    public function deleteImage(Main $banner): void
+    public function deleteImage(Main $main): void
     {
-        if($banner->image){
-            $path = str_replace("storage","app/public",$banner->image);
+        if($main->image){
+            $path = str_replace("storage","app/public",$main->image);
             (new FileService)->delete_file($path);
         }
     }

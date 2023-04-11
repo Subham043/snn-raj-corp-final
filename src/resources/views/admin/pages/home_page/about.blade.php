@@ -17,29 +17,32 @@
 
         <!-- start page title -->
         @can('list users')
-        @include('admin.includes.breadcrumb', ['page'=>'Main', 'page_link'=>route('about.main.get'), 'list'=>['Update']])
+        @include('admin.includes.breadcrumb', ['page'=>'About', 'page_link'=>route('home_page.about.get'), 'list'=>['Update']])
         @endcan
         <!-- end page title -->
 
         <div class="row">
-            @include('admin.includes.back_button', ['link'=>route('about.main.get')])
+            @include('admin.includes.back_button', ['link'=>route('home_page.about.get')])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('about.main.post')}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('home_page.about.post')}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Main Detail</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">About Detail</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>!empty($data) ? (old('heading') ? old('heading') : $data->heading) : old('heading')])
                                         <p>
                                             <code>Note: </code> Put the text in between span tags to make it highlighted
                                         </p>
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
+                                        @include('admin.includes.input', ['key'=>'sub_heading', 'label'=>'Sub Heading', 'value'=>!empty($data) ? (old('sub_heading') ? old('sub_heading') : $data->sub_heading) : old('sub_heading')])
+                                    </div>
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
@@ -93,7 +96,7 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
-.addField('#heading', [
+ .addField('#heading', [
     {
       rule: 'required',
       errorMessage: 'Heading is required',
@@ -102,6 +105,17 @@ validation
         rule: 'customRegexp',
         value: COMMON_REGEX,
         errorMessage: 'Heading is invalid',
+    },
+  ])
+ .addField('#sub_heading', [
+    {
+      rule: 'required',
+      errorMessage: 'Sub Heading is required',
+    },
+    {
+        rule: 'customRegexp',
+        value: COMMON_REGEX,
+        errorMessage: 'Sub Heading is invalid',
     },
   ])
   .addField('#description', [
@@ -138,17 +152,21 @@ validation
     try {
         var formData = new FormData();
         formData.append('heading',document.getElementById('heading').value)
+        formData.append('sub_heading',document.getElementById('sub_heading').value)
         formData.append('description',quillDescription.root.innerHTML)
         formData.append('description_unfiltered',quillDescription.getText())
         if((document.getElementById('image').files).length>0){
             formData.append('image',document.getElementById('image').files[0])
         }
 
-        const response = await axios.post('{{route('about.main.post')}}', formData)
+        const response = await axios.post('{{route('home_page.about.post')}}', formData)
         successToast(response.data.message)
     }catch (error){
         if(error?.response?.data?.errors?.heading){
             validation.showErrors({'#heading': error?.response?.data?.errors?.heading[0]})
+        }
+        if(error?.response?.data?.errors?.sub_heading){
+            validation.showErrors({'#sub_heading': error?.response?.data?.errors?.sub_heading[0]})
         }
         if(error?.response?.data?.errors?.description){
             validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
