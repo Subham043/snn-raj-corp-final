@@ -14,6 +14,10 @@ use App\Modules\HomePage\Banner\Controllers\BannerCreateController;
 use App\Modules\HomePage\Banner\Controllers\BannerDeleteController;
 use App\Modules\HomePage\Banner\Controllers\BannerPaginateController;
 use App\Modules\HomePage\Banner\Controllers\BannerUpdateController;
+use App\Modules\HomePage\Testimonial\Controllers\TestimonialCreateController;
+use App\Modules\HomePage\Testimonial\Controllers\TestimonialDeleteController;
+use App\Modules\HomePage\Testimonial\Controllers\TestimonialPaginateController;
+use App\Modules\HomePage\Testimonial\Controllers\TestimonialUpdateController;
 use App\Modules\Role\Controllers\RoleCreateController;
 use App\Modules\Role\Controllers\RoleDeleteController;
 use App\Modules\Role\Controllers\RolePaginateController;
@@ -70,6 +74,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [BannerUpdateController::class, 'get', 'as' => 'home_page.banner.update.get'])->name('home_page.banner.update.get');
             Route::post('/update/{id}', [BannerUpdateController::class, 'post', 'as' => 'home_page.banner.update.post'])->name('home_page.banner.update.post');
             Route::get('/delete/{id}', [BannerDeleteController::class, 'get', 'as' => 'home_page.banner.delete.get'])->name('home_page.banner.delete.get');
+
+        });
+
+        Route::prefix('/testimonial')->group(function () {
+            Route::get('/', [TestimonialPaginateController::class, 'get', 'as' => 'home_page.testimonial.paginate.get'])->name('home_page.testimonial.paginate.get');
+            Route::get('/create', [TestimonialCreateController::class, 'get', 'as' => 'home_page.testimonial.create.get'])->name('home_page.testimonial.create.get');
+            Route::post('/create', [TestimonialCreateController::class, 'post', 'as' => 'home_page.testimonial.create.post'])->name('home_page.testimonial.create.post');
+            Route::get('/update/{id}', [TestimonialUpdateController::class, 'get', 'as' => 'home_page.testimonial.update.get'])->name('home_page.testimonial.update.get');
+            Route::post('/update/{id}', [TestimonialUpdateController::class, 'post', 'as' => 'home_page.testimonial.update.post'])->name('home_page.testimonial.update.post');
+            Route::get('/delete/{id}', [TestimonialDeleteController::class, 'get', 'as' => 'home_page.testimonial.delete.get'])->name('home_page.testimonial.delete.get');
 
         });
     });

@@ -37,7 +37,7 @@
                                             <div>
                                                 <div class="form-check form-switch form-check-right mb-2">
                                                     <input class="form-check-input" type="checkbox" role="switch" id="is_draft" name="is_draft" checked>
-                                                    <label class="form-check-label" for="is_draft">Project Status</label>
+                                                    <label class="form-check-label" for="is_draft">Banner Status</label>
                                                 </div>
                                             </div>
 
