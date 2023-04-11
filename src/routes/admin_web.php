@@ -7,6 +7,10 @@ use App\Modules\Authentication\Controllers\LoginController;
 use App\Modules\Authentication\Controllers\LogoutController;
 use App\Modules\Authentication\Controllers\ProfileController;
 use App\Modules\Authentication\Controllers\ResetPasswordController;
+use App\Modules\Awards\Controllers\AwardCreateController;
+use App\Modules\Awards\Controllers\AwardDeleteController;
+use App\Modules\Awards\Controllers\AwardPaginateController;
+use App\Modules\Awards\Controllers\AwardUpdateController;
 use App\Modules\Dashboard\Controllers\DashboardController;
 use App\Modules\Enquiries\Controllers\EnquiryDeleteController;
 use App\Modules\Enquiries\Controllers\EnquiryPaginateController;
@@ -86,6 +90,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [TestimonialDeleteController::class, 'get', 'as' => 'home_page.testimonial.delete.get'])->name('home_page.testimonial.delete.get');
 
         });
+    });
+
+    Route::prefix('/award')->group(function () {
+        Route::get('/', [AwardPaginateController::class, 'get', 'as' => 'award.paginate.get'])->name('award.paginate.get');
+        Route::get('/create', [AwardCreateController::class, 'get', 'as' => 'award.create.get'])->name('award.create.get');
+        Route::post('/create', [AwardCreateController::class, 'post', 'as' => 'award.create.post'])->name('award.create.post');
+        Route::get('/update/{id}', [AwardUpdateController::class, 'get', 'as' => 'award.update.get'])->name('award.update.get');
+        Route::post('/update/{id}', [AwardUpdateController::class, 'post', 'as' => 'award.update.post'])->name('award.update.post');
+        Route::get('/delete/{id}', [AwardDeleteController::class, 'get', 'as' => 'award.delete.get'])->name('award.delete.get');
+
     });
 
     Route::prefix('/profile')->group(function () {

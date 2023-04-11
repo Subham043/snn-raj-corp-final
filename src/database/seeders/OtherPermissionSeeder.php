@@ -29,5 +29,11 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create home page testimonials']);
         Permission::create(['name' => 'list home page testimonials']);
 
+        //permission for awards
+        Permission::create(['name' => 'edit awards']);
+        Permission::create(['name' => 'delete awards']);
+        Permission::create(['name' => 'create awards']);
+        Permission::create(['name' => 'list awards']);
+
     }
 }

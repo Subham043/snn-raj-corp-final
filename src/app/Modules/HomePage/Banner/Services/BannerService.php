@@ -37,10 +37,10 @@ class BannerService
 
     public function create(array $data): Banner
     {
-        $user = Banner::create($data);
-        $user->user_id = auth()->user()->id;
-        $user->save();
-        return $user;
+        $banner = Banner::create($data);
+        $banner->user_id = auth()->user()->id;
+        $banner->save();
+        return $banner;
     }
 
     public function update(array $data, Banner $banner): Banner

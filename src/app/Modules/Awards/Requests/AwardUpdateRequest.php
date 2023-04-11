@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\HomePage\Testimonial\Requests;
+namespace App\Modules\Awards\Requests;
 
 use Illuminate\Support\Facades\Auth;
 
-class TestimonialUpdateRequest extends TestimonialCreateRequest
+class AwardUpdateRequest extends AwardCreateRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class TestimonialUpdateRequest extends TestimonialCreateRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:250',
-            'designation' => 'required|string|max:250',
-            'message' => 'required|string|max:500',
+            'year' => 'required|integer|digits:4',
+            'title' => 'required|string|max:250',
+            'sub_title' => 'required|string|max:250',
+            'description' => 'nullable|string|max:500',
             'image' => 'nullable|image|min:10|max:500',
             'is_draft' => 'required|boolean',
         ];

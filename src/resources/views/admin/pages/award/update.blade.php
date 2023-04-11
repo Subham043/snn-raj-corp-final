@@ -7,40 +7,43 @@
 
         <!-- start page title -->
         @can('list users')
-        @include('admin.includes.breadcrumb', ['page'=>'Testimonial', 'page_link'=>route('home_page.testimonial.paginate.get'), 'list'=>['Update']])
+        @include('admin.includes.breadcrumb', ['page'=>'Awards', 'page_link'=>route('award.paginate.get'), 'list'=>['Update']])
         @endcan
         <!-- end page title -->
 
         <div class="row">
-            @include('admin.includes.back_button', ['link'=>route('home_page.testimonial.paginate.get')])
+            @include('admin.includes.back_button', ['link'=>route('award.paginate.get')])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('home_page.testimonial.update.post', $data->id)}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('award.update.post', $data->id)}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Testimonial Detail</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Awards Detail</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'name', 'label'=>'Name', 'value'=>$data->name])
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>$data->title])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'designation', 'label'=>'Designation', 'value'=>$data->designation])
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'sub_title', 'label'=>'Designation', 'value'=>$data->sub_title])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.select', ['key'=>'year', 'label'=>'Year'])
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.textarea', ['key'=>'message', 'label'=>'Message', 'value'=>$data->message])
+                                        @include('admin.includes.textarea', ['key'=>'description', 'label'=>'Description', 'value'=>$data->description])
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="mt-4 mt-md-0">
                                             <div>
                                                 <div class="form-check form-switch form-check-right mb-2">
                                                     <input class="form-check-input" type="checkbox" role="switch" id="is_draft" name="is_draft" {{$data->is_draft==false ? '' : 'checked'}}>
-                                                    <label class="form-check-label" for="is_draft">Testimonial Status</label>
+                                                    <label class="form-check-label" for="is_draft">Award Status</label>
                                                 </div>
                                             </div>
 
@@ -74,6 +77,7 @@
 
 
 @section('javascript')
+<script src="{{ asset('admin/js/pages/choices.min.js') }}"></script>
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 
@@ -83,32 +87,40 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
-.addField('#name', [
+.addField('#title', [
     {
       rule: 'required',
-      errorMessage: 'Name is required',
+      errorMessage: 'Title is required',
     },
     {
         rule: 'customRegexp',
         value: COMMON_REGEX,
-        errorMessage: 'Name is invalid',
+        errorMessage: 'Title is invalid',
     },
   ])
-  .addField('#designation', [
+  .addField('#sub_title', [
     {
       rule: 'required',
-      errorMessage: 'Designation is required',
+      errorMessage: 'Sub Title is required',
     },
     {
         rule: 'customRegexp',
         value: COMMON_REGEX,
-        errorMessage: 'Designation is invalid',
+        errorMessage: 'Sub Title is invalid',
     },
   ])
-  .addField('#message', [
+  .addField('#year', [
     {
         rule: 'required',
-        errorMessage: 'Message is required',
+        errorMessage: 'Year is required',
+    },
+    {
+        rule: 'minNumber',
+        value: 1000,
+    },
+    {
+        rule: 'maxNumber',
+        value: 3000,
     },
   ])
   .addField('#image', [
@@ -139,24 +151,28 @@ validation
     try {
         var formData = new FormData();
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
-        formData.append('name',document.getElementById('name').value)
-        formData.append('designation',document.getElementById('designation').value)
-        formData.append('message',document.getElementById('message').value)
+        formData.append('title',document.getElementById('title').value)
+        formData.append('sub_title',document.getElementById('sub_title').value)
+        formData.append('year',document.getElementById('year').value)
+        formData.append('description',document.getElementById('description').value)
         if((document.getElementById('image').files).length>0){
             formData.append('image',document.getElementById('image').files[0])
         }
 
-        const response = await axios.post('{{route('home_page.testimonial.update.post', $data->id)}}', formData)
+        const response = await axios.post('{{route('award.update.post', $data->id)}}', formData)
         successToast(response.data.message)
     }catch (error){
-        if(error?.response?.data?.errors?.name){
-            validation.showErrors({'#name': error?.response?.data?.errors?.name[0]})
+        if(error?.response?.data?.errors?.title){
+            validation.showErrors({'#title': error?.response?.data?.errors?.title[0]})
         }
-        if(error?.response?.data?.errors?.designation){
-            validation.showErrors({'#designation': error?.response?.data?.errors?.designation[0]})
+        if(error?.response?.data?.errors?.sub_title){
+            validation.showErrors({'#sub_title': error?.response?.data?.errors?.sub_title[0]})
         }
-        if(error?.response?.data?.errors?.message){
-            validation.showErrors({'#message': error?.response?.data?.errors?.message[0]})
+        if(error?.response?.data?.errors?.description){
+            validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
+        }
+        if(error?.response?.data?.errors?.year){
+            validation.showErrors({'#year': error?.response?.data?.errors?.year[0]})
         }
         if(error?.response?.data?.errors?.image){
             validation.showErrors({'#image': error?.response?.data?.errors?.image[0]})
@@ -172,6 +188,26 @@ validation
     }
   });
 
+  const yearChoice = new Choices('#year', {
+        choices: [
+            {
+                value: '',
+                label: 'Select a year',
+                disabled: true,
+            },
+            @for($i=date('Y'); $i>=1970; $i--)
+                {
+                    value: '{{$i}}',
+                    label: '{{$i}}',
+                    selected: {{$i==$data->year ? 'true' : 'false'}},
+                },
+            @endfor
+        ],
+        placeholderValue: 'Select a year',
+        ...CHOICE_CONFIG,
+        shouldSort: false,
+        shouldSortItems: false,
+    });
 </script>
 
 <script>

@@ -37,10 +37,10 @@ class TestimonialService
 
     public function create(array $data): Testimonial
     {
-        $user = Testimonial::create($data);
-        $user->user_id = auth()->user()->id;
-        $user->save();
-        return $user;
+        $testimonial = Testimonial::create($data);
+        $testimonial->user_id = auth()->user()->id;
+        $testimonial->save();
+        return $testimonial;
     }
 
     public function update(array $data, Testimonial $testimonial): Testimonial
