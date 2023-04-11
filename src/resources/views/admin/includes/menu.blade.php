@@ -65,6 +65,23 @@
                             @endcan
 
                             <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'about') !== false ? 'active' : ''}}" href="#sidebarDashboards4" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'about') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards4">
+                                    <i class="ri-slideshow-line"></i> <span data-key="t-dashboards">About</span>
+                                </a>
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'about') !== false ? 'show' : ''}}" id="sidebarDashboards4">
+                                    <ul class="nav nav-sm flex-column">
+                                        @can('edit about banner')
+                                            <li class="nav-item">
+                                                <a href="{{route('about.banner.get')}}" class="nav-link {{strpos(url()->current(), route('about.banner.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Banner </a>
+                                            </li>
+                                        @endcan
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'team-member') !== false ? 'active' : ''}}" href="#sidebarDashboards3" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'team-member') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards3">
                                     <i class="ri-group-line"></i> <span data-key="t-dashboards">Team Members</span>

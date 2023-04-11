@@ -47,5 +47,8 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create team member staffs']);
         Permission::create(['name' => 'list team member staffs']);
 
+        //permission for about banner
+        Permission::create(['name' => 'edit about banner']);
+
     }
 }

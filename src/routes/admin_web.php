@@ -1,6 +1,6 @@
 <?php
-use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 
+use App\Modules\About\Banner\Controllers\BannerController;
 use App\Modules\Authentication\Controllers\PasswordUpdateController;
 use App\Modules\Authentication\Controllers\ForgotPasswordController;
 use App\Modules\Authentication\Controllers\LoginController;
@@ -97,6 +97,13 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/update/{id}', [TestimonialUpdateController::class, 'post', 'as' => 'home_page.testimonial.update.post'])->name('home_page.testimonial.update.post');
             Route::get('/delete/{id}', [TestimonialDeleteController::class, 'get', 'as' => 'home_page.testimonial.delete.get'])->name('home_page.testimonial.delete.get');
 
+        });
+    });
+
+    Route::prefix('/about')->group(function () {
+        Route::prefix('/banner')->group(function () {
+            Route::get('/', [BannerController::class, 'get', 'as' => 'about.banner.get'])->name('about.banner.get');
+            Route::post('/', [BannerController::class, 'post', 'as' => 'about.banner.post'])->name('about.banner.post');
         });
     });
 
