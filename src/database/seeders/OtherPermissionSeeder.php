@@ -68,6 +68,12 @@ class OtherPermissionSeeder extends Seeder
         //permission for about main
         Permission::create(['name' => 'edit about main']);
 
+        //permission for about additional content
+        Permission::create(['name' => 'edit about additional content']);
+        Permission::create(['name' => 'delete about additional content']);
+        Permission::create(['name' => 'create about additional content']);
+        Permission::create(['name' => 'list about additional content']);
+
 
     }
 }

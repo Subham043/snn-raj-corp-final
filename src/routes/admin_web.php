@@ -1,5 +1,9 @@
 <?php
 
+use App\Modules\About\AdditionalContent\Controllers\AdditionalContentCreateController;
+use App\Modules\About\AdditionalContent\Controllers\AdditionalContentDeleteController;
+use App\Modules\About\AdditionalContent\Controllers\AdditionalContentPaginateController;
+use App\Modules\About\AdditionalContent\Controllers\AdditionalContentUpdateController;
 use App\Modules\About\Banner\Controllers\BannerController;
 use App\Modules\About\Main\Controllers\AboutMainController;
 use App\Modules\Authentication\Controllers\PasswordUpdateController;
@@ -123,6 +127,15 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/banner')->group(function () {
             Route::get('/', [BannerController::class, 'get', 'as' => 'about.banner.get'])->name('about.banner.get');
             Route::post('/', [BannerController::class, 'post', 'as' => 'about.banner.post'])->name('about.banner.post');
+        });
+        Route::prefix('/additional-content')->group(function () {
+            Route::get('/', [AdditionalContentPaginateController::class, 'get', 'as' => 'about.additional_content.paginate.get'])->name('about.additional_content.paginate.get');
+            Route::get('/create', [AdditionalContentCreateController::class, 'get', 'as' => 'about.additional_content.create.get'])->name('about.additional_content.create.get');
+            Route::post('/create', [AdditionalContentCreateController::class, 'post', 'as' => 'about.additional_content.create.post'])->name('about.additional_content.create.post');
+            Route::get('/update/{id}', [AdditionalContentUpdateController::class, 'get', 'as' => 'about.additional_content.update.get'])->name('about.additional_content.update.get');
+            Route::post('/update/{id}', [AdditionalContentUpdateController::class, 'post', 'as' => 'about.additional_content.update.post'])->name('about.additional_content.update.post');
+            Route::get('/delete/{id}', [AdditionalContentDeleteController::class, 'get', 'as' => 'about.additional_content.delete.get'])->name('about.additional_content.delete.get');
+
         });
     });
 
