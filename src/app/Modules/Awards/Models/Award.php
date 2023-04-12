@@ -61,9 +61,13 @@ class Award extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('user')
+        ->useLogName('awards')
         ->setDescriptionForEvent(
-            fn(string $eventName) => "This award with title ".$this->title." has been {$eventName} by ".auth()->user()->name."<".auth()->user()->email.">"
+                function(string $eventName){
+                    $desc = "Award with title ".$this->title." has been {$eventName}";
+                    $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
+                    return $desc;
+                }
             )
         ->logFillable()
         ->logOnlyDirty();

@@ -44,11 +44,13 @@ class Seo extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('user')
+        ->useLogName('seo')
         ->setDescriptionForEvent(
-            fn(string $eventName) => auth()->user() ?
-            "This seo with page name ".$this->page_name." has been {$eventName} by ".auth()->user()->name."<".auth()->user()->email.">" :
-            "This seo with page name ".$this->page_name." has been {$eventName}"
+                function(string $eventName){
+                    $desc = "Seo with page name ".$this->page_name." has been {$eventName}";
+                    $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
+                    return $desc;
+                }
             )
         ->logFillable()
         ->logOnlyDirty();

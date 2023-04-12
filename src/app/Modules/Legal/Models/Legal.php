@@ -50,9 +50,13 @@ class Legal extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('user')
+        ->useLogName('legal pages')
         ->setDescriptionForEvent(
-            fn(string $eventName) => "This legal page with page name ".$this->page_name." has been {$eventName} by ".auth()->user()->name."<".auth()->user()->email.">"
+                function(string $eventName){
+                    $desc = "Legal page with page name ".$this->page_name." has been {$eventName}";
+                    $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
+                    return $desc;
+                }
             )
         ->logFillable()
         ->logOnlyDirty();

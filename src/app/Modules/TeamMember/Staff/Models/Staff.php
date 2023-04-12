@@ -59,9 +59,13 @@ class Staff extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('user')
+        ->useLogName('team member - staff')
         ->setDescriptionForEvent(
-            fn(string $eventName) => "This staff member with name ".$this->name." has been {$eventName} by ".auth()->user()->name."<".auth()->user()->email.">"
+                function(string $eventName){
+                    $desc = "Staff member with name ".$this->name." has been {$eventName}";
+                    $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
+                    return $desc;
+                }
             )
         ->logFillable()
         ->logOnlyDirty();

@@ -59,9 +59,13 @@ class About extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('user')
+        ->useLogName('home page about section')
         ->setDescriptionForEvent(
-            fn(string $eventName) => "This home page about detail has been {$eventName} by ".auth()->user()->name."<".auth()->user()->email.">"
+                function(string $eventName){
+                    $desc = "Home page about detail has been {$eventName}";
+                    $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
+                    return $desc;
+                }
             )
         ->logFillable()
         ->logOnlyDirty();

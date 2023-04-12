@@ -61,9 +61,13 @@ class Management extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('user')
+        ->useLogName('team member - management')
         ->setDescriptionForEvent(
-            fn(string $eventName) => "This management member with name ".$this->name." has been {$eventName} by ".auth()->user()->name."<".auth()->user()->email.">"
+                function(string $eventName){
+                    $desc = "Management member with name ".$this->name." has been {$eventName}";
+                    $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
+                    return $desc;
+                }
             )
         ->logFillable()
         ->logOnlyDirty();

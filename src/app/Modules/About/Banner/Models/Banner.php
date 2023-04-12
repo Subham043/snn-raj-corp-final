@@ -61,9 +61,13 @@ class Banner extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('user')
+        ->useLogName('about banner section')
         ->setDescriptionForEvent(
-            fn(string $eventName) => "This about page banner detail has been {$eventName} by ".auth()->user()->name."<".auth()->user()->email.">"
+            function(string $eventName){
+                $desc = "About page banner detail has been {$eventName}";
+                $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
+                return $desc;
+            }
             )
         ->logFillable()
         ->logOnlyDirty();

@@ -91,7 +91,7 @@
                             @can('list pages seo')
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('seo.paginate.get')) !== false ? 'active' : ''}}" href="{{route('seo.paginate.get')}}">
-                                    <i class="ri-draft-line"></i> <span data-key="t-widgets">Seo</span>
+                                    <i class="ri-ie-line"></i> <span data-key="t-widgets">Seo</span>
                                 </a>
                             </li>
                             @endcan

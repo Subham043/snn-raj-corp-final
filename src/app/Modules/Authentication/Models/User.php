@@ -101,7 +101,11 @@ class User extends Authenticatable
         return LogOptions::defaults()
         ->useLogName('user')
         ->setDescriptionForEvent(
-            fn(string $eventName) => $this->name."<".$this->email.">  has been {$eventName} by ".auth()->user()->name."<".auth()->user()->email.">"
+                function(string $eventName){
+                    $desc = $this->name."<".$this->email."> has been {$eventName}";
+                    $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
+                    return $desc;
+                }
             )
         ->logOnly(['name', 'email'])
         ->logOnlyDirty();
