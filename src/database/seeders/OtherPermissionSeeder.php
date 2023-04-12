@@ -89,6 +89,10 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create legal pages']);
         Permission::create(['name' => 'list legal pages']);
 
+        //permission for pages seo
+        Permission::create(['name' => 'edit pages seo']);
+        Permission::create(['name' => 'list pages seo']);
+
 
     }
 }

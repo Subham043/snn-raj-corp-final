@@ -49,6 +49,8 @@ use App\Modules\Role\Controllers\RoleCreateController;
 use App\Modules\Role\Controllers\RoleDeleteController;
 use App\Modules\Role\Controllers\RolePaginateController;
 use App\Modules\Role\Controllers\RoleUpdateController;
+use App\Modules\Seo\Controllers\SeoPaginateController;
+use App\Modules\Seo\Controllers\SeoUpdateController;
 use App\Modules\Settings\Controllers\ActivityLog\ActivityLogDetailController;
 use App\Modules\Settings\Controllers\ActivityLog\ActivityLogPaginateController;
 use App\Modules\Settings\Controllers\ApplicationBackupController;
@@ -171,6 +173,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [LegalUpdateController::class, 'get', 'as' => 'legal.update.get'])->name('legal.update.get');
         Route::post('/update/{id}', [LegalUpdateController::class, 'post', 'as' => 'legal.update.post'])->name('legal.update.post');
         Route::get('/delete/{id}', [LegalDeleteController::class, 'get', 'as' => 'legal.delete.get'])->name('legal.delete.get');
+    });
+
+    Route::prefix('/seo')->group(function () {
+        Route::get('/', [SeoPaginateController::class, 'get', 'as' => 'seo.paginate.get'])->name('seo.paginate.get');
+        Route::get('/update/{slug}', [SeoUpdateController::class, 'get', 'as' => 'seo.update.get'])->name('seo.update.get');
+        Route::post('/update/{slug}', [SeoUpdateController::class, 'post', 'as' => 'seo.update.post'])->name('seo.update.post');
     });
 
     Route::prefix('/team-member')->group(function () {
