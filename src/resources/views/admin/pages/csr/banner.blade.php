@@ -17,50 +17,42 @@
 
         <!-- start page title -->
         @can('list users')
-        @include('admin.includes.breadcrumb', ['page'=>'Additional Content', 'page_link'=>route('about.additional_content.paginate.get'), 'list'=>['Create']])
+        @include('admin.includes.breadcrumb', ['page'=>'Csr Banner', 'page_link'=>route('csr.banner.get'), 'list'=>['Update']])
         @endcan
         <!-- end page title -->
 
         <div class="row">
-            @include('admin.includes.back_button', ['link'=>route('about.additional_content.paginate.get')])
+            @include('admin.includes.back_button', ['link'=>route('csr.banner.get')])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('about.additional_content.create.post')}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('csr.banner.post')}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Additional Content Detail</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Csr Banner Detail</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>old('heading')])
+                                        @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>!empty($data) ? (old('heading') ? old('heading') : $data->heading) : old('heading')])
+                                        <p>
+                                            <code>Note: </code> Put the text in between span tags to make it highlighted
+                                        </p>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'button_text', 'label'=>'Button Text', 'value'=>old('button_text')])
+                                        @include('admin.includes.input', ['key'=>'image_title', 'label'=>'Image Title', 'value'=>!empty($data) ? (old('image_title') ? old('image_title') : $data->image_title) : old('image_title')])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'button_link', 'label'=>'Button Link', 'value'=>old('button_link')])
+                                        @include('admin.includes.input', ['key'=>'image_alt', 'label'=>'Image Alt', 'value'=>!empty($data) ? (old('image_alt') ? old('image_alt') : $data->image_alt) : old('image_alt')])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>old('description')])
-                                    </div>
-                                    <div class="col-lg-12 col-md-12">
-                                        <div class="mt-4 mt-md-0">
-                                            <div>
-                                                <div class="form-check form-switch form-check-right mb-2">
-                                                    <input class="form-check-input" type="checkbox" role="switch" id="is_draft" name="is_draft" checked>
-                                                    <label class="form-check-label" for="is_draft">Additional Content Status</label>
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                        @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>!empty($data) ? (old('description') ? old('description') : $data->description) : old('description')])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Create</button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
                                     </div>
 
                                 </div>
@@ -107,7 +99,7 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
-  .addField('#heading', [
+.addField('#heading', [
     {
       rule: 'required',
       errorMessage: 'Heading is required',
@@ -118,36 +110,30 @@ validation
         errorMessage: 'Heading is invalid',
     },
   ])
-  .addField('#button_text', [
-    {
-      rule: 'required',
-      errorMessage: 'Button Text is required',
-    },
+  .addField('#image_title', [
     {
         rule: 'customRegexp',
         value: COMMON_REGEX,
-        errorMessage: 'Button Text is invalid',
+        errorMessage: 'Image Title is invalid',
     },
   ])
-  .addField('#button_link', [
-    {
-      rule: 'required',
-      errorMessage: 'Button Link is required',
-    },
+  .addField('#image_alt', [
     {
         rule: 'customRegexp',
         value: COMMON_REGEX,
-        errorMessage: 'Button Link is invalid',
+        errorMessage: 'Image Alt is invalid',
+    },
+  ])
+  .addField('#description', [
+    {
+        rule: 'required',
+        errorMessage: 'Description Link is required',
     },
   ])
   .addField('#image', [
     {
-      rule: 'required',
-      errorMessage: 'Image is required',
-    },
-    {
         rule: 'minFilesCount',
-        value: 1,
+        value: 0,
     },
     {
         rule: 'maxFilesCount',
@@ -165,44 +151,35 @@ validation
         },
     },
   ])
-  .addField('#description', [
-    {
-      rule: 'required',
-      errorMessage: 'Description is required',
-    },
-  ])
   .onSuccess(async (event) => {
     var submitBtn = document.getElementById('submitBtn')
     submitBtn.innerHTML = spinner
     submitBtn.disabled = true;
     try {
         var formData = new FormData();
-        formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
         formData.append('heading',document.getElementById('heading').value)
-        formData.append('button_text',document.getElementById('button_text').value)
-        formData.append('button_link',document.getElementById('button_link').value)
+        formData.append('image_alt',document.getElementById('image_alt').value)
+        formData.append('image_title',document.getElementById('image_title').value)
         formData.append('description',quillDescription.root.innerHTML)
         formData.append('description_unfiltered',quillDescription.getText())
         if((document.getElementById('image').files).length>0){
             formData.append('image',document.getElementById('image').files[0])
         }
 
-        const response = await axios.post('{{route('about.additional_content.create.post')}}', formData)
+        const response = await axios.post('{{route('csr.banner.post')}}', formData)
         successToast(response.data.message)
-        event.target.reset();
-        quillDescription.root.innerHTML = '';
     }catch (error){
         if(error?.response?.data?.errors?.heading){
             validation.showErrors({'#heading': error?.response?.data?.errors?.heading[0]})
         }
-        if(error?.response?.data?.errors?.button_text){
-            validation.showErrors({'#button_text': error?.response?.data?.errors?.button_text[0]})
+        if(error?.response?.data?.errors?.image_alt){
+            validation.showErrors({'#image_alt': error?.response?.data?.errors?.image_alt[0]})
         }
         if(error?.response?.data?.errors?.description){
             validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
         }
-        if(error?.response?.data?.errors?.button_link){
-            validation.showErrors({'#button_link': error?.response?.data?.errors?.button_link[0]})
+        if(error?.response?.data?.errors?.image_title){
+            validation.showErrors({'#image_title': error?.response?.data?.errors?.image_title[0]})
         }
         if(error?.response?.data?.errors?.image){
             validation.showErrors({'#image': error?.response?.data?.errors?.image[0]})
@@ -212,12 +189,10 @@ validation
         }
     }finally{
         submitBtn.innerHTML =  `
-            Create
+            Update
             `
         submitBtn.disabled = false;
     }
   });
-
 </script>
-
 @stop

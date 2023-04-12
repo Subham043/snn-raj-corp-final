@@ -1,5 +1,15 @@
 @extends('admin.layouts.dashboard')
 
+@section('css')
+<link href="{{ asset('admin/libs/quill/quill.snow.css' ) }}" rel="stylesheet" type="text/css" />
+
+<style nonce="{{ csp_nonce() }}">
+    #description_quill{
+        min-height: 200px;
+    }
+</style>
+@stop
+
 @section('content')
 
 <div class="page-content">
@@ -7,40 +17,43 @@
 
         <!-- start page title -->
         @can('list users')
-        @include('admin.includes.breadcrumb', ['page'=>'Testimonial', 'page_link'=>route('home_page.testimonial.paginate.get'), 'list'=>['Create']])
+        @include('admin.includes.breadcrumb', ['page'=>'Csr', 'page_link'=>route('csr.paginate.get'), 'list'=>['Create']])
         @endcan
         <!-- end page title -->
 
         <div class="row">
-            @include('admin.includes.back_button', ['link'=>route('home_page.testimonial.paginate.get')])
+            @include('admin.includes.back_button', ['link'=>route('csr.paginate.get')])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('home_page.testimonial.create.post')}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('csr.create.post')}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Testimonial Detail</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Csr Detail</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'name', 'label'=>'Name', 'value'=>old('name')])
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>old('heading')])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'designation', 'label'=>'Designation', 'value'=>old('designation')])
-                                    </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
                                     </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'image_title', 'label'=>'Image Title', 'value'=>old('image_title')])
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'image_alt', 'label'=>'Image Alt', 'value'=>old('image_alt')])
+                                    </div>
                                     <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.textarea', ['key'=>'message', 'label'=>'Message', 'value'=>old('message')])
+                                        @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>old('description')])
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="mt-4 mt-md-0">
                                             <div>
                                                 <div class="form-check form-switch form-check-right mb-2">
                                                     <input class="form-check-input" type="checkbox" role="switch" id="is_draft" name="is_draft" checked>
-                                                    <label class="form-check-label" for="is_draft">Testimonial Status</label>
+                                                    <label class="form-check-label" for="is_draft">Csr Status</label>
                                                 </div>
                                             </div>
 
@@ -74,8 +87,19 @@
 
 
 @section('javascript')
+<script src="{{ asset('admin/libs/quill/quill.min.js' ) }}"></script>
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
+
+var quillDescription = new Quill('#description_quill', {
+    theme: 'snow'
+});
+
+quillDescription.on('text-change', function(delta, oldDelta, source) {
+  if (source == 'user') {
+    document.getElementById('description').value = quillDescription.root.innerHTML
+  }
+});
 
 // initialize the validation library
 const validation = new JustValidate('#countryForm', {
@@ -83,32 +107,29 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
-  .addField('#name', [
+  .addField('#heading', [
     {
       rule: 'required',
-      errorMessage: 'Name is required',
+      errorMessage: 'Heading is required',
     },
     {
         rule: 'customRegexp',
         value: COMMON_REGEX,
-        errorMessage: 'Name is invalid',
+        errorMessage: 'Heading is invalid',
     },
   ])
-  .addField('#designation', [
-    {
-      rule: 'required',
-      errorMessage: 'Designation is required',
-    },
+  .addField('#image_title', [
     {
         rule: 'customRegexp',
         value: COMMON_REGEX,
-        errorMessage: 'Designation is invalid',
+        errorMessage: 'Image Title is invalid',
     },
   ])
-  .addField('#message', [
+  .addField('#image_alt', [
     {
-        rule: 'required',
-        errorMessage: 'Message is required',
+        rule: 'customRegexp',
+        value: COMMON_REGEX,
+        errorMessage: 'Image Alt is invalid',
     },
   ])
   .addField('#image', [
@@ -136,6 +157,12 @@ validation
         },
     },
   ])
+  .addField('#description', [
+    {
+      rule: 'required',
+      errorMessage: 'Description is required',
+    },
+  ])
   .onSuccess(async (event) => {
     var submitBtn = document.getElementById('submitBtn')
     submitBtn.innerHTML = spinner
@@ -143,25 +170,31 @@ validation
     try {
         var formData = new FormData();
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
-        formData.append('name',document.getElementById('name').value)
-        formData.append('designation',document.getElementById('designation').value)
-        formData.append('message',document.getElementById('message').value)
+        formData.append('heading',document.getElementById('heading').value)
+        formData.append('image_title',document.getElementById('image_title').value)
+        formData.append('image_alt',document.getElementById('image_alt').value)
+        formData.append('description',quillDescription.root.innerHTML)
+        formData.append('description_unfiltered',quillDescription.getText())
         if((document.getElementById('image').files).length>0){
             formData.append('image',document.getElementById('image').files[0])
         }
 
-        const response = await axios.post('{{route('home_page.testimonial.create.post')}}', formData)
+        const response = await axios.post('{{route('csr.create.post')}}', formData)
         successToast(response.data.message)
         event.target.reset();
+        quillDescription.root.innerHTML = '';
     }catch (error){
-        if(error?.response?.data?.errors?.name){
-            validation.showErrors({'#name': error?.response?.data?.errors?.name[0]})
+        if(error?.response?.data?.errors?.heading){
+            validation.showErrors({'#heading': error?.response?.data?.errors?.heading[0]})
         }
-        if(error?.response?.data?.errors?.designation){
-            validation.showErrors({'#designation': error?.response?.data?.errors?.designation[0]})
+        if(error?.response?.data?.errors?.image_title){
+            validation.showErrors({'#image_title': error?.response?.data?.errors?.image_title[0]})
         }
-        if(error?.response?.data?.errors?.message){
-            validation.showErrors({'#message': error?.response?.data?.errors?.message[0]})
+        if(error?.response?.data?.errors?.description){
+            validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
+        }
+        if(error?.response?.data?.errors?.image_alt){
+            validation.showErrors({'#image_alt': error?.response?.data?.errors?.image_alt[0]})
         }
         if(error?.response?.data?.errors?.image){
             validation.showErrors({'#image': error?.response?.data?.errors?.image[0]})

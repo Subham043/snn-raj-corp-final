@@ -20,6 +20,11 @@ use App\Modules\Counter\Controllers\CounterCreateController;
 use App\Modules\Counter\Controllers\CounterDeleteController;
 use App\Modules\Counter\Controllers\CounterPaginateController;
 use App\Modules\Counter\Controllers\CounterUpdateController;
+use App\Modules\Csr\Controllers\CsrBannerController;
+use App\Modules\Csr\Controllers\CsrCreateController;
+use App\Modules\Csr\Controllers\CsrDeleteController;
+use App\Modules\Csr\Controllers\CsrPaginateController;
+use App\Modules\Csr\Controllers\CsrUpdateController;
 use App\Modules\Dashboard\Controllers\DashboardController;
 use App\Modules\Enquiries\Controllers\EnquiryDeleteController;
 use App\Modules\Enquiries\Controllers\EnquiryPaginateController;
@@ -137,6 +142,22 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [AdditionalContentDeleteController::class, 'get', 'as' => 'about.additional_content.delete.get'])->name('about.additional_content.delete.get');
 
         });
+    });
+
+    Route::prefix('/csr')->group(function () {
+        Route::prefix('/banner')->group(function () {
+            Route::get('/', [CsrBannerController::class, 'get', 'as' => 'csr.banner.get'])->name('csr.banner.get');
+            Route::post('/', [CsrBannerController::class, 'post', 'as' => 'csr.banner.post'])->name('csr.banner.post');
+        });
+        Route::prefix('/content-section')->group(function () {
+            Route::get('/', [CsrPaginateController::class, 'get', 'as' => 'csr.paginate.get'])->name('csr.paginate.get');
+            Route::get('/create', [CsrCreateController::class, 'get', 'as' => 'csr.create.get'])->name('csr.create.get');
+            Route::post('/create', [CsrCreateController::class, 'post', 'as' => 'csr.create.post'])->name('csr.create.post');
+            Route::get('/update/{id}', [CsrUpdateController::class, 'get', 'as' => 'csr.update.get'])->name('csr.update.get');
+            Route::post('/update/{id}', [CsrUpdateController::class, 'post', 'as' => 'csr.update.post'])->name('csr.update.post');
+            Route::get('/delete/{id}', [CsrDeleteController::class, 'get', 'as' => 'csr.delete.get'])->name('csr.delete.get');
+        });
+
     });
 
     Route::prefix('/team-member')->group(function () {

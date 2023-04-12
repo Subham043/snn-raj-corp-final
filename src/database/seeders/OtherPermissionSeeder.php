@@ -74,6 +74,15 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create about additional content']);
         Permission::create(['name' => 'list about additional content']);
 
+        //permission for csr banner
+        Permission::create(['name' => 'edit csr banner']);
+
+        //permission for csr content
+        Permission::create(['name' => 'edit csr content']);
+        Permission::create(['name' => 'delete csr content']);
+        Permission::create(['name' => 'create csr content']);
+        Permission::create(['name' => 'list csr content']);
+
 
     }
 }
