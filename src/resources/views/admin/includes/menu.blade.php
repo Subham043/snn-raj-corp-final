@@ -80,6 +80,14 @@
                             </li>
                             @endcan
 
+                            @can('list legal pages')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('legal.paginate.get')) !== false ? 'active' : ''}}" href="{{route('legal.paginate.get')}}">
+                                    <i class="ri-draft-line"></i> <span data-key="t-widgets">Legal Pages</span>
+                                </a>
+                            </li>
+                            @endcan
+
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'csr') !== false ? 'active' : ''}}" href="#sidebarDashboards5" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'csr') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards5">

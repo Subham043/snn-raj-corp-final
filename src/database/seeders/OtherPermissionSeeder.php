@@ -83,6 +83,12 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create csr content']);
         Permission::create(['name' => 'list csr content']);
 
+        //permission for legal pages
+        Permission::create(['name' => 'edit legal pages']);
+        Permission::create(['name' => 'delete legal pages']);
+        Permission::create(['name' => 'create legal pages']);
+        Permission::create(['name' => 'list legal pages']);
+
 
     }
 }

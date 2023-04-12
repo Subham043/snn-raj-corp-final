@@ -37,6 +37,10 @@ use App\Modules\HomePage\Testimonial\Controllers\TestimonialCreateController;
 use App\Modules\HomePage\Testimonial\Controllers\TestimonialDeleteController;
 use App\Modules\HomePage\Testimonial\Controllers\TestimonialPaginateController;
 use App\Modules\HomePage\Testimonial\Controllers\TestimonialUpdateController;
+use App\Modules\Legal\Controllers\LegalCreateController;
+use App\Modules\Legal\Controllers\LegalDeleteController;
+use App\Modules\Legal\Controllers\LegalPaginateController;
+use App\Modules\Legal\Controllers\LegalUpdateController;
 use App\Modules\Partner\Controllers\PartnerCreateController;
 use App\Modules\Partner\Controllers\PartnerDeleteController;
 use App\Modules\Partner\Controllers\PartnerPaginateController;
@@ -158,6 +162,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [CsrDeleteController::class, 'get', 'as' => 'csr.delete.get'])->name('csr.delete.get');
         });
 
+    });
+
+    Route::prefix('/legal-pages')->group(function () {
+        Route::get('/', [LegalPaginateController::class, 'get', 'as' => 'legal.paginate.get'])->name('legal.paginate.get');
+        Route::get('/create', [LegalCreateController::class, 'get', 'as' => 'legal.create.get'])->name('legal.create.get');
+        Route::post('/create', [LegalCreateController::class, 'post', 'as' => 'legal.create.post'])->name('legal.create.post');
+        Route::get('/update/{id}', [LegalUpdateController::class, 'get', 'as' => 'legal.update.get'])->name('legal.update.get');
+        Route::post('/update/{id}', [LegalUpdateController::class, 'post', 'as' => 'legal.update.post'])->name('legal.update.post');
+        Route::get('/delete/{id}', [LegalDeleteController::class, 'get', 'as' => 'legal.delete.get'])->name('legal.delete.get');
     });
 
     Route::prefix('/team-member')->group(function () {
