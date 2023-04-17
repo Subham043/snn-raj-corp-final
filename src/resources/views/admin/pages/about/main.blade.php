@@ -78,7 +78,10 @@
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 
 var quillDescription = new Quill('#description_quill', {
-    theme: 'snow'
+    theme: 'snow',
+    modules: {
+        toolbar: QUILL_TOOLBAR_OPTIONS
+    },
 });
 
 quillDescription.on('text-change', function(delta, oldDelta, source) {

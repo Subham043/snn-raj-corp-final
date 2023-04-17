@@ -125,6 +125,17 @@
                 callbackOnCreateTemplates: null
             };
 
+            const QUILL_TOOLBAR_OPTIONS = [
+                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+                [{ 'indent': '-1'}, { 'indent': '+1' }],
+                [{ 'align': [] }],
+                ['clean']
+            ];
+
             document.querySelectorAll('.remove-item-btn').forEach(el => {
                 el.addEventListener('click', function(){
                     deleteHandler(event.target.getAttribute('data-link'))
