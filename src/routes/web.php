@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\Main\HomePage\HomePageController;
 use Illuminate\Support\Facades\Route;
 
 use Carbon\Carbon;
@@ -16,10 +17,7 @@ use Spatie\Sitemap\Tags\Url;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-})->middleware(['csp.policy']);
+Route::get('/', [HomePageController::class, 'get', 'as' => 'home_page.get'])->name('home_page.get');
 
 Route::get('/test-sitemap', function () {
     // SitemapGenerator::create('https://example.com')
