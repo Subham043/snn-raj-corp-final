@@ -67,7 +67,13 @@ class Handler extends ExceptionHandler
                         $exception->getHeaders()
                     );
                 }
-
+            }else{
+                return response()
+                    ->view('errors.error',
+                        ['exception' => $exception],
+                        $exception->getStatusCode(),
+                        $exception->getHeaders()
+                    );
             }
         }
         return parent::render($request, $exception);
