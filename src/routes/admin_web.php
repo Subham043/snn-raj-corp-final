@@ -95,8 +95,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/setting')->group(function () {
         Route::get('/back-up', [ApplicationBackupController::class, 'get', 'as' => 'back_up.get'])->name('back_up.get');
-        Route::get('/error-log', [ErrorLogController::class, 'get', 'as' => 'error_log.get'])->name('error_log.get');
-        Route::prefix('/activity-log')->group(function () {
+    });
+
+    Route::prefix('/logs')->group(function () {
+        Route::get('/error', [ErrorLogController::class, 'get', 'as' => 'error_log.get'])->name('error_log.get');
+        Route::prefix('/activity')->group(function () {
             Route::get('/', [ActivityLogPaginateController::class, 'get', 'as' => 'activity_log.paginate.get'])->name('activity_log.paginate.get');
             Route::get('/{id}', [ActivityLogDetailController::class, 'get', 'as' => 'activity_log.detail.get'])->name('activity_log.detail.get');
 

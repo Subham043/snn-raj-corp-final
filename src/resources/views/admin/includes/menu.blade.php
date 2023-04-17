@@ -203,11 +203,11 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),'setting') !== false ? 'active' : ''}}" href="#sidebarDashboards2" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="{{strpos(url()->current(),'setting') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards2">
-                                    <i class="ri-list-settings-line"></i> <span data-key="t-dashboards">Application Settings</span>
+                                <a class="nav-link menu-link {{strpos(url()->current(),'logs') !== false ? 'active' : ''}}" href="#sidebarDashboards2" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'logs') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards2">
+                                    <i class="ri-alarm-warning-line"></i> <span data-key="t-dashboards">Application Logs</span>
                                 </a>
-                                <div class="collapse menu-dropdown {{strpos(url()->current(),'setting') !== false ? 'show' : ''}}" id="sidebarDashboards2">
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'logs') !== false ? 'show' : ''}}" id="sidebarDashboards2">
                                     <ul class="nav nav-sm flex-column">
                                         @can('list activity logs')
                                             <li class="nav-item">
