@@ -72,6 +72,17 @@ class AwardService
         }
     }
 
+    public function main_paginate(Int $total = 10): LengthAwarePaginator
+    {
+        $query = Award::where('is_draft', true)->orderBy('year', 'DESC');
+        return QueryBuilder::for($query)
+                ->allowedFilters([
+                    AllowedFilter::custom('search', new CommonFilter),
+                ])
+                ->paginate($total)
+                ->appends(request()->query());
+    }
+
 }
 
 class CommonFilter implements Filter
