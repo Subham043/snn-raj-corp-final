@@ -1,5 +1,29 @@
 @extends('main.layouts.index')
 
+@section('css')
+    <style nonce="{{ csp_nonce() }}">
+        .fl-img{
+            float: left;
+            width: 50%;
+            margin-right: 20px;
+        }
+        .fr-img{
+            float: right;
+            width: 50%;
+            margin-left: 20px;
+        }
+        .process .wrap{
+            padding: 0;
+        }
+        .process .wrap, .process .wrap .cont{
+            display: inline;
+        }
+        .section-padding{
+            padding-bottom: 30px;
+        }
+    </style>
+@stop
+
 @section('content')
 
     @if($banner)
@@ -27,13 +51,11 @@
         <div class="container">
             @foreach($mainContent as $key=>$val)
                 @if(($key+1)%2!=0)
-                    <div class="row">
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-                            <div class="img">
+                    <div class="row section-padding">
+                        <div class="col-md-12 animate-box" data-animate-effect="fadeInRight">
+                            <div class="img fl-img">
                                 <img src="{{$val->image_link}}" alt="">
                             </div>
-                        </div>
-                        <div class="col-md-6 valign animate-box" data-animate-effect="fadeInRight">
                             <div class="wrap">
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
@@ -45,8 +67,11 @@
                         </div>
                     </div>
                 @else
-                    <div class="row">
-                        <div class="col-md-6 order2 valign animate-box" data-animate-effect="fadeInLeft">
+                    <div class="row section-padding">
+                        <div class="col-md-12 order2 animate-box" data-animate-effect="fadeInLeft">
+                            <div class="img fr-img">
+                                <img src="{{$val->image_link}}" alt="">
+                            </div>
                             <div class="wrap">
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
@@ -54,11 +79,6 @@
                                 <div class="cont">
                                     {!!$val->description!!}
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 order1 animate-box" data-animate-effect="fadeInRight">
-                            <div class="img">
-                                <img src="{{$val->image_link}}" alt="">
                             </div>
                         </div>
                     </div>
