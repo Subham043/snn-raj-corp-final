@@ -56,6 +56,43 @@
         </div>
     </section>
     @endif
+
+    <!-- Counter -->
+    @if(count($counters)>0)
+    <section class="about lets-talk">
+        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-30 animate-box" data-animate-effect="fadeInUp">
+                        <div class="sub-title border-bot-light">Achievements</div>
+                    </div>
+                    <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                        <div class="section-title text-white">What we have <span>achieved</span></div>
+                    </div>
+                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                        <div class="states">
+                            <ul class="flex gap-2 align-items-center justify-content-between">
+                                @foreach($counters as $counters)
+                                <li class="flex">
+                                    <div class="numb valign">
+                                        <h1>{{$counters->counter}}</h1>
+                                    </div>
+                                    <div class="text valign">
+                                        <p>
+                                            {!!$counters->title!!}
+                                        </p>
+                                    </div>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
+
     <!-- Projects 2 -->
     <div class="projects2 section-padding">
         <div class="container">
