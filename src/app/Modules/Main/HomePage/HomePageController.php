@@ -12,6 +12,10 @@ use App\Modules\Seo\Services\SeoService;
 class HomePageController extends Controller
 {
     private $bannerService;
+    private $aboutService;
+    private $testimonialService;
+    private $counterService;
+    private $seoService;
 
     public function __construct(
         BannerService $bannerService,

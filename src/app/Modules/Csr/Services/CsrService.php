@@ -72,6 +72,11 @@ class CsrService
         }
     }
 
+    public function main_all(): Collection
+    {
+        return Csr::where('is_draft', true)->inRandomOrder()->get();
+    }
+
 }
 
 class CommonFilter implements Filter
