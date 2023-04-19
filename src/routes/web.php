@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\Main\AboutPage\AboutPageController;
 use App\Modules\Main\HomePage\HomePageController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,7 @@ use Spatie\Sitemap\Tags\Url;
 |
 */
 Route::get('/', [HomePageController::class, 'get', 'as' => 'home_page.get'])->name('home_page.get');
+Route::get('/about-us', [AboutPageController::class, 'get', 'as' => 'about_page.get'])->name('about_page.get');
 
 Route::get('/test-sitemap', function () {
     // SitemapGenerator::create('https://example.com')

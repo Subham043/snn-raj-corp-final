@@ -39,11 +39,9 @@
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif
                     @if($about->image)
-                    {{-- <div class="wrap"> --}}
                     <div class="con">
                         <img src="{{$about->image_link}}" class="img-fluid" alt="">
                     </div>
-                    {{-- </div> --}}
                     @endif
                 </div>
                 <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
