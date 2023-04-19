@@ -44,10 +44,11 @@ class SeoRequest extends FormRequest
      */
     protected function passedValidation()
     {
+        $request = Purify::clean(
+            $this->except(['meta_header_script', 'meta_footer_script', 'meta_header_no_script', 'meta_footer_no_script'])
+        );
         $this->replace(
-            Purify::clean(
-                $this->validated()
-            )
+            [...$request, ...$this->only(['meta_header_script', 'meta_footer_script', 'meta_header_no_script', 'meta_footer_no_script'])]
         );
     }
 }
