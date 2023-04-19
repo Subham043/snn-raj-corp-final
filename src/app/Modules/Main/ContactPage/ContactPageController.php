@@ -1,14 +1,24 @@
 <?php
 
-namespace App\Modules\Main\CsrPage;
+namespace App\Modules\Main\ContactPage;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Seo\Services\SeoService;
 
-class CsrPageController extends Controller
+class ContactPageController extends Controller
 {
+    private $seoService;
+
+    public function __construct(
+        SeoService $seoService
+    )
+    {
+        $this->seoService = $seoService;
+    }
 
     public function get(){
-        return view('main.pages.csr');
+        $seo = $this->seoService->getBySlugMain('contact-page');
+        return view('main.pages.contact', compact(['seo']));
     }
 
 }

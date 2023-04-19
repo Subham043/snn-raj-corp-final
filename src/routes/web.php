@@ -2,6 +2,7 @@
 
 use App\Modules\Main\AboutPage\AboutPageController;
 use App\Modules\Main\AwardPage\AwardPageController;
+use App\Modules\Main\ContactPage\ContactPageController;
 use App\Modules\Main\CsrPage\CsrPageController;
 use App\Modules\Main\HomePage\HomePageController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ Route::get('/', [HomePageController::class, 'get', 'as' => 'home_page.get'])->na
 Route::get('/about-us', [AboutPageController::class, 'get', 'as' => 'about_page.get'])->name('about_page.get');
 Route::get('/csr', [CsrPageController::class, 'get', 'as' => 'csr_page.get'])->name('csr_page.get');
 Route::get('/awards', [AwardPageController::class, 'get', 'as' => 'awards_page.get'])->name('awards_page.get');
+Route::get('/contact-us', [ContactPageController::class, 'get', 'as' => 'contact_page.get'])->name('contact_page.get');
 
 Route::get('/test-sitemap', function () {
     // SitemapGenerator::create('https://example.com')
