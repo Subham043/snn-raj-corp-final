@@ -72,6 +72,11 @@ class StaffService
         }
     }
 
+    public function main_all(): Collection
+    {
+        return Staff::where('is_draft', true)->inRandomOrder()->get();
+    }
+
 }
 
 class CommonFilter implements Filter

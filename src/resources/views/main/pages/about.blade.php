@@ -52,6 +52,86 @@
     </section>
     @endif
 
+    <!-- Management -->
+    @if(count($management)>0)
+    <section class="about section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-30 animate-box" data-animate-effect="fadeInUp">
+                    <div class="sub-title border-bot-light">Management</div>
+                </div>
+                <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                    <div class="section-title">Our Established <span>Team</span></div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                @foreach($management as $key=>$val)
+                @if($key==0)
+                    <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
+                        {!!$val->description!!}
+                    </div>
+                    <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
+                        <div class="wrap">
+                            <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
+                                <div class="info">
+                                    <h4 class="name">{{$val->name}}</h4>
+                                </div>
+                            </div>
+                            <p>{{$val->designation}}</p>
+                        </div>
+                    </div>
+                @else
+                    <div class="col-md-3 animate-box text-center mt-3" data-animate-effect="fadeInUp">
+                        <div class="wrap">
+                            <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
+                                <div class="info">
+                                </div>
+                            </div>
+                            <h4 class="name">{{$val->name}}</h4>
+                            <p>{{$val->designation}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 animate-box mt-3" data-animate-effect="fadeInUp">
+                        {!!$val->description!!}
+                    </div>
+                @endif
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
+    <!-- Staff -->
+    @if(count($staffs)>0)
+    <section class="team section-padding">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="sub-title border-bot-light">Creative Thinkers</div>
+                </div>
+                <div class="col-md-8">
+                    <div class="section-title">Core <span>Members</span></div>
+                    <p>Architecture viverra tristique justo duis vitae diaminte neque nivamus aestan ateuene artines ariianu the ateliten finibus viverra nec lacus in the nedana mis erodino.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 owl-carousel owl-theme">
+                    @foreach($staffs as $staffs)
+                    <div class="wrap">
+                        <div class="con"> <img src="{{$staffs->image_link}}" class="img-fluid" alt="">
+                            <div class="info">
+                                <h4 class="name">{{$staffs->name}}</h4>
+                            </div>
+                        </div>
+                        <p>{{$staffs->designation}}</p>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
+
     <!-- Mission -->
     @if($banner)
     <section class="lets-talk">

@@ -72,6 +72,11 @@ class ManagementService
         }
     }
 
+    public function main_all(): Collection
+    {
+        return Management::where('is_draft', true)->get();
+    }
+
 }
 
 class CommonFilter implements Filter
