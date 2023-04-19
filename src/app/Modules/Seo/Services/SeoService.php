@@ -58,6 +58,11 @@ class SeoService
         return $seo->delete();
     }
 
+    public function getBySlugMain(String $slug): Seo
+    {
+        return Seo::where('slug', $slug)->first();
+    }
+
 }
 
 class CommonFilter implements Filter

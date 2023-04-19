@@ -3,92 +3,61 @@
 @section('content')
 
     <!-- Slider -->
+    @if(count($banners)>0)
     <header id="slider-area" class="header slider-fade">
         <div class="owl-carousel owl-theme">
             <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-            <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{ asset('assets/images/slider/1.jpg')}}">
+            @foreach($banners as $banners)
+            <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
                 <div class="v-middle caption">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7">
-                                <h4>Project P.01</h4>
-                                <h1>Ultra-Modern House Design</h1>
-                                <p>Architecture viverra tristique justo duis vitae diaminte neque nivamus aestan ateuene artine aringianu the miss finibus viverra lacus fermen.</p>
-                                <a href="project-page.html" class="button-light">View Project</a>
+                                <h1>{{$banners->title}}</h1>
+                                <p>{{$banners->description}}</p>
+                                @if($banners->button_link)
+                                    <a href="{{$banners->button_link}}" class="button-light">View Detail</a>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-left item bg-img" data-overlay-dark="3" data-background="{{ asset('assets/images/slider/2.jpg')}}">
-                <div class="v-middle caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <h4>Project P.02</h4>
-                                <h1>Ultra-Luxurious Villa</h1>
-                                <p>Architecture viverra tristique justo duis vitae diaminte neque nivamus aestan ateuene artine aringianu the miss finibus viverra lacus fermen.</p>
-                                <a href="project-page.html" class="button-light">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{ asset('assets/images/slider/3.jpg')}}">
-                <div class="v-middle caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <h4>Project P.03</h4>
-                                <h1>Modernity In The Nature</h1>
-                                <p>Architecture viverra tristique justo duis vitae diaminte neque nivamus aestan ateuene artine aringianu the miss finibus viverra lacus fermen.</p>
-                                <a href="project-page.html" class="button-light">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="slide-num" id="snh-1"></div>
         <div class="slider__progress"><span></span></div>
     </header>
+    @endif
     <!-- About -->
+    @if($about)
     <section class="about section-padding">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-md-4 mb-30 animate-box" data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light">Who are we?</div>
+                    @if(!$about->image)
+                        <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
+                    @endif
+                    @if($about->image)
+                    {{-- <div class="wrap"> --}}
+                    <div class="con">
+                        <img src="{{$about->image_link}}" class="img-fluid" alt="">
+                    </div>
+                    {{-- </div> --}}
+                    @endif
                 </div>
                 <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
-                    <div class="section-title"><span>About</span> ArchSan</div>
-                    <p>Architecture viverra tristique justo duis vitae diaminte neque nivamus aestan ateuene artines aringianu the ateliten finibus viverra nec in the nedana. Design nila iman the finise viverra nec a lacus themo the seneoice misuscipit drana miss non sagie the fermen.</p>
-                    <p>Planner inilla duiman at elit finibus viverra a lacus themo the drudea seneoice misuscipit nonie the fermen miverration tristique jusio the ivite dianne onen nivami acsestion augue artine.</p><br>
-                    <div class="row">
-                        <div class="col col-md-4">
-                            <div class="about-box">
-                                <img src="{{ asset('assets/images/icon-1.png')}}" class="icon" alt="">
-                                <h5>Architecture</h5>
-                            </div>
-                        </div>
-                        <div class="col col-md-4">
-                            <div class="about-box">
-                                <img src="{{ asset('assets/images/icon-2.png')}}" class="icon" alt="">
-                                <h5>Interior</h5>
-                            </div>
-                        </div>
-                        <div class="col col-md-4">
-                            <div class="about-box">
-                                <img src="{{ asset('assets/images/icon-3.png')}}" class="icon" alt="">
-                                <h5>Planing</h5>
-                            </div>
-                        </div>
-                    </div>
-
+                    @if($about->image)
+                        <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
+                    @endif
+                    <div class="section-title">{!!$about->heading!!}</div>
+                    {!!$about->description!!}
 
                 </div>
             </div>
         </div>
     </section>
+    @endif
     <!-- Projects 2 -->
     <div class="projects2 section-padding">
         <div class="container">
@@ -174,6 +143,7 @@
         </div>
     </div>
     <!-- Testiominals -->
+    @if(count($testimonials)>0)
     <section class="testimonials">
         <div class="background bg-img bg-fixed section-padding" data-background="{{ asset('assets/images/slider/a.jpg')}}" data-overlay-dark="6">
             <div class="container">
@@ -185,37 +155,19 @@
                         <div class="section-title">What Client's Say?</div>
                         <div class="wrap">
                             <div class="owl-carousel owl-theme">
+
+                                @foreach($testimonials as $testimonials)
                                 <div class="item"> <span class="quote"><img src="{{ asset('assets/images/quot.png')}}" alt=""></span>
-                                    <p>Architecture viverra tristique justo duis vitae diam neque nivamus aestan ateuene artines aringianu the ateliten finibus viverra nec lacus. Nedana theme erodino setlie suscipe no curabit tristique. Design nila iman the finise viverra nec a lacus themo the seneoice misuscipit non sagie the fermen.</p>
+                                    <p>{{$testimonials->message}}</p>
                                     <div class="info">
-                                        <div class="author-img"> <img src="{{ asset('assets/images/team/1.jpg')}}" alt=""> </div>
+                                        <div class="author-img"> <img src="{{$testimonials->image_link}}" alt=""> </div>
                                         <div class="cont">
-                                            <h6>Jason Brown</h6> <span>Crowne Plaza Owner</span>
+                                            <h6>{{$testimonials->name}}</h6> <span>{{$testimonials->designation}}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item"> <span class="quote">
-                                        <img src="{{ asset('assets/images/quot.png')}}" alt="">
-                                    </span>
-                                    <p>Architecture viverra tristique justo duis vitae diam neque nivamus aestan ateuene artines aringianu the ateliten finibus viverra nec lacus. Nedana theme erodino setlie suscipe no curabit tristique. Design nila iman the finise viverra nec a lacus themo the seneoice misuscipit non sagie the fermen.</p>
-                                    <div class="info">
-                                        <div class="author-img"> <img src="{{ asset('assets/images/team/2.jpg')}}" alt=""> </div>
-                                        <div class="cont">
-                                            <h6>Emily White</h6> <span>Armada Owner</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item"> <span class="quote">
-                                        <img src="{{ asset('assets/images/quot.png')}}" alt="">
-                                    </span>
-                                    <p>Architecture viverra tristique justo duis vitae diam neque nivamus aestan ateuene artines aringianu the ateliten finibus viverra nec lacus. Nedana theme erodino setlie suscipe no curabit tristique. Design nila iman the finise viverra nec a lacus themo the seneoice misuscipit non sagie the fermen.</p>
-                                    <div class="info">
-                                        <div class="author-img"> <img src="{{ asset('assets/images/team/4.jpg')}}" alt=""> </div>
-                                        <div class="cont">
-                                            <h6>Jesica Smith</h6> <span>Alsa Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -223,6 +175,7 @@
             </div>
         </div>
     </section>
+    @endif
     <!-- Blog -->
     <section class="blog-home section-padding">
         <div class="container">

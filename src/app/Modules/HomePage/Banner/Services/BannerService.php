@@ -72,6 +72,11 @@ class BannerService
         }
     }
 
+    public function main_all(): Collection
+    {
+        return Banner::where('is_draft', true)->inRandomOrder()->get();
+    }
+
 }
 
 class CommonFilter implements Filter

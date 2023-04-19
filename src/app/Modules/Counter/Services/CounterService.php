@@ -54,6 +54,11 @@ class CounterService
         return $counter->delete();
     }
 
+    public function main_all(): Collection
+    {
+        return Counter::where('is_draft', true)->inRandomOrder()->get();
+    }
+
 }
 
 class CommonFilter implements Filter

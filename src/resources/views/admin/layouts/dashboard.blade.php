@@ -43,7 +43,7 @@
         <script src="{{ asset('admin/js/main.js') }}"></script>
 
         <script nonce="{{ csp_nonce() }}">
-            const COMMON_REGEX = /^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\r\n+=,]+$/i;
+            const COMMON_REGEX = /^[a-z 0-9~%.:_\@\-\/\(\)\\\#\;\[\]\{\}\$\!\&\<\>\'\?\r\n+=,]+$/i;
 
             const CHOICE_CONFIG = {
                 silent: false,
