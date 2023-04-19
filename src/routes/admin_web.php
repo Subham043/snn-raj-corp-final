@@ -55,6 +55,7 @@ use App\Modules\Settings\Controllers\ActivityLog\ActivityLogDetailController;
 use App\Modules\Settings\Controllers\ActivityLog\ActivityLogPaginateController;
 use App\Modules\Settings\Controllers\ApplicationBackupController;
 use App\Modules\Settings\Controllers\ErrorLogController;
+use App\Modules\Settings\Controllers\SitemapController;
 use App\Modules\TeamMember\Management\Controllers\ManagementCreateController;
 use App\Modules\TeamMember\Management\Controllers\ManagementDeleteController;
 use App\Modules\TeamMember\Management\Controllers\ManagementPaginateController;
@@ -95,6 +96,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/setting')->group(function () {
         Route::get('/back-up', [ApplicationBackupController::class, 'get', 'as' => 'back_up.get'])->name('back_up.get');
+        Route::get('/sitemap', [SitemapController::class, 'get', 'as' => 'sitemap.get'])->name('sitemap.get');
+        Route::get('/sitemap-generate', [SitemapController::class, 'generate', 'as' => 'sitemap.generate'])->name('sitemap.generate');
     });
 
     Route::prefix('/logs')->group(function () {

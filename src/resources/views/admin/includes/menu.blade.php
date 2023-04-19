@@ -80,76 +80,6 @@
                             </li>
                             @endcan
 
-                            @can('list legal pages')
-                            <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),route('legal.paginate.get')) !== false ? 'active' : ''}}" href="{{route('legal.paginate.get')}}">
-                                    <i class="ri-draft-line"></i> <span data-key="t-widgets">Legal Pages</span>
-                                </a>
-                            </li>
-                            @endcan
-
-                            @can('list pages seo')
-                            <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),route('seo.paginate.get')) !== false ? 'active' : ''}}" href="{{route('seo.paginate.get')}}">
-                                    <i class="ri-ie-line"></i> <span data-key="t-widgets">Seo</span>
-                                </a>
-                            </li>
-                            @endcan
-
-                            <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),'csr') !== false ? 'active' : ''}}" href="#sidebarDashboards5" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="{{strpos(url()->current(),'csr') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards5">
-                                    <i class="ri-article-line"></i> <span data-key="t-dashboards">Csr Page</span>
-                                </a>
-                                <div class="collapse menu-dropdown {{strpos(url()->current(),'csr') !== false ? 'show' : ''}}" id="sidebarDashboards5">
-                                    <ul class="nav nav-sm flex-column">
-
-                                        @can('edit csr banner')
-                                            <li class="nav-item">
-                                                <a href="{{route('csr.banner.get')}}" class="nav-link {{strpos(url()->current(), route('csr.banner.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Banner Section </a>
-                                            </li>
-                                        @endcan
-
-                                        @can('list csr content')
-                                            <li class="nav-item">
-                                                <a href="{{route('csr.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('csr.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Content Section </a>
-                                            </li>
-                                        @endcan
-
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),'about') !== false ? 'active' : ''}}" href="#sidebarDashboards4" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="{{strpos(url()->current(),'about') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards4">
-                                    <i class="ri-slideshow-line"></i> <span data-key="t-dashboards">About Page</span>
-                                </a>
-                                <div class="collapse menu-dropdown {{strpos(url()->current(),'about') !== false ? 'show' : ''}}" id="sidebarDashboards4">
-                                    <ul class="nav nav-sm flex-column">
-
-                                        @can('edit about banner')
-                                            <li class="nav-item">
-                                                <a href="{{route('about.banner.get')}}" class="nav-link {{strpos(url()->current(), route('about.banner.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Banner Section </a>
-                                            </li>
-                                        @endcan
-
-                                        @can('edit about main')
-                                            <li class="nav-item">
-                                                <a href="{{route('about.main.get')}}" class="nav-link {{strpos(url()->current(), route('about.main.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Main Section </a>
-                                            </li>
-                                        @endcan
-
-                                        @can('list about additional content')
-                                            <li class="nav-item">
-                                                <a href="{{route('about.additional_content.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('about.additional_content.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Additional Content Section </a>
-                                            </li>
-                                        @endcan
-
-                                    </ul>
-                                </div>
-                            </li>
-
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'team-member') !== false ? 'active' : ''}}" href="#sidebarDashboards3" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'team-member') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards3">
@@ -195,6 +125,93 @@
                                         @can('list home page testimonials')
                                             <li class="nav-item">
                                                 <a href="{{route('home_page.testimonial.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('home_page.testimonial.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Testimonials Section </a>
+                                            </li>
+                                        @endcan
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'about') !== false ? 'active' : ''}}" href="#sidebarDashboards4" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'about') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards4">
+                                    <i class="ri-slideshow-line"></i> <span data-key="t-dashboards">About Page</span>
+                                </a>
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'about') !== false ? 'show' : ''}}" id="sidebarDashboards4">
+                                    <ul class="nav nav-sm flex-column">
+
+                                        @can('edit about banner')
+                                            <li class="nav-item">
+                                                <a href="{{route('about.banner.get')}}" class="nav-link {{strpos(url()->current(), route('about.banner.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Banner Section </a>
+                                            </li>
+                                        @endcan
+
+                                        @can('edit about main')
+                                            <li class="nav-item">
+                                                <a href="{{route('about.main.get')}}" class="nav-link {{strpos(url()->current(), route('about.main.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Main Section </a>
+                                            </li>
+                                        @endcan
+
+                                        @can('list about additional content')
+                                            <li class="nav-item">
+                                                <a href="{{route('about.additional_content.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('about.additional_content.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Additional Content Section </a>
+                                            </li>
+                                        @endcan
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'csr') !== false ? 'active' : ''}}" href="#sidebarDashboards5" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'csr') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards5">
+                                    <i class="ri-article-line"></i> <span data-key="t-dashboards">Csr Page</span>
+                                </a>
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'csr') !== false ? 'show' : ''}}" id="sidebarDashboards5">
+                                    <ul class="nav nav-sm flex-column">
+
+                                        @can('edit csr banner')
+                                            <li class="nav-item">
+                                                <a href="{{route('csr.banner.get')}}" class="nav-link {{strpos(url()->current(), route('csr.banner.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Banner Section </a>
+                                            </li>
+                                        @endcan
+
+                                        @can('list csr content')
+                                            <li class="nav-item">
+                                                <a href="{{route('csr.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('csr.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Content Section </a>
+                                            </li>
+                                        @endcan
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            @can('list legal pages')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('legal.paginate.get')) !== false ? 'active' : ''}}" href="{{route('legal.paginate.get')}}">
+                                    <i class="ri-draft-line"></i> <span data-key="t-widgets">Legal Pages</span>
+                                </a>
+                            </li>
+                            @endcan
+
+                            @can('list pages seo')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('seo.paginate.get')) !== false ? 'active' : ''}}" href="{{route('seo.paginate.get')}}">
+                                    <i class="ri-ie-line"></i> <span data-key="t-widgets">Seo</span>
+                                </a>
+                            </li>
+                            @endcan
+
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'setting') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'setting') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">
+                                    <i class="ri-tools-line"></i> <span data-key="t-dashboards">Application Settings</span>
+                                </a>
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'setting') !== false ? 'show' : ''}}" id="sidebarDashboards6">
+                                    <ul class="nav nav-sm flex-column">
+                                        @can('update sitemap')
+                                            <li class="nav-item">
+                                                <a href="{{route('sitemap.get')}}" class="nav-link {{strpos(url()->current(), route('sitemap.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Sitemap </a>
                                             </li>
                                         @endcan
 

@@ -19,6 +19,7 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::SCRIPT, 'fonts.bunny.net')
         ->addDirective(Directive::STYLE, 'fonts.bunny.net')
         ->addDirective(Directive::DEFAULT, 'fonts.bunny.net') //remove as this and above belongs for development template of welcome page
+        ->addDirective(Directive::FRAME, Keyword::SELF)
         ->addDirective(Directive::FONT, Keyword::SELF)
         ->addDirective(Directive::FONT, 'at.alicdn.com')
         ->addDirective(Directive::FONT, 'fonts.gstatic.com')
