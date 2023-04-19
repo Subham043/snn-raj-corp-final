@@ -170,7 +170,7 @@ validation
 
         const response = await axios.post('{{route('award.create.post')}}', formData)
         successToast(response.data.message)
-        event.target.reset();
+        location.reload();
     }catch (error){
         if(error?.response?.data?.errors?.title){
             validation.showErrors({'#title': error?.response?.data?.errors?.title[0]})

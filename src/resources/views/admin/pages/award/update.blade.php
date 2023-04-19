@@ -11,7 +11,7 @@
         @endcan
         <!-- end page title -->
 
-        <div class="row">
+        <div class="row" id="image-container">
             @include('admin.includes.back_button', ['link'=>route('award.paginate.get')])
             <div class="col-lg-12">
                 <form id="countryForm" method="post" action="{{route('award.update.post', $data->id)}}" enctype="multipart/form-data">
@@ -34,6 +34,9 @@
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
+                                        @if(!empty($data->image_link))
+                                            <img src="{{$data->image_link}}" alt="" class="img-preview">
+                                        @endif
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.textarea', ['key'=>'description', 'label'=>'Description', 'value'=>$data->description])
@@ -78,6 +81,30 @@
 
 @section('javascript')
 <script src="{{ asset('admin/js/pages/choices.min.js') }}"></script>
+
+<script type="text/javascript" nonce="{{ csp_nonce() }}">
+    const myViewer = new ImgPreviewer('#image-container',{
+      // aspect ratio of image
+        fillRatio: 0.9,
+        // attribute that holds the image
+        dataUrlKey: 'src',
+        // additional styles
+        style: {
+            modalOpacity: 0.6,
+            headerOpacity: 0,
+            zIndex: 99
+        },
+        // zoom options
+        imageZoom: {
+            min: 0.1,
+            max: 5,
+            step: 0.1
+        },
+        // detect whether the parent element of the image is hidden by the css style
+        bubblingLevel: 0,
+
+    });
+</script>
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 

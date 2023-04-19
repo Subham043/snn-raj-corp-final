@@ -50,7 +50,7 @@
                                         <tr>
                                             <td class="customer_name">{{$item->name}}</td>
                                             <td class="customer_name">{{$item->designation}}</td>
-                                            <td class="customer_name">{{$item->description_unfiltered}}</td>
+                                            <td class="customer_name">{{ Str::limit($item->description_unfiltered, 20) }}</td>
                                             @if($item->is_draft == 1)
                                             <td class="status"><span class="badge badge-soft-success text-uppercase">Active</span></td>
                                             @else

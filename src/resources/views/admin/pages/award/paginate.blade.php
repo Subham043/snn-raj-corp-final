@@ -49,10 +49,10 @@
                                     <tbody class="list form-check-all">
                                         @foreach ($data->items() as $item)
                                         <tr>
-                                            <td class="customer_name">{{$item->title}}</td>
-                                            <td class="customer_name">{{$item->sub_title}}</td>
+                                            <td class="customer_name">{{ Str::limit($item->title, 20) }}</td>
+                                            <td class="customer_name">{{ Str::limit($item->sub_title, 20) }}</td>
                                             <td class="customer_name">{{$item->year}}</td>
-                                            <td class="customer_name">{{$item->description}}</td>
+                                            <td class="customer_name">{{ Str::limit($item->description, 20) }}</td>
                                             @if($item->is_draft == 1)
                                             <td class="status"><span class="badge badge-soft-success text-uppercase">Active</span></td>
                                             @else

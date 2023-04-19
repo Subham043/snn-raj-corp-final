@@ -51,8 +51,8 @@
                                         <tr>
                                             <td class="customer_name">{{$item->page_name}}</td>
                                             <td class="customer_name">{{$item->slug}}</td>
-                                            <td class="customer_name">{{$item->heading}}</td>
-                                            <td class="customer_name">{{$item->description_unfiltered}}</td>
+                                            <td class="customer_name">{{ Str::limit($item->heading, 20) }}</td>
+                                            <td class="customer_name">{{ Str::limit($item->description_unfiltered, 20) }}</td>
                                             @if($item->is_draft == 1)
                                             <td class="status"><span class="badge badge-soft-success text-uppercase">Active</span></td>
                                             @else

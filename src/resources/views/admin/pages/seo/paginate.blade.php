@@ -44,9 +44,9 @@
                                         @foreach ($data->items() as $item)
                                         <tr>
                                             <td class="customer_name">{{$item->page_name}}</td>
-                                            <td class="customer_name">{{$item->meta_title}}</td>
-                                            <td class="customer_name">{{$item->og_title}}</td>
-                                            <td class="customer_name">{{$item->meta_description}}</td>
+                                            <td class="customer_name">{{ Str::limit($item->meta_title, 20) }}</td>
+                                            <td class="customer_name">{{ Str::limit($item->og_title, 20) }}</td>
+                                            <td class="customer_name">{{ Str::limit($item->meta_description, 20) }}</td>
                                             <td class="date">{{$item->updated_at->diffForHumans()}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">

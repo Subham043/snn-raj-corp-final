@@ -49,7 +49,7 @@
                                         @foreach ($data->items() as $item)
                                         <tr>
                                             <td class="customer_name">{{$item->title}}</td>
-                                            <td class="customer_name">{{$item->description}}</td>
+                                            <td class="customer_name">{{ Str::limit($item->description, 20) }}</td>
                                             <td class="customer_name">{{$item->is_banner_image==true ? 'Image' : 'Video'}}</td>
                                             @if($item->is_draft == 1)
                                             <td class="status"><span class="badge badge-soft-success text-uppercase">Active</span></td>

@@ -11,8 +11,7 @@
         @endcan
         <!-- end page title -->
 
-        <div class="row">
-            @include('admin.includes.back_button', ['link'=>route('about.banner.get')])
+        <div class="row" id="image-container">
             <div class="col-lg-12">
                 <form id="countryForm" method="post" action="{{route('about.banner.post')}}" enctype="multipart/form-data">
                 @csrf
@@ -31,6 +30,9 @@
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
+                                        @if(!empty($data->image_link))
+                                            <img src="{{$data->image_link}}" alt="" class="img-preview">
+                                        @endif
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'button_text', 'label'=>'Button Text', 'value'=>!empty($data) ? (old('button_text') ? old('button_text') : $data->button_text) : old('button_text')])
@@ -75,6 +77,31 @@
 
 
 @section('javascript')
+
+
+<script type="text/javascript" nonce="{{ csp_nonce() }}">
+    const myViewer = new ImgPreviewer('#image-container',{
+      // aspect ratio of image
+        fillRatio: 0.9,
+        // attribute that holds the image
+        dataUrlKey: 'src',
+        // additional styles
+        style: {
+            modalOpacity: 0.6,
+            headerOpacity: 0,
+            zIndex: 99
+        },
+        // zoom options
+        imageZoom: {
+            min: 0.1,
+            max: 5,
+            step: 0.1
+        },
+        // detect whether the parent element of the image is hidden by the css style
+        bubblingLevel: 0,
+
+    });
+</script>
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 

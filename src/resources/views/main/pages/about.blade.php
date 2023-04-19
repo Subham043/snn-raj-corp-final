@@ -66,36 +66,52 @@
             </div>
             <div class="row mt-4">
                 @foreach($management as $key=>$val)
-                @if($key==0)
-                    <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
-                        {!!$val->description!!}
-                    </div>
-                    <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
-                        <div class="wrap">
-                            <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
-                                <div class="info">
-                                    <h4 class="name">{{$val->name}}</h4>
-                                </div>
-                            </div>
-                            <p>{{$val->designation}}</p>
+                    @if($key==0)
+                        <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
+                            {!!$val->description!!}
                         </div>
-                    </div>
-                @else
-                    <div class="col-md-3 animate-box text-center mt-3" data-animate-effect="fadeInUp">
-                        <div class="wrap">
-                            <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
-                                <div class="info">
+                        <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
+                            <div class="wrap">
+                                <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
+                                    <div class="info">
+                                        <h4 class="name">{{$val->name}}</h4>
+                                    </div>
                                 </div>
+                                <p>{{$val->designation}}</p>
                             </div>
-                            <h4 class="name">{{$val->name}}</h4>
-                            <p>{{$val->designation}}</p>
                         </div>
-                    </div>
-                    <div class="col-md-3 animate-box mt-3" data-animate-effect="fadeInUp">
-                        {!!$val->description!!}
-                    </div>
-                @endif
+                    @else
+                        <div class="col-md-3 animate-box text-center mt-3" data-animate-effect="fadeInUp">
+                            <div class="wrap">
+                                <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
+                                    <div class="info">
+                                    </div>
+                                </div>
+                                <h4 class="name">{{$val->name}}</h4>
+                                <p>{{$val->designation}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 animate-box mt-3" data-animate-effect="fadeInUp">
+                            {!!$val->description!!}
+                        </div>
+                    @endif
                 @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
+    <!-- Vision -->
+    @if($banner)
+    <section class="lets-talk">
+        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                        <div class="sub-title border-bot-light">Our Vision</div>
+                        <div class="section-title">{!!$banner->vission!!}</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -149,7 +165,7 @@
     @endif
 
     <!-- AWARDS -->
-    <section class="section-padding">
+    {{-- <section class="section-padding">
         <div class="container">
             <div class="row mb-5 animate-box" data-animate-effect="fadeInUp">
                 <div class="col-md-4">
@@ -202,23 +218,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Vision -->
-    @if($banner)
-    <section class="lets-talk">
-        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light">Our Vision</div>
-                        <div class="section-title">{!!$banner->vission!!}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif
+    </section> --}}
 
     <!-- ADDITIONAL CONTENT -->
     @if(count($additionalContent)>0)
