@@ -36,6 +36,7 @@ use App\Modules\HomePage\Banner\Controllers\BannerPaginateController;
 use App\Modules\HomePage\Banner\Controllers\BannerUpdateController;
 use App\Modules\HomePage\Testimonial\Controllers\TestimonialCreateController;
 use App\Modules\HomePage\Testimonial\Controllers\TestimonialDeleteController;
+use App\Modules\HomePage\Testimonial\Controllers\TestimonialHeadingController;
 use App\Modules\HomePage\Testimonial\Controllers\TestimonialPaginateController;
 use App\Modules\HomePage\Testimonial\Controllers\TestimonialUpdateController;
 use App\Modules\Legal\Controllers\LegalCreateController;
@@ -128,6 +129,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [TestimonialUpdateController::class, 'get', 'as' => 'home_page.testimonial.update.get'])->name('home_page.testimonial.update.get');
             Route::post('/update/{id}', [TestimonialUpdateController::class, 'post', 'as' => 'home_page.testimonial.update.post'])->name('home_page.testimonial.update.post');
             Route::get('/delete/{id}', [TestimonialDeleteController::class, 'get', 'as' => 'home_page.testimonial.delete.get'])->name('home_page.testimonial.delete.get');
+            Route::post('/heading', [TestimonialHeadingController::class, 'post', 'as' => 'testimonial.heading.post'])->name('testimonial.heading.post');
 
         });
 

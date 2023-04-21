@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Counter\Models;
+namespace App\Modules\HomePage\Testimonial\Models;
 
 use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class CounterHeading extends Model
+class TestimonialHeading extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected $table = 'counter_headings';
+    protected $table = 'testimonial_headings';
 
     /**
      * The attributes that are mass assignable.
@@ -37,10 +37,10 @@ class CounterHeading extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('counter heading section')
+        ->useLogName('testimonial heading section')
         ->setDescriptionForEvent(
                 function(string $eventName){
-                    $desc = "Counter heading detail has been {$eventName}";
+                    $desc = "Testimonial heading detail has been {$eventName}";
                     $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
                     return $desc;
                 }
