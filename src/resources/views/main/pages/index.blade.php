@@ -108,12 +108,14 @@
         <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 mb-30 animate-box" data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light">Achievements</div>
-                    </div>
-                    <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
-                        <div class="section-title text-white">What we have <span>achieved</span></div>
-                    </div>
+                    @if($counterHeading)
+                        <div class="col-md-4 mb-30 animate-box" data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
+                        </div>
+                        <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                            <div class="section-title text-white">{!!$counterHeading->heading!!}</div>
+                        </div>
+                    @endif
                     <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
                         <div class="states">
                             <ul class="flex gap-2 align-items-center justify-content-between">
@@ -228,11 +230,15 @@
         <div class="background bg-img bg-fixed section-padding" data-background="{{ asset('assets/images/slider/a.jpg')}}" data-overlay-dark="6">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 mb-30">
-                        <h3 class="sub-title border-bot-dark">Testiominals</h3>
-                    </div>
+                    @if($testimonialHeading)
+                        <div class="col-md-4 mb-30">
+                            <h3 class="sub-title border-bot-dark">{{$testimonialHeading->sub_heading}}</h3>
+                        </div>
+                    @endif
                     <div class="col-md-8">
-                        <div class="section-title">What Client's Say?</div>
+                        @if($testimonialHeading)
+                            <div class="section-title">{{$testimonialHeading->heading}}</div>
+                        @endif
                         <div class="wrap">
                             <div class="owl-carousel owl-theme">
 

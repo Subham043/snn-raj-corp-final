@@ -14,6 +14,7 @@ use App\Modules\Authentication\Controllers\ProfileController;
 use App\Modules\Authentication\Controllers\ResetPasswordController;
 use App\Modules\Awards\Controllers\AwardCreateController;
 use App\Modules\Awards\Controllers\AwardDeleteController;
+use App\Modules\Awards\Controllers\AwardHeadingController;
 use App\Modules\Awards\Controllers\AwardPaginateController;
 use App\Modules\Awards\Controllers\AwardUpdateController;
 use App\Modules\Counter\Controllers\CounterCreateController;
@@ -45,6 +46,7 @@ use App\Modules\Legal\Controllers\LegalPaginateController;
 use App\Modules\Legal\Controllers\LegalUpdateController;
 use App\Modules\Partner\Controllers\PartnerCreateController;
 use App\Modules\Partner\Controllers\PartnerDeleteController;
+use App\Modules\Partner\Controllers\PartnerHeadingController;
 use App\Modules\Partner\Controllers\PartnerPaginateController;
 use App\Modules\Partner\Controllers\PartnerUpdateController;
 use App\Modules\Role\Controllers\RoleCreateController;
@@ -60,10 +62,12 @@ use App\Modules\Settings\Controllers\ErrorLogController;
 use App\Modules\Settings\Controllers\SitemapController;
 use App\Modules\TeamMember\Management\Controllers\ManagementCreateController;
 use App\Modules\TeamMember\Management\Controllers\ManagementDeleteController;
+use App\Modules\TeamMember\Management\Controllers\ManagementHeadingController;
 use App\Modules\TeamMember\Management\Controllers\ManagementPaginateController;
 use App\Modules\TeamMember\Management\Controllers\ManagementUpdateController;
 use App\Modules\TeamMember\Staff\Controllers\StaffCreateController;
 use App\Modules\TeamMember\Staff\Controllers\StaffDeleteController;
+use App\Modules\TeamMember\Staff\Controllers\StaffHeadingController;
 use App\Modules\TeamMember\Staff\Controllers\StaffPaginateController;
 use App\Modules\TeamMember\Staff\Controllers\StaffUpdateController;
 use App\Modules\User\Controllers\UserCreateController;
@@ -199,6 +203,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [ManagementUpdateController::class, 'get', 'as' => 'team_member.management.update.get'])->name('team_member.management.update.get');
             Route::post('/update/{id}', [ManagementUpdateController::class, 'post', 'as' => 'team_member.management.update.post'])->name('team_member.management.update.post');
             Route::get('/delete/{id}', [ManagementDeleteController::class, 'get', 'as' => 'team_member.management.delete.get'])->name('team_member.management.delete.get');
+            Route::post('/heading', [ManagementHeadingController::class, 'post', 'as' => 'team_member.management.heading.post'])->name('team_member.management.heading.post');
 
         });
 
@@ -209,6 +214,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [StaffUpdateController::class, 'get', 'as' => 'team_member.staff.update.get'])->name('team_member.staff.update.get');
             Route::post('/update/{id}', [StaffUpdateController::class, 'post', 'as' => 'team_member.staff.update.post'])->name('team_member.staff.update.post');
             Route::get('/delete/{id}', [StaffDeleteController::class, 'get', 'as' => 'team_member.staff.delete.get'])->name('team_member.staff.delete.get');
+            Route::post('/heading', [StaffHeadingController::class, 'post', 'as' => 'team_member.staff.heading.post'])->name('team_member.staff.heading.post');
 
         });
 
@@ -221,6 +227,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [AwardUpdateController::class, 'get', 'as' => 'award.update.get'])->name('award.update.get');
         Route::post('/update/{id}', [AwardUpdateController::class, 'post', 'as' => 'award.update.post'])->name('award.update.post');
         Route::get('/delete/{id}', [AwardDeleteController::class, 'get', 'as' => 'award.delete.get'])->name('award.delete.get');
+        Route::post('/heading', [AwardHeadingController::class, 'post', 'as' => 'award.heading.post'])->name('award.heading.post');
 
     });
 
@@ -231,6 +238,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [PartnerUpdateController::class, 'get', 'as' => 'partner.update.get'])->name('partner.update.get');
         Route::post('/update/{id}', [PartnerUpdateController::class, 'post', 'as' => 'partner.update.post'])->name('partner.update.post');
         Route::get('/delete/{id}', [PartnerDeleteController::class, 'get', 'as' => 'partner.delete.get'])->name('partner.delete.get');
+        Route::post('/heading', [PartnerHeadingController::class, 'post', 'as' => 'partner.heading.post'])->name('partner.heading.post');
 
     });
 

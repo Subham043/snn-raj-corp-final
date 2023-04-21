@@ -37,13 +37,14 @@
     <section class="services section-padding">
         <div class="container">
             <div class="row mb-4">
-                <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light">AWARDS & RECOGNITION</div>
-                </div>
-                <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
-                    <div class="section-title"><span>Our</span> Achievements</div>
-                    <p>Our creations have won accolades (and hearts).</p>
-                </div>
+                @if($awardHeading)
+                    <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
+                        <div class="sub-title border-bot-light">{{$awardHeading->sub_heading}}</div>
+                    </div>
+                    <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                        <div class="section-title">{!!$awardHeading->heading!!}</div>
+                    </div>
+                @endif
             </div>
             @if($awards->total() > 0)
             <div class="row">
