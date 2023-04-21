@@ -4,13 +4,16 @@ namespace App\Modules\About\Banner\Services;
 
 use App\Http\Services\FileService;
 use App\Modules\About\Banner\Models\Banner;
+use Illuminate\Support\Facades\Cache;
 
 class BannerService
 {
 
     public function getById(Int $id): Banner|null
     {
-        return Banner::where('id', $id)->first();
+        return Cache::remember('about_page_banner_main_'.$id, 60*60*12, function() use($id){
+            return Banner::where('id', $id)->first();
+        });
     }
 
     public function createOrUpdate(array $data): Banner

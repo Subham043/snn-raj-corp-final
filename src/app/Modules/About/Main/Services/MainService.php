@@ -4,13 +4,16 @@ namespace App\Modules\About\Main\Services;
 
 use App\Http\Services\FileService;
 use App\Modules\About\Main\Models\Main;
+use Illuminate\Support\Facades\Cache;
 
 class MainService
 {
 
     public function getById(Int $id): Main|null
     {
-        return Main::where('id', $id)->first();
+        return Cache::remember('about_page_main_'.$id, 60*60*12, function() use($id){
+            return Main::where('id', $id)->first();
+        });
     }
 
     public function createOrUpdate(array $data): Main

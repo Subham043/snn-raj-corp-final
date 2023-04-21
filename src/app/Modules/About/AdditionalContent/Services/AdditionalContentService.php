@@ -9,6 +9,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 use Spatie\QueryBuilder\AllowedFilter;
 
 class AdditionalContentService
@@ -74,7 +75,9 @@ class AdditionalContentService
 
     public function main_all(): Collection
     {
-        return AdditionalContent::where('is_draft', true)->latest()->get();
+        return Cache::remember('about_page_additional_main', 60*60*12, function(){
+            return AdditionalContent::where('is_draft', true)->latest()->get();
+        });
     }
 
 }
