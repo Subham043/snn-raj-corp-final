@@ -4,13 +4,16 @@ namespace App\Modules\Csr\Services;
 
 use App\Http\Services\FileService;
 use App\Modules\Csr\Models\CsrBanner;
+use Illuminate\Support\Facades\Cache;
 
 class CsrBannerService
 {
 
     public function getById(Int $id): CsrBanner|null
     {
-        return CsrBanner::where('id', $id)->first();
+        return Cache::remember('csr_page_banner_main_'.$id, 60*60*12, function() use($id){
+            return CsrBanner::where('id', $id)->first();
+        });
     }
 
     public function createOrUpdate(array $data): CsrBanner

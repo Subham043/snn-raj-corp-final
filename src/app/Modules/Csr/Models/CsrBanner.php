@@ -6,6 +6,7 @@ use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
@@ -37,6 +38,20 @@ class CsrBanner extends Model
     public $image_path = 'csr_banners';
 
     protected $appends = ['image_link'];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::created(function ($model) {
+            Cache::forget('csr_page_banner_main_'.$model->id);
+        });
+        self::updated(function ($model) {
+            Cache::forget('csr_page_banner_main_'.$model->id);
+        });
+        self::deleted(function ($model) {
+            Cache::forget('csr_page_banner_main_'.$model->id);
+        });
+    }
 
     protected function image(): Attribute
     {
