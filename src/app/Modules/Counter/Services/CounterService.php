@@ -56,7 +56,7 @@ class CounterService
 
     public function main_all(): Collection
     {
-        return Counter::where('is_draft', true)->inRandomOrder()->get();
+        return Counter::where('is_draft', true)->latest()->get();
     }
 
 }

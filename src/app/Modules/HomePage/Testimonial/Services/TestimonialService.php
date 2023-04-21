@@ -74,7 +74,7 @@ class TestimonialService
 
     public function main_all(): Collection
     {
-        return Testimonial::where('is_draft', true)->inRandomOrder()->get();
+        return Testimonial::where('is_draft', true)->latest()->get();
     }
 
 }

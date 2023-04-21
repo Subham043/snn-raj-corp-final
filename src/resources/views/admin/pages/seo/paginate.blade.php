@@ -34,7 +34,7 @@
                                         <tr>
                                             <th class="sort" data-sort="customer_name">Page Name</th>
                                             <th class="sort" data-sort="customer_name">Meta Title</th>
-                                            <th class="sort" data-sort="customer_name">Og Title</th>
+                                            <th class="sort" data-sort="customer_name">Meta Keywords</th>
                                             <th class="sort" data-sort="customer_name">Meta Description</th>
                                             <th class="sort" data-sort="date">Updated On</th>
                                             <th class="sort" data-sort="action">Action</th>
@@ -45,7 +45,7 @@
                                         <tr>
                                             <td class="customer_name">{{$item->page_name}}</td>
                                             <td class="customer_name">{{ Str::limit($item->meta_title, 20) }}</td>
-                                            <td class="customer_name">{{ Str::limit($item->og_title, 20) }}</td>
+                                            <td class="customer_name">{{ Str::limit($item->meta_keywords, 20) }}</td>
                                             <td class="customer_name">{{ Str::limit($item->meta_description, 20) }}</td>
                                             <td class="date">{{$item->updated_at->diffForHumans()}}</td>
                                             <td>

@@ -74,7 +74,7 @@ class AdditionalContentService
 
     public function main_all(): Collection
     {
-        return AdditionalContent::where('is_draft', true)->inRandomOrder()->get();
+        return AdditionalContent::where('is_draft', true)->latest()->get();
     }
 
 }

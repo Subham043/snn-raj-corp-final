@@ -1,6 +1,29 @@
 @extends('main.layouts.index')
 
 @section('css')
+
+    <title>{{$seo->meta_title}}</title>
+    <meta name="description" content="{{$seo->meta_description}}"/>
+    <meta name="keywords" content="{{$seo->meta_keywords}}"/>
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="{{$seo->meta_title}}" />
+    <meta property="og:description" content="{{$seo->meta_description}}" />
+    <meta property="og:url" content="{{Request::url()}}" />
+    <meta property="og:site_name" content="{{$seo->meta_title}}" />
+    <meta property="og:image" content="{{ asset('assets/images/logo.png')}}" />
+    <meta name="twitter:card" content="{{ asset('assets/images/logo.png')}}" />
+    <meta name="twitter:label1" content="{{$seo->meta_title}}" />
+    <meta name="twitter:data1" content="{{$seo->meta_description}}" />
+
+    <link rel="icon" href="{{ asset('assets/images/favicon.png')}}" sizes="32x32" />
+    <link rel="icon" href="{{ asset('assets/images/favicon.png')}}" sizes="192x192" />
+    <link rel="apple-touch-icon" href="{{ asset('assets/images/favicon.png')}}" />
+
+    {!!$seo->meta_header_script!!}
+    {!!$seo->meta_header_no_script!!}
+
     <style nonce="{{ csp_nonce() }}">
         .fl-img{
             float: left;

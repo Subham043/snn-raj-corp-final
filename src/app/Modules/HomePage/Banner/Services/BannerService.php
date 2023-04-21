@@ -74,7 +74,7 @@ class BannerService
 
     public function main_all(): Collection
     {
-        return Banner::where('is_draft', true)->inRandomOrder()->get();
+        return Banner::where('is_draft', true)->latest()->get();
     }
 
 }
