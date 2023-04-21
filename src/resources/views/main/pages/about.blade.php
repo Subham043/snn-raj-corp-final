@@ -298,6 +298,35 @@
     </section>
     @endif
 
+    <!-- Partner -->
+    @if(count($partners)>0)
+    <section class="partner section-padding">
+        <div class="container">
+            <div class="row mb-4">
+                @if($partnerHeading)
+                    <div class="col-md-4">
+                        <div class="sub-title border-bot-light">{{$partnerHeading->sub_heading}}</div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="section-title">{!!$partnerHeading->heading!!}</div>
+                    </div>
+                @endif
+            </div>
+            <div class="row">
+                <div class="col-md-12 owl-carousel owl-theme">
+                    @foreach($partners as $partners)
+                    <div class="wrap">
+                        <div class="con">
+                            <img src="{{$partners->image_link}}" class="img-fluid" alt="{{$partners->image_alt}}" title="{{$partners->image_title}}">
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
+
     @include('main.includes.common_contact')
 
 @stop

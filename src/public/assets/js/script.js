@@ -545,6 +545,36 @@
         }
     });
 
+    // Team owlCarousel
+    $('.partner .owl-carousel').owlCarousel({
+        loop: true
+        , margin: 20
+        , mouseDrag: true
+        , autoplay: true
+        , dots: false
+        , nav: false
+        , navText: ["<span class='lnr ti-arrow-left'></span>","<span class='lnr ti-arrow-right'></span>"]
+        // , autoplayHoverPause:false
+        , fluidSpeed: true
+        , smartSpeed: 500
+        , slideTransition: 'linear'
+        , responsiveClass: true
+        , responsive: {
+            0: {
+                items: 3
+            , }
+            , 600: {
+                items: 3
+            }
+            , 1000: {
+                items: 5
+            }
+            , 1200: {
+                items: 6
+            }
+        }
+    });
+
     // Testimonials owlCarousel
     $('.testimonials .owl-carousel').owlCarousel({
         loop:true,

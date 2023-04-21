@@ -72,6 +72,11 @@ class PartnerService
         }
     }
 
+    public function main_all(): Collection
+    {
+        return Partner::where('is_draft', true)->latest()->get();
+    }
+
 }
 
 class CommonFilter implements Filter

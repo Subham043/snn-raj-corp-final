@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Modules\About\AdditionalContent\Services\AdditionalContentService;
 use App\Modules\About\Banner\Services\BannerService;
 use App\Modules\About\Main\Services\MainService;
+use App\Modules\Partner\Services\PartnerHeadingService;
+use App\Modules\Partner\Services\PartnerService;
 use App\Modules\Seo\Services\SeoService;
 use App\Modules\TeamMember\Management\Services\ManagementHeadingService;
 use App\Modules\TeamMember\Management\Services\ManagementService;
@@ -22,6 +24,8 @@ class AboutPageController extends Controller
     private $managementHeadingService;
     private $staffService;
     private $staffHeadingService;
+    private $partnerService;
+    private $partnerHeadingService;
 
     public function __construct(
         BannerService $bannerService,
@@ -31,6 +35,8 @@ class AboutPageController extends Controller
         ManagementHeadingService $managementHeadingService,
         StaffService $staffService,
         StaffHeadingService $staffHeadingService,
+        PartnerService $partnerService,
+        PartnerHeadingService $partnerHeadingService,
         SeoService $seoService
     )
     {
@@ -42,6 +48,8 @@ class AboutPageController extends Controller
         $this->managementHeadingService = $managementHeadingService;
         $this->staffService = $staffService;
         $this->staffHeadingService = $staffHeadingService;
+        $this->partnerService = $partnerService;
+        $this->partnerHeadingService = $partnerHeadingService;
     }
 
     public function get(){
@@ -52,8 +60,10 @@ class AboutPageController extends Controller
         $staffs = $this->staffService->main_all();
         $managementHeading = $this->managementHeadingService->getById(1);
         $staffHeading = $this->staffHeadingService->getById(1);
+        $partners = $this->partnerService->main_all();
+        $partnerHeading = $this->partnerHeadingService->getById(1);
         $seo = $this->seoService->getBySlugMain('about-page');
-        return view('main.pages.about', compact(['banner', 'about', 'additionalContent', 'seo', 'staffs', 'management', 'managementHeading', 'staffHeading']));
+        return view('main.pages.about', compact(['banner', 'about', 'additionalContent', 'seo', 'staffs', 'management', 'managementHeading', 'staffHeading', 'partners', 'partnerHeading']));
     }
 
 }
