@@ -18,6 +18,7 @@ use App\Modules\Awards\Controllers\AwardPaginateController;
 use App\Modules\Awards\Controllers\AwardUpdateController;
 use App\Modules\Counter\Controllers\CounterCreateController;
 use App\Modules\Counter\Controllers\CounterDeleteController;
+use App\Modules\Counter\Controllers\CounterHeadingController;
 use App\Modules\Counter\Controllers\CounterPaginateController;
 use App\Modules\Counter\Controllers\CounterUpdateController;
 use App\Modules\Csr\Controllers\CsrBannerController;
@@ -238,6 +239,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [CounterUpdateController::class, 'get', 'as' => 'counter.update.get'])->name('counter.update.get');
         Route::post('/update/{id}', [CounterUpdateController::class, 'post', 'as' => 'counter.update.post'])->name('counter.update.post');
         Route::get('/delete/{id}', [CounterDeleteController::class, 'get', 'as' => 'counter.delete.get'])->name('counter.delete.get');
+        Route::post('/heading', [CounterHeadingController::class, 'post', 'as' => 'counter.heading.post'])->name('counter.heading.post');
 
     });
 
