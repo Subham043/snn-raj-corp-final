@@ -197,7 +197,6 @@ return [
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         App\Providers\HealthServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        Spatie\Backup\BackupServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
 
     ],

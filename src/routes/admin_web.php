@@ -57,7 +57,6 @@ use App\Modules\Seo\Controllers\SeoPaginateController;
 use App\Modules\Seo\Controllers\SeoUpdateController;
 use App\Modules\Settings\Controllers\ActivityLog\ActivityLogDetailController;
 use App\Modules\Settings\Controllers\ActivityLog\ActivityLogPaginateController;
-use App\Modules\Settings\Controllers\ApplicationBackupController;
 use App\Modules\Settings\Controllers\ErrorLogController;
 use App\Modules\Settings\Controllers\SitemapController;
 use App\Modules\TeamMember\Management\Controllers\ManagementCreateController;
@@ -101,7 +100,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'get', 'as' => 'dashboard.get'])->name('dashboard.get');
 
     Route::prefix('/setting')->group(function () {
-        Route::get('/back-up', [ApplicationBackupController::class, 'get', 'as' => 'back_up.get'])->name('back_up.get');
         Route::get('/sitemap', [SitemapController::class, 'get', 'as' => 'sitemap.get'])->name('sitemap.get');
         Route::get('/sitemap-generate', [SitemapController::class, 'generate', 'as' => 'sitemap.generate'])->name('sitemap.generate');
     });
