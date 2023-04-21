@@ -8,6 +8,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 use Spatie\QueryBuilder\AllowedFilter;
 
 class SeoService
@@ -60,7 +61,9 @@ class SeoService
 
     public function getBySlugMain(String $slug): Seo
     {
-        return Seo::where('slug', $slug)->first();
+        return Cache::remember('seo_'.$slug, 60*60*12, function() use($slug){
+            return Seo::where('slug', $slug)->first();
+        });
     }
 
 }

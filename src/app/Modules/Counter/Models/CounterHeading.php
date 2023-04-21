@@ -5,6 +5,7 @@ namespace App\Modules\Counter\Models;
 use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
@@ -28,6 +29,20 @@ class CounterHeading extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::created(function ($model) {
+            Cache::forget('counter_heading_'.$model->id);
+        });
+        self::updated(function ($model) {
+            Cache::forget('counter_heading_'.$model->id);
+        });
+        self::deleted(function ($model) {
+            Cache::forget('counter_heading_'.$model->id);
+        });
+    }
 
     public function user()
     {

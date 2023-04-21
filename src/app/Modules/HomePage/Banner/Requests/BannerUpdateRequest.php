@@ -32,7 +32,7 @@ class BannerUpdateRequest extends BannerCreateRequest
             'is_draft' => 'required|boolean',
             'banner_image' => ['nullable','image', 'min:10', 'max:500', Rule::requiredIf(function (){
                 $banner = (new BannerService)->getById($this->route('id'));
-                return !$banner->is_banner_image;
+                return empty($banner->banner_image);
             }),],
             'banner_image_alt' => 'nullable|string|max:500',
             'banner_image_title' => 'nullable|string|max:500',

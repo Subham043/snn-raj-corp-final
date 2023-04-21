@@ -6,6 +6,7 @@ use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
@@ -37,6 +38,20 @@ class Testimonial extends Model
     public $image_path = 'home_page_testimonials';
 
     protected $appends = ['image_link'];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::created(function ($model) {
+            Cache::forget('home_page_testimonials_main');
+        });
+        self::updated(function ($model) {
+            Cache::forget('home_page_testimonials_main');
+        });
+        self::deleted(function ($model) {
+            Cache::forget('home_page_testimonials_main');
+        });
+    }
 
     protected function image(): Attribute
     {

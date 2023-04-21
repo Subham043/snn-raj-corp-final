@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Illuminate\Support\Facades\Cache;
 
 class Banner extends Model
 {
@@ -41,6 +42,20 @@ class Banner extends Model
     public $image_path = 'home_page_banners';
 
     protected $appends = ['banner_image_link', 'banner_video_id'];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::created(function ($model) {
+            Cache::forget('home_page_banners_main');
+        });
+        self::updated(function ($model) {
+            Cache::forget('home_page_banners_main');
+        });
+        self::deleted(function ($model) {
+            Cache::forget('home_page_banners_main');
+        });
+    }
 
     protected function bannerImage(): Attribute
     {
@@ -92,4 +107,5 @@ class Banner extends Model
         }
         return null;
     }
+
 }

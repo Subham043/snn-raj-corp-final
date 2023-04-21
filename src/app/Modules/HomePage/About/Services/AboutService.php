@@ -4,13 +4,16 @@ namespace App\Modules\HomePage\About\Services;
 
 use App\Http\Services\FileService;
 use App\Modules\HomePage\About\Models\About;
+use Illuminate\Support\Facades\Cache;
 
 class AboutService
 {
 
     public function getById(Int $id): About|null
     {
-        return About::where('id', $id)->first();
+        return Cache::remember('home_page_about_main_'.$id, 60*60*12, function() use($id){
+            return About::where('id', $id)->first();
+        });
     }
 
     public function createOrUpdate(array $data): About
