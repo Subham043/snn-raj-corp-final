@@ -30,6 +30,7 @@ class UserSeeder extends Seeder
         Permission::create(['name' => 'list activity logs']);
         Permission::create(['name' => 'view activity log detail']);
         Permission::create(['name' => 'update sitemap']);
+        Permission::create(['name' => 'view general settings detail']);
 
         // gets all permissions via Gate::before rule; see AuthServiceProvider
         $admin_role = Role::create(['name' => 'Super-Admin']);

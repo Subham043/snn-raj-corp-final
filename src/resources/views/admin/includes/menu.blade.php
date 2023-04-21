@@ -209,6 +209,12 @@
                                 </a>
                                 <div class="collapse menu-dropdown {{strpos(url()->current(),'setting') !== false ? 'show' : ''}}" id="sidebarDashboards6">
                                     <ul class="nav nav-sm flex-column">
+                                        @can('view general settings detail')
+                                            <li class="nav-item">
+                                                <a href="{{route('general.settings.get')}}" class="nav-link {{strpos(url()->current(), route('general.settings.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> General </a>
+                                            </li>
+                                        @endcan
+
                                         @can('update sitemap')
                                             <li class="nav-item">
                                                 <a href="{{route('sitemap.get')}}" class="nav-link {{strpos(url()->current(), route('sitemap.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Sitemap </a>
