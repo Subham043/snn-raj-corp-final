@@ -39,7 +39,6 @@
                                         <tr>
                                             <th class="sort" data-sort="customer_name">Title</th>
                                             <th class="sort" data-sort="customer_name">Description</th>
-                                            <th class="sort" data-sort="customer_name">Type</th>
                                             <th class="sort" data-sort="customer_name">Status</th>
                                             <th class="sort" data-sort="date">Created On</th>
                                             <th class="sort" data-sort="action">Action</th>
@@ -50,7 +49,6 @@
                                         <tr>
                                             <td class="customer_name">{{$item->title}}</td>
                                             <td class="customer_name">{{ Str::limit($item->description, 20) }}</td>
-                                            <td class="customer_name">{{$item->is_banner_image==true ? 'Image' : 'Video'}}</td>
                                             @if($item->is_draft == 1)
                                             <td class="status"><span class="badge badge-soft-success text-uppercase">Active</span></td>
                                             @else

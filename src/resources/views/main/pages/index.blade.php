@@ -24,6 +24,18 @@
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}
 
+    <style nonce="{{ csp_nonce() }}">
+        .p-relative{
+            position: relative;
+        }
+        .video-gallery-polygon{
+            color: #fff !important;
+            bottom: -40px;
+            left: 0;
+            font-size: 30px;
+        }
+    </style>
+
 @stop
 
 @section('content')
@@ -34,21 +46,28 @@
         <div class="owl-carousel owl-theme">
             <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
             @foreach($banners as $banners)
-            <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
-                <div class="v-middle caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <h1>{{$banners->title}}</h1>
-                                <p>{{$banners->description}}</p>
-                                @if($banners->button_link)
-                                    <a href="{{$banners->button_link}}" class="button-light">View Detail</a>
-                                @endif
+                <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
+                    <div class="v-middle caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h1>{{$banners->title}}</h1>
+                                    <p>{{$banners->description}}</p>
+                                    @if($banners->button_link)
+                                        <a href="{{$banners->button_link}}" class="button-light">View Detail</a>
+                                    @endif
+                                    @if($banners->banner_video_id)
+                                        <a href="https://youtu.be/{{$banners->banner_video_id}}" class="vid p-relative">
+                                            <span class="video-gallery-polygon">
+                                                <i class="ti-control-play"></i>
+                                            </span>
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
         <div class="slide-num" id="snh-1"></div>

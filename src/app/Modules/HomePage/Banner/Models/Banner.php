@@ -24,7 +24,6 @@ class Banner extends Model
         'title',
         'description',
         'button_link',
-        'is_banner_image',
         'banner_image',
         'banner_image_alt',
         'banner_image_title',
@@ -34,7 +33,6 @@ class Banner extends Model
     ];
 
     protected $casts = [
-        'is_banner_image' => 'boolean',
         'is_draft' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
@@ -42,7 +40,7 @@ class Banner extends Model
 
     public $image_path = 'home_page_banners';
 
-    protected $appends = ['banner_image_link'];
+    protected $appends = ['banner_image_link', 'banner_video_id'];
 
     protected function bannerImage(): Attribute
     {
@@ -55,6 +53,13 @@ class Banner extends Model
     {
         return new Attribute(
             get: fn () => asset($this->banner_image),
+        );
+    }
+
+    protected function bannerVideoId(): Attribute
+    {
+        return new Attribute(
+            get: fn () => $this->getBannerVideoId(),
         );
     }
 
@@ -77,5 +82,14 @@ class Banner extends Model
         ->logFillable()
         ->logOnlyDirty();
         // Chain fluent methods for configuration options
+    }
+
+    public function getBannerVideoId(){
+        if($this->banner_video){
+            $video_id = explode("/embed/", $this->banner_video);
+            $video_id = $video_id[1];
+            return $video_id;
+        }
+        return null;
     }
 }

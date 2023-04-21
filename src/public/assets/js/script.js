@@ -339,36 +339,51 @@
         margin: 0,
         autoplay: true,
         autoplayTimeout: 5000,
-         nav: true,
-         navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>']
+        nav: true,
+        navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>']
     });
     // Slider-fade owlCarousel
     $('.slider-fade .owl-carousel').owlCarousel({
         items: 1,
-        loop:true,
+        rewind:true,
         dots: false,
         margin: 0,
         autoplay: true,
+        autoplayHoverPause: true,
         autoplayTimeout: 5000,
         animateOut: 'fadeOut',
         nav: true,
         navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>'],
-        mouseDrag: false,
+        mouseDrag: true,
         onInitialized: function (e) {
             var a = this.items().length;
-            $("#snh-1").html("<span>01</span><span>" + "0" + a + "</span>");
-            var presentage = Math.round((100 / a));
+
+            var b = --e.item.index,
+            a = e.item.count;
+            // console.log(e);
+            // $("#snh-1").html("<span>01</span><span>" + "0" + a + "</span>");
+            $("#snh-1").html("<span>0"+(1 > b ? b + a : b > a ? b - a : b)+"</span><span>" + "0" + e.item.count + "</span>");
+            // var presentage = Math.round((100 / a));
+            // var presentage = Math.round((100 / e.item.count));
+            var current = 1 > b ? b + a : b > a ? b - a : b;
+            var presentage = Math.round((current / e.item.count) * 100);
             $('.slider__progress span').css("width", presentage + "%");
         }
     });
+
     owl.on('changed.owl.carousel', function(e) {
-        var item = e.item.index - 2;     // Position of the current item
+        // var item = e.item.index - 1;     // Position of the current item
+        var item = e.item.index-2;     // Position of the current item
         var b = --e.item.index,
             a = e.item.count;
         $("#snh-1").html("<span> " + "0" + (1 > b ? b + a : b > a ? b - a : b) + "</span><span>" + "0" + a + "</span>");
 
-        var current = e.page.index + 1;
-        var presentage = Math.round((100 / e.page.count) * current);
+        // var current = e.item.index+2;
+        var current = 1 > b ? b + a : b > a ? b - a : b;
+        // console.log(current);
+        // var presentage = Math.round((100 / e.item.count) * current);
+        var presentage = Math.round((current / e.item.count) * 100);
+
         $('.slider__progress span').css("width", presentage + "%");
 
             $('h4').removeClass('animated fadeInUp');
@@ -378,13 +393,13 @@
             $('.button-light2').removeClass('animated fadeInUp');
             $('.button-dark').removeClass('animated fadeInUp');
             $('.button-dark2').removeClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('h4').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('h1').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('p').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('.button-light').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('.button-light2').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('.button-dark').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item).find('.button-dark2').addClass('animated fadeInUp');
+            $('.owl-item').not('.cloned').eq(item-2).find('h4').addClass('animated fadeInUp');
+            $('.owl-item').not('.cloned').eq(item-2).find('h1').addClass('animated fadeInUp');
+            $('.owl-item').not('.cloned').eq(item-2).find('p').addClass('animated fadeInUp');
+            $('.owl-item').not('.cloned').eq(item-2).find('.button-light').addClass('animated fadeInUp');
+            $('.owl-item').not('.cloned').eq(item-2).find('.button-light2').addClass('animated fadeInUp');
+            $('.owl-item').not('.cloned').eq(item-2).find('.button-dark').addClass('animated fadeInUp');
+            $('.owl-item').not('.cloned').eq(item-2).find('.button-dark2').addClass('animated fadeInUp');
         });
     });
 

@@ -53,19 +53,7 @@
 
                     <div class="card">
                         <div class="card-header align-items-center d-flex justify-content-between">
-                            <h4 class="card-title mb-0">Banner Media</h4>
-                            <div class="col-auto">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <label class="form-check-label" for="is_banner_image">Video</label>
-                                    <div>
-                                        <div class="form-check form-switch mb-0">
-                                            <input class="form-check-input" type="checkbox" role="switch" id="is_banner_image" name="is_banner_image" {{old('is_banner_image') && old('is_banner_image')==false ? '' : 'checked'}}>
-                                            <label class="form-check-label" for="is_banner_image">Image</label>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                            <h4 class="card-title mb-0">Banner Image</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
@@ -81,7 +69,19 @@
                                     </div>
 
                                 </div>
-                                <div class="row gy-4 d-none" id="video_row">
+                                <!--end row-->
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header align-items-center d-flex justify-content-between">
+                            <h4 class="card-title mb-0">Banner Video</h4>
+                        </div><!-- end card header -->
+                        <div class="card-body">
+                            <div class="live-preview">
+                                <div class="row gy-4" id="video_row">
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'banner_video', 'label'=>'Video Link', 'value'=>old('banner_video')])
                                     </div>
@@ -181,21 +181,18 @@ validation
     submitBtn.disabled = true;
     try {
         var formData = new FormData();
-        formData.append('is_banner_image',document.getElementById('is_banner_image').checked ? 1 : 0)
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
         formData.append('title',document.getElementById('title').value)
         formData.append('description',document.getElementById('description').value)
         formData.append('button_link',document.getElementById('button_link').value)
-        if(document.getElementById('is_banner_image').checked){
-            formData.append('banner_image_title',document.getElementById('banner_image_title').value)
-            formData.append('banner_image_alt',document.getElementById('banner_image_alt').value)
-            if((document.getElementById('banner_image').files).length>0){
-                formData.append('banner_image',document.getElementById('banner_image').files[0])
-            }
-        }else{
-            formData.append('banner_video',document.getElementById('banner_video').value)
-            formData.append('banner_video_title',document.getElementById('banner_video_title').value)
+        formData.append('banner_image_title',document.getElementById('banner_image_title').value)
+        formData.append('banner_image_alt',document.getElementById('banner_image_alt').value)
+        if((document.getElementById('banner_image').files).length>0){
+            formData.append('banner_image',document.getElementById('banner_image').files[0])
         }
+        formData.append('banner_video',document.getElementById('banner_video').value)
+        formData.append('banner_video_title',document.getElementById('banner_video_title').value)
+
         const response = await axios.post('{{route('home_page.banner.create.post')}}', formData)
         successToast(response.data.message)
         event.target.reset();
@@ -236,19 +233,7 @@ validation
     }
   });
 
-  document.querySelector('#is_banner_image').addEventListener("change", (event) => imageToggleHandler())
 
-function imageToggleHandler(){
-    if(document.getElementById("is_banner_image").checked==true){
-        document.querySelector('#image_row').classList.add("d-flex")
-        document.querySelector('#image_row').classList.remove("d-none")
-        document.querySelector('#video_row').classList.add("d-none")
-    }else{
-        document.querySelector('#video_row').classList.add("d-flex")
-        document.querySelector('#video_row').classList.remove("d-none")
-        document.querySelector('#image_row').classList.add("d-none")
-    }
-}
 </script>
 
 @stop

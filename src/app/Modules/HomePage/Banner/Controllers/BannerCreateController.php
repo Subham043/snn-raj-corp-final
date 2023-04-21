@@ -27,7 +27,7 @@ class BannerCreateController extends Controller
             $banner = $this->bannerService->create(
                 $request->except('banner_image')
             );
-            if($request->is_banner_image==true && $request->hasFile('banner_image')){
+            if($request->hasFile('banner_image')){
                 $this->bannerService->saveImage($banner);
             }
             return response()->json(["message" => "Banner created successfully."], 201);

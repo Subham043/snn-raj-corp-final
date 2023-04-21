@@ -29,16 +29,15 @@ class BannerUpdateRequest extends BannerCreateRequest
             'title' => 'required|string|max:250',
             'description' => 'required|string|max:500',
             'button_link' => 'nullable|url|max:500',
-            'is_banner_image' => 'required|boolean',
             'is_draft' => 'required|boolean',
-            'banner_image' => ['nullable','image', 'min:10', 'max:500','prohibited_if:is_banner_image,false', Rule::requiredIf(function (){
+            'banner_image' => ['nullable','image', 'min:10', 'max:500', Rule::requiredIf(function (){
                 $banner = (new BannerService)->getById($this->route('id'));
-                return $this->is_banner_image && !$banner->is_banner_image;
+                return !$banner->is_banner_image;
             }),],
-            'banner_image_alt' => 'nullable|string|max:500|prohibited_if:is_banner_image,false',
-            'banner_image_title' => 'nullable|string|max:500|prohibited_if:is_banner_image,false',
-            'banner_video' => 'required_if:is_banner_image,false|url|max:500|prohibited_if:is_banner_image,true',
-            'banner_video_title' => 'nullable|string|max:500|prohibited_if:is_banner_image,true',
+            'banner_image_alt' => 'nullable|string|max:500',
+            'banner_image_title' => 'nullable|string|max:500',
+            'banner_video' => 'nullable|url|max:500',
+            'banner_video_title' => 'nullable|string|max:500',
         ];
     }
 
