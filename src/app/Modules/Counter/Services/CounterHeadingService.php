@@ -10,7 +10,7 @@ class CounterHeadingService
 
     public function getById(Int $id): CounterHeading|null
     {
-        return Cache::remember('counter_heading_'.$id, 60*60*12, function() use($id){
+        return Cache::remember('counter_heading_'.$id, 60*60*24, function() use($id){
             return CounterHeading::where('id', $id)->first();
         });
     }

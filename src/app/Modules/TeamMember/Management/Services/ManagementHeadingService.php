@@ -10,7 +10,7 @@ class ManagementHeadingService
 
     public function getById(Int $id): ManagementHeading|null
     {
-        return Cache::remember('team_member_management_heading_main_'.$id, 60*60*12, function() use($id){
+        return Cache::remember('team_member_management_heading_main_'.$id, 60*60*24, function() use($id){
             return ManagementHeading::where('id', $id)->first();
         });
     }

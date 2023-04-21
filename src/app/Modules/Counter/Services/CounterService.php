@@ -57,7 +57,7 @@ class CounterService
 
     public function main_all(): Collection
     {
-        return Cache::remember('counters_main', 60*60*12, function(){
+        return Cache::remember('counters_main', 60*60*24, function(){
             return Counter::where('is_draft', true)->latest()->get();
         });
     }

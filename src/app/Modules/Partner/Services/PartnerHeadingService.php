@@ -10,7 +10,7 @@ class PartnerHeadingService
 
     public function getById(Int $id): PartnerHeading|null
     {
-        return Cache::remember('partner_heading_main_'.$id, 60*60*12, function() use($id){
+        return Cache::remember('partner_heading_main_'.$id, 60*60*24, function() use($id){
             return PartnerHeading::where('id', $id)->first();
         });
     }

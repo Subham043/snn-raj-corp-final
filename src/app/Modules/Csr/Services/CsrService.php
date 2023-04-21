@@ -75,7 +75,7 @@ class CsrService
 
     public function main_all(): Collection
     {
-        return Cache::remember('csr_main', 60*60*12, function(){
+        return Cache::remember('csr_main', 60*60*24, function(){
             return Csr::where('is_draft', true)->latest()->get();
         });
     }

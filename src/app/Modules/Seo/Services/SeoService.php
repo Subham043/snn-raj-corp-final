@@ -61,7 +61,7 @@ class SeoService
 
     public function getBySlugMain(String $slug): Seo
     {
-        return Cache::remember('seo_'.$slug, 60*60*12, function() use($slug){
+        return Cache::remember('seo_'.$slug, 60*60*24, function() use($slug){
             return Seo::where('slug', $slug)->first();
         });
     }

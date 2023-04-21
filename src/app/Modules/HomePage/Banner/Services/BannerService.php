@@ -75,7 +75,7 @@ class BannerService
 
     public function main_all(): Collection
     {
-        return Cache::remember('home_page_banners_main', 60*60*12, function(){
+        return Cache::remember('home_page_banners_main', 60*60*24, function(){
             return Banner::where('is_draft', true)->latest()->get();
         });
     }

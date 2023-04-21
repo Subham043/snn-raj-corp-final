@@ -75,7 +75,7 @@ class PartnerService
 
     public function main_all(): Collection
     {
-        return Cache::remember('partner_main', 60*60*12, function(){
+        return Cache::remember('partner_main', 60*60*24, function(){
             return Partner::where('is_draft', true)->latest()->get();
         });
     }

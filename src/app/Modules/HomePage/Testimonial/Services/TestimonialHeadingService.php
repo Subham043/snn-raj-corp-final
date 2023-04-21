@@ -10,7 +10,7 @@ class TestimonialHeadingService
 
     public function getById(Int $id): TestimonialHeading|null
     {
-        return Cache::remember('testimonial_heading_'.$id, 60*60*12, function() use($id){
+        return Cache::remember('testimonial_heading_'.$id, 60*60*24, function() use($id){
             return TestimonialHeading::where('id', $id)->first();
         });
     }
