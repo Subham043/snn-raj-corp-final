@@ -21,8 +21,8 @@
     <link rel="icon" href="{{ asset('assets/images/favicon.png')}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ asset('assets/images/favicon.png')}}" />
 
-    {!!$seo->meta_header_script!!}
-    {!!$seo->meta_header_no_script!!}
+    {!!$seo->meta_header_script_nonce!!}
+    {!!$seo->meta_header_no_script_nonce!!}
 
     <style nonce="{{ csp_nonce() }}">
         .p-relative{
@@ -314,7 +314,7 @@
 
 @section('js')
 
-    {!!$seo->meta_footer_script!!}
-    {!!$seo->meta_footer_no_script!!}
+    {!!$seo->meta_footer_script_nonce!!}
+    {!!$seo->meta_footer_no_script_nonce!!}
 
 @stop

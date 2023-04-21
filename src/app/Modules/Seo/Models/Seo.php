@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Seo extends Model
 {
@@ -35,6 +36,36 @@ class Seo extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    protected $appends = ['meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce'];
+
+    protected function metaHeaderScriptNonce(): Attribute
+    {
+        return new Attribute(
+            get: fn () => str_replace("<script","<script nonce='".csp_nonce()."'",$this->meta_header_script),
+        );
+    }
+
+    protected function metaHeaderNoScriptNonce(): Attribute
+    {
+        return new Attribute(
+            get: fn () => str_replace("<noscript","<noscript nonce='".csp_nonce()."'",$this->meta_header_no_script),
+        );
+    }
+
+    protected function metaFooterScriptNonce(): Attribute
+    {
+        return new Attribute(
+            get: fn () => str_replace("<script","<script nonce='".csp_nonce()."'",$this->meta_footer_script),
+        );
+    }
+
+    protected function metaFooterNoScriptNonce(): Attribute
+    {
+        return new Attribute(
+            get: fn () => str_replace("<noscript","<noscript nonce='".csp_nonce()."'",$this->meta_footer_no_script),
+        );
+    }
 
     public function user()
     {
