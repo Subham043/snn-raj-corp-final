@@ -113,7 +113,7 @@
                             <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
                         </div>
                         <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
-                            <div class="section-title text-white">{!!$counterHeading->heading!!}</div>
+                            <div class="section-title">{!!$counterHeading->heading!!}</div>
                         </div>
                     @endif
                     <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
