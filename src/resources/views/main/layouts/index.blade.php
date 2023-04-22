@@ -11,6 +11,7 @@
         @yield('content')
 
         @include('main.includes.footer')
+        @include('cookie-consent::index')
     </div>
     <!-- jQuery -->
     @include('main.includes.common_script')
