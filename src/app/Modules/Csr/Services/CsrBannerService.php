@@ -18,10 +18,15 @@ class CsrBannerService
 
     public function createOrUpdate(array $data): CsrBanner
     {
-        return CsrBanner::updateOrCreate(
+        $banner = CsrBanner::updateOrCreate(
             ['id' => 1],
-            [...$data, 'user_id' => auth()->user()->id]
+            [...$data]
         );
+
+        $banner->user_id = auth()->user()->id;
+        $banner->save();
+
+        return $banner;
     }
 
     public function saveImage(CsrBanner $banner): CsrBanner

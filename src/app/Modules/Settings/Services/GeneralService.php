@@ -18,10 +18,15 @@ class GeneralService
 
     public function createOrUpdate(array $data): General
     {
-        return General::updateOrCreate(
+        $general = General::updateOrCreate(
             ['id' => 1],
-            [...$data, 'user_id' => auth()->user()->id]
+            [...$data]
         );
+
+        $general->user_id = auth()->user()->id;
+        $general->save();
+
+        return $general;
     }
 
     public function saveLogoImage(General $general): General

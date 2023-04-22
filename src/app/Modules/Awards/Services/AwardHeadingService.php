@@ -14,10 +14,15 @@ class AwardHeadingService
 
     public function createOrUpdate(array $data): AwardHeading
     {
-        return AwardHeading::updateOrCreate(
+        $award_heading = AwardHeading::updateOrCreate(
             ['id' => 1],
-            [...$data, 'user_id' => auth()->user()->id]
+            [...$data]
         );
+
+        $award_heading->user_id = auth()->user()->id;
+        $award_heading->save();
+
+        return $award_heading;
     }
 
 }

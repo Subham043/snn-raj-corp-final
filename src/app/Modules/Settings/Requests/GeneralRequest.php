@@ -29,10 +29,10 @@ class GeneralRequest extends FormRequest
     public function rules()
     {
         return [
-            'facebook' => 'required|url|max:250',
-            'instagram' => 'required|url|max:250',
-            'linkedin' => 'required|url|max:250',
-            'youtube' => 'required|url|max:250',
+            'facebook' => 'nullable|url|max:250',
+            'instagram' => 'nullable|url|max:250',
+            'linkedin' => 'nullable|url|max:250',
+            'youtube' => 'nullable|url|max:250',
             'phone' => 'required|numeric',
             'email' => 'required|string|email|max:500',
             'address' => 'required|string|max:500',

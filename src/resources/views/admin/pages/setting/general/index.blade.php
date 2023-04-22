@@ -147,26 +147,22 @@ validation
   ])
   .addField('#facebook', [
     {
-        rule: 'required',
-        errorMessage: 'Facebook Link is required',
+        validator: (value, fields) => true,
     },
   ])
   .addField('#linkedin', [
     {
-        rule: 'required',
-        errorMessage: 'Linkedin Link is required',
+        validator: (value, fields) => true,
     },
   ])
   .addField('#instagram', [
     {
-        rule: 'required',
-        errorMessage: 'Instagram Link is required',
+        validator: (value, fields) => true,
     },
   ])
   .addField('#youtube', [
     {
-        rule: 'required',
-        errorMessage: 'Youtube Link is required',
+        validator: (value, fields) => true,
     },
   ])
   .addField('#address', [

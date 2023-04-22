@@ -17,10 +17,15 @@ class CounterHeadingService
 
     public function createOrUpdate(array $data): CounterHeading
     {
-        return CounterHeading::updateOrCreate(
+        $counter_heading =  CounterHeading::updateOrCreate(
             ['id' => 1],
-            [...$data, 'user_id' => auth()->user()->id]
+            [...$data]
         );
+
+        $counter_heading->user_id = auth()->user()->id;
+        $counter_heading->save();
+
+        return $counter_heading;
     }
 
 }

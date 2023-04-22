@@ -18,10 +18,15 @@ class AboutService
 
     public function createOrUpdate(array $data): About
     {
-        return About::updateOrCreate(
+        $about = About::updateOrCreate(
             ['id' => 1],
-            [...$data, 'user_id' => auth()->user()->id]
+            [...$data]
         );
+
+        $about->user_id = auth()->user()->id;
+        $about->save();
+
+        return $about;
     }
 
     public function saveImage(About $about): About

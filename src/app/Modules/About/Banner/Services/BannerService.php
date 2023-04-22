@@ -18,10 +18,15 @@ class BannerService
 
     public function createOrUpdate(array $data): Banner
     {
-        return Banner::updateOrCreate(
+        $banner = Banner::updateOrCreate(
             ['id' => 1],
-            [...$data, 'user_id' => auth()->user()->id]
+            [...$data]
         );
+
+        $banner->user_id = auth()->user()->id;
+        $banner->save();
+
+        return $banner;
     }
 
     public function saveImage(Banner $banner): Banner

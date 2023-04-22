@@ -17,10 +17,15 @@ class PartnerHeadingService
 
     public function createOrUpdate(array $data): PartnerHeading
     {
-        return PartnerHeading::updateOrCreate(
+        $partner_heading =  PartnerHeading::updateOrCreate(
             ['id' => 1],
-            [...$data, 'user_id' => auth()->user()->id]
+            [...$data]
         );
+
+        $partner_heading->user_id = auth()->user()->id;
+        $partner_heading->save();
+
+        return $partner_heading;
     }
 
 }

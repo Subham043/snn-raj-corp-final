@@ -18,10 +18,15 @@ class MainService
 
     public function createOrUpdate(array $data): Main
     {
-        return Main::updateOrCreate(
+        $main = Main::updateOrCreate(
             ['id' => 1],
-            [...$data, 'user_id' => auth()->user()->id]
+            [...$data]
         );
+
+        $main->user_id = auth()->user()->id;
+        $main->save();
+
+        return $main;
     }
 
     public function saveImage(Main $main): Main

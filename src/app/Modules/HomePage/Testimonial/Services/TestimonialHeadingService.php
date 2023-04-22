@@ -17,10 +17,15 @@ class TestimonialHeadingService
 
     public function createOrUpdate(array $data): TestimonialHeading
     {
-        return TestimonialHeading::updateOrCreate(
+        $testimonial_heading = TestimonialHeading::updateOrCreate(
             ['id' => 1],
-            [...$data, 'user_id' => auth()->user()->id]
+            [...$data]
         );
+
+        $testimonial_heading->user_id = auth()->user()->id;
+        $testimonial_heading->save();
+
+        return $testimonial_heading;
     }
 
 }

@@ -17,10 +17,15 @@ class ManagementHeadingService
 
     public function createOrUpdate(array $data): ManagementHeading
     {
-        return ManagementHeading::updateOrCreate(
+        $management_heading = ManagementHeading::updateOrCreate(
             ['id' => 1],
-            [...$data, 'user_id' => auth()->user()->id]
+            [...$data]
         );
+
+        $management_heading->user_id = auth()->user()->id;
+        $management_heading->save();
+
+        return $management_heading;
     }
 
 }

@@ -215,6 +215,12 @@
                                             </li>
                                         @endcan
 
+                                        @can('view theme settings detail')
+                                            <li class="nav-item">
+                                                <a href="{{route('theme.settings.get')}}" class="nav-link {{strpos(url()->current(), route('theme.settings.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Theme </a>
+                                            </li>
+                                        @endcan
+
                                         @can('update sitemap')
                                             <li class="nav-item">
                                                 <a href="{{route('sitemap.get')}}" class="nav-link {{strpos(url()->current(), route('sitemap.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Sitemap </a>

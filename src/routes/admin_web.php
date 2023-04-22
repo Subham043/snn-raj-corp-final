@@ -60,6 +60,7 @@ use App\Modules\Settings\Controllers\ActivityLog\ActivityLogPaginateController;
 use App\Modules\Settings\Controllers\ErrorLogController;
 use App\Modules\Settings\Controllers\General\GeneralController;
 use App\Modules\Settings\Controllers\SitemapController;
+use App\Modules\Settings\Controllers\Theme\ThemeController;
 use App\Modules\TeamMember\Management\Controllers\ManagementCreateController;
 use App\Modules\TeamMember\Management\Controllers\ManagementDeleteController;
 use App\Modules\TeamMember\Management\Controllers\ManagementHeadingController;
@@ -103,6 +104,8 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('/setting')->group(function () {
         Route::get('/general', [GeneralController::class, 'get', 'as' => 'general.settings.get'])->name('general.settings.get');
         Route::post('/general-post', [GeneralController::class, 'post', 'as' => 'general.settings.post'])->name('general.settings.post');
+        Route::get('/theme', [ThemeController::class, 'get', 'as' => 'theme.settings.get'])->name('theme.settings.get');
+        Route::post('/theme-post', [ThemeController::class, 'post', 'as' => 'theme.settings.post'])->name('theme.settings.post');
         Route::get('/sitemap', [SitemapController::class, 'get', 'as' => 'sitemap.get'])->name('sitemap.get');
         Route::get('/sitemap-generate', [SitemapController::class, 'generate', 'as' => 'sitemap.generate'])->name('sitemap.generate');
     });

@@ -17,10 +17,15 @@ class StaffHeadingService
 
     public function createOrUpdate(array $data): StaffHeading
     {
-        return StaffHeading::updateOrCreate(
+        $staff_heading = StaffHeading::updateOrCreate(
             ['id' => 1],
-            [...$data, 'user_id' => auth()->user()->id]
+            [...$data]
         );
+
+        $staff_heading->user_id = auth()->user()->id;
+        $staff_heading->save();
+
+        return $staff_heading;
     }
 
 }
