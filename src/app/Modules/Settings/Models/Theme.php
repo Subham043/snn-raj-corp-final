@@ -35,6 +35,8 @@ class Theme extends Model
         'updated_at' => 'datetime',
     ];
 
+    protected $appends = ['lines_color_rgb'];
+
     public static function boot()
     {
         parent::boot();
@@ -47,6 +49,19 @@ class Theme extends Model
         self::deleted(function ($model) {
             Cache::forget('theme_settings_main_'.$model->id);
         });
+    }
+
+    protected function linesColorRgb(): Attribute
+    {
+        list($r, $g, $b) = array_map(
+            function ($c) {
+              return hexdec(str_pad($c, 2, $c));
+            },
+            str_split(ltrim($this->lines_color, '#'), strlen($this->lines_color) > 4 ? 2 : 1)
+        );
+        return new Attribute(
+            get: fn () => $r.','.$g.','.$b,
+        );
     }
 
     public function user()

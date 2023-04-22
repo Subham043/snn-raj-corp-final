@@ -39,7 +39,7 @@
 
 
 /* ======= General style ======= */
-:root{
+/* :root{
     --theme-background-color: #1b1b1b;
     --theme-primary-color: #dccc73;
     --theme-overlay-color: #000;
@@ -48,7 +48,7 @@
     --theme-input-lines-color: 255,255,255,0.4;
     --theme-text-color: #999;
     --theme-highlight-text-color: #fff;
-}
+} */
 
 html,
 body {

@@ -7,6 +7,7 @@ use App\Modules\Awards\Services\AwardHeadingService;
 use App\Modules\Awards\Services\AwardService;
 use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\GeneralService;
+use App\Modules\Settings\Services\ThemeService;
 use Illuminate\Http\Request;
 
 class AwardPageController extends Controller
@@ -15,18 +16,21 @@ class AwardPageController extends Controller
     private $awardHeadingService;
     private $seoService;
     private $generalService;
+    private $themeService;
 
     public function __construct(
         AwardService $awardService,
         AwardHeadingService $awardHeadingService,
         SeoService $seoService,
-        GeneralService $generalService
+        GeneralService $generalService,
+        ThemeService $themeService,
     )
     {
         $this->awardService = $awardService;
         $this->awardHeadingService = $awardHeadingService;
         $this->seoService = $seoService;
         $this->generalService = $generalService;
+        $this->themeService = $themeService;
     }
 
     public function get(Request $request){
@@ -34,7 +38,8 @@ class AwardPageController extends Controller
         $awardHeading = $this->awardHeadingService->getById(1);
         $seo = $this->seoService->getBySlugMain('award-page');
         $generalSetting = $this->generalService->getById(1);
-        return view('main.pages.award', compact(['awards', 'seo', 'awardHeading', 'generalSetting']));
+        $themeSetting = $this->themeService->getById(1);
+        return view('main.pages.award', compact(['awards', 'seo', 'awardHeading', 'generalSetting', 'themeSetting']));
     }
 
 }

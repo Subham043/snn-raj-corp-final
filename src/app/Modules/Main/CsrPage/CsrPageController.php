@@ -7,6 +7,7 @@ use App\Modules\Csr\Services\CsrBannerService;
 use App\Modules\Csr\Services\CsrService;
 use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\GeneralService;
+use App\Modules\Settings\Services\ThemeService;
 
 class CsrPageController extends Controller
 {
@@ -14,18 +15,21 @@ class CsrPageController extends Controller
     private $csrService;
     private $seoService;
     private $generalService;
+    private $themeService;
 
     public function __construct(
         CsrBannerService $csrBannerService,
         CsrService $csrService,
         SeoService $seoService,
-        GeneralService $generalService
+        GeneralService $generalService,
+        ThemeService $themeService,
     )
     {
         $this->csrBannerService = $csrBannerService;
         $this->csrService = $csrService;
         $this->seoService = $seoService;
         $this->generalService = $generalService;
+        $this->themeService = $themeService;
     }
 
     public function get(){
@@ -33,7 +37,8 @@ class CsrPageController extends Controller
         $mainContent = $this->csrService->main_all();
         $seo = $this->seoService->getBySlugMain('csr-page');
         $generalSetting = $this->generalService->getById(1);
-        return view('main.pages.csr', compact(['banner', 'mainContent', 'seo', 'generalSetting']));
+        $themeSetting = $this->themeService->getById(1);
+        return view('main.pages.csr', compact(['banner', 'mainContent', 'seo', 'generalSetting', 'themeSetting']));
     }
 
 }

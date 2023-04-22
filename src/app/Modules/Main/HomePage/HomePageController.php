@@ -11,6 +11,7 @@ use App\Modules\HomePage\Testimonial\Services\TestimonialHeadingService;
 use App\Modules\HomePage\Testimonial\Services\TestimonialService;
 use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\GeneralService;
+use App\Modules\Settings\Services\ThemeService;
 
 class HomePageController extends Controller
 {
@@ -22,6 +23,7 @@ class HomePageController extends Controller
     private $counterHeadingService;
     private $testimonialHeadingService;
     private $generalService;
+    private $themeService;
 
     public function __construct(
         BannerService $bannerService,
@@ -31,7 +33,8 @@ class HomePageController extends Controller
         SeoService $seoService,
         CounterHeadingService $counterHeadingService,
         TestimonialHeadingService $testimonialHeadingService,
-        GeneralService $generalService
+        GeneralService $generalService,
+        ThemeService $themeService
     )
     {
         $this->bannerService = $bannerService;
@@ -42,6 +45,7 @@ class HomePageController extends Controller
         $this->counterHeadingService = $counterHeadingService;
         $this->testimonialHeadingService = $testimonialHeadingService;
         $this->generalService = $generalService;
+        $this->themeService = $themeService;
     }
 
     public function get(){
@@ -53,6 +57,7 @@ class HomePageController extends Controller
         $testimonialHeading = $this->testimonialHeadingService->getById(1);
         $seo = $this->seoService->getBySlugMain('home-page');
         $generalSetting = $this->generalService->getById(1);
+        $themeSetting = $this->themeService->getById(1);
         return view('main.pages.index', compact([
             'banners',
             'about',
@@ -61,7 +66,8 @@ class HomePageController extends Controller
             'seo',
             'counterHeading',
             'testimonialHeading',
-            'generalSetting'
+            'generalSetting',
+            'themeSetting',
         ]));
     }
 
