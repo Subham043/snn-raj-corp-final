@@ -22,6 +22,7 @@
                         <div id="customerList">
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
+                                    <a href="{{route('enquiry.contact_form.excel.get')}}" download type="button" class="btn btn-info add-btn" id="create-btn"><i class="ri-file-excel-fill align-bottom me-1"></i> Excel Download</a>
                                 </div>
                                 <div class="col-sm">
                                     @include('admin.includes.search_list', ['link'=>route('enquiry.contact_form.paginate.get'), 'search'=>$search])

@@ -31,6 +31,7 @@ use App\Modules\Dashboard\Controllers\DashboardController;
 use App\Modules\Enquiries\Controllers\EnquiryDeleteController;
 use App\Modules\Enquiries\Controllers\EnquiryPaginateController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormDeleteController;
+use App\Modules\Enquiry\ContactForm\Controllers\ContactFormExcelController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormPaginateController;
 use App\Modules\HomePage\About\Controllers\AboutController;
 use App\Modules\HomePage\Banner\Controllers\BannerCreateController;
@@ -124,6 +125,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('/enquiry')->group(function () {
         Route::prefix('/contact-form')->group(function () {
             Route::get('/', [ContactFormPaginateController::class, 'get', 'as' => 'enquiry.contact_form.paginate.get'])->name('enquiry.contact_form.paginate.get');
+            Route::get('/excel', [ContactFormExcelController::class, 'get', 'as' => 'enquiry.contact_form.excel.get'])->name('enquiry.contact_form.excel.get');
             Route::get('/delete/{id}', [ContactFormDeleteController::class, 'get', 'as' => 'enquiry.contact_form.delete.get'])->name('enquiry.contact_form.delete.get');
 
         });
