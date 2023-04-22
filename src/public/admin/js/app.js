@@ -134,9 +134,9 @@
             }), k()
         }), document.getElementById("topnav-hamburger-icon").addEventListener("click", E);
         var e = sessionStorage.getItem("defaultAttribute"),
-            t = JSON.parse(e),
+            // t = JSON.parse(e),
             e = document.documentElement.clientWidth;
-        "twocolumn" == t["data-layout"] && e < 767 && document.getElementById("two-column-menu").querySelectorAll("li").forEach(function (e) {
+        "twocolumn" == e < 767 && document.getElementById("two-column-menu").querySelectorAll("li").forEach(function (e) {
             e.addEventListener("click", function (e) {
                 document.body.classList.remove("twocolumn-panel")
             })
@@ -325,81 +325,83 @@
         var e;
         "horizontal" !== document.documentElement.getAttribute("data-layout") && (!document.getElementById("navbar-nav") || (e = new SimpleBar(document.getElementById("navbar-nav"))) && e.getContentElement(), !document.getElementsByClassName("twocolumn-iconview")[0] || (e = new SimpleBar(document.getElementsByClassName("twocolumn-iconview")[0])) && e.getContentElement(), clearTimeout(l))
     }
-    sessionStorage.getItem("defaultAttribute") ? ((a = {})["data-layout"] = sessionStorage.getItem("data-layout"), 
-    // a["data-sidebar-size"] = sessionStorage.getItem("data-sidebar-size"), 
-    // a["data-layout-mode"] = sessionStorage.getItem("data-layout-mode"), 
-    // a["data-layout-width"] = sessionStorage.getItem("data-layout-width"), 
-    // a["data-sidebar"] = sessionStorage.getItem("data-sidebar"), 
-    // a["data-layout-position"] = sessionStorage.getItem("data-layout-position"), 
-    // a["data-layout-style"] = sessionStorage.getItem("data-layout-style"), 
-    // a["data-topbar"] = sessionStorage.getItem("data-topbar"), 
-    B(a)) : (e = document.documentElement.attributes, a = {}, 
+    sessionStorage.getItem("defaultAttribute") ? ((a = {})["data-layout"] = sessionStorage.getItem("data-layout"),
+    // a["data-sidebar-size"] = sessionStorage.getItem("data-sidebar-size"),
+    // a["data-layout-mode"] = sessionStorage.getItem("data-layout-mode"),
+    // a["data-layout-width"] = sessionStorage.getItem("data-layout-width"),
+    // a["data-sidebar"] = sessionStorage.getItem("data-sidebar"),
+    // a["data-layout-position"] = sessionStorage.getItem("data-layout-position"),
+    // a["data-layout-style"] = sessionStorage.getItem("data-layout-style"),
+    // a["data-topbar"] = sessionStorage.getItem("data-topbar"),
+    B(a)) : (e = document.documentElement.attributes, a = {},
         e.forEach(function (e) {
             // var t;
             // e && e.nodeName && "undefined" != e.nodeName && (t = e.nodeName, a[t] = e.nodeValue, sessionStorage.setItem(t, e.nodeValue))
-        }), 
-        // sessionStorage.setItem("defaultAttribute", JSON.stringify(a)), 
-        // B(a), 
-        (e = document.querySelector('.btn[data-bs-target="#theme-settings-offcanvas"]')) ), 
-        // b(), 
-        // t = document.getElementById("search-close-options"), o = document.getElementById("search-dropdown"), 
+        }),
+        // sessionStorage.setItem("defaultAttribute", JSON.stringify(a)),
+        // B(a),
+        (e = document.querySelector('.btn[data-bs-target="#theme-settings-offcanvas"]')) ),
+        // b(),
+        // t = document.getElementById("search-close-options"), o = document.getElementById("search-dropdown"),
         // (n = document.getElementById("search-options")).addEventListener("focus", function () {
         //     0 < n.value.length ? (o.classList.add("show"), t.classList.remove("d-none")) : (o.classList.remove("show"), t.classList.add("d-none"))
-        // }), 
+        // }),
         // n.addEventListener("keyup", function (e) {
         //     var a;
         //     0 < n.value.length ? (o.classList.add("show"), t.classList.remove("d-none"), a = n.value.toLowerCase(), document.getElementsByClassName("notify-item").forEach(function (e) {
         //         var t = e.getElementsByTagName("span")[0].innerText.toLowerCase();
         //         e.style.display = t.includes(a) ? "block" : "none"
         //     })) : (o.classList.remove("show"), t.classList.add("d-none"))
-        // }), 
+        // }),
         // t.addEventListener("click", function () {
         //     n.value = "", o.classList.remove("show"), t.classList.add("d-none")
-        // }), 
+        // }),
         // document.body.addEventListener("click", function (e) {
         //     "search-options" !== e.target.getAttribute("id") && (o.classList.remove("show"), t.classList.add("d-none"))
-        // }), 
+        // }),
         (e = document.querySelector('[data-toggle="fullscreen"]')) && e.addEventListener("click", function (e) {
             e.preventDefault(), document.body.classList.toggle("fullscreen-enable"), document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement ? document.cancelFullScreen ? document.cancelFullScreen() : document.mozCancelFullScreen ? document.mozCancelFullScreen() : document.webkitCancelFullScreen && document.webkitCancelFullScreen() : document.documentElement.requestFullscreen ? document.documentElement.requestFullscreen() : document.documentElement.mozRequestFullScreen ? document.documentElement.mozRequestFullScreen() : document.documentElement.webkitRequestFullscreen && document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT)
         }), document.addEventListener("fullscreenchange", T), document.addEventListener("webkitfullscreenchange", T), document.addEventListener("mozfullscreenchange", T), s = document.getElementsByTagName("HTML")[0], (e = document.querySelectorAll(".light-dark-mode")) && e.length && e[0].addEventListener("click", function (e) {
             s.hasAttribute("data-layout-mode") && "dark" == s.getAttribute("data-layout-mode") ? x("data-layout-mode", "light", "layout-mode-light", s) : x("data-layout-mode", "dark", "layout-mode-dark", s)
-        }), v(), I(), f(), 
-        document.getElementsByClassName("dropdown-item-cart") && 
-        (d = document.querySelectorAll(".dropdown-item-cart").length, 
+        }), v(), I(), f(),
+        document.getElementsByClassName("dropdown-item-cart") &&
+        (d = document.querySelectorAll(".dropdown-item-cart").length
         // document.querySelectorAll("#page-topbar .dropdown-menu-cart .remove-item-btn").forEach(function (e) {
         //     // e.addEventListener("click", function (e) {
         //     //     d--, this.closest(".dropdown-item-cart").remove(), document.getElementsByClassName("cartitem-badge").forEach(function (e) {
         //     //         e.innerHTML = d
-        //     //     }), 
-        //     //     q(), 
+        //     //     }),
+        //     //     q(),
         //     //     document.getElementById("empty-cart").style.display = 0 == d ? "block" : "none", document.getElementById("checkout-elem").style.display = 0 == d ? "none" : "block"
         //     // })
-        // }), 
+        // }),
         // document.getElementsByClassName("cartitem-badge").forEach(function (e) {
         //     e.innerHTML = d
-        // }), 
-        // document.getElementById("empty-cart").style.display = "none", 
-        document.getElementById("checkout-elem").style.display = "block", q()), 
+        // }),
+        // document.getElementById("empty-cart").style.display = "none",
+        // document.getElementById("checkout-elem").style.display = "block"
+        // q()
+        ),
         // document.getElementsByClassName("notification-check") && document.querySelectorAll(".notification-check input").forEach(function (e) {
         //     e.addEventListener("click", function (e) {
         //         e.target.closest(".notification-item").classList.toggle("active")
         //     })
-        // }), 
+        // }),
         // [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(function (e) {
         //     return new bootstrap.Tooltip(e)
-        // }), 
+        // }),
         // [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).map(function (e) {
         //     return new bootstrap.Popover(e)
-        // }), 
+        // }),
         setTimeout(function () {
             var e, t, a = document.getElementById("navbar-nav");
             a && (a = a.querySelector(".nav-item .active"), 300 < (e = a ? a.offsetTop : 0) && ((t = document.getElementsByClassName("app-menu") ? document.getElementsByClassName("app-menu")[0] : "") && t.querySelector(".simplebar-content-wrapper") && setTimeout(function () {
                 t.querySelector(".simplebar-content-wrapper").scrollTop = 330 == e ? e + 85 : e
             }, 0)))
-        }, 0), 
+        }, 0),
         // document.getElementById("reset-layout") && document.getElementById("reset-layout").addEventListener("click", function () {
         //     sessionStorage.clear(), window.location.reload()
-        // }), 
+        // }),
         // document.querySelectorAll("[data-toast]").forEach(function (a) {
         //     a.addEventListener("click", function () {
         //         var e = {},
@@ -422,16 +424,16 @@
         //             } : ""
         //         }).showToast()
         //     })
-        // }), 
+        // }),
         // document.querySelectorAll("[data-choices]").forEach(function (e) {
         //     var t = {},
         //         a = e.attributes;
         //     a["data-choices-groups"] && (t.placeholderValue = "This is a placeholder set in the config"), a["data-choices-search-false"] && (t.searchEnabled = !1), a["data-choices-search-true"] && (t.searchEnabled = !0), a["data-choices-removeItem"] && (t.removeItemButton = !0), a["data-choices-sorting-false"] && (t.shouldSort = !1), a["data-choices-sorting-true"] && (t.shouldSort = !0), a["data-choices-multiple-default"], a["data-choices-multiple-groups"], a["data-choices-multiple-remove"] && (t.removeItemButton = !0), a["data-choices-limit"] && (t.maxItemCount = a["data-choices-limit"].value.toString()), a["data-choices-limit"] && (t.maxItemCount = a["data-choices-limit"].value.toString()), a["data-choices-editItem-true"] && (t.maxItemCount = !0), a["data-choices-editItem-false"] && (t.maxItemCount = !1), a["data-choices-text-unique-true"] && (t.duplicateItemsAllowed = !1), a["data-choices-text-disabled-true"] && (t.addItems = !1), a["data-choices-text-disabled-true"] ? new Choices(e, t).disable() : new Choices(e, t)
-        // }), 
+        // }),
         // document.querySelectorAll("[data-provider]").forEach(function (e) {
         //     var t, a, o;
         //     "flatpickr" == e.getAttribute("data-provider") ? (o = {}, (t = e.attributes)["data-date-format"] && (o.dateFormat = t["data-date-format"].value.toString()), t["data-enable-time"] && (o.enableTime = !0, o.dateFormat = t["data-date-format"].value.toString() + " H:i"), t["data-altFormat"] && (o.altInput = !0, o.altFormat = t["data-altFormat"].value.toString()), t["data-minDate"] && (o.minDate = t["data-minDate"].value.toString(), o.dateFormat = t["data-date-format"].value.toString()), t["data-maxDate"] && (o.maxDate = t["data-maxDate"].value.toString(), o.dateFormat = t["data-date-format"].value.toString()), t["data-deafult-date"] && (o.defaultDate = t["data-deafult-date"].value.toString(), o.dateFormat = t["data-date-format"].value.toString()), t["data-multiple-date"] && (o.mode = "multiple", o.dateFormat = t["data-date-format"].value.toString()), t["data-range-date"] && (o.mode = "range", o.dateFormat = t["data-date-format"].value.toString()), t["data-inline-date"] && (o.inline = !0, o.defaultDate = t["data-deafult-date"].value.toString(), o.dateFormat = t["data-date-format"].value.toString()), t["data-disable-date"] && ((a = []).push(t["data-disable-date"].value), o.disable = a.toString().split(",")), flatpickr(e, o)) : "timepickr" == e.getAttribute("data-provider") && (a = {}, (o = e.attributes)["data-time-basic"] && (a.enableTime = !0, a.noCalendar = !0, a.dateFormat = "H:i"), o["data-time-hrs"] && (a.enableTime = !0, a.noCalendar = !0, a.dateFormat = "H:i", a.time_24hr = !0), o["data-min-time"] && (a.enableTime = !0, a.noCalendar = !0, a.dateFormat = "H:i", a.minTime = o["data-min-time"].value.toString()), o["data-max-time"] && (a.enableTime = !0, a.noCalendar = !0, a.dateFormat = "H:i", a.minTime = o["data-max-time"].value.toString()), o["data-default-time"] && (a.enableTime = !0, a.noCalendar = !0, a.dateFormat = "H:i", a.defaultDate = o["data-default-time"].value.toString()), o["data-time-inline"] && (a.enableTime = !0, a.noCalendar = !0, a.defaultDate = o["data-time-inline"].value.toString(), a.inline = !0), flatpickr(e, a))
-        // }), 
+        // }),
         // document.querySelectorAll('.dropdown-menu a[data-bs-toggle="tab"]').forEach(function (e) {
         //     e.addEventListener("click", function (e) {
         //         e.stopPropagation(), bootstrap.Tab.getInstance(e.target).show()
@@ -445,8 +447,8 @@
         //             u(t.getAttribute("data-lang"))
         //         })
         //     })
-        // }(), 
-        g(), 
+        // }(),
+        g(),
         window.addEventListener("resize", function () {
             l && clearTimeout(l), l = setTimeout(C, 2e3)
         })
