@@ -9,6 +9,7 @@ use App\Modules\About\Main\Services\MainService;
 use App\Modules\Partner\Services\PartnerHeadingService;
 use App\Modules\Partner\Services\PartnerService;
 use App\Modules\Seo\Services\SeoService;
+use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
 use App\Modules\Settings\Services\ThemeService;
 use App\Modules\TeamMember\Management\Services\ManagementHeadingService;
@@ -30,6 +31,7 @@ class AboutPageController extends Controller
     private $partnerHeadingService;
     private $generalService;
     private $themeService;
+    private $chatbotService;
 
     public function __construct(
         BannerService $bannerService,
@@ -44,6 +46,7 @@ class AboutPageController extends Controller
         SeoService $seoService,
         GeneralService $generalService,
         ThemeService $themeService,
+        ChatbotService $chatbotService,
     )
     {
         $this->bannerService = $bannerService;
@@ -58,6 +61,7 @@ class AboutPageController extends Controller
         $this->partnerHeadingService = $partnerHeadingService;
         $this->generalService = $generalService;
         $this->themeService = $themeService;
+        $this->chatbotService = $chatbotService;
     }
 
     public function get(){
@@ -73,7 +77,8 @@ class AboutPageController extends Controller
         $seo = $this->seoService->getBySlugMain('about-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        return view('main.pages.about', compact(['banner', 'about', 'additionalContent', 'seo', 'staffs', 'management', 'managementHeading', 'staffHeading', 'partners', 'partnerHeading', 'generalSetting', 'themeSetting']));
+        $chatbotSetting = $this->chatbotService->getById(1);
+        return view('main.pages.about', compact(['banner', 'about', 'additionalContent', 'seo', 'staffs', 'management', 'managementHeading', 'staffHeading', 'partners', 'partnerHeading', 'generalSetting', 'themeSetting', 'chatbotSetting']));
     }
 
 }

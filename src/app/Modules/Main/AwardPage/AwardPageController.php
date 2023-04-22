@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Awards\Services\AwardHeadingService;
 use App\Modules\Awards\Services\AwardService;
 use App\Modules\Seo\Services\SeoService;
+use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
 use App\Modules\Settings\Services\ThemeService;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class AwardPageController extends Controller
     private $seoService;
     private $generalService;
     private $themeService;
+    private $chatbotService;
 
     public function __construct(
         AwardService $awardService,
@@ -24,6 +26,7 @@ class AwardPageController extends Controller
         SeoService $seoService,
         GeneralService $generalService,
         ThemeService $themeService,
+        ChatbotService $chatbotService,
     )
     {
         $this->awardService = $awardService;
@@ -31,6 +34,7 @@ class AwardPageController extends Controller
         $this->seoService = $seoService;
         $this->generalService = $generalService;
         $this->themeService = $themeService;
+        $this->chatbotService = $chatbotService;
     }
 
     public function get(Request $request){
@@ -39,7 +43,8 @@ class AwardPageController extends Controller
         $seo = $this->seoService->getBySlugMain('award-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        return view('main.pages.award', compact(['awards', 'seo', 'awardHeading', 'generalSetting', 'themeSetting']));
+        $chatbotSetting = $this->chatbotService->getById(1);
+        return view('main.pages.award', compact(['awards', 'seo', 'awardHeading', 'generalSetting', 'themeSetting', 'chatbotSetting']));
     }
 
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Enquiry\ContactForm\Requests\ContactFormRequest;
 use App\Modules\Enquiry\ContactForm\Services\ContactFormService;
 use App\Modules\Seo\Services\SeoService;
+use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
 use App\Modules\Settings\Services\ThemeService;
 
@@ -14,18 +15,21 @@ class ContactPageController extends Controller
     private $seoService;
     private $generalService;
     private $themeService;
+    private $chatbotService;
     private $contactFormService;
 
     public function __construct(
         SeoService $seoService,
         GeneralService $generalService,
         ThemeService $themeService,
+        ChatbotService $chatbotService,
         ContactFormService $contactFormService,
     )
     {
         $this->seoService = $seoService;
         $this->generalService = $generalService;
         $this->themeService = $themeService;
+        $this->chatbotService = $chatbotService;
         $this->contactFormService = $contactFormService;
     }
 
@@ -33,7 +37,8 @@ class ContactPageController extends Controller
         $seo = $this->seoService->getBySlugMain('contact-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        return view('main.pages.contact', compact(['seo', 'generalSetting', 'themeSetting']));
+        $chatbotSetting = $this->chatbotService->getById(1);
+        return view('main.pages.contact', compact(['seo', 'generalSetting', 'themeSetting', 'chatbotSetting']));
     }
 
     public function post(ContactFormRequest $request){

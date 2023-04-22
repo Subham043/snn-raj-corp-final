@@ -238,6 +238,12 @@
                                             </li>
                                         @endcan
 
+                                        @can('view chatbot settings detail')
+                                            <li class="nav-item">
+                                                <a href="{{route('chatbot.settings.get')}}" class="nav-link {{strpos(url()->current(), route('chatbot.settings.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Chatbot </a>
+                                            </li>
+                                        @endcan
+
                                         @can('update sitemap')
                                             <li class="nav-item">
                                                 <a href="{{route('sitemap.get')}}" class="nav-link {{strpos(url()->current(), route('sitemap.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Sitemap </a>

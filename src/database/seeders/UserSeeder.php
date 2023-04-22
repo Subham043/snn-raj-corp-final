@@ -34,6 +34,7 @@ class UserSeeder extends Seeder
         Permission::create(['name' => 'update sitemap']);
         Permission::create(['name' => 'view general settings detail']);
         Permission::create(['name' => 'view theme settings detail']);
+        Permission::create(['name' => 'view chatbot settings detail']);
 
         // gets all permissions via Gate::before rule; see AuthServiceProvider
         $admin_role = Role::create(['name' => 'Super-Admin']);

@@ -10,6 +10,7 @@ use App\Modules\HomePage\Banner\Services\BannerService;
 use App\Modules\HomePage\Testimonial\Services\TestimonialHeadingService;
 use App\Modules\HomePage\Testimonial\Services\TestimonialService;
 use App\Modules\Seo\Services\SeoService;
+use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
 use App\Modules\Settings\Services\ThemeService;
 
@@ -24,6 +25,7 @@ class HomePageController extends Controller
     private $testimonialHeadingService;
     private $generalService;
     private $themeService;
+    private $chatbotService;
 
     public function __construct(
         BannerService $bannerService,
@@ -34,7 +36,8 @@ class HomePageController extends Controller
         CounterHeadingService $counterHeadingService,
         TestimonialHeadingService $testimonialHeadingService,
         GeneralService $generalService,
-        ThemeService $themeService
+        ThemeService $themeService,
+        ChatbotService $chatbotService,
     )
     {
         $this->bannerService = $bannerService;
@@ -46,6 +49,7 @@ class HomePageController extends Controller
         $this->testimonialHeadingService = $testimonialHeadingService;
         $this->generalService = $generalService;
         $this->themeService = $themeService;
+        $this->chatbotService = $chatbotService;
     }
 
     public function get(){
@@ -58,6 +62,7 @@ class HomePageController extends Controller
         $seo = $this->seoService->getBySlugMain('home-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
+        $chatbotSetting = $this->chatbotService->getById(1);
         return view('main.pages.index', compact([
             'banners',
             'about',
@@ -68,6 +73,7 @@ class HomePageController extends Controller
             'testimonialHeading',
             'generalSetting',
             'themeSetting',
+            'chatbotSetting',
         ]));
     }
 

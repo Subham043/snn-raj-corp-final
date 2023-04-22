@@ -18,6 +18,7 @@
 <script src="{{ asset('admin/js/pages/iziToast.min.js') }}"></script>
 <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
 
+
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 
     const errorToast = (message) =>{
@@ -144,5 +145,7 @@ validation
 
 
 </script>
+
+{!! empty($chatbotSetting) ? '' : $chatbotSetting->chatbot_script_nonce !!}
 
 @yield('js')

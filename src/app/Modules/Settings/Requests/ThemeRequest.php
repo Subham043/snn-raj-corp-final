@@ -5,7 +5,6 @@ namespace App\Modules\Settings\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
-use Illuminate\Validation\Rule;
 
 
 class ThemeRequest extends FormRequest
