@@ -17,9 +17,9 @@
     <meta name="twitter:label1" content="{{$seo->meta_title}}" />
     <meta name="twitter:data1" content="{{$seo->meta_description}}" />
 
-    <link rel="icon" href="{{ asset('assets/images/favicon.png')}}" sizes="32x32" />
-    <link rel="icon" href="{{ asset('assets/images/favicon.png')}}" sizes="192x192" />
-    <link rel="apple-touch-icon" href="{{ asset('assets/images/favicon.png')}}" />
+    <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="32x32" />
+    <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
+    <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}
@@ -50,13 +50,14 @@
             <div class="row">
                 <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
                     <!-- Contact Info -->
-                    <p>1616 Broadway NY, New York 10001<br>United States of America.</p>
-                    <div class="phone">+1 203-123-0606</div>
-                    <div class="mail mb-3">info@architect.com</div>
+                    <p>{{ empty($generalSetting) ? '' : $generalSetting->address}}</p>
+                    <p class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</p>
+                    <p class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email}}</p>
                     <div class="social mt-2">
-                        <a href="index.html"><i class="ti-twitter"></i></a>
-                        <a href="index.html"><i class="ti-instagram"></i></a>
-                        <a href="index.html"><i class="ti-linkedin"></i></a>
+                        <a href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
+                        <a href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
+                        <a href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
+                        <a href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
                     </div>
                 </div>
                 <!-- form -->
@@ -93,12 +94,12 @@
     @include('main.includes.referal')
 
     <!-- Maps -->
-    <div class="google-maps">
+    {{-- <div class="google-maps">
         <iframe id="gmap_canvas"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13419.032130422971!2d-79.94077173022463!3d32.772154400000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fe7a1ae84ff639%3A0xe5c782f71924a526!2s24%20King%20St%2C%20Charleston%2C%20SC%2029401%2C%20Amerika%20Birle%C5%9Fik%20Devletleri!5e0!3m2!1str!2str!4v1665070628853!5m2!1str!2str"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    </div> --}}
 
 
 @stop

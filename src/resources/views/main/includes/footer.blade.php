@@ -3,28 +3,46 @@
     <div class="top">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-30">
-                    <div class="sub-title border-footer-light">Contact Us</div>
+                <div class="col-md-12 mb-30">
+                    {{-- <div class="sub-title border-footer-light">Contact Us</div> --}}
+                    <div class="duru-logo-wrap footer-logo">
+                        <a href="{{route('home_page.get')}}" class="duru-logo"><img src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a>
+                    </div>
+
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="item">
-                        <h3>New York <span>Office</span></h3>
-                        <p>1616 Broadway NY, New York 10001<br>United States of America.</p>
-                        <p class="phone">+1 203 123 0606</p>
-                        <p class="mail">info@architect.com</p>
+                        <p>{{ empty($generalSetting) ? '' : $generalSetting->address}}</p>
+                        <p class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</p>
+                        <p class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email}}</p>
                         <div class="social mt-2">
-                            <a href="index.html"><i class="ti-twitter"></i></a>
-                            <a href="index.html"><i class="ti-instagram"></i></a>
-                            <a href="index.html"><i class="ti-linkedin"></i></a>
+                            <a href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
+                            <a href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
+                            <a href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
+                            <a href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
                         </div>
                     </div>
+
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="item">
-                        <h3>Dubai <span>Office</span></h3>
-                        <p>Alfattan Marine Towers, P.O. Box 34521<br>Dubai UAE.</p>
-                        <p class="phone">+971 1 333 0606</p>
-                        <p class="mail">dubai@architect.com</p>
+                        <h3><span>Company</span></h3>
+                        <a href="{{route('about_page.get')}}">About Us</a><br/>
+                        <a href="{{route('awards_page.get')}}">Awards</a><br/>
+                        <a href="{{route('csr_page.get')}}">CSR</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="item">
+                        <h3><span>Projects</span></h3>
+                        <a href="{{route('awards_page.get')}}">Ongoing</a><br/>
+                        <a href="{{route('csr_page.get')}}">Completed</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="item">
+                        <h3><span>Get In Touch</span></h3>
+                        <a href="{{route('contact_page.get')}}">Contact Us</a>
                     </div>
                 </div>
             </div>

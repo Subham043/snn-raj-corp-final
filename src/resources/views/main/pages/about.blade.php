@@ -17,9 +17,9 @@
 	<meta name="twitter:label1" content="{{$seo->meta_title}}" />
 	<meta name="twitter:data1" content="{{$seo->meta_description}}" />
 
-    <link rel="icon" href="{{ asset('assets/images/favicon.png')}}" sizes="32x32" />
-    <link rel="icon" href="{{ asset('assets/images/favicon.png')}}" sizes="192x192" />
-    <link rel="apple-touch-icon" href="{{ asset('assets/images/favicon.png')}}" />
+    <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="32x32" />
+    <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
+    <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}

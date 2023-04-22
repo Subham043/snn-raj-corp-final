@@ -142,13 +142,13 @@
         if (st > 150) {
             if (!navbar.hasClass('scrolled')) {
                 navbar.addClass('scrolled');
-                logo.attr('src', 'assets/images/logo.png');
+                logo.attr('src', logo.attr("data-img"));
             }
         }
         if (st < 150) {
             if (navbar.hasClass('scrolled')) {
                 navbar.removeClass('scrolled sleep')
-                logo.attr('src', 'assets/images/logo.png');
+                logo.attr('src', logo.attr("data-img"));
             }
         }
         if (st > 350) {

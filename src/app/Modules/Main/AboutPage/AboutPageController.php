@@ -9,6 +9,7 @@ use App\Modules\About\Main\Services\MainService;
 use App\Modules\Partner\Services\PartnerHeadingService;
 use App\Modules\Partner\Services\PartnerService;
 use App\Modules\Seo\Services\SeoService;
+use App\Modules\Settings\Services\GeneralService;
 use App\Modules\TeamMember\Management\Services\ManagementHeadingService;
 use App\Modules\TeamMember\Management\Services\ManagementService;
 use App\Modules\TeamMember\Staff\Services\StaffHeadingService;
@@ -26,6 +27,7 @@ class AboutPageController extends Controller
     private $staffHeadingService;
     private $partnerService;
     private $partnerHeadingService;
+    private $generalService;
 
     public function __construct(
         BannerService $bannerService,
@@ -37,7 +39,8 @@ class AboutPageController extends Controller
         StaffHeadingService $staffHeadingService,
         PartnerService $partnerService,
         PartnerHeadingService $partnerHeadingService,
-        SeoService $seoService
+        SeoService $seoService,
+        GeneralService $generalService
     )
     {
         $this->bannerService = $bannerService;
@@ -50,6 +53,7 @@ class AboutPageController extends Controller
         $this->staffHeadingService = $staffHeadingService;
         $this->partnerService = $partnerService;
         $this->partnerHeadingService = $partnerHeadingService;
+        $this->generalService = $generalService;
     }
 
     public function get(){
@@ -63,7 +67,8 @@ class AboutPageController extends Controller
         $partners = $this->partnerService->main_all();
         $partnerHeading = $this->partnerHeadingService->getById(1);
         $seo = $this->seoService->getBySlugMain('about-page');
-        return view('main.pages.about', compact(['banner', 'about', 'additionalContent', 'seo', 'staffs', 'management', 'managementHeading', 'staffHeading', 'partners', 'partnerHeading']));
+        $generalSetting = $this->generalService->getById(1);
+        return view('main.pages.about', compact(['banner', 'about', 'additionalContent', 'seo', 'staffs', 'management', 'managementHeading', 'staffHeading', 'partners', 'partnerHeading', 'generalSetting']));
     }
 
 }
