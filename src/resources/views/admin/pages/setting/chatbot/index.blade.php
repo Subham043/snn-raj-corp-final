@@ -1,5 +1,14 @@
 @extends('admin.layouts.dashboard')
 
+@section('css')
+    <style nonce="{{ csp_nonce() }}">
+        .img-prev{
+            height: 500px;
+            object-fit: contain
+        }
+    </style>
+@stop
+
 @section('content')
 
 <div class="page-content">
@@ -22,6 +31,32 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
+                                    <div class="col-xxl-12 col-md-12">
+                                        <p>
+                                            <code>Note:</code> Right now we support only <b>Artibot</b>
+                                        </p>
+                                        <p>
+                                            <code>Steps to integrate <b>ARTIBOT</b>:</code>
+                                        </p>
+                                        <ol>
+                                            <li>Visit <a href="https://www.artibot.ai" target="_blank" rel="noopener noreferrer"><b>artibot</b></a> website</li><br/>
+                                            <li>Register yourself</li><br/>
+                                            <li>Create a chat using the available templates</li><br/>
+                                            <li>Once you are ready with your chat template, click publish and copy the chatbot snippet from Embed Code in <a href="https://www.artibot.ai" target="_blank" rel="noopener noreferrer"><b>artibot</b></a>
+                                                <br/>
+                                                <br/>
+                                                <b>
+                                                    <i>Sample Chatbot Snippet from </i> <a href="https://www.artibot.ai" target="_blank" rel="noopener noreferrer"><b>artibot</b></a> : <br/>
+                                                    <br/>
+                                                    <img src="{{asset('admin/images/chatbot_snippet.png')}}" alt="" class="img-prev">
+                                                </b>
+                                                <br/>
+                                                <br/>
+                                            </li>
+                                            <li>Paste the snippet in the textbox given below and click update!</li><br/>
+                                            <li>Your chatbot will successfully be integrated into the main website.</li>
+                                        </ol>
+                                    </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.textarea', ['key'=>'chatbot_script', 'label'=>'Chatbot Script', 'value'=>!empty($data) ? (old('chatbot_script') ? old('chatbot_script') : $data->chatbot_script) : old('chatbot_script')])
                                     </div>
