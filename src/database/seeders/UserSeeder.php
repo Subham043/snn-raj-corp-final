@@ -25,6 +25,8 @@ class UserSeeder extends Seeder
         Permission::create(['name' => 'delete users']);
         Permission::create(['name' => 'create users']);
         Permission::create(['name' => 'list users']);
+        Permission::create(['name' => 'delete enquiries']);
+        Permission::create(['name' => 'list enquiries']);
         Permission::create(['name' => 'view application error logs']);
         Permission::create(['name' => 'view application analytics on dashboard']);
         Permission::create(['name' => 'list activity logs']);

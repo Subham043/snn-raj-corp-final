@@ -40,6 +40,23 @@
                                 </a>
                             </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'enquiry') !== false ? 'active' : ''}}" href="#sidebarDashboards7" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'enquiry') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards7">
+                                    <i class="ri-survey-line"></i> <span data-key="t-dashboards">Enquiries</span>
+                                </a>
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'enquiry') !== false ? 'show' : ''}}" id="sidebarDashboards7">
+                                    <ul class="nav nav-sm flex-column">
+                                        @can('list enquiries')
+                                            <li class="nav-item">
+                                                <a href="{{route('enquiry.contact_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.contact_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Contact Form </a>
+                                            </li>
+                                        @endcan
+
+                                    </ul>
+                                </div>
+                            </li>
+
                             @can('list roles')
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('role.paginate.get')) !== false ? 'active' : ''}}" href="{{route('role.paginate.get')}}">

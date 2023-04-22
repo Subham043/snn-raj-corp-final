@@ -227,7 +227,7 @@
     <!-- Testiominals -->
     @if(count($testimonials)>0)
     <section class="testimonials">
-        <div class="background bg-img bg-fixed section-padding" data-background="{{ asset('assets/images/slider/a.jpg')}}" data-overlay-dark="6">
+        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
             <div class="container">
                 <div class="row">
                     @if($testimonialHeading)

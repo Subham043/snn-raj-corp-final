@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;1,300;1,400&amp;family=Oswald:wght@300;400&amp;display=swap">
     <link rel=stylesheet href="{{ asset('assets/css/bootstrap.min.css')}}">
+    <link href="{{ asset('admin/css/iziToast.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel=stylesheet href="{{ asset('assets/css/animate.css')}}">
     <link rel=stylesheet href="{{ asset('assets/css/themify-icons.css')}}">
     <link rel=stylesheet href="{{ asset('assets/css/owl.carousel.min.css')}}">

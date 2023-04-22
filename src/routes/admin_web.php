@@ -30,6 +30,8 @@ use App\Modules\Csr\Controllers\CsrUpdateController;
 use App\Modules\Dashboard\Controllers\DashboardController;
 use App\Modules\Enquiries\Controllers\EnquiryDeleteController;
 use App\Modules\Enquiries\Controllers\EnquiryPaginateController;
+use App\Modules\Enquiry\ContactForm\Controllers\ContactFormDeleteController;
+use App\Modules\Enquiry\ContactForm\Controllers\ContactFormPaginateController;
 use App\Modules\HomePage\About\Controllers\AboutController;
 use App\Modules\HomePage\Banner\Controllers\BannerCreateController;
 use App\Modules\HomePage\Banner\Controllers\BannerDeleteController;
@@ -115,6 +117,14 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('/activity')->group(function () {
             Route::get('/', [ActivityLogPaginateController::class, 'get', 'as' => 'activity_log.paginate.get'])->name('activity_log.paginate.get');
             Route::get('/{id}', [ActivityLogDetailController::class, 'get', 'as' => 'activity_log.detail.get'])->name('activity_log.detail.get');
+
+        });
+    });
+
+    Route::prefix('/enquiry')->group(function () {
+        Route::prefix('/contact-form')->group(function () {
+            Route::get('/', [ContactFormPaginateController::class, 'get', 'as' => 'enquiry.contact_form.paginate.get'])->name('enquiry.contact_form.paginate.get');
+            Route::get('/delete/{id}', [ContactFormDeleteController::class, 'get', 'as' => 'enquiry.contact_form.delete.get'])->name('enquiry.contact_form.delete.get');
 
         });
     });

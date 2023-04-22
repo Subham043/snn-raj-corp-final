@@ -62,27 +62,26 @@
                 </div>
                 <!-- form -->
                 <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
-                    <form method="post" class="contact__form"
-                        action="https://duruthemes.com/demo/html/archsan/dark/mail.php">
+                    <form method="post" class="contact__form" id="contactForm">
                         <!-- Form elements -->
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <input name="name" type="text" placeholder="Your Name *" required>
+                                <input class="line-gray" name="name" id="name" type="text" placeholder="Your Name *" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input name="email" type="email" placeholder="Your Email *" required>
+                                <input class="line-gray" name="email" id="email" type="email" placeholder="Your Email *" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input name="phone" type="text" placeholder="Your Number *" required>
+                                <input class="line-gray" name="phone" id="phone" type="text" placeholder="Your Number *" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input name="subject" type="text" placeholder="Subject *" required>
+                                <input class="line-gray" name="subject" id="subject" type="text" placeholder="Subject *" required>
                             </div>
                             <div class="col-md-12 form-group">
-                                <textarea name="message" id="message" cols="30" rows="4" placeholder="Message *" required></textarea>
+                                <textarea class="line-gray" name="message" id="message" cols="30" rows="4" placeholder="Message *" required></textarea>
                             </div>
                             <div class="col-md-12 mt-2">
-                                <input name="submit" type="submit" value="Send Message">
+                                <input name="submit" id="submitBtn" type="submit" value="Send Message">
                             </div>
                         </div>
                     </form>
