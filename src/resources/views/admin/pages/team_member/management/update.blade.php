@@ -16,7 +16,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
+        @can('list team member managements')
         @include('admin.includes.breadcrumb', ['page'=>'Managements', 'page_link'=>route('team_member.management.paginate.get'), 'list'=>['Update']])
         @endcan
         <!-- end page title -->

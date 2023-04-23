@@ -6,7 +6,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
+        @can('list counters')
         @include('admin.includes.breadcrumb', ['page'=>'Counter', 'page_link'=>route('counter.paginate.get'), 'list'=>['Create']])
         @endcan
         <!-- end page title -->

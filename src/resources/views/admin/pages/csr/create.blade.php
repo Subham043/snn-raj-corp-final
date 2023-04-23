@@ -16,7 +16,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
+        @can('list csr content')
         @include('admin.includes.breadcrumb', ['page'=>'Csr', 'page_link'=>route('csr.paginate.get'), 'list'=>['Create']])
         @endcan
         <!-- end page title -->

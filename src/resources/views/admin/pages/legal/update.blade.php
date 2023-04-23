@@ -16,7 +16,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
+        @can('list legal pages')
         @include('admin.includes.breadcrumb', ['page'=>'Legal Pages', 'page_link'=>route('legal.paginate.get'), 'list'=>['Update']])
         @endcan
         <!-- end page title -->

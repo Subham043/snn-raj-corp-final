@@ -16,7 +16,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
+        @can('list projects')
         @include('admin.includes.breadcrumb', ['page'=>'Project', 'page_link'=>route('project.paginate.get'), 'list'=>['Create']])
         @endcan
         <!-- end page title -->

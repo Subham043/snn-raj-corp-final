@@ -6,7 +6,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
+        @can('list awards')
         @include('admin.includes.breadcrumb', ['page'=>'Awards', 'page_link'=>route('award.paginate.get'), 'list'=>['Update']])
         @endcan
         <!-- end page title -->

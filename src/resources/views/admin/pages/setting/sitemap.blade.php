@@ -6,9 +6,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
-        @include('admin.includes.breadcrumb', ['page'=>'Awards', 'page_link'=>route('award.paginate.get'), 'list'=>['Update']])
-        @endcan
+        @include('admin.includes.breadcrumb', ['page'=>'Sitemap', 'page_link'=>route('sitemap.get'), 'list'=>['Update']])
         <!-- end page title -->
 
         <div class="row" id="image-container">

@@ -6,9 +6,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
         @include('admin.includes.breadcrumb', ['page'=>'General Settings', 'page_link'=>route('general.settings.get'), 'list'=>['Update']])
-        @endcan
         <!-- end page title -->
 
         <div class="row" id="image-container">

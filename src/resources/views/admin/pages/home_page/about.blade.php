@@ -16,9 +16,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
         @include('admin.includes.breadcrumb', ['page'=>'About', 'page_link'=>route('home_page.about.get'), 'list'=>['Update']])
-        @endcan
         <!-- end page title -->
 
         <div class="row" id="image-container">

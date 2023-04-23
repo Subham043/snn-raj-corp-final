@@ -16,7 +16,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
+        @can('list about additional content')
         @include('admin.includes.breadcrumb', ['page'=>'Additional Content', 'page_link'=>route('about.additional_content.paginate.get'), 'list'=>['Update']])
         @endcan
         <!-- end page title -->

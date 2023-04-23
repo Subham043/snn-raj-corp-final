@@ -6,7 +6,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
+        @can('list pages seo')
         @include('admin.includes.breadcrumb', ['page'=>'Seo', 'page_link'=>route('seo.paginate.get'), 'list'=>['Update']])
         @endcan
         <!-- end page title -->

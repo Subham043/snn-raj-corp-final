@@ -6,7 +6,7 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list users')
+        @can('list team member staffs')
         @include('admin.includes.breadcrumb', ['page'=>'Staff', 'page_link'=>route('team_member.staff.paginate.get'), 'list'=>['Update']])
         @endcan
         <!-- end page title -->
