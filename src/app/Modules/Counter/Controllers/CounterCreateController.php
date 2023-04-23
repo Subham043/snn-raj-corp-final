@@ -25,7 +25,7 @@ class CounterCreateController extends Controller
         try {
             //code...
             $this->counterService->create(
-                $request->except('image')
+                $request->validated()
             );
             return response()->json(["message" => "Counter created successfully."], 201);
         } catch (\Throwable $th) {

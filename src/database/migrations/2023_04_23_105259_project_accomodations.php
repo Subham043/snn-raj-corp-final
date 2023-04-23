@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('area', 500)->nullable();
             $table->boolean('is_draft')->default(0);
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->foreignId('project_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('project_id')->nullable()->constrained('projects')->nullOnDelete();
             $table->timestamps();
             $table->index(['id', 'created_at']);
         });

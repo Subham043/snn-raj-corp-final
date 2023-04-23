@@ -2,7 +2,6 @@
 
 namespace App\Modules\Counter\Services;
 
-use App\Http\Services\FileService;
 use App\Modules\Counter\Models\Counter;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;

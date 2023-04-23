@@ -52,6 +52,10 @@ use App\Modules\Partner\Controllers\PartnerDeleteController;
 use App\Modules\Partner\Controllers\PartnerHeadingController;
 use App\Modules\Partner\Controllers\PartnerPaginateController;
 use App\Modules\Partner\Controllers\PartnerUpdateController;
+use App\Modules\Project\Accomodations\Controllers\AccomodationCreateController;
+use App\Modules\Project\Accomodations\Controllers\AccomodationDeleteController;
+use App\Modules\Project\Accomodations\Controllers\AccomodationPaginateController;
+use App\Modules\Project\Accomodations\Controllers\AccomodationUpdateController;
 use App\Modules\Project\Projects\Controllers\ProjectCreateController;
 use App\Modules\Project\Projects\Controllers\ProjectDeleteController;
 use App\Modules\Project\Projects\Controllers\ProjectPaginateController;
@@ -209,6 +213,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [ProjectUpdateController::class, 'get', 'as' => 'project.update.get'])->name('project.update.get');
         Route::post('/update/{id}', [ProjectUpdateController::class, 'post', 'as' => 'project.update.post'])->name('project.update.post');
         Route::get('/delete/{id}', [ProjectDeleteController::class, 'get', 'as' => 'project.delete.get'])->name('project.delete.get');
+
+        Route::prefix('/{project_id}/accomodation')->group(function () {
+            Route::get('/', [AccomodationPaginateController::class, 'get', 'as' => 'project.accomodation.paginate.get'])->name('project.accomodation.paginate.get');
+            Route::get('/create', [AccomodationCreateController::class, 'get', 'as' => 'project.accomodation.create.get'])->name('project.accomodation.create.get');
+            Route::post('/create', [AccomodationCreateController::class, 'post', 'as' => 'project.accomodation.create.post'])->name('project.accomodation.create.post');
+            Route::get('/update/{id}', [AccomodationUpdateController::class, 'get', 'as' => 'project.accomodation.update.get'])->name('project.accomodation.update.get');
+            Route::post('/update/{id}', [AccomodationUpdateController::class, 'post', 'as' => 'project.accomodation.update.post'])->name('project.accomodation.update.post');
+            Route::get('/delete/{id}', [AccomodationDeleteController::class, 'get', 'as' => 'project.accomodation.delete.get'])->name('project.accomodation.delete.get');
+        });
+
     });
 
     Route::prefix('/legal-pages')->group(function () {

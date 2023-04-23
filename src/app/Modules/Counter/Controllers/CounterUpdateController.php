@@ -26,7 +26,7 @@ class CounterUpdateController extends Controller
         try {
             //code...
             $this->counterService->update(
-                $request->except('image'),
+                $request->validated(),
                 $counter
             );
             return response()->json(["message" => "Counter updated successfully."], 201);

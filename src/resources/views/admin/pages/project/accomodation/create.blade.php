@@ -6,28 +6,28 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @can('list counters')
-        @include('admin.includes.breadcrumb', ['page'=>'Counter', 'page_link'=>route('counter.paginate.get'), 'list'=>['Create']])
+        @can('list projects')
+        @include('admin.includes.breadcrumb', ['page'=>'Accomodation', 'page_link'=>route('project.accomodation.paginate.get', $project_id), 'list'=>['Create']])
         @endcan
         <!-- end page title -->
 
         <div class="row">
-            @include('admin.includes.back_button', ['link'=>route('counter.paginate.get')])
+            @include('admin.includes.back_button', ['link'=>route('project.accomodation.paginate.get', $project_id)])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('counter.create.post')}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('project.accomodation.create.post', $project_id)}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Counter Detail</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Accomodation Detail</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>old('title')])
+                                        @include('admin.includes.input', ['key'=>'room', 'label'=>'Room', 'value'=>old('room')])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'counter', 'label'=>'Counter', 'value'=>old('counter')])
+                                        @include('admin.includes.input', ['key'=>'area', 'label'=>'Area', 'value'=>old('area')])
                                     </div>
 
                                     <div class="col-lg-12 col-md-12">
@@ -35,7 +35,7 @@
                                             <div>
                                                 <div class="form-check form-switch form-check-right mb-2">
                                                     <input class="form-check-input" type="checkbox" role="switch" id="is_draft" name="is_draft" checked>
-                                                    <label class="form-check-label" for="is_draft">Counter Status</label>
+                                                    <label class="form-check-label" for="is_draft">Accomodation Status</label>
                                                 </div>
                                             </div>
 
@@ -78,21 +78,21 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
-  .addField('#title', [
+  .addField('#room', [
     {
       rule: 'required',
-      errorMessage: 'Title is required',
+      errorMessage: 'Room is required',
     },
     {
         rule: 'customRegexp',
         value: COMMON_REGEX,
-        errorMessage: 'Title is invalid',
+        errorMessage: 'Room is invalid',
     },
   ])
-  .addField('#counter', [
+  .addField('#area', [
     {
       rule: 'required',
-      errorMessage: 'Counter is required',
+      errorMessage: 'Area is required',
     },
   ])
   .onSuccess(async (event) => {
@@ -102,18 +102,18 @@ validation
     try {
         var formData = new FormData();
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
-        formData.append('counter',document.getElementById('counter').value)
-        formData.append('title',document.getElementById('title').value)
+        formData.append('area',document.getElementById('area').value)
+        formData.append('room',document.getElementById('room').value)
 
-        const response = await axios.post('{{route('counter.create.post')}}', formData)
+        const response = await axios.post('{{route('project.accomodation.create.post', $project_id)}}', formData)
         successToast(response.data.message)
         event.target.reset();
     }catch (error){
-        if(error?.response?.data?.errors?.title){
-            validation.showErrors({'#title': error?.response?.data?.errors?.title[0]})
+        if(error?.response?.data?.errors?.room){
+            validation.showErrors({'#room': error?.response?.data?.errors?.room[0]})
         }
-        if(error?.response?.data?.errors?.counter){
-            validation.showErrors({'#counter': error?.response?.data?.errors?.counter[0]})
+        if(error?.response?.data?.errors?.area){
+            validation.showErrors({'#area': error?.response?.data?.errors?.area[0]})
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)
