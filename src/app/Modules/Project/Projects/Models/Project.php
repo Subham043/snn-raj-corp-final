@@ -1,0 +1,143 @@
+<?php
+
+namespace App\Modules\Project\Projects\Models;
+
+use App\Modules\Authentication\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Cache;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
+class Project extends Model
+{
+    use HasFactory, LogsActivity;
+
+    protected $table = 'projects';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'slug',
+        'location',
+        'floor',
+        'acre',
+        'tower',
+        'rera',
+        'brief_description',
+        'description',
+        'description_unfiltered',
+        'address',
+        'map_location_link',
+        'brochure',
+        'is_draft',
+        'is_completed',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+        'meta_header_script',
+        'meta_footer_script',
+        'meta_header_no_script',
+        'meta_footer_no_script',
+    ];
+
+    protected $casts = [
+        'is_draft' => 'boolean',
+        'is_completed' => 'boolean',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
+    public $brochure_path = 'projects';
+
+    protected $appends = ['brochure_link', 'meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce'];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::created(function ($model) {
+            Cache::forget('project_'.$model->slug);
+        });
+        self::updated(function ($model) {
+            Cache::forget('project_'.$model->slug);
+        });
+        self::deleted(function ($model) {
+            Cache::forget('project_'.$model->slug);
+        });
+    }
+
+    protected function brochure(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => 'storage/'.$this->brochure_path.'/'.$value,
+        );
+    }
+
+    protected function brochureLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset($this->brochure),
+        );
+    }
+
+    protected function slug(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => str()->slug($value),
+        );
+    }
+
+    protected function metaHeaderScriptNonce(): Attribute
+    {
+        return new Attribute(
+            get: fn () => str_replace("<script","<script nonce='".csp_nonce()."'",$this->meta_header_script),
+        );
+    }
+
+    protected function metaHeaderNoScriptNonce(): Attribute
+    {
+        return new Attribute(
+            get: fn () => str_replace("<noscript","<noscript nonce='".csp_nonce()."'",$this->meta_header_no_script),
+        );
+    }
+
+    protected function metaFooterScriptNonce(): Attribute
+    {
+        return new Attribute(
+            get: fn () => str_replace("<script","<script nonce='".csp_nonce()."'",$this->meta_footer_script),
+        );
+    }
+
+    protected function metaFooterNoScriptNonce(): Attribute
+    {
+        return new Attribute(
+            get: fn () => str_replace("<noscript","<noscript nonce='".csp_nonce()."'",$this->meta_footer_no_script),
+        );
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->useLogName('projects')
+        ->setDescriptionForEvent(
+                function(string $eventName){
+                    $desc = "Project with name ".$this->name." has been {$eventName}";
+                    $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
+                    return $desc;
+                }
+            )
+        ->logFillable()
+        ->logOnlyDirty();
+        // Chain fluent methods for configuration options
+    }
+}

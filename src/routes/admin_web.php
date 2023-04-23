@@ -52,6 +52,10 @@ use App\Modules\Partner\Controllers\PartnerDeleteController;
 use App\Modules\Partner\Controllers\PartnerHeadingController;
 use App\Modules\Partner\Controllers\PartnerPaginateController;
 use App\Modules\Partner\Controllers\PartnerUpdateController;
+use App\Modules\Project\Projects\Controllers\ProjectCreateController;
+use App\Modules\Project\Projects\Controllers\ProjectDeleteController;
+use App\Modules\Project\Projects\Controllers\ProjectPaginateController;
+use App\Modules\Project\Projects\Controllers\ProjectUpdateController;
 use App\Modules\Role\Controllers\RoleCreateController;
 use App\Modules\Role\Controllers\RoleDeleteController;
 use App\Modules\Role\Controllers\RolePaginateController;
@@ -196,6 +200,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [CsrDeleteController::class, 'get', 'as' => 'csr.delete.get'])->name('csr.delete.get');
         });
 
+    });
+
+    Route::prefix('/project')->group(function () {
+        Route::get('/', [ProjectPaginateController::class, 'get', 'as' => 'project.paginate.get'])->name('project.paginate.get');
+        Route::get('/create', [ProjectCreateController::class, 'get', 'as' => 'project.create.get'])->name('project.create.get');
+        Route::post('/create', [ProjectCreateController::class, 'post', 'as' => 'project.create.post'])->name('project.create.post');
+        Route::get('/update/{id}', [ProjectUpdateController::class, 'get', 'as' => 'project.update.get'])->name('project.update.get');
+        Route::post('/update/{id}', [ProjectUpdateController::class, 'post', 'as' => 'project.update.post'])->name('project.update.post');
+        Route::get('/delete/{id}', [ProjectDeleteController::class, 'get', 'as' => 'project.delete.get'])->name('project.delete.get');
     });
 
     Route::prefix('/legal-pages')->group(function () {

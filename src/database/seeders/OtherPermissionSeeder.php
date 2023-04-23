@@ -93,6 +93,12 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'edit pages seo']);
         Permission::create(['name' => 'list pages seo']);
 
+        //permission for projects
+        Permission::create(['name' => 'edit projects']);
+        Permission::create(['name' => 'delete projects']);
+        Permission::create(['name' => 'create projects']);
+        Permission::create(['name' => 'list projects']);
+
 
     }
 }

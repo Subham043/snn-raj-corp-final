@@ -97,6 +97,14 @@
                             </li>
                             @endcan
 
+                            @can('list projects')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('project.paginate.get')) !== false ? 'active' : ''}}" href="{{route('project.paginate.get')}}">
+                                    <i class="ri-building-line"></i> <span data-key="t-widgets">Projects</span>
+                                </a>
+                            </li>
+                            @endcan
+
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'team-member') !== false ? 'active' : ''}}" href="#sidebarDashboards3" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'team-member') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards3">
