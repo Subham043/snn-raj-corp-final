@@ -3,7 +3,6 @@
 namespace App\Modules\Project\Accomodations\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Project\Accomodations\Services\AccomodationHeadingService;
 use App\Modules\Project\Accomodations\Services\AccomodationService;
 use App\Modules\Project\Projects\Services\ProjectService;
 use Illuminate\Http\Request;

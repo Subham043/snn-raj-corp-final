@@ -56,6 +56,10 @@ use App\Modules\Project\Accomodations\Controllers\AccomodationCreateController;
 use App\Modules\Project\Accomodations\Controllers\AccomodationDeleteController;
 use App\Modules\Project\Accomodations\Controllers\AccomodationPaginateController;
 use App\Modules\Project\Accomodations\Controllers\AccomodationUpdateController;
+use App\Modules\Project\Banners\Controllers\BannerCreateController as ProjectBannerCreateController;
+use App\Modules\Project\Banners\Controllers\BannerDeleteController as ProjectBannerDeleteController;
+use App\Modules\Project\Banners\Controllers\BannerPaginateController as ProjectBannerPaginateController;
+use App\Modules\Project\Banners\Controllers\BannerUpdateController as ProjectBannerUpdateController;
 use App\Modules\Project\Projects\Controllers\ProjectCreateController;
 use App\Modules\Project\Projects\Controllers\ProjectDeleteController;
 use App\Modules\Project\Projects\Controllers\ProjectPaginateController;
@@ -221,6 +225,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [AccomodationUpdateController::class, 'get', 'as' => 'project.accomodation.update.get'])->name('project.accomodation.update.get');
             Route::post('/update/{id}', [AccomodationUpdateController::class, 'post', 'as' => 'project.accomodation.update.post'])->name('project.accomodation.update.post');
             Route::get('/delete/{id}', [AccomodationDeleteController::class, 'get', 'as' => 'project.accomodation.delete.get'])->name('project.accomodation.delete.get');
+        });
+
+        Route::prefix('/{project_id}/banner')->group(function () {
+            Route::get('/', [ProjectBannerPaginateController::class, 'get', 'as' => 'project.banner.paginate.get'])->name('project.banner.paginate.get');
+            Route::get('/create', [ProjectBannerCreateController::class, 'get', 'as' => 'project.banner.create.get'])->name('project.banner.create.get');
+            Route::post('/create', [ProjectBannerCreateController::class, 'post', 'as' => 'project.banner.create.post'])->name('project.banner.create.post');
+            Route::get('/update/{id}', [ProjectBannerUpdateController::class, 'get', 'as' => 'project.banner.update.get'])->name('project.banner.update.get');
+            Route::post('/update/{id}', [ProjectBannerUpdateController::class, 'post', 'as' => 'project.banner.update.post'])->name('project.banner.update.post');
+            Route::get('/delete/{id}', [ProjectBannerDeleteController::class, 'get', 'as' => 'project.banner.delete.get'])->name('project.banner.delete.get');
         });
 
     });
