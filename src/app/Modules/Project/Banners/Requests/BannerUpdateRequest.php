@@ -2,9 +2,6 @@
 
 namespace App\Modules\Project\Banners\Requests;
 
-use Illuminate\Support\Facades\Auth;
-use Stevebauman\Purify\Facades\Purify;
-
 
 class BannerUpdateRequest extends BannerCreateRequest
 {

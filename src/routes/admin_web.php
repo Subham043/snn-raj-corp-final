@@ -64,6 +64,10 @@ use App\Modules\Project\GalleryImages\Controllers\GalleryImageCreateController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImageDeleteController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImagePaginateController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImageUpdateController;
+use App\Modules\Project\Plans\Controllers\PlanCreateController;
+use App\Modules\Project\Plans\Controllers\PlanDeleteController;
+use App\Modules\Project\Plans\Controllers\PlanPaginateController;
+use App\Modules\Project\Plans\Controllers\PlanUpdateController;
 use App\Modules\Project\Projects\Controllers\ProjectCreateController;
 use App\Modules\Project\Projects\Controllers\ProjectDeleteController;
 use App\Modules\Project\Projects\Controllers\ProjectPaginateController;
@@ -238,6 +242,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [ProjectBannerUpdateController::class, 'get', 'as' => 'project.banner.update.get'])->name('project.banner.update.get');
             Route::post('/update/{id}', [ProjectBannerUpdateController::class, 'post', 'as' => 'project.banner.update.post'])->name('project.banner.update.post');
             Route::get('/delete/{id}', [ProjectBannerDeleteController::class, 'get', 'as' => 'project.banner.delete.get'])->name('project.banner.delete.get');
+        });
+
+        Route::prefix('/{project_id}/plan')->group(function () {
+            Route::get('/', [PlanPaginateController::class, 'get', 'as' => 'project.plan.paginate.get'])->name('project.plan.paginate.get');
+            Route::get('/create', [PlanCreateController::class, 'get', 'as' => 'project.plan.create.get'])->name('project.plan.create.get');
+            Route::post('/create', [PlanCreateController::class, 'post', 'as' => 'project.plan.create.post'])->name('project.plan.create.post');
+            Route::get('/update/{id}', [PlanUpdateController::class, 'get', 'as' => 'project.plan.update.get'])->name('project.plan.update.get');
+            Route::post('/update/{id}', [PlanUpdateController::class, 'post', 'as' => 'project.plan.update.post'])->name('project.plan.update.post');
+            Route::get('/delete/{id}', [PlanDeleteController::class, 'get', 'as' => 'project.plan.delete.get'])->name('project.plan.delete.get');
         });
 
         Route::prefix('/{project_id}/gallery-image')->group(function () {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Project\GalleryImages\Requests;
+namespace App\Modules\Project\Plans\Requests;
 
 
-class GalleryImageUpdateRequest extends GalleryImageCreateRequest
+class PlanUpdateRequest extends PlanCreateRequest
 {
 
     /**
