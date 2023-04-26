@@ -93,6 +93,10 @@
                                                         <a href="{{route('project.gallery_image.paginate.get', $item->id)}}" class="btn btn-sm btn-secondary edit-item-btn">Gallery Images</a>
                                                     </div>
 
+                                                    <div class="edit">
+                                                        <a href="{{route('project.gallery_video.paginate.get', $item->id)}}" class="btn btn-sm btn-secondary edit-item-btn">Gallery Videos</a>
+                                                    </div>
+
                                                     @can('delete projects')
                                                     <div class="remove">
                                                         <button class="btn btn-sm btn-danger remove-item-btn" data-link="{{route('project.delete.get', $item->id)}}">Delete</button>

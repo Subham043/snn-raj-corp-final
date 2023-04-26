@@ -20,12 +20,12 @@ class GalleryImageDeleteController extends Controller
 
     public function get($project_id, $id){
         $this->projectService->getById($project_id);
-        $banner = $this->galleryImageService->getByIdAndProjectId($id, $project_id);
+        $image = $this->galleryImageService->getByIdAndProjectId($id, $project_id);
 
         try {
             //code...
             $this->galleryImageService->delete(
-                $banner
+                $image
             );
             return redirect()->back()->with('success_status', 'Gallery Image deleted successfully.');
         } catch (\Throwable $th) {

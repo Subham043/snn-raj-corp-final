@@ -68,6 +68,10 @@ use App\Modules\Project\GalleryImages\Controllers\GalleryImageCreateController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImageDeleteController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImagePaginateController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImageUpdateController;
+use App\Modules\Project\GalleryVideos\Controllers\GalleryVideoCreateController;
+use App\Modules\Project\GalleryVideos\Controllers\GalleryVideoDeleteController;
+use App\Modules\Project\GalleryVideos\Controllers\GalleryVideoPaginateController;
+use App\Modules\Project\GalleryVideos\Controllers\GalleryVideoUpdateController;
 use App\Modules\Project\Plans\Controllers\PlanCreateController;
 use App\Modules\Project\Plans\Controllers\PlanDeleteController;
 use App\Modules\Project\Plans\Controllers\PlanPaginateController;
@@ -273,6 +277,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [GalleryImageUpdateController::class, 'get', 'as' => 'project.gallery_image.update.get'])->name('project.gallery_image.update.get');
             Route::post('/update/{id}', [GalleryImageUpdateController::class, 'post', 'as' => 'project.gallery_image.update.post'])->name('project.gallery_image.update.post');
             Route::get('/delete/{id}', [GalleryImageDeleteController::class, 'get', 'as' => 'project.gallery_image.delete.get'])->name('project.gallery_image.delete.get');
+        });
+
+        Route::prefix('/{project_id}/gallery-video')->group(function () {
+            Route::get('/', [GalleryVideoPaginateController::class, 'get', 'as' => 'project.gallery_video.paginate.get'])->name('project.gallery_video.paginate.get');
+            Route::get('/create', [GalleryVideoCreateController::class, 'get', 'as' => 'project.gallery_video.create.get'])->name('project.gallery_video.create.get');
+            Route::post('/create', [GalleryVideoCreateController::class, 'post', 'as' => 'project.gallery_video.create.post'])->name('project.gallery_video.create.post');
+            Route::get('/update/{id}', [GalleryVideoUpdateController::class, 'get', 'as' => 'project.gallery_video.update.get'])->name('project.gallery_video.update.get');
+            Route::post('/update/{id}', [GalleryVideoUpdateController::class, 'post', 'as' => 'project.gallery_video.update.post'])->name('project.gallery_video.update.post');
+            Route::get('/delete/{id}', [GalleryVideoDeleteController::class, 'get', 'as' => 'project.gallery_video.delete.get'])->name('project.gallery_video.delete.get');
         });
 
     });
