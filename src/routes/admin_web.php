@@ -28,8 +28,6 @@ use App\Modules\Csr\Controllers\CsrDeleteController;
 use App\Modules\Csr\Controllers\CsrPaginateController;
 use App\Modules\Csr\Controllers\CsrUpdateController;
 use App\Modules\Dashboard\Controllers\DashboardController;
-use App\Modules\Enquiries\Controllers\EnquiryDeleteController;
-use App\Modules\Enquiries\Controllers\EnquiryPaginateController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormDeleteController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormExcelController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormPaginateController;
@@ -64,6 +62,10 @@ use App\Modules\Project\Banners\Controllers\BannerCreateController as ProjectBan
 use App\Modules\Project\Banners\Controllers\BannerDeleteController as ProjectBannerDeleteController;
 use App\Modules\Project\Banners\Controllers\BannerPaginateController as ProjectBannerPaginateController;
 use App\Modules\Project\Banners\Controllers\BannerUpdateController as ProjectBannerUpdateController;
+use App\Modules\Project\AdditionalContents\Controllers\AdditionalContentCreateController as ProjectAdditionalContentCreateController;
+use App\Modules\Project\AdditionalContents\Controllers\AdditionalContentDeleteController as ProjectAdditionalContentDeleteController;
+use App\Modules\Project\AdditionalContents\Controllers\AdditionalContentPaginateController as ProjectAdditionalContentPaginateController;
+use App\Modules\Project\AdditionalContents\Controllers\AdditionalContentUpdateController as ProjectAdditionalContentUpdateController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImageCreateController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImageDeleteController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImagePaginateController;
@@ -288,6 +290,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [GalleryVideoDeleteController::class, 'get', 'as' => 'project.gallery_video.delete.get'])->name('project.gallery_video.delete.get');
         });
 
+        Route::prefix('/{project_id}/additional-content')->group(function () {
+            Route::get('/', [ProjectAdditionalContentPaginateController::class, 'get', 'as' => 'project.additional_content.paginate.get'])->name('project.additional_content.paginate.get');
+            Route::get('/create', [ProjectAdditionalContentCreateController::class, 'get', 'as' => 'project.additional_content.create.get'])->name('project.additional_content.create.get');
+            Route::post('/create', [ProjectAdditionalContentCreateController::class, 'post', 'as' => 'project.additional_content.create.post'])->name('project.additional_content.create.post');
+            Route::get('/update/{id}', [ProjectAdditionalContentUpdateController::class, 'get', 'as' => 'project.additional_content.update.get'])->name('project.additional_content.update.get');
+            Route::post('/update/{id}', [ProjectAdditionalContentUpdateController::class, 'post', 'as' => 'project.additional_content.update.post'])->name('project.additional_content.update.post');
+            Route::get('/delete/{id}', [ProjectAdditionalContentDeleteController::class, 'get', 'as' => 'project.additional_content.delete.get'])->name('project.additional_content.delete.get');
+        });
+
     });
 
     Route::prefix('/legal-pages')->group(function () {
@@ -369,12 +380,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update', [ProfileController::class, 'post', 'as' => 'profile.post'])->name('profile.post');
         Route::post('/profile-password-update', [PasswordUpdateController::class, 'post', 'as' => 'password.post'])->name('password.post');
     });
-
-    // Route::prefix('/enquiry')->group(function () {
-    //     Route::get('/', [EnquiryPaginateController::class, 'get', 'as' => 'enquiry_list.get'])->name('enquiry_list.get');
-    //     Route::get('/delete/{id}', [EnquiryDeleteController::class, 'get', 'as' => 'enquiry_delete.get'])->name('enquiry_delete.get');
-
-    // });
 
     Route::prefix('/role')->group(function () {
         Route::get('/', [RolePaginateController::class, 'get', 'as' => 'role.paginate.get'])->name('role.paginate.get');
