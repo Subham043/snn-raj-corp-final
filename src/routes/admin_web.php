@@ -60,6 +60,10 @@ use App\Modules\Project\Banners\Controllers\BannerCreateController as ProjectBan
 use App\Modules\Project\Banners\Controllers\BannerDeleteController as ProjectBannerDeleteController;
 use App\Modules\Project\Banners\Controllers\BannerPaginateController as ProjectBannerPaginateController;
 use App\Modules\Project\Banners\Controllers\BannerUpdateController as ProjectBannerUpdateController;
+use App\Modules\Project\GalleryImages\Controllers\GalleryImageCreateController;
+use App\Modules\Project\GalleryImages\Controllers\GalleryImageDeleteController;
+use App\Modules\Project\GalleryImages\Controllers\GalleryImagePaginateController;
+use App\Modules\Project\GalleryImages\Controllers\GalleryImageUpdateController;
 use App\Modules\Project\Projects\Controllers\ProjectCreateController;
 use App\Modules\Project\Projects\Controllers\ProjectDeleteController;
 use App\Modules\Project\Projects\Controllers\ProjectPaginateController;
@@ -234,6 +238,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [ProjectBannerUpdateController::class, 'get', 'as' => 'project.banner.update.get'])->name('project.banner.update.get');
             Route::post('/update/{id}', [ProjectBannerUpdateController::class, 'post', 'as' => 'project.banner.update.post'])->name('project.banner.update.post');
             Route::get('/delete/{id}', [ProjectBannerDeleteController::class, 'get', 'as' => 'project.banner.delete.get'])->name('project.banner.delete.get');
+        });
+
+        Route::prefix('/{project_id}/gallery-image')->group(function () {
+            Route::get('/', [GalleryImagePaginateController::class, 'get', 'as' => 'project.gallery_image.paginate.get'])->name('project.gallery_image.paginate.get');
+            Route::get('/create', [GalleryImageCreateController::class, 'get', 'as' => 'project.gallery_image.create.get'])->name('project.gallery_image.create.get');
+            Route::post('/create', [GalleryImageCreateController::class, 'post', 'as' => 'project.gallery_image.create.post'])->name('project.gallery_image.create.post');
+            Route::get('/update/{id}', [GalleryImageUpdateController::class, 'get', 'as' => 'project.gallery_image.update.get'])->name('project.gallery_image.update.get');
+            Route::post('/update/{id}', [GalleryImageUpdateController::class, 'post', 'as' => 'project.gallery_image.update.post'])->name('project.gallery_image.update.post');
+            Route::get('/delete/{id}', [GalleryImageDeleteController::class, 'get', 'as' => 'project.gallery_image.delete.get'])->name('project.gallery_image.delete.get');
         });
 
     });
