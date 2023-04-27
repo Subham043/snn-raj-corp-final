@@ -51,7 +51,7 @@
                         @if(($k+1)%2!=0)
                             <div class="row">
                                 <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
-                                    @if($v->banner->count()>0)
+                                    @if($v->banner_count>0)
                                         <div class="img">
                                             <a href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img src="{{$v->banner[0]->image_link}}" alt=""></a>
                                         </div>
@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 order1 animate-box" data-animate-effect="fadeInUp">
-                                    @if($v->banner->count()>0)
+                                    @if($v->banner_count>0)
                                         <div class="img">
                                             <a href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img src="{{$v->banner[0]->image_link}}" alt=""></a>
                                         </div>

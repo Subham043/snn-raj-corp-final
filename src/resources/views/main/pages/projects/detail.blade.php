@@ -63,7 +63,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="owl-carousel owl-theme">
-                    @if($data->banner->count()>0)
+                    @if($data->banner_count>0)
                         @foreach($data->banner as $banner)
                             <div class="portfolio-item"> <img class="img-fluid" src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
                         @endforeach
@@ -98,7 +98,7 @@
         <div class="row">
 
             <!-- Accomodation -->
-            @if($data->accomodation->count()>0)
+            @if($data->accomodation_count>0)
                 <div class="about mb-5">
                     <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
                         <div class="states">
@@ -127,7 +127,7 @@
     </div>
 </section>
 
-@if($data->plan->count()>0)
+@if($data->plan_count>0)
     <section class="project-page section-padding">
         <div class="container">
             <div class="row">
@@ -141,7 +141,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="owl-carousel owl-theme">
-                        @if($data->plan->count()>0)
+                        @if($data->plan_count>0)
                             @foreach($data->plan as $plan)
                                 <div class="portfolio-item"> <img class="img-fluid" src="{{$plan->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
                             @endforeach
@@ -154,7 +154,7 @@
 @endif
 
 <!-- Amenities -->
-@if($data->amenity->count()>0)
+@if($data->amenity_count>0)
     <section class="about section-padding">
         <div class="container">
             <div class="row">
@@ -179,7 +179,7 @@
 @endif
 
 <!-- Image Gallery -->
-@if($data->gallery_image->count()>0)
+@if($data->gallery_image_count>0)
     <section class="section-padding">
         <div class="container">
             <div class="row mb-5 animate-box" data-animate-effect="fadeInUp">
@@ -207,7 +207,7 @@
 @endif
 
 <!--  Video Gallery -->
-@if($data->gallery_video->count()>0)
+@if($data->gallery_video_count>0)
     <section class="section-padding">
         <div class="container">
         <div class="row mb-5 animate-box" data-animate-effect="fadeInUp">
@@ -236,7 +236,7 @@
     </section>
 @endif
 
-@if($data->additional_content->count()>0)
+@if($data->additional_content_count>0)
     <section class="process section-padding">
         <div class="container">
             @foreach($data->additional_content as $key=>$val)

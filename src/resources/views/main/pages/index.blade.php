@@ -163,7 +163,7 @@
                 @foreach($projects as $k => $v)
                     <div class="col-md-6 single-item {{$v->is_completed==true ? 'completed' : 'ongoing'}}">
                         <div class="projects2-wrap">
-                            @if($v->banner->count()>0)
+                            @if($v->banner_count>0)
                                 <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img src="{{ $v->banner[0]->image_link }}" alt=""></a>
                             @endif
                             <div class="projects2-con">

@@ -2,6 +2,7 @@
 
 namespace App\Modules\Enquiry\ContactForm\Requests;
 
+use App\Http\Services\RateLimitService;
 use Illuminate\Foundation\Http\FormRequest;
 use Stevebauman\Purify\Facades\Purify;
 
@@ -15,6 +16,7 @@ class ContactFormRequest extends FormRequest
      */
     public function authorize()
     {
+        (new RateLimitService($this))->ensureIsNotRateLimited(3);
         return true;
     }
 

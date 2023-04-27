@@ -3,6 +3,7 @@
 namespace App\Modules\Main\ContactPage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\RateLimitService;
 use App\Modules\Enquiry\ContactForm\Requests\ContactFormRequest;
 use App\Modules\Enquiry\ContactForm\Services\ContactFormService;
 use App\Modules\Seo\Services\SeoService;
@@ -48,6 +49,7 @@ class ContactPageController extends Controller
             $this->contactFormService->create(
                 $request->validated()
             );
+            (new RateLimitService($request))->clearRateLimit();
             return response()->json(["message" => "Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);
