@@ -26,7 +26,7 @@ class PlanCreateController extends Controller
 
     public function post(PlanCreateRequest $request, $project_id){
 
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         try {
             //code...
             $plan = $this->planService->create(
@@ -36,6 +36,7 @@ class PlanCreateController extends Controller
             if($request->hasFile('image')){
                 $this->planService->saveImage($plan);
             }
+            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Plan created successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

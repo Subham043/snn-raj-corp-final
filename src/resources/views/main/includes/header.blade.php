@@ -7,10 +7,8 @@
                 <li><a href="{{route('about_page.get')}}">About Us</a></li>
                 <li class='duru-menu-sub'><a href='#'>Projects <i class="ti-angle-down"></i></a>
                     <ul>
-                        <li><a href='{{route('home_page.get')}}'>Projects 01</a></li>
-                        <li><a href='{{route('home_page.get')}}'>Projects 02</a></li>
-                        <li><a href='{{route('home_page.get')}}'>Projects 03</a></li>
-                        <li><a href='{{route('home_page.get')}}'>Project Page</a></li>
+                        <li><a href='{{route('completed_projects.get')}}'>Upcoming Projects</a></li>
+                        <li><a href='{{route('ongoing_projects.get')}}'>Ongoing Projects</a></li>
                     </ul>
                 </li>
                 <li><a href="{{route('awards_page.get')}}">Awards</a></li>

@@ -26,7 +26,7 @@ class BannerUpdateController extends Controller
     }
 
     public function post(BannerUpdateRequest $request, $project_id, $id){
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         $banner = $this->bannerService->getByIdAndProjectId($id, $project_id);
         try {
             //code...
@@ -37,6 +37,7 @@ class BannerUpdateController extends Controller
             if($request->hasFile('image')){
                 $this->bannerService->saveImage($banner);
             }
+            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Banner updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

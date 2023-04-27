@@ -26,7 +26,7 @@ class GalleryVideoUpdateController extends Controller
     }
 
     public function post(GalleryVideoRequest $request, $project_id, $id){
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         $gallery_video = $this->galleryVideoService->getByIdAndProjectId($id, $project_id);
         try {
             //code...
@@ -34,6 +34,7 @@ class GalleryVideoUpdateController extends Controller
                 $request->validated(),
                 $gallery_video
             );
+            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Gallery Video updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

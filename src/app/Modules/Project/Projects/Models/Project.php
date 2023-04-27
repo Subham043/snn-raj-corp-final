@@ -3,6 +3,13 @@
 namespace App\Modules\Project\Projects\Models;
 
 use App\Modules\Authentication\Models\User;
+use App\Modules\Project\Accomodations\Models\Accomodation;
+use App\Modules\Project\AdditionalContents\Models\AdditionalContent;
+use App\Modules\Project\Amenitys\Models\Amenity;
+use App\Modules\Project\Banners\Models\Banner;
+use App\Modules\Project\GalleryImages\Models\GalleryImage;
+use App\Modules\Project\GalleryVideos\Models\GalleryVideo;
+use App\Modules\Project\Plans\Models\Plan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -61,12 +68,15 @@ class Project extends Model
     {
         parent::boot();
         self::created(function ($model) {
+            Cache::forget('all_project_main');
             Cache::forget('project_'.$model->slug);
         });
         self::updated(function ($model) {
+            Cache::forget('all_project_main');
             Cache::forget('project_'.$model->slug);
         });
         self::deleted(function ($model) {
+            Cache::forget('all_project_main');
             Cache::forget('project_'.$model->slug);
         });
     }
@@ -122,7 +132,42 @@ class Project extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id')->withDefault();
+    }
+
+    public function banner()
+    {
+        return $this->hasMany(Banner::class, 'project_id');
+    }
+
+    public function gallery_image()
+    {
+        return $this->hasMany(GalleryImage::class, 'project_id');
+    }
+
+    public function gallery_video()
+    {
+        return $this->hasMany(GalleryVideo::class, 'project_id');
+    }
+
+    public function plan()
+    {
+        return $this->hasMany(Plan::class, 'project_id');
+    }
+
+    public function amenity()
+    {
+        return $this->hasMany(Amenity::class, 'project_id');
+    }
+
+    public function additional_content()
+    {
+        return $this->hasMany(AdditionalContent::class, 'project_id');
+    }
+
+    public function accomodation()
+    {
+        return $this->hasMany(Accomodation::class, 'project_id');
     }
 
     public function getActivitylogOptions(): LogOptions

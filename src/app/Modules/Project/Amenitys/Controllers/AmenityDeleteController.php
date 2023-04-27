@@ -19,7 +19,7 @@ class AmenityDeleteController extends Controller
     }
 
     public function get($project_id, $id){
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         $amenity = $this->amenityService->getByIdAndProjectId($id, $project_id);
 
         try {
@@ -27,6 +27,7 @@ class AmenityDeleteController extends Controller
             $this->amenityService->delete(
                 $amenity
             );
+            $this->projectService->clear_cache($project);
             return redirect()->back()->with('success_status', 'Amenity deleted successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error_status', 'Something went wrong. Please try again');

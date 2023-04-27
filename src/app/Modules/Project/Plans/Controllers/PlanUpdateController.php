@@ -26,7 +26,7 @@ class PlanUpdateController extends Controller
     }
 
     public function post(PlanUpdateRequest $request, $project_id, $id){
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         $plan = $this->planService->getByIdAndProjectId($id, $project_id);
         try {
             //code...
@@ -37,6 +37,7 @@ class PlanUpdateController extends Controller
             if($request->hasFile('image')){
                 $this->planService->saveImage($plan);
             }
+            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Plan updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

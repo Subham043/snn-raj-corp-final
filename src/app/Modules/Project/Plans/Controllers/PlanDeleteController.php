@@ -19,7 +19,7 @@ class PlanDeleteController extends Controller
     }
 
     public function get($project_id, $id){
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         $plan = $this->planService->getByIdAndProjectId($id, $project_id);
 
         try {
@@ -27,6 +27,7 @@ class PlanDeleteController extends Controller
             $this->planService->delete(
                 $plan
             );
+            $this->projectService->clear_cache($project);
             return redirect()->back()->with('success_status', 'Plan deleted successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error_status', 'Something went wrong. Please try again');

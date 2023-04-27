@@ -26,7 +26,7 @@ class GalleryImageUpdateController extends Controller
     }
 
     public function post(GalleryImageUpdateRequest $request, $project_id, $id){
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         $gallery_image = $this->galleryImageService->getByIdAndProjectId($id, $project_id);
         try {
             //code...
@@ -37,6 +37,7 @@ class GalleryImageUpdateController extends Controller
             if($request->hasFile('image')){
                 $this->galleryImageService->saveImage($gallery_image);
             }
+            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Gallery Image updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

@@ -205,10 +205,6 @@ validation
   ])
   .addField('#rera', [
     {
-      rule: 'required',
-      errorMessage: 'Rera is required',
-    },
-    {
         rule: 'customRegexp',
         value: COMMON_REGEX,
         errorMessage: 'Rera is invalid',

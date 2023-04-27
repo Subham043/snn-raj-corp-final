@@ -26,13 +26,14 @@ class GalleryVideoCreateController extends Controller
 
     public function post(GalleryVideoRequest $request, $project_id){
 
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         try {
             //code...
             $this->galleryVideoService->create(
                 $request->validated(),
                 $project_id
             );
+            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Gallery Video created successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

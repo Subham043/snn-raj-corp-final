@@ -26,7 +26,7 @@ class AccomodationUpdateController extends Controller
     }
 
     public function post(AccomodationRequest $request, $project_id, $id){
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         $accomodation = $this->accomodationService->getByIdAndProjectId($id, $project_id);
         try {
             //code...
@@ -34,6 +34,7 @@ class AccomodationUpdateController extends Controller
                 $request->validated(),
                 $accomodation
             );
+            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Accomodation updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

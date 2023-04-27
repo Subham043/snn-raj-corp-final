@@ -160,66 +160,20 @@
                 </ul>
             </div>
             <div class="row projects2-items animate-box" data-animate-effect="fadeInUp">
-                <div class="col-md-6 single-item ongoing">
-                    <div class="projects2-wrap">
-                        <a href="project-page.html"><img src="{{ asset('assets/images/projects/06.jpg')}}" alt=""></a>
-                        <div class="projects2-con">
-                            <p>Project P.01</p>
-                            <h3><a href="project-page.html">Modern Houses</a></h3>
-                            <a href="project-page.html" class="project2-link"></a>
+                @foreach($projects as $k => $v)
+                    <div class="col-md-6 single-item {{$v->is_completed==true ? 'completed' : 'ongoing'}}">
+                        <div class="projects2-wrap">
+                            @if($v->banner->count()>0)
+                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img src="{{ $v->banner[0]->image_link }}" alt=""></a>
+                            @endif
+                            <div class="projects2-con">
+                                <p>Project P.{{$k+1}}</p>
+                                <h3><a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
+                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 single-item completed">
-                    <div class="projects2-wrap">
-                        <a href="project-page.html"><img src="{{ asset('assets/images/projects/02.jpg')}}" alt=""></a>
-                        <div class="projects2-con">
-                            <p>Project P.02</p>
-                            <h3><a href="project-page.html">Luxurious Villa</a></h3>
-                            <a href="project-page.html" class="project2-link"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 single-item ongoing">
-                    <div class="projects2-wrap">
-                        <a href="project-page.html"><img src="{{ asset('assets/images/projects/03.jpg')}}" alt=""></a>
-                        <div class="projects2-con">
-                            <p>Project P.03</p>
-                            <h3><a href="project-page.html">Ultra BlackHome</a></h3>
-                            <a href="project-page.html" class="project2-link"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 single-item ongoing">
-                    <div class="projects2-wrap">
-                        <a href="project-page.html"><img src="{{ asset('assets/images/projects/04.jpg')}}" alt=""></a>
-                        <div class="projects2-con">
-                            <p>Project P.04</p>
-                            <h3><a href="project-page.html">Modern Bedrooom</a></h3>
-                            <a href="project-page.html" class="project2-link"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 single-item completed">
-                    <div class="projects2-wrap">
-                        <a href="project-page.html"><img src="{{ asset('assets/images/projects/01.jpg')}}" alt=""></a>
-                        <div class="projects2-con">
-                            <p>Project P.05</p>
-                            <h3><a href="project-page.html">Mountain House</a></h3>
-                            <a href="project-page.html" class="project2-link"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 single-item completed">
-                    <div class="projects2-wrap">
-                        <a href="project-page.html"><img src="{{ asset('assets/images/projects/05.jpg')}}" alt=""></a>
-                        <div class="projects2-con">
-                            <p>Project P.06</p>
-                            <h3><a href="project-page.html">Modern Food Table</a></h3>
-                            <a href="project-page.html" class="project2-link"></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
         </div>

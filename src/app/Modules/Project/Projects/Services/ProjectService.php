@@ -9,6 +9,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 use Spatie\QueryBuilder\AllowedFilter;
 
 class ProjectService
@@ -72,15 +73,43 @@ class ProjectService
         }
     }
 
-    public function main_paginate(Int $total = 10): LengthAwarePaginator
+    public function clear_cache(Project $project): void
     {
-        $query = Project::where('is_draft', true)->latest();
+        Cache::forget('all_project_main');
+        Cache::forget('project_'.$project->slug);
+    }
+
+    public function main_all()
+    {
+        return Cache::remember('all_project_main', 60*60*24, function(){
+            return Project::with(['banner'])->where('is_draft', true)->get();
+        });
+    }
+
+    public function main_paginate(Int $total = 10, bool $status = false): LengthAwarePaginator
+    {
+        $query = Project::with(['banner'])->where('is_draft', true)->where('is_completed', $status)->latest();
         return QueryBuilder::for($query)
                 ->allowedFilters([
                     AllowedFilter::custom('search', new CommonFilter),
                 ])
                 ->paginate($total)
                 ->appends(request()->query());
+    }
+
+    public function getBySlugMain(String $slug): Project
+    {
+        return Cache::remember('project_'.$slug, 60*60*24, function() use($slug){
+            return Project::with([
+                'banner',
+                'gallery_image',
+                'gallery_video',
+                'plan',
+                'amenity',
+                'additional_content',
+                'accomodation'
+            ])->where('slug', $slug)->where('is_draft', true)->first();
+        });
     }
 
 }

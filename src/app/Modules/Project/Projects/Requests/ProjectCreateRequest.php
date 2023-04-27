@@ -33,7 +33,7 @@ class ProjectCreateRequest extends FormRequest
             'floor' => 'required|string|max:500',
             'acre' => 'required|string|max:500',
             'tower' => 'required|string|max:500',
-            'rera' => 'required|string|max:500',
+            'rera' => 'nullable|string|max:500',
             'address' => 'required|string|max:500',
             'map_location_link' => 'nullable|url|max:500',
             'brief_description' => 'required|string|max:500',

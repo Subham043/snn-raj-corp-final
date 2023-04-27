@@ -19,7 +19,7 @@ class GalleryVideoDeleteController extends Controller
     }
 
     public function get($project_id, $id){
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         $video = $this->galleryVideoService->getByIdAndProjectId($id, $project_id);
 
         try {
@@ -27,6 +27,7 @@ class GalleryVideoDeleteController extends Controller
             $this->galleryVideoService->delete(
                 $video
             );
+            $this->projectService->clear_cache($project);
             return redirect()->back()->with('success_status', 'Gallery Video deleted successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error_status', 'Something went wrong. Please try again');

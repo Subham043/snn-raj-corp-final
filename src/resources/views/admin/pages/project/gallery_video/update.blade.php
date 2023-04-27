@@ -25,6 +25,9 @@
                                 <div class="row gy-4">
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'video', 'label'=>'Video', 'value'=>$data->video])
+                                        <p>
+                                            <code>Note: </code> Youtube video should follow the given format : <i>https://www.youtube.com/embed/aUIVH5qg19A</i>
+                                        </p>
                                     </div>
 
                                     <div class="col-xxl-6 col-md-6">

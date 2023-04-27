@@ -26,7 +26,7 @@ class AdditionalContentUpdateController extends Controller
     }
 
     public function post(AdditionalContentUpdateRequest $request, $project_id, $id){
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         $additional_content = $this->additionalContentService->getByIdAndProjectId($id, $project_id);
         try {
             //code...
@@ -37,6 +37,7 @@ class AdditionalContentUpdateController extends Controller
             if($request->hasFile('image')){
                 $this->additionalContentService->saveImage($additional_content);
             }
+            $this->projectService->clear_cache($project);
             return response()->json(["message" => "AdditionalContent updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

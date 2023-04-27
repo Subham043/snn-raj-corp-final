@@ -7,6 +7,7 @@ use App\Modules\Project\Projects\Models\Project;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
@@ -38,6 +39,20 @@ class Banner extends Model
 
     protected $appends = ['image_link'];
 
+    public static function boot()
+    {
+        parent::boot();
+        self::created(function ($model) {
+            Cache::forget('all_project_main');
+        });
+        self::updated(function ($model) {
+            Cache::forget('all_project_main');
+        });
+        self::deleted(function ($model) {
+            Cache::forget('all_project_main');
+        });
+    }
+
     protected function image(): Attribute
     {
         return Attribute::make(
@@ -54,12 +69,12 @@ class Banner extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id')->withDefault();
     }
 
     public function project()
     {
-        return $this->belongsTo(Project::class, 'project_id');
+        return $this->belongsTo(Project::class, 'project_id')->withDefault();
     }
 
     public function getActivitylogOptions(): LogOptions

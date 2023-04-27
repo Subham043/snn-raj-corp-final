@@ -26,7 +26,7 @@ class AmenityUpdateController extends Controller
     }
 
     public function post(AmenityUpdateRequest $request, $project_id, $id){
-        $this->projectService->getById($project_id);
+        $project = $this->projectService->getById($project_id);
         $amenity = $this->amenityService->getByIdAndProjectId($id, $project_id);
         try {
             //code...
@@ -37,6 +37,7 @@ class AmenityUpdateController extends Controller
             if($request->hasFile('image')){
                 $this->amenityService->saveImage($amenity);
             }
+            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Amenity updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

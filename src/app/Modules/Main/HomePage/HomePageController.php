@@ -9,6 +9,7 @@ use App\Modules\HomePage\About\Services\AboutService;
 use App\Modules\HomePage\Banner\Services\BannerService;
 use App\Modules\HomePage\Testimonial\Services\TestimonialHeadingService;
 use App\Modules\HomePage\Testimonial\Services\TestimonialService;
+use App\Modules\Project\Projects\Services\ProjectService;
 use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
@@ -20,6 +21,7 @@ class HomePageController extends Controller
     private $aboutService;
     private $testimonialService;
     private $counterService;
+    private $projectService;
     private $seoService;
     private $counterHeadingService;
     private $testimonialHeadingService;
@@ -38,6 +40,7 @@ class HomePageController extends Controller
         GeneralService $generalService,
         ThemeService $themeService,
         ChatbotService $chatbotService,
+        ProjectService $projectService,
     )
     {
         $this->bannerService = $bannerService;
@@ -50,6 +53,7 @@ class HomePageController extends Controller
         $this->generalService = $generalService;
         $this->themeService = $themeService;
         $this->chatbotService = $chatbotService;
+        $this->projectService = $projectService;
     }
 
     public function get(){
@@ -57,6 +61,7 @@ class HomePageController extends Controller
         $about = $this->aboutService->getById(1);
         $testimonials = $this->testimonialService->main_all();
         $counters = $this->counterService->main_all();
+        $projects = $this->projectService->main_all();
         $counterHeading = $this->counterHeadingService->getById(1);
         $testimonialHeading = $this->testimonialHeadingService->getById(1);
         $seo = $this->seoService->getBySlugMain('home-page');
@@ -68,6 +73,7 @@ class HomePageController extends Controller
             'about',
             'testimonials',
             'counters',
+            'projects',
             'seo',
             'counterHeading',
             'testimonialHeading',
