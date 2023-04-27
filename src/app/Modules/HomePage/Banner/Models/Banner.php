@@ -102,8 +102,10 @@ class Banner extends Model
     public function getBannerVideoId(){
         if($this->banner_video){
             $video_id = explode("/embed/", $this->banner_video);
-            $video_id = $video_id[1];
-            return $video_id;
+            if(count($video_id) > 1){
+                $video_id = $video_id[1];
+                return $video_id;
+            }
         }
         return null;
     }
