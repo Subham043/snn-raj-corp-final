@@ -84,6 +84,9 @@
                                 <div class="row gy-4" id="video_row">
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'banner_video', 'label'=>'Video Link', 'value'=>old('banner_video')])
+                                        <p>
+                                            <code>Note: </code> Youtube video should follow the given format : <i>https://www.youtube.com/embed/aUIVH5qg19A</i>
+                                        </p>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'banner_video_title', 'label'=>'Video Title', 'value'=>old('banner_video_title')])
