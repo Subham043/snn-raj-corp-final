@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('description_unfiltered')->nullable();
             $table->string('image', 500)->nullable();
+            $table->string('video', 500)->nullable();
+            $table->boolean('use_in_banner')->default(0);
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
             $table->index(['id', 'created_at']);

@@ -27,16 +27,19 @@ class About extends Model
         'description',
         'description_unfiltered',
         'image',
+        'video',
+        'use_in_banner',
     ];
 
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
+        'use_in_banner' => 'boolean',
     ];
 
     public $image_path = 'home_page_abouts';
 
-    protected $appends = ['image_link'];
+    protected $appends = ['image_link', 'video_id'];
 
     public static function boot()
     {
@@ -64,6 +67,24 @@ class About extends Model
         return new Attribute(
             get: fn () => asset($this->image),
         );
+    }
+
+    protected function videoId(): Attribute
+    {
+        return new Attribute(
+            get: fn () => $this->getBannerVideoId(),
+        );
+    }
+
+    public function getBannerVideoId(){
+        if($this->video){
+            $video_id = explode("/embed/", $this->video);
+            if(count($video_id) > 1){
+                $video_id = $video_id[1];
+                return $video_id;
+            }
+        }
+        return null;
     }
 
     public function user()

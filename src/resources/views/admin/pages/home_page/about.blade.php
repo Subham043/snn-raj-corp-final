@@ -49,6 +49,23 @@
                                         @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>!empty($data) ? (old('description') ? old('description') : $data->description) : old('description')])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
+                                        @include('admin.includes.input', ['key'=>'video', 'label'=>'Video', 'value'=>!empty($data) ? (old('video') ? old('video') : $data->video) : old('video')])
+                                        <p>
+                                            <code>Note: </code> Youtube video should follow the given format : <i>https://www.youtube.com/embed/aUIVH5qg19A</i>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="mt-4 mt-md-0">
+                                            <div>
+                                                <div class="form-check form-switch form-check-right mb-2">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="use_in_banner" name="use_in_banner" {{$data->use_in_banner==false ? '' : 'checked'}}>
+                                                    <label class="form-check-label" for="use_in_banner">Use the above video link in home page banner ?</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-12 col-md-12">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
                                     </div>
 
@@ -145,6 +162,12 @@ validation
         errorMessage: 'Sub Heading is invalid',
     },
   ])
+ .addField('#video', [
+    {
+      rule: 'required',
+      errorMessage: 'Video is required',
+    },
+  ])
   .addField('#description', [
     {
         rule: 'required',
@@ -178,8 +201,10 @@ validation
     submitBtn.disabled = true;
     try {
         var formData = new FormData();
+        formData.append('use_in_banner',document.getElementById('use_in_banner').checked ? 1 : 0)
         formData.append('heading',document.getElementById('heading').value)
         formData.append('sub_heading',document.getElementById('sub_heading').value)
+        formData.append('video',document.getElementById('video').value)
         formData.append('description',quillDescription.root.innerHTML)
         formData.append('description_unfiltered',quillDescription.getText())
         if((document.getElementById('image').files).length>0){
@@ -200,6 +225,9 @@ validation
         }
         if(error?.response?.data?.errors?.image){
             validation.showErrors({'#image': error?.response?.data?.errors?.image[0]})
+        }
+        if(error?.response?.data?.errors?.video){
+            validation.showErrors({'#video': error?.response?.data?.errors?.video[0]})
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)

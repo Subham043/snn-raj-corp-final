@@ -32,6 +32,8 @@ class AboutRequest extends FormRequest
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',
             'image' => ['nullable','image','min:10','max:500'],
+            'video' => 'required|url|max:500',
+            'use_in_banner' => 'required|boolean',
         ];
     }
 
@@ -48,6 +50,8 @@ class AboutRequest extends FormRequest
             'description' => 'Description',
             'description_unfiltered' => 'Description Unfiltered',
             'image' => 'Image',
+            'video' => 'Video',
+            'use_in_banner' => 'Use the video in home page banner',
         ];
     }
 
