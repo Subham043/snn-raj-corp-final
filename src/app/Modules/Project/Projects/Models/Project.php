@@ -42,6 +42,8 @@ class Project extends Model
         'address',
         'map_location_link',
         'brochure',
+        'video',
+        'use_in_banner',
         'is_draft',
         'is_completed',
         'meta_title',
@@ -56,13 +58,14 @@ class Project extends Model
     protected $casts = [
         'is_draft' => 'boolean',
         'is_completed' => 'boolean',
+        'use_in_banner' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 
     public $brochure_path = 'projects';
 
-    protected $appends = ['brochure_link', 'meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce'];
+    protected $appends = ['brochure_link', 'meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce', 'video_id'];
 
     public static function boot()
     {
@@ -93,6 +96,24 @@ class Project extends Model
         return new Attribute(
             get: fn () => asset($this->brochure),
         );
+    }
+
+    protected function videoId(): Attribute
+    {
+        return new Attribute(
+            get: fn () => $this->getBannerVideoId(),
+        );
+    }
+
+    public function getBannerVideoId(){
+        if($this->video){
+            $video_id = explode("/embed/", $this->video);
+            if(count($video_id) > 1){
+                $video_id = $video_id[1];
+                return $video_id;
+            }
+        }
+        return null;
     }
 
     protected function slug(): Attribute

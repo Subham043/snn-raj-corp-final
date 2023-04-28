@@ -28,6 +28,8 @@ class ProjectUpdateRequest extends ProjectCreateRequest
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',
             'brochure' => 'nullable|mimes:pdf|min:10|max:5000',
+            'video' => 'required|url|max:500',
+            'use_in_banner' => 'required|boolean',
             'is_draft' => 'required|boolean',
             'is_completed' => 'required|boolean',
             'meta_title' => 'nullable|string',

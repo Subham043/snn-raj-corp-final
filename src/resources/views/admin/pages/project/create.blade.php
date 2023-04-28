@@ -101,6 +101,37 @@
 
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
+                            <h4 class="card-title mb-0 flex-grow-1">Project Video</h4>
+                        </div><!-- end card header -->
+                        <div class="card-body">
+                            <div class="live-preview">
+                                <div class="row gy-4">
+                                    <div class="col-xxl-12 col-md-12">
+                                        @include('admin.includes.input', ['key'=>'video', 'label'=>'Video', 'value'=>old('video')])
+                                        <p>
+                                            <code>Note: </code> Youtube video should follow the given format : <i>https://www.youtube.com/embed/aUIVH5qg19A</i>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="mt-4 mt-md-0">
+                                            <div>
+                                                <div class="form-check form-switch form-check-right mb-2">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="use_in_banner" name="use_in_banner">
+                                                    <label class="form-check-label" for="use_in_banner">Use the above video link in project page banner ?</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end row-->
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">Project Seo Detail</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
@@ -198,6 +229,12 @@ validation
         rule: 'customRegexp',
         value: COMMON_REGEX,
         errorMessage: 'Slug is invalid',
+    },
+  ])
+  .addField('#video', [
+    {
+      rule: 'required',
+      errorMessage: 'Video is required',
     },
   ])
   .addField('#rera', [
@@ -335,8 +372,10 @@ validation
     submitBtn.disabled = true;
     try {
         var formData = new FormData();
+        formData.append('use_in_banner',document.getElementById('use_in_banner').checked ? 1 : 0)
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
         formData.append('is_completed',document.getElementById('is_completed').checked ? 1 : 0)
+        formData.append('video',document.getElementById('video').value)
         formData.append('name',document.getElementById('name').value)
         formData.append('slug',document.getElementById('slug').value)
         formData.append('rera',document.getElementById('rera').value)
@@ -398,6 +437,9 @@ validation
         }
         if(error?.response?.data?.errors?.year){
             validation.showErrors({'#year': error?.response?.data?.errors?.year[0]})
+        }
+        if(error?.response?.data?.errors?.video){
+            validation.showErrors({'#video': error?.response?.data?.errors?.video[0]})
         }
         if(error?.response?.data?.errors?.brochure){
             validation.showErrors({'#brochure': error?.response?.data?.errors?.brochure[0]})

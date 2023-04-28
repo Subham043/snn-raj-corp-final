@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('address', 500)->nullable();
             $table->string('map_location_link', 500)->nullable();
             $table->string('brochure', 500)->nullable();
+            $table->string('video', 500)->nullable();
+            $table->boolean('use_in_banner')->default(0);
             $table->boolean('is_draft')->default(0);
             $table->boolean('is_completed')->default(0);
             $table->text('meta_title')->nullable();
