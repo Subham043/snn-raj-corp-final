@@ -2,7 +2,6 @@
 
 namespace App\Modules\HomePage\Testimonial\Services;
 
-use App\Http\Services\FileService;
 use App\Modules\HomePage\Testimonial\Models\Testimonial;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -50,27 +49,9 @@ class TestimonialService
         return $testimonial;
     }
 
-    public function saveImage(Testimonial $testimonial): Testimonial
-    {
-        $this->deleteImage($testimonial);
-        $image = (new FileService)->save_file('image', (new Testimonial)->image_path);
-        return $this->update([
-            'image' => $image,
-        ], $testimonial);
-    }
-
     public function delete(Testimonial $testimonial): bool|null
     {
-        $this->deleteImage($testimonial);
         return $testimonial->delete();
-    }
-
-    public function deleteImage(Testimonial $testimonial): void
-    {
-        if($testimonial->image){
-            $path = str_replace("storage","app/public",$testimonial->image);
-            (new FileService)->delete_file($path);
-        }
     }
 
     public function main_all(): Collection
@@ -86,8 +67,7 @@ class CommonFilter implements Filter
 {
     public function __invoke(Builder $query, $value, string $property)
     {
-        $query->where('name', 'LIKE', '%' . $value . '%')
-        ->orWhere('designation', 'LIKE', '%' . $value . '%')
-        ->orWhere('message', 'LIKE', '%' . $value . '%');
+        $query->where('video', 'LIKE', '%' . $value . '%')
+        ->orWhere('video_title', 'LIKE', '%' . $value . '%');
     }
 }

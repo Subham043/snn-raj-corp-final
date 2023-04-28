@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('home_page_testimonials', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 250);
-            $table->string('designation', 250)->nullable();
-            $table->string('message', 500)->nullable();
-            $table->string('image', 500)->nullable();
+            $table->string('video', 500)->nullable();
+            $table->string('video_title', 500)->nullable();
             $table->boolean('is_draft')->default(0);
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();

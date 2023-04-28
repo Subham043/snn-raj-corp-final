@@ -24,10 +24,8 @@ class TestimonialUpdateRequest extends TestimonialCreateRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:250',
-            'designation' => 'required|string|max:250',
-            'message' => 'required|string|max:500',
-            'image' => 'nullable|image|min:10|max:500',
+            'video' => 'required|url|max:500',
+            'video_title' => 'nullable|string|max:500',
             'is_draft' => 'required|boolean',
         ];
     }

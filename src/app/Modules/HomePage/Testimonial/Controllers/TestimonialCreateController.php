@@ -24,12 +24,9 @@ class TestimonialCreateController extends Controller
 
         try {
             //code...
-            $testimonial = $this->testimonialService->create(
-                $request->except('image')
+            $this->testimonialService->create(
+                $request->validated()
             );
-            if($request->image==true && $request->hasFile('image')){
-                $this->testimonialService->saveImage($testimonial);
-            }
             return response()->json(["message" => "Testimonial created successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

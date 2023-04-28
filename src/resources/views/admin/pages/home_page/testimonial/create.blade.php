@@ -23,17 +23,14 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'name', 'label'=>'Name', 'value'=>old('name')])
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'video', 'label'=>'Video', 'value'=>old('video')])
+                                        <p>
+                                            <code>Note: </code> Youtube video should follow the given format : <i>https://www.youtube.com/embed/aUIVH5qg19A</i>
+                                        </p>
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'designation', 'label'=>'Designation', 'value'=>old('designation')])
-                                    </div>
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
-                                    </div>
-                                    <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.textarea', ['key'=>'message', 'label'=>'Message', 'value'=>old('message')])
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'video_title', 'label'=>'Video Title', 'value'=>old('video_title')])
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="mt-4 mt-md-0">
@@ -83,57 +80,21 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
-  .addField('#name', [
+  .addField('#video', [
     {
       rule: 'required',
-      errorMessage: 'Name is required',
+      errorMessage: 'Video is required',
+    },
+  ])
+  .addField('#video_title', [
+    {
+      rule: 'required',
+      errorMessage: 'Video Title is required',
     },
     {
         rule: 'customRegexp',
         value: COMMON_REGEX,
-        errorMessage: 'Name is invalid',
-    },
-  ])
-  .addField('#designation', [
-    {
-      rule: 'required',
-      errorMessage: 'Designation is required',
-    },
-    {
-        rule: 'customRegexp',
-        value: COMMON_REGEX,
-        errorMessage: 'Designation is invalid',
-    },
-  ])
-  .addField('#message', [
-    {
-        rule: 'required',
-        errorMessage: 'Message is required',
-    },
-  ])
-  .addField('#image', [
-    {
-      rule: 'required',
-      errorMessage: 'Image is required',
-    },
-    {
-        rule: 'minFilesCount',
-        value: 1,
-    },
-    {
-        rule: 'maxFilesCount',
-        value: 1,
-    },
-    {
-        rule: 'files',
-        value: {
-        files: {
-            extensions: ['jpeg', 'jpg', 'png', 'webp'],
-            maxSize: 500000,
-            minSize: 10000,
-            types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
-        },
-        },
+        errorMessage: 'Video Title is invalid',
     },
   ])
   .onSuccess(async (event) => {
@@ -143,28 +104,18 @@ validation
     try {
         var formData = new FormData();
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
-        formData.append('name',document.getElementById('name').value)
-        formData.append('designation',document.getElementById('designation').value)
-        formData.append('message',document.getElementById('message').value)
-        if((document.getElementById('image').files).length>0){
-            formData.append('image',document.getElementById('image').files[0])
-        }
+        formData.append('video',document.getElementById('video').value)
+        formData.append('video_title',document.getElementById('video_title').value)
 
         const response = await axios.post('{{route('home_page.testimonial.create.post')}}', formData)
         successToast(response.data.message)
         event.target.reset();
     }catch (error){
-        if(error?.response?.data?.errors?.name){
-            validation.showErrors({'#name': error?.response?.data?.errors?.name[0]})
+        if(error?.response?.data?.errors?.video){
+            validation.showErrors({'#video': error?.response?.data?.errors?.video[0]})
         }
-        if(error?.response?.data?.errors?.designation){
-            validation.showErrors({'#designation': error?.response?.data?.errors?.designation[0]})
-        }
-        if(error?.response?.data?.errors?.message){
-            validation.showErrors({'#message': error?.response?.data?.errors?.message[0]})
-        }
-        if(error?.response?.data?.errors?.image){
-            validation.showErrors({'#image': error?.response?.data?.errors?.image[0]})
+        if(error?.response?.data?.errors?.video_title){
+            validation.showErrors({'#video_title': error?.response?.data?.errors?.video_title[0]})
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)

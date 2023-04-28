@@ -26,12 +26,9 @@ class TestimonialUpdateController extends Controller
         try {
             //code...
             $this->testimonialService->update(
-                $request->except('image'),
+                $request->validated(),
                 $testimonial
             );
-            if($request->hasFile('image')){
-                $this->testimonialService->saveImage($testimonial);
-            }
             return response()->json(["message" => "Testimonial updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

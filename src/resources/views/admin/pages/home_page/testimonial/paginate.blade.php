@@ -73,9 +73,8 @@
                                 <table class="table align-middle table-nowrap" id="customerTable">
                                     <thead class="table-light">
                                         <tr>
-                                            <th class="sort" data-sort="customer_name">Name</th>
-                                            <th class="sort" data-sort="customer_name">Designation</th>
-                                            <th class="sort" data-sort="customer_name">Message</th>
+                                            <th class="sort" data-sort="customer_name">Video</th>
+                                            <th class="sort" data-sort="customer_name">Video Title</th>
                                             <th class="sort" data-sort="customer_name">Status</th>
                                             <th class="sort" data-sort="date">Created On</th>
                                             <th class="sort" data-sort="action">Action</th>
@@ -84,9 +83,8 @@
                                     <tbody class="list form-check-all">
                                         @foreach ($data->items() as $item)
                                         <tr>
-                                            <td class="customer_name">{{$item->name}}</td>
-                                            <td class="customer_name">{{$item->designation}}</td>
-                                            <td class="customer_name">{{ Str::limit($item->message, 20) }}</td>
+                                            <td class="customer_name">{{$item->video}}</td>
+                                            <td class="customer_name">{{$item->video_title}}</td>
                                             @if($item->is_draft == 1)
                                             <td class="status"><span class="badge badge-soft-success text-uppercase">Active</span></td>
                                             @else

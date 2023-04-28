@@ -72,11 +72,11 @@ class About extends Model
     protected function videoId(): Attribute
     {
         return new Attribute(
-            get: fn () => $this->getBannerVideoId(),
+            get: fn () => $this->getVideoId(),
         );
     }
 
-    public function getBannerVideoId(){
+    public function getVideoId(){
         if($this->video){
             $video_id = explode("/embed/", $this->video);
             if(count($video_id) > 1){

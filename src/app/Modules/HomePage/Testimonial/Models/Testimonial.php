@@ -22,10 +22,8 @@ class Testimonial extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'designation',
-        'message',
-        'image',
+        'video',
+        'video_title',
         'is_draft'
     ];
 
@@ -35,9 +33,7 @@ class Testimonial extends Model
         'updated_at' => 'datetime',
     ];
 
-    public $image_path = 'home_page_testimonials';
-
-    protected $appends = ['image_link'];
+    protected $appends = ['video_id'];
 
     public static function boot()
     {
@@ -53,18 +49,22 @@ class Testimonial extends Model
         });
     }
 
-    protected function image(): Attribute
+    protected function videoId(): Attribute
     {
-        return Attribute::make(
-            set: fn (string $value) => 'storage/'.$this->image_path.'/'.$value,
+        return new Attribute(
+            get: fn () => $this->getVideoId(),
         );
     }
 
-    protected function imageLink(): Attribute
-    {
-        return new Attribute(
-            get: fn () => asset($this->image),
-        );
+    public function getVideoId(){
+        if($this->video){
+            $video_id = explode("/embed/", $this->video);
+            if(count($video_id) > 1){
+                $video_id = $video_id[1];
+                return $video_id;
+            }
+        }
+        return null;
     }
 
     public function user()
@@ -78,7 +78,7 @@ class Testimonial extends Model
         ->useLogName('home page testimonial')
         ->setDescriptionForEvent(
                 function(string $eventName){
-                    $desc = "Testimonial with name ".$this->name." has been {$eventName}";
+                    $desc = "Testimonial has been {$eventName}";
                     $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
                     return $desc;
                 }
