@@ -56,13 +56,6 @@
                                     @if($banners->button_link)
                                         <a href="{{$banners->button_link}}" class="button-light">View Detail</a>
                                     @endif
-                                    @if($banners->banner_video_id)
-                                        <a href="https://youtu.be/{{$banners->banner_video_id}}" class="vid p-relative">
-                                            <span class="video-gallery-polygon">
-                                                <i class="ti-control-play"></i>
-                                            </span>
-                                        </a>
-                                    @endif
                                 </div>
                             </div>
                         </div>

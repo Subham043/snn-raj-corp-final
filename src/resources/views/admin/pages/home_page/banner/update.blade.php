@@ -70,34 +70,6 @@
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'banner_image_title', 'label'=>'Image Title', 'value'=>$data->banner_image_title])
                                     </div>
-
-                                </div>
-                                <!--end row-->
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header align-items-center d-flex justify-content-between">
-                            <h4 class="card-title mb-0">Banner Video</h4>
-                        </div><!-- end card header -->
-                        <div class="card-body">
-                            <div class="live-preview">
-                                <div class="row gy-4" id="video_row">
-                                    <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'banner_video', 'label'=>'Video Link', 'value'=>$data->banner_video])
-                                        <p>
-                                            <code>Note: </code> Youtube video should follow the given format : <i>https://www.youtube.com/embed/aUIVH5qg19A</i>
-                                        </p>
-                                    </div>
-                                    <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'banner_video_title', 'label'=>'Video Title', 'value'=>$data->banner_video_title])
-                                    </div>
-
-                                </div>
-                                <div class="row gy-4 mt-2">
-
                                     <div class="col-xxl-12 col-md-12">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
                                     </div>
@@ -108,6 +80,7 @@
 
                         </div>
                     </div>
+
                 </form>
             </div>
             <!--end col-->
@@ -175,16 +148,6 @@ validation
         errorMessage: 'Description is required',
     },
   ])
-  .addField('#banner_video', [
-    {
-        validator: (value, fields) => true,
-    },
-  ])
-  .addField('#banner_video_title', [
-    {
-        validator: (value, fields) => true,
-    },
-  ])
   .addField('#button_link', [
     {
         validator: (value, fields) => true,
@@ -220,8 +183,6 @@ validation
         if((document.getElementById('banner_image').files).length>0){
             formData.append('banner_image',document.getElementById('banner_image').files[0])
         }
-        formData.append('banner_video',document.getElementById('banner_video').value)
-        formData.append('banner_video_title',document.getElementById('banner_video_title').value)
 
         const response = await axios.post('{{route('home_page.banner.update.post', $data->id)}}', formData)
         successToast(response.data.message)
@@ -243,12 +204,6 @@ validation
         }
         if(error?.response?.data?.errors?.banner_image){
             validation.showErrors({'#banner_image': error?.response?.data?.errors?.banner_image[0]})
-        }
-        if(error?.response?.data?.errors?.banner_video){
-            validation.showErrors({'#banner_video': error?.response?.data?.errors?.banner_video[0]})
-        }
-        if(error?.response?.data?.errors?.banner_video_title){
-            validation.showErrors({'#banner_video_title': error?.response?.data?.errors?.banner_video_title[0]})
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)

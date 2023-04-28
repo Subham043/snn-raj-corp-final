@@ -28,8 +28,6 @@ class Banner extends Model
         'banner_image',
         'banner_image_alt',
         'banner_image_title',
-        'banner_video',
-        'banner_video_title',
         'is_draft'
     ];
 
@@ -41,7 +39,7 @@ class Banner extends Model
 
     public $image_path = 'home_page_banners';
 
-    protected $appends = ['banner_image_link', 'banner_video_id'];
+    protected $appends = ['banner_image_link'];
 
     public static function boot()
     {
@@ -71,13 +69,6 @@ class Banner extends Model
         );
     }
 
-    protected function bannerVideoId(): Attribute
-    {
-        return new Attribute(
-            get: fn () => $this->getBannerVideoId(),
-        );
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id')->withDefault();
@@ -97,17 +88,6 @@ class Banner extends Model
         ->logFillable()
         ->logOnlyDirty();
         // Chain fluent methods for configuration options
-    }
-
-    public function getBannerVideoId(){
-        if($this->banner_video){
-            $video_id = explode("/embed/", $this->banner_video);
-            if(count($video_id) > 1){
-                $video_id = $video_id[1];
-                return $video_id;
-            }
-        }
-        return null;
     }
 
 }

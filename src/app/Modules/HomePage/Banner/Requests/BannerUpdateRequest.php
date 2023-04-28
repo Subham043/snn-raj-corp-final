@@ -36,8 +36,6 @@ class BannerUpdateRequest extends BannerCreateRequest
             }),],
             'banner_image_alt' => 'nullable|string|max:500',
             'banner_image_title' => 'nullable|string|max:500',
-            'banner_video' => 'nullable|url|max:500',
-            'banner_video_title' => 'nullable|string|max:500',
         ];
     }
 

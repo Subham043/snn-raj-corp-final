@@ -34,8 +34,6 @@ class BannerCreateRequest extends FormRequest
             'banner_image' => 'required|image|min:10|max:500',
             'banner_image_alt' => 'nullable|string|max:500',
             'banner_image_title' => 'nullable|string|max:500',
-            'banner_video' => 'nullable|url|max:500',
-            'banner_video_title' => 'nullable|string|max:500',
         ];
     }
 
@@ -51,8 +49,6 @@ class BannerCreateRequest extends FormRequest
             'banner_image' => 'Image',
             'banner_image_alt' => 'Image Alt',
             'banner_image_title' => 'Image Title',
-            'banner_video' => 'Video',
-            'banner_video_title' => 'Video Title',
         ];
     }
 

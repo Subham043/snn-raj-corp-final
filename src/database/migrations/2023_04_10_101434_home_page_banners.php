@@ -16,12 +16,9 @@ return new class extends Migration
             $table->string('title', 250);
             $table->string('description', 500)->nullable();
             $table->string('button_link', 500)->nullable();
-            $table->boolean('is_banner_image')->default(1);
             $table->string('banner_image', 500)->nullable();
             $table->string('banner_image_alt', 500)->nullable();
             $table->string('banner_image_title', 500)->nullable();
-            $table->string('banner_video', 500)->nullable();
-            $table->string('banner_video_title', 500)->nullable();
             $table->boolean('is_draft')->default(0);
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
