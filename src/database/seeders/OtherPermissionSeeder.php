@@ -85,8 +85,6 @@ class OtherPermissionSeeder extends Seeder
 
         //permission for legal pages
         Permission::create(['name' => 'edit legal pages']);
-        Permission::create(['name' => 'delete legal pages']);
-        Permission::create(['name' => 'create legal pages']);
         Permission::create(['name' => 'list legal pages']);
 
         //permission for pages seo

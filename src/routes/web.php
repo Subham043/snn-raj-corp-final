@@ -5,6 +5,7 @@ use App\Modules\Main\AwardPage\AwardPageController;
 use App\Modules\Main\ContactPage\ContactPageController;
 use App\Modules\Main\CsrPage\CsrPageController;
 use App\Modules\Main\HomePage\HomePageController;
+use App\Modules\Main\LegalPage\LegalPageController;
 use App\Modules\Main\ProjectPage\CompletedProjectPageController;
 use App\Modules\Main\ProjectPage\OngoingProjectPageController;
 use App\Modules\Main\ProjectPage\ProjectDetailPageController;
@@ -30,3 +31,4 @@ Route::get('/completed-projects', [CompletedProjectPageController::class, 'get',
 Route::get('/completed-projects/{slug}', [ProjectDetailPageController::class, 'get', 'as' => 'completed_projects_detail.get'])->name('completed_projects_detail.get');
 Route::get('/ongoing-projects', [OngoingProjectPageController::class, 'get', 'as' => 'ongoing_projects.get'])->name('ongoing_projects.get');
 Route::get('/ongoing-projects/{slug}', [ProjectDetailPageController::class, 'get', 'as' => 'ongoing_projects_detail.get'])->name('ongoing_projects_detail.get');
+Route::get('/{legal_slug}', [LegalPageController::class, 'get', 'as' => 'legal.get'])->name('legal.get');

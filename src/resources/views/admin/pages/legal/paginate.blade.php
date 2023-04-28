@@ -23,9 +23,6 @@
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
                                     <div>
-                                        @can('create legal pages')
-                                        <a href="{{route('legal.create.get')}}" type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
-                                        @endcan
                                     </div>
                                 </div>
                                 <div class="col-sm">
@@ -63,13 +60,7 @@
                                                 <div class="d-flex gap-2">
                                                     @can('edit legal pages')
                                                     <div class="edit">
-                                                        <a href="{{route('legal.update.get', $item->id)}}" class="btn btn-sm btn-primary edit-item-btn">Edit</a>
-                                                    </div>
-                                                    @endcan
-
-                                                    @can('delete legal pages')
-                                                    <div class="remove">
-                                                        <button class="btn btn-sm btn-danger remove-item-btn" data-link="{{route('legal.delete.get', $item->id)}}">Delete</button>
+                                                        <a href="{{route('legal.update.get', $item->slug)}}" class="btn btn-sm btn-primary edit-item-btn">Edit</a>
                                                     </div>
                                                     @endcan
                                                 </div>

@@ -35,8 +35,8 @@
                 <div class="col-md-3">
                     <div class="item">
                         <h3><span>Projects</span></h3>
-                        <a href="{{route('awards_page.get')}}">Ongoing</a><br/>
-                        <a href="{{route('csr_page.get')}}">Completed</a>
+                        <a href="{{route('completed_projects.get')}}">Completed</a><br/>
+                        <a href="{{route('ongoing_projects.get')}}">Ongoing</a>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -55,7 +55,11 @@
                     <p>© {{date('Y')}} {{ empty($generalSetting) ? '' : $generalSetting->website_name}}. All right reserved.</p>
                 </div>
                 <div class="col-md-8">
-                    <p class="right"><a href="#">Terms &amp; Conditions</a></p>
+                    <p class="right">
+                        @foreach($legal as $legal)
+                            <a href="{{route('legal.get', $legal->slug)}}" class="mx-2">{{$legal->page_name}}</a>
+                        @endforeach
+                    </p>
                 </div>
             </div>
         </div>

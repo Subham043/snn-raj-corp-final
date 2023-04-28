@@ -8,6 +8,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 use Spatie\QueryBuilder\AllowedFilter;
 
 class LegalService
@@ -29,17 +30,9 @@ class LegalService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Legal
+    public function getBySlug(String $slug): Legal
     {
-        return Legal::findOrFail($id);
-    }
-
-    public function create(array $data): Legal
-    {
-        $legal = Legal::create($data);
-        $legal->user_id = auth()->user()->id;
-        $legal->save();
-        return $legal;
+        return Legal::where('slug', $slug)->firstOrFail();
     }
 
     public function update(array $data, Legal $legal): Legal
@@ -48,9 +41,18 @@ class LegalService
         return $legal;
     }
 
-    public function delete(Legal $legal): bool|null
+    public function getBySlugMain(String $slug): Legal
     {
-        return $legal->delete();
+        return Cache::remember('legal_'.$slug, 60*60*24, function() use($slug){
+            return Legal::where('slug', $slug)->where('is_draft', true)->first();
+        });
+    }
+
+    public function main_all(): Collection
+    {
+        return Cache::remember('all_legal_main', 60*60*24, function(){
+            return Legal::where('is_draft', true)->get();
+        });
     }
 
 }

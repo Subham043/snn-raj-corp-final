@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\About\AdditionalContent\Services\AdditionalContentService;
 use App\Modules\About\Banner\Services\BannerService;
 use App\Modules\About\Main\Services\MainService;
+use App\Modules\Legal\Services\LegalService;
 use App\Modules\Partner\Services\PartnerHeadingService;
 use App\Modules\Partner\Services\PartnerService;
 use App\Modules\Seo\Services\SeoService;
@@ -32,6 +33,7 @@ class AboutPageController extends Controller
     private $generalService;
     private $themeService;
     private $chatbotService;
+    private $legalService;
 
     public function __construct(
         BannerService $bannerService,
@@ -47,6 +49,7 @@ class AboutPageController extends Controller
         GeneralService $generalService,
         ThemeService $themeService,
         ChatbotService $chatbotService,
+        LegalService $legalService,
     )
     {
         $this->bannerService = $bannerService;
@@ -62,12 +65,14 @@ class AboutPageController extends Controller
         $this->generalService = $generalService;
         $this->themeService = $themeService;
         $this->chatbotService = $chatbotService;
+        $this->legalService = $legalService;
     }
 
     public function get(){
         $banner = $this->bannerService->getById(1);
         $about = $this->mainService->getById(1);
         $additionalContent = $this->additionalContentService->main_all();
+        $legal = $this->legalService->main_all();
         $management = $this->managementService->main_all();
         $staffs = $this->staffService->main_all();
         $managementHeading = $this->managementHeadingService->getById(1);
@@ -78,7 +83,7 @@ class AboutPageController extends Controller
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
         $chatbotSetting = $this->chatbotService->getById(1);
-        return view('main.pages.about', compact(['banner', 'about', 'additionalContent', 'seo', 'staffs', 'management', 'managementHeading', 'staffHeading', 'partners', 'partnerHeading', 'generalSetting', 'themeSetting', 'chatbotSetting']));
+        return view('main.pages.about', compact(['banner', 'about', 'additionalContent', 'seo', 'staffs', 'management', 'managementHeading', 'staffHeading', 'partners', 'partnerHeading', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal']));
     }
 
 }

@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="col-md-12 mt-3 mb-5">
                                 <input type="checkbox" class="line-gray">
-                                <label>I agree with the <a href="#0" class="underline line-gray">privacy policy</a></label>
+                                <label>I agree with the <a href="{{route('legal.get', 'privacy-policy')}}" class="underline line-gray">privacy policy</a></label>
                             </div>
                             <div class="col-md-2">
                                 <input class="line-gray" name="submit" type="submit" id="submitBtn" value="Send Message">

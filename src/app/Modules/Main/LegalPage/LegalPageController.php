@@ -1,58 +1,45 @@
 <?php
 
-namespace App\Modules\Main\ProjectPage;
+namespace App\Modules\Main\LegalPage;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Legal\Services\LegalService;
-use App\Modules\Project\Projects\Services\ProjectService;
-use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
 use App\Modules\Settings\Services\ThemeService;
-use Illuminate\Http\Request;
 
-class CompletedProjectPageController extends Controller
+class LegalPageController extends Controller
 {
-    private $seoService;
     private $generalService;
     private $themeService;
     private $chatbotService;
-    private $projectService;
     private $legalService;
 
     public function __construct(
-        SeoService $seoService,
         GeneralService $generalService,
         ThemeService $themeService,
         ChatbotService $chatbotService,
-        ProjectService $projectService,
         LegalService $legalService,
     )
     {
-        $this->seoService = $seoService;
         $this->generalService = $generalService;
         $this->themeService = $themeService;
         $this->chatbotService = $chatbotService;
-        $this->projectService = $projectService;
         $this->legalService = $legalService;
     }
 
-    public function get(Request $request){
-        $seo = $this->seoService->getBySlugMain('project-completed-page');
+    public function get($legal_slug){
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
         $chatbotSetting = $this->chatbotService->getById(1);
-        $projects = $this->projectService->main_paginate($request->total ?? 10, true);
         $legal = $this->legalService->main_all();
-        $status = 'completed';
-        return view('main.pages.projects.index', compact([
-            'seo',
+        $data = $this->legalService->getBySlugMain($legal_slug);
+        return view('main.pages.legal', compact([
             'generalSetting',
             'themeSetting',
             'chatbotSetting',
-            'projects',
-            'status',
-            'legal'
+            'data',
+            'legal',
         ]));
     }
 

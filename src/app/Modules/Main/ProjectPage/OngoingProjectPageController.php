@@ -3,6 +3,7 @@
 namespace App\Modules\Main\ProjectPage;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Legal\Services\LegalService;
 use App\Modules\Project\Projects\Services\ProjectService;
 use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\ChatbotService;
@@ -17,13 +18,15 @@ class OngoingProjectPageController extends Controller
     private $themeService;
     private $chatbotService;
     private $projectService;
+    private $legalService;
 
     public function __construct(
         SeoService $seoService,
         GeneralService $generalService,
         ThemeService $themeService,
         ChatbotService $chatbotService,
-        ProjectService $projectService
+        ProjectService $projectService,
+        LegalService $legalService,
     )
     {
         $this->seoService = $seoService;
@@ -31,6 +34,7 @@ class OngoingProjectPageController extends Controller
         $this->themeService = $themeService;
         $this->chatbotService = $chatbotService;
         $this->projectService = $projectService;
+        $this->legalService = $legalService;
     }
 
     public function get(Request $request){
@@ -38,6 +42,7 @@ class OngoingProjectPageController extends Controller
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
         $chatbotSetting = $this->chatbotService->getById(1);
+        $legal = $this->legalService->main_all();
         $projects = $this->projectService->main_paginate($request->total ?? 10, false);
         $status = 'ongoing';
         return view('main.pages.projects.index', compact([
@@ -47,6 +52,7 @@ class OngoingProjectPageController extends Controller
             'chatbotSetting',
             'projects',
             'status',
+            'legal'
         ]));
     }
 

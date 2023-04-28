@@ -7,7 +7,7 @@
                 <li><a href="{{route('about_page.get')}}">About Us</a></li>
                 <li class='duru-menu-sub'><a href='#'>Projects <i class="ti-angle-down"></i></a>
                     <ul>
-                        <li><a href='{{route('completed_projects.get')}}'>Upcoming Projects</a></li>
+                        <li><a href='{{route('completed_projects.get')}}'>Completed Projects</a></li>
                         <li><a href='{{route('ongoing_projects.get')}}'>Ongoing Projects</a></li>
                     </ul>
                 </li>

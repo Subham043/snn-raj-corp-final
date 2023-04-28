@@ -6,6 +6,7 @@ use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
@@ -34,6 +35,23 @@ class Legal extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::created(function ($model) {
+            Cache::forget('all_legal_main');
+            Cache::forget('legal_'.$model->slug);
+        });
+        self::updated(function ($model) {
+            Cache::forget('all_legal_main');
+            Cache::forget('legal_'.$model->slug);
+        });
+        self::deleted(function ($model) {
+            Cache::forget('all_legal_main');
+            Cache::forget('legal_'.$model->slug);
+        });
+    }
 
     protected function slug(): Attribute
     {

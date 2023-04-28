@@ -16,17 +16,17 @@ class LegalUpdateController extends Controller
         $this->legalService = $legalService;
     }
 
-    public function get($id){
-        $data = $this->legalService->getById($id);
+    public function get($slug){
+        $data = $this->legalService->getBySlug($slug);
         return view('admin.pages.legal.update', compact('data'));
     }
 
-    public function post(LegalUpdateRequest $request, $id){
-        $legal = $this->legalService->getById($id);
+    public function post(LegalUpdateRequest $request, $slug){
+        $legal = $this->legalService->getBySlug($slug);
         try {
             //code...
             $this->legalService->update(
-                $request->except('image'),
+                $request->validated(),
                 $legal
             );
             return response()->json(["message" => "Legal Pages updated successfully."], 201);

@@ -24,7 +24,7 @@
         <div class="row">
             @include('admin.includes.back_button', ['link'=>route('legal.paginate.get')])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('legal.update.post', $data->id)}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('legal.update.post', $data->slug)}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
@@ -35,12 +35,18 @@
                                 <div class="row gy-4">
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>$data->heading])
+                                        <p>
+                                            <code>Note: </code> Put the text in between span tags to make it highlighted
+                                        </p>
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'page_name', 'label'=>'Page Name', 'value'=>$data->page_name])
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'slug', 'label'=>'Page Slug', 'value'=>$data->slug])
+                                        <div>
+                                            <label for="slug" class="form-label">Page Slug</label>
+                                            <input type="text" class="form-control" disabled readonly value="{{$data->slug}}">
+                                        </div>
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>$data->description])
@@ -129,17 +135,6 @@ validation
         errorMessage: 'Page Name is invalid',
     },
   ])
-  .addField('#slug', [
-    {
-      rule: 'required',
-      errorMessage: 'Page Slug is required',
-    },
-    {
-        rule: 'customRegexp',
-        value: COMMON_REGEX,
-        errorMessage: 'Page Slug is invalid',
-    },
-  ])
   .addField('#description', [
     {
       rule: 'required',
@@ -155,11 +150,10 @@ validation
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
         formData.append('heading',document.getElementById('heading').value)
         formData.append('page_name',document.getElementById('page_name').value)
-        formData.append('slug',document.getElementById('slug').value)
         formData.append('description',quillDescription.root.innerHTML)
         formData.append('description_unfiltered',quillDescription.getText())
 
-        const response = await axios.post('{{route('legal.update.post', $data->id)}}', formData)
+        const response = await axios.post('{{route('legal.update.post', $data->slug)}}', formData)
         successToast(response.data.message)
     }catch (error){
         if(error?.response?.data?.errors?.heading){
@@ -170,9 +164,6 @@ validation
         }
         if(error?.response?.data?.errors?.description){
             validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
-        }
-        if(error?.response?.data?.errors?.slug){
-            validation.showErrors({'#slug': error?.response?.data?.errors?.slug[0]})
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)
