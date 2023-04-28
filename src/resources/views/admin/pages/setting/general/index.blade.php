@@ -20,23 +20,26 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.file_input', ['key'=>'website_logo', 'label'=>'Webiste Logo'])
                                         @if(!empty($data->website_logo_link))
                                             <img src="{{$data->website_logo_link}}" alt="" class="img-preview">
                                         @endif
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'website_logo_alt', 'label'=>'Website Logo Alt', 'value'=>!empty($data) ? (old('website_logo_alt') ? old('website_logo_alt') : $data->website_logo_alt) : old('website_logo_alt')])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'website_logo_title', 'label'=>'Website Logo Title', 'value'=>!empty($data) ? (old('website_logo_title') ? old('website_logo_title') : $data->website_logo_title) : old('website_logo_title')])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.file_input', ['key'=>'website_favicon', 'label'=>'Webiste Favicon'])
                                         @if(!empty($data->website_favicon_link))
                                             <img src="{{$data->website_favicon_link}}" alt="" class="img-preview">
                                         @endif
+                                    </div>
+                                    <div class="col-xxl-4 col-md-4">
+                                        @include('admin.includes.input', ['key'=>'website_name', 'label'=>'Website Name', 'value'=>!empty($data) ? (old('website_name') ? old('website_name') : $data->website_name) : old('website_name')])
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'email', 'label'=>'Email', 'value'=>!empty($data) ? (old('email') ? old('email') : $data->email) : old('email')])
@@ -143,6 +146,17 @@ validation
         errorMessage: 'Phone is invalid',
     },
   ])
+  .addField('#website_name', [
+    {
+      rule: 'required',
+      errorMessage: 'Website Name is required',
+    },
+    {
+        rule: 'customRegexp',
+        value: COMMON_REGEX,
+        errorMessage: 'Website Name is invalid',
+    },
+  ])
   .addField('#facebook', [
     {
         validator: (value, fields) => true,
@@ -236,6 +250,7 @@ validation
         formData.append('address',document.getElementById('address').value)
         formData.append('email',document.getElementById('email').value)
         formData.append('phone',document.getElementById('phone').value)
+        formData.append('website_name',document.getElementById('website_name').value)
         if((document.getElementById('website_logo').files).length>0){
             formData.append('website_logo',document.getElementById('website_logo').files[0])
         }
@@ -266,6 +281,9 @@ validation
         }
         if(error?.response?.data?.errors?.address){
             validation.showErrors({'#address': error?.response?.data?.errors?.address[0]})
+        }
+        if(error?.response?.data?.errors?.website_name){
+            validation.showErrors({'#website_name': error?.response?.data?.errors?.website_name[0]})
         }
         if(error?.response?.data?.errors?.website_logo_alt){
             validation.showErrors({'#website_logo_alt': error?.response?.data?.errors?.website_logo_alt[0]})

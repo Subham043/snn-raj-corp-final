@@ -52,7 +52,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <p>© 2023 Architect. All right reserved.</p>
+                    <p>© {{date('Y')}} {{ empty($generalSetting) ? '' : $generalSetting->website_name}}. All right reserved.</p>
                 </div>
                 <div class="col-md-8">
                     <p class="right"><a href="#">Terms &amp; Conditions</a></p>

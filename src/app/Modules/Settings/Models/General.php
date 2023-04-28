@@ -33,6 +33,7 @@ class General extends Model
         'website_logo_alt',
         'website_logo_title',
         'website_favicon',
+        'website_name',
     ];
 
     protected $casts = [
