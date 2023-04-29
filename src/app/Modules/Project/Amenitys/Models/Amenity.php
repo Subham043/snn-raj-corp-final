@@ -3,6 +3,7 @@
 namespace App\Modules\Project\Amenitys\Models;
 
 use App\Modules\Authentication\Models\User;
+use App\Modules\Project\CommonAmenitys\Models\CommonAmenity;
 use App\Modules\Project\Projects\Models\Project;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,34 +23,14 @@ class Amenity extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'image',
-        'title',
-        'is_draft'
+        'project_id',
+        'amenity_id',
     ];
 
     protected $casts = [
-        'is_draft' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-
-    public $image_path = 'project_amenities';
-
-    protected $appends = ['image_link'];
-
-    protected function image(): Attribute
-    {
-        return Attribute::make(
-            set: fn (string $value) => 'storage/'.$this->image_path.'/'.$value,
-        );
-    }
-
-    protected function imageLink(): Attribute
-    {
-        return new Attribute(
-            get: fn () => asset($this->image),
-        );
-    }
 
     public function user()
     {
@@ -59,6 +40,11 @@ class Amenity extends Model
     public function project()
     {
         return $this->belongsTo(Project::class, 'project_id')->withDefault();
+    }
+
+    public function amenity()
+    {
+        return $this->belongsTo(CommonAmenity::class, 'amenity_id')->withDefault();
     }
 
     public function getActivitylogOptions(): LogOptions

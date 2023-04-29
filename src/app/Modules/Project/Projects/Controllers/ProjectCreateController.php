@@ -3,21 +3,25 @@
 namespace App\Modules\Project\Projects\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Project\CommonAmenitys\Services\CommonAmenityService;
 use App\Modules\Project\Projects\Requests\ProjectCreateRequest;
 use App\Modules\Project\Projects\Services\ProjectService;
 
 class ProjectCreateController extends Controller
 {
     private $projectService;
+    private $amenityService;
 
-    public function __construct(ProjectService $projectService)
+    public function __construct(ProjectService $projectService, CommonAmenityService $amenityService)
     {
         $this->middleware('permission:create projects', ['only' => ['get','post']]);
         $this->projectService = $projectService;
+        $this->amenityService = $amenityService;
     }
 
     public function get(){
-        return view('admin.pages.project.create');
+        $amenity = $this->amenityService->all();
+        return view('admin.pages.project.create', compact('amenity'));
     }
 
     public function post(ProjectCreateRequest $request){
@@ -25,11 +29,20 @@ class ProjectCreateController extends Controller
         try {
             //code...
             $project = $this->projectService->create(
-                $request->except('brochure')
+                $request->except(['brochure', 'amenity'])
             );
             if($request->hasFile('brochure')){
                 $this->projectService->saveBrochure($project);
             }
+            $amenities = array();
+            foreach ($request->amenity as $key => $value) {
+                $amenities[$value] = [
+                    'user_id' => auth()->user()->id,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
+            $project->amenity()->sync($amenities);
             return response()->json(["message" => "Project created successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

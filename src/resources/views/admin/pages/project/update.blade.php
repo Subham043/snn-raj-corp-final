@@ -33,35 +33,38 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'name', 'label'=>'Name', 'value'=>$data->name])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'slug', 'label'=>'Slug', 'value'=>$data->slug])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'rera', 'label'=>'Rera', 'value'=>$data->rera])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'map_location_link', 'label'=>'Map Location Link', 'value'=>$data->map_location_link])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'location', 'label'=>'Location', 'value'=>$data->location])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'floor', 'label'=>'Floor', 'value'=>$data->floor])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'acre', 'label'=>'Acre', 'value'=>$data->acre])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'tower', 'label'=>'Tower', 'value'=>$data->tower])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'brochure', 'label'=>'Brochure (PDF)'])
                                         @if(!empty($data->brochure))
                                             <a href="{{$data->brochure_link}}" target="_blank" rel="noopener noreferrer">View PDF</a>
                                         @endif
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.select_multiple', ['key'=>'amenity', 'label'=>'Amenities'])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.textarea', ['key'=>'address', 'label'=>'Address', 'value'=>$data->address])
@@ -190,6 +193,7 @@
 
 @section('javascript')
 <script src="{{ asset('admin/libs/quill/quill.min.js' ) }}"></script>
+<script src="{{ asset('admin/js/pages/choices.min.js') }}"></script>
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 
@@ -212,6 +216,12 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
+  .addField('#amenity', [
+    {
+      rule: 'required',
+      errorMessage: 'Amenity is required',
+    },
+  ])
   .addField('#name', [
     {
       rule: 'required',
@@ -401,6 +411,11 @@ validation
         if((document.getElementById('brochure').files).length>0){
             formData.append('brochure',document.getElementById('brochure').files[0])
         }
+        if(document.getElementById('amenity')?.length>0){
+            for (let index = 0; index < document.getElementById('amenity').length; index++) {
+                formData.append('amenity[]',document.getElementById('amenity')[index].value)
+            }
+        }
 
         const response = await axios.post('{{route('project.update.post', $data->id)}}', formData)
         successToast(response.data.message)
@@ -441,6 +456,9 @@ validation
         if(error?.response?.data?.errors?.year){
             validation.showErrors({'#year': error?.response?.data?.errors?.year[0]})
         }
+        if(error?.response?.data?.errors?.amenity){
+            validation.showErrors({'#amenity': error?.response?.data?.errors?.amenity[0]})
+        }
         if(error?.response?.data?.errors?.video){
             validation.showErrors({'#video': error?.response?.data?.errors?.video[0]})
         }
@@ -478,6 +496,22 @@ validation
         submitBtn.disabled = false;
     }
   });
+
+  const amenityChoice = new Choices('#amenity', {
+        choices: [
+            @foreach($amenity as $amenity)
+                {
+                    value: '{{$amenity->id}}',
+                    label: '{{$amenity->title}}',
+                    selected: {{ (in_array($amenity->id, $amenities)) ? 'true' : 'false'}}
+                },
+            @endforeach
+        ],
+        placeholderValue: 'Select amenities',
+        ...CHOICE_CONFIG,
+        shouldSort: false,
+        shouldSortItems: false,
+    });
 
 </script>
 

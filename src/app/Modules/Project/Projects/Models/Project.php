@@ -7,6 +7,7 @@ use App\Modules\Project\Accomodations\Models\Accomodation;
 use App\Modules\Project\AdditionalContents\Models\AdditionalContent;
 use App\Modules\Project\Amenitys\Models\Amenity;
 use App\Modules\Project\Banners\Models\Banner;
+use App\Modules\Project\CommonAmenitys\Models\CommonAmenity;
 use App\Modules\Project\GalleryImages\Models\GalleryImage;
 use App\Modules\Project\GalleryVideos\Models\GalleryVideo;
 use App\Modules\Project\Plans\Models\Plan;
@@ -178,7 +179,7 @@ class Project extends Model
 
     public function amenity()
     {
-        return $this->hasMany(Amenity::class, 'project_id');
+        return $this->belongsToMany(CommonAmenity::class, 'project_amenities', 'project_id', 'amenity_id');
     }
 
     public function additional_content()

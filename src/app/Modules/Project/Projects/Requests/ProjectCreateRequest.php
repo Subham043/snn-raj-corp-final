@@ -42,6 +42,8 @@ class ProjectCreateRequest extends FormRequest
             'brochure' => 'nullable|mimes:pdf|min:10|max:5000',
             'video' => 'required|url|max:500',
             'use_in_banner' => 'required|boolean',
+            'amenity' => 'required|array|min:4',
+            'amenity.*' => 'required|numeric|exists:project_common_amenities,id',
             'is_draft' => 'required|boolean',
             'is_completed' => 'required|boolean',
             'meta_title' => 'nullable|string',

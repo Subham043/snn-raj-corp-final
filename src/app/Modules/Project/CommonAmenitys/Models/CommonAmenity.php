@@ -54,6 +54,11 @@ class CommonAmenity extends Model
         return $this->belongsTo(User::class, 'user_id')->withDefault();
     }
 
+    public function project()
+    {
+        return $this->belongsToMany(Project::class, 'project_amenities', 'amenity_id', 'project_id');
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()

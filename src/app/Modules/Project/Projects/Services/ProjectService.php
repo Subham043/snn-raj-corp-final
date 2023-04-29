@@ -62,6 +62,7 @@ class ProjectService
     public function delete(Project $project): bool|null
     {
         $this->deleteBrochure($project);
+        $project->amenity()->detach();
         return $project->delete();
     }
 

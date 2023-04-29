@@ -52,10 +52,6 @@ use App\Modules\Project\Accomodations\Controllers\AccomodationCreateController;
 use App\Modules\Project\Accomodations\Controllers\AccomodationDeleteController;
 use App\Modules\Project\Accomodations\Controllers\AccomodationPaginateController;
 use App\Modules\Project\Accomodations\Controllers\AccomodationUpdateController;
-use App\Modules\Project\Amenitys\Controllers\AmenityCreateController;
-use App\Modules\Project\Amenitys\Controllers\AmenityDeleteController;
-use App\Modules\Project\Amenitys\Controllers\AmenityPaginateController;
-use App\Modules\Project\Amenitys\Controllers\AmenityUpdateController;
 use App\Modules\Project\Banners\Controllers\BannerCreateController as ProjectBannerCreateController;
 use App\Modules\Project\Banners\Controllers\BannerDeleteController as ProjectBannerDeleteController;
 use App\Modules\Project\Banners\Controllers\BannerPaginateController as ProjectBannerPaginateController;
@@ -272,15 +268,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [PlanUpdateController::class, 'get', 'as' => 'project.plan.update.get'])->name('project.plan.update.get');
             Route::post('/update/{id}', [PlanUpdateController::class, 'post', 'as' => 'project.plan.update.post'])->name('project.plan.update.post');
             Route::get('/delete/{id}', [PlanDeleteController::class, 'get', 'as' => 'project.plan.delete.get'])->name('project.plan.delete.get');
-        });
-
-        Route::prefix('/{project_id}/amenity')->group(function () {
-            Route::get('/', [AmenityPaginateController::class, 'get', 'as' => 'project.amenity.paginate.get'])->name('project.amenity.paginate.get');
-            Route::get('/create', [AmenityCreateController::class, 'get', 'as' => 'project.amenity.create.get'])->name('project.amenity.create.get');
-            Route::post('/create', [AmenityCreateController::class, 'post', 'as' => 'project.amenity.create.post'])->name('project.amenity.create.post');
-            Route::get('/update/{id}', [AmenityUpdateController::class, 'get', 'as' => 'project.amenity.update.get'])->name('project.amenity.update.get');
-            Route::post('/update/{id}', [AmenityUpdateController::class, 'post', 'as' => 'project.amenity.update.post'])->name('project.amenity.update.post');
-            Route::get('/delete/{id}', [AmenityDeleteController::class, 'get', 'as' => 'project.amenity.delete.get'])->name('project.amenity.delete.get');
         });
 
         Route::prefix('/{project_id}/gallery-image')->group(function () {

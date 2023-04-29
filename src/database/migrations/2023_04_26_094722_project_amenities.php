@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('project_amenities', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 500)->nullable();
-            $table->string('image', 500)->nullable();
-            $table->boolean('is_draft')->default(0);
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('project_id')->nullable()->constrained('projects')->nullOnDelete();
+            $table->foreignId('amenity_id')->nullable()->constrained('project_common_amenities')->nullOnDelete();
             $table->timestamps();
             $table->index(['id', 'created_at']);
         });

@@ -86,10 +86,6 @@
                                                     </div>
 
                                                     <div class="edit">
-                                                        <a href="{{route('project.amenity.paginate.get', $item->id)}}" class="btn btn-sm btn-secondary edit-item-btn">Amenities</a>
-                                                    </div>
-
-                                                    <div class="edit">
                                                         <a href="{{route('project.gallery_image.paginate.get', $item->id)}}" class="btn btn-sm btn-secondary edit-item-btn">Gallery Images</a>
                                                     </div>
 
