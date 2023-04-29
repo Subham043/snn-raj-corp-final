@@ -25,24 +25,11 @@
     {!!$seo->meta_header_no_script!!}
 
     <style nonce="{{ csp_nonce() }}">
-        .fl-img{
-            float: left;
-            width: 50%;
-            margin-right: 20px;
-        }
-        .fr-img{
-            float: right;
-            width: 50%;
-            margin-left: 20px;
-        }
         .process .wrap{
             padding: 0;
         }
         .process .wrap, .process .wrap .cont{
             display: inline;
-        }
-        .section-padding{
-            padding-bottom: 30px;
         }
     </style>
 @stop
@@ -74,7 +61,7 @@
         <div class="container">
             @foreach($mainContent as $key=>$val)
                 @if(($key+1)%2!=0)
-                    <div class="row section-padding">
+                    <div class="row div-padding">
                         <div class="col-md-12 animate-box" data-animate-effect="fadeInRight">
                             <div class="img fl-img">
                                 <img src="{{$val->image_link}}" alt="">
@@ -90,7 +77,7 @@
                         </div>
                     </div>
                 @else
-                    <div class="row section-padding">
+                    <div class="row div-padding">
                         <div class="col-md-12 order2 animate-box" data-animate-effect="fadeInLeft">
                             <div class="img fr-img">
                                 <img src="{{$val->image_link}}" alt="">

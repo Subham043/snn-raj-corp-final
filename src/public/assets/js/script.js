@@ -582,7 +582,7 @@
         mouseDrag: true,
         autoplay: true,
         dots: false,
-        nav: false,
+        nav: true,
         navText: ["<span class='lnr ti-arrow-left'></span>","<span class='lnr ti-arrow-right'></span>"],
         autoplayHoverPause:true,
         responsiveClass:true,

@@ -51,12 +51,12 @@
                 <div class="col-md-12">
                     <div class="row">
                         @foreach ($awards->items() as $item)
-                        <div class="col-md-4 mb-5 animate-box" data-animate-effect="fadeInUp">
+                        <div class="col-md-4 div-padding animate-box" data-animate-effect="fadeInUp">
                             <div class="item">
                                 <div class="con">
                                     <div class="numb">{{$item->year}}</div>
                                     <div class="con">
-                                        <img src="{{$item->image_link}}" class="img-fluid" alt="">
+                                        <img src="{{$item->image_link}}" class="img-fluid mb-3" alt="">
                                     </div>
                                     <h5>{{$item->title}}</h5>
                                     <h6>{{$item->sub_title}}</h6>

@@ -110,7 +110,7 @@
                         </div>
                     @else
                         <div class="col-md-3 animate-box text-center mt-3" data-animate-effect="fadeInUp">
-                            <div class="wrap">
+                            <div class="wrap wrap-2">
                                 <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
                                     <div class="info">
                                     </div>
@@ -255,7 +255,7 @@
         <div class="container">
             @foreach($additionalContent as $key=>$val)
                 @if(($key+1)%2!=0)
-                    <div class="row">
+                    <div class="row div-padding">
                         <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
                             <div class="img">
                                 <img src="{{$val->image_link}}" alt="">
@@ -274,7 +274,7 @@
                         </div>
                     </div>
                 @else
-                    <div class="row">
+                    <div class="row div-padding">
                         <div class="col-md-6 order2 valign animate-box" data-animate-effect="fadeInLeft">
                             <div class="wrap">
                                 <div class="number">

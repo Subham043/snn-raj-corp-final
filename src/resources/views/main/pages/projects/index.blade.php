@@ -49,7 +49,7 @@
                 <div class="col-md-12">
                     @foreach ($projects->items() as $k => $v)
                         @if(($k+1)%2!=0)
-                            <div class="row">
+                            <div class="row div-padding">
                                 <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
                                     @if($v->banner_count>0)
                                         <div class="img">
@@ -61,14 +61,14 @@
                                     <div class="content">
                                         <div class="cont">
                                             <h3>{{$v->name}}</h3>
-                                            <p>{{$v->brief_description}}</p>
+                                            <p>{{ Str::limit($v->brief_description, 300) }}</p>
                                             <div class="more"><a href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">View Project</a></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @else
-                            <div class="row mt-120">
+                            <div class="row div-padding">
                                 <div class="col-md-4 order2 valign animate-box" data-animate-effect="fadeInUp">
                                     <div class="content">
                                         <div class="cont">

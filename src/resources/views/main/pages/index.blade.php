@@ -28,11 +28,8 @@
         .p-relative{
             position: relative;
         }
-        .video-gallery-polygon{
-            color: #fff !important;
-            bottom: -40px;
-            left: 0;
-            font-size: 30px;
+        .obj-cover{
+            object-fit: cover;
         }
     </style>
 
@@ -41,31 +38,37 @@
 @section('content')
 
     <!-- Slider -->
-    @if(count($banners)>0)
-    <header id="slider-area" class="header slider-fade">
-        <div class="owl-carousel owl-theme">
-            <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-            @foreach($banners as $banners)
-                <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
-                    <div class="v-middle caption">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-7">
-                                    <h1>{{$banners->title}}</h1>
-                                    <p>{{$banners->description}}</p>
-                                    @if($banners->button_link)
-                                        <a href="{{$banners->button_link}}" class="button-light">View Detail</a>
-                                    @endif
+    @if($about->use_in_banner)
+        <header class="p-relative header-video-container">
+            <iframe src="{{$about->video}}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video" width="560" height="315" frameborder="0"></iframe>
+        </header>
+    @else
+        @if(count($banners)>0)
+        <header id="slider-area" class="header slider-fade">
+            <div class="owl-carousel owl-theme">
+                <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
+                @foreach($banners as $banners)
+                    <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
+                        <div class="v-middle caption">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <h1>{{$banners->title}}</h1>
+                                        <p>{{$banners->description}} {{$banners->description}} {{$banners->description}} {{$banners->description}}</p>
+                                        @if($banners->button_link)
+                                            <a href="{{$banners->button_link}}" class="button-light">View Detail</a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
-        <div class="slide-num" id="snh-1"></div>
-        <div class="slider__progress"><span></span></div>
-    </header>
+                @endforeach
+            </div>
+            <div class="slide-num" id="snh-1"></div>
+            <div class="slider__progress"><span></span></div>
+        </header>
+        @endif
     @endif
     <!-- About -->
     @if($about)
@@ -133,6 +136,16 @@
     </section>
     @endif
 
+    @if(!$about->use_in_banner)
+        <section class="about section-padding">
+            <div class="container">
+                <header class="p-relative header-video2-container">
+                    <iframe src="{{$about->video}}?autoplay=0&mute=0&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video2" width="560" height="315" frameborder="0"></iframe>
+                </header>
+            </div>
+        </section>
+    @endif
+
     <!-- Projects 2 -->
     <div class="projects2 section-padding">
         <div class="container">
@@ -155,11 +168,15 @@
             <div class="row projects2-items animate-box" data-animate-effect="fadeInUp">
                 @foreach($projects as $k => $v)
                     <div class="col-md-6 single-item {{$v->is_completed==true ? 'completed' : 'ongoing'}}">
-                        <div class="projects2-wrap">
+                        <div class="projects2-wrap p-relative" style="z-index: 5">
                             @if($v->banner_count>0)
-                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img src="{{ $v->banner[0]->image_link }}" alt=""></a>
+                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
+                                    <div class="projects-overlay" style="height: {{rand(300, 600)}}px">
+                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" alt="">
+                                    </div>
+                                </a>
                             @endif
-                            <div class="projects2-con">
+                            <div class="projects2-con" style="z-index: 5">
                                 <p>Project P.{{$k+1}}</p>
                                 <h3><a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
                                 <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
@@ -174,7 +191,7 @@
     <!-- Testiominals -->
     @if(count($testimonials)>0)
     <section class="testimonials">
-        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
+        <div class="background bg-img bg-fixed section-padding">
             <div class="container">
                 <div class="row">
                     @if($testimonialHeading)
@@ -184,18 +201,21 @@
                     @endif
                     <div class="col-md-8">
                         @if($testimonialHeading)
-                            <div class="section-title">{{$testimonialHeading->heading}}</div>
+                        <div class="section-title">{{$testimonialHeading->heading}}</div>
                         @endif
+
                         <div class="wrap">
                             <div class="owl-carousel owl-theme">
 
                                 @foreach($testimonials as $testimonials)
-                                <div class="item"> <span class="quote"><img src="{{ asset('assets/images/quot.png')}}" alt=""></span>
-                                    <p>{{$testimonials->message}}</p>
-                                    <div class="info">
-                                        <div class="author-img"> <img src="{{$testimonials->image_link}}" alt=""> </div>
-                                        <div class="cont">
-                                            <h6>{{$testimonials->name}}</h6> <span>{{$testimonials->designation}}</span>
+                                <div class="row">
+                                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                                        <div class="vid-area mb-30">
+                                            <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube">
+                                                <a class="video-gallery-button vid" href="https://youtu.be/{{$testimonials->video_id}}"> <span class="video-gallery-polygon">
+                                                        <i class="ti-control-play"></i>
+                                                    </span> </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
