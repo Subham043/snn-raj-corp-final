@@ -54,7 +54,7 @@
                                 <div class="row">
                                     <div class="col-md-7">
                                         <h1>{{$banners->title}}</h1>
-                                        <p>{{$banners->description}} {{$banners->description}} {{$banners->description}} {{$banners->description}}</p>
+                                        <p>{{$banners->description}}</p>
                                         @if($banners->button_link)
                                             <a href="{{$banners->button_link}}" class="button-light">View Detail</a>
                                         @endif
