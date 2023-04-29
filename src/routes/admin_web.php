@@ -64,6 +64,10 @@ use App\Modules\Project\AdditionalContents\Controllers\AdditionalContentCreateCo
 use App\Modules\Project\AdditionalContents\Controllers\AdditionalContentDeleteController as ProjectAdditionalContentDeleteController;
 use App\Modules\Project\AdditionalContents\Controllers\AdditionalContentPaginateController as ProjectAdditionalContentPaginateController;
 use App\Modules\Project\AdditionalContents\Controllers\AdditionalContentUpdateController as ProjectAdditionalContentUpdateController;
+use App\Modules\Project\CommonAmenitys\Controllers\CommonAmenityCreateController;
+use App\Modules\Project\CommonAmenitys\Controllers\CommonAmenityDeleteController;
+use App\Modules\Project\CommonAmenitys\Controllers\CommonAmenityPaginateController;
+use App\Modules\Project\CommonAmenitys\Controllers\CommonAmenityUpdateController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImageCreateController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImageDeleteController;
 use App\Modules\Project\GalleryImages\Controllers\GalleryImagePaginateController;
@@ -233,6 +237,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [ProjectUpdateController::class, 'get', 'as' => 'project.update.get'])->name('project.update.get');
         Route::post('/update/{id}', [ProjectUpdateController::class, 'post', 'as' => 'project.update.post'])->name('project.update.post');
         Route::get('/delete/{id}', [ProjectDeleteController::class, 'get', 'as' => 'project.delete.get'])->name('project.delete.get');
+
+        Route::prefix('/common-amenity')->group(function () {
+            Route::get('/', [CommonAmenityPaginateController::class, 'get', 'as' => 'project.common_amenity.paginate.get'])->name('project.common_amenity.paginate.get');
+            Route::get('/create', [CommonAmenityCreateController::class, 'get', 'as' => 'project.common_amenity.create.get'])->name('project.common_amenity.create.get');
+            Route::post('/create', [CommonAmenityCreateController::class, 'post', 'as' => 'project.common_amenity.create.post'])->name('project.common_amenity.create.post');
+            Route::get('/update/{id}', [CommonAmenityUpdateController::class, 'get', 'as' => 'project.common_amenity.update.get'])->name('project.common_amenity.update.get');
+            Route::post('/update/{id}', [CommonAmenityUpdateController::class, 'post', 'as' => 'project.common_amenity.update.post'])->name('project.common_amenity.update.post');
+            Route::get('/delete/{id}', [CommonAmenityDeleteController::class, 'get', 'as' => 'project.common_amenity.delete.get'])->name('project.common_amenity.delete.get');
+        });
 
         Route::prefix('/{project_id}/accomodation')->group(function () {
             Route::get('/', [AccomodationPaginateController::class, 'get', 'as' => 'project.accomodation.paginate.get'])->name('project.accomodation.paginate.get');
