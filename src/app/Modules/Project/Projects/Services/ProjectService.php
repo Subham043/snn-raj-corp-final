@@ -143,9 +143,7 @@ class ProjectService
                 'plan' =>  function($q) {
                     $q->where('is_draft', true);
                 },
-                'amenity' =>  function($q) {
-                    $q->where('is_draft', true);
-                },
+                'amenity',
                 'additional_content' =>  function($q) {
                     $q->where('is_draft', true);
                 },
@@ -166,9 +164,7 @@ class ProjectService
                 'plan' =>  function($q) {
                     $q->where('is_draft', true);
                 },
-                'amenity' =>  function($q) {
-                    $q->where('is_draft', true);
-                },
+                'amenity',
                 'additional_content' =>  function($q) {
                     $q->where('is_draft', true);
                 },
