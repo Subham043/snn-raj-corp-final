@@ -62,7 +62,6 @@ class BlogService
     public function delete(Blog $blog): bool|null
     {
         $this->deleteBrochure($blog);
-        $blog->amenity()->detach();
         return $blog->delete();
     }
 
