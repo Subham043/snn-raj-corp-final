@@ -80,7 +80,7 @@
                                                                     </div>
                                                                     <div class="flex-grow-1 ms-3">
                                                                         <div class="d-flex align-items-center">
-                                                                            <h4 class="fs-4 flex-grow-1 mb-0"><span class="counter-value text-uppercase">{{ $result->label }}</span></h4>
+                                                                            <h4 class="fs-4 flex-grow-1 mb-0"><span class="text-uppercase">{{ $result->label }}</span></h4>
                                                                         </div>
                                                                         <p class="text-muted mb-0">
                                                                             @if (!empty($result->notificationMessage))
