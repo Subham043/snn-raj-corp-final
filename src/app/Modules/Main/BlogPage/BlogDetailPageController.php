@@ -5,15 +5,12 @@ namespace App\Modules\Main\BlogPage;
 use App\Http\Controllers\Controller;
 use App\Modules\Legal\Services\LegalService;
 use App\Modules\Blog\Services\BlogService;
-use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
 use App\Modules\Settings\Services\ThemeService;
-use Illuminate\Http\Request;
 
-class BlogPageController extends Controller
+class BlogDetailPageController extends Controller
 {
-    private $seoService;
     private $generalService;
     private $themeService;
     private $chatbotService;
@@ -21,7 +18,6 @@ class BlogPageController extends Controller
     private $legalService;
 
     public function __construct(
-        SeoService $seoService,
         GeneralService $generalService,
         ThemeService $themeService,
         ChatbotService $chatbotService,
@@ -29,7 +25,6 @@ class BlogPageController extends Controller
         LegalService $legalService,
     )
     {
-        $this->seoService = $seoService;
         $this->generalService = $generalService;
         $this->themeService = $themeService;
         $this->chatbotService = $chatbotService;
@@ -37,20 +32,22 @@ class BlogPageController extends Controller
         $this->legalService = $legalService;
     }
 
-    public function get(Request $request){
-        $seo = $this->seoService->getBySlugMain('blog-page');
+    public function get($slug){
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
         $chatbotSetting = $this->chatbotService->getById(1);
-        $blogs = $this->blogService->main_paginate($request->total ?? 10);
         $legal = $this->legalService->main_all();
-        return view('main.pages.blogs.index', compact([
-            'seo',
+        $data = $this->blogService->getBySlugMain($slug);
+        $next = $this->blogService->getNext($data->id);
+        $prev = $this->blogService->getPrev($data->id);
+        return view('main.pages.blogs.detail', compact([
             'generalSetting',
             'themeSetting',
             'chatbotSetting',
-            'blogs',
-            'legal'
+            'data',
+            'next',
+            'prev',
+            'legal',
         ]));
     }
 

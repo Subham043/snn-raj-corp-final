@@ -13,7 +13,7 @@
                 </li>
                 <li><a href="{{route('awards_page.get')}}">Awards</a></li>
                 <li><a href="{{route('csr_page.get')}}">CSR</a></li>
-                <li><a href="{{route('home_page.get')}}">Blogs</a></li>
+                <li><a href="{{route('blogs.get')}}">Blogs</a></li>
                 <li><a href="{{route('contact_page.get')}}">Contact</a></li>
             </ul>
         </nav>

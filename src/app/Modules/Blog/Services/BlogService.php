@@ -88,7 +88,7 @@ class BlogService
         });
     }
 
-    public function main_paginate(Int $total = 10, bool $status = false): LengthAwarePaginator
+    public function main_paginate(Int $total = 10): LengthAwarePaginator
     {
         $query = Blog::where('is_draft', true)
                     ->latest();
@@ -107,6 +107,22 @@ class BlogService
             ->where('is_draft', true)
             ->first();
         });
+    }
+
+    public function getPrev(Int $id): Blog|null
+    {
+        return Blog::select('name','slug')->where('id', '<', $id)
+        ->where('is_draft', true)
+        ->orderBy('id','desc')
+        ->first();
+    }
+
+    public function getNext(Int $id): Blog|null
+    {
+        return Blog::select('name','slug')->where('id', '>', $id)
+        ->where('is_draft', true)
+        ->orderBy('id','desc')
+        ->first();
     }
 
 }
