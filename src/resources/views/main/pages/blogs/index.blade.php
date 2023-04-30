@@ -33,14 +33,14 @@
 
 @section('content')
 
-    <!-- Awards -->
+    <!-- Blogs -->
     <section class="blog-home section-padding">
         <div class="container">
             <div class="row mb-4">
-                <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light">Blogs</div>
                 </div>
-                <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
                     <div class="section-title">LATEST NEWS</div>
                 </div>
             </div>

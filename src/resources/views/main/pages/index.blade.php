@@ -75,7 +75,7 @@
     <section class="about section-padding">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-4 mb-30 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                     @if(!$about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif
@@ -85,7 +85,7 @@
                     </div>
                     @endif
                 </div>
-                <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
                     @if($about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif
@@ -105,14 +105,14 @@
             <div class="container">
                 <div class="row">
                     @if($counterHeading)
-                        <div class="col-md-4 mb-30 animate-box" data-animate-effect="fadeInUp">
+                        <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
                         </div>
-                        <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                        <div class="col-md-8 " data-animate-effect="fadeInUp">
                             <div class="section-title">{!!$counterHeading->heading!!}</div>
                         </div>
                     @endif
-                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="states">
                             <ul class="flex gap-2 align-items-center justify-content-between">
                                 @foreach($counters as $counters)
@@ -150,22 +150,22 @@
     <div class="projects2 section-padding">
         <div class="container">
             <div class="row mb-4">
-                <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light">Discover</div>
                 </div>
-                <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
                     <div class="section-title">Creative <span>Projects</span></div>
                     <p>Architecture viverra tristique justo duis vitae diaminte neque nivamus aestan ateuene artines ariianu the ateliten finibus viverra nec lacus in the nedana mis erodino. Design nila iman the finise viverra nec a lacus miss viventa in the setlien suscipe no curabit tristue the seneoice misuscipit non sagie the fermen.</p>
                 </div>
             </div>
-            <div class="row text-center animate-box" data-animate-effect="fadeInUp">
+            <div class="row text-center " data-animate-effect="fadeInUp">
                 <ul class="projects2-filter">
                     <li class="active" data-filter="*">All</li>
                     <li data-filter=".ongoing">Ongoing Projects</li>
                     <li data-filter=".completed">Completed Projects</li>
                 </ul>
             </div>
-            <div class="row projects2-items animate-box" data-animate-effect="fadeInUp">
+            <div class="row projects2-items " data-animate-effect="fadeInUp">
                 @foreach($projects as $k => $v)
                     <div class="col-md-6 single-item {{$v->is_completed==true ? 'completed' : 'ongoing'}}">
                         <div class="projects2-wrap p-relative" style="z-index: 5">
@@ -209,7 +209,7 @@
 
                                 @foreach($testimonials as $testimonials)
                                 <div class="row">
-                                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                                    <div class="col-md-12 " data-animate-effect="fadeInUp">
                                         <div class="vid-area mb-30">
                                             <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube">
                                                 <a class="video-gallery-button vid" href="https://youtu.be/{{$testimonials->video_id}}"> <span class="video-gallery-polygon">
@@ -233,53 +233,35 @@
     @include('main.includes.referal')
 
     <!-- Blog -->
+    @if(count($blogs) > 0)
     <section class="blog-home section-padding">
         <div class="container">
-        <div class="row mb-5">
-                <div class="col-md-4">
-                    <div class="sub-title border-bot-light">Blog</div>
-                </div>
-                <div class="col-md-8">
-                    <div class="section-title"><span>Latest</span> News</div>
-                </div>
+            <div class="row mb-5">
+                    <div class="col-md-4">
+                        <div class="sub-title border-bot-light">Blog</div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="section-title"><span>Latest</span> News</div>
+                    </div>
             </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="item">
-                    <div class="post-img">
-                        <a href="post.html"><div class="img"> <img src="{{ asset('assets/images/blog/1.jpg')}}" alt=""> </div></a>
+            <div class="row">
+                @foreach ($blogs as $k => $v)
+                    <div class="col-md-4">
+                        <div class="item mb-5">
+                            <div class="post-img">
+                                <a href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img src="{{$v->image_link}}" alt=""> </div></a>
+                            </div>
+                            <div class="cont">
+                                <h4><a href="{{route('blogs_detail.get', $v->slug)}}">{{$v->name}}</a></h4>
+                                <div class="date"><a href="{{route('blogs_detail.get', $v->slug)}}"><span class="ti-time"></span>&nbsp;&nbsp;<span>{{$v->created_at->diffForHumans()}}</span></a> </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="cont">
-                        <h4><a href="post.html">5 Best Villa ideas in 2023</a></h4>
-                        <div class="info"> <a href="blog.html"><span>Exterior Design</span></a> <a href="blog.html">Dec, 24</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="item">
-                    <div class="post-img">
-                        <a href="post.html"><div class="img"> <img src="{{ asset('assets/images/blog/2.jpg')}}" alt=""> </div></a>
-                    </div>
-                    <div class="cont">
-                        <h4><a href="#0">Luxury kitchen ideas</a></h4>
-                        <div class="info"> <a href="blog.html"><span>Interior Design</span></a> <a href="blog.html">Dec, 21</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="item">
-                    <div class="post-img">
-                        <a href="post.html"><div class="img"> <img src="{{ asset('assets/images/blog/3.jpg')}}" alt=""> </div></a>
-                    </div>
-                    <div class="cont">
-                        <h4><a href="#0">Home Decorating Inspiration</a></h4>
-                        <div class="info"> <a href="blog.html"><span>Interior Design</span></a> <a href="blog.html">Dec, 18</a> </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-    </div>
     </section>
+    @endif
 
     @include('main.includes.common_contact')
 

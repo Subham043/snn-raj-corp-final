@@ -26,7 +26,7 @@
         <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">{{$data->page_name}}</div>
                         <div class="section-title">{!!$data->heading!!}</div>
                         {!!$data->description!!}

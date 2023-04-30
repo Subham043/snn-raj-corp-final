@@ -41,7 +41,7 @@
     <section class="hero section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
                         <figure><img src="{{ $banner->image_link}}" alt="" class="img-fluid"></figure>
                         <div class="caption">
@@ -62,7 +62,7 @@
             @foreach($mainContent as $key=>$val)
                 @if(($key+1)%2!=0)
                     <div class="row div-padding">
-                        <div class="col-md-12 animate-box" data-animate-effect="fadeInRight">
+                        <div class="col-md-12 " data-animate-effect="fadeInRight">
                             <div class="img fl-img">
                                 <img src="{{$val->image_link}}" alt="">
                             </div>
@@ -78,7 +78,7 @@
                     </div>
                 @else
                     <div class="row div-padding">
-                        <div class="col-md-12 order2 animate-box" data-animate-effect="fadeInLeft">
+                        <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
                             <div class="img fr-img">
                                 <img src="{{$val->image_link}}" alt="">
                             </div>

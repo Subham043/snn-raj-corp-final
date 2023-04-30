@@ -38,7 +38,7 @@
     <!-- Contact -->
     <div class="contact section-padding">
         <div class="container">
-            <div class="row mb-5 animate-box" data-animate-effect="fadeInUp">
+            <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
                     <div class="sub-title border-bot-light">Contact</div>
                 </div>
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
                     <!-- Contact Info -->
                     <p>{{ empty($generalSetting) ? '' : $generalSetting->address}}</p>
                     <p class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</p>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <!-- form -->
-                <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
                     <form method="post" class="contact__form" id="contactForm">
                         <!-- Form elements -->
                         <div class="row">

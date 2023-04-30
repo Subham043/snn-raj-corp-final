@@ -38,10 +38,10 @@
         <div class="container">
             <div class="row mb-4">
                 @if($awardHeading)
-                    <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-4 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">{{$awardHeading->sub_heading}}</div>
                     </div>
-                    <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-8 " data-animate-effect="fadeInUp">
                         <div class="section-title">{!!$awardHeading->heading!!}</div>
                     </div>
                 @endif
@@ -51,7 +51,7 @@
                 <div class="col-md-12">
                     <div class="row">
                         @foreach ($awards->items() as $item)
-                        <div class="col-md-4 div-padding animate-box" data-animate-effect="fadeInUp">
+                        <div class="col-md-4 div-padding " data-animate-effect="fadeInUp">
                             <div class="item">
                                 <div class="con">
                                     <div class="numb">{{$item->year}}</div>

@@ -3,6 +3,7 @@
 namespace App\Modules\Main\HomePage;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Blog\Services\BlogService;
 use App\Modules\Counter\Services\CounterHeadingService;
 use App\Modules\Counter\Services\CounterService;
 use App\Modules\HomePage\About\Services\AboutService;
@@ -19,6 +20,7 @@ use App\Modules\Settings\Services\ThemeService;
 class HomePageController extends Controller
 {
     private $bannerService;
+    private $blogService;
     private $aboutService;
     private $testimonialService;
     private $counterService;
@@ -32,6 +34,7 @@ class HomePageController extends Controller
     private $chatbotService;
 
     public function __construct(
+        BlogService $blogService,
         BannerService $bannerService,
         AboutService $aboutService,
         TestimonialService $testimonialService,
@@ -47,6 +50,7 @@ class HomePageController extends Controller
     )
     {
         $this->bannerService = $bannerService;
+        $this->blogService = $blogService;
         $this->aboutService = $aboutService;
         $this->testimonialService = $testimonialService;
         $this->counterService = $counterService;
@@ -62,6 +66,7 @@ class HomePageController extends Controller
 
     public function get(){
         $banners = $this->bannerService->main_all();
+        $blogs = $this->blogService->main_all();
         $about = $this->aboutService->getById(1);
         $testimonials = $this->testimonialService->main_all();
         $counters = $this->counterService->main_all();
@@ -75,6 +80,7 @@ class HomePageController extends Controller
         $chatbotSetting = $this->chatbotService->getById(1);
         return view('main.pages.index', compact([
             'banners',
+            'blogs',
             'about',
             'testimonials',
             'counters',

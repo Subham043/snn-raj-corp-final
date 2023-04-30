@@ -33,7 +33,7 @@
     <section class="hero section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
                         <figure><img src="{{ $banner->image_link}}" alt="" class="img-fluid"></figure>
                         <div class="caption">
@@ -54,7 +54,7 @@
         <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-4 mb-30 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                         @if(!$about->image)
                             <div class="sub-title border-bot-light">About Us</div>
                         @endif
@@ -64,7 +64,7 @@
                         </div>
                         @endif
                     </div>
-                    <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-8 " data-animate-effect="fadeInUp">
                         @if($about->image)
                             <div class="sub-title border-bot-light">About Us</div>
                         @endif
@@ -84,10 +84,10 @@
         <div class="container">
             <div class="row">
                 @if($managementHeading)
-                    <div class="col-md-4 mb-30 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">{{$managementHeading->sub_heading}}</div>
                     </div>
-                    <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-8 " data-animate-effect="fadeInUp">
                         <div class="section-title">{!!$managementHeading->heading!!}</div>
                     </div>
                 @endif
@@ -95,10 +95,10 @@
             <div class="row mt-4">
                 @foreach($management as $key=>$val)
                     @if($key==0)
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
+                        <div class="col-md-6 " data-animate-effect="fadeInUp">
                             {!!$val->description!!}
                         </div>
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
+                        <div class="col-md-6 " data-animate-effect="fadeInUp">
                             <div class="wrap">
                                 <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
                                     <div class="info">
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                     @else
-                        <div class="col-md-3 animate-box text-center mt-3" data-animate-effect="fadeInUp">
+                        <div class="col-md-3  text-center mt-3" data-animate-effect="fadeInUp">
                             <div class="wrap wrap-2">
                                 <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
                                     <div class="info">
@@ -119,7 +119,7 @@
                                 <p>{{$val->designation}}</p>
                             </div>
                         </div>
-                        <div class="col-md-3 animate-box mt-3" data-animate-effect="fadeInUp">
+                        <div class="col-md-3  mt-3" data-animate-effect="fadeInUp">
                             {!!$val->description!!}
                         </div>
                     @endif
@@ -135,7 +135,7 @@
         <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">Our Vision</div>
                         <div class="section-title">{!!$banner->vission!!}</div>
                     </div>
@@ -183,7 +183,7 @@
         <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">Our Mission</div>
                         <div class="section-title">{!!$banner->mission!!}</div>
                     </div>
@@ -196,7 +196,7 @@
     <!-- AWARDS -->
     {{-- <section class="section-padding">
         <div class="container">
-            <div class="row mb-5 animate-box" data-animate-effect="fadeInUp">
+            <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
                     <div class="sub-title border-bot-light">AWARDS</div>
                 </div>
@@ -256,12 +256,12 @@
             @foreach($additionalContent as $key=>$val)
                 @if(($key+1)%2!=0)
                     <div class="row div-padding">
-                        <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+                        <div class="col-md-6 " data-animate-effect="fadeInLeft">
                             <div class="img">
                                 <img src="{{$val->image_link}}" alt="">
                             </div>
                         </div>
-                        <div class="col-md-6 valign animate-box" data-animate-effect="fadeInRight">
+                        <div class="col-md-6 valign " data-animate-effect="fadeInRight">
                             <div class="wrap">
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
@@ -275,7 +275,7 @@
                     </div>
                 @else
                     <div class="row div-padding">
-                        <div class="col-md-6 order2 valign animate-box" data-animate-effect="fadeInLeft">
+                        <div class="col-md-6 order2 valign " data-animate-effect="fadeInLeft">
                             <div class="wrap">
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
@@ -286,7 +286,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 order1 animate-box" data-animate-effect="fadeInRight">
+                        <div class="col-md-6 order1 " data-animate-effect="fadeInRight">
                             <div class="img">
                                 <img src="{{$val->image_link}}" alt="">
                             </div>

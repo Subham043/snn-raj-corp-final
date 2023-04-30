@@ -41,7 +41,7 @@
 <section class="post section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+            <div class="col-md-12 " data-animate-effect="fadeInUp">
                 <img src="{{$data->image_link}}" class="img-responsive mb-5" alt="">
                 <div class="date"> <span class="ti-time"></span> {{$data->created_at->diffForHumans()}}</div>
                 <h2>{!!$data->heading!!}</h2>

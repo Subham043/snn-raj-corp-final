@@ -2,14 +2,14 @@
 <section class="process section-padding">
     <div class="container">
         <div class="row mb-4">
-            <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+            <div class="col-md-12 " data-animate-effect="fadeInUp">
                 <div class="sub-title border-bot-light">Referral Program</div>
                 <div class="section-title">Our <span>Referral Program</span> gives you premium rewards and gets you closer to the SNN Raj life.</div>
                 <p>When you refer your friends and family to us, you give them a chance to live in the home of their dreams, and  earn many referral benefits in the process.</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 valign animate-box" data-animate-effect="fadeInRight">
+            <div class="col-md-4 valign " data-animate-effect="fadeInRight">
                 <div class="wrap">
                     <div class="number">
                         <h1>01</h1>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 order2 valign animate-box" data-animate-effect="fadeInLeft">
+            <div class="col-md-4 order2 valign " data-animate-effect="fadeInLeft">
                 <div class="wrap">
                     <div class="number">
                         <h1>02</h1>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 valign animate-box" data-animate-effect="fadeInRight">
+            <div class="col-md-4 valign " data-animate-effect="fadeInRight">
                 <div class="wrap">
                     <div class="number">
                         <h1>03</h1>

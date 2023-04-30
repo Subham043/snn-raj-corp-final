@@ -134,7 +134,7 @@
                             {!!$data->description!!}
                         </div>
                     </div>
-                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="states">
                             <ul class="d-flex gap-2 align-items-center justify-content-between p-0 flex-wrap">
                                 @foreach($data->accomodation as $accomodation)
@@ -162,7 +162,7 @@
     <section class="project-page section-padding">
         <div class="container">
             <div class="row">
-                <div class="row mb-5 animate-box" data-animate-effect="fadeInUp">
+                <div class="row mb-5 " data-animate-effect="fadeInUp">
                     <div class="col-md-12">
                         <div class="section-title text-center"><span>Floor</span> Plans</div>
                     </div>
@@ -189,10 +189,10 @@
     <section class="section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-30 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-12 mb-30 " data-animate-effect="fadeInUp">
                     <div class="section-title text-center"><span>Worldclass</span> Amenities</div>
                 </div>
-                <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="row amenity-row">
                         @foreach($data->amenity as $amenity)
                             <div class="col-md-3 col-sm-6">
@@ -213,7 +213,7 @@
 @if($data->gallery_image_count>0)
     <section class="section-padding">
         <div class="container">
-            <div class="row mb-5 animate-box" data-animate-effect="fadeInUp">
+            <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
                     <div class="sub-title border-bot-light">Images</div>
                 </div>
@@ -223,7 +223,7 @@
             </div>
             <div class="row">
                 @foreach($data->gallery_image as $gallery_image)
-                    <div class="col-md-4 gallery-item animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
                         <a href="{{$gallery_image->image_link}}" title="{{$gallery_image->title}}" class="img-zoom">
                             <div class="gallery-box">
                                 <div class="gallery-img"> <img src="{{$gallery_image->image_link}}" class="img-fluid mx-auto d-block" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}"> </div>
@@ -241,7 +241,7 @@
 @if($data->gallery_video_count>0)
     <section class="section-padding">
         <div class="container">
-        <div class="row mb-5 animate-box" data-animate-effect="fadeInUp">
+        <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
                     <div class="sub-title border-bot-light">Videos</div>
                 </div>
@@ -252,7 +252,7 @@
             <div class="row">
                 <!-- 2 columns -->
                 @foreach($data->gallery_video as $gallery_video)
-                    <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-md-6 " data-animate-effect="fadeInUp">
                         <div class="vid-area mb-30">
                             <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$gallery_video->video_id}}/maxresdefault.jpg" alt="YouTube">
                                 <a class="video-gallery-button vid" href="https://youtu.be/{{$gallery_video->video_id}}"> <span class="video-gallery-polygon">
@@ -273,7 +273,7 @@
             @foreach($data->additional_content as $key=>$val)
                 @if(($key+1)%2!=0)
                     <div class="row div-padding">
-                        <div class="col-md-12 animate-box" data-animate-effect="fadeInRight">
+                        <div class="col-md-12 " data-animate-effect="fadeInRight">
                             <div class="img fl-img">
                                 <img src="{{$val->image_link}}" alt="">
                             </div>
@@ -289,7 +289,7 @@
                     </div>
                 @else
                     <div class="row div-padding">
-                        <div class="col-md-12 order2 animate-box" data-animate-effect="fadeInLeft">
+                        <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
                             <div class="img fr-img">
                                 <img src="{{$val->image_link}}" alt="">
                             </div>
@@ -323,7 +323,7 @@
     <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light">An address to be proud of</div>
                     <div class="section-title">{!!$data->address!!}</div>
                 </div>

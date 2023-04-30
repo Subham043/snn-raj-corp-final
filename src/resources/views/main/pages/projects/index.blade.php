@@ -37,10 +37,10 @@
     <section class="projects3 section-padding">
         <div class="container">
             <div class="row mb-4">
-                <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light">Our Creations</div>
                 </div>
-                <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
                     <div class="section-title">{{$status=='completed' ? 'COMPLETED PROJECTS' : 'ONGOING PROJECTS'}}</div>
                 </div>
             </div>
@@ -50,14 +50,14 @@
                     @foreach ($projects->items() as $k => $v)
                         @if(($k+1)%2!=0)
                             <div class="row div-padding">
-                                <div class="col-md-8 animate-box" data-animate-effect="fadeInUp">
+                                <div class="col-md-8 " data-animate-effect="fadeInUp">
                                     @if($v->banner_count>0)
                                         <div class="img">
                                             <a href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img src="{{$v->banner[0]->image_link}}" alt=""></a>
                                         </div>
                                     @endif
                                 </div>
-                                <div class="col-md-4 valign animate-box" data-animate-effect="fadeInUp">
+                                <div class="col-md-4 valign " data-animate-effect="fadeInUp">
                                     <div class="content">
                                         <div class="cont">
                                             <h3>{{$v->name}}</h3>
@@ -69,7 +69,7 @@
                             </div>
                         @else
                             <div class="row div-padding">
-                                <div class="col-md-4 order2 valign animate-box" data-animate-effect="fadeInUp">
+                                <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
                                     <div class="content">
                                         <div class="cont">
                                             <h3>{{$v->name}}</h3>
@@ -78,7 +78,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8 order1 animate-box" data-animate-effect="fadeInUp">
+                                <div class="col-md-8 order1 " data-animate-effect="fadeInUp">
                                     @if($v->banner_count>0)
                                         <div class="img">
                                             <a href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img src="{{$v->banner[0]->image_link}}" alt=""></a>
