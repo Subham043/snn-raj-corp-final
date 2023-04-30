@@ -45,7 +45,9 @@
                 <img src="{{$data->image_link}}" class="img-responsive mb-5" alt="">
                 <div class="date"> <span class="ti-time"></span> {{$data->created_at->diffForHumans()}}</div>
                 <h2>{!!$data->heading!!}</h2>
-                {!!$data->description!!}
+                <div class="desc-ul">
+                    {!!$data->description!!}
+                </div>
             </div>
         </div>
     </div>

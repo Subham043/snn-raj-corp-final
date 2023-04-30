@@ -90,7 +90,9 @@
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif
                     <div class="section-title">{!!$about->heading!!}</div>
-                    {!!$about->description!!}
+                    <div class="desc-ul">
+                        {!!$about->description!!}
+                    </div>
 
                 </div>
             </div>

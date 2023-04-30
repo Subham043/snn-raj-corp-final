@@ -31,6 +31,25 @@
         .process .wrap, .process .wrap .cont{
             display: inline;
         }
+        @media screen and (max-width: 600px) {
+            .project-detail-row>*{
+                width: 45% !important;
+            }
+
+            .project-detail-row .col-sm-6{
+                margin-bottom: 10px;
+            }
+
+            .accom-row{
+                justify-content: center !important;
+            }
+
+            .accom-row .accom{
+                margin-right: 0 !important;
+                width: 45%;
+            }
+
+        }
     </style>
 
 @stop
@@ -136,9 +155,9 @@
                     </div>
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="states">
-                            <ul class="d-flex gap-2 align-items-center justify-content-between p-0 flex-wrap">
+                            <ul class="d-flex gap-2 align-items-center justify-content-between p-0 flex-wrap accom-row">
                                 @foreach($data->accomodation as $accomodation)
-                                <li class="">
+                                <li class="accom">
                                     <div class="numb valign">
                                         <h2 class="mb-1">{{$accomodation->room}}</h2>
                                     </div>
@@ -281,7 +300,7 @@
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
                                 </div>
-                                <div class="cont">
+                                <div class="cont desc-ul">
                                     {!!$val->description!!}
                                 </div>
                             </div>
@@ -297,7 +316,7 @@
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
                                 </div>
-                                <div class="cont">
+                                <div class="cont desc-ul">
                                     {!!$val->description!!}
                                 </div>
                             </div>

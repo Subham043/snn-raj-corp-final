@@ -3786,6 +3786,10 @@ input[type="checkbox"] {
     z-index: 900;
 }
 
+.desc-ul ul{
+    list-style-type: disclosure-closed !important;
+}
+
 @media screen and (max-width: 600px) {
     .fl-img {
         float: none;
@@ -3815,11 +3819,32 @@ input[type="checkbox"] {
     .pt-sm-0{
         padding-top: 0 !important;
     }
-    .about .states li {
+    .about .states .flex {
+        justify-content: center;
+    }
+    .about .states li.li-list {
         margin-right: 0px;
         width: 49%;
     }
     .amenity-row .col-sm-6{
         width: 50% !important;
+    }
+    .section-title {
+        font-size: 25px;
+    }
+    .header .caption h1 {
+        font-size: 30px;
+    }
+    .about .states li h1 {
+        font-size: 40px;
+    }
+    .projects-overlay {
+        height: 100% !important;
+    }
+    .process .wrap .number h1 {
+        font-size: 40px !important;
+    }
+    .services .item .numb {
+        font-size: 40px;
     }
 }

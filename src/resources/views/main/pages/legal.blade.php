@@ -29,7 +29,9 @@
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">{{$data->page_name}}</div>
                         <div class="section-title">{!!$data->heading!!}</div>
-                        {!!$data->description!!}
+                        <div class="desc-ul">
+                            {!!$data->description!!}
+                        </div>
 
                     </div>
                 </div>

@@ -69,7 +69,9 @@
                             <div class="sub-title border-bot-light">About Us</div>
                         @endif
                         <div class="section-title">{!!$about->heading!!}</div>
-                        {!!$about->description!!}
+                        <div class="desc-ul">
+                            {!!$about->description!!}
+                        </div>
 
                     </div>
                 </div>
@@ -96,7 +98,9 @@
                 @foreach($management as $key=>$val)
                     @if($key==0)
                         <div class="col-md-6 " data-animate-effect="fadeInUp">
-                            {!!$val->description!!}
+                            <div class="desc-ul">
+                                {!!$val->description!!}
+                            </div>
                         </div>
                         <div class="col-md-6 " data-animate-effect="fadeInUp">
                             <div class="wrap">
@@ -119,7 +123,7 @@
                                 <p>{{$val->designation}}</p>
                             </div>
                         </div>
-                        <div class="col-md-3  mt-3" data-animate-effect="fadeInUp">
+                        <div class="col-md-3 desc-ul mt-3" data-animate-effect="fadeInUp">
                             {!!$val->description!!}
                         </div>
                     @endif
@@ -266,7 +270,7 @@
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
                                 </div>
-                                <div class="cont">
+                                <div class="cont desc-ul">
                                     {!!$val->description!!}
                                     <a href="{{$val->button_link}}" class="button-light">{{$val->button_text}}</a>
                                 </div>
@@ -280,7 +284,7 @@
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
                                 </div>
-                                <div class="cont">
+                                <div class="cont desc-ul">
                                     {!!$val->description!!}
                                     <a href="{{$val->button_link}}" class="button-light">{{$val->button_text}}</a>
                                 </div>

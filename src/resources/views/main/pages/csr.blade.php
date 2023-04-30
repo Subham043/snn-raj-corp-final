@@ -46,7 +46,9 @@
                         <figure><img src="{{ $banner->image_link}}" alt="" class="img-fluid"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
-                            {!!$banner->description!!}
+                            <div class="desc-ul">
+                                {!!$banner->description!!}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,7 +72,7 @@
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
                                 </div>
-                                <div class="cont">
+                                <div class="cont desc-ul">
                                     {!!$val->description!!}
                                 </div>
                             </div>
@@ -86,7 +88,7 @@
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
                                 </div>
-                                <div class="cont">
+                                <div class="cont desc-ul">
                                     {!!$val->description!!}
                                 </div>
                             </div>
