@@ -11,9 +11,9 @@
             --theme-background-color: {{ empty($themeSetting) ? '#1b1b1b' : $themeSetting->background_color}};
             --theme-primary-color: {{ empty($themeSetting) ? '#dccc73' : $themeSetting->primary_color}};
             --theme-overlay-color: {{ empty($themeSetting) ? '#000' : $themeSetting->overlaycolor}};
-            --theme-lines-color: {{ empty($themeSetting) ? '255,255,255,0.03' : $themeSetting->lines_color_rgb.',0.03'}};
-            --theme-dark-lines-color: {{ empty($themeSetting) ? '255,255,255,0.075' : $themeSetting->lines_color_rgb.',0.075'}};
-            --theme-input-lines-color: {{ empty($themeSetting) ? '255,255,255,0.4' : $themeSetting->lines_color_rgb.',0.4'}};
+            --theme-lines-color: {{ empty($themeSetting) ? 'rgba(255,255,255,0.03)' : 'rgba('.$themeSetting->lines_color_rgb.',0.03)'}};
+            --theme-dark-lines-color: {{ empty($themeSetting) ? 'rgba(255,255,255,0.075)' : 'rgba('.$themeSetting->lines_color_rgb.',0.075)'}};
+            --theme-input-lines-color: {{ empty($themeSetting) ? 'rgba(255,255,255,0.4)' : 'rgba('.$themeSetting->lines_color_rgb.',0.4)'}};
             --theme-text-color: {{ empty($themeSetting) ? '#999' : $themeSetting->text_color}};
             --theme-highlight-text-color: {{ empty($themeSetting) ? '#fff' : $themeSetting->highlight_text_color}};
         }
