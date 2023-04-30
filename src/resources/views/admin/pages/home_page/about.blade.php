@@ -213,6 +213,7 @@ validation
 
         const response = await axios.post('{{route('home_page.about.post')}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.heading){
             validation.showErrors({'#heading': error?.response?.data?.errors?.heading[0]})

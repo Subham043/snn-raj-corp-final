@@ -133,6 +133,7 @@ validation
 
         const response = await axios.post('{{route('home_page.testimonial.update.post', $data->id)}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.video){
             validation.showErrors({'#video': error?.response?.data?.errors?.video[0]})

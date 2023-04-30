@@ -265,6 +265,7 @@ validation
 
         const response = await axios.post('{{route('blog.create.post')}}', formData)
         successToast(response.data.message)
+        event.target.reset();
     }catch (error){
         if(error?.response?.data?.errors?.name){
             validation.showErrors({'#name': error?.response?.data?.errors?.name[0]})

@@ -110,6 +110,7 @@ validation
 
         const response = await axios.post('{{route('chatbot.settings.post')}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.chatbot_script){
             validation.showErrors({'#chatbot_script': error?.response?.data?.errors?.chatbot_script[0]})

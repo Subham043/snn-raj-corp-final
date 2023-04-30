@@ -260,6 +260,7 @@ validation
 
         const response = await axios.post('{{route('general.settings.post')}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.facebook){
             validation.showErrors({'#facebook': error?.response?.data?.errors?.facebook[0]})

@@ -268,6 +268,7 @@ validation
 
         const response = await axios.post('{{route('blog.update.post', $data->id)}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.name){
             validation.showErrors({'#name': error?.response?.data?.errors?.name[0]})

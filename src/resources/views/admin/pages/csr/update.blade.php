@@ -208,6 +208,7 @@ validation
 
         const response = await axios.post('{{route('csr.update.post', $data->id)}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.heading){
             validation.showErrors({'#heading': error?.response?.data?.errors?.heading[0]})

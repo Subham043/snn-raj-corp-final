@@ -132,6 +132,7 @@ validation
 
         const response = await axios.post('{{route('seo.update.post', $data->slug)}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.meta_title){
             validation.showErrors({'#meta_title': error?.response?.data?.errors?.meta_title[0]})

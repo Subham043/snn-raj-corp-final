@@ -126,6 +126,7 @@ validation
 
         const response = await axios.post('{{route('theme.settings.post')}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.text_color){
             validation.showErrors({'#text_color': error?.response?.data?.errors?.text_color[0]})

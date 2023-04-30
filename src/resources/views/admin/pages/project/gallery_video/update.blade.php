@@ -106,6 +106,7 @@ validation
 
         const response = await axios.post('{{route('project.gallery_video.update.post', [$project_id, $data->id])}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.video_title){
             validation.showErrors({'#video_title': error?.response?.data?.errors?.video_title[0]})

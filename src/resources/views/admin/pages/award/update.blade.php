@@ -193,6 +193,7 @@ validation
 
         const response = await axios.post('{{route('award.update.post', $data->id)}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.title){
             validation.showErrors({'#title': error?.response?.data?.errors?.title[0]})

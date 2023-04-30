@@ -107,6 +107,7 @@ validation
 
         const response = await axios.post('{{route('project.accomodation.update.post', [$project_id, $data->id])}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.room){
             validation.showErrors({'#room': error?.response?.data?.errors?.room[0]})

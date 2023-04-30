@@ -158,6 +158,7 @@ validation
 
         const response = await axios.post('{{route('partner.update.post', $data->id)}}', formData)
         successToast(response.data.message)
+        setInterval(location.reload(), 1500);
     }catch (error){
         if(error?.response?.data?.errors?.image_alt){
             validation.showErrors({'#image_alt': error?.response?.data?.errors?.image_alt[0]})
