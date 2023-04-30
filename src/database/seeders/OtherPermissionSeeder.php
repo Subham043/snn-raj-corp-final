@@ -97,6 +97,12 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create projects']);
         Permission::create(['name' => 'list projects']);
 
+        //permission for blogs
+        Permission::create(['name' => 'edit blogs']);
+        Permission::create(['name' => 'delete blogs']);
+        Permission::create(['name' => 'create blogs']);
+        Permission::create(['name' => 'list blogs']);
+
 
     }
 }

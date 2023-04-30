@@ -17,6 +17,10 @@ use App\Modules\Awards\Controllers\AwardDeleteController;
 use App\Modules\Awards\Controllers\AwardHeadingController;
 use App\Modules\Awards\Controllers\AwardPaginateController;
 use App\Modules\Awards\Controllers\AwardUpdateController;
+use App\Modules\Blog\Controllers\BlogCreateController;
+use App\Modules\Blog\Controllers\BlogDeleteController;
+use App\Modules\Blog\Controllers\BlogPaginateController;
+use App\Modules\Blog\Controllers\BlogUpdateController;
 use App\Modules\Counter\Controllers\CounterCreateController;
 use App\Modules\Counter\Controllers\CounterDeleteController;
 use App\Modules\Counter\Controllers\CounterHeadingController;
@@ -223,6 +227,16 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/update/{id}', [CsrUpdateController::class, 'post', 'as' => 'csr.update.post'])->name('csr.update.post');
             Route::get('/delete/{id}', [CsrDeleteController::class, 'get', 'as' => 'csr.delete.get'])->name('csr.delete.get');
         });
+
+    });
+
+    Route::prefix('/blog')->group(function () {
+        Route::get('/', [BlogPaginateController::class, 'get', 'as' => 'blog.paginate.get'])->name('blog.paginate.get');
+        Route::get('/create', [BlogCreateController::class, 'get', 'as' => 'blog.create.get'])->name('blog.create.get');
+        Route::post('/create', [BlogCreateController::class, 'post', 'as' => 'blog.create.post'])->name('blog.create.post');
+        Route::get('/update/{id}', [BlogUpdateController::class, 'get', 'as' => 'blog.update.get'])->name('blog.update.get');
+        Route::post('/update/{id}', [BlogUpdateController::class, 'post', 'as' => 'blog.update.post'])->name('blog.update.post');
+        Route::get('/delete/{id}', [BlogDeleteController::class, 'get', 'as' => 'blog.delete.get'])->name('blog.delete.get');
 
     });
 

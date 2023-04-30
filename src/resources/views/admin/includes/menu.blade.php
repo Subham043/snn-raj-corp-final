@@ -97,6 +97,14 @@
                             </li>
                             @endcan
 
+                            @can('list blogs')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('blog.paginate.get')) !== false ? 'active' : ''}}" href="{{route('blog.paginate.get')}}">
+                                    <i class="ri-article-line"></i> <span data-key="t-widgets">Blogs</span>
+                                </a>
+                            </li>
+                            @endcan
+
                             @can('list projects')
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'project') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
