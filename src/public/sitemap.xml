@@ -2,32 +2,116 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>http://localhost:8000</loc>
-        <lastmod>2023-04-18T00:00:00+00:00</lastmod>
+        <lastmod>2023-04-29T00:00:00+00:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.1</priority>
         </url>
     <url>
         <loc>http://localhost:8000/about-us</loc>
-        <lastmod>2023-04-18T00:00:00+00:00</lastmod>
+        <lastmod>2023-04-29T00:00:00+00:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.1</priority>
         </url>
     <url>
         <loc>http://localhost:8000/awards</loc>
-        <lastmod>2023-04-18T00:00:00+00:00</lastmod>
+        <lastmod>2023-04-29T00:00:00+00:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.1</priority>
         </url>
     <url>
         <loc>http://localhost:8000/csr</loc>
-        <lastmod>2023-04-18T00:00:00+00:00</lastmod>
+        <lastmod>2023-04-29T00:00:00+00:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.1</priority>
         </url>
     <url>
         <loc>http://localhost:8000/contact-us</loc>
-        <lastmod>2023-04-18T00:00:00+00:00</lastmod>
+        <lastmod>2023-04-29T00:00:00+00:00</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.1</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/completed-projects</loc>
+        <lastmod>2023-04-29T00:00:00+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/ongoing-projects</loc>
+        <lastmod>2023-04-29T00:00:00+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/completed-projects/sdferter</loc>
+        <lastmod>2023-04-30T19:14:05+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/completed-projects/jasdas</loc>
+        <lastmod>2023-04-30T19:14:05+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/completed-projects/asdasd</loc>
+        <lastmod>2023-04-30T19:14:05+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/blogs</loc>
+        <lastmod>2023-04-29T00:00:00+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/blogs/lzmcmzxclzmlxc</loc>
+        <lastmod>2023-04-30T19:14:05+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/blogs/klnklsfdnlsdfns</loc>
+        <lastmod>2023-04-30T19:14:05+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/blogs/xcvxcv</loc>
+        <lastmod>2023-04-30T19:14:05+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/blogs/asdad</loc>
+        <lastmod>2023-04-30T19:14:05+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/cookies-policy</loc>
+        <lastmod>2023-04-30T19:14:05+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/disclaimer</loc>
+        <lastmod>2023-04-30T19:14:05+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/terms-condition</loc>
+        <lastmod>2023-04-30T19:14:05+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        </url>
+    <url>
+        <loc>http://localhost:8000/privacy-policy</loc>
+        <lastmod>2023-04-30T19:14:05+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
         </url>
 </urlset>

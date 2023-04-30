@@ -5,7 +5,6 @@ namespace App\Modules\Project\Projects\Models;
 use App\Modules\Authentication\Models\User;
 use App\Modules\Project\Accomodations\Models\Accomodation;
 use App\Modules\Project\AdditionalContents\Models\AdditionalContent;
-use App\Modules\Project\Amenitys\Models\Amenity;
 use App\Modules\Project\Banners\Models\Banner;
 use App\Modules\Project\CommonAmenitys\Models\CommonAmenity;
 use App\Modules\Project\GalleryImages\Models\GalleryImage;
@@ -17,8 +16,10 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 
-class Project extends Model
+class Project extends Model implements Sitemapable
 {
     use HasFactory, LogsActivity;
 
@@ -206,5 +207,10 @@ class Project extends Model
         ->logFillable()
         ->logOnlyDirty();
         // Chain fluent methods for configuration options
+    }
+
+    public function toSitemapTag(): Url | string | array
+    {
+        return route($this->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $this->slug);
     }
 }
