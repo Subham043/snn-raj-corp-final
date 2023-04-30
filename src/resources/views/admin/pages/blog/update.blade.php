@@ -21,7 +21,7 @@
         @endcan
         <!-- end page title -->
 
-        <div class="row">
+        <div class="row" id="image-container">
             @include('admin.includes.back_button', ['link'=>route('blog.paginate.get')])
             <div class="col-lg-12">
                 <form id="countryForm" method="post" action="{{route('blog.update.post', $data->id)}}" enctype="multipart/form-data">
@@ -144,6 +144,28 @@ quillDescription.on('text-change', function(delta, oldDelta, source) {
   if (source == 'user') {
     document.getElementById('description').value = quillDescription.root.innerHTML
   }
+});
+
+const myViewer = new ImgPreviewer('#image-container',{
+    // aspect ratio of image
+    fillRatio: 0.9,
+    // attribute that holds the image
+    dataUrlKey: 'src',
+    // additional styles
+    style: {
+        modalOpacity: 0.6,
+        headerOpacity: 0,
+        zIndex: 99
+    },
+    // zoom options
+    imageZoom: {
+        min: 0.1,
+        max: 5,
+        step: 0.1
+    },
+    // detect whether the parent element of the image is hidden by the css style
+    bubblingLevel: 0,
+
 });
 
 // initialize the validation library
