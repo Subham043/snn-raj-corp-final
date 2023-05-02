@@ -30,7 +30,7 @@ class PlanService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Plan
+    public function getById(Int $id): Plan|null
     {
         return Plan::findOrFail($id);
     }

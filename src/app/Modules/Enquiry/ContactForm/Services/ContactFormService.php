@@ -29,7 +29,7 @@ class ContactFormService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): ContactForm
+    public function getById(Int $id): ContactForm|null
     {
         return ContactForm::findOrFail($id);
     }

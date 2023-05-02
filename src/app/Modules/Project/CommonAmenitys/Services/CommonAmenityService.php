@@ -30,7 +30,7 @@ class CommonAmenityService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): CommonAmenity
+    public function getById(Int $id): CommonAmenity|null
     {
         return CommonAmenity::findOrFail($id);
     }

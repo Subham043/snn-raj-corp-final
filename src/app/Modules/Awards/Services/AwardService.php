@@ -30,7 +30,7 @@ class AwardService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Award
+    public function getById(Int $id): Award|null
     {
         return Award::findOrFail($id);
     }

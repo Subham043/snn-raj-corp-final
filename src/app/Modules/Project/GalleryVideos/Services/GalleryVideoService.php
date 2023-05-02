@@ -29,7 +29,7 @@ class GalleryVideoService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): GalleryVideo
+    public function getById(Int $id): GalleryVideo|null
     {
         return GalleryVideo::findOrFail($id);
     }

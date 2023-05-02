@@ -30,7 +30,7 @@ class GalleryImageService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): GalleryImage
+    public function getById(Int $id): GalleryImage|null
     {
         return GalleryImage::findOrFail($id);
     }

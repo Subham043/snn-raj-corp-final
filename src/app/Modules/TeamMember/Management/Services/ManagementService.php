@@ -31,7 +31,7 @@ class ManagementService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Management
+    public function getById(Int $id): Management|null
     {
         return Management::findOrFail($id);
     }

@@ -30,7 +30,7 @@ class CounterService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Counter
+    public function getById(Int $id): Counter|null
     {
         return Counter::findOrFail($id);
     }

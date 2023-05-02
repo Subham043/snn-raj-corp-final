@@ -31,7 +31,7 @@ class ProjectService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Project
+    public function getById(Int $id): Project|null
     {
         return Project::findOrFail($id);
     }
@@ -127,7 +127,7 @@ class ProjectService
                 ->appends(request()->query());
     }
 
-    public function getBySlugMain(String $slug): Project
+    public function getBySlugMain(String $slug): Project|null
     {
         return Cache::remember('project_'.$slug, 60*60*24, function() use($slug){
             return Project::with([
@@ -174,7 +174,7 @@ class ProjectService
             ])
             ->where('slug', $slug)
             ->where('is_draft', true)
-            ->first();
+            ->firstOrFail();
         });
     }
 

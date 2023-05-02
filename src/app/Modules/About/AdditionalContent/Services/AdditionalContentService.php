@@ -31,7 +31,7 @@ class AdditionalContentService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): AdditionalContent
+    public function getById(Int $id): AdditionalContent|null
     {
         return AdditionalContent::findOrFail($id);
     }

@@ -31,7 +31,7 @@ class PartnerService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Partner
+    public function getById(Int $id): Partner|null
     {
         return Partner::findOrFail($id);
     }

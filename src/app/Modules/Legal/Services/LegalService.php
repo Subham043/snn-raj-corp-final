@@ -30,7 +30,7 @@ class LegalService
                 ->appends(request()->query());
     }
 
-    public function getBySlug(String $slug): Legal
+    public function getBySlug(String $slug): Legal|null
     {
         return Legal::where('slug', $slug)->firstOrFail();
     }
@@ -41,10 +41,10 @@ class LegalService
         return $legal;
     }
 
-    public function getBySlugMain(String $slug): Legal
+    public function getBySlugMain(String $slug): Legal|null
     {
         return Cache::remember('legal_'.$slug, 60*60*24, function() use($slug){
-            return Legal::where('slug', $slug)->where('is_draft', true)->first();
+            return Legal::where('slug', $slug)->where('is_draft', true)->firstOrFail();
         });
     }
 

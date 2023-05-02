@@ -30,7 +30,7 @@ class BlogUpdateController extends Controller
                 $blog
             );
             if($request->hasFile('image')){
-                $this->blogService->saveBrochure($blog);
+                $this->blogService->saveImage($blog);
             }
             return response()->json(["message" => "Blog updated successfully."], 201);
         } catch (\Throwable $th) {

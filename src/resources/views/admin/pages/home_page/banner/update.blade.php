@@ -220,7 +220,4 @@ validation
 
 </script>
 
-<script>
-    alert('')
-</script>
 @stop

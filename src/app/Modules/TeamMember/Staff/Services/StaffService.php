@@ -31,7 +31,7 @@ class StaffService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Staff
+    public function getById(Int $id): Staff|null
     {
         return Staff::findOrFail($id);
     }

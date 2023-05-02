@@ -30,12 +30,12 @@ class SeoService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Seo
+    public function getById(Int $id): Seo|null
     {
         return Seo::findOrFail($id);
     }
 
-    public function getBySlug(String $slug): Seo
+    public function getBySlug(String $slug): Seo|null
     {
         return Seo::where('slug', $slug)->firstOrFail();
     }
@@ -59,10 +59,10 @@ class SeoService
         return $seo->delete();
     }
 
-    public function getBySlugMain(String $slug): Seo
+    public function getBySlugMain(String $slug): Seo|null
     {
         return Cache::remember('seo_'.$slug, 60*60*24, function() use($slug){
-            return Seo::where('slug', $slug)->first();
+            return Seo::where('slug', $slug)->firstOrFail();
         });
     }
 

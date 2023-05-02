@@ -34,7 +34,7 @@ class RoleService
                 ->paginate($total);
     }
 
-    public function getById(Int $id): Role
+    public function getById(Int $id): Role|null
     {
         return Role::with(['permissions'])->whereNot('name', 'Super-Admin')->findOrFail($id);
     }

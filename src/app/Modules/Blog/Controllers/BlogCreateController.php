@@ -28,7 +28,7 @@ class BlogCreateController extends Controller
                 $request->except(['image'])
             );
             if($request->hasFile('image')){
-                $this->blogService->saveBrochure($blog);
+                $this->blogService->saveImage($blog);
             }
             return response()->json(["message" => "Blog created successfully."], 201);
         } catch (\Throwable $th) {

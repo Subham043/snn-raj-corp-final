@@ -31,7 +31,7 @@ class CsrService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Csr
+    public function getById(Int $id): Csr|null
     {
         return Csr::findOrFail($id);
     }

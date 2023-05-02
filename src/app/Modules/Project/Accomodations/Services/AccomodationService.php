@@ -29,7 +29,7 @@ class AccomodationService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Accomodation
+    public function getById(Int $id): Accomodation|null
     {
         return Accomodation::findOrFail($id);
     }

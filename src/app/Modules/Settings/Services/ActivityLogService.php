@@ -29,7 +29,7 @@ class ActivityLogService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Activity
+    public function getById(Int $id): Activity|null
     {
         return Activity::findOrFail($id);
     }

@@ -29,7 +29,7 @@ class UserService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): User
+    public function getById(Int $id): User|null
     {
         return User::with('roles')->findOrFail($id);
     }

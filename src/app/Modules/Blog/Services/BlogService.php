@@ -31,7 +31,7 @@ class BlogService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Blog
+    public function getById(Int $id): Blog|null
     {
         return Blog::findOrFail($id);
     }
@@ -50,9 +50,9 @@ class BlogService
         return $blog;
     }
 
-    public function saveBrochure(Blog $blog): Blog
+    public function saveImage(Blog $blog): Blog
     {
-        $this->deleteBrochure($blog);
+        $this->deleteImage($blog);
         $image = (new FileService)->save_file('image', (new Blog)->image_path);
         return $this->update([
             'image' => $image,
@@ -61,11 +61,11 @@ class BlogService
 
     public function delete(Blog $blog): bool|null
     {
-        $this->deleteBrochure($blog);
+        $this->deleteImage($blog);
         return $blog->delete();
     }
 
-    public function deleteBrochure(Blog $blog): void
+    public function deleteImage(Blog $blog): void
     {
         if($blog->image){
             $path = str_replace("storage","app/public",$blog->image);
@@ -99,12 +99,12 @@ class BlogService
                 ->appends(request()->query());
     }
 
-    public function getBySlugMain(String $slug): Blog
+    public function getBySlugMain(String $slug): Blog|null
     {
         return Cache::remember('blog_'.$slug, 60*60*24, function() use($slug){
             return Blog::where('slug', $slug)
             ->where('is_draft', true)
-            ->first();
+            ->firstOrFail();
         });
     }
 

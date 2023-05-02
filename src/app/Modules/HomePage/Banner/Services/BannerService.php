@@ -31,7 +31,7 @@ class BannerService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Banner
+    public function getById(Int $id): Banner|null
     {
         return Banner::findOrFail($id);
     }
