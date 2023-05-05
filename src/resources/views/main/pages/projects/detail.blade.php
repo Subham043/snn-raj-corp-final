@@ -60,11 +60,11 @@
 @section('content')
 
 @if($data->use_in_banner)
-    <section class="project-page secondary-div video-project-page mb-0 mt-0 py-0">
+    <section class="project-page suffix-div video-project-page mb-0 mt-0 py-0">
         <div class="container-fluid">
         <!-- project slider -->
             <div class="row justify-content-center">
-                <div class="col-md-12">
+                <div class="col-md-12 px-0">
                     <header class="p-relative header-video-container">
                         <iframe src="{{$data->video}}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video" width="560" height="315" frameborder="0"></iframe>
                     </header>
@@ -97,7 +97,7 @@
         </div>
     </section>
 @else
-    <section class="project-page secondary-div mb-0 mt-0 py-0">
+    <section class="project-page suffix-div mb-0 mt-0 py-0">
         <div class="container-fluid">
         <!-- project slider -->
             <div class="row justify-content-center">
@@ -139,7 +139,7 @@
     </section>
 @endif
 
-<section class="secondary-div mt-0">
+<section class="suffix-div mt-0">
     <div class="container">
         <div class="row">
 
@@ -195,7 +195,7 @@
 @endif
 
 @if(count($data->accomodation)>0)
-<section class="about lets-talk hero hero-contact mt-5">
+<section class="about lets-talk hero hero-contact mt-5 py-5">
     <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">
             <div class="row">
@@ -246,7 +246,23 @@
             </div>
         </div>
     </section>
+    <div class="py-5"></div>
 @endif
+
+<section class="lets-talk hero hero-contact my-0 py-5">
+    <div class="background bg-img bg-fixed" data-overlay-dark="6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
+                    <div class="sub-title border-bot-light">An address to be proud of</div>
+                </div>
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                    <div class="section-title address-title">{!!$data->address!!}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Image Gallery -->
 @if($data->gallery_image_count>0)
@@ -330,7 +346,7 @@
                 </div>
             </section>
         @else
-            <section class="secondary-div">
+            <section class="suffix-div">
                 <div class="container">
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
@@ -363,20 +379,6 @@
     </section>
 @endif --}}
 
-<section class="lets-talk hero hero-contact my-0">
-    <div class="background bg-img bg-fixed" data-overlay-dark="6">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 " data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light">An address to be proud of</div>
-                </div>
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
-                    <div class="section-title address-title">{!!$data->address!!}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
     @include('main.includes.common_contact')
 
 @stop

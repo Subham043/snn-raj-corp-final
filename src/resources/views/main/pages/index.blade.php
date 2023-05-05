@@ -178,7 +178,7 @@
                                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                                         <div class="vid-area mb-30">
                                             <iframe src="{{$testimonials->video}}" class="w-100" height="350" title="{{$testimonials->video_title}}" frameborder="0"></iframe>
-                                            <h4>{{$testimonials->video_title}}</h4>
+                                            <h3 class="sub-title">{{$testimonials->video_title}}</h3>
                                             {{-- <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube">
                                                 <a class="video-gallery-button vid" href="https://youtu.be/{{$testimonials->video_id}}"> <span class="video-gallery-polygon">
                                                         <i class="ti-control-play"></i>

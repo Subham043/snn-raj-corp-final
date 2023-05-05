@@ -139,11 +139,24 @@
             <div class="row mt-4">
                 @foreach($management as $key=>$val)
                     @if($key==0)
-                        <div class="col-md-6 " data-animate-effect="fadeInUp">
-                            <div class="desc-ul">
-                                {!!$val->description!!}
+                        <div class="row mt-4">
+                            <div class="col-md-6 " data-animate-effect="fadeInUp">
+                                <div class="desc-ul">
+                                    {!!$val->description!!}
+                                </div>
+                            </div>
+                            <div class="col-md-6 " data-animate-effect="fadeInUp">
+                                <div class="wrap">
+                                    <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
+                                        <div class="info">
+                                            <h4 class="name">{{$val->name}}</h4>
+                                        </div>
+                                    </div>
+                                    <p>{{$val->designation}}</p>
+                                </div>
                             </div>
                         </div>
+                    @else
                         <div class="col-md-6 " data-animate-effect="fadeInUp">
                             <div class="wrap">
                                 <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
@@ -153,9 +166,17 @@
                                 </div>
                                 <p>{{$val->designation}}</p>
                             </div>
+                            <div class="desc-ul">
+                                {!!$val->description!!}
+                            </div>
                         </div>
-                    @else
-                        <div class="col-md-3  text-center mt-3" data-animate-effect="fadeInUp">
+                        {{-- <div class="col-md-9 " data-animate-effect="fadeInUp">
+                            <div class="desc-ul">
+                                {!!$val->description!!}
+                            </div>
+                        </div> --}}
+
+                        {{-- <div class="col-md-3  text-center mt-3" data-animate-effect="fadeInUp">
                             <div class="wrap wrap-2">
                                 <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
                                     <div class="info">
@@ -167,7 +188,7 @@
                         </div>
                         <div class="col-md-3 desc-ul mt-3" data-animate-effect="fadeInUp">
                             {!!$val->description!!}
-                        </div>
+                        </div> --}}
                     @endif
                 @endforeach
             </div>

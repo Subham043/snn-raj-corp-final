@@ -2347,6 +2347,7 @@ input[type="checkbox"] {
     font-family: Oswald,sans-serif;
     letter-spacing: 3px;
     text-transform: uppercase;
+    margin-right: 15px;
 }
 .projects2-filter li:last-child {
     margin-right: 0;
@@ -3893,4 +3894,7 @@ input[type="checkbox"] {
     .services .item .numb {
         font-size: 40px;
     }
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: Barlow,sans-serif;
 }
