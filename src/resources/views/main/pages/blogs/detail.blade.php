@@ -38,7 +38,7 @@
 @section('content')
 
 <!-- Post  -->
-<section class="post section-padding">
+<section class="post suffix-div mt-0">
     <div class="container">
         <div class="row">
             <div class="col-md-12 " data-animate-effect="fadeInUp">

@@ -34,7 +34,7 @@ class CsrBannerRequest extends FormRequest
             'description_unfiltered' => 'required|string',
             'image_title' => 'nullable|string|max:250',
             'image_alt' => 'nullable|string|max:250',
-            'image' => ['image','min:10','max:500', Rule::requiredIf(function (){
+            'image' => ['image','min:1','max:500', Rule::requiredIf(function (){
                 $banner = (new CsrBannerService)->getById(1);
                 return empty($banner->image);
             })],

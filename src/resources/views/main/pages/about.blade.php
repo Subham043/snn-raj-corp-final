@@ -36,7 +36,7 @@
 
     @if($banner)
     <!-- Hero -->
-    <section class="hero section-padding">
+    <section class="hero hero-main section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -87,7 +87,7 @@
     @endif --}}
 
     @if($about)
-    <section class="about section-padding">
+    <section class="about suffix-div mt-0">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
@@ -124,7 +124,7 @@
 
     <!-- Management -->
     @if(count($management)>0)
-    <section class="about secondary-div">
+    <section class="about secondary-div mt-0">
         <div class="container">
             <div class="row">
                 @if($managementHeading)
@@ -175,24 +175,6 @@
     </section>
     @endif
 
-    <!-- Vision -->
-    @if($banner)
-    <section class="lets-talk hero hero-contact mt-0">
-        <div class="background bg-img bg-fixed" data-overlay-dark="6">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-4 mb-3" data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light">Our Vision</div>
-                    </div>
-                    <div class="col-md-12 " data-animate-effect="fadeInUp">
-                        <div class="section-title">{!!$banner->vission!!}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif
-
     <!-- Staff -->
     @if(count($staffs)>0)
     <section class="team section-padding">
@@ -227,7 +209,7 @@
 
     <!-- Mission -->
     @if($banner)
-    <section class="lets-talk hero hero-contact">
+    <section class="lets-talk hero hero-contact py-5">
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
@@ -301,7 +283,7 @@
 
     <!-- ADDITIONAL CONTENT -->
     @if(count($additionalContent)>0)
-    <section class="process secondary-div mt-0">
+    <section class="process suffix-div mt-0">
         <div class="container">
             @foreach($additionalContent as $key=>$val)
                 @if(($key+1)%2!=0)
@@ -347,6 +329,24 @@
         </div>
     </section>
     @endif
+
+        <!-- Vision -->
+        @if($banner)
+        <section class="lets-talk hero hero-contact mt-0 py-5">
+            <div class="background bg-img bg-fixed" data-overlay-dark="6">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 mb-3" data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light">Our Vision</div>
+                        </div>
+                        <div class="col-md-12 " data-animate-effect="fadeInUp">
+                            <div class="section-title">{!!$banner->vission!!}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @endif
 
     <!-- Partner -->
     @if(count($partners)>0)

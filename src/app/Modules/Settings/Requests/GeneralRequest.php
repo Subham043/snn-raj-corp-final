@@ -39,11 +39,11 @@ class GeneralRequest extends FormRequest
             'website_logo_alt' => 'nullable|string|max:500',
             'website_logo_title' => 'nullable|string|max:500',
             'website_name' => 'required|string|max:500',
-            'website_logo' => ['image','min:10','max:500', Rule::requiredIf(function (){
+            'website_logo' => ['image','min:1','max:500', Rule::requiredIf(function (){
                 $general = (new GeneralService)->getById(1);
                 return empty($general->website_logo);
             })],
-            'website_favicon' => ['image','min:10','max:500', Rule::requiredIf(function (){
+            'website_favicon' => ['image','min:1','max:500', Rule::requiredIf(function (){
                 $general = (new GeneralService)->getById(1);
                 return empty($general->website_favicon);
             })],

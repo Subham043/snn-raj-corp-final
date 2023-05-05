@@ -35,7 +35,7 @@ class BannerRequest extends FormRequest
             'description' => 'required|string|max:500',
             'mission' => 'required|string|max:500',
             'vission' => 'required|string|max:500',
-            'image' => ['image','min:10','max:500', Rule::requiredIf(function (){
+            'image' => ['image','min:1','max:500', Rule::requiredIf(function (){
                 $banner = (new BannerService)->getById(1);
                 return empty($banner->image);
             })],

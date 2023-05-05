@@ -110,7 +110,7 @@
     @endif --}}
 
     <!-- Projects 2 -->
-    <div class="projects2  secondary-div">
+    <div class="projects2  subject-div">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
@@ -200,7 +200,7 @@
 
         <!-- Counter -->
         @if(count($counters)>0)
-        <section class="about lets-talk hero hero-contact">
+        <section class="about lets-talk hero hero-contact py-5">
             <div class="background bg-img bg-fixed" data-overlay-dark="6">
                 <div class="container">
                     <div class="row">
@@ -238,7 +238,7 @@
 
     <!-- Blog -->
     @if(count($blogs) > 0)
-    <section class="blog-home section-padding">
+    <section class="blog-home suffix-div mt-0">
         <div class="container">
             <div class="row mb-5">
                     <div class="col-md-4">

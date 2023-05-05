@@ -41,14 +41,14 @@
                     <div class="sub-title border-bot-light">Blogs</div>
                 </div>
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
-                    <div class="section-title">LATEST NEWS</div>
+                    <div class="section-title">LATEST <span>NEWS</span></div>
                 </div>
             </div>
             @if($blogs->total() > 0)
                 <div class="row">
                     @foreach ($blogs->items() as $k => $v)
                         <div class="col-md-4 div-padding">
-                            <div class="item mb-5">
+                            <div class="item mb-3">
                                 <div class="post-img">
                                     <a href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img src="{{$v->image_link}}" alt=""> </div></a>
                                 </div>

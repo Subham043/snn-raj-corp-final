@@ -34,7 +34,7 @@
 @section('content')
 
     <!-- Awards -->
-    <section class="projects3 section-padding">
+    <section class="projects3 pt-5">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
@@ -77,9 +77,9 @@
 
                     @else
 
-                    <section class="projects3 secondary-div">
+                    <section class="projects3 suffix-div">
                         <div class="container">
-                            <div class="row div-padding">
+                            <div class="row">
                                 <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
                                     <div class="content">
                                         <div class="cont">

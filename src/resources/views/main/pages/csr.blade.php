@@ -38,7 +38,7 @@
 
     @if($banner)
     <!-- Hero -->
-    <section class="hero section-padding">
+    <section class="hero hero-main section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -63,7 +63,8 @@
                 @if(($key+1)%2!=0)
                     <section @class([
                         "process",
-                        "section-padding",
+                        "suffix-div",
+                        "mt-0" => $key==0,
                         "py-5" => $key!=0
                     ])>
                         <div class="container">
@@ -85,7 +86,7 @@
                         </div>
                     </section>
                 @else
-                <section class="process secondary-div mb-0">
+                <section class="process section-padding mb-0 mt-0">
                     <div class="container">
                         <div class="row div-padding">
                             <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
