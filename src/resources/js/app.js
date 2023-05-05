@@ -387,20 +387,20 @@
 
         $('.slider__progress span').css("width", presentage + "%");
 
-            $('h4').removeClass('animated fadeInUp');
-            $('h1').removeClass('animated fadeInUp');
-            $('p').removeClass('animated fadeInUp');
-            $('.button-light').removeClass('animated fadeInUp');
-            $('.button-light2').removeClass('animated fadeInUp');
-            $('.button-dark').removeClass('animated fadeInUp');
-            $('.button-dark2').removeClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item-2).find('h4').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item-2).find('h1').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item-2).find('p').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item-2).find('.button-light').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item-2).find('.button-light2').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item-2).find('.button-dark').addClass('animated fadeInUp');
-            $('.owl-item').not('.cloned').eq(item-2).find('.button-dark2').addClass('animated fadeInUp');
+            // $('h4').removeClass('animated fadeInUp');
+            // $('h1').removeClass('animated fadeInUp');
+            // $('p').removeClass('animated fadeInUp');
+            // $('.button-light').removeClass('animated fadeInUp');
+            // $('.button-light2').removeClass('animated fadeInUp');
+            // $('.button-dark').removeClass('animated fadeInUp');
+            // $('.button-dark2').removeClass('animated fadeInUp');
+            // $('.owl-item').not('.cloned').eq(item-2).find('h4').addClass('animated fadeInUp');
+            // $('.owl-item').not('.cloned').eq(item-2).find('h1').addClass('animated fadeInUp');
+            // $('.owl-item').not('.cloned').eq(item-2).find('p').addClass('animated fadeInUp');
+            // $('.owl-item').not('.cloned').eq(item-2).find('.button-light').addClass('animated fadeInUp');
+            // $('.owl-item').not('.cloned').eq(item-2).find('.button-light2').addClass('animated fadeInUp');
+            // $('.owl-item').not('.cloned').eq(item-2).find('.button-dark').addClass('animated fadeInUp');
+            // $('.owl-item').not('.cloned').eq(item-2).find('.button-dark2').addClass('animated fadeInUp');
         });
     });
 
@@ -552,7 +552,7 @@
         , margin: 20
         , mouseDrag: true
         , autoplay: true
-        , dots: false
+        , dots: true
         , nav: false
         , navText: ["<span class='lnr ti-arrow-left'></span>","<span class='lnr ti-arrow-right'></span>"]
         // , autoplayHoverPause:false
@@ -595,7 +595,10 @@
                 items:1
             },
             1000:{
-                items:1
+                items:2
+            },
+            1920:{
+                items:3
             }
         }
     });

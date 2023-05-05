@@ -74,11 +74,22 @@
     @if($about)
     <section class="about section-padding">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row">
                 <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
-                    @if(!$about->image)
+                    {{-- @if(!$about->image)
+                    @endif --}}
+                    <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
+                </div>
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                    {{-- @if($about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
-                    @endif
+                    @endif --}}
+                    <div class="section-title">{!!$about->heading!!}</div>
+
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
                         <img src="{{$about->image_link}}" class="img-fluid" alt="">
@@ -86,10 +97,6 @@
                     @endif
                 </div>
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
-                    @if($about->image)
-                        <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
-                    @endif
-                    <div class="section-title">{!!$about->heading!!}</div>
                     <div class="desc-ul">
                         {!!$about->description!!}
                     </div>
@@ -100,45 +107,7 @@
     </section>
     @endif
 
-    <!-- Counter -->
-    @if(count($counters)>0)
-    <section class="about lets-talk">
-        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
-            <div class="container">
-                <div class="row">
-                    @if($counterHeading)
-                        <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
-                        </div>
-                        <div class="col-md-8 " data-animate-effect="fadeInUp">
-                            <div class="section-title">{!!$counterHeading->heading!!}</div>
-                        </div>
-                    @endif
-                    <div class="col-md-12 " data-animate-effect="fadeInUp">
-                        <div class="states">
-                            <ul class="flex gap-2 align-items-center justify-content-between">
-                                @foreach($counters as $counters)
-                                <li class="flex">
-                                    <div class="numb valign">
-                                        <h1>{{$counters->counter}}</h1>
-                                    </div>
-                                    <div class="text valign">
-                                        <p>
-                                            {!!$counters->title!!}
-                                        </p>
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif
-
-    @if(!$about->use_in_banner)
+    {{-- @if(!$about->use_in_banner)
         <section class="about section-padding">
             <div class="container">
                 <header class="p-relative header-video2-container">
@@ -146,10 +115,10 @@
                 </header>
             </div>
         </section>
-    @endif
+    @endif --}}
 
     <!-- Projects 2 -->
-    <div class="projects2 section-padding">
+    <div class="projects2  secondary-div">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
@@ -157,6 +126,8 @@
                 </div>
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
                     <div class="section-title">Creative <span>Projects</span></div>
+                </div>
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <p>Architecture viverra tristique justo duis vitae diaminte neque nivamus aestan ateuene artines ariianu the ateliten finibus viverra nec lacus in the nedana mis erodino. Design nila iman the finise viverra nec a lacus miss viventa in the setlien suscipe no curabit tristue the seneoice misuscipit non sagie the fermen.</p>
                 </div>
             </div>
@@ -198,14 +169,15 @@
                 <div class="row">
                     @if($testimonialHeading)
                         <div class="col-md-4 mb-30">
-                            <h3 class="sub-title border-bot-dark">{{$testimonialHeading->sub_heading}}</h3>
+                            <h3 class="sub-title border-bot-light">{{$testimonialHeading->sub_heading}}</h3>
                         </div>
                     @endif
                     <div class="col-md-8">
                         @if($testimonialHeading)
-                        <div class="section-title">{{$testimonialHeading->heading}}</div>
+                        <div class="section-title">{!!$testimonialHeading->heading!!}</div>
                         @endif
-
+                    </div>
+                    <div class="col-md-12">
                         <div class="wrap">
                             <div class="owl-carousel owl-theme">
 
@@ -213,11 +185,13 @@
                                 <div class="row">
                                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                                         <div class="vid-area mb-30">
-                                            <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube">
+                                            <iframe src="{{$testimonials->video}}" class="w-100" height="350" title="{{$testimonials->video_title}}" frameborder="0"></iframe>
+                                            <h4>{{$testimonials->video_title}}</h4>
+                                            {{-- <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube">
                                                 <a class="video-gallery-button vid" href="https://youtu.be/{{$testimonials->video_id}}"> <span class="video-gallery-polygon">
                                                         <i class="ti-control-play"></i>
                                                     </span> </a>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +206,43 @@
     </section>
     @endif
 
-    @include('main.includes.referal')
+        <!-- Counter -->
+        @if(count($counters)>0)
+        <section class="about lets-talk hero hero-contact">
+            <div class="background bg-img bg-fixed" data-overlay-dark="6">
+                <div class="container">
+                    <div class="row">
+                        @if($counterHeading)
+                            <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
+                                <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
+                            </div>
+                            <div class="col-md-8 " data-animate-effect="fadeInUp">
+                                <div class="section-title">{!!$counterHeading->heading!!}</div>
+                            </div>
+                        @endif
+                        <div class="col-md-12 " data-animate-effect="fadeInUp">
+                            <div class="states">
+                                <ul class="flex gap-2 align-items-center justify-content-between">
+                                    @foreach($counters as $counters)
+                                    <li class="flex">
+                                        <div class="numb valign">
+                                            <h1>{{$counters->counter}}</h1>
+                                        </div>
+                                        <div class="text valign">
+                                            <p>
+                                                {!!$counters->title!!}
+                                            </p>
+                                        </div>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @endif
 
     <!-- Blog -->
     @if(count($blogs) > 0)
@@ -264,6 +274,9 @@
         </div>
     </section>
     @endif
+
+    @include('main.includes.referal')
+    <div class="py-5"></div>
 
     @include('main.includes.common_contact')
 

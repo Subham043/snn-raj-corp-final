@@ -107,11 +107,11 @@
 
                             @can('list projects')
                             <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),'project') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="{{strpos(url()->current(),'project') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'project') !== false ? 'active' : ''}}" href="#sidebarDashboards8" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'project') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards8">
                                     <i class="ri-building-line"></i> <span data-key="t-dashboards">Project Management</span>
                                 </a>
-                                <div class="collapse menu-dropdown {{strpos(url()->current(),'project') !== false ? 'show' : ''}}" id="sidebarDashboards6">
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'project') !== false ? 'show' : ''}}" id="sidebarDashboards8">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
                                             <a href="{{route('project.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('project.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Projects </a>

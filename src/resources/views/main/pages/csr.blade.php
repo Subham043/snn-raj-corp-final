@@ -59,45 +59,53 @@
 
     <!-- ADDITIONAL CONTENT -->
     @if(count($mainContent)>0)
-    <section class="process section-padding">
-        <div class="container">
             @foreach($mainContent as $key=>$val)
                 @if(($key+1)%2!=0)
-                    <div class="row div-padding">
-                        <div class="col-md-12 " data-animate-effect="fadeInRight">
-                            <div class="img fl-img">
-                                <img src="{{$val->image_link}}" alt="">
-                            </div>
-                            <div class="wrap">
-                                <div class="number">
-                                    <h1>{!!$val->heading!!}</h1>
-                                </div>
-                                <div class="cont desc-ul">
-                                    {!!$val->description!!}
+                    <section @class([
+                        "process",
+                        "section-padding",
+                        "py-5" => $key!=0
+                    ])>
+                        <div class="container">
+                            <div class="row div-padding">
+                                <div class="col-md-12 " data-animate-effect="fadeInRight">
+                                    <div class="img fl-img">
+                                        <img src="{{$val->image_link}}" alt="">
+                                    </div>
+                                    <div class="wrap">
+                                        <div class="number">
+                                            <div class="section-title">{!!$val->heading!!}</div>
+                                        </div>
+                                        <div class="cont desc-ul">
+                                            {!!$val->description!!}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 @else
-                    <div class="row div-padding">
-                        <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
-                            <div class="img fr-img">
-                                <img src="{{$val->image_link}}" alt="">
-                            </div>
-                            <div class="wrap">
-                                <div class="number">
-                                    <h1>{!!$val->heading!!}</h1>
+                <section class="process secondary-div mb-0">
+                    <div class="container">
+                        <div class="row div-padding">
+                            <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
+                                <div class="img fr-img">
+                                    <img src="{{$val->image_link}}" alt="">
                                 </div>
-                                <div class="cont desc-ul">
-                                    {!!$val->description!!}
+                                <div class="wrap">
+                                    <div class="number">
+                                        <div class="section-title">{!!$val->heading!!}</div>
+                                    </div>
+                                    <div class="cont desc-ul">
+                                        {!!$val->description!!}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </section>
                 @endif
             @endforeach
-        </div>
-    </section>
     @endif
 
     @include('main.includes.common_contact')

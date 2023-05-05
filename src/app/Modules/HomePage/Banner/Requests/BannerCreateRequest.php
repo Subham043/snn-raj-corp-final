@@ -31,7 +31,7 @@ class BannerCreateRequest extends FormRequest
             'description' => 'required|string|max:500',
             'button_link' => 'nullable|url|max:500',
             'is_draft' => 'required|boolean',
-            'banner_image' => 'required|image|min:10|max:500',
+            'banner_image' => 'required|image|min:1|max:500',
             'banner_image_alt' => 'nullable|string|max:500',
             'banner_image_title' => 'nullable|string|max:500',
         ];

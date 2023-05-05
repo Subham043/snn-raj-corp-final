@@ -31,7 +31,7 @@ class ManagementCreateRequest extends FormRequest
             'designation' => 'required|string|max:250',
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',
-            'image' => 'required|image|min:10|max:500',
+            'image' => 'required|image|min:1|max:500',
             'is_draft' => 'required|boolean',
         ];
     }

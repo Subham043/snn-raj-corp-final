@@ -699,7 +699,7 @@ input[type="checkbox"] {
     overflow: auto;
     padding: 0 40px;
     border: none;
-    border-left: 1px solid var(--theme-dark-lines-color)
+    border-left: 1px solid var(--theme-hero-color)
 }
 .duru-wrap.duru-wrap-show {
     -webkit-transform: translateX(0%);
@@ -1215,7 +1215,7 @@ input[type="checkbox"] {
     height: 100%;
     /* background-color: #00000054; */
     z-index: 3;
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 5%, rgba(0, 0, 0, 0) 100%);
+    /* background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 5%, rgba(0, 0, 0, 0) 100%); */
 }
 
 .projects-overlay{
@@ -1382,7 +1382,7 @@ input[type="checkbox"] {
     transform: scale(0.9);
     background: var(--theme-highlight-text-color);
     border: 1px solid var(--theme-highlight-text-color);
-    color: var(--theme-background-color);
+    color: white;
 }
 @media screen and (max-width: 768px) {
     .owl-nav {
@@ -1579,18 +1579,26 @@ input[type="checkbox"] {
 /* ======= Section style ======= */
 .section-padding {
     padding-top: 120px;
+    position: relative;
+    z-index: 9;
     /* padding-bottom: 120px; */
 }
 .div-padding {
     padding-top: 60px;
+    position: relative;
+    z-index: 9;
     /* padding-bottom: 120px; */
 }
 .section-padding.two {
     padding-top: 120px;
+    position: relative;
+    z-index: 9;
     /* padding-bottom: 120px; */
 }
 .section-padding.three {
     padding-top: 120px;
+    position: relative;
+    z-index: 9;
     /* padding-bottom: 120px; */
 }
 .section-title {
@@ -2120,7 +2128,7 @@ input[type="checkbox"] {
     background-size: cover;
     background-position: 50% 0% !important;
 }
-.services .item:before {
+/* .services .item:before {
     content: "";
     position: absolute;
     top: 0;
@@ -2128,10 +2136,10 @@ input[type="checkbox"] {
     right: 0;
     bottom: 0;
     background: rgba(7, 8, 5, 0.5);
-}
-.services .item:hover:after {
+} */
+/* .services .item:hover:after {
     opacity: 0;
-}
+} */
 .services .item:hover h5,
 .services .item:hover p,
 .services .item:hover .more,
@@ -2142,7 +2150,7 @@ input[type="checkbox"] {
 .services .item:hover .numb {
     -webkit-text-stroke: 1px var(--theme-highlight-text-color)
 }
-.services .item:after {
+/* .services .item:after {
     content: "";
     position: absolute;
     top: 0;
@@ -2153,7 +2161,7 @@ input[type="checkbox"] {
     z-index: 1;
     -webkit-transition: all .4s;
     transition: all .4s;
-}
+} */
 .services .item .con {
     position: relative;
     z-index: 7;
@@ -2323,7 +2331,8 @@ input[type="checkbox"] {
 .projects2-filter li {
     margin-right: 15px;
     display: inline-block;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: 600;
     line-height: 1.75em;
     cursor: pointer;
     color: var(--theme-text-color);
@@ -2526,23 +2535,27 @@ input[type="checkbox"] {
     margin-bottom: 0px;
     position: relative;
     font-family: 'Barlow', sans-serif;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: 600;
     color: var(--theme-text-color);
 }
 .project-bar {
     padding: 30px;
-    background-color: var(--theme-background-color);
+    background-color: var(--theme-hero-color);
     margin-top: -60px;
     margin-bottom: 60px;
     position: relative;
     z-index: 10;
     border: none;
-    border-bottom: 1px solid var(--theme-lines-color);
+    border-top: 1px solid var(--theme-hero-color);
+    border-right: 1px solid var(--theme-hero-color);
+    border-bottom: 1px solid var(--theme-hero-color);
 }
 .project-bar h5  {
     font-family: 'Barlow', sans-serif;
-    color: var(--theme-primary-color);
-    font-size: 15px;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
     font-weight: 400;
     margin-bottom: 5px;
 }

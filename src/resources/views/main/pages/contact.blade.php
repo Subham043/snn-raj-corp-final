@@ -30,13 +30,22 @@
             z-index: 10;
             pointer-events: all;
         }
+        .contact .phone, .contact .social a {
+            color: #000;
+        }
+        input[type=password].line-gray, input[type=email].line-gray, input[type=text].line-gray, input[type=file].line-gray, textarea.line-gray {
+            border-bottom: 1px solid black;
+        }
     </style>
 @stop
 
 @section('content')
 
+    @include('main.includes.referal')
+    <div class="py-5"></div>
+
     <!-- Contact -->
-    <div class="contact section-padding">
+    <div class="contact secondary-div mt-0">
         <div class="container">
             <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
@@ -95,8 +104,6 @@
             </div>
         </div>
     </div>
-
-    @include('main.includes.referal')
 
     <!-- Maps -->
     {{-- <div class="google-maps">

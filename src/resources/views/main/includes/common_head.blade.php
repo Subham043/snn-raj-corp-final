@@ -9,6 +9,7 @@
     @vite(['resources/css/app.css'])
     <style nonce="{{ csp_nonce() }}">
         :root{
+
             --theme-background-color: {{ empty($themeSetting) ? '#1b1b1b' : $themeSetting->background_color}};
             --theme-primary-color: {{ empty($themeSetting) ? '#dccc73' : $themeSetting->primary_color}};
             --theme-overlay-color: {{ empty($themeSetting) ? '#000' : $themeSetting->overlaycolor}};
@@ -17,6 +18,135 @@
             --theme-input-lines-color: {{ empty($themeSetting) ? 'rgba(255,255,255,0.1)' : 'rgba('.$themeSetting->lines_color_rgb.',0.1)'}};
             --theme-text-color: {{ empty($themeSetting) ? '#999' : $themeSetting->text_color}};
             --theme-highlight-text-color: {{ empty($themeSetting) ? '#fff' : $themeSetting->highlight_text_color}};
+
+            --theme-header-color: #3d3b3b;
+            --theme-footer-color: #3d3b3b;
+            --theme-primary-color: #DCCE78;
+            --theme-hero-color: #DCCE78;
+            --theme-secondary-color: #fffadc;
+            --theme-hero-title-color: #fff;
+            --theme-hero-title-span-color: #3d3b3b;
+            --theme-text-color: #000;
+            --theme-highlight-text-color: #000;
+            /* --theme-lines-color:#3d3b3b0f; */
+            --theme-lines-color:#DCCE78;
+        }
+        body {
+            color: #000000 !important;
+            background: #ffffff !important;
+        }
+        .section-title {
+            font-weight: 800;
+            font-size: 40px;
+        }
+        .sub-title {
+            font-weight: 600;
+        }
+        .duru-wrap {
+            background: var(--theme-header-color);
+        }
+        .duru-menu>ul>li>a, .duru-menu ul ul li a{
+            color: #fff;
+        }
+        .duru-header, .duru-header.scrolled {
+            background: var(--theme-header-color);
+        }
+        .hero, #slider-area{
+            background: var(--theme-hero-color);
+        }
+        .footer {
+            background: var(--theme-footer-color);
+        }
+        .hero .section-title span {
+            color: #fff;
+        }
+        .hero .section-title, .secondary-div .section-title {
+            color: #000;
+        }
+        .hero .section-title span {
+            color: #fff;
+        }
+        .hero .sub-title:before{
+            background-color: white;
+        }
+        .hero .sub-title.border-bot-light {
+            border-bottom: 1px solid white;
+        }
+        .hero .button-light:hover {
+            color: white;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #000;
+            font-weight: 500;
+        }
+        .secondary-div .section-title span {
+            color: var(--theme-primary-color);
+        }
+        .secondary-div{
+            background: var(--theme-secondary-color);
+            padding: 55px 0;
+            margin-top: 60px;
+        }
+        .hero-contact{
+            padding: 75px 0;
+            margin-top: 60px;
+        }
+        .secondary-div input[type=password].line-gray, .secondary-div input[type=email].line-gray, .secondary-div input[type=text].line-gray, .secondary-div input[type=file].line-gray, .secondary-div textarea.line-gray {
+            border-bottom: 1px solid black;
+        }
+        .secondary-div  label a{
+            color: var(--theme-hero-color) !important;
+            border-bottom: 1px solid var(--theme-hero-color) !important;
+        }
+        .secondary-div input[type=checkbox].line-gray:before {
+            border: 1px solid var(--theme-hero-color);
+        }
+        .hero-contact input[type=submit] {
+            background: black;
+            color: white;
+        }
+        .hero-contact .states li h1{
+            color: white;
+        }
+        .hero-contact .states li p {
+            font-weight: 600;
+        }
+        .hero-contact input[type=submit]:hover, .hero-contact input[type=reset]:hover, .hero-contact input[type=button]:hover, .hero-contact button:hover {
+            background-color: black;
+            color: var(--theme-hero-color);
+            border: 1px solid black;
+        }
+        .blog-home .item .cont{
+            background-color: var(--theme-hero-color);
+        }
+        .blog-home .item .cont .date a{
+            color: white;
+            font-weight: 600;
+        }
+        .blog-home .item h4, .blog-home .item h4 a {
+            margin-bottom: 0px;
+        }
+        .footer .top .item p, .footer .top .item .mail, .footer .top .item h3 span, .footer .bottom p, .footer .bottom p a{
+            color: #fff;
+        }
+        .slide-num span{
+            color: black;
+        }
+        .slider__progress span{
+            background-color: var(--theme-hero-color);
+        }
+        .slider-fade .owl-theme .owl-nav [class*=owl-]{
+            background: var(--theme-hero-color);
+            border: 1px solid var(--theme-hero-color);
+            color: #000;
+        }
+        .owl-theme .owl-dots .owl-dot span{
+            background: black;
+            border: 1px solid black;
+        }
+        .button-light:hover {
+            color: white;
         }
     </style>
     @yield('css')

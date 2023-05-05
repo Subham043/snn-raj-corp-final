@@ -27,7 +27,7 @@ class CommonAmenityCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|image|min:10|max:500',
+            'image' => 'required|image|min:1|max:500',
             'title' => 'required|string|max:500',
         ];
     }

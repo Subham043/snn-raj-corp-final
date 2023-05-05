@@ -198,7 +198,7 @@ validation
         files: {
             extensions: ['jpeg', 'jpg', 'png', 'webp'],
             maxSize: 500000,
-            minSize: 10000,
+            minSize: 1000,
             types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
         },
         },
@@ -219,7 +219,7 @@ validation
         files: {
             extensions: ['jpeg', 'jpg', 'png', 'webp'],
             maxSize: 500000,
-            minSize: 10000,
+            minSize: 1000,
             types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
         },
         },

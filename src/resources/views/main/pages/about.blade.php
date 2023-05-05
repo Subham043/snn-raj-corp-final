@@ -24,6 +24,12 @@
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}
 
+    <style nonce="{{ csp_nonce() }}">
+        .partner .owl-dots{
+            margin-top: 20px !important;
+        }
+    </style>
+
 @stop
 
 @section('content')
@@ -48,7 +54,7 @@
     </section>
     @endif
 
-    <!-- About -->
+    {{-- <!-- About -->
     @if($about)
     <section class="lets-talk">
         <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
@@ -78,11 +84,47 @@
             </div>
         </div>
     </section>
+    @endif --}}
+
+    @if($about)
+    <section class="about section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
+                    {{-- @if(!$about->image)
+                    @endif --}}
+                    <div class="sub-title border-bot-light">About Us</div>
+                </div>
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                    {{-- @if($about->image)
+                        <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
+                    @endif --}}
+                    <div class="section-title">{!!$about->heading!!}</div>
+
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-4" data-animate-effect="fadeInUp">
+                    @if($about->image)
+                    <div class="con">
+                        <img src="{{$about->image_link}}" class="img-fluid" alt="">
+                    </div>
+                    @endif
+                </div>
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                    <div class="desc-ul">
+                        {!!$about->description!!}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
     @endif
 
     <!-- Management -->
     @if(count($management)>0)
-    <section class="about section-padding">
+    <section class="about secondary-div">
         <div class="container">
             <div class="row">
                 @if($managementHeading)
@@ -135,12 +177,14 @@
 
     <!-- Vision -->
     @if($banner)
-    <section class="lets-talk">
-        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
+    <section class="lets-talk hero hero-contact mt-0">
+        <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-12 " data-animate-effect="fadeInUp">
+                    <div class="col-md-4 mb-3" data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">Our Vision</div>
+                    </div>
+                    <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="section-title">{!!$banner->vission!!}</div>
                     </div>
                 </div>
@@ -183,12 +227,14 @@
 
     <!-- Mission -->
     @if($banner)
-    <section class="lets-talk">
-        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
+    <section class="lets-talk hero hero-contact">
+        <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-12 " data-animate-effect="fadeInUp">
+                    <div class="col-md-4 mb-3" data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">Our Mission</div>
+                    </div>
+                    <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="section-title">{!!$banner->mission!!}</div>
                     </div>
                 </div>
@@ -255,7 +301,7 @@
 
     <!-- ADDITIONAL CONTENT -->
     @if(count($additionalContent)>0)
-    <section class="process section-padding">
+    <section class="process secondary-div mt-0">
         <div class="container">
             @foreach($additionalContent as $key=>$val)
                 @if(($key+1)%2!=0)
@@ -268,7 +314,7 @@
                         <div class="col-md-6 valign " data-animate-effect="fadeInRight">
                             <div class="wrap">
                                 <div class="number">
-                                    <h1>{!!$val->heading!!}</h1>
+                                    <div class="section-title">{!!$val->heading!!}</div>
                                 </div>
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
@@ -282,7 +328,7 @@
                         <div class="col-md-6 order2 valign " data-animate-effect="fadeInLeft">
                             <div class="wrap">
                                 <div class="number">
-                                    <h1>{!!$val->heading!!}</h1>
+                                    <div class="section-title">{!!$val->heading!!}</div>
                                 </div>
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
@@ -329,6 +375,7 @@
             </div>
         </div>
     </section>
+    <div class="py-5"></div>
     @endif
 
     @include('main.includes.common_contact')

@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Modules\Legal\Services\LegalService;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
 use App\Modules\Settings\Services\ThemeService;
@@ -112,7 +113,8 @@ class Handler extends ExceptionHandler
                 [
                     'generalSetting' => (new GeneralService)->getById(1),
                     'themeSetting' => (new ThemeService)->getById(1),
-                    'chatbotSetting' => (new ChatbotService)->getById(1)
+                    'chatbotSetting' => (new ChatbotService)->getById(1),
+                    'legal' => (new LegalService)->main_all()
                 ],
             );
         }

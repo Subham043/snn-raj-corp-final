@@ -331,7 +331,7 @@ validation
         files: {
             extensions: ['pdf'],
             maxSize: 5000000,
-            minSize: 10000,
+            minSize: 1000,
         },
         },
     },

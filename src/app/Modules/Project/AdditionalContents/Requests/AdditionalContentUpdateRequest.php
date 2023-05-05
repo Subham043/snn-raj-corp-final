@@ -18,7 +18,7 @@ class AdditionalContentUpdateRequest extends AdditionalContentCreateRequest
             'heading' => 'required|string|max:250',
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',
-            'image' => 'nullable|image|min:10|max:500',
+            'image' => 'nullable|image|min:1|max:500',
         ];
     }
 

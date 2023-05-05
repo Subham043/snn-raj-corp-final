@@ -31,7 +31,7 @@ class AwardCreateRequest extends FormRequest
             'title' => 'required|string|max:250',
             'sub_title' => 'required|string|max:250',
             'description' => 'nullable|string|max:500',
-            'image' => 'required|image|min:10|max:500',
+            'image' => 'required|image|min:1|max:500',
             'is_draft' => 'required|boolean',
         ];
     }

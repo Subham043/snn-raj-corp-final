@@ -31,6 +31,9 @@
         .process .wrap, .process .wrap .cont{
             display: inline;
         }
+        .address-title{
+            font-size: 25px;
+        }
         @media screen and (max-width: 600px) {
             .project-detail-row>*{
                 width: 45% !important;
@@ -57,7 +60,7 @@
 @section('content')
 
 @if($data->use_in_banner)
-    <section class="project-page video-project-page">
+    <section class="project-page secondary-div video-project-page mb-0 mt-0 py-0">
         <div class="container-fluid">
         <!-- project slider -->
             <div class="row justify-content-center">
@@ -94,11 +97,11 @@
         </div>
     </section>
 @else
-    <section class="project-page">
+    <section class="project-page secondary-div mb-0 mt-0 py-0">
         <div class="container-fluid">
         <!-- project slider -->
             <div class="row justify-content-center">
-                <div class="col-md-12">
+                <div class="col-md-12 px-0">
                     <div class="owl-carousel owl-theme">
                         @if($data->banner_count>0)
                             @foreach($data->banner as $banner)
@@ -107,22 +110,22 @@
                         @endif
                     </div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-8 px-0">
                             <div class="project-bar">
                                 <div class="row project-detail-row justify-content-between align-items-center text-left text-lg-start">
-                                    <div class="col-md-3 col-sm-6 mb-15">
+                                    <div class="col-md-3 col-sm-6 mb-15 text-center">
                                         <h5>Floor</h5>
                                         <h6>{{$data->floor}}</h6>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 mb-15">
+                                    <div class="col-md-3 col-sm-6 mb-15 text-center">
                                         <h5>Tower</h5>
                                         <h6>{{$data->tower}}</h6>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 mb-15">
+                                    <div class="col-md-3 col-sm-6 mb-15 text-center">
                                         <h5>Acre</h5>
                                         <h6>{{$data->acre}}</h6>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 mb-15">
+                                    <div class="col-md-3 col-sm-6 mb-15 text-center">
                                         <h5>Location</h5>
                                         <h6>{{$data->location}}</h6>
                                     </div>
@@ -136,7 +139,7 @@
     </section>
 @endif
 
-<section class="section-padding pt-sm-0">
+<section class="secondary-div mt-0">
     <div class="container">
         <div class="row">
 
@@ -146,29 +149,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>{{$data->name}}</h2>
-                            <h5><span class="text-white">RERA :</span> {{$data->rera}}</h5>
+                            <h5><span class="text-dark">RERA :</span> {{$data->rera}}</h5>
                             <p>{{$data->brief_description}}</p><br>
                        </div>
                        <div class="col-md-12">
                             {!!$data->description!!}
-                        </div>
-                    </div>
-                    <div class="col-md-12 " data-animate-effect="fadeInUp">
-                        <div class="states">
-                            <ul class="d-flex gap-2 align-items-center justify-content-between p-0 flex-wrap accom-row">
-                                @foreach($data->accomodation as $accomodation)
-                                <li class="accom">
-                                    <div class="numb valign">
-                                        <h2 class="mb-1">{{$accomodation->room}}</h2>
-                                    </div>
-                                    <div class="text valign ml-1">
-                                        <p>
-                                            {!!$accomodation->area!!}
-                                        </p>
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -178,7 +163,7 @@
 </section>
 
 @if($data->plan_count>0)
-    <section class="project-page section-padding">
+    <section class="project-page section-padding pt-5 pb-5">
         <div class="container">
             <div class="row">
                 <div class="row mb-5 " data-animate-effect="fadeInUp">
@@ -193,7 +178,13 @@
                     <div class="owl-carousel owl-theme">
                         @if($data->plan_count>0)
                             @foreach($data->plan as $plan)
-                                <div class="portfolio-item"> <img class="img-fluid" src="{{$plan->image_link}}" alt="{{$plan->image_alt}}" title="{{$plan->image_title}}"> </div>
+                                {{-- <div class="portfolio-item"> <img class="img-fluid" src="{{$plan->image_link}}" alt="{{$plan->image_alt}}" title="{{$plan->image_title}}"> </div> --}}
+                                <a href="{{$plan->image_link}}" title="{{$plan->title}}" class="img-zoom">
+                                    <div class="gallery-box">
+                                        <div class="gallery-img"> <img src="{{$plan->image_link}}" class="img-fluid mx-auto d-block" alt="{{$plan->alt}}" title="{{$plan->title}}"> </div>
+                                        <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
+                                    </div>
+                                </a>
                             @endforeach
                         @endif
                     </div>
@@ -201,6 +192,35 @@
             </div>
         </div>
     </section>
+@endif
+
+@if(count($data->accomodation)>0)
+<section class="about lets-talk hero hero-contact mt-5">
+    <div class="background bg-img bg-fixed" data-overlay-dark="6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
+                    <div class="states">
+                        <ul class="flex gap-5 align-items-center justify-content-center">
+                            @foreach($data->accomodation as $accomodation)
+                            <li class="accom">
+                                <div class="numb valign">
+                                    <h2 class="mb-1 text-white">{{$accomodation->room}}</h2>
+                                </div>
+                                <div class="text valign ml-1">
+                                    <p>
+                                        {!!$accomodation->area!!}
+                                    </p>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endif
 
 <!-- Amenities -->
@@ -212,9 +232,9 @@
                     <div class="section-title text-center"><span>Worldclass</span> Amenities</div>
                 </div>
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    <div class="row amenity-row">
+                    <div class="row amenity-row justify-content-center">
                         @foreach($data->amenity as $amenity)
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-3 col-sm-6 mb-4">
                                 <div class="about-box">
                                     <img src="{{$amenity->image_link}}" class="icon" alt="">
                                     <h5>{{$amenity->title}}</h5>
@@ -240,7 +260,7 @@
                     <div class="section-title"><span>Image</span> Gallery</div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 @foreach($data->gallery_image as $gallery_image)
                     <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
                         <a href="{{$gallery_image->image_link}}" title="{{$gallery_image->title}}" class="img-zoom">
@@ -258,7 +278,7 @@
 
 <!--  Video Gallery -->
 @if($data->gallery_video_count>0)
-    <section class="section-padding">
+    <section class="secondary-div">
         <div class="container">
         <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
@@ -268,16 +288,17 @@
                     <div class="section-title"><span>Video</span> Gallery</div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 <!-- 2 columns -->
                 @foreach($data->gallery_video as $gallery_video)
                     <div class="col-md-6 " data-animate-effect="fadeInUp">
                         <div class="vid-area mb-30">
-                            <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$gallery_video->video_id}}/maxresdefault.jpg" alt="YouTube">
+                            <iframe src="{{$gallery_video->video}}" title="{{$gallery_video->video_title}}" class="w-100" height="350" frameborder="0"></iframe>
+                            {{-- <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$gallery_video->video_id}}/maxresdefault.jpg" alt="YouTube">
                                 <a class="video-gallery-button vid" href="https://youtu.be/{{$gallery_video->video_id}}"> <span class="video-gallery-polygon">
                                         <i class="ti-control-play"></i>
                                     </span> </a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 @endforeach
@@ -287,10 +308,10 @@
 @endif
 
 @if($data->additional_content_count>0)
-    <section class="section-padding">
-        <div class="container">
-            @foreach($data->additional_content as $key=>$val)
-                @if(($key+1)%2!=0)
+    @foreach($data->additional_content as $key=>$val)
+        @if(($key+1)%2!=0)
+            <section class="section-padding py-5">
+                <div class="container">
                     <div class="row div-padding">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
                             <div class="img fl-img">
@@ -306,7 +327,11 @@
                             </div>
                         </div>
                     </div>
-                @else
+                </div>
+            </section>
+        @else
+            <section class="secondary-div">
+                <div class="container">
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
                             <div class="img fr-img">
@@ -322,13 +347,13 @@
                             </div>
                         </div>
                     </div>
-                @endif
-            @endforeach
-        </div>
-    </section>
+                </div>
+            </section>
+        @endif
+    @endforeach
 @endif
 
-@if(!$data->use_in_banner)
+{{-- @if(!$data->use_in_banner)
     <section class="about section-padding">
         <div class="container">
             <header class="p-relative header-video2-container">
@@ -336,21 +361,22 @@
             </header>
         </div>
     </section>
-@endif
+@endif --}}
 
-<section class="lets-talk">
-    <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
+<section class="lets-talk hero hero-contact my-0">
+    <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-12 " data-animate-effect="fadeInUp">
+            <div class="row">
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light">An address to be proud of</div>
-                    <div class="section-title">{!!$data->address!!}</div>
+                </div>
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                    <div class="section-title address-title">{!!$data->address!!}</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
     @include('main.includes.common_contact')
 
 @stop

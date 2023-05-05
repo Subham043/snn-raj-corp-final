@@ -29,7 +29,7 @@ class StaffCreateRequest extends FormRequest
         return [
             'name' => 'required|string|max:250',
             'designation' => 'required|string|max:250',
-            'image' => 'required|image|min:10|max:500',
+            'image' => 'required|image|min:1|max:500',
             'is_draft' => 'required|boolean',
         ];
     }

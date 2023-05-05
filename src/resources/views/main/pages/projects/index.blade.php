@@ -44,11 +44,16 @@
                     <div class="section-title">{{$status=='completed' ? 'COMPLETED PROJECTS' : 'ONGOING PROJECTS'}}</div>
                 </div>
             </div>
-            @if($projects->total() > 0)
-            <div class="row">
-                <div class="col-md-12">
-                    @foreach ($projects->items() as $k => $v)
-                        @if(($k+1)%2!=0)
+        </div>
+    </section>
+    @if($projects->total() > 0)
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 px-0">
+                @foreach ($projects->items() as $k => $v)
+                    @if(($k+1)%2!=0)
+                    <section class="projects3">
+                        <div class="container">
                             <div class="row div-padding">
                                 <div class="col-md-8 " data-animate-effect="fadeInUp">
                                     @if($v->banner_count>0)
@@ -67,7 +72,13 @@
                                     </div>
                                 </div>
                             </div>
-                        @else
+                        </div>
+                    </section>
+
+                    @else
+
+                    <section class="projects3 secondary-div">
+                        <div class="container">
                             <div class="row div-padding">
                                 <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
                                     <div class="content">
@@ -86,16 +97,19 @@
                                     @endif
                                 </div>
                             </div>
-                        @endif
-                    @endforeach
-                    <div class="mt-5">
-                        {{$projects->onEachSide(5)->links('main.includes.pagination')}}
-                    </div>
+                        </div>
+                    </section>
+
+                    @endif
+                @endforeach
+                <div class="mt-5">
+                    {{$projects->onEachSide(5)->links('main.includes.pagination')}}
                 </div>
             </div>
-            @endif
         </div>
-    </section>
+    </div>
+    @endif
+    <div class="py-5"></div>
 
     @include('main.includes.common_contact')
 

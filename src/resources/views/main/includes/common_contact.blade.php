@@ -1,13 +1,13 @@
 <!-- Lets Talk -->
-<section class="lets-talk mb-5">
-    <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
+<section class="lets-talk secondary-div mt-0">
+    <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-30">
-                    <div class="sub-title border-bot-dark">Contact Us</div>
+                    <div class="sub-title border-bot-light">Contact Us</div>
                 </div>
                 <div class="col-md-8">
-                    <div class="section-title">Get in touch</div>
+                    <div class="section-title">Get in <span>touch</span></div>
                     <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line and we’ll get back to you shortly.</p>
                     <form method="post" class="contact__form" id="contactForm">
                         <!-- Form elements -->

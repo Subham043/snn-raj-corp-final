@@ -29,7 +29,7 @@ class CsrUpdateRequest extends CsrCreateRequest
             'description_unfiltered' => 'required|string',
             'image_title' => 'nullable|string|max:250',
             'image_alt' => 'nullable|string|max:250',
-            'image' => 'nullable|image|min:10|max:500',
+            'image' => 'nullable|image|min:1|max:500',
             'is_draft' => 'required|boolean',
         ];
     }
