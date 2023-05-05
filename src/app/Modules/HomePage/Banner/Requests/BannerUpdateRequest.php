@@ -26,8 +26,6 @@ class BannerUpdateRequest extends BannerCreateRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:250',
-            'description' => 'required|string|max:500',
             'button_link' => 'nullable|url|max:500',
             'is_draft' => 'required|boolean',
             'banner_image' => ['nullable','image', 'min:10', 'max:500', Rule::requiredIf(function (){

@@ -22,8 +22,8 @@
 @section('content')
 
     <!-- Legal -->
-    <section class="hero section-padding">
-        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
+    <section class="py-5">
+        <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-12 " data-animate-effect="fadeInUp">

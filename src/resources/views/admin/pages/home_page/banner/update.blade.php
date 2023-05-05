@@ -16,21 +16,28 @@
             <div class="col-lg-12">
                 <form id="countryForm" method="post" action="{{route('home_page.banner.update.post', $data->id)}}" enctype="multipart/form-data">
                 @csrf
+
                     <div class="card">
-                        <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Banner Detail</h4>
+                        <div class="card-header align-items-center d-flex justify-content-between">
+                            <h4 class="card-title mb-0">Banner Image</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
-                                <div class="row gy-4">
-                                    <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>$data->title])
+                                <div class="row gy-4" id="image_row">
+                                    <div class="col-xxl-3 col-md-3">
+                                        @include('admin.includes.file_input', ['key'=>'banner_image', 'label'=>'Image'])
+                                        @if(!empty($data->banner_image_link))
+                                            <img src="{{$data->banner_image_link}}" alt="" class="img-preview">
+                                        @endif
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'button_link', 'label'=>'Button Link', 'value'=>$data->button_link])
                                     </div>
-                                    <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.textarea', ['key'=>'description', 'label'=>'Description', 'value'=>$data->description])
+                                    <div class="col-xxl-3 col-md-3">
+                                        @include('admin.includes.input', ['key'=>'banner_image_alt', 'label'=>'Image Alt', 'value'=>$data->banner_image_alt])
+                                    </div>
+                                    <div class="col-xxl-3 col-md-3">
+                                        @include('admin.includes.input', ['key'=>'banner_image_title', 'label'=>'Image Title', 'value'=>$data->banner_image_title])
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="mt-4 mt-md-0">
@@ -42,33 +49,6 @@
                                             </div>
 
                                         </div>
-                                    </div>
-
-                                </div>
-                                <!--end row-->
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header align-items-center d-flex justify-content-between">
-                            <h4 class="card-title mb-0">Banner Image</h4>
-                        </div><!-- end card header -->
-                        <div class="card-body">
-                            <div class="live-preview">
-                                <div class="row gy-4" id="image_row">
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.file_input', ['key'=>'banner_image', 'label'=>'Image'])
-                                        @if(!empty($data->banner_image_link))
-                                            <img src="{{$data->banner_image_link}}" alt="" class="img-preview">
-                                        @endif
-                                    </div>
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'banner_image_alt', 'label'=>'Image Alt', 'value'=>$data->banner_image_alt])
-                                    </div>
-                                    <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'banner_image_title', 'label'=>'Image Title', 'value'=>$data->banner_image_title])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
@@ -131,23 +111,6 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
-  .addField('#title', [
-    {
-      rule: 'required',
-      errorMessage: 'Title is required',
-    },
-    {
-        rule: 'customRegexp',
-        value: COMMON_REGEX,
-        errorMessage: 'Title is invalid',
-    },
-  ])
-  .addField('#description', [
-    {
-        rule: 'required',
-        errorMessage: 'Description is required',
-    },
-  ])
   .addField('#button_link', [
     {
         validator: (value, fields) => true,
@@ -175,8 +138,6 @@ validation
     try {
         var formData = new FormData();
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
-        formData.append('title',document.getElementById('title').value)
-        formData.append('description',document.getElementById('description').value)
         formData.append('button_link',document.getElementById('button_link').value)
         formData.append('banner_image_title',document.getElementById('banner_image_title').value)
         formData.append('banner_image_alt',document.getElementById('banner_image_alt').value)
@@ -188,12 +149,6 @@ validation
         successToast(response.data.message)
         setInterval(location.reload(), 1500);
     }catch (error){
-        if(error?.response?.data?.errors?.title){
-            validation.showErrors({'#title': error?.response?.data?.errors?.title[0]})
-        }
-        if(error?.response?.data?.errors?.description){
-            validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
-        }
         if(error?.response?.data?.errors?.button_link){
             validation.showErrors({'#button_link': error?.response?.data?.errors?.button_link[0]})
         }

@@ -22,8 +22,6 @@ class Banner extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
-        'description',
         'button_link',
         'banner_image',
         'banner_image_alt',
@@ -80,7 +78,7 @@ class Banner extends Model
         ->useLogName('home page banner')
         ->setDescriptionForEvent(
                 function(string $eventName){
-                    $desc = "Home page banner with title ".$this->title." has been {$eventName}";
+                    $desc = "Home page banner with title ".$this->banner_image_title." has been {$eventName}";
                     $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
                     return $desc;
                 }

@@ -50,17 +50,9 @@
                 @foreach($banners as $banners)
                     <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
                         <div class="v-middle caption">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <h1>{{$banners->title}}</h1>
-                                        <p>{{$banners->description}}</p>
-                                        @if($banners->button_link)
-                                            <a href="{{$banners->button_link}}" class="button-light">View Detail</a>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
+                            <a href="{{$banners->button_link ? $banners->button_link : '#'}}">
+                                <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}">
+                            </a>
                         </div>
                     </div>
                 @endforeach

@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('home_page_banners', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 250);
-            $table->string('description', 500)->nullable();
             $table->string('button_link', 500)->nullable();
             $table->string('banner_image', 500)->nullable();
             $table->string('banner_image_alt', 500)->nullable();
