@@ -699,7 +699,7 @@ input[type="checkbox"] {
     overflow: auto;
     padding: 0 40px;
     border: none;
-    border-left: 1px solid var(--theme-hero-color)
+    border-left: 1px solid var(--theme-primary-color)
 }
 .duru-wrap.duru-wrap-show {
     -webkit-transform: translateX(0%);
