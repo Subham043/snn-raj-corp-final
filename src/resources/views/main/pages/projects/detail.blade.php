@@ -266,7 +266,7 @@
 
 <!-- Image Gallery -->
 @if($data->gallery_image_count>0)
-    <section class="section-padding">
+    <section class="section-padding my-0">
         <div class="container">
             <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
@@ -294,7 +294,7 @@
 
 <!--  Video Gallery -->
 @if($data->gallery_video_count>0)
-    <section class="secondary-div">
+    <section class="secondary-div my-0">
         <div class="container">
         <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
