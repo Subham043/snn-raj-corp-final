@@ -1893,9 +1893,10 @@ input[type="checkbox"] {
     color: var(--theme-highlight-text-color);
 }
 .about-box .icon {
-    width: 50px;
-    height: 30px;
+    /* width: 50px; */
+    height: 70px;
     margin-bottom: 15px;
+    object-fit: contain;
 }
 
 

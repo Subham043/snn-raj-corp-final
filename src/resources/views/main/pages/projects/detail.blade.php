@@ -34,6 +34,9 @@
         .address-title{
             font-size: 25px;
         }
+        .no-gutter{
+            --bs-gutter-x:0;
+        }
         @media screen and (max-width: 600px) {
             .project-detail-row>*{
                 width: 45% !important;
@@ -109,7 +112,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <div class="row">
+                    <div class="row no-gutter">
                         <div class="col-md-8 px-0">
                             <div class="project-bar">
                                 <div class="row project-detail-row justify-content-between align-items-center text-left text-lg-start">
