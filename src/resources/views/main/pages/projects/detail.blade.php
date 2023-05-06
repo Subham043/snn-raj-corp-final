@@ -71,7 +71,7 @@
                     <header class="p-relative header-video-container">
                         <iframe src="{{$data->video}}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video" width="560" height="315" frameborder="0"></iframe>
                     </header>
-                    <div class="row">
+                    <div class="row no-gutter">
                         <div class="col-md-8">
                             <div class="project-bar">
                                 <div class="row project-detail-row justify-content-between align-items-center text-left text-lg-start">
