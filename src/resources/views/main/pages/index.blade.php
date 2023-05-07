@@ -142,7 +142,7 @@
                                 </a>
                             @endif
                             <div class="projects2-con" style="z-index: 5">
-                                <p>Project P.{{$k+1}}</p>
+                                <p>{{$v->location}}</p>
                                 <h3><a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
                                 <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
                             </div>

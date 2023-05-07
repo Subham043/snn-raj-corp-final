@@ -37,6 +37,25 @@
         .no-gutter{
             --bs-gutter-x:0;
         }
+        .project-bar .project-detail-row .testimonials .wrap .item .info .author-img{
+            border-radius: 0;
+            border: none;
+        }
+        .project-bar .project-detail-row .testimonials .wrap .item .info .author-img img{
+            border-radius: 0;
+        }
+        .project-bar .project-detail-row .testimonials .wrap .item .info h6{
+            color: black;
+            font-size: 25px;
+        }
+
+        .project-page .owl-nav {
+            position: absolute;
+            bottom: 10%;
+            right: 2%;
+            z-index: inherit;
+        }
+
         @media screen and (max-width: 600px) {
             .project-detail-row>*{
                 width: 45% !important;
@@ -72,24 +91,92 @@
                         <iframe src="{{$data->video}}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video" width="560" height="315" frameborder="0"></iframe>
                     </header>
                     <div class="row no-gutter">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="project-bar">
-                                <div class="row project-detail-row justify-content-between align-items-center text-left text-lg-start">
-                                    <div class="col-md-3 col-sm-6 mb-15">
-                                        <h5>Floor</h5>
-                                        <h6>{{$data->floor}}</h6>
+                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->floor}}</h6> <span>Floors</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 mb-15">
-                                        <h5>Tower</h5>
-                                        <h6>{{$data->tower}}</h6>
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->tower}}</h6> <span>Towers</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 mb-15">
-                                        <h5>Acre</h5>
-                                        <h6>{{$data->acre}}</h6>
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->acre}}</h6> <span>Acre</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 mb-15">
-                                        <h5>Location</h5>
-                                        <h6>{{$data->location}}</h6>
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->location}}</h6> <span>Location</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->rera}}</h6> <span>RERA No.</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span>Status</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -113,24 +200,92 @@
                         @endif
                     </div>
                     <div class="row no-gutter">
-                        <div class="col-md-8 px-0">
+                        <div class="col-md-12 px-0">
                             <div class="project-bar">
-                                <div class="row project-detail-row justify-content-between align-items-center text-left text-lg-start">
-                                    <div class="col-md-3 col-sm-6 mb-15 text-center">
-                                        <h5>Floor</h5>
-                                        <h6>{{$data->floor}}</h6>
+                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->floor}}</h6> <span>Floors</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 mb-15 text-center">
-                                        <h5>Tower</h5>
-                                        <h6>{{$data->tower}}</h6>
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->tower}}</h6> <span>Towers</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 mb-15 text-center">
-                                        <h5>Acre</h5>
-                                        <h6>{{$data->acre}}</h6>
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->acre}}</h6> <span>Acre</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 mb-15 text-center">
-                                        <h5>Location</h5>
-                                        <h6>{{$data->location}}</h6>
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->location}}</h6> <span>Location</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->rera}}</h6> <span>RERA No.</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto mb-15 text-center">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" alt=""> </div>
+                                                        <div class="cont">
+                                                            <h6>{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span>Status</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +307,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>{{$data->name}}</h2>
-                            <h5><span class="text-dark">RERA :</span> {{$data->rera}}</h5>
+                            {{-- <h5><span class="text-dark">RERA :</span> {{$data->rera}}</h5> --}}
                             <p>{{$data->brief_description}}</p><br>
                        </div>
                        <div class="col-md-12">

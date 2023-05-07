@@ -22,7 +22,8 @@
             --theme-header-color: #1b1919;
             --theme-footer-color: #1b1919;
             --theme-primary-color: #DCCE78;
-            --theme-hero-color: #e5d1c6;
+            /* --theme-hero-color: #e5d1c6; */
+            --theme-hero-color: #DCCE78;
             --theme-secondary-color: #ece9de;
             --theme-subject-color: #f6f6f4;
             --theme-suffix-color: #f6f6f4;

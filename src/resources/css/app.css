@@ -2408,7 +2408,8 @@ input[type="checkbox"] {
     position: absolute;
     left: 70px;
     bottom: 50px;
-    background-image: linear-gradient(to right,#e5d1c6 20%, transparent 100%);
+    /* background-image: linear-gradient(to right,#e5d1c6 20%, transparent 100%); */
+    background-image: linear-gradient(to right,#DCCE78 30%, transparent 100%);
     padding: 10px 20px;
     width: 85%;
     z-index: 100;
@@ -2563,7 +2564,7 @@ input[type="checkbox"] {
     color: var(--theme-text-color);
 }
 .project-bar {
-    padding: 30px;
+    padding: 0px 30px;
     background-color: var(--theme-hero-color);
     margin-top: -60px;
     margin-bottom: 60px;
@@ -2577,10 +2578,12 @@ input[type="checkbox"] {
 .project-bar h5  {
     font-family: 'Barlow', sans-serif;
     color: white;
-    font-size: 22px;
+    font-size: 30px;
     font-weight: 600;
     font-weight: 400;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
+    width: auto;
+    padding: 0;
 }
 @media (max-width: 576px) {
     .project-bar {
