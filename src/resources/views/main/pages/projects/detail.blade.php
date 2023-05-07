@@ -40,13 +40,20 @@
         .project-bar .project-detail-row .testimonials .wrap .item .info .author-img{
             border-radius: 0;
             border: none;
+            height: auto;
+            width: 40px;
         }
         .project-bar .project-detail-row .testimonials .wrap .item .info .author-img img{
             border-radius: 0;
+            margin-top: 8px;
         }
         .project-bar .project-detail-row .testimonials .wrap .item .info h6{
             color: black;
-            font-size: 25px;
+            font-size: 16px;
+        }
+
+        .project-bar .project-detail-row .testimonials .wrap .item .info .cont{
+            margin-left: 50px;
         }
 
         .project-page .owl-nav {
