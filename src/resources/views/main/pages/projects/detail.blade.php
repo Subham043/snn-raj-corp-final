@@ -56,6 +56,10 @@
             margin-left: 50px;
         }
 
+        .about .states li h2{
+            font-size: 20px;
+        }
+
         .project-page .owl-nav {
             position: absolute;
             bottom: 10%;
