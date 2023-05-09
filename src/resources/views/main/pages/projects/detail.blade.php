@@ -427,6 +427,11 @@
                 </div>
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
                     <div class="section-title address-title">{!!$data->address!!}</div>
+                    @if($data->map_location_link)
+                        <div>
+                            <iframe src="{{$data->map_location_link}}" class="w-100 logo-shape" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

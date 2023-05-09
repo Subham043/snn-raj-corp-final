@@ -82,6 +82,7 @@ use App\Modules\Project\Plans\Controllers\PlanPaginateController;
 use App\Modules\Project\Plans\Controllers\PlanUpdateController;
 use App\Modules\Project\Projects\Controllers\ProjectCreateController;
 use App\Modules\Project\Projects\Controllers\ProjectDeleteController;
+use App\Modules\Project\Projects\Controllers\ProjectHeadingController;
 use App\Modules\Project\Projects\Controllers\ProjectPaginateController;
 use App\Modules\Project\Projects\Controllers\ProjectUpdateController;
 use App\Modules\Role\Controllers\RoleCreateController;
@@ -247,6 +248,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [ProjectUpdateController::class, 'get', 'as' => 'project.update.get'])->name('project.update.get');
         Route::post('/update/{id}', [ProjectUpdateController::class, 'post', 'as' => 'project.update.post'])->name('project.update.post');
         Route::get('/delete/{id}', [ProjectDeleteController::class, 'get', 'as' => 'project.delete.get'])->name('project.delete.get');
+        Route::post('/heading', [ProjectHeadingController::class, 'post', 'as' => 'project.heading.post'])->name('project.heading.post');
 
         Route::prefix('/common-amenity')->group(function () {
             Route::get('/', [CommonAmenityPaginateController::class, 'get', 'as' => 'project.common_amenity.paginate.get'])->name('project.common_amenity.paginate.get');

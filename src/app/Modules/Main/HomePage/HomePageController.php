@@ -11,6 +11,7 @@ use App\Modules\HomePage\Banner\Services\BannerService;
 use App\Modules\HomePage\Testimonial\Services\TestimonialHeadingService;
 use App\Modules\HomePage\Testimonial\Services\TestimonialService;
 use App\Modules\Legal\Services\LegalService;
+use App\Modules\Project\Projects\Services\ProjectHeadingService;
 use App\Modules\Project\Projects\Services\ProjectService;
 use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\ChatbotService;
@@ -29,6 +30,7 @@ class HomePageController extends Controller
     private $seoService;
     private $counterHeadingService;
     private $testimonialHeadingService;
+    private $projectHeadingService;
     private $generalService;
     private $themeService;
     private $chatbotService;
@@ -42,6 +44,7 @@ class HomePageController extends Controller
         SeoService $seoService,
         CounterHeadingService $counterHeadingService,
         TestimonialHeadingService $testimonialHeadingService,
+        ProjectHeadingService $projectHeadingService,
         GeneralService $generalService,
         ThemeService $themeService,
         ChatbotService $chatbotService,
@@ -57,6 +60,7 @@ class HomePageController extends Controller
         $this->seoService = $seoService;
         $this->counterHeadingService = $counterHeadingService;
         $this->testimonialHeadingService = $testimonialHeadingService;
+        $this->projectHeadingService = $projectHeadingService;
         $this->generalService = $generalService;
         $this->themeService = $themeService;
         $this->chatbotService = $chatbotService;
@@ -74,6 +78,7 @@ class HomePageController extends Controller
         $legal = $this->legalService->main_all();
         $counterHeading = $this->counterHeadingService->getById(1);
         $testimonialHeading = $this->testimonialHeadingService->getById(1);
+        $projectHeading = $this->projectHeadingService->getById(1);
         $seo = $this->seoService->getBySlugMain('home-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
@@ -89,6 +94,7 @@ class HomePageController extends Controller
             'seo',
             'counterHeading',
             'testimonialHeading',
+            'projectHeading',
             'generalSetting',
             'themeSetting',
             'chatbotSetting',

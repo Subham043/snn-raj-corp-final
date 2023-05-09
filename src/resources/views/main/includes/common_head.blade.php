@@ -38,6 +38,10 @@
             color: #000000 !important;
             background: #ffffff !important;
         }
+        .logo-shape{
+            border-bottom-right-radius: 25px;
+            border-top-left-radius: 25px;
+        }
         .section-title {
             font-weight: 800;
             font-size: 40px;

@@ -113,22 +113,24 @@
     <div class="projects2  subject-div">
         <div class="container">
             <div class="row mb-4">
+                @if($projectHeading)
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light">Discover</div>
+                    <div class="sub-title border-bot-light">{{$projectHeading->sub_heading}}</div>
                 </div>
+                @endif
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
-                    <div class="section-title">Creative <span>Projects</span></div>
-                </div>
-                <div class="col-md-12 " data-animate-effect="fadeInUp">
+                    @if($projectHeading)
+                    <div class="section-title">{!!$projectHeading->heading!!}</div>
+                    @endif
                     <p>Architecture viverra tristique justo duis vitae diaminte neque nivamus aestan ateuene artines ariianu the ateliten finibus viverra nec lacus in the nedana mis erodino. Design nila iman the finise viverra nec a lacus miss viventa in the setlien suscipe no curabit tristue the seneoice misuscipit non sagie the fermen.</p>
+                    <div class="row " data-animate-effect="fadeInUp">
+                        <ul class="projects2-filter">
+                            <li class="active" data-filter="*">All</li>
+                            <li data-filter=".ongoing">Ongoing Projects</li>
+                            <li data-filter=".completed">Completed Projects</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="row text-center " data-animate-effect="fadeInUp">
-                <ul class="projects2-filter">
-                    <li class="active" data-filter="*">All</li>
-                    <li data-filter=".ongoing">Ongoing Projects</li>
-                    <li data-filter=".completed">Completed Projects</li>
-                </ul>
             </div>
             <div class="row projects2-items " data-animate-effect="fadeInUp">
                 @foreach($projects as $k => $v)
