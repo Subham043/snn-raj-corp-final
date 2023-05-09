@@ -113,3 +113,10 @@
     @include('main.includes.common_contact')
 
 @stop
+
+@section('js')
+
+    {!!$seo->meta_footer_script_nonce!!}
+    {!!$seo->meta_footer_no_script_nonce!!}
+
+@stop
