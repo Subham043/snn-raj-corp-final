@@ -219,7 +219,7 @@
                     <div class="owl-carousel owl-theme">
                         @if($data->banner_count>0)
                             @foreach($data->banner as $banner)
-                                <div class="portfolio-item"> <img class="img-fluid" src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
+                                <div class="portfolio-item"> <img fetchpriority="high" class="img-fluid" src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
                             @endforeach
                         @endif
                     </div>
@@ -363,7 +363,7 @@
                                 {{-- <div class="portfolio-item"> <img class="img-fluid" src="{{$plan->image_link}}" alt="{{$plan->image_alt}}" title="{{$plan->image_title}}"> </div> --}}
                                 <a href="{{$plan->image_link}}" title="{{$plan->title}}" class="img-zoom">
                                     <div class="gallery-box">
-                                        <div class="gallery-img"> <img src="{{$plan->image_link}}" class="img-fluid mx-auto d-block" alt="{{$plan->alt}}" title="{{$plan->title}}"> </div>
+                                        <div class="gallery-img"> <img fetchpriority="low" src="{{$plan->image_link}}" class="img-fluid mx-auto d-block" alt="{{$plan->alt}}" title="{{$plan->title}}"> </div>
                                         <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
                                     </div>
                                 </a>
@@ -418,7 +418,7 @@
                         @foreach($data->amenity as $amenity)
                             <div class="col-md-3 col-sm-6 mb-4">
                                 <div class="about-box">
-                                    <img src="{{$amenity->image_link}}" class="icon" alt="">
+                                    <img fetchpriority="low" src="{{$amenity->image_link}}" class="icon" alt="">
                                     <h5>{{$amenity->title}}</h5>
                                 </div>
                             </div>
@@ -442,7 +442,7 @@
                     <div class="section-title address-title">{!!$data->address!!}</div>
                     @if($data->map_location_link)
                         <div>
-                            <iframe src="{{$data->map_location_link}}" class="w-100 logo-shape" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe loading="lazy" src="{{$data->map_location_link}}" class="w-100 logo-shape" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     @endif
                 </div>
@@ -468,7 +468,7 @@
                     <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
                         <a href="{{$gallery_image->image_link}}" title="{{$gallery_image->title}}" class="img-zoom">
                             <div class="gallery-box">
-                                <div class="gallery-img"> <img src="{{$gallery_image->image_link}}" class="img-fluid mx-auto d-block" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}"> </div>
+                                <div class="gallery-img"> <img fetchpriority="low" src="{{$gallery_image->image_link}}" class="img-fluid mx-auto d-block" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}"> </div>
                                 <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
                             </div>
                         </a>
@@ -496,7 +496,7 @@
                 @foreach($data->gallery_video as $gallery_video)
                     <div class="col-md-6 " data-animate-effect="fadeInUp">
                         <div class="vid-area mb-30">
-                            <iframe src="{{$gallery_video->video}}" title="{{$gallery_video->video_title}}" class="w-100" height="350" frameborder="0"></iframe>
+                            <iframe loading="lazy" src="{{$gallery_video->video}}" title="{{$gallery_video->video_title}}" class="w-100" height="350" frameborder="0"></iframe>
                             {{-- <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$gallery_video->video_id}}/maxresdefault.jpg" alt="YouTube">
                                 <a class="video-gallery-button vid" href="https://youtu.be/{{$gallery_video->video_id}}"> <span class="video-gallery-polygon">
                                         <i class="ti-control-play"></i>
@@ -518,7 +518,7 @@
                     <div class="row div-padding">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
                             <div class="img fl-img">
-                                <img src="{{$val->image_link}}" alt="">
+                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
                             </div>
                             <div class="wrap">
                                 <div class="number">
@@ -538,7 +538,7 @@
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
                             <div class="img fr-img">
-                                <img src="{{$val->image_link}}" alt="">
+                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
                             </div>
                             <div class="wrap">
                                 <div class="number">

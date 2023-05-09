@@ -6,7 +6,7 @@
                 <div class="col-md-12 mb-30">
                     {{-- <div class="sub-title border-footer-light">Contact Us</div> --}}
                     <div class="duru-logo-wrap footer-logo">
-                        <a href="{{route('home_page.get')}}" class="duru-logo"><img src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a>
+                        <a href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="low" src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a>
                     </div>
 
                 </div>

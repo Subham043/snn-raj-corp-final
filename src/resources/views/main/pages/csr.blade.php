@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img src="{{ $banner->image_link}}" alt="" class="img-fluid"></figure>
+                        <figure><img fetchpriority="high" src="{{ $banner->image_link}}" alt="" class="img-fluid"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <div class="desc-ul">
@@ -71,7 +71,7 @@
                             <div class="row div-padding">
                                 <div class="col-md-12 " data-animate-effect="fadeInRight">
                                     <div class="img fl-img">
-                                        <img src="{{$val->image_link}}" alt="">
+                                        <img fetchpriority="low" src="{{$val->image_link}}" alt="">
                                     </div>
                                     <div class="wrap">
                                         <div class="number">
@@ -91,7 +91,7 @@
                         <div class="row div-padding">
                             <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
                                 <div class="img fr-img">
-                                    <img src="{{$val->image_link}}" alt="">
+                                    <img fetchpriority="low" src="{{$val->image_link}}" alt="">
                                 </div>
                                 <div class="wrap">
                                     <div class="number">

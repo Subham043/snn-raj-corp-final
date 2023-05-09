@@ -51,7 +51,7 @@
                     <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
                         <div class="v-middle caption">
                             <a href="{{$banners->button_link ? $banners->button_link : '#'}}">
-                                <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}">
+                                <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high">
                             </a>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
-                        <img src="{{$about->image_link}}" class="img-fluid" alt="">
+                        <img src="{{$about->image_link}}" fetchpriority="high" class="img-fluid" alt="">
                     </div>
                     @endif
                 </div>
@@ -141,7 +141,7 @@
                             @if($v->banner_count>0)
                                 <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
                                     <div class="projects-overlay" style="height: {{rand(300, 600)}}px">
-                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" alt="">
+                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" fetchpriority="low" alt="">
                                     </div>
                                 </a>
                             @endif
@@ -181,7 +181,7 @@
                                 <div class="row">
                                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                                         <div class="vid-area mb-30">
-                                            <iframe src="{{$testimonials->video}}" class="w-100" height="350" title="{{$testimonials->video_title}}" frameborder="0"></iframe>
+                                            <iframe loading="lazy" src="{{$testimonials->video}}" class="w-100" height="350" title="{{$testimonials->video_title}}" frameborder="0"></iframe>
                                             <h3 class="sub-title">{{$testimonials->video_title}}</h3>
                                             {{-- <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube">
                                                 <a class="video-gallery-button vid" href="https://youtu.be/{{$testimonials->video_id}}"> <span class="video-gallery-polygon">
@@ -257,7 +257,7 @@
                     <div class="col-md-4">
                         <div class="item mb-5">
                             <div class="post-img">
-                                <a href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img src="{{$v->image_link}}" alt=""> </div></a>
+                                <a href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img src="{{$v->image_link}}" alt="" fetchpriority="low"> </div></a>
                             </div>
                             <div class="cont">
                                 <h4><a href="{{route('blogs_detail.get', $v->slug)}}">{{$v->name}}</a></h4>

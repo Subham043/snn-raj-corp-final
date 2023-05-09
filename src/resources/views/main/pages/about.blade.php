@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img src="{{ $banner->image_link}}" alt="" class="img-fluid"></figure>
+                        <figure><img src="{{ $banner->image_link}}" fetchpriority="high" alt="" class="img-fluid"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <p>{{$banner->description}}</p>
@@ -107,7 +107,7 @@
                 <div class="col-md-4" data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
-                        <img src="{{$about->image_link}}" class="img-fluid" alt="">
+                        <img src="{{$about->image_link}}"  fetchpriority="low"class="img-fluid" alt="">
                     </div>
                     @endif
                 </div>
@@ -147,7 +147,7 @@
                             </div>
                             <div class="col-md-6 " data-animate-effect="fadeInUp">
                                 <div class="wrap">
-                                    <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
+                                    <div class="con"> <img fetchpriority="low" src="{{$val->image_link}}" class="img-fluid" alt="">
                                         <div class="info">
                                             <h4 class="name">{{$val->name}}</h4>
                                         </div>
@@ -159,7 +159,7 @@
                     @else
                         <div class="col-md-6 " data-animate-effect="fadeInUp">
                             <div class="wrap">
-                                <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
+                                <div class="con"> <img fetchpriority="low" src="{{$val->image_link}}" class="img-fluid" alt="">
                                     <div class="info">
                                         <h4 class="name">{{$val->name}}</h4>
                                     </div>
@@ -214,7 +214,7 @@
                 <div class="col-md-12 owl-carousel owl-theme">
                     @foreach($staffs as $staffs)
                     <div class="wrap">
-                        <div class="con"> <img src="{{$staffs->image_link}}" class="img-fluid" alt="">
+                        <div class="con"> <img fetchpriority="low" src="{{$staffs->image_link}}" class="img-fluid" alt="">
                             <div class="info">
                                 <h4 class="name">{{$staffs->name}}</h4>
                             </div>
@@ -311,7 +311,7 @@
                     <div class="row div-padding">
                         <div class="col-md-6 " data-animate-effect="fadeInLeft">
                             <div class="img">
-                                <img src="{{$val->image_link}}" alt="">
+                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
                             </div>
                         </div>
                         <div class="col-md-6 valign " data-animate-effect="fadeInRight">
@@ -341,7 +341,7 @@
                         </div>
                         <div class="col-md-6 order1 " data-animate-effect="fadeInRight">
                             <div class="img">
-                                <img src="{{$val->image_link}}" alt="">
+                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
                             </div>
                         </div>
                     </div>
