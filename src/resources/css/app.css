@@ -3841,6 +3841,14 @@ input[type="checkbox"] {
     list-style-type: disclosure-closed !important;
 }
 
+.project-page .testimonials .wrap .item {
+    margin-bottom: 0px !important;
+}
+
+.project-page .gap-5 {
+    gap: 1rem!important;
+}
+
 @media screen and (max-width: 600px) {
     .py-5{
         padding-top: 0 !important;
