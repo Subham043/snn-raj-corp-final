@@ -67,7 +67,7 @@
     <section class="about section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
                     {{-- @if(!$about->image)
                     @endif --}}
                     <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
@@ -164,7 +164,7 @@
             <div class="container">
                 <div class="row">
                     @if($testimonialHeading)
-                        <div class="col-md-4 mb-30">
+                        <div class="col-md-4">
                             <h3 class="sub-title border-bot-light">{{$testimonialHeading->sub_heading}}</h3>
                         </div>
                     @endif

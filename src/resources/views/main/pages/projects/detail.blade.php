@@ -118,7 +118,7 @@
                         <div class="col-md-12">
                             <div class="project-bar">
                                 <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
@@ -132,7 +132,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
@@ -146,7 +146,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
@@ -160,7 +160,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
@@ -174,7 +174,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
@@ -188,7 +188,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
@@ -227,7 +227,7 @@
                         <div class="col-md-12 px-0">
                             <div class="project-bar">
                                 <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
@@ -241,7 +241,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
@@ -255,7 +255,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
@@ -269,7 +269,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
@@ -283,7 +283,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
@@ -297,7 +297,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto col-sm-12 mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
