@@ -67,6 +67,19 @@
             z-index: inherit;
         }
 
+        .brochure-btn {
+            font-size: 15px;
+            font-weight: 400;
+            font-family: Barlow,sans-serif;
+            background: var(--theme-primary-color);
+            color: var(--theme-highlight-text-color);
+            padding: 10px 30px;
+            margin: 0;
+            position: relative;
+            border-radius: 50px;
+            text-decoration: none;
+        }
+
         @media screen and (max-width: 600px) {
             .project-detail-row>*{
                 width: 45% !important;
@@ -312,8 +325,6 @@
     <div class="container">
         <div class="row">
 
-            <!-- Accomodation -->
-            @if($data->accomodation_count>0)
                 <div class="about mb-5">
                     <div class="row">
                         <div class="col-md-12">
@@ -323,10 +334,12 @@
                        </div>
                        <div class="col-md-12">
                             {!!$data->description!!}
+                            @if($data->brochure_link)
+                                <a href="{{$data->brochure_link}}" class="brochure-btn" download>Download Brochure</a>
+                            @endif
                         </div>
                     </div>
                 </div>
-            @endif
         </div>
     </div>
 </section>
