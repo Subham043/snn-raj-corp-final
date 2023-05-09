@@ -25,6 +25,9 @@
                                 <div class="row gy-4">
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
+                                        <p>
+                                            <code>Note: </code> Banner Size : 500 x 334
+                                        </p>
                                         @if(!empty($data->image_link))
                                             <img src="{{$data->image_link}}" alt="" class="img-preview">
                                         @endif

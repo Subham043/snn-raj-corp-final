@@ -34,6 +34,9 @@
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
+                                        <p>
+                                            <code>Note: </code> Banner Size : 300 x 300
+                                        </p>
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.textarea', ['key'=>'description', 'label'=>'Description', 'value'=>old('description')])

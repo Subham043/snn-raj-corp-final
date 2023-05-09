@@ -33,11 +33,14 @@
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>!empty($data) ? (old('heading') ? old('heading') : $data->heading) : old('heading')])
                                         <p>
-                                            <code>Note: </code> Put the text in between span tags to make it highlighted
+                                            <code>Note: </code> Banner Size : 1415 x 943
                                         </p>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
+                                        <p>
+                                            <code>Note: </code> Banner Size : 1415 x 943
+                                        </p>
                                         @if(!empty($data->image_link))
                                             <img src="{{$data->image_link}}" alt="" class="img-preview">
                                         @endif

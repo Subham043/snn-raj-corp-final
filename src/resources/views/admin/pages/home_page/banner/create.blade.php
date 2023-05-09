@@ -26,6 +26,9 @@
                                 <div class="row gy-4" id="image_row">
                                     <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.file_input', ['key'=>'banner_image', 'label'=>'Image'])
+                                        <p>
+                                            <code>Note: </code> Banner Size : 1415 x 943
+                                        </p>
                                     </div>
                                     <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'button_link', 'label'=>'Image Link', 'value'=>old('button_link')])

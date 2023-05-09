@@ -31,6 +31,9 @@
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
+                                        <p>
+                                            <code>Note: </code> Banner Size : 800 x 800
+                                        </p>
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="mt-4 mt-md-0">

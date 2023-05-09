@@ -25,6 +25,9 @@
                                 <div class="row gy-4">
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
+                                        <p>
+                                            <code>Note: </code> Banner Size : 225 x 225
+                                        </p>
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'image_title', 'label'=>'Image Title', 'value'=>old('image_title')])

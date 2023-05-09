@@ -47,6 +47,9 @@
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
+                                        <p>
+                                            <code>Note: </code> Banner Size : 1415 x 943
+                                        </p>
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>old('description')])
