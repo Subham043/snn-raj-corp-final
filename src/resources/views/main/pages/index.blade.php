@@ -122,7 +122,9 @@
                     @if($projectHeading)
                     <div class="section-title">{!!$projectHeading->heading!!}</div>
                     @endif
-                    <p>Architecture viverra tristique justo duis vitae diaminte neque nivamus aestan ateuene artines ariianu the ateliten finibus viverra nec lacus in the nedana mis erodino. Design nila iman the finise viverra nec a lacus miss viventa in the setlien suscipe no curabit tristue the seneoice misuscipit non sagie the fermen.</p>
+                    <p>SNN Raj Corp has made a mark in delivering real estate projects of luxurious apartments and villas in Bangalore. With a focus on innovation, sustainability, and customer-centricity, we have been able to consistently deliver successful residential projects that reflect our commitment to excellence and position us as one of the leading builders in Bangalore.</p>
+                    <p>Over the past three decades, we’ve transformed not only spaces and skylines but also hopes, dreams and aspirations for thousands across India with our projects.</p>
+                    <p></p>
                     <div class="row " data-animate-effect="fadeInUp">
                         <ul class="projects2-filter">
                             <li class="active" data-filter="*">All</li>
