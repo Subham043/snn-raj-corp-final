@@ -241,12 +241,6 @@ validation
         errorMessage: 'Slug is invalid',
     },
   ])
-  .addField('#video', [
-    {
-      rule: 'required',
-      errorMessage: 'Video is required',
-    },
-  ])
   .addField('#rera', [
     {
         rule: 'customRegexp',
@@ -372,6 +366,11 @@ validation
     },
   ])
   .addField('#meta_footer_no_script', [
+    {
+        validator: (value, fields) => true,
+    },
+  ])
+  .addField('#video', [
     {
         validator: (value, fields) => true,
     },

@@ -246,8 +246,7 @@ validation
   ])
   .addField('#video', [
     {
-      rule: 'required',
-      errorMessage: 'Video is required',
+        validator: (value, fields) => true,
     },
   ])
   .addField('#rera', [
