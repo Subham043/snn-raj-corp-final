@@ -4046,6 +4046,9 @@ input[type="checkbox"] {
         margin: 0 !important;
     }
 
+    .project-page-banner .img-fluid {
+        margin-bottom: 0px !important;
+    }
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: Barlow,sans-serif;
