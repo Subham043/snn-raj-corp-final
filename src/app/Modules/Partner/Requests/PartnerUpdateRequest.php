@@ -26,7 +26,7 @@ class PartnerUpdateRequest extends PartnerCreateRequest
     {
         return [
             'is_draft' => 'required|boolean',
-            'image' => ['nullable','image', 'min:10', 'max:500'],
+            'image' => ['nullable','image', 'min:1', 'max:500'],
             'image_alt' => 'nullable|string|max:500',
             'image_title' => 'nullable|string|max:500',
         ];
