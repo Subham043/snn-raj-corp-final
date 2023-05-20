@@ -31,6 +31,10 @@
         .font-weight-bold{
             font-weight: 700;
         }
+        .award-img{
+            object-fit: contain;
+            width: auto;
+        }
     </style>
 @stop
 
@@ -59,7 +63,7 @@
                                 <div class="con">
                                     <div class="numb">{{$item->year}}</div>
                                     <div class="con">
-                                        <img src="{{$item->image_link}}" class="img-fluid mb-3" alt="">
+                                        <img src="{{$item->image_link}}" class="img-fluid award-img mb-3" alt="">
                                     </div>
                                     <h5 class="font-weight-bold">{{$item->title}}</h5>
                                     <h6>{{$item->sub_title}}</h6>
