@@ -99,6 +99,44 @@
     </section>
     @endif
 
+    <!-- Counter -->
+    @if(count($counters)>0)
+    <section class="about lets-talk hero hero-contact py-5">
+        <div class="background bg-img bg-fixed" data-overlay-dark="6">
+            <div class="container">
+                <div class="row">
+                    @if($counterHeading)
+                        <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
+                        </div>
+                        <div class="col-md-8 " data-animate-effect="fadeInUp">
+                            <div class="section-title">{!!$counterHeading->heading!!}</div>
+                        </div>
+                    @endif
+                    <div class="col-md-12 " data-animate-effect="fadeInUp">
+                        <div class="states">
+                            <ul class="flex gap-2 align-items-center justify-content-between">
+                                @foreach($counters as $counters)
+                                <li class="flex">
+                                    <div class="numb valign">
+                                        <h1>{{$counters->counter}}</h1>
+                                    </div>
+                                    <div class="text valign">
+                                        <p>
+                                            {!!$counters->title!!}
+                                        </p>
+                                    </div>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
+
     {{-- @if(!$about->use_in_banner)
         <section class="about section-padding">
             <div class="container">
@@ -110,7 +148,7 @@
     @endif --}}
 
     <!-- Projects 2 -->
-    <div class="projects2  subject-div">
+    <div class="projects2  subject-div mt-0">
         <div class="container">
             <div class="row mb-4">
                 @if($projectHeading)
@@ -127,9 +165,9 @@
                     <p></p>
                     <div class="row " data-animate-effect="fadeInUp">
                         <ul class="projects2-filter">
-                            <li class="active" data-filter="*">All</li>
-                            <li data-filter=".ongoing">Ongoing Projects</li>
+                            <li class="active" data-filter=".ongoing">Ongoing Projects</li>
                             <li data-filter=".completed">Completed Projects</li>
+                            <li data-filter="*">All</li>
                         </ul>
                     </div>
                 </div>
@@ -201,44 +239,6 @@
         </div>
     </section>
     @endif
-
-        <!-- Counter -->
-        @if(count($counters)>0)
-        <section class="about lets-talk hero hero-contact py-5">
-            <div class="background bg-img bg-fixed" data-overlay-dark="6">
-                <div class="container">
-                    <div class="row">
-                        @if($counterHeading)
-                            <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
-                                <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
-                            </div>
-                            <div class="col-md-8 " data-animate-effect="fadeInUp">
-                                <div class="section-title">{!!$counterHeading->heading!!}</div>
-                            </div>
-                        @endif
-                        <div class="col-md-12 " data-animate-effect="fadeInUp">
-                            <div class="states">
-                                <ul class="flex gap-2 align-items-center justify-content-between">
-                                    @foreach($counters as $counters)
-                                    <li class="flex">
-                                        <div class="numb valign">
-                                            <h1>{{$counters->counter}}</h1>
-                                        </div>
-                                        <div class="text valign">
-                                            <p>
-                                                {!!$counters->title!!}
-                                            </p>
-                                        </div>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        @endif
 
     <!-- Blog -->
     @if(count($blogs) > 0)

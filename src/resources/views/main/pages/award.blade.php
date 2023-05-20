@@ -49,11 +49,11 @@
                     </div>
                 @endif
             </div>
-            @if($awards->total() > 0)
+            @if(count($awards) > 0)
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        @foreach ($awards->items() as $item)
+                        @foreach ($awards as $item)
                         <div class="col-md-4 " data-animate-effect="fadeInUp">
                             <div class="item">
                                 <div class="con">
@@ -68,7 +68,6 @@
                             </div>
                         </div>
                         @endforeach
-                        {{$awards->onEachSide(5)->links('main.includes.pagination')}}
                     </div>
                 </div>
             </div>

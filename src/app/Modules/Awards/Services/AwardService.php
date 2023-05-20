@@ -9,6 +9,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 use Spatie\QueryBuilder\AllowedFilter;
 
 class AwardService
@@ -72,15 +73,18 @@ class AwardService
         }
     }
 
-    public function main_paginate(Int $total = 10): LengthAwarePaginator
+    public function main_paginate(Int $total = 10): Collection
     {
-        $query = Award::where('is_draft', true)->orderBy('year', 'DESC');
-        return QueryBuilder::for($query)
-                ->allowedFilters([
-                    AllowedFilter::custom('search', new CommonFilter),
-                ])
-                ->paginate($total)
-                ->appends(request()->query());
+        // $query = Award::where('is_draft', true)->orderBy('year', 'DESC');
+        // return QueryBuilder::for($query)
+        //         ->allowedFilters([
+        //             AllowedFilter::custom('search', new CommonFilter),
+        //         ])
+        //         ->paginate($total)
+        //         ->appends(request()->query());
+        return Cache::remember('awards_main', 60*60*24, function(){
+            return Award::where('is_draft', true)->orderBy('year', 'DESC')->get();
+        });
     }
 
 }

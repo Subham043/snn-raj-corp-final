@@ -9,7 +9,7 @@
                 <div class="section-title">Our <span>Referral Program</span> gives you premium rewards and gets you closer to the SNN Raj life.</div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-md-4 valign " data-animate-effect="fadeInRight">
                 <div class="wrap">
                     <div class="number">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="cont">
                         <h3>Register</h3>
-                        <p>Enter your details to sign up for our referral program.</p>
+                        <p>Enter your details to <a href="">sign up</a> for our referral program.</p>
                     </div>
                 </div>
             </div>
@@ -41,6 +41,13 @@
                         <h3>Keep earning</h3>
                         <p>Earn huge rewards and benefits with every referral conversion.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center " data-animate-effect="fadeInLeft">
+                <div class="wrap">
+                    <a href="" class="button-light">Sign Up Now</a>
                 </div>
             </div>
         </div>

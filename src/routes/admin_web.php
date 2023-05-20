@@ -35,6 +35,9 @@ use App\Modules\Dashboard\Controllers\DashboardController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormDeleteController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormExcelController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormPaginateController;
+use App\Modules\Enquiry\ReferalForm\Controllers\ReferalFormDeleteController;
+use App\Modules\Enquiry\ReferalForm\Controllers\ReferalFormExcelController;
+use App\Modules\Enquiry\ReferalForm\Controllers\ReferalFormPaginateController;
 use App\Modules\HomePage\About\Controllers\AboutController;
 use App\Modules\HomePage\Banner\Controllers\BannerCreateController;
 use App\Modules\HomePage\Banner\Controllers\BannerDeleteController;
@@ -112,6 +115,10 @@ use App\Modules\User\Controllers\UserCreateController;
 use App\Modules\User\Controllers\UserDeleteController;
 use App\Modules\User\Controllers\UserPaginateController;
 use App\Modules\User\Controllers\UserUpdateController;
+use App\Modules\Referal\Banners\Controllers\BannerCreateController as ReferalBannerCreateController;
+use App\Modules\Referal\Banners\Controllers\BannerDeleteController as ReferalBannerDeleteController;
+use App\Modules\Referal\Banners\Controllers\BannerPaginateController as ReferalBannerPaginateController;
+use App\Modules\Referal\Banners\Controllers\BannerUpdateController as ReferalBannerUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -163,6 +170,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [ContactFormPaginateController::class, 'get', 'as' => 'enquiry.contact_form.paginate.get'])->name('enquiry.contact_form.paginate.get');
             Route::get('/excel', [ContactFormExcelController::class, 'get', 'as' => 'enquiry.contact_form.excel.get'])->name('enquiry.contact_form.excel.get');
             Route::get('/delete/{id}', [ContactFormDeleteController::class, 'get', 'as' => 'enquiry.contact_form.delete.get'])->name('enquiry.contact_form.delete.get');
+
+        });
+        Route::prefix('/referal-form')->group(function () {
+            Route::get('/', [ReferalFormPaginateController::class, 'get', 'as' => 'enquiry.referal_form.paginate.get'])->name('enquiry.referal_form.paginate.get');
+            Route::get('/excel', [ReferalFormExcelController::class, 'get', 'as' => 'enquiry.referal_form.excel.get'])->name('enquiry.referal_form.excel.get');
+            Route::get('/delete/{id}', [ReferalFormDeleteController::class, 'get', 'as' => 'enquiry.referal_form.delete.get'])->name('enquiry.referal_form.delete.get');
 
         });
     });
@@ -239,6 +252,17 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/{id}', [BlogUpdateController::class, 'post', 'as' => 'blog.update.post'])->name('blog.update.post');
         Route::get('/delete/{id}', [BlogDeleteController::class, 'get', 'as' => 'blog.delete.get'])->name('blog.delete.get');
 
+    });
+
+    Route::prefix('/referal')->group(function () {
+        Route::prefix('/banner')->group(function () {
+            Route::get('/', [ReferalBannerPaginateController::class, 'get', 'as' => 'referal.banner.paginate.get'])->name('referal.banner.paginate.get');
+            Route::get('/create', [ReferalBannerCreateController::class, 'get', 'as' => 'referal.banner.create.get'])->name('referal.banner.create.get');
+            Route::post('/create', [ReferalBannerCreateController::class, 'post', 'as' => 'referal.banner.create.post'])->name('referal.banner.create.post');
+            Route::get('/update/{id}', [ReferalBannerUpdateController::class, 'get', 'as' => 'referal.banner.update.get'])->name('referal.banner.update.get');
+            Route::post('/update/{id}', [ReferalBannerUpdateController::class, 'post', 'as' => 'referal.banner.update.post'])->name('referal.banner.update.post');
+            Route::get('/delete/{id}', [ReferalBannerDeleteController::class, 'get', 'as' => 'referal.banner.delete.get'])->name('referal.banner.delete.get');
+        });
     });
 
     Route::prefix('/project')->group(function () {

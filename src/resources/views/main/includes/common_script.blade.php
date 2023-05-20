@@ -10,6 +10,7 @@
 <script src="{{ asset('assets/js/plugins/jquery.isotope.v3.0.2.js')}}"></script>
 <script src="{{ asset('assets/js/plugins/owl.carousel.min.js')}}"></script>
 <script src="{{ asset('assets/js/plugins/scrollIt.min.js')}}"></script>
+<script src="{{ asset('assets/js/plugins/swiper-bundle.min.js')}}"></script>
 <script src="{{ asset('assets/modules/magnific-popup/jquery.magnific-popup.js')}}"></script>
 <script src="{{ asset('assets/modules/masonry/masonry.pkgd.min.js')}}"></script>
 <script src="{{ asset('assets/modules/YouTubePopUp/YouTubePopUp.js')}}"></script>

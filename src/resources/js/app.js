@@ -246,7 +246,8 @@
             return false;
         });
     $(".projects2-items").isotope({
-            itemSelector: '.single-item'
+            itemSelector: '.single-item',
+            filter: '.ongoing'
             , layoutMode: 'masonry'
         , });
     });
@@ -546,35 +547,90 @@
         }
     });
 
-    // Team owlCarousel
-    $('.partner .owl-carousel').owlCarousel({
-        loop: true
-        , margin: 20
-        , mouseDrag: true
-        , autoplay: true
-        , dots: true
-        , nav: false
-        , navText: ["<span class='lnr ti-arrow-left'></span>","<span class='lnr ti-arrow-right'></span>"]
-        // , autoplayHoverPause:false
-        , fluidSpeed: true
-        , smartSpeed: 500
-        , slideTransition: 'linear'
-        , responsiveClass: true
-        , responsive: {
-            0: {
-                items: 3
-            , }
-            , 600: {
-                items: 3
-            }
-            , 1000: {
-                items: 5
-            }
-            , 1200: {
-                items: 6
+    var swiperOptions = {
+        loop: true,
+        autoplay: {
+          delay: 1,
+          disableOnInteraction: false
+        },
+        speed: 2000,
+        grabCursor: true,
+        mousewheelControl: true,
+        keyboardControl: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        slidesPerView: 1,
+        spaceBetween: 10,
+        // Responsive breakpoints
+        breakpoints: {
+            // when window width is >= 320px
+            320: {
+            slidesPerView: 2,
+            spaceBetween: 20
+            },
+            // when window width is >= 480px
+            480: {
+            slidesPerView: 3,
+            spaceBetween: 30
+            },
+            // when window width is >= 640px
+            640: {
+            slidesPerView: 4,
+            spaceBetween: 40
+            },
+            // when window width is >= 990px
+            990: {
+            slidesPerView: 8,
+            spaceBetween: 40
             }
         }
-    });
+      };
+    var swiper = new Swiper(".swiper-container", swiperOptions);
+
+    // Team owlCarousel
+    // $('.partner .owl-carousel').owlCarousel({
+    //     // loop: true
+    //     // , margin: 20
+    //     // , mouseDrag: true
+    //     // , autoplay: true
+    //     // , dots: false
+    //     // , nav: false
+    //     // , navText: ["<span class='lnr ti-arrow-left'></span>","<span class='lnr ti-arrow-right'></span>"]
+    //     // // , autoplayHoverPause:false
+    //     // // , fluidSpeed: true
+    //     // // , smartSpeed: 500
+    //     // , autoplayTimeout: 0
+    //     // , autoplaySpeed: 3000
+    //     // , autoplayHoverPause: false
+    //     // , slideTransition: 'linear'
+    //     // , responsiveClass: true
+    //     // , responsive: {
+    //     //     0: {
+    //     //         items: 3
+    //     //     , }
+    //     //     , 600: {
+    //     //         items: 3
+    //     //     }
+    //     //     , 1000: {
+    //     //         items: 5
+    //     //     }
+    //     //     , 1200: {
+    //     //         items: 8
+    //     //     }
+    //     // }
+    //     items: 8,
+    //     loop: true,
+    //     margin: 20,
+    //     autoplay: true,
+    //     slideTransition: 'linear',
+    //     autoplayTimeout: 0,
+    //     smartSpeed: 3000,
+    //     autoplayHoverPause: false,
+    //     rewindNav:false,
+    //     rewindSpeed: 0
+    // });
 
     // Testimonials owlCarousel
     $('.testimonials .owl-carousel').owlCarousel({

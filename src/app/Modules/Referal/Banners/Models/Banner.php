@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Awards\Models;
+namespace App\Modules\Referal\Banners\Models;
 
 use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class Award extends Model
+class Banner extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected $table = 'awards';
+    protected $table = 'referal_banners';
 
     /**
      * The attributes that are mass assignable.
@@ -22,11 +22,9 @@ class Award extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'year',
-        'title',
-        'sub_title',
-        'description',
         'image',
+        'image_title',
+        'image_alt',
         'is_draft'
     ];
 
@@ -36,23 +34,23 @@ class Award extends Model
         'updated_at' => 'datetime',
     ];
 
+    public $image_path = 'referal_banners';
+
+    protected $appends = ['image_link'];
+
     public static function boot()
     {
         parent::boot();
         self::created(function ($model) {
-            Cache::forget('awards_main');
+            Cache::forget('referal_main');
         });
         self::updated(function ($model) {
-            Cache::forget('awards_main');
+            Cache::forget('referal_main');
         });
         self::deleted(function ($model) {
-            Cache::forget('awards_main');
+            Cache::forget('referal_main');
         });
     }
-
-    public $image_path = 'awards';
-
-    protected $appends = ['image_link'];
 
     protected function image(): Attribute
     {
@@ -76,10 +74,10 @@ class Award extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('awards')
+        ->useLogName('referal banners')
         ->setDescriptionForEvent(
                 function(string $eventName){
-                    $desc = "Award with title ".$this->title." has been {$eventName}";
+                    $desc = "Referal Banner has been {$eventName}";
                     $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
                     return $desc;
                 }

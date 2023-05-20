@@ -28,6 +28,12 @@
         .partner .owl-dots{
             margin-top: 20px !important;
         }
+        .swiper-wrapper {
+            transition-timing-function: linear;
+        }
+        .swiper-container{
+            overflow: hidden;
+        }
     </style>
 
 @stop
@@ -383,10 +389,12 @@
                     </div>
                 @endif
             </div>
-            <div class="row">
-                <div class="col-md-12 owl-carousel owl-theme">
+        </div>
+        <div class="container">
+            <div class="row swiper-container">
+                <div class="col-md-12 swiper-wrapper">
                     @foreach($partners as $partners)
-                    <div class="wrap">
+                    <div class="wrap swiper-slide">
                         <div class="con">
                             <img src="{{$partners->image_link}}" class="img-fluid" alt="{{$partners->image_alt}}" title="{{$partners->image_title}}">
                         </div>

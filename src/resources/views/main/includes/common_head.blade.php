@@ -118,8 +118,12 @@
             padding: 125px 0;
             margin-top: 60px;
         }
-        .secondary-div input[type=password].line-gray, .secondary-div input[type=email].line-gray, .secondary-div input[type=text].line-gray, .secondary-div input[type=file].line-gray, .secondary-div textarea.line-gray {
+        .secondary-div input[type=password].line-gray, .secondary-div input[type=email].line-gray, .secondary-div input[type=text].line-gray, .secondary-div input[type=file].line-gray, .secondary-div textarea.line-gray, .secondary-div select.line-gray {
             border-bottom: 1px solid black;
+        }
+        .secondary-div select.line-gray {
+            padding: 15px 0 !important;
+            border-radius: 0 !important;
         }
         .secondary-div  label a{
             color: black !important;

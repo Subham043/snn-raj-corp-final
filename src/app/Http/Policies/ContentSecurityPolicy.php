@@ -49,6 +49,8 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::IMG, 's3.amazonaws.com')
 
         //start of common
+        ->addDirective(Directive::SCRIPT, 'unpkg.com')
+        ->addDirective(Directive::STYLE, 'unpkg.com')
         ->addDirective(Directive::IMG, 'i3.ytimg.com')
         ->addDirective(Directive::FONT, 'at.alicdn.com')
         ->addDirective(Directive::FONT, 'fonts.gstatic.com')

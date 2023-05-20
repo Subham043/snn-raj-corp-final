@@ -344,6 +344,52 @@
     </div>
 </section>
 
+@if($data->additional_content_count>0)
+    @foreach($data->additional_content as $key=>$val)
+        @if(($key+1)%2!=0)
+            <section class="section-padding py-5">
+                <div class="container">
+                    <div class="row div-padding">
+                        <div class="col-md-12 " data-animate-effect="fadeInRight">
+                            <div class="img fl-img">
+                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
+                            </div>
+                            <div class="wrap">
+                                <div class="number">
+                                    <h1>{!!$val->heading!!}</h1>
+                                </div>
+                                <div class="cont desc-ul">
+                                    {!!$val->description!!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @else
+            <section class="suffix-div">
+                <div class="container">
+                    <div class="row div-padding">
+                        <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
+                            <div class="img fr-img">
+                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
+                            </div>
+                            <div class="wrap">
+                                <div class="number">
+                                    <h1>{!!$val->heading!!}</h1>
+                                </div>
+                                <div class="cont desc-ul">
+                                    {!!$val->description!!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @endif
+    @endforeach
+@endif
+
 @if($data->plan_count>0)
     <section class="project-page section-padding pt-5 pb-5">
         <div class="container">
@@ -431,54 +477,6 @@
     <div class="py-5"></div>
 @endif
 
-<section class="lets-talk hero hero-contact my-0 py-5">
-    <div class="background bg-img bg-fixed" data-overlay-dark="6">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 " data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light">An address to be proud of</div>
-                </div>
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
-                    <div class="section-title address-title">{!!$data->address!!}</div>
-                    @if($data->map_location_link)
-                        <div>
-                            <iframe loading="lazy" src="{{$data->map_location_link}}" class="w-100 logo-shape" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Image Gallery -->
-@if($data->gallery_image_count>0)
-    <section class="section-padding my-0">
-        <div class="container">
-            <div class="row mb-5 " data-animate-effect="fadeInUp">
-                <div class="col-md-4">
-                    <div class="sub-title border-bot-light">Images</div>
-                </div>
-                <div class="col-md-8">
-                    <div class="section-title"><span>Image</span> Gallery</div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                @foreach($data->gallery_image as $gallery_image)
-                    <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
-                        <a href="{{$gallery_image->image_link}}" title="{{$gallery_image->title}}" class="img-zoom">
-                            <div class="gallery-box">
-                                <div class="gallery-img"> <img fetchpriority="low" src="{{$gallery_image->image_link}}" class="img-fluid mx-auto d-block" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}"> </div>
-                                <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-@endif
-
 <!--  Video Gallery -->
 @if($data->gallery_video_count>0)
     <section class="secondary-div my-0">
@@ -510,51 +508,53 @@
     </section>
 @endif
 
-@if($data->additional_content_count>0)
-    @foreach($data->additional_content as $key=>$val)
-        @if(($key+1)%2!=0)
-            <section class="section-padding py-5">
-                <div class="container">
-                    <div class="row div-padding">
-                        <div class="col-md-12 " data-animate-effect="fadeInRight">
-                            <div class="img fl-img">
-                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
-                            </div>
-                            <div class="wrap">
-                                <div class="number">
-                                    <h1>{!!$val->heading!!}</h1>
-                                </div>
-                                <div class="cont desc-ul">
-                                    {!!$val->description!!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!-- Image Gallery -->
+@if($data->gallery_image_count>0)
+    <section class="section-padding mb-5">
+        <div class="container">
+            <div class="row mb-5 " data-animate-effect="fadeInUp">
+                <div class="col-md-4">
+                    <div class="sub-title border-bot-light">Images</div>
                 </div>
-            </section>
-        @else
-            <section class="suffix-div">
-                <div class="container">
-                    <div class="row div-padding">
-                        <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
-                            <div class="img fr-img">
-                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
-                            </div>
-                            <div class="wrap">
-                                <div class="number">
-                                    <h1>{!!$val->heading!!}</h1>
-                                </div>
-                                <div class="cont desc-ul">
-                                    {!!$val->description!!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-8">
+                    <div class="section-title"><span>Image</span> Gallery</div>
                 </div>
-            </section>
-        @endif
-    @endforeach
+            </div>
+            <div class="row justify-content-center">
+                @foreach($data->gallery_image as $gallery_image)
+                    <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
+                        <a href="{{$gallery_image->image_link}}" title="{{$gallery_image->title}}" class="img-zoom">
+                            <div class="gallery-box">
+                                <div class="gallery-img"> <img fetchpriority="low" src="{{$gallery_image->image_link}}" class="img-fluid mx-auto d-block" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}"> </div>
+                                <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 @endif
+
+<section class="lets-talk hero hero-contact my-0 py-5">
+    <div class="background bg-img bg-fixed" data-overlay-dark="6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
+                    <div class="sub-title border-bot-light">An address to be proud of</div>
+                </div>
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                    <div class="section-title address-title">{!!$data->address!!}</div>
+                    @if($data->map_location_link)
+                        <div>
+                            <iframe loading="lazy" src="{{$data->map_location_link}}" class="w-100 logo-shape" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 {{-- @if(!$data->use_in_banner)
     <section class="about section-padding">

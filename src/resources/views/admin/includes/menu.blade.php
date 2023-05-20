@@ -51,6 +51,10 @@
                                             <li class="nav-item">
                                                 <a href="{{route('enquiry.contact_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.contact_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Contact Form </a>
                                             </li>
+
+                                            <li class="nav-item">
+                                                <a href="{{route('enquiry.referal_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.referal_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Referal Form </a>
+                                            </li>
                                         @endcan
 
                                     </ul>
@@ -104,6 +108,12 @@
                                 </a>
                             </li>
                             @endcan
+
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('referal.banner.paginate.get')) !== false ? 'active' : ''}}" href="{{route('referal.banner.paginate.get')}}">
+                                    <i class="ri-user-shared-line"></i> <span data-key="t-widgets">Referal Page Banner</span>
+                                </a>
+                            </li>
 
                             @can('list projects')
                             <li class="nav-item">
