@@ -17,7 +17,7 @@
                     </div>
                     <div class="cont">
                         <h3>Register</h3>
-                        <p>Enter your details to <a href="">sign up</a> for our referral program.</p>
+                        <p>Enter your details to <a href="{{route('referal_page.get')}}">sign up</a> for our referral program.</p>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col-md-12 text-center " data-animate-effect="fadeInLeft">
                 <div class="wrap">
-                    <a href="" class="button-light">Sign Up Now</a>
+                    <a href="{{route('referal_page.get')}}" class="button-light">Sign Up Now</a>
                 </div>
             </div>
         </div>
