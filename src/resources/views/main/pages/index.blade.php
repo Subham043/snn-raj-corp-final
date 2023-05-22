@@ -42,6 +42,35 @@
             border-top-left-radius: 20px;
             border-bottom-right-radius: 20px;
         }
+
+        .project_old{
+            background: var(--theme-header-color);
+        }
+        .project_old .sub-title, .project_old .section-title span {
+            color: #fff;
+        }
+        .project_old p, .project_old .projects2-filter li {
+            color: #fff;
+        }
+        .project_old .projects2-filter li.active{
+            color: var(--theme-primary-color);
+        }
+        .project_old .projects2-con {
+            left: 15px;
+            top: 70px;
+            background-image: none;
+        }
+        .project_old .projects2-wrap h3 a{
+            color: var(--theme-primary-color);
+        }
+
+        .project_old .projects-overlay:before {
+            /* background: #000;
+            opacity: 0.1; */
+            /* background-image: linear-gradient(to right,rgba(27,25,25,0.1) 30%,transparent 100%); */
+            background-image: linear-gradient(to right,rgba(27,25,25,0.5) 10%,transparent 50%);
+        }
+
     </style>
 
 @stop
@@ -159,7 +188,7 @@
     @endif --}}
 
     <!-- Projects 2 -->
-    <div class="projects2  subject-div mt-0">
+    <div class="projects2 project_old  subject-div mt-0">
         <div class="container">
             <div class="row mb-4">
                 @if($projectHeading)
@@ -182,13 +211,22 @@
                 </div>
             </div>
             <div class="row projects2-items " data-animate-effect="fadeInUp">
+                @php
+                    $height = 0;
+                @endphp
                 @foreach($projects as $k => $v)
+
+                    @php
+                        $newHeight = rand(300,600);
+                        $height = $newHeight > $height ? $newHeight : $height;
+                    @endphp
+
                     <div class="col-md-6 single-item {{$v->is_completed==true ? 'completed' : 'ongoing'}}">
                         <div class="projects2-wrap p-relative" style="z-index: 5">
                             @if($v->banner_count>0)
                                 <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
                                     <div class="projects-overlay">
-                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover project-img-shape" fetchpriority="low" alt="">
+                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" style="height: {{$height}}px !important;" fetchpriority="low" alt="">
                                     </div>
                                 </a>
                             @endif
