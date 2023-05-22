@@ -102,7 +102,7 @@
 
                     @endif
                 @endforeach
-                <div class="mt-5">
+                <div class="py-5">
                     {{$projects->onEachSide(5)->links('main.includes.pagination')}}
                 </div>
             </div>

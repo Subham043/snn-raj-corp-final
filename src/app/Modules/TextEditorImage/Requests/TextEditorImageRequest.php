@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Awards\Requests;
+namespace App\Modules\TextEditorImage\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 
 
-class AwardHeadingRequest extends FormRequest
+class TextEditorImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,9 +27,7 @@ class AwardHeadingRequest extends FormRequest
     public function rules()
     {
         return [
-            'heading' => 'required|string|max:250',
-            'sub_heading' => 'required|string|max:250',
-            'description' => 'nullable|string',
+            'image' => 'required|image|min:1|max:500',
         ];
     }
 
@@ -41,8 +39,20 @@ class AwardHeadingRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'heading' => 'Heading',
-            'sub_heading' => 'Sub Heading',
+            'image' => 'Image',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'image.required' => 'Please select an image',
+            'image.image' => 'Please select an image',
         ];
     }
 
@@ -55,7 +65,7 @@ class AwardHeadingRequest extends FormRequest
     {
         $this->replace(
             Purify::clean(
-                $this->validated()
+                $this->all()
             )
         );
     }

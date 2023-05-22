@@ -7,6 +7,10 @@
     #description_quill{
         min-height: 200px;
     }
+
+    #popup_description_quill{
+        min-height: 200px;
+    }
 </style>
 @stop
 
@@ -63,6 +67,38 @@
                                                 <div class="form-check form-switch form-check-right mb-2">
                                                     <input class="form-check-input" type="checkbox" role="switch" id="is_draft" name="is_draft" {{$data->is_draft==false ? '' : 'checked'}}>
                                                     <label class="form-check-label" for="is_draft">Additional Content Status</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--end row-->
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header align-items-center d-flex">
+                            <h4 class="card-title mb-0 flex-grow-1">Additional Popup</h4>
+                        </div><!-- end card header -->
+                        <div class="card-body">
+                            <div class="live-preview">
+                                <div class="row gy-4">
+                                    <div class="col-xxl-12 col-md-12">
+                                        @include('admin.includes.input', ['key'=>'popup_button_text', 'label'=>'Popup Button Text', 'value'=>$data->popup_button_text])
+                                    </div>
+                                    <div class="col-xxl-12 col-md-12">
+                                        @include('admin.includes.quill', ['key'=>'popup_description', 'label'=>'Popup Description', 'value'=>$data->popup_description])
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="mt-4 mt-md-0">
+                                            <div>
+                                                <div class="form-check form-switch form-check-right mb-2">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="activate_popup" name="activate_popup"  {{$data->activate_popup==false ? '' : 'checked'}}>
+                                                    <label class="form-check-label" for="activate_popup">Activate Popup</label>
                                                 </div>
                                             </div>
 
@@ -138,6 +174,73 @@ quillDescription.on('text-change', function(delta, oldDelta, source) {
   }
 });
 
+const Delta = Quill.import('delta');
+
+function quillImageHandler() {
+  let fileInput = this.container.querySelector('input.ql-image[type=file]');
+  if (fileInput == null) {
+    fileInput = document.createElement('input');
+    fileInput.setAttribute('type', 'file');
+    fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/bmp, image/x-icon');
+    fileInput.classList.add('ql-image');
+    fileInput.addEventListener('change', async () => {
+      if (fileInput.files != null && fileInput.files[0] != null) {
+        try {
+            const data = new FormData();
+            data.append('image', fileInput.files[0]);
+            const response = await axios.post('{{route('texteditor_image.post')}}', data);
+            let reader = new FileReader();
+            reader.onload = (e) => {
+            let range = this.quill.getSelection(true);
+            this.quill.updateContents(new Delta()
+                .retain(range.index)
+                .delete(range.length)
+                .insert({ image: response.data.image }));
+                console.log(fileInput.files[0]);
+            }
+            reader.readAsDataURL(fileInput.files[0]);
+        } catch (error) {
+            if(error?.response?.data?.message){
+                errorToast(error?.response?.data?.message)
+            }
+        }
+
+      }
+    });
+    fileInput.value = "";
+    this.container.appendChild(fileInput);
+  }
+  fileInput.click();
+}
+
+const QUILL_TOOLBAR_OPTIONS_WITH_IMAGE = [
+    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    ['bold', 'italic', 'underline', 'strike'],
+    ['blockquote', 'code-block'],
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+    [{ 'indent': '-1'}, { 'indent': '+1' }],
+    [ 'link', 'image' ],
+    [{ 'align': [] }],
+    ['clean']
+];
+
+var quillPopupDescription = new Quill('#popup_description_quill', {
+    theme: 'snow',
+    modules: {
+        toolbar: {
+            container: QUILL_TOOLBAR_OPTIONS_WITH_IMAGE,
+            handlers: { image: quillImageHandler },
+        },
+    },
+});
+
+quillPopupDescription.on('text-change', function(delta, oldDelta, source) {
+  if (source == 'user') {
+    document.getElementById('description').value = quillPopupDescription.root.innerHTML
+  }
+});
+
 // initialize the validation library
 const validation = new JustValidate('#countryForm', {
       errorFieldCssClass: 'is-invalid',
@@ -153,6 +256,13 @@ validation
         rule: 'customRegexp',
         value: COMMON_REGEX,
         errorMessage: 'Heading is invalid',
+    },
+  ])
+  .addField('#popup_button_text', [
+    {
+        rule: 'customRegexp',
+        value: COMMON_REGEX,
+        errorMessage: 'Popup Button Text is invalid',
     },
   ])
   .addField('#button_text', [
@@ -204,6 +314,11 @@ validation
       errorMessage: 'Description is required',
     },
   ])
+  .addField('#popup_description', [
+    {
+        validator: (value, fields) => true,
+    },
+  ])
   .onSuccess(async (event) => {
     var submitBtn = document.getElementById('submitBtn')
     submitBtn.innerHTML = spinner
@@ -211,11 +326,15 @@ validation
     try {
         var formData = new FormData();
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
+        formData.append('activate_popup',document.getElementById('activate_popup').checked ? 1 : 0)
         formData.append('heading',document.getElementById('heading').value)
+        formData.append('popup_button_text',document.getElementById('popup_button_text').value)
         formData.append('button_text',document.getElementById('button_text').value)
         formData.append('button_link',document.getElementById('button_link').value)
         formData.append('description',quillDescription.root.innerHTML)
         formData.append('description_unfiltered',quillDescription.getText())
+        formData.append('popup_description',quillPopupDescription.root.innerHTML)
+        formData.append('popup_description_unfiltered',quillPopupDescription.getText())
         if((document.getElementById('image').files).length>0){
             formData.append('image',document.getElementById('image').files[0])
         }
@@ -230,8 +349,14 @@ validation
         if(error?.response?.data?.errors?.button_text){
             validation.showErrors({'#button_text': error?.response?.data?.errors?.button_text[0]})
         }
+        if(error?.response?.data?.errors?.popup_button_text){
+            validation.showErrors({'#popup_button_text': error?.response?.data?.errors?.popup_button_text[0]})
+        }
         if(error?.response?.data?.errors?.description){
             validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
+        }
+        if(error?.response?.data?.errors?.popup_description){
+            validation.showErrors({'#popup_description': error?.response?.data?.errors?.popup_description[0]})
         }
         if(error?.response?.data?.errors?.button_link){
             validation.showErrors({'#button_link': error?.response?.data?.errors?.button_link[0]})

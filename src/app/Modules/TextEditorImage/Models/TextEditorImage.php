@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Modules\About\AdditionalContent\Models;
+namespace App\Modules\TextEditorImage\Models;
 
 use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class AdditionalContent extends Model
+class TextEditorImage extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected $table = 'about_contents';
+    protected $table = 'general_texteditor_images';
 
     /**
      * The attributes that are mass assignable.
@@ -22,43 +21,17 @@ class AdditionalContent extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'heading',
-        'button_text',
-        'button_link',
-        'description',
-        'description_unfiltered',
         'image',
-        'is_draft',
-        'activate_popup',
-        'popup_button_text',
-        'popup_description',
-        'popup_description_unfiltered',
     ];
 
     protected $casts = [
-        'is_draft' => 'boolean',
-        'activate_popup' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 
-    public $image_path = 'about_contents';
+    public $image_path = 'general_texteditor_images';
 
     protected $appends = ['image_link'];
-
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('about_page_additional_main');
-        });
-        self::updated(function ($model) {
-            Cache::forget('about_page_additional_main');
-        });
-        self::deleted(function ($model) {
-            Cache::forget('about_page_additional_main');
-        });
-    }
 
     protected function image(): Attribute
     {
@@ -82,13 +55,13 @@ class AdditionalContent extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('about additional content section')
+        ->useLogName('text editor images')
         ->setDescriptionForEvent(
-            function(string $eventName){
-                $desc = "Additional content with heading ".$this->heading." has been {$eventName}";
-                $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
-                return $desc;
-            }
+                function(string $eventName){
+                    $desc = "Text Editor Image has been {$eventName}";
+                    $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
+                    return $desc;
+                }
             )
         ->logFillable()
         ->logOnlyDirty();

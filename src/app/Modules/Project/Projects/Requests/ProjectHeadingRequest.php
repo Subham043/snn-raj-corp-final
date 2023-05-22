@@ -29,6 +29,7 @@ class ProjectHeadingRequest extends FormRequest
         return [
             'heading' => 'required|string|max:250',
             'sub_heading' => 'required|string|max:250',
+            'description' => 'nullable|string',
         ];
     }
 

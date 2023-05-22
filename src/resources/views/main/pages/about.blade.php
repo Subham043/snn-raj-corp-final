@@ -34,6 +34,13 @@
         .swiper-container{
             overflow: hidden;
         }
+
+        .modal-backdrop{
+            z-index: 1 !important;
+        }
+        .modal-dialog-scrollable .modal-content {
+            background: var(--theme-suffix-color);
+        }
     </style>
 
 @stop
@@ -328,6 +335,9 @@
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
                                     <a href="{{$val->button_link}}" class="button-light">{{$val->button_text}}</a>
+                                    @if($val->activate_popup)
+                                        <button type="button" class="button-dark2 mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{{$val->popup_button_text}}</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -342,6 +352,9 @@
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
                                     <a href="{{$val->button_link}}" class="button-light">{{$val->button_text}}</a>
+                                    @if($val->activate_popup)
+                                        <button type="button" class="button-dark2 mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{{$val->popup_button_text}}</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -355,6 +368,30 @@
             @endforeach
         </div>
     </section>
+
+    @foreach($additionalContent as $key=>$val)
+
+        @if($val->activate_popup)
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop{{$val->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="col-12">
+                                <div class="row justify-content-end">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                            </div>
+                            {!!$val->popup_description!!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+    @endforeach
+
+
     @endif
 
         <!-- Vision -->

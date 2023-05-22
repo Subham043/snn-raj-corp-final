@@ -32,6 +32,9 @@
                                         @include('admin.includes.input', ['key'=>'sub_heading', 'label'=>'Sub Heading', 'value'=>!empty($projectHeading) ? (old('sub_heading') ? old('sub_heading') : $projectHeading->sub_heading) : old('sub_heading')])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
+                                        @include('admin.includes.textarea', ['key'=>'description', 'label'=>'Description', 'value'=>!empty($projectHeading) ? (old('description') ? old('description') : $projectHeading->description) : old('description')])
+                                    </div>
+                                    <div class="col-xxl-12 col-md-12">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
                                     </div>
 
@@ -198,6 +201,11 @@ validation
         errorMessage: 'Sub Heading is invalid',
     },
   ])
+  .addField('#description', [
+    {
+        validator: (value, fields) => true,
+    },
+  ])
   .onSuccess(async (event) => {
     var submitBtn = document.getElementById('submitBtn')
     submitBtn.innerHTML = spinner
@@ -206,6 +214,7 @@ validation
         var formData = new FormData();
         formData.append('heading',document.getElementById('heading').value)
         formData.append('sub_heading',document.getElementById('sub_heading').value)
+        formData.append('description',document.getElementById('description').value)
 
         const response = await axios.post('{{route('project.heading.post')}}', formData)
         successToast(response.data.message)
@@ -215,6 +224,9 @@ validation
         }
         if(error?.response?.data?.errors?.sub_heading){
             validation.showErrors({'#sub_heading': error?.response?.data?.errors?.sub_heading[0]})
+        }
+        if(error?.response?.data?.errors?.description){
+            validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)

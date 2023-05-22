@@ -50,6 +50,7 @@
                     </div>
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
                         <div class="section-title">{!!$awardHeading->heading!!}</div>
+                        <p>{!!$awardHeading->description!!}</p>
                     </div>
                 @endif
             </div>

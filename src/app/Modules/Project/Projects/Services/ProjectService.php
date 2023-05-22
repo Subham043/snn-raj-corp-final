@@ -77,6 +77,7 @@ class ProjectService
     public function clear_cache(Project $project): void
     {
         Cache::forget('all_project_main');
+        Cache::forget('project_main_paginate_all');
         Cache::forget('project_'.$project->slug);
     }
 
@@ -127,9 +128,10 @@ class ProjectService
                 ->appends(request()->query());
     }
 
-    public function main_paginate_all(Int $total = 10): LengthAwarePaginator
+    public function main_paginate_all(): Collection
     {
-        $query = Project::with([
+        return Cache::remember('project_main_paginate_all', 60*60*24, function(){
+                return Project::with([
                         'banner' =>  function($q) {
                             $q->where('is_draft', true);
                         }
@@ -143,13 +145,8 @@ class ProjectService
                     ->whereHas('banner', function($q) {
                         $q->where('is_draft', true);
                     })
-                    ->orderBy('is_completed', 'ASC');
-        return QueryBuilder::for($query)
-                ->allowedFilters([
-                    AllowedFilter::custom('search', new CommonFilter),
-                ])
-                ->paginate($total)
-                ->appends(request()->query());
+                    ->orderBy('is_completed', 'ASC')->get();
+        });
     }
 
     public function getBySlugMain(String $slug): Project|null

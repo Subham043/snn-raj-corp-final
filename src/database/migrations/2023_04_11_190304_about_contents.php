@@ -21,6 +21,10 @@ return new class extends Migration
             $table->string('image', 500)->nullable();
             $table->boolean('is_draft')->default(0);
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->boolean('activate_popup')->default(0);
+            $table->string('popup_button_text', 250)->nullable();
+            $table->text('popup_description')->nullable();
+            $table->text('popup_description_unfiltered')->nullable();
             $table->timestamps();
             $table->index(['id', 'created_at']);
         });

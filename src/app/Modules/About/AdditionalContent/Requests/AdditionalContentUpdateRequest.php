@@ -31,6 +31,10 @@ class AdditionalContentUpdateRequest extends AdditionalContentCreateRequest
             'description_unfiltered' => 'required|string',
             'image' => 'nullable|image|min:1|max:500',
             'is_draft' => 'required|boolean',
+            'activate_popup' => 'required|boolean',
+            'popup_button_text' => 'required_if:activate_popup,1|string|max:250',
+            'popup_description' => 'required_if:activate_popup,1|string',
+            'popup_description_unfiltered' => 'required_if:activate_popup,1|string',
         ];
     }
 

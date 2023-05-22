@@ -43,18 +43,17 @@
                 </div>
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
                     <div class="section-title">{!!$projectHeading->heading!!}</div>
-                    <p>SNN Raj Corp has made a mark in delivering real estate projects of luxurious apartments and villas in Bangalore. With a focus on innovation, sustainability, and customer-centricity, we have been able to consistently deliver successful residential projects that reflect our commitment to excellence and position us as one of the leading builders in Bangalore.</p>
-                    <p>Over the past three decades, we’ve transformed not only spaces and skylines but also hopes, dreams and aspirations for thousands across India with our projects.</p>
+                    <p>{!!$projectHeading->description!!}</p>
                 </div>
             </div>
         </div>
     </section>
     @endif
-    @if($projects->total() > 0)
+    @if(count($projects) > 0)
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 px-0">
-                @foreach ($projects->items() as $k => $v)
+                @foreach ($projects as $k => $v)
                     @if(($k+1)%2!=0)
                     <section class="projects3">
                         <div class="container">
@@ -106,9 +105,6 @@
 
                     @endif
                 @endforeach
-                <div class="mt-5">
-                    {{$projects->onEachSide(5)->links('main.includes.pagination')}}
-                </div>
             </div>
         </div>
     </div>

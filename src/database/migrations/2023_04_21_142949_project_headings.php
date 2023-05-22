@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('heading', 250);
             $table->string('sub_heading', 250);
+            $table->text('description')->nullable();
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
             $table->index(['id', 'created_at']);

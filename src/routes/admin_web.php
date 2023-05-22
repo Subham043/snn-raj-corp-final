@@ -119,6 +119,7 @@ use App\Modules\Referal\Banners\Controllers\BannerCreateController as ReferalBan
 use App\Modules\Referal\Banners\Controllers\BannerDeleteController as ReferalBannerDeleteController;
 use App\Modules\Referal\Banners\Controllers\BannerPaginateController as ReferalBannerPaginateController;
 use App\Modules\Referal\Banners\Controllers\BannerUpdateController as ReferalBannerUpdateController;
+use App\Modules\TextEditorImage\Controllers\TextEditorImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -434,6 +435,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/delete/{id}', [UserDeleteController::class, 'get', 'as' => 'user.delete.get'])->name('user.delete.get');
     });
 
+    Route::post('/text-editor-image', [TextEditorImageController::class, 'post', 'as' => 'texteditor_image.post'])->name('texteditor_image.post');
     Route::get('/logout', [LogoutController::class, 'get', 'as' => 'logout.get'])->name('logout.get');
 
 });

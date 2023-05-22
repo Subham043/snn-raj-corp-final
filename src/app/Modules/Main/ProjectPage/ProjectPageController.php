@@ -47,7 +47,7 @@ class ProjectPageController extends Controller
         $themeSetting = $this->themeService->getById(1);
         $chatbotSetting = $this->chatbotService->getById(1);
         $projectHeading = $this->projectHeadingService->getById(1);
-        $projects = $this->projectService->main_paginate_all($request->total ?? 10);
+        $projects = $this->projectService->main_paginate_all();
         $legal = $this->legalService->main_all();
         return view('main.pages.projects.list', compact([
             'seo',

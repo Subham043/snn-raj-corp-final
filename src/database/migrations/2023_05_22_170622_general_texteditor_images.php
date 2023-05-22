@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('award_headings', function (Blueprint $table) {
+        Schema::create('general_texteditor_images', function (Blueprint $table) {
             $table->id();
-            $table->string('heading', 250);
-            $table->string('sub_heading', 250);
-            $table->text('description')->nullable();
+            $table->string('image', 500)->nullable();
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
             $table->index(['id', 'created_at']);
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('award_headings');
+        Schema::dropIfExists('general_texteditor_images');
     }
 };

@@ -74,14 +74,17 @@ class Project extends Model implements Sitemapable
         parent::boot();
         self::created(function ($model) {
             Cache::forget('all_project_main');
+            Cache::forget('project_main_paginate_all');
             Cache::forget('project_'.$model->slug);
         });
         self::updated(function ($model) {
             Cache::forget('all_project_main');
+            Cache::forget('project_main_paginate_all');
             Cache::forget('project_'.$model->slug);
         });
         self::deleted(function ($model) {
             Cache::forget('all_project_main');
+            Cache::forget('project_main_paginate_all');
             Cache::forget('project_'.$model->slug);
         });
     }
