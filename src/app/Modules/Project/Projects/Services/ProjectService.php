@@ -143,7 +143,7 @@ class ProjectService
                     ->whereHas('banner', function($q) {
                         $q->where('is_draft', true);
                     })
-                    ->latest();
+                    ->orderBy('is_completed', 'ASC');
         return QueryBuilder::for($query)
                 ->allowedFilters([
                     AllowedFilter::custom('search', new CommonFilter),
