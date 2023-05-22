@@ -56,7 +56,7 @@
             color: var(--theme-primary-color);
         }
         .project_old .projects2-con {
-            left: 15px;
+            left: 20px;
             top: 70px;
             background-image: none;
         }
@@ -68,7 +68,7 @@
             /* background: #000;
             opacity: 0.1; */
             /* background-image: linear-gradient(to right,rgba(27,25,25,0.1) 30%,transparent 100%); */
-            background-image: linear-gradient(to right,rgba(27,25,25,0.5) 10%,transparent 50%);
+            background-image: linear-gradient(to right,rgba(27,25,25,0.2) 60%,transparent 100%);
         }
 
     </style>
@@ -213,12 +213,20 @@
             <div class="row projects2-items " data-animate-effect="fadeInUp">
                 @php
                     $height = 0;
+                    $symbol = "greater";
                 @endphp
                 @foreach($projects as $k => $v)
 
                     @php
-                        $newHeight = rand(300,600);
-                        $height = $newHeight > $height ? $newHeight : $height;
+                        if($symbol == "greater"){
+                            $newHeight = rand(500,600);
+                            $height = $newHeight > $height ? $newHeight : $height;
+                            $symbol = "lesser";
+                        }else{
+                            $newHeight = rand(300,400);
+                            $height = $newHeight < $height ? $newHeight : $height;
+                            $symbol = "greater";
+                        }
                     @endphp
 
                     <div class="col-md-6 single-item {{$v->is_completed==true ? 'completed' : 'ongoing'}}">

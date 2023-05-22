@@ -93,10 +93,10 @@
         }
 
         .map-shape{
-            border-top-left-radius: 20px;
-            border-bottom-right-radius: 20px;
+            /* border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px; */
             box-shadow: 5px 10px 10px 2px #818181;
-            border: 6px double #ddce79;
+            /* border: 6px double #ddce79; */
         }
 
         .project-page-banner-img{
@@ -570,20 +570,6 @@
     </section>
 @endif
 
-@if($data->map_location_link)
-<section class="suffix-div py-5 mt-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12" data-animate-effect="fadeInUp">
-                <div>
-                    <iframe loading="lazy" src="{{$data->map_location_link}}" class="w-100 map-shape" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-
 <section class="lets-talk hero hero-contact my-0 py-5">
     <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">
@@ -598,6 +584,20 @@
         </div>
     </div>
 </section>
+
+@if($data->map_location_link)
+<section class="suffix-div py-5 mt-0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" data-animate-effect="fadeInUp">
+                <div>
+                    <iframe loading="lazy" src="{{$data->map_location_link}}" class="w-100 map-shape" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 
 
 {{-- @if(!$data->use_in_banner)
