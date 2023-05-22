@@ -2070,7 +2070,7 @@ input[type="checkbox"] {
 }
 .testimonials .wrap .item .info {
     text-align: left;
-    margin: 30px 0 15px 0;
+    margin: 30px 0 30px 0;
 }
 .testimonials .wrap .item .info .author-img {
     width: 60px;
@@ -3072,6 +3072,10 @@ input[type="checkbox"] {
 .blog-home .item .post-img img {
     -webkit-transition: all .5s;
     transition: all .5s;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 6px double #ddce79;
+    border-style: double double none double;
 }
 .blog-home .item .cont {
     /* position: relative;

@@ -31,6 +31,17 @@
         .obj-cover{
             object-fit: cover;
         }
+        .project-img-shape{
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 5px 10px 10px 2px #818181;
+            border: 6px double #ddce79;
+            border-style: double double none none;
+        }
+        .shapeee{
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
     </style>
 
 @stop
@@ -84,7 +95,7 @@
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
-                        <img src="{{$about->image_link}}" fetchpriority="high" class="img-fluid" alt="">
+                        <img src="{{$about->image_link}}" fetchpriority="high" class="img-fluid shapeee" alt="">
                     </div>
                     @endif
                 </div>
@@ -178,8 +189,8 @@
                         <div class="projects2-wrap p-relative" style="z-index: 5">
                             @if($v->banner_count>0)
                                 <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
-                                    <div class="projects-overlay" style="height: {{rand(300, 600)}}px">
-                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" fetchpriority="low" alt="">
+                                    <div class="projects-overlay" style="height: {{rand(300, 500)}}px">
+                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover project-img-shape" fetchpriority="low" alt="">
                                     </div>
                                 </a>
                             @endif
@@ -195,6 +206,7 @@
 
         </div>
     </div>
+
     <!-- Testiominals -->
     @if(count($testimonials)>0)
     <section class="testimonials">

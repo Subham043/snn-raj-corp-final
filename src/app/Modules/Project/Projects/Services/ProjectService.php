@@ -127,6 +127,31 @@ class ProjectService
                 ->appends(request()->query());
     }
 
+    public function main_paginate_all(Int $total = 10): LengthAwarePaginator
+    {
+        $query = Project::with([
+                        'banner' =>  function($q) {
+                            $q->where('is_draft', true);
+                        }
+                    ])
+                    ->withCount([
+                        'banner' =>  function($q) {
+                            $q->where('is_draft', true);
+                        }
+                    ])
+                    ->where('is_draft', true)
+                    ->whereHas('banner', function($q) {
+                        $q->where('is_draft', true);
+                    })
+                    ->latest();
+        return QueryBuilder::for($query)
+                ->allowedFilters([
+                    AllowedFilter::custom('search', new CommonFilter),
+                ])
+                ->paginate($total)
+                ->appends(request()->query());
+    }
+
     public function getBySlugMain(String $slug): Project|null
     {
         return Cache::remember('project_'.$slug, 60*60*24, function() use($slug){

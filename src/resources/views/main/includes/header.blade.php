@@ -5,12 +5,13 @@
             <ul>
                 <li><a href="{{route('home_page.get')}}">Home</a></li>
                 <li><a href="{{route('about_page.get')}}">About Us</a></li>
-                <li class='duru-menu-sub'><a href='#'>Projects <i class="ti-angle-down"></i></a>
+                <li><a href="{{route('projects.get')}}">Projects</a></li>
+                {{-- <li class='duru-menu-sub'><a href='#'>Projects <i class="ti-angle-down"></i></a>
                     <ul>
                         <li><a href='{{route('completed_projects.get')}}'>Completed Projects</a></li>
                         <li><a href='{{route('ongoing_projects.get')}}'>Ongoing Projects</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <li><a href="{{route('awards_page.get')}}">Awards</a></li>
                 <li><a href="{{route('csr_page.get')}}">CSR</a></li>
                 <li><a href="{{route('blogs.get')}}">Blogs</a></li>

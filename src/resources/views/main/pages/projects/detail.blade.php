@@ -80,6 +80,30 @@
             text-decoration: none;
         }
 
+        .project-wrap-div{
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about .states {
+            padding-top: 0px;
+        }
+
+        .map-shape{
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 5px 10px 10px 2px #818181;
+            border: 6px double #ddce79;
+        }
+
+        .project-page-banner-img{
+            object-fit: cover;
+            height: 85vh;
+        }
+
         @media screen and (max-width: 600px) {
             .project-detail-row>*{
                 width: 45% !important;
@@ -96,6 +120,16 @@
             .accom-row .accom{
                 margin-right: 0 !important;
                 width: 45%;
+            }
+
+            .project-wrap-div{
+                height: 100%;
+                display: block;
+            }
+
+            .project-page-banner-img {
+                object-fit: cover;
+                height: 100%;
             }
 
         }
@@ -219,7 +253,7 @@
                     <div class="owl-carousel owl-theme">
                         @if($data->banner_count>0)
                             @foreach($data->banner as $banner)
-                                <div class="portfolio-item"> <img fetchpriority="high" class="img-fluid" src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
+                                <div class="portfolio-item"> <img fetchpriority="high" class="img-fluid project-page-banner-img" src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
                             @endforeach
                         @endif
                     </div>
@@ -330,11 +364,11 @@
                         <div class="col-md-12">
                             <h2>{{$data->name}}</h2>
                             {{-- <h5><span class="text-dark">RERA :</span> {{$data->rera}}</h5> --}}
-                            <p>{{$data->brief_description}}</p><br>
+                            <p>{{$data->brief_description}}</p>
                        </div>
                        <div class="col-md-12">
                             {!!$data->description!!}
-                            @if($data->brochure_link)
+                            @if($data->brochure)
                                 <a href="{{$data->brochure_link}}" class="brochure-btn" download>Download Brochure</a>
                             @endif
                         </div>
@@ -354,7 +388,7 @@
                             <div class="img fl-img">
                                 <img fetchpriority="low" src="{{$val->image_link}}" alt="">
                             </div>
-                            <div class="wrap">
+                            <div class="wrap project-wrap-div">
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
                                 </div>
@@ -374,7 +408,7 @@
                             <div class="img fr-img">
                                 <img fetchpriority="low" src="{{$val->image_link}}" alt="">
                             </div>
-                            <div class="wrap">
+                            <div class="wrap project-wrap-div">
                                 <div class="number">
                                     <h1>{!!$val->heading!!}</h1>
                                 </div>
@@ -536,6 +570,20 @@
     </section>
 @endif
 
+@if($data->map_location_link)
+<section class="suffix-div py-5 mt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" data-animate-effect="fadeInUp">
+                <div>
+                    <iframe loading="lazy" src="{{$data->map_location_link}}" class="w-100 map-shape" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+
 <section class="lets-talk hero hero-contact my-0 py-5">
     <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">
@@ -545,16 +593,12 @@
                 </div>
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
                     <div class="section-title address-title">{!!$data->address!!}</div>
-                    @if($data->map_location_link)
-                        <div>
-                            <iframe loading="lazy" src="{{$data->map_location_link}}" class="w-100 logo-shape" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 {{-- @if(!$data->use_in_banner)
     <section class="about section-padding">

@@ -42,7 +42,8 @@
                 <div class="col-md-3">
                     <div class="item">
                         <h3><span>Get In Touch</span></h3>
-                        <a href="{{route('contact_page.get')}}">Contact Us</a>
+                        <a href="{{route('contact_page.get')}}">Contact Us</a><br/>
+                        <a href="{{route('referal_page.get')}}">Referral</a>
                     </div>
                 </div>
             </div>

@@ -455,7 +455,7 @@
     // Project Page owlCarousel
     $('.project-page .owl-carousel').owlCarousel({
         loop: true
-        , margin: 30
+        , margin: 0
         , mouseDrag: true
         , autoplay: false
         , dots: false
