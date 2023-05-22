@@ -35,6 +35,7 @@ Route::post('/refer-now-post', [ReferalPageController::class, 'post', 'as' => 'r
 Route::get('/completed-projects', [CompletedProjectPageController::class, 'get', 'as' => 'completed_projects.get'])->name('completed_projects.get');
 Route::get('/completed-projects/{slug}', [ProjectDetailPageController::class, 'get', 'as' => 'completed_projects_detail.get'])->name('completed_projects_detail.get');
 Route::get('/ongoing-projects', [OngoingProjectPageController::class, 'get', 'as' => 'ongoing_projects.get'])->name('ongoing_projects.get');
+Route::get('/ongoing-projects/{slug}', [ProjectDetailPageController::class, 'get', 'as' => 'ongoing_projects_detail.get'])->name('ongoing_projects_detail.get');
 Route::get('/blogs', [BlogPageController::class, 'get', 'as' => 'blogs.get'])->name('blogs.get');
 Route::get('/blogs/{slug}', [BlogDetailPageController::class, 'get', 'as' => 'blogs_detail.get'])->name('blogs_detail.get');
 Route::get('/{legal_slug}', [LegalPageController::class, 'get', 'as' => 'legal.get'])->name('legal.get');
