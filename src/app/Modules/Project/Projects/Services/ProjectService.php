@@ -77,7 +77,6 @@ class ProjectService
     public function clear_cache(Project $project): void
     {
         Cache::forget('all_project_main');
-        Cache::forget('project_main_paginate_all');
         Cache::forget('project_'.$project->slug);
     }
 
@@ -98,6 +97,7 @@ class ProjectService
             ->whereHas('banner', function($q) {
                 $q->where('is_draft', true);
             })
+            ->orderBy('is_completed', 'ASC')
             ->get();
         });
     }
@@ -128,9 +128,8 @@ class ProjectService
                 ->appends(request()->query());
     }
 
-    public function main_paginate_all(): Collection
+    public function main_paginate_all(bool $status): Collection
     {
-        return Cache::remember('project_main_paginate_all', 60*60*24, function(){
                 return Project::with([
                         'banner' =>  function($q) {
                             $q->where('is_draft', true);
@@ -142,11 +141,11 @@ class ProjectService
                         }
                     ])
                     ->where('is_draft', true)
-                    ->whereHas('banner', function($q) {
+                    ->whereHas('banner', function($q) use($status) {
                         $q->where('is_draft', true);
+                        $q->where('is_completed', $status);
                     })
-                    ->orderBy('is_completed', 'ASC')->get();
-        });
+                    ->get();
     }
 
     public function getBySlugMain(String $slug): Project|null

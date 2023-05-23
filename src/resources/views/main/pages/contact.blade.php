@@ -41,8 +41,6 @@
 
 @section('content')
 
-    @include('main.includes.referal')
-    <div class="py-5"></div>
 
     <!-- Contact -->
     <div class="contact secondary-div mt-0">
@@ -92,7 +90,7 @@
                             <div class="col-md-12 mt-2">
                                 <div class="col-md-12 mt-3 mb-5">
                                     <input type="checkbox" class="line-gray">
-                                    <label>I agree with the <a href="{{route('legal.get', 'privacy-policy')}}" class="underline line-gray">privacy policy</a></label>
+                                    <label>I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp me about its products and offers, this consent overrides any registration for DNC / NDNC</label>
                                 </div>
                             </div>
                             <div class="col-md-12 mt-2">
@@ -104,6 +102,10 @@
             </div>
         </div>
     </div>
+
+    @include('main.includes.referal')
+
+    <div class="py-3"></div>
 
     <!-- Maps -->
     {{-- <div class="google-maps">

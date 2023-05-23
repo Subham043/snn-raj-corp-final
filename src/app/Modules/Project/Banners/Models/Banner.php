@@ -44,15 +44,12 @@ class Banner extends Model
         parent::boot();
         self::created(function ($model) {
             Cache::forget('all_project_main');
-            Cache::forget('project_main_paginate_all');
         });
         self::updated(function ($model) {
             Cache::forget('all_project_main');
-            Cache::forget('project_main_paginate_all');
         });
         self::deleted(function ($model) {
             Cache::forget('all_project_main');
-            Cache::forget('project_main_paginate_all');
         });
     }
 

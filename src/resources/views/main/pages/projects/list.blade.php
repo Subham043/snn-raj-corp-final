@@ -28,6 +28,37 @@
         .pagination-wrap{
             position: relative;z-index:10;pointer-events:all;
         }
+        .no-dot.sub-title:before {
+            content: none;
+        }
+        .project_old .projects2-wrap h3 {
+            font-size: 25px;
+        }
+        .project_old p {
+            font-size: 12px;
+            color: black;
+        }
+
+        .project_old p img {
+            height: 20px;
+            display: inline;
+            width: 20px;
+            margin-top: -5px;
+        }
+        .projects2-con{
+            position: static;
+            height: auto;
+            background-image: none;
+        }
+        .projects2-wrap h3 a{
+            color: var(--theme-primary-color);
+        }
+        .project2-link:before{
+            background: var(--theme-primary-color);
+        }
+        .projects2-wrap {
+            padding-bottom: 30px;
+        }
     </style>
 @stop
 
@@ -49,66 +80,86 @@
         </div>
     </section>
     @endif
-    @if(count($projects) > 0)
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 px-0">
-                @foreach ($projects as $k => $v)
-                    @if(($k+1)%2!=0)
-                    <section class="projects3">
-                        <div class="container">
-                            <div class="row div-padding">
-                                <div class="col-md-8 " data-animate-effect="fadeInUp">
-                                    @if($v->banner_count>0)
-                                        <div class="img">
-                                            <a href="{{route($v->is_completed ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" src="{{$v->banner[0]->image_link}}" alt=""></a>
-                                        </div>
-                                    @endif
-                                </div>
-                                <div class="col-md-4 valign " data-animate-effect="fadeInUp">
-                                    <div class="content">
-                                        <div class="cont">
-                                            <h3>{{$v->name}}</h3>
-                                            <p>{{ Str::limit($v->brief_description, 300) }}</p>
-                                            <div class="more"><a href="{{route($v->is_completed ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">View Project</a></div>
-                                        </div>
+
+    <div class="projects2 project_old suffix-div mt-0 pb-0">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-2 " data-animate-effect="fadeInUp">
+                    <div class="section-title">ONGOING <br/><span>PROJECTS</span></div>
+                </div>
+                <div class="col-md-10 " data-animate-effect="fadeInUp">
+                    <div class="no-dot sub-title border-bot-light">&nbsp;</div>
+                </div>
+            </div>
+            <div class="row" data-animate-effect="fadeInUp">
+
+                @foreach($ongoing_projects as $k => $v)
+
+                    <div class="col-md-6 single-item {{$v->is_completed==true ? 'completed' : 'ongoing'}}">
+                        <div class="projects2-wrap p-relative" style="z-index: 5">
+                            @if($v->banner_count>0)
+                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
+                                    <div class="projects-overlay">
+                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" fetchpriority="low" alt="">
                                     </div>
-                                </div>
+                                </a>
+                            @endif
+                            <div class="projects2-con" style="z-index: 5">
+                                <h3><a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
+                                <p><img src="{{asset('assets/location_dark.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
+                                <p><img src="{{asset('assets/status_dark.svg')}}" alt=""> {{$v->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</p>
+                                <p><img src="{{asset('assets/floors_dark.svg')}}" alt=""> {{$v->floor}} FLOORS</p>
+                                <p><img src="{{asset('assets/tower_dark.svg')}}" alt=""> {{$v->tower}} TOWERS</p>
+                                <p><img src="{{asset('assets/acre_dark.svg')}}" alt=""> {{$v->acre}} ACRES</p>
+                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
                             </div>
                         </div>
-                    </section>
-
-                    @else
-
-                    <section class="projects3 suffix-div">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
-                                    <div class="content">
-                                        <div class="cont">
-                                            <h3>{{$v->name}}</h3>
-                                            <p>{{$v->brief_description}}</p>
-                                            <div class="more"><a href="{{route($v->is_completed ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">View Project</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 order1 " data-animate-effect="fadeInUp">
-                                    @if($v->banner_count>0)
-                                        <div class="img">
-                                            <a href="{{route($v->is_completed ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" src="{{$v->banner[0]->image_link}}" alt=""></a>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    @endif
+                    </div>
                 @endforeach
             </div>
+
         </div>
     </div>
-    @endif
+    <div class="projects2 project_old suffix-div mt-0 pt-2">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-10 " data-animate-effect="fadeInUp">
+                    <div class="no-dot sub-title border-bot-light">&nbsp;</div>
+                </div>
+                <div class="col-md-2 " data-animate-effect="fadeInUp">
+                    <div class="section-title">COMPLETED <br/><span>PROJECTS</span></div>
+                </div>
+            </div>
+            <div class="row" data-animate-effect="fadeInUp">
+
+                @foreach($completed_projects as $k => $v)
+
+                    <div class="col-md-6 single-item {{$v->is_completed==true ? 'completed' : 'ongoing'}}">
+                        <div class="projects2-wrap p-relative" style="z-index: 5">
+                            @if($v->banner_count>0)
+                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
+                                    <div class="projects-overlay">
+                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" fetchpriority="low" alt="">
+                                    </div>
+                                </a>
+                            @endif
+                            <div class="projects2-con" style="z-index: 5">
+                                <h3><a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
+                                <p><img src="{{asset('assets/location_dark.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
+                                <p><img src="{{asset('assets/status_dark.svg')}}" alt=""> {{$v->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</p>
+                                <p><img src="{{asset('assets/floors_dark.svg')}}" alt=""> {{$v->floor}} FLOORS</p>
+                                <p><img src="{{asset('assets/tower_dark.svg')}}" alt=""> {{$v->tower}} TOWERS</p>
+                                <p><img src="{{asset('assets/acre_dark.svg')}}" alt=""> {{$v->acre}} ACRES</p>
+                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+        </div>
+    </div>
+
 
     @include('main.includes.common_contact')
 

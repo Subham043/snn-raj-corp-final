@@ -49,7 +49,7 @@
         .project_old .sub-title, .project_old .section-title span {
             color: #fff;
         }
-        .project_old p, .project_old .projects2-filter li {
+        .project_old .projects2-filter li {
             color: #fff;
         }
         .project_old .projects2-filter li.active{
@@ -59,6 +59,18 @@
             left: 20px;
             top: 70px;
             background-image: none;
+        }
+
+        .project_old p {
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .project_old p img {
+            height: 20px;
+            display: inline;
+            width: 20px;
+            margin-top: -5px;
         }
         .project_old .projects2-wrap h3 a{
             color: var(--theme-primary-color);
@@ -71,6 +83,46 @@
             background-image: linear-gradient(to right,rgba(27,25,25,0.2) 60%,transparent 100%);
         }
 
+        .project_old .projects2-wrap h3 {
+            font-size: 25px;
+        }
+
+        .testimonials .owl-theme .owl-nav {
+            bottom: 10%;
+            right: 0%;
+        }
+
+        .slider-fade .v-middle{
+            position: static;
+            transform: none;
+        }
+
+        .header.slider-fade  {
+            min-height: 1px;
+            height: auto;
+            overflow: hidden;
+            background: transparent !important;
+        }
+
+        .slider-fade .slider .owl-item, .slider-fade .owl-item {
+            height: auto;
+            position: relative;
+        }
+
+        .slider-fade .slider .item, .slider-fade .item{
+            position: static;
+            background-image: none !important;
+        }
+
+        .slider-fade .owl-carousel .owl-stage:after, #slider-area:after{
+            content: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            #slider-area img {
+                opacity: 1;
+            }
+        }
     </style>
 
 @stop
@@ -203,9 +255,9 @@
                     @endif
                     <div class="row " data-animate-effect="fadeInUp">
                         <ul class="projects2-filter">
-                            <li class="active" data-filter=".ongoing">Ongoing Projects</li>
+                            <li class="active" data-filter="*">All</li>
+                            <li data-filter=".ongoing">Ongoing Projects</li>
                             <li data-filter=".completed">Completed Projects</li>
-                            <li data-filter="*">All</li>
                         </ul>
                     </div>
                 </div>
@@ -239,8 +291,9 @@
                                 </a>
                             @endif
                             <div class="projects2-con" style="z-index: 5">
-                                <p>{{Str::limit($v->location, 30)}}</p>
                                 <h3><a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
+                                <p><img src="{{asset('assets/location.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
+                                <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</p>
                                 <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
                             </div>
                         </div>

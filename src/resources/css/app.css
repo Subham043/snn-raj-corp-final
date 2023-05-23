@@ -344,7 +344,7 @@ input[type=checkbox]:before {
     border: 1px solid #e9e9ec;
     background: transparent;
     position: absolute;
-    top: -1px;
+    top: -10px;
     margin-left: -3px;
 }
 input[type=checkbox]:after {
@@ -353,7 +353,7 @@ input[type=checkbox]:after {
     color: var(--theme-highlight-text-color);
     background: transparent;
     position: absolute;
-    top: 2px;
+    top: -8px;
     margin-left: -1px;
     left: 0;
     width: 18px;
