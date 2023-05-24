@@ -93,7 +93,7 @@
         }
 
         .slider-fade .v-middle{
-            position: static;
+            position: relative;
             transform: none;
             top: 0;
             left: 0;
