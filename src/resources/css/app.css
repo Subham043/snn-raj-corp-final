@@ -3785,7 +3785,7 @@ input[type="checkbox"] {
 /* ======= Media Query ======= */
 @media (min-width: 1200px) {
     .container {
-        max-width: 1140px !important;
+        max-width: 1190px !important;
     }
 }
 @media (max-width: 1024px) {

@@ -95,6 +95,8 @@
         .slider-fade .v-middle{
             position: static;
             transform: none;
+            top: 0;
+            left: 0;
         }
 
         .header.slider-fade  {
