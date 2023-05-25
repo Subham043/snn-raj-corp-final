@@ -444,8 +444,6 @@
     <div class="py-5"></div>
     @endif
 
-    @include('main.includes.common_contact')
-
 @stop
 
 @section('js')

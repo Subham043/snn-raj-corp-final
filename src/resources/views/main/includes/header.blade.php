@@ -16,6 +16,7 @@
                 <li><a href="{{route('csr_page.get')}}">CSR</a></li>
                 <li><a href="{{route('blogs.get')}}">Blogs</a></li>
                 <li><a href="{{route('contact_page.get')}}">Contact</a></li>
+                <li><a href="{{route('referal_page.get')}}">Referral</a></li>
             </ul>
         </nav>
     </div>

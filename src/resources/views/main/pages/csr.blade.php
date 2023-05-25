@@ -109,8 +109,6 @@
             @endforeach
     @endif
 
-    @include('main.includes.common_contact')
-
 @stop
 
 @section('js')

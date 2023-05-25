@@ -67,8 +67,6 @@
         </div>
     </section>
 
-    @include('main.includes.common_contact')
-
 @stop
 
 @section('js')

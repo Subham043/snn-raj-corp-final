@@ -110,7 +110,6 @@
     </div>
     @endif
 
-    @include('main.includes.common_contact')
 
 @stop
 

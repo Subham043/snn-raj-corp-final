@@ -81,8 +81,6 @@
     </section>
     <div class="py-5"></div>
 
-    @include('main.includes.common_contact')
-
 @stop
 
 @section('js')
