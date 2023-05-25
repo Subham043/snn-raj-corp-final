@@ -160,7 +160,7 @@
         if (st < 350) {
             if (navbar.hasClass('awake')) {
                 navbar.removeClass('awake');
-                navbar.addClass('sleep');
+                // navbar.addClass('sleep');
             }
         }
     });
