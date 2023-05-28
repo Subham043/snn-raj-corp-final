@@ -80,7 +80,8 @@
             /* background: #000;
             opacity: 0.1; */
             /* background-image: linear-gradient(to right,rgba(27,25,25,0.1) 30%,transparent 100%); */
-            background-image: linear-gradient(to right,rgba(27,25,25,0.2) 60%,transparent 100%);
+            /* background-image: linear-gradient(to right,rgba(27,25,25,0.2) 60%,transparent 100%); */
+            background-image: linear-gradient(to right,rgb(27 25 25 / 45%) 25%,transparent 100%);
         }
 
         .project_old .projects2-wrap h3 {
@@ -288,7 +289,7 @@
                             @if($v->banner_count>0)
                                 <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
                                     <div class="projects-overlay">
-                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" style="height: {{$height}}px !important;" fetchpriority="low" alt="">
+                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" fetchpriority="low" alt="">
                                     </div>
                                 </a>
                             @endif
