@@ -352,7 +352,7 @@
         margin: 0,
         autoplay: true,
         autoplayHoverPause: false,
-        autoplayTimeout: 2000,
+        autoplayTimeout: 4000,
         animateOut: 'fadeOut',
         nav: true,
         navText: ['<i class="ti-angle-left" aria-hidden="true"></i>', '<i class="ti-angle-right" aria-hidden="true"></i>'],
