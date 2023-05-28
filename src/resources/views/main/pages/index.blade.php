@@ -289,7 +289,7 @@
                             @if($v->banner_count>0)
                                 <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
                                     <div class="projects-overlay">
-                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" fetchpriority="low" alt="">
+                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" style="border-radius:10px;" fetchpriority="low" alt="">
                                     </div>
                                 </a>
                             @endif
