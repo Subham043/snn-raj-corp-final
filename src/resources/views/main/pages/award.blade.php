@@ -66,7 +66,7 @@
                                     <div class="con">
                                         <img src="{{$item->image_link}}" class="img-fluid award-img mb-3" alt="">
                                     </div>
-                                    <h5 class="font-weight-bold">{{$item->title}}</h5>
+                                    <h5 class="font-weight-bold">{!!$item->title!!}</h5>
                                     <h6>{{$item->sub_title}}</h6>
                                     <p>{{$item->description}}</p>
                                 </div>

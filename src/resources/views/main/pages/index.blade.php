@@ -121,6 +121,11 @@
             content: none;
         }
 
+        .h-300-cover{
+            height: 300px;
+            object-fit: cover;
+        }
+
         @media screen and (max-width: 600px) {
             #slider-area img {
                 opacity: 1;
@@ -289,7 +294,7 @@
                             @if($v->banner_count>0)
                                 <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
                                     <div class="projects-overlay">
-                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" style="border-radius:10px;" fetchpriority="low" alt="">
+                                        <img src="{{ $v->banner[0]->image_link }}" class="h-300-cover obj-cover" style="border-radius:10px;" fetchpriority="low" alt="">
                                     </div>
                                 </a>
                             @endif
