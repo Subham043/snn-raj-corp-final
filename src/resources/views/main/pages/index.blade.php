@@ -59,6 +59,7 @@
             left: 20px;
             top: 70px;
             background-image: none;
+            pointer-events: none;
         }
 
         .project_old p {

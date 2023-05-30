@@ -27,7 +27,7 @@ class TextEditorImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|image|min:1|max:500',
+            'image' => 'required|image|max:500',
         ];
     }
 

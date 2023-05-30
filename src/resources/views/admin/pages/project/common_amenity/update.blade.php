@@ -114,6 +114,7 @@ validation
     {
         rule: 'maxFilesCount',
         value: 1,
+        errorMessage: 'Only One Image is required',
     },
     {
         rule: 'files',
@@ -121,10 +122,10 @@ validation
         files: {
             extensions: ['jpeg', 'jpg', 'png', 'webp'],
             maxSize: 500000,
-            minSize: 1000,
             types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
         },
         },
+        errorMessage: 'Images with jpeg,jpg,png,webp extensions are allowed! Image size should not exceed 500kb!',
     },
   ])
   .onSuccess(async (event) => {

@@ -32,7 +32,7 @@ class CsrCreateRequest extends FormRequest
             'description_unfiltered' => 'required|string',
             'image_title' => 'nullable|string|max:250',
             'image_alt' => 'nullable|string|max:250',
-            'image' => 'required|image|min:1|max:500',
+            'image' => 'required|image|max:500',
             'is_draft' => 'required|boolean',
         ];
     }

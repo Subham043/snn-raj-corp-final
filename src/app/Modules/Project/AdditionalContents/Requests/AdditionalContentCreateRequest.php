@@ -31,7 +31,7 @@ class AdditionalContentCreateRequest extends FormRequest
             'heading' => 'required|string|max:250',
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',
-            'image' => 'required|image|min:1|max:500',
+            'image' => 'required|image|max:500',
         ];
     }
 

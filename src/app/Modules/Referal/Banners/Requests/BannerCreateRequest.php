@@ -28,7 +28,7 @@ class BannerCreateRequest extends FormRequest
     {
         return [
             'is_draft' => 'required|boolean',
-            'image' => 'required|image|min:1|max:500',
+            'image' => 'required|image|max:500',
             'image_alt' => 'nullable|string|max:500',
             'image_title' => 'nullable|string|max:500',
         ];

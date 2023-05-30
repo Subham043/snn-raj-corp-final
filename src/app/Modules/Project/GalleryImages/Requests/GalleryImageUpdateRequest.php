@@ -15,7 +15,7 @@ class GalleryImageUpdateRequest extends GalleryImageCreateRequest
     {
         return [
             'is_draft' => 'required|boolean',
-            'image' => 'nullable|image|min:1|max:500',
+            'image' => 'nullable|image|max:500',
             'image_alt' => 'nullable|string|max:500',
             'image_title' => 'nullable|string|max:500',
         ];

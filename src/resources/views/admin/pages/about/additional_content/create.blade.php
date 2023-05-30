@@ -131,6 +131,8 @@
 @section('javascript')
 <script src="{{ asset('admin/libs/quill/quill.min.js' ) }}"></script>
 
+@include('admin.includes.quill_image_script')
+
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 
 var quillDescription = new Quill('#description_quill', {
@@ -146,10 +148,14 @@ quillDescription.on('text-change', function(delta, oldDelta, source) {
   }
 });
 
+
 var quillPopupDescription = new Quill('#popup_description_quill', {
     theme: 'snow',
     modules: {
-        toolbar: QUILL_TOOLBAR_OPTIONS
+        toolbar: {
+            container: QUILL_TOOLBAR_OPTIONS_WITH_IMAGE,
+            handlers: { image: quillImageHandler },
+        },
     },
 });
 
@@ -213,21 +219,23 @@ validation
     {
         rule: 'minFilesCount',
         value: 1,
+        errorMessage: 'Image is required',
     },
     {
         rule: 'maxFilesCount',
         value: 1,
+        errorMessage: 'Only One Image is required',
     },
     {
         rule: 'files',
         value: {
-        files: {
-            extensions: ['jpeg', 'jpg', 'png', 'webp'],
-            maxSize: 500000,
-            minSize: 1000,
-            types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+            files: {
+                extensions: ['jpeg', 'jpg', 'png', 'webp'],
+                maxSize: 500000,
+                types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+            },
         },
-        },
+        errorMessage: 'Images with jpeg,jpg,png,webp extensions are allowed! Image size should not exceed 500kb!',
     },
   ])
   .addField('#description', [

@@ -334,10 +334,10 @@
                                 </div>
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
-                                    <a href="{{$val->button_link}}" class="button-light">{{$val->button_text}}</a>
                                     @if($val->activate_popup)
-                                        <button type="button" class="button-dark2 mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{{$val->popup_button_text}}</button>
+                                        <button type="button" class="button-dark2 mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
                                     @endif
+                                    <a href="{{$val->button_link}}" class="button-light">{{$val->button_text}}</a>
                                 </div>
                             </div>
                         </div>
@@ -353,7 +353,7 @@
                                     {!!$val->description!!}
                                     <a href="{{$val->button_link}}" class="button-light">{{$val->button_text}}</a>
                                     @if($val->activate_popup)
-                                        <button type="button" class="button-dark2 mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{{$val->popup_button_text}}</button>
+                                        <button type="button" class="button-dark2 mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
                                     @endif
                                 </div>
                             </div>
@@ -383,6 +383,9 @@
                                 </div>
                             </div>
                             {!!$val->popup_description!!}
+                            <div class="text-center">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -32,7 +32,7 @@ class AdditionalContentCreateRequest extends FormRequest
             'button_link' => 'required_with:button_text|url|max:250',
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',
-            'image' => 'required|image|min:1|max:500',
+            'image' => 'required|image|max:500',
             'is_draft' => 'required|boolean',
             'activate_popup' => 'required|boolean',
             'popup_button_text' => 'required_if:activate_popup,1|string|max:250',

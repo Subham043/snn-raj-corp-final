@@ -159,6 +159,8 @@
     });
 </script>
 
+@include('admin.includes.quill_image_script')
+
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 
 var quillDescription = new Quill('#description_quill', {
@@ -173,57 +175,6 @@ quillDescription.on('text-change', function(delta, oldDelta, source) {
     document.getElementById('description').value = quillDescription.root.innerHTML
   }
 });
-
-const Delta = Quill.import('delta');
-
-function quillImageHandler() {
-  let fileInput = this.container.querySelector('input.ql-image[type=file]');
-  if (fileInput == null) {
-    fileInput = document.createElement('input');
-    fileInput.setAttribute('type', 'file');
-    fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/bmp, image/x-icon');
-    fileInput.classList.add('ql-image');
-    fileInput.addEventListener('change', async () => {
-      if (fileInput.files != null && fileInput.files[0] != null) {
-        try {
-            const data = new FormData();
-            data.append('image', fileInput.files[0]);
-            const response = await axios.post('{{route('texteditor_image.post')}}', data);
-            let reader = new FileReader();
-            reader.onload = (e) => {
-            let range = this.quill.getSelection(true);
-            this.quill.updateContents(new Delta()
-                .retain(range.index)
-                .delete(range.length)
-                .insert({ image: response.data.image }));
-                console.log(fileInput.files[0]);
-            }
-            reader.readAsDataURL(fileInput.files[0]);
-        } catch (error) {
-            if(error?.response?.data?.message){
-                errorToast(error?.response?.data?.message)
-            }
-        }
-
-      }
-    });
-    fileInput.value = "";
-    this.container.appendChild(fileInput);
-  }
-  fileInput.click();
-}
-
-const QUILL_TOOLBAR_OPTIONS_WITH_IMAGE = [
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    ['bold', 'italic', 'underline', 'strike'],
-    ['blockquote', 'code-block'],
-    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-    [{ 'indent': '-1'}, { 'indent': '+1' }],
-    [ 'link', 'image' ],
-    [{ 'align': [] }],
-    ['clean']
-];
 
 var quillPopupDescription = new Quill('#popup_description_quill', {
     theme: 'snow',
@@ -295,6 +246,7 @@ validation
     {
         rule: 'maxFilesCount',
         value: 1,
+        errorMessage: 'Only One Image is required',
     },
     {
         rule: 'files',
@@ -302,10 +254,11 @@ validation
         files: {
             extensions: ['jpeg', 'jpg', 'png', 'webp'],
             maxSize: 500000,
-            minSize: 1000,
             types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
         },
         },
+        errorMessage: 'Images with jpeg,jpg,png,webp extensions are allowed! Image size should not exceed 500kb!',
+
     },
   ])
   .addField('#description', [
