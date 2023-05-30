@@ -28,7 +28,7 @@ class AwardUpdateRequest extends AwardCreateRequest
             'title' => 'required|string|max:250',
             'sub_title' => 'required|string|max:250',
             'description' => 'nullable|string|max:500',
-            'image' => 'nullable|image|min:1|max:500',
+            'image' => 'nullable|image|max:500',
             'is_draft' => 'required|boolean',
         ];
     }
