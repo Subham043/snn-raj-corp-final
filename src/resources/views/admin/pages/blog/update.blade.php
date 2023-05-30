@@ -134,7 +134,7 @@
 @section('javascript')
 <script src="{{ asset('admin/libs/quill/quill.min.js' ) }}"></script>
 
-@include('admin.includes.quill_image_script')
+@include('admin.includes.quill_Image_script')
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 

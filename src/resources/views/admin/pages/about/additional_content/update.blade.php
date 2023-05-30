@@ -159,7 +159,7 @@
     });
 </script>
 
-@include('admin.includes.quill_image_script')
+@include('admin.includes.quill_Image_script')
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 
