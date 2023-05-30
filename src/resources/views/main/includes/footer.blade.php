@@ -6,7 +6,7 @@
                 <div class="col-md-12 mb-30">
                     {{-- <div class="sub-title border-footer-light">Contact Us</div> --}}
                     <div class="duru-logo-wrap footer-logo">
-                        <a href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="low" src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a>
+                        <a aria-label="logo" href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="low" src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a>
                     </div>
 
                 </div>
@@ -16,10 +16,10 @@
                         <p class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</p>
                         <p class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email}}</p>
                         <div class="social mt-2">
-                            <a href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
-                            <a href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
-                            <a href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
-                            <a href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
+                            <a aria-label="facebook" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
+                            <a aria-label="instagram" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
+                            <a aria-label="linkedin" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
+                            <a aria-label="youtube" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
                         </div>
                     </div>
 
@@ -27,23 +27,23 @@
                 <div class="col-md-3">
                     <div class="item">
                         <h3><span>Company</span></h3>
-                        <a href="{{route('about_page.get')}}">About Us</a><br/>
-                        <a href="{{route('awards_page.get')}}">Awards</a><br/>
-                        <a href="{{route('csr_page.get')}}">CSR</a>
+                        <a aria-label="about us" href="{{route('about_page.get')}}">About Us</a><br/>
+                        <a aria-label="awards" href="{{route('awards_page.get')}}">Awards</a><br/>
+                        <a aria-label="csr" href="{{route('csr_page.get')}}">CSR</a>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="item">
                         <h3><span>Projects</span></h3>
-                        <a href="{{route('completed_projects.get')}}">Completed</a><br/>
-                        <a href="{{route('ongoing_projects.get')}}">Ongoing</a>
+                        <a aria-label="completed projects" href="{{route('completed_projects.get')}}">Completed</a><br/>
+                        <a aria-label="ongoing projects" href="{{route('ongoing_projects.get')}}">Ongoing</a>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="item">
                         <h3><span>Get In Touch</span></h3>
-                        <a href="{{route('contact_page.get')}}">Contact Us</a><br/>
-                        <a href="{{route('referal_page.get')}}">Referral</a>
+                        <a aria-label="contact us" href="{{route('contact_page.get')}}">Contact Us</a><br/>
+                        <a aria-label="referral" href="{{route('referal_page.get')}}">Referral</a>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 <div class="col-md-8">
                     <p class="right">
                         @foreach($legal as $legal)
-                            <a href="{{route('legal.get', $legal->slug)}}" class="mx-2">{{$legal->page_name}}</a>
+                            <a aria-label="{{$legal->page_name}}" href="{{route('legal.get', $legal->slug)}}" class="mx-2">{{$legal->page_name}}</a>
                         @endforeach
                     </p>
                 </div>

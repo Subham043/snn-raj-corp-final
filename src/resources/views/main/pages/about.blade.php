@@ -58,7 +58,7 @@
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <p>{{$banner->description}}</p>
-                            <a href="{{$banner->button_link}}" class="button-light">{{$banner->button_text}}</a>
+                            <a href="{{$banner->button_link}}" aria-label="{{$banner->button_text}}" class="button-light">{{$banner->button_text}}</a>
                         </div>
                     </div>
                 </div>
@@ -335,9 +335,9 @@
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
                                     @if($val->activate_popup)
-                                        <button type="button" class="button-dark2 mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
+                                        <button type="button" class="button-dark2 mx-2" aria-label="{{$val->heading}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
                                     @endif
-                                    <a href="{{$val->button_link}}" class="button-light">{{$val->button_text}}</a>
+                                    <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light">{{$val->button_text}}</a>
                                 </div>
                             </div>
                         </div>
@@ -351,9 +351,9 @@
                                 </div>
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
-                                    <a href="{{$val->button_link}}" class="button-light">{{$val->button_text}}</a>
+                                    <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light">{{$val->button_text}}</a>
                                     @if($val->activate_popup)
-                                        <button type="button" class="button-dark2 mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
+                                        <button type="button" class="button-dark2 mx-2" data-bs-toggle="modal" aria-label="{{$val->heading}}" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
                                     @endif
                                 </div>
                             </div>
@@ -384,7 +384,7 @@
                             </div>
                             {!!$val->popup_description!!}
                             <div class="text-center">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" aria-label="Close" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>

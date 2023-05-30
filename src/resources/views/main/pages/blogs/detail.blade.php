@@ -61,13 +61,13 @@
                 <div class="d-sm-flex align-items-center justify-content-between">
                     @if($next)
                     <div class="prev-next-left">
-                        <a href="{{route('blogs_detail.get', $next->slug)}}"> <i class="ti-arrow-left"></i> {{$next->name}}</a>
+                        <a aria-label="{{$next->name}}" href="{{route('blogs_detail.get', $next->slug)}}"> <i class="ti-arrow-left"></i> {{$next->name}}</a>
                     </div>
                     @endif
-                    <a href="{{route('blogs.get')}}"><i class="ti-layout-grid3-alt"></i></a>
+                    <a aria-label="blogs" href="{{route('blogs.get')}}"><i class="ti-layout-grid3-alt"></i></a>
                     @if($prev)
                     <div class="prev-next-right">
-                        <a href="{{route('blogs_detail.get', $prev->slug)}}"> {{$prev->name}} <i class="ti-arrow-right"></i></a>
+                        <a aria-label="{{$prev->name}}" href="{{route('blogs_detail.get', $prev->slug)}}"> {{$prev->name}} <i class="ti-arrow-right"></i></a>
                     </div>
                     @endif
                 </div>

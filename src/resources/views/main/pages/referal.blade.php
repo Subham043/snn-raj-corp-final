@@ -342,7 +342,7 @@
                                 <div class="col-md-12 mt-2">
                                     <div class="col-md-12 mt-3 mb-5">
                                         <input type="checkbox" class="line-gray">
-                                        <label>I agree with the <a href="{{route('legal.get', 'privacy-policy')}}" class="underline line-gray">privacy policy</a></label>
+                                        <label>I agree with the <a href="{{route('legal.get', 'privacy-policy')}}" aria-label="privacy policy" class="underline line-gray">privacy policy</a></label>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mt-2">

@@ -50,11 +50,11 @@
                         <div class="col-md-4 div-padding">
                             <div class="item mb-3">
                                 <div class="post-img">
-                                    <a href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img src="{{$v->image_link}}" alt=""> </div></a>
+                                    <a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img src="{{$v->image_link}}" alt=""> </div></a>
                                 </div>
                                 <div class="cont">
-                                    <h4><a href="{{route('blogs_detail.get', $v->slug)}}">{{$v->name}}</a></h4>
-                                    <div class="date"><a href="{{route('blogs_detail.get', $v->slug)}}"><span class="ti-time"></span>&nbsp;&nbsp;<span>{{$v->created_at->diffForHumans()}}</span></a> </div>
+                                    <h4><a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}">{{$v->name}}</a></h4>
+                                    <div class="date"><a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}"><span class="ti-time"></span>&nbsp;&nbsp;<span>{{$v->created_at->diffForHumans()}}</span></a> </div>
                                 </div>
                             </div>
                         </div>

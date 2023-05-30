@@ -369,7 +369,7 @@
                        <div class="col-md-12">
                             {!!$data->description!!}
                             @if($data->brochure)
-                                <a href="{{$data->brochure_link}}" class="brochure-btn" download>Download Brochure</a>
+                                <a aria-label="brochure" href="{{$data->brochure_link}}" class="brochure-btn" download>Download Brochure</a>
                             @endif
                         </div>
                     </div>
@@ -441,7 +441,7 @@
                         @if($data->plan_count>0)
                             @foreach($data->plan as $plan)
                                 {{-- <div class="portfolio-item"> <img class="img-fluid" src="{{$plan->image_link}}" alt="{{$plan->image_alt}}" title="{{$plan->image_title}}"> </div> --}}
-                                <a href="{{$plan->image_link}}" title="{{$plan->title}}" class="img-zoom">
+                                <a aria-label="{{$plan->title}}" href="{{$plan->image_link}}" title="{{$plan->title}}" class="img-zoom">
                                     <div class="gallery-box">
                                         <div class="gallery-img"> <img fetchpriority="low" src="{{$plan->image_link}}" class="img-fluid mx-auto d-block" alt="{{$plan->alt}}" title="{{$plan->title}}"> </div>
                                         <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
@@ -557,7 +557,7 @@
             <div class="row justify-content-center">
                 @foreach($data->gallery_image as $gallery_image)
                     <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
-                        <a href="{{$gallery_image->image_link}}" title="{{$gallery_image->title}}" class="img-zoom">
+                        <a aria-label="{{$gallery_image->title}}" href="{{$gallery_image->image_link}}" title="{{$gallery_image->title}}" class="img-zoom">
                             <div class="gallery-box">
                                 <div class="gallery-img"> <img fetchpriority="low" src="{{$gallery_image->image_link}}" class="img-fluid mx-auto d-block" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}"> </div>
                                 <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>

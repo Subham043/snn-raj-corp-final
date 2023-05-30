@@ -151,7 +151,7 @@
                 @foreach($banners as $banners)
                     <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
                         <div class="v-middle caption">
-                            <a href="{{$banners->button_link ? $banners->button_link : '#'}}">
+                            <a aria-label="{{$banners->banner_image_title}}" href="{{$banners->button_link ? $banners->button_link : '#'}}">
                                 <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high">
                             </a>
                         </div>
@@ -293,17 +293,17 @@
                     <div class="col-md-6 single-item {{$v->is_completed==true ? 'completed' : 'ongoing'}}">
                         <div class="projects2-wrap p-relative" style="z-index: 5">
                             @if($v->banner_count>0)
-                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
+                                <a  aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
                                     <div class="projects-overlay">
                                         <img src="{{ $v->banner[0]->image_link }}" class="h-300-cover obj-cover" style="border-radius:10px;" fetchpriority="low" alt="">
                                     </div>
                                 </a>
                             @endif
                             <div class="projects2-con" style="z-index: 5">
-                                <h3><a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
+                                <h3><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
                                 <p><img src="{{asset('assets/location.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
                                 <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</p>
-                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
+                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
                             </div>
                         </div>
                     </div>
@@ -375,11 +375,11 @@
                     <div class="col-md-4">
                         <div class="item mb-5">
                             <div class="post-img">
-                                <a href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img src="{{$v->image_link}}" alt="" fetchpriority="low"> </div></a>
+                                <a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img src="{{$v->image_link}}" alt="" fetchpriority="low"> </div></a>
                             </div>
                             <div class="cont">
-                                <h4><a href="{{route('blogs_detail.get', $v->slug)}}">{{$v->name}}</a></h4>
-                                <div class="date"><a href="{{route('blogs_detail.get', $v->slug)}}"><span class="ti-time"></span>&nbsp;&nbsp;<span>{{$v->created_at->diffForHumans()}}</span></a> </div>
+                                <h4><a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}">{{$v->name}}</a></h4>
+                                <div class="date"><a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}"><span class="ti-time"></span>&nbsp;&nbsp;<span>{{$v->created_at->diffForHumans()}}</span></a> </div>
                             </div>
                         </div>
                     </div>

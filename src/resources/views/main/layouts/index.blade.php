@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="xyz">
+<html lang="en">
 @include('main.includes.common_head')
 <body>
     <div class="content-wrapper">
