@@ -41,6 +41,9 @@
         .modal-dialog-scrollable .modal-content {
             background: var(--theme-suffix-color);
         }
+        .modal-body ul{
+            list-style-type: circle;
+        }
     </style>
 
 @stop
@@ -336,8 +339,9 @@
                                     {!!$val->description!!}
                                     @if($val->activate_popup)
                                         <button type="button" class="button-dark2 mx-2" aria-label="{{$val->heading}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
+                                    @else
+                                        <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light">{{$val->button_text}}</a>
                                     @endif
-                                    <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light">{{$val->button_text}}</a>
                                 </div>
                             </div>
                         </div>
@@ -351,9 +355,10 @@
                                 </div>
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
-                                    <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light">{{$val->button_text}}</a>
                                     @if($val->activate_popup)
                                         <button type="button" class="button-dark2 mx-2" data-bs-toggle="modal" aria-label="{{$val->heading}}" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
+                                    @else
+                                        <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light">{{$val->button_text}}</a>
                                     @endif
                                 </div>
                             </div>
