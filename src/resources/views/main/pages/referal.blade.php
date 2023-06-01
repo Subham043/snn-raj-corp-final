@@ -286,7 +286,7 @@
                         <div class="sub-title border-bot-light">Refer Now</div>
                     </div>
                     <div class="col-md-8">
-                        <div class="section-title">Member Details</div>
+                        <h1 class="section-title"><span>Member</span> Details</h1>
                     </div>
                 </div>
                 <div class="row">
@@ -318,7 +318,7 @@
                                 <div class="col-md-6 form-group">
                                     <input class="line-gray" name="member_unit" id="member_unit" type="text" placeholder="Member Unit *" required>
                                 </div>
-                                <div class="section-title my-5">Referral Details</div>
+                                <h2 class="section-title my-5"><span>Referral</span> Details</h2>
                                 <div class="col-md-4 form-group">
                                     <input class="line-gray" name="referal_name" id="referal_name" type="text" placeholder="Referal Name *" required>
                                 </div>

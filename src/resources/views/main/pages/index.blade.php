@@ -152,7 +152,13 @@
                     <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
                         <div class="v-middle caption">
                             <a aria-label="{{$banners->banner_image_title}}" href="{{$banners->button_link ? $banners->button_link : '#'}}">
-                                <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high">
+                                {{-- <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high"> --}}
+                                <picture>
+                                    <source srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)">
+                                    <source srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)">
+                                    <source srcset="{{$banners->banner_image_link}}">
+                                    <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high">
+                                </picture>
                             </a>
                         </div>
                     </div>
@@ -177,7 +183,7 @@
                     {{-- @if($about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif --}}
-                    <div class="section-title">{!!$about->heading!!}</div>
+                    <h1 class="section-title">{!!$about->heading!!}</h1>
 
                 </div>
             </div>
@@ -211,7 +217,7 @@
                             <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
                         </div>
                         <div class="col-md-8 " data-animate-effect="fadeInUp">
-                            <div class="section-title">{!!$counterHeading->heading!!}</div>
+                            <h2 class="section-title">{!!$counterHeading->heading!!}</h2>
                         </div>
                     @endif
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -259,7 +265,7 @@
                 @endif
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
                     @if($projectHeading)
-                    <div class="section-title">{!!$projectHeading->heading!!}</div>
+                    <h2 class="section-title">{!!$projectHeading->heading!!}</h2>
                     <p>{!!$projectHeading->description!!}</p>
                     @endif
                     <div class="row " data-animate-effect="fadeInUp">
@@ -326,7 +332,7 @@
                     @endif
                     <div class="col-md-8">
                         @if($testimonialHeading)
-                        <div class="section-title">{!!$testimonialHeading->heading!!}</div>
+                        <h2 class="section-title">{!!$testimonialHeading->heading!!}</h2>
                         @endif
                     </div>
                     <div class="col-md-12">
@@ -367,7 +373,7 @@
                         <div class="sub-title border-bot-light">Blog</div>
                     </div>
                     <div class="col-md-8">
-                        <div class="section-title"><span>Latest</span> News</div>
+                        <h2 class="section-title"><span>Latest</span> News</h2>
                     </div>
             </div>
             <div class="row">

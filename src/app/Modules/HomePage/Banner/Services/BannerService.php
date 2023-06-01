@@ -59,6 +59,15 @@ class BannerService
         ], $banner);
     }
 
+    public function saveMobileImage(Banner $banner): Banner
+    {
+        $this->deleteMobileImage($banner);
+        $banner_mobile_image = (new FileService)->save_file('banner_mobile_image', (new Banner)->image_path);
+        return $this->update([
+            'banner_mobile_image' => $banner_mobile_image,
+        ], $banner);
+    }
+
     public function delete(Banner $banner): bool|null
     {
         $this->deleteImage($banner);
@@ -69,6 +78,14 @@ class BannerService
     {
         if($banner->banner_image){
             $path = str_replace("storage","app/public",$banner->banner_image);
+            (new FileService)->delete_file($path);
+        }
+    }
+
+    public function deleteMobileImage(Banner $banner): void
+    {
+        if($banner->banner_mobile_image){
+            $path = str_replace("storage","app/public",$banner->banner_mobile_image);
             (new FileService)->delete_file($path);
         }
     }

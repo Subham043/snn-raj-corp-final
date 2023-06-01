@@ -1716,6 +1716,7 @@ input[type="checkbox"] {
 
 .lets-talk {
     position: inherit;
+    overflow: hidden;
 }
 
 .footer .sub-title:before,
@@ -2568,7 +2569,7 @@ input[type="checkbox"] {
 .project-bar {
     padding: 0px 30px;
     background-color: var(--theme-hero-color);
-    margin-top: -60px;
+    /* margin-top: -60px; */
     margin-bottom: 60px;
     position: relative;
     z-index: 10;
@@ -4059,6 +4060,12 @@ color: white;
 
     .project-page-banner .img-fluid {
         margin-bottom: 0px !important;
+    }
+    .contact{
+        overflow: hidden;
+    }
+    .lets-talk label, .contact label {
+        padding: 0 40px 0 0px;
     }
 }
 h1, h2, h3, h4, h5, h6 {

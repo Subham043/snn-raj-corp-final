@@ -50,7 +50,7 @@
                     <div class="sub-title border-bot-light">Contact</div>
                 </div>
                 <div class="col-md-8">
-                    <div class="section-title">Get in touch</div>
+                    <h1 class="section-title">Get in touch</h1>
                     <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line and we’ll get back to you shortly.</p>
                 </div>
             </div>

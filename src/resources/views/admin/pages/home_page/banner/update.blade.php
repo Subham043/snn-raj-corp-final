@@ -24,7 +24,7 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4" id="image_row">
-                                    <div class="col-xxl-3 col-md-3">
+                                    <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'banner_image', 'label'=>'Image'])
                                         <p>
                                             <code>Note: </code> Banner Size : 1415 x 943
@@ -33,13 +33,22 @@
                                             <img src="{{$data->banner_image_link}}" alt="" class="img-preview">
                                         @endif
                                     </div>
-                                    <div class="col-xxl-3 col-md-3">
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.file_input', ['key'=>'banner_mobile_image', 'label'=>'Mobile Image'])
+                                        <p>
+                                            <code>Note: </code> Banner Size : 650 x 750
+                                        </p>
+                                        @if(!empty($data->banner_mobile_image_link))
+                                            <img src="{{$data->banner_mobile_image_link}}" alt="" class="img-preview">
+                                        @endif
+                                    </div>
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'button_link', 'label'=>'Button Link', 'value'=>$data->button_link])
                                     </div>
-                                    <div class="col-xxl-3 col-md-3">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'banner_image_alt', 'label'=>'Image Alt', 'value'=>$data->banner_image_alt])
                                     </div>
-                                    <div class="col-xxl-3 col-md-3">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'banner_image_title', 'label'=>'Image Title', 'value'=>$data->banner_image_title])
                                     </div>
                                     <div class="col-lg-12 col-md-12">
@@ -134,6 +143,11 @@ validation
             validator: (value, fields) => true,
         },
     ])
+    .addField('#banner_mobile_image', [
+        {
+            validator: (value, fields) => true,
+        },
+    ])
   .onSuccess(async (event) => {
     var submitBtn = document.getElementById('submitBtn')
     submitBtn.innerHTML = spinner
@@ -146,6 +160,9 @@ validation
         formData.append('banner_image_alt',document.getElementById('banner_image_alt').value)
         if((document.getElementById('banner_image').files).length>0){
             formData.append('banner_image',document.getElementById('banner_image').files[0])
+        }
+        if((document.getElementById('banner_mobile_image').files).length>0){
+            formData.append('banner_mobile_image',document.getElementById('banner_mobile_image').files[0])
         }
 
         const response = await axios.post('{{route('home_page.banner.update.post', $data->id)}}', formData)
@@ -163,6 +180,9 @@ validation
         }
         if(error?.response?.data?.errors?.banner_image){
             validation.showErrors({'#banner_image': error?.response?.data?.errors?.banner_image[0]})
+        }
+        if(error?.response?.data?.errors?.banner_mobile_image){
+            validation.showErrors({'#banner_mobile_image': error?.response?.data?.errors?.banner_mobile_image[0]})
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)

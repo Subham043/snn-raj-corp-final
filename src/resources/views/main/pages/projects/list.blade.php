@@ -73,7 +73,7 @@
                     <div class="sub-title border-bot-light">{{$projectHeading->sub_heading}}</div>
                 </div>
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
-                    <div class="section-title">{!!$projectHeading->heading!!}</div>
+                    <h1 class="section-title">{!!$projectHeading->heading!!}</h1>
                     <p>{!!$projectHeading->description!!}</p>
                 </div>
             </div>
@@ -127,7 +127,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-2 " data-animate-effect="fadeInUp">
-                        <div class="section-title">ONGOING <br/><span>PROJECTS</span></div>
+                        <h2 class="section-title">ONGOING <br/><span>PROJECTS</span></h2>
                     </div>
                     <div class="col-md-10 " data-animate-effect="fadeInUp">
                         <div class="no-dot sub-title border-bot-light">&nbsp;</div>
@@ -240,7 +240,7 @@
                         <div class="no-dot sub-title border-bot-light">&nbsp;</div>
                     </div>
                     <div class="col-md-2 " data-animate-effect="fadeInUp">
-                        <div class="section-title">COMPLETED <br/><span>PROJECTS</span></div>
+                        <h2 class="section-title">COMPLETED <br/><span>PROJECTS</span></h2>
                     </div>
                 </div>
             </div>

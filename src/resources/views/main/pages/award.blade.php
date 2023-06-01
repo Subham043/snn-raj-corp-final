@@ -49,7 +49,7 @@
                         <div class="sub-title border-bot-light">{{$awardHeading->sub_heading}}</div>
                     </div>
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
-                        <div class="section-title">{!!$awardHeading->heading!!}</div>
+                        <h1 class="section-title">{!!$awardHeading->heading!!}</h1>
                         <p>{!!$awardHeading->description!!}</p>
                     </div>
                 @endif

@@ -41,7 +41,7 @@
                     <div class="sub-title border-bot-light">Blogs</div>
                 </div>
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
-                    <div class="section-title">LATEST <span>NEWS</span></div>
+                    <h1 class="section-title">LATEST <span>NEWS</span></h1>
                 </div>
             </div>
             @if($blogs->total() > 0)

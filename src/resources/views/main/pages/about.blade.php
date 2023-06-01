@@ -59,7 +59,7 @@
                     <div class="hero">
                         <figure><img src="{{ $banner->image_link}}" fetchpriority="high" alt="" class="img-fluid"></figure>
                         <div class="caption">
-                            <div class="section-title">{!!$banner->heading!!}</div>
+                            <h1 class="section-title">{!!$banner->heading!!}</h1>
                             <p>{{$banner->description}}</p>
                             <a href="{{$banner->button_link}}" aria-label="{{$banner->button_text}}" class="button-light">{{$banner->button_text}}</a>
                         </div>
@@ -115,7 +115,7 @@
                     {{-- @if($about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif --}}
-                    <div class="section-title">{!!$about->heading!!}</div>
+                    <h2 class="section-title">{!!$about->heading!!}</h2>
 
                 </div>
             </div>
@@ -148,7 +148,7 @@
                         <div class="sub-title border-bot-light">{{$managementHeading->sub_heading}}</div>
                     </div>
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
-                        <div class="section-title">{!!$managementHeading->heading!!}</div>
+                        <h2 class="section-title">{!!$managementHeading->heading!!}</h2>
                     </div>
                 @endif
             </div>
@@ -222,7 +222,7 @@
                         <div class="sub-title border-bot-light">{{$staffHeading->sub_heading}}</div>
                     </div>
                     <div class="col-md-8">
-                        <div class="section-title">{!!$staffHeading->heading!!}</div>
+                        <h2 class="section-title">{!!$staffHeading->heading!!}</h2>
                     </div>
                 @endif
             </div>
@@ -254,7 +254,7 @@
                         <div class="sub-title border-bot-light">Our Mission</div>
                     </div>
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
-                        <div class="section-title">{!!$banner->mission!!}</div>
+                        <h2 class="section-title">{!!$banner->mission!!}</h2>
                     </div>
                 </div>
             </div>
@@ -333,7 +333,7 @@
                         <div class="col-md-6 valign " data-animate-effect="fadeInRight">
                             <div class="wrap">
                                 <div class="number">
-                                    <div class="section-title">{!!$val->heading!!}</div>
+                                    <h2 class="section-title">{!!$val->heading!!}</h2>
                                 </div>
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
@@ -351,7 +351,7 @@
                         <div class="col-md-6 order2 valign " data-animate-effect="fadeInLeft">
                             <div class="wrap">
                                 <div class="number">
-                                    <div class="section-title">{!!$val->heading!!}</div>
+                                    <h2 class="section-title">{!!$val->heading!!}</h2>
                                 </div>
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
@@ -412,7 +412,7 @@
                             <div class="sub-title border-bot-light">Our Vision</div>
                         </div>
                         <div class="col-md-12 " data-animate-effect="fadeInUp">
-                            <div class="section-title">{!!$banner->vission!!}</div>
+                            <h2 class="section-title">{!!$banner->vission!!}</h2>
                         </div>
                     </div>
                 </div>
@@ -430,7 +430,7 @@
                         <div class="sub-title border-bot-light">{{$partnerHeading->sub_heading}}</div>
                     </div>
                     <div class="col-md-8">
-                        <div class="section-title">{!!$partnerHeading->heading!!}</div>
+                        <h2 class="section-title">{!!$partnerHeading->heading!!}</h2>
                     </div>
                 @endif
             </div>

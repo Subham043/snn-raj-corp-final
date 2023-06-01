@@ -24,6 +24,7 @@ class Banner extends Model
     protected $fillable = [
         'button_link',
         'banner_image',
+        'banner_mobile_image',
         'banner_image_alt',
         'banner_image_title',
         'is_draft'
@@ -37,7 +38,7 @@ class Banner extends Model
 
     public $image_path = 'home_page_banners';
 
-    protected $appends = ['banner_image_link'];
+    protected $appends = ['banner_image_link', 'banner_mobile_image_link'];
 
     public static function boot()
     {
@@ -64,6 +65,20 @@ class Banner extends Model
     {
         return new Attribute(
             get: fn () => asset($this->banner_image),
+        );
+    }
+
+    protected function bannerMobileImage(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => 'storage/'.$this->image_path.'/'.$value,
+        );
+    }
+
+    protected function bannerMobileImageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset($this->banner_mobile_image),
         );
     }
 

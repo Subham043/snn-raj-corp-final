@@ -32,6 +32,10 @@ class BannerUpdateRequest extends BannerCreateRequest
                 $banner = (new BannerService)->getById($this->route('id'));
                 return empty($banner->banner_image);
             }),],
+            'banner_mobile_image' => ['nullable','image', 'min:1', 'max:500', Rule::requiredIf(function (){
+                $banner = (new BannerService)->getById($this->route('id'));
+                return empty($banner->banner_mobile_image);
+            }),],
             'banner_image_alt' => 'nullable|string|max:500',
             'banner_image_title' => 'nullable|string|max:500',
         ];

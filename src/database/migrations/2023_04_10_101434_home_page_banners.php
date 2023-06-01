@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('button_link', 500)->nullable();
             $table->string('banner_image', 500)->nullable();
+            $table->string('banner_mobile_image', 500)->nullable();
             $table->string('banner_image_alt', 500)->nullable();
             $table->string('banner_image_title', 500)->nullable();
             $table->boolean('is_draft')->default(0);
