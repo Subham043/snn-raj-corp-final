@@ -20,7 +20,7 @@ class ContactFormService
 
     public function paginate(Int $total = 10): LengthAwarePaginator
     {
-        $query = ContactForm::latest();
+        $query = ContactForm::where('is_verified', true)->latest();
         return QueryBuilder::for($query)
                 ->allowedFilters([
                     AllowedFilter::custom('search', new CommonFilter),
@@ -37,6 +37,12 @@ class ContactFormService
     public function create(array $data): ContactForm
     {
         return ContactForm::create($data);
+    }
+
+    public function update(array $data, ContactForm $contactForm): ContactForm
+    {
+        $contactForm->update($data);
+        return $contactForm;
     }
 
     public function delete(ContactForm $user): bool|null

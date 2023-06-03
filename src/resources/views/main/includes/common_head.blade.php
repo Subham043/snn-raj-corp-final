@@ -207,6 +207,9 @@
             .mt-md-0{
                 margin-top: 0 !important;
             }
+            .mb-md-0{
+                margin-botton: 0 !important;
+            }
             .pb-md-40{
                 padding-bottom: 40px !important;
             }

@@ -25,11 +25,15 @@ class ContactForm extends Model
         'subject',
         'message',
         'page_url',
+        'ip_address',
+        'otp',
+        'is_verified',
     ];
 
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
+        'is_verified' => 'boolean',
     ];
 
     public function getActivitylogOptions(): LogOptions

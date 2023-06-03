@@ -127,10 +127,10 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-2 " data-animate-effect="fadeInUp">
-                        <h2 class="section-title">ONGOING <br/><span>PROJECTS</span></h2>
+                        <h2 class="section-title mb-md-0 mt-md-0">ONGOING <br/><span>PROJECTS</span></h2>
                     </div>
                     <div class="col-md-10 " data-animate-effect="fadeInUp">
-                        <div class="no-dot sub-title border-bot-light">&nbsp;</div>
+                        <div class="no-dot sub-title border-bot-light pb-md-0 pt-md-0">&nbsp;</div>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,7 @@
 
     @foreach($ongoing_projects as $k => $v)
         @if(($k+1)%2!=0)
-        <section class="projects3">
+        <section class="projects3 py-5">
             <div class="container">
                 <div class="row div-padding pb-md-0">
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
@@ -165,7 +165,7 @@
 
         @else
 
-        <section class="projects3 suffix-div mt-md-0 pb-md-0">
+        <section class="projects3 suffix-div mt-md-0 py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
@@ -232,15 +232,15 @@
     </div> --}}
 
     @if(count($completed_projects)>0)
-    <section class="lets-talk hero hero-contact py-2">
+    <section class="lets-talk hero hero-contact py-2 mt-md-0 mt-0">
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-10 " data-animate-effect="fadeInUp">
-                        <div class="no-dot sub-title border-bot-light">&nbsp;</div>
+                        <div class="no-dot sub-title border-bot-light pb-md-0 pt-md-0">&nbsp;</div>
                     </div>
                     <div class="col-md-2 " data-animate-effect="fadeInUp">
-                        <h2 class="section-title">COMPLETED <br/><span>PROJECTS</span></h2>
+                        <h2 class="section-title mb-md-0 mt-md-0">COMPLETED <br/><span>PROJECTS</span></h2>
                     </div>
                 </div>
             </div>
@@ -250,7 +250,7 @@
 
     @foreach($completed_projects as $k => $v)
         @if(($k+1)%2!=0)
-        <section class="projects3">
+        <section class="projects3 py-5">
             <div class="container">
                 <div class="row div-padding pb-md-0">
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
@@ -275,7 +275,7 @@
 
         @else
 
-        <section class="projects3 suffix-div mt-md-0 pb-md-0">
+        <section class="projects3 suffix-div mt-md-0 py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">

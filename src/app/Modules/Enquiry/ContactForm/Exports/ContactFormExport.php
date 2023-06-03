@@ -19,6 +19,7 @@ class ContactFormExport implements FromCollection,WithHeadings,WithMapping
             'name',
             'email',
             'phone',
+            'IP address',
             'subject',
             'message',
             'page url',
@@ -32,6 +33,7 @@ class ContactFormExport implements FromCollection,WithHeadings,WithMapping
             $data->name,
             $data->email,
             $data->phone,
+            $data->ip_address,
             $data->subject,
             $data->message,
             $data->page_url,
@@ -40,6 +42,6 @@ class ContactFormExport implements FromCollection,WithHeadings,WithMapping
     }
     public function collection()
     {
-        return ContactForm::all();
+        return ContactForm::where('is_verified', true)->get();
     }
 }

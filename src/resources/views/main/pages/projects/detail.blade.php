@@ -621,6 +621,12 @@
 
     <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 
+        let uuid = null;
+        let link = null;
+        var myModal = new bootstrap.Modal(document.getElementById('staticBackdropContact'), {
+            keyboard: false
+        })
+
         // initialize the validation library
         const validation = new JustValidate('#contactForm', {
               errorFieldCssClass: 'is-invalid',
@@ -695,8 +701,10 @@
                 formData.append('page_url','{{Request::url()}}')
 
                 const response = await axios.post('{{route('contact_page.post')}}', formData)
-                successToast(response.data.message)
                 event.target.reset();
+                uuid = response.data.uuid;
+                link = response.data.link;
+                myModal.show()
 
             }catch (error){
                 if(error?.response?.data?.errors?.name){
@@ -722,6 +730,70 @@
                 submitBtn.disabled = false;
             }
           });
+
+          // initialize the validation library
+        const validationOtp = new JustValidate('#otpForm', {
+              errorFieldCssClass: 'is-invalid',
+        });
+        // apply rules to form fields
+        validationOtp
+          .addField('#otp', [
+            {
+              rule: 'required',
+              errorMessage: 'OTP is required',
+            },
+            {
+                rule: 'customRegexp',
+                value: COMMON_REGEX,
+                errorMessage: 'OTP is invalid',
+            },
+          ])
+          .onSuccess(async (event) => {
+            var submitOtpBtn = document.getElementById('submitOtpBtn')
+            submitOtpBtn.value = 'Submitting ...'
+            submitOtpBtn.disabled = true;
+            try {
+                var formData = new FormData();
+                formData.append('otp',document.getElementById('otp').value)
+
+                const response = await axios.post(link, formData)
+                event.target.reset();
+                uuid = null;
+                link = null;
+                myModal.hide()
+                successToast(response.data.message)
+            }catch (error){
+                if(error?.response?.data?.errors?.otp){
+                    validationOtp.showErrors({'#otp': error?.response?.data?.errors?.otp[0]})
+                }
+                if(error?.response?.data?.message){
+                    errorToast(error?.response?.data?.message)
+                }
+            }finally{
+                submitOtpBtn.value =  `Submit`
+                submitOtpBtn.disabled = false;
+            }
+          });
+
+          document.getElementById('resendOtpBtn').addEventListener('click', async function(event){
+            if(uuid){
+                event.target.innerText = 'Sending ...'
+                event.target.disabled = true;
+                try {
+                    var formData = new FormData();
+                    formData.append('uuid',uuid)
+                    const response = await axios.post('{{route('contact_page.resendOtp')}}', formData)
+                    successToast(response.data.message)
+                }catch (error){
+                    if(error?.response?.data?.message){
+                        errorToast(error?.response?.data?.message)
+                    }
+                }finally{
+                    event.target.innerText = 'Resend OTP'
+                    event.target.disabled = false;
+                }
+            }
+          })
 
 
         </script>

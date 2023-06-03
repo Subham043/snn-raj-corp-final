@@ -255,7 +255,7 @@
     @endif --}}
 
     <!-- Projects 2 -->
-    <div class="projects2 project_old  subject-div mt-0 pt-md-0">
+    <div class="projects2 project_old  subject-div mt-0 mt-md-0">
         <div class="container">
             <div class="row mb-4">
                 @if($projectHeading)
