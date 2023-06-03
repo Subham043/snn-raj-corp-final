@@ -59,7 +59,12 @@
             color: #fff;
         }
         .duru-header, .duru-header.scrolled {
-            background: var(--theme-header-color);
+            /* background: var(--theme-header-color); */
+            background: #fff;
+            border-bottom: 1px solid #000;
+        }
+        .duru-nav-toggle i, .duru-nav-toggle i:before, .duru-nav-toggle i:after{
+            background: #000 !important;
         }
         .hero, #slider-area{
             background: var(--theme-hero-color);

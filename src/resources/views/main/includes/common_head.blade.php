@@ -56,7 +56,12 @@
             color: #fff;
         }
         .duru-header, .duru-header.scrolled {
-            background: var(--theme-header-color);
+            /* background: var(--theme-header-color); */
+            background: #fff;
+            border-bottom: 1px solid #000;
+        }
+        .duru-nav-toggle i, .duru-nav-toggle i:before, .duru-nav-toggle i:after{
+            background: #000 !important;
         }
         .hero, #slider-area{
             background: var(--theme-hero-color);
@@ -177,6 +182,34 @@
         }
         .button-light:hover {
             color: white;
+        }
+        .goldern-btn-signup{
+            background: var(--theme-primary-color);
+            color: var(--theme-highlight-text-color);
+            border: 1px solid var(--theme-primary-color);
+        }
+        .goldern-btn-signup:hover{
+            background-color: transparent;
+            color: var(--theme-primary-color);
+            border: 1px solid var(--theme-primary-color);
+        }
+
+        @media screen and (max-width: 600px) {
+            .text-md-center{
+                text-align: center !important;
+            }
+            .pt-md-0{
+                padding-top: 0 !important;
+            }
+            .pb-md-0{
+                padding-bottom: 0 !important;
+            }
+            .mt-md-0{
+                margin-top: 0 !important;
+            }
+            .pb-md-40{
+                padding-bottom: 40px !important;
+            }
         }
     </style>
     @yield('css')

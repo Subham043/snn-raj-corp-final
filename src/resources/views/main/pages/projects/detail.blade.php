@@ -381,9 +381,9 @@
 @if($data->additional_content_count>0)
     @foreach($data->additional_content as $key=>$val)
         @if(($key+1)%2!=0)
-            <section class="section-padding py-5">
+            <section class="section-padding py-5 pb-md-0">
                 <div class="container">
-                    <div class="row div-padding">
+                    <div class="row div-padding pb-md-0">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
                             <div class="img fl-img">
                                 <img fetchpriority="low" src="{{$val->image_link}}" alt="">

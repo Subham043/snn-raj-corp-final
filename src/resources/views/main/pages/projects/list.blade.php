@@ -65,7 +65,7 @@
 @section('content')
 
     <!-- Awards -->
-    @if($projectHeading)
+    {{-- @if($projectHeading)
     <section class="projects3 pt-5">
         <div class="container">
             <div class="row mb-4">
@@ -79,7 +79,7 @@
             </div>
         </div>
     </section>
-    @endif
+    @endif --}}
 
     {{-- <div class="projects2 project_old suffix-div mt-0 pb-0">
         <div class="container">
@@ -122,7 +122,7 @@
     </div> --}}
 
     @if(count($ongoing_projects)>0)
-    <section class="lets-talk hero hero-contact py-5">
+    <section class="lets-talk hero hero-contact py-2 mt-0">
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
@@ -142,7 +142,7 @@
         @if(($k+1)%2!=0)
         <section class="projects3">
             <div class="container">
-                <div class="row div-padding">
+                <div class="row div-padding pb-md-0">
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
                         @if($v->banner_count>0)
                             <div class="img">
@@ -165,7 +165,7 @@
 
         @else
 
-        <section class="projects3 suffix-div">
+        <section class="projects3 suffix-div mt-md-0 pb-md-0">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
@@ -232,7 +232,7 @@
     </div> --}}
 
     @if(count($completed_projects)>0)
-    <section class="lets-talk hero hero-contact py-5">
+    <section class="lets-talk hero hero-contact py-2">
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
@@ -252,7 +252,7 @@
         @if(($k+1)%2!=0)
         <section class="projects3">
             <div class="container">
-                <div class="row div-padding">
+                <div class="row div-padding pb-md-0">
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
                         @if($v->banner_count>0)
                             <div class="img">
@@ -275,7 +275,7 @@
 
         @else
 
-        <section class="projects3 suffix-div">
+        <section class="projects3 suffix-div mt-md-0 pb-md-0">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">

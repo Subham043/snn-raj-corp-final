@@ -217,7 +217,7 @@
                             <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
                         </div>
                         <div class="col-md-8 " data-animate-effect="fadeInUp">
-                            <h2 class="section-title">{!!$counterHeading->heading!!}</h2>
+                            <h2 class="section-title text-md-center">{!!$counterHeading->heading!!}</h2>
                         </div>
                     @endif
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -255,7 +255,7 @@
     @endif --}}
 
     <!-- Projects 2 -->
-    <div class="projects2 project_old  subject-div mt-0">
+    <div class="projects2 project_old  subject-div mt-0 pt-md-0">
         <div class="container">
             <div class="row mb-4">
                 @if($projectHeading)

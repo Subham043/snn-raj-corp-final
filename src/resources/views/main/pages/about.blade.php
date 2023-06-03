@@ -115,7 +115,7 @@
                     {{-- @if($about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif --}}
-                    <h2 class="section-title">{!!$about->heading!!}</h2>
+                    <h2 class="section-title text-md-center">{!!$about->heading!!}</h2>
 
                 </div>
             </div>
@@ -214,7 +214,7 @@
 
     <!-- Staff -->
     @if(count($staffs)>0)
-    <section class="team section-padding">
+    <section class="team section-padding pb-md-40">
         <div class="container">
             <div class="row mb-4">
                 @if($staffHeading)

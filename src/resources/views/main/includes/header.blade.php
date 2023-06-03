@@ -27,7 +27,8 @@
         <div class="row align-items-center">
             <!-- Logo -->
             <div class="col-6 col-md-6 duru-logo-wrap">
-                <a aria-label="logo" href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="high" src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}" data-img="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}"></a>
+                {{-- <a aria-label="logo" href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="high" src="{{ empty($generalSetting) ? asset('assets/images/black-logo.webp') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}" data-img="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}"></a> --}}
+                <a aria-label="logo" href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="high" src="{{ asset('assets/black-logo.webp') }}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}" data-img="{{ asset('assets/black-logo.webp') }}"></a>
             </div>
             <!-- Menu Burger -->
             <div class="col-6 col-md-6 text-right duru-wrap-burger-wrap"> <a aria-label="menu" href="#" class="duru-nav-toggle duru-js-duru-nav-toggle"><i></i></a> </div>
