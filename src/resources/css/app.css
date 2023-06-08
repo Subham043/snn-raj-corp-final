@@ -119,7 +119,8 @@ h6 {
 /* paragraph */
 p {
      font-family: 'Barlow', sans-serif;
-    font-size: 15px;
+    /* font-size: 15px; */
+    font-size: 16px;
     line-height: 1.75em;
     margin: 0 0 20px;
     color: var(--theme-text-color);
@@ -1356,14 +1357,20 @@ input[type="checkbox"] {
 .owl-nav {
     position: absolute;
     bottom: 5%;
-    right: 12%;
+    /* right: 12%; */
     z-index: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    pointer-events: none;
 }
 .owl-prev {
     float: left;
+    pointer-events: all;
 }
 .owl-next {
     float: right;
+    pointer-events: all;
 }
 .owl-theme .owl-nav [class*=owl-] {
     background: transparent;
@@ -2412,7 +2419,7 @@ input[type="checkbox"] {
     left: 70px;
     bottom: 50px;
     /* background-image: linear-gradient(to right,#e5d1c6 20%, transparent 100%); */
-    background-image: linear-gradient(to right,#DCCE78 30%, transparent 100%);
+    background-image: linear-gradient(to right,#d6ad2b 30%, transparent 100%);
     padding: 10px 20px;
     width: 85%;
     z-index: 100;

@@ -43,7 +43,11 @@
                     <div class="item">
                         <h3><span>Get In Touch</span></h3>
                         <a aria-label="contact us" href="{{route('contact_page.get')}}">Contact Us</a><br/>
-                        <a aria-label="referral" href="{{route('referal_page.get')}}">Referral</a>
+                        <a aria-label="referral" href="{{route('referal_page.get')}}">Referral</a><br/>
+                        <a aria-label="referral" href="{{route('referal_page.get')}}">Become A Channel Partner</a><br/>
+                        <a aria-label="referral" href="{{route('referal_page.get')}}">NRI's</a><br/>
+                        <a aria-label="referral" href="{{route('referal_page.get')}}">Land Owner</a><br/>
+                        <a aria-label="referral" href="{{route('referal_page.get')}}">Career</a>
                     </div>
                 </div>
             </div>

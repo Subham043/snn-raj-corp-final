@@ -246,8 +246,8 @@
             return false;
         });
     $(".projects2-items").isotope({
-            itemSelector: '.single-item'
-            // filter: '.ongoing'
+            itemSelector: '.single-item',
+            filter: '.ongoing'
             , layoutMode: 'masonry'
         , });
     });

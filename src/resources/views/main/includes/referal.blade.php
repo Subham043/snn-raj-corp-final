@@ -2,11 +2,15 @@
 <section class="process section-padding">
     <div class="container">
         <div class="row mb-4">
-            <div class="col-md-4 " data-animate-effect="fadeInUp">
+            {{-- <div class="col-md-4 " data-animate-effect="fadeInUp">
                 <div class="sub-title border-bot-light">Referral Program</div>
-            </div>
-            <div class="col-md-8 " data-animate-effect="fadeInUp">
-                <div class="section-title">Our <span>Referral Program</span> gives you premium rewards and gets you closer to the SNN Raj life.</div>
+            </div> --}}
+            <div class="col-md-12 " data-animate-effect="fadeInUp">
+                <div class="section-title">Referral <span>Program</span></div>
+                <p>
+                    Our Referral Program gives you premium rewards and gets you closer to the SNN Raj life.
+                </p>
+                {{-- <div class="section-title">Our <span>Referral Program</span> gives you premium rewards and gets you closer to the SNN Raj life.</div> --}}
             </div>
         </div>
         <div class="row mb-2">

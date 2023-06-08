@@ -21,9 +21,9 @@
 
             --theme-header-color: #1b1919;
             --theme-footer-color: #1b1919;
-            --theme-primary-color: #DCCE78;
+            --theme-primary-color: #d6ad2b;
             /* --theme-hero-color: #e5d1c6; */
-            --theme-hero-color: #DCCE78;
+            --theme-hero-color: #d6ad2b;
             --theme-secondary-color: #ece9de;
             --theme-subject-color: #f6f6f4;
             --theme-suffix-color: #f6f6f4;
@@ -32,7 +32,7 @@
             --theme-text-color: #000;
             --theme-highlight-text-color: #000;
             /* --theme-lines-color:#3d3b3b0f; */
-            --theme-lines-color:#DCCE78;
+            --theme-lines-color:#d6ad2b;
         }
         body {
             color: #000000 !important;
@@ -185,7 +185,8 @@
         }
         .goldern-btn-signup{
             background: var(--theme-primary-color);
-            color: var(--theme-highlight-text-color);
+            /* color: var(--theme-highlight-text-color); */
+            color: white;
             border: 1px solid var(--theme-primary-color);
         }
         .goldern-btn-signup:hover{

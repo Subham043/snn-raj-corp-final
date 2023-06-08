@@ -57,14 +57,15 @@
         }
         .project_old .projects2-con {
             left: 20px;
-            top: 70px;
+            /* top: 70px; */
+            top: 15px;
             background-image: none;
             pointer-events: none;
         }
 
         .project_old p {
             color: #fff;
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .project_old p img {
@@ -174,18 +175,19 @@
     <section class="about section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 " data-animate-effect="fadeInUp">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
                     {{-- @if(!$about->image)
                     @endif --}}
-                    <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
+                    {{-- <div class="sub-title border-bot-light">{{$about->sub_heading}}</div> --}}
+                    <h1 class="section-title">{!!$about->heading!!}</h1>
                 </div>
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                {{-- <div class="col-md-8 " data-animate-effect="fadeInUp"> --}}
                     {{-- @if($about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif --}}
-                    <h1 class="section-title">{!!$about->heading!!}</h1>
+                    {{-- <h1 class="section-title">{!!$about->heading!!}</h1> --}}
 
-                </div>
+                {{-- </div> --}}
             </div>
             <div class="row align-items-center">
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
@@ -213,22 +215,23 @@
             <div class="container">
                 <div class="row">
                     @if($counterHeading)
-                        <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
+                        {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
-                        </div>
-                        <div class="col-md-8 " data-animate-effect="fadeInUp">
-                            <h2 class="section-title text-md-center">{!!$counterHeading->heading!!}</h2>
+                        </div> --}}
+                        <div class="col-md-12 " data-animate-effect="fadeInUp">
+                            <h2 class="section-title">{!!$counterHeading->heading!!}</h2>
                         </div>
                     @endif
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="states">
                             <ul class="flex gap-2 align-items-center justify-content-between">
                                 @foreach($counters as $counters)
-                                <li class="flex">
-                                    <div class="numb valign">
-                                        <h1>{{$counters->counter}}</h1>
+                                {{-- <li class="flex"> --}}
+                                <li class="text-center">
+                                    <div class="numb valign justify-content-center">
+                                        <h1 class="m-0">{{$counters->counter}}</h1>
                                     </div>
-                                    <div class="text valign">
+                                    <div class="text valign justify-content-center">
                                         <p>
                                             {!!$counters->title!!}
                                         </p>
@@ -259,19 +262,19 @@
         <div class="container">
             <div class="row mb-4">
                 @if($projectHeading)
-                <div class="col-md-4 " data-animate-effect="fadeInUp">
+                {{-- <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light">{{$projectHeading->sub_heading}}</div>
-                </div>
+                </div> --}}
                 @endif
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
                     @if($projectHeading)
                     <h2 class="section-title">{!!$projectHeading->heading!!}</h2>
                     <p>{!!$projectHeading->description!!}</p>
                     @endif
-                    <div class="row " data-animate-effect="fadeInUp">
-                        <ul class="projects2-filter">
-                            <li class="active" data-filter="*">All</li>
-                            <li data-filter=".ongoing">Ongoing Projects</li>
+                    <div class="row justify-content-center" data-animate-effect="fadeInUp">
+                        <ul class="projects2-filter text-center">
+                            {{-- <li class="active" data-filter="*">All</li> --}}
+                            <li class="active" data-filter=".ongoing">Ongoing Projects</li>
                             <li data-filter=".completed">Completed Projects</li>
                         </ul>
                     </div>
@@ -326,11 +329,11 @@
             <div class="container">
                 <div class="row">
                     @if($testimonialHeading)
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <h3 class="sub-title border-bot-light">{{$testimonialHeading->sub_heading}}</h3>
-                        </div>
+                        </div> --}}
                     @endif
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         @if($testimonialHeading)
                         <h2 class="section-title">{!!$testimonialHeading->heading!!}</h2>
                         @endif
@@ -369,10 +372,10 @@
     <section class="blog-home suffix-div mt-0">
         <div class="container">
             <div class="row mb-5">
-                    <div class="col-md-4">
+                    {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">Blog</div>
-                    </div>
-                    <div class="col-md-8">
+                    </div> --}}
+                    <div class="col-md-12">
                         <h2 class="section-title"><span>Latest</span> News</h2>
                     </div>
             </div>

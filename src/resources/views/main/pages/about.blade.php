@@ -44,6 +44,26 @@
         .modal-body ul{
             list-style-type: circle;
         }
+        .hero .button-light{
+            background-color: var(--theme-primary-color);
+            color: white;
+            border: 1px solid var(--theme-primary-color);
+        }
+        .hero .button-light:hover{
+            background-color: transparent;
+            color: var(--theme-primary-color);
+        }
+        .main-team-section{
+            background: #1b1919;
+            background-color: #1b1919;
+        }
+        .main-team-section .section-title, .main-team-section p{
+            color: white;
+        }
+
+        .about.main-team-section .wrap .con .info .name{
+            color: white;
+        }
     </style>
 
 @stop
@@ -106,16 +126,16 @@
     <section class="about suffix-div mt-0">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
+                {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp"> --}}
                     {{-- @if(!$about->image)
                     @endif --}}
-                    <div class="sub-title border-bot-light">About Us</div>
-                </div>
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                    {{-- <div class="sub-title border-bot-light">About Us</div>
+                </div> --}}
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
                     {{-- @if($about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif --}}
-                    <h2 class="section-title text-md-center">{!!$about->heading!!}</h2>
+                    <h2 class="section-title">{!!$about->heading!!}</h2>
 
                 </div>
             </div>
@@ -140,14 +160,14 @@
 
     <!-- Management -->
     @if(count($management)>0)
-    <section class="about secondary-div mt-0">
+    <section class="about secondary-div mt-0 main-team-section">
         <div class="container">
             <div class="row">
                 @if($managementHeading)
-                    <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
+                    {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">{{$managementHeading->sub_heading}}</div>
-                    </div>
-                    <div class="col-md-8 " data-animate-effect="fadeInUp">
+                    </div> --}}
+                    <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <h2 class="section-title">{!!$managementHeading->heading!!}</h2>
                     </div>
                 @endif
@@ -218,10 +238,10 @@
         <div class="container">
             <div class="row mb-4">
                 @if($staffHeading)
-                    <div class="col-md-4">
+                    {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">{{$staffHeading->sub_heading}}</div>
-                    </div>
-                    <div class="col-md-8">
+                    </div> --}}
+                    <div class="col-md-12">
                         <h2 class="section-title">{!!$staffHeading->heading!!}</h2>
                     </div>
                 @endif
@@ -250,11 +270,12 @@
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-4 mb-3" data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light">Our Mission</div>
+                    <div class="col-md-4 mb-1" data-animate-effect="fadeInUp">
+                        {{-- <div class="sub-title border-bot-light">Our Mission</div> --}}
+                        <h2 class="section-title">Our <span>Mission</span></h2>
                     </div>
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
-                        <h2 class="section-title">{!!$banner->mission!!}</h2>
+                        <h3 class="text-white">{!!$banner->mission!!}</h5>
                     </div>
                 </div>
             </div>
@@ -338,9 +359,9 @@
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
                                     @if($val->activate_popup)
-                                        <button type="button" class="button-dark2 mx-2" aria-label="{{$val->heading}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
+                                        <button type="button" class="button-light goldern-btn-signup mx-2" aria-label="{{$val->heading}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
                                     @else
-                                        <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light">{{$val->button_text}}</a>
+                                        <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light goldern-btn-signup">{{$val->button_text}}</a>
                                     @endif
                                 </div>
                             </div>
@@ -356,9 +377,9 @@
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
                                     @if($val->activate_popup)
-                                        <button type="button" class="button-dark2 mx-2" data-bs-toggle="modal" aria-label="{{$val->heading}}" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
+                                        <button type="button" class="button-light goldern-btn-signup mx-2" data-bs-toggle="modal" aria-label="{{$val->heading}}" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
                                     @else
-                                        <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light">{{$val->button_text}}</a>
+                                        <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light goldern-btn-signup">{{$val->button_text}}</a>
                                     @endif
                                 </div>
                             </div>
@@ -408,11 +429,18 @@
             <div class="background bg-img bg-fixed" data-overlay-dark="6">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-md-4 mb-3" data-animate-effect="fadeInUp">
+                        {{-- <div class="col-md-4 mb-3" data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light">Our Vision</div>
                         </div>
                         <div class="col-md-12 " data-animate-effect="fadeInUp">
                             <h2 class="section-title">{!!$banner->vission!!}</h2>
+                        </div> --}}
+                        <div class="col-md-4 mb-1" data-animate-effect="fadeInUp">
+                            {{-- <div class="sub-title border-bot-light">Our Mission</div> --}}
+                            <h2 class="section-title">Our <span>Vision</span></h2>
+                        </div>
+                        <div class="col-md-12 " data-animate-effect="fadeInUp">
+                            <h3 class="text-white">{!!$banner->vission!!}</h5>
                         </div>
                     </div>
                 </div>
@@ -426,10 +454,10 @@
         <div class="container">
             <div class="row mb-4">
                 @if($partnerHeading)
-                    <div class="col-md-4">
+                    {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">{{$partnerHeading->sub_heading}}</div>
-                    </div>
-                    <div class="col-md-8">
+                    </div> --}}
+                    <div class="col-md-12">
                         <h2 class="section-title">{!!$partnerHeading->heading!!}</h2>
                     </div>
                 @endif

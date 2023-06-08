@@ -59,6 +59,9 @@
         .projects2-wrap {
             padding-bottom: 30px;
         }
+        .font-weight-normal{
+            font-weight: normal;
+        }
     </style>
 @stop
 
@@ -127,7 +130,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-2 " data-animate-effect="fadeInUp">
-                        <h2 class="section-title mb-md-0 mt-md-0">ONGOING <br/><span>PROJECTS</span></h2>
+                        <h2 class="section-title font-weight-normal mb-md-0 mt-md-0">ONGOING <br/><span class="mx-4">PROJECTS</span></h2>
                     </div>
                     <div class="col-md-10 " data-animate-effect="fadeInUp">
                         <div class="no-dot sub-title border-bot-light pb-md-0 pt-md-0">&nbsp;</div>
@@ -155,7 +158,7 @@
                             <div class="cont">
                                 <h3>{{$v->name}}</h3>
                                 <p>{{ Str::limit($v->brief_description, 300) }}</p>
-                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">View Project</a></div>
+                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">Explore The Project</a></div>
                             </div>
                         </div>
                     </div>
@@ -173,7 +176,7 @@
                             <div class="cont">
                                 <h3>{{$v->name}}</h3>
                                 <p>{{$v->brief_description}}</p>
-                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">View Project</a></div>
+                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">Explore The Project</a></div>
                             </div>
                         </div>
                     </div>
@@ -240,7 +243,7 @@
                         <div class="no-dot sub-title border-bot-light pb-md-0 pt-md-0">&nbsp;</div>
                     </div>
                     <div class="col-md-2 " data-animate-effect="fadeInUp">
-                        <h2 class="section-title mb-md-0 mt-md-0">COMPLETED <br/><span>PROJECTS</span></h2>
+                        <h2 class="section-title font-weight-normal mb-md-0 mt-md-0">COMPLETED <br/><span class="mx-4">PROJECTS</span></h2>
                     </div>
                 </div>
             </div>
@@ -265,7 +268,7 @@
                             <div class="cont">
                                 <h3>{{$v->name}}</h3>
                                 <p>{{ Str::limit($v->brief_description, 300) }}</p>
-                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">View Project</a></div>
+                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">Explore The Project</a></div>
                             </div>
                         </div>
                     </div>
@@ -283,7 +286,7 @@
                             <div class="cont">
                                 <h3>{{$v->name}}</h3>
                                 <p>{{$v->brief_description}}</p>
-                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">View Project</a></div>
+                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">Explore The Project</a></div>
                             </div>
                         </div>
                     </div>
