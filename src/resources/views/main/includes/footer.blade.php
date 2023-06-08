@@ -44,10 +44,10 @@
                         <h3><span>Get In Touch</span></h3>
                         <a aria-label="contact us" href="{{route('contact_page.get')}}">Contact Us</a><br/>
                         <a aria-label="referral" href="{{route('referal_page.get')}}">Referral</a><br/>
-                        <a aria-label="referral" href="{{route('referal_page.get')}}">Become A Channel Partner</a><br/>
-                        <a aria-label="referral" href="{{route('referal_page.get')}}">NRI's</a><br/>
-                        <a aria-label="referral" href="{{route('referal_page.get')}}">Land Owner</a><br/>
-                        <a aria-label="referral" href="{{route('referal_page.get')}}">Career</a>
+                        <a aria-label="channel partner" href="{{route('referal_page.get')}}">Become A Channel Partner</a><br/>
+                        <a aria-label="nri" href="{{route('referal_page.get')}}">NRI's</a><br/>
+                        <a aria-label="land owner" href="{{route('referal_page.get')}}">Land Owner</a><br/>
+                        <a aria-label="career" href="{{route('referal_page.get')}}">Career</a>
                     </div>
                 </div>
             </div>
