@@ -24,9 +24,9 @@
 
             --theme-header-color: #1b1919;
             --theme-footer-color: #1b1919;
-            --theme-primary-color: #d6ad2b;
+            --theme-primary-color: #be932d;
             /* --theme-hero-color: #e5d1c6; */
-            --theme-hero-color: #d6ad2b;
+            --theme-hero-color: #be932d;
             --theme-secondary-color: #ece9de;
             --theme-subject-color: #f6f6f4;
             --theme-suffix-color: #f6f6f4;
@@ -35,7 +35,7 @@
             --theme-text-color: #000;
             --theme-highlight-text-color: #000;
             /* --theme-lines-color:#3d3b3b0f; */
-            --theme-lines-color:#d6ad2b;
+            --theme-lines-color:#be932d;
         }
         body {
             color: #000000 !important;
@@ -288,10 +288,10 @@
             <div class="container">
                 <div class="row mb-5 " data-animate-effect="fadeInUp">
                     <div class="col-md-4">
-                        <div class="sub-title border-bot-light">Refer Now</div>
+                        <div class="sub-title border-bot-light">REFERRAL PROGRAM</div>
                     </div>
                     <div class="col-md-8">
-                        <h1 class="section-title"><span>Member</span> Details</h1>
+                        <h1 class="section-title"><span>Existing</span> Customer Details</h1>
                     </div>
                 </div>
                 <div class="row">
@@ -304,13 +304,13 @@
                             <!-- Form elements -->
                             <div class="row">
                                 <div class="col-md-4 form-group">
-                                    <input class="line-gray" name="member_name" id="member_name" type="text" placeholder="Member Name *" required>
+                                    <input class="line-gray" name="member_name" id="member_name" type="text" placeholder="Name *" required>
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <input class="line-gray" name="member_email" id="member_email" type="email" placeholder="Member Email *" required>
+                                    <input class="line-gray" name="member_email" id="member_email" type="email" placeholder="Email *" required>
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <input class="line-gray" name="member_phone" id="member_phone" type="text" placeholder="Member Phone *" required>
+                                    <input class="line-gray" name="member_phone" id="member_phone" type="text" placeholder="Phone *" required>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <select class="line-gray" name="member_project_id" id="member_project_id" required>
@@ -321,20 +321,20 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input class="line-gray" name="member_unit" id="member_unit" type="text" placeholder="Member Unit *" required>
+                                    <input class="line-gray" name="member_unit" id="member_unit" type="text" placeholder="Unit *" required>
                                 </div>
-                                <h2 class="section-title my-5"><span>Referral</span> Details</h2>
+                                <h2 class="section-title my-5">REFERENCE OF <span>NEW BUYER</span></h2>
                                 <div class="col-md-4 form-group">
-                                    <input class="line-gray" name="referal_name" id="referal_name" type="text" placeholder="Referal Name *" required>
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <input class="line-gray" name="referal_email" id="referal_email" type="email" placeholder="Referal Email *" required>
+                                    <input class="line-gray" name="referal_name" id="referal_name" type="text" placeholder="Name *" required>
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <input class="line-gray" name="referal_phone" id="referal_phone" type="text" placeholder="Referal Phone *" required>
+                                    <input class="line-gray" name="referal_email" id="referal_email" type="email" placeholder="Email *" required>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <input class="line-gray" name="referal_phone" id="referal_phone" type="text" placeholder="Phone *" required>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input class="line-gray" name="referal_relation" id="referal_relation" type="text" placeholder="Referal Relation *" required>
+                                    <input class="line-gray" name="referal_relation" id="referal_relation" type="text" placeholder="Relation *" required>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <select class="line-gray" name="referal_project_id" id="referal_project_id" required>

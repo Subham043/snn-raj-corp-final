@@ -128,7 +128,7 @@
     <section class="lets-talk hero hero-contact py-2 mt-0">
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
-                <div class="row align-items-center">
+                <div class="row align-items-end">
                     <div class="col-md-2 " data-animate-effect="fadeInUp">
                         <h2 class="section-title font-weight-normal mb-md-0 mt-md-0">ONGOING <br/><span class="mx-4">PROJECTS</span></h2>
                     </div>
@@ -238,12 +238,12 @@
     <section class="lets-talk hero hero-contact py-2 mt-md-0 mt-0">
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-10 " data-animate-effect="fadeInUp">
-                        <div class="no-dot sub-title border-bot-light pb-md-0 pt-md-0">&nbsp;</div>
-                    </div>
+                <div class="row  align-items-end">
                     <div class="col-md-2 " data-animate-effect="fadeInUp">
                         <h2 class="section-title font-weight-normal mb-md-0 mt-md-0">COMPLETED <br/><span class="mx-4">PROJECTS</span></h2>
+                    </div>
+                    <div class="col-md-10 " data-animate-effect="fadeInUp">
+                        <div class="no-dot sub-title border-bot-light pb-md-0 pt-md-0">&nbsp;</div>
                     </div>
                 </div>
             </div>

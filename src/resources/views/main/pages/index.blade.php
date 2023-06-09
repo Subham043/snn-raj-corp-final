@@ -219,7 +219,7 @@
                             <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
                         </div> --}}
                         <div class="col-md-12 " data-animate-effect="fadeInUp">
-                            <h2 class="section-title">{!!$counterHeading->heading!!}</h2>
+                            <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0">{!!$counterHeading->heading!!}</h2></div>
                         </div>
                     @endif
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -262,17 +262,17 @@
         <div class="container">
             <div class="row mb-4">
                 @if($projectHeading)
-                {{-- <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light">{{$projectHeading->sub_heading}}</div>
-                </div> --}}
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
+                    {{-- <div class="sub-title border-bot-light">{{$projectHeading->sub_heading}}</div> --}}
+                    <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0">{!!$projectHeading->heading!!}</h2></div>
+                </div>
                 @endif
-                <div class="col-md-12 " data-animate-effect="fadeInUp">
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
                     @if($projectHeading)
-                    <h2 class="section-title">{!!$projectHeading->heading!!}</h2>
                     <p>{!!$projectHeading->description!!}</p>
                     @endif
-                    <div class="row justify-content-center" data-animate-effect="fadeInUp">
-                        <ul class="projects2-filter text-center">
+                    <div class="row" data-animate-effect="fadeInUp" style="--bs-gutter-x: 0rem;">
+                        <ul class="projects2-filter">
                             {{-- <li class="active" data-filter="*">All</li> --}}
                             <li class="active" data-filter=".ongoing">Ongoing Projects</li>
                             <li data-filter=".completed">Completed Projects</li>
@@ -311,7 +311,7 @@
                             <div class="projects2-con" style="z-index: 5">
                                 <h3><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
                                 <p><img src="{{asset('assets/location.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
-                                <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</p>
+                                <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'Completed' : 'Ongoing'}}</p>
                                 <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
                             </div>
                         </div>
@@ -335,10 +335,10 @@
                     @endif
                     <div class="col-md-12">
                         @if($testimonialHeading)
-                        <h2 class="section-title">{!!$testimonialHeading->heading!!}</h2>
+                        <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$testimonialHeading->heading!!}</h2></div>
                         @endif
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 mt-5">
                         <div class="wrap">
                             <div class="owl-carousel owl-theme">
 
@@ -376,7 +376,7 @@
                         <div class="sub-title border-bot-light">Blog</div>
                     </div> --}}
                     <div class="col-md-12">
-                        <h2 class="section-title"><span>Latest</span> News</h2>
+                        <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0"><span>Latest</span> News</h2></div>
                     </div>
             </div>
             <div class="row">

@@ -150,7 +150,7 @@
                     </header>
                     <div class="row no-gutter">
                         <div class="col-md-12">
-                            <div class="project-bar">
+                            <div class="project-bar" style="background-color: #1b1919">
                                 <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
                                     <div class="col-auto mb-15 text-center">
                                         <div class="testimonials">
@@ -159,7 +159,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->floor}}</h6> <span>Floors</span>
+                                                            <h6 style="color: #be932d">{{$data->floor}}</h6> <span style="color: #fff">Floors</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -173,7 +173,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->tower}}</h6> <span>Towers</span>
+                                                            <h6 style="color: #be932d">{{$data->tower}}</h6> <span style="color: #fff">Towers</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -187,7 +187,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->acre}}</h6> <span>Acre</span>
+                                                            <h6 style="color: #be932d">{{$data->acre}}</h6> <span style="color: #fff">Acre</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -201,7 +201,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/location.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->location}}</h6> <span>Location</span>
+                                                            <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -215,7 +215,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->rera}}</h6> <span>RERA No.</span>
+                                                            <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -229,7 +229,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/status.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span>Status</span>
+                                                            <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -259,7 +259,7 @@
                     </div>
                     <div class="row no-gutter">
                         <div class="col-md-12 px-0">
-                            <div class="project-bar">
+                            <div class="project-bar" style="background-color:#1b1919;">
                                 <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
                                     <div class="col-auto mb-15 text-center">
                                         <div class="testimonials">
@@ -268,7 +268,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->floor}}</h6> <span>Floors</span>
+                                                            <h6 style="color: #be932d">{{$data->floor}}</h6> <span style="color: #fff">Floors</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -282,7 +282,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->tower}}</h6> <span>Towers</span>
+                                                            <h6 style="color: #be932d">{{$data->tower}}</h6> <span style="color: #fff">Towers</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -296,7 +296,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->acre}}</h6> <span>Acre</span>
+                                                            <h6 style="color: #be932d">{{$data->acre}}</h6> <span style="color: #fff">Acre</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -310,7 +310,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/location.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->location}}</h6> <span>Location</span>
+                                                            <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -324,7 +324,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->rera}}</h6> <span>RERA No.</span>
+                                                            <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -338,7 +338,7 @@
                                                     <div class="info">
                                                         <div class="author-img"> <img src="{{asset('assets/status.svg')}}" alt=""> </div>
                                                         <div class="cont">
-                                                            <h6>{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span>Status</span>
+                                                            <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
                                                         </div>
                                                     </div>
                                                 </div>

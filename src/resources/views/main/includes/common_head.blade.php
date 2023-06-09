@@ -21,9 +21,9 @@
 
             --theme-header-color: #1b1919;
             --theme-footer-color: #1b1919;
-            --theme-primary-color: #d6ad2b;
+            --theme-primary-color: #be932d;
             /* --theme-hero-color: #e5d1c6; */
-            --theme-hero-color: #d6ad2b;
+            --theme-hero-color: #be932d;
             --theme-secondary-color: #ece9de;
             --theme-subject-color: #f6f6f4;
             --theme-suffix-color: #f6f6f4;
@@ -32,7 +32,7 @@
             --theme-text-color: #000;
             --theme-highlight-text-color: #000;
             /* --theme-lines-color:#3d3b3b0f; */
-            --theme-lines-color:#d6ad2b;
+            --theme-lines-color:#be932d;
         }
         body {
             color: #000000 !important;
@@ -146,6 +146,7 @@
         }
         .hero-contact .states li p {
             font-weight: 600;
+            font-size: 18px;
         }
         .hero-contact input[type=submit]:hover, .hero-contact input[type=reset]:hover, .hero-contact input[type=button]:hover, .hero-contact button:hover {
             background-color: black;
