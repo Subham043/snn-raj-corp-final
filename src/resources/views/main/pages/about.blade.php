@@ -131,7 +131,7 @@
                     @endif --}}
                     {{-- <div class="sub-title border-bot-light">About Us</div>
                 </div> --}}
-                <div class="col-md-5 " data-animate-effect="fadeInUp">
+                <div class="col-md-6 " data-animate-effect="fadeInUp">
                     {{-- @if($about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif --}}

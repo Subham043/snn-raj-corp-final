@@ -491,7 +491,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-30 " data-animate-effect="fadeInUp">
-                    <div class="section-title text-center"><span>Worldclass</span> Amenities</div>
+                    <div class="section-title text-center"><span>Best Of Class</span> Amenities</div>
                 </div>
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="row amenity-row justify-content-center">
@@ -520,7 +520,7 @@
                     <div class="sub-title border-bot-light">Videos</div>
                 </div>
                 <div class="col-md-8">
-                    <div class="section-title"><span>Video</span> Gallery</div>
+                    <div class="section-title"><span>Video</span> Galleria</div>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -542,7 +542,7 @@
     </section>
 @endif
 
-<!-- Image Gallery -->
+<!-- Image Galleria -->
 @if($data->gallery_image_count>0)
     <section class="section-padding mb-5">
         <div class="container">
@@ -551,7 +551,7 @@
                     <div class="sub-title border-bot-light">Images</div>
                 </div>
                 <div class="col-md-8">
-                    <div class="section-title"><span>Image</span> Gallery</div>
+                    <div class="section-title"><span>Image</span> Galleria</div>
                 </div>
             </div>
             <div class="row justify-content-center">
