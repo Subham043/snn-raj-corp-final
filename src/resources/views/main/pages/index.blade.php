@@ -218,7 +218,7 @@
                         {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
                         </div> --}}
-                        <div class="col-md-12 " data-animate-effect="fadeInUp">
+                        <div class="col-md-3 " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0">{!!$counterHeading->heading!!}</h2></div>
                         </div>
                     @endif
@@ -262,12 +262,12 @@
         <div class="container">
             <div class="row mb-4">
                 @if($projectHeading)
-                <div class="col-md-4 " data-animate-effect="fadeInUp">
+                <div class="col-md-5 " data-animate-effect="fadeInUp">
                     {{-- <div class="sub-title border-bot-light">{{$projectHeading->sub_heading}}</div> --}}
                     <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0">{!!$projectHeading->heading!!}</h2></div>
                 </div>
                 @endif
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                <div class="col-md-7 " data-animate-effect="fadeInUp">
                     @if($projectHeading)
                     <p>{!!$projectHeading->description!!}</p>
                     @endif
@@ -333,7 +333,7 @@
                             <h3 class="sub-title border-bot-light">{{$testimonialHeading->sub_heading}}</h3>
                         </div> --}}
                     @endif
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         @if($testimonialHeading)
                         <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$testimonialHeading->heading!!}</h2></div>
                         @endif
