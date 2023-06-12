@@ -267,7 +267,7 @@
                     <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0">{!!$projectHeading->heading!!}</h2></div>
                 </div>
                 @endif
-                <div class="col-md-7 " data-animate-effect="fadeInUp">
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
                     @if($projectHeading)
                     <p>{!!$projectHeading->description!!}</p>
                     @endif
