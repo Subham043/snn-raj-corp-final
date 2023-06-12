@@ -58,7 +58,7 @@
         .duru-header, .duru-header.scrolled {
             /* background: var(--theme-header-color); */
             background: #fff;
-            border-bottom: 1px solid #000;
+            border-bottom: 1px solid transparent;
         }
         .duru-nav-toggle i, .duru-nav-toggle i:before, .duru-nav-toggle i:after{
             background: #000 !important;
