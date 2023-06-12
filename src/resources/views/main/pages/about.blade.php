@@ -64,6 +64,12 @@
         .about.main-team-section .wrap .con .info .name{
             color: white;
         }
+        .about_banner_img{
+            border: 1px solid #1c1919;
+            padding: 5px;
+            border-top-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
     </style>
 
 @stop
@@ -77,7 +83,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img src="{{ $banner->image_link}}" fetchpriority="high" alt="" class="img-fluid"></figure>
+                        <figure><img src="{{ $banner->image_link}}" fetchpriority="high" alt="" class="img-fluid about_banner_img"></figure>
                         <div class="caption">
                             <h1 class="section-title">{!!$banner->heading!!}</h1>
                             <p>{{$banner->description}}</p>
@@ -131,7 +137,7 @@
                     @endif --}}
                     {{-- <div class="sub-title border-bot-light">About Us</div>
                 </div> --}}
-                <div class="col-md-6 " data-animate-effect="fadeInUp">
+                <div class="col-md-auto " data-animate-effect="fadeInUp">
                     {{-- @if($about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif --}}
@@ -167,7 +173,7 @@
                     {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">{{$managementHeading->sub_heading}}</div>
                     </div> --}}
-                    <div class="col-md-5 " data-animate-effect="fadeInUp">
+                    <div class="col-md-auto " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$managementHeading->heading!!}</h2></div>
                     </div>
                 @endif
@@ -241,7 +247,7 @@
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">{{$staffHeading->sub_heading}}</div>
                     </div> --}}
-                    <div class="col-md-4">
+                    <div class="col-md-auto">
                         <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$staffHeading->heading!!}</h2></div>
                     </div>
                 @endif
@@ -270,7 +276,7 @@
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-3 mb-1" data-animate-effect="fadeInUp">
+                    <div class="col-md-auto mb-1" data-animate-effect="fadeInUp">
                         {{-- <div class="sub-title border-bot-light">Our Mission</div> --}}
                         <div class="sub-title border-bot-light"><h2 class="section-title m-0">Our <span>Mission</span></h2></div>
                     </div>
@@ -435,7 +441,7 @@
                         <div class="col-md-12 " data-animate-effect="fadeInUp">
                             <h2 class="section-title">{!!$banner->vission!!}</h2>
                         </div> --}}
-                        <div class="col-md-3 mb-1" data-animate-effect="fadeInUp">
+                        <div class="col-md-auto mb-1" data-animate-effect="fadeInUp">
                             {{-- <div class="sub-title border-bot-light">Our Mission</div> --}}
                             <div class="sub-title border-bot-light"><h2 class="section-title m-0">Our <span>Vision</span></h2></div>
                         </div>
@@ -457,7 +463,7 @@
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">{{$partnerHeading->sub_heading}}</div>
                     </div> --}}
-                    <div class="col-md-6">
+                    <div class="col-md-auto">
                         <div class="sub-title border-bot-light"> <h2 class="section-title m-0">{!!$partnerHeading->heading!!}</h2></div>
                     </div>
                 @endif

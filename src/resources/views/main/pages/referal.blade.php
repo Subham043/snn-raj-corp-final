@@ -47,7 +47,7 @@
         }
         .section-title {
             font-weight: 800;
-            font-size: 40px;
+            font-size: 30px;
         }
         .sub-title {
             font-weight: 600;

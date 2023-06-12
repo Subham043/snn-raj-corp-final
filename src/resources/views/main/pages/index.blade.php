@@ -175,11 +175,11 @@
     <section class="about section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 " data-animate-effect="fadeInUp">
+                <div class="col-md-auto " data-animate-effect="fadeInUp">
                     {{-- @if(!$about->image)
                     @endif --}}
                     {{-- <div class="sub-title border-bot-light">{{$about->sub_heading}}</div> --}}
-                    <h1 class="section-title">{!!$about->heading!!}</h1>
+                    <div class="sub-title border-bot-light m-0"><h1 class="section-title">{!!$about->heading!!}</h1></div>
                 </div>
                 {{-- <div class="col-md-8 " data-animate-effect="fadeInUp"> --}}
                     {{-- @if($about->image)
@@ -218,7 +218,7 @@
                         {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
                         </div> --}}
-                        <div class="col-md-3 " data-animate-effect="fadeInUp">
+                        <div class="col-md-auto " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0">{!!$counterHeading->heading!!}</h2></div>
                         </div>
                     @endif
@@ -262,7 +262,7 @@
         <div class="container">
             <div class="row mb-4">
                 @if($projectHeading)
-                <div class="col-md-5 " data-animate-effect="fadeInUp">
+                <div class="col-md-auto " data-animate-effect="fadeInUp">
                     {{-- <div class="sub-title border-bot-light">{{$projectHeading->sub_heading}}</div> --}}
                     <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0">{!!$projectHeading->heading!!}</h2></div>
                 </div>
@@ -333,7 +333,7 @@
                             <h3 class="sub-title border-bot-light">{{$testimonialHeading->sub_heading}}</h3>
                         </div> --}}
                     @endif
-                    <div class="col-md-6">
+                    <div class="col-md-auto">
                         @if($testimonialHeading)
                         <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$testimonialHeading->heading!!}</h2></div>
                         @endif
@@ -375,7 +375,7 @@
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">Blog</div>
                     </div> --}}
-                    <div class="col-md-12">
+                    <div class="col-md-auto">
                         <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0"><span>Latest</span> News</h2></div>
                     </div>
             </div>
