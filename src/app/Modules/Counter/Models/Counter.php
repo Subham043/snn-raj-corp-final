@@ -33,6 +33,8 @@ class Counter extends Model
         'updated_at' => 'datetime',
     ];
 
+    protected $appends = ['counter_number', 'counter_text'];
+
     public static function boot()
     {
         parent::boot();
@@ -45,6 +47,20 @@ class Counter extends Model
         self::deleted(function ($model) {
             Cache::forget('counters_main');
         });
+    }
+
+    protected function counterNumber(): Attribute
+    {
+        return new Attribute(
+            get: fn () => preg_replace('/[^0-9]/', '', $this->counter),
+        );
+    }
+
+    protected function counterText(): Attribute
+    {
+        return new Attribute(
+            get: fn () => preg_replace('/[^a-zA-Z\@\-\/\(\)\\\#\;\[\]\{\}\$\+\.\-]/', '', $this->counter),
+        );
     }
 
     public function user()

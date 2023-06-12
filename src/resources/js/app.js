@@ -310,6 +310,10 @@
         });
     }
 
+    if($('.purecounter').length){
+        new PureCounter();
+    }
+
     // MagnificPopup
     $(".img-zoom").magnificPopup({
         type: "image"

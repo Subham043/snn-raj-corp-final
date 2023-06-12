@@ -179,7 +179,7 @@
                     {{-- @if(!$about->image)
                     @endif --}}
                     {{-- <div class="sub-title border-bot-light">{{$about->sub_heading}}</div> --}}
-                    <div class="sub-title border-bot-light m-0"><h1 class="section-title">{!!$about->heading!!}</h1></div>
+                    <div class="sub-title border-bot-light mb-3"><h1 class="section-title m-0">{!!$about->heading!!}</h1></div>
                 </div>
                 {{-- <div class="col-md-8 " data-animate-effect="fadeInUp"> --}}
                     {{-- @if($about->image)
@@ -229,7 +229,7 @@
                                 {{-- <li class="flex"> --}}
                                 <li class="text-center">
                                     <div class="numb valign justify-content-center">
-                                        <h1 class="m-0">{{$counters->counter}}</h1>
+                                        <h1 class="m-0"><span class="text-white purecounter" data-purecounter-duration="5"  data-purecounter-start="0" data-purecounter-end="{{$counters->counter_number}}">0</span> {{$counters->counter_text}}</h1>
                                     </div>
                                     <div class="text valign justify-content-center">
                                         <p>

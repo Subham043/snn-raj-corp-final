@@ -271,11 +271,11 @@
                                             </li>
                                         @endcan
 
-                                        @can('view theme settings detail')
+                                        {{-- @can('view theme settings detail')
                                             <li class="nav-item">
                                                 <a href="{{route('theme.settings.get')}}" class="nav-link {{strpos(url()->current(), route('theme.settings.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Theme </a>
                                             </li>
-                                        @endcan
+                                        @endcan --}}
 
                                         @can('view chatbot settings detail')
                                             <li class="nav-item">
