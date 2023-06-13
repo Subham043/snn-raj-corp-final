@@ -174,7 +174,7 @@
     @if($about)
     <section class="about section-padding">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-auto " data-animate-effect="fadeInUp">
                     {{-- @if(!$about->image)
                     @endif --}}
@@ -213,7 +213,7 @@
     <section class="about lets-talk hero hero-contact py-5">
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
-                <div class="row">
+                <div class="row justify-content-center">
                     @if($counterHeading)
                         {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
@@ -222,6 +222,8 @@
                             <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0">{!!$counterHeading->heading!!}</h2></div>
                         </div>
                     @endif
+                </div>
+                <div class="row">
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="states">
                             <ul class="flex gap-2 align-items-center justify-content-between">
@@ -327,7 +329,7 @@
     <section class="testimonials">
         <div class="background bg-img bg-fixed section-padding">
             <div class="container">
-                <div class="row">
+                <div class="row justify-content-center">
                     @if($testimonialHeading)
                         {{-- <div class="col-md-4">
                             <h3 class="sub-title border-bot-light">{{$testimonialHeading->sub_heading}}</h3>
@@ -338,6 +340,8 @@
                         <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$testimonialHeading->heading!!}</h2></div>
                         @endif
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12 mt-5">
                         <div class="wrap">
                             <div class="owl-carousel owl-theme">
@@ -371,7 +375,7 @@
     @if(count($blogs) > 0)
     <section class="blog-home suffix-div mt-0">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row justify-content-center mb-5">
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">Blog</div>
                     </div> --}}

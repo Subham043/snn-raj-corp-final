@@ -131,7 +131,7 @@
     @if($about)
     <section class="about suffix-div mt-0">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp"> --}}
                     {{-- @if(!$about->image)
                     @endif --}}
@@ -146,14 +146,14 @@
                 </div>
             </div>
             <div class="row align-items-center">
-                <div class="col-md-4" data-animate-effect="fadeInUp">
+                <div class="col-md-3" data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
                         <img src="{{$about->image_link}}"  fetchpriority="low"class="img-fluid" alt="">
                     </div>
                     @endif
                 </div>
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                <div class="col-md-9 " data-animate-effect="fadeInUp">
                     <div class="desc-ul">
                         {!!$about->description!!}
                     </div>
@@ -168,7 +168,7 @@
     @if(count($management)>0)
     <section class="about secondary-div mt-0 main-team-section">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 @if($managementHeading)
                     {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">{{$managementHeading->sub_heading}}</div>
@@ -242,7 +242,7 @@
     @if(count($staffs)>0)
     <section class="team section-padding pb-md-40">
         <div class="container">
-            <div class="row mb-4">
+            <div class="row justify-content-center mb-4">
                 @if($staffHeading)
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">{{$staffHeading->sub_heading}}</div>
@@ -276,7 +276,7 @@
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-auto mb-1" data-animate-effect="fadeInUp">
+                    <div class="col-md-auto mb-4" data-animate-effect="fadeInUp">
                         {{-- <div class="sub-title border-bot-light">Our Mission</div> --}}
                         <div class="sub-title border-bot-light"><h2 class="section-title m-0">Our <span>Mission</span></h2></div>
                     </div>
@@ -441,7 +441,7 @@
                         <div class="col-md-12 " data-animate-effect="fadeInUp">
                             <h2 class="section-title">{!!$banner->vission!!}</h2>
                         </div> --}}
-                        <div class="col-md-auto mb-1" data-animate-effect="fadeInUp">
+                        <div class="col-md-auto mb-4" data-animate-effect="fadeInUp">
                             {{-- <div class="sub-title border-bot-light">Our Mission</div> --}}
                             <div class="sub-title border-bot-light"><h2 class="section-title m-0">Our <span>Vision</span></h2></div>
                         </div>
@@ -458,12 +458,12 @@
     @if(count($partners)>0)
     <section class="partner section-padding">
         <div class="container">
-            <div class="row mb-4">
+            <div class="row justify-content-center mb-4">
                 @if($partnerHeading)
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">{{$partnerHeading->sub_heading}}</div>
                     </div> --}}
-                    <div class="col-md-auto">
+                    <div class="col-md-auto mb-4">
                         <div class="sub-title border-bot-light"> <h2 class="section-title m-0">{!!$partnerHeading->heading!!}</h2></div>
                     </div>
                 @endif
