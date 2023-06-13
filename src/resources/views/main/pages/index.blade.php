@@ -190,14 +190,14 @@
                 {{-- </div> --}}
             </div>
             <div class="row align-items-center">
-                <div class="col-md-4 " data-animate-effect="fadeInUp">
+                <div class="col-md-3 " data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
                         <img src="{{$about->image_link}}" fetchpriority="high" class="img-fluid shapeee" alt="">
                     </div>
                     @endif
                 </div>
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                <div class="col-md-9 " data-animate-effect="fadeInUp">
                     <div class="desc-ul">
                         {!!$about->description!!}
                     </div>
