@@ -234,7 +234,7 @@
                             <ul class="flex gap-2 align-items-center justify-content-between">
                                 @foreach($counters as $counters)
                                 {{-- <li class="flex"> --}}
-                                <li class="text-center">
+                                <li class="text-center col-md-4 col-sm-12 p-2 mx-0">
                                     <div class="numb valign justify-content-center">
                                         <h1 class="m-0"><span class="text-white purecounter" data-purecounter-duration="5"  data-purecounter-start="0" data-purecounter-end="{{$counters->counter_number}}">0</span> {{$counters->counter_text}}</h1>
                                     </div>
