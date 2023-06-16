@@ -54,7 +54,7 @@
         <div class="container">
             <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
-                    <div class="no-line-heading sub-title border-bot-light">Contact</div>
+                    <div class="no-line-heading sub-title border-bot-light">Career</div>
                 </div>
                 <div class="col-md-8">
                     <h1 class="section-title">Get in <span>touch</span></h1>
@@ -63,16 +63,6 @@
             </div>
             <div class="row">
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
-                    <!-- Contact Info -->
-                    <p>{{ empty($generalSetting) ? '' : $generalSetting->address}}</p>
-                    <p class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</p>
-                    <p class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email}}</p>
-                    <div class="social mt-2">
-                        <a aria-label="facebook" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
-                        <a aria-label="instagram" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
-                        <a aria-label="linkedin" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
-                        <a aria-label="youtube" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
-                    </div>
                 </div>
                 <!-- form -->
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
@@ -89,10 +79,14 @@
                                 <input class="line-gray" name="phone" id="phone" type="text" placeholder="Your Number *" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input class="line-gray" name="subject" id="subject" type="text" placeholder="Subject *" required>
+                                <input class="line-gray" name="experience" id="experience" type="text" placeholder="Real Estate Experience *" required>
                             </div>
                             <div class="col-md-12 form-group">
-                                <textarea class="line-gray" name="message" id="message" cols="30" rows="4" placeholder="Message *" required></textarea>
+                                <textarea class="line-gray" name="description" id="description" cols="30" rows="4" placeholder="Brief Description About Yourself *" required></textarea>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <label for="cv">Upload CV (Only PDF Allowed) *</label>
+                                <input class="line-gray" name="cv" id="cv" type="file" required>
                             </div>
                             <div class="col-md-12 mt-2">
                                 <div class="col-md-12 mt-3 mb-5">
@@ -101,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mt-2">
-                                <input name="submit" id="submitBtn" type="submit" value="Send Message">
+                                <input name="submit" id="submitBtn" type="submit" value="Submit">
                             </div>
                         </div>
                     </form>
@@ -109,41 +103,6 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="staticBackdropContact" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Verify Mobile Number</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <form id="otpForm" method="post">
-                        <div class="mb-3">
-                          <input type="text" class="form-control" id="otp" name="otp" aria-describedby="otpHelp" placeholder="OTP *">
-                          <div id="otpHelp" class="form-text">We have shared an OTP to your mobile via SMS.</div>
-                        </div>
-                        <button type="submit" id="submitOtpBtn" class="btn btn-dark">Submit</button>
-                        <button type="button" id="resendOtpBtn" class="btn btn-danger">Resend OTP</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @include('main.includes.referal')
-
-    <div class="py-3"></div>
-
-    <!-- Maps -->
-    {{-- <div class="google-maps">
-        <iframe id="gmap_canvas"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13419.032130422971!2d-79.94077173022463!3d32.772154400000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fe7a1ae84ff639%3A0xe5c782f71924a526!2s24%20King%20St%2C%20Charleston%2C%20SC%2029401%2C%20Amerika%20Birle%C5%9Fik%20Devletleri!5e0!3m2!1str!2str!4v1665070628853!5m2!1str!2str"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div> --}}
 
 
 @stop
@@ -154,12 +113,6 @@
     {!!$seo->meta_footer_no_script_nonce!!}
 
     <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
-
-        let uuid = null;
-        let link = null;
-        var myModal = new bootstrap.Modal(document.getElementById('staticBackdropContact'), {
-            keyboard: false
-        })
 
         // initialize the validation library
         const validation = new JustValidate('#contactForm', {
@@ -199,21 +152,21 @@
                 errorMessage: 'Email is invalid!',
             },
           ])
-          .addField('#subject', [
+          .addField('#experience', [
             {
               rule: 'required',
-              errorMessage: 'Subject is required',
+              errorMessage: 'Experience is required',
             },
             {
                 rule: 'customRegexp',
                 value: COMMON_REGEX,
-                errorMessage: 'Subject is invalid',
+                errorMessage: 'Experience is invalid',
             },
           ])
-          .addField('#message', [
+          .addField('#description', [
             {
               rule: 'required',
-              errorMessage: 'Message is required',
+              errorMessage: 'Description is required',
             },
             {
                 rule: 'customRegexp',
@@ -221,24 +174,51 @@
                 errorMessage: 'Message is invalid',
             },
           ])
+          .addField('#cv', [
+                {
+                rule: 'required',
+                errorMessage: 'Cv is required',
+                },
+                {
+                    rule: 'minFilesCount',
+                    value: 1,
+                    errorMessage: 'Cv is required',
+                },
+                {
+                    rule: 'maxFilesCount',
+                    value: 1,
+                    errorMessage: 'Only One Cv is required',
+                },
+                {
+                    rule: 'files',
+                    value: {
+                    files: {
+                        extensions: ['pdf'],
+                        maxSize: 500000,
+                        types: ['application/pdf'],
+                    },
+                    },
+                    errorMessage: 'Cv\'s with jpeg,jpg,png,webp extensions are allowed! Cv size should not exceed 500kb!',
+                },
+            ])
           .onSuccess(async (event) => {
             var submitBtn = document.getElementById('submitBtn')
-            submitBtn.value = 'Sending Message ...'
+            submitBtn.value = 'Submitting ...'
             submitBtn.disabled = true;
             try {
                 var formData = new FormData();
                 formData.append('name',document.getElementById('name').value)
                 formData.append('email',document.getElementById('email').value)
                 formData.append('phone',document.getElementById('phone').value)
-                formData.append('subject',document.getElementById('subject').value)
-                formData.append('message',document.getElementById('message').value)
-                formData.append('page_url','{{Request::url()}}')
+                formData.append('experience',document.getElementById('experience').value)
+                formData.append('description',document.getElementById('description').value)
+                if((document.getElementById('cv').files).length>0){
+                    formData.append('cv',document.getElementById('cv').files[0])
+                }
 
-                const response = await axios.post('{{route('contact_page.post')}}', formData)
+                const response = await axios.post('{{route('career_page.post')}}', formData)
                 event.target.reset();
-                uuid = response.data.uuid;
-                link = response.data.link;
-                myModal.show()
+                successToast(response.data.message)
 
             }catch (error){
                 if(error?.response?.data?.errors?.name){
@@ -250,85 +230,23 @@
                 if(error?.response?.data?.errors?.phone){
                     validation.showErrors({'#phone': error?.response?.data?.errors?.phone[0]})
                 }
-                if(error?.response?.data?.errors?.subject){
-                    validation.showErrors({'#subject': error?.response?.data?.errors?.subject[0]})
+                if(error?.response?.data?.errors?.experience){
+                    validation.showErrors({'#experience': error?.response?.data?.errors?.experience[0]})
                 }
-                if(error?.response?.data?.errors?.message){
-                    validation.showErrors({'#message': error?.response?.data?.errors?.message[0]})
+                if(error?.response?.data?.errors?.description){
+                    validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
+                }
+                if(error?.response?.data?.errors?.cv){
+                    validation.showErrors({'#cv': error?.response?.data?.errors?.cv[0]})
                 }
                 if(error?.response?.data?.message){
                     errorToast(error?.response?.data?.message)
                 }
             }finally{
-                submitBtn.value =  `Send Message`
+                submitBtn.value =  `Submit`
                 submitBtn.disabled = false;
             }
           });
-
-          // initialize the validation library
-        const validationOtp = new JustValidate('#otpForm', {
-              errorFieldCssClass: 'is-invalid',
-        });
-        // apply rules to form fields
-        validationOtp
-          .addField('#otp', [
-            {
-              rule: 'required',
-              errorMessage: 'OTP is required',
-            },
-            {
-                rule: 'customRegexp',
-                value: COMMON_REGEX,
-                errorMessage: 'OTP is invalid',
-            },
-          ])
-          .onSuccess(async (event) => {
-            var submitOtpBtn = document.getElementById('submitOtpBtn')
-            submitOtpBtn.value = 'Submitting ...'
-            submitOtpBtn.disabled = true;
-            try {
-                var formData = new FormData();
-                formData.append('otp',document.getElementById('otp').value)
-
-                const response = await axios.post(link, formData)
-                event.target.reset();
-                uuid = null;
-                link = null;
-                myModal.hide()
-                successToast(response.data.message)
-            }catch (error){
-                if(error?.response?.data?.errors?.otp){
-                    validationOtp.showErrors({'#otp': error?.response?.data?.errors?.otp[0]})
-                }
-                if(error?.response?.data?.message){
-                    errorToast(error?.response?.data?.message)
-                }
-            }finally{
-                submitOtpBtn.value =  `Submit`
-                submitOtpBtn.disabled = false;
-            }
-          });
-
-          document.getElementById('resendOtpBtn').addEventListener('click', async function(event){
-            if(uuid){
-                event.target.innerText = 'Sending ...'
-                event.target.disabled = true;
-                try {
-                    var formData = new FormData();
-                    formData.append('uuid',uuid)
-                    const response = await axios.post('{{route('contact_page.resendOtp')}}', formData)
-                    successToast(response.data.message)
-                }catch (error){
-                    if(error?.response?.data?.message){
-                        errorToast(error?.response?.data?.message)
-                    }
-                }finally{
-                    event.target.innerText = 'Resend OTP'
-                    event.target.disabled = false;
-                }
-            }
-          })
-
 
     </script>
 

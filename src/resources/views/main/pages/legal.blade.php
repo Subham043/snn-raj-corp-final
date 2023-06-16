@@ -17,6 +17,16 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
+    <style>
+        .no-line-heading.sub-title:after{
+            width: 100%;
+            left: 0;
+        }
+        .no-line-heading.sub-title {
+            font-size: 20px;
+        }
+    </style>
+
 @stop
 
 @section('content')
@@ -27,7 +37,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light">{{$data->page_name}}</div>
+                        {{-- <div class="no-line-heading sub-title border-bot-light">{{$data->page_name}}</div> --}}
                         <h1 class="section-title">{!!$data->heading!!}</h1>
                         <div class="desc-ul">
                             {!!$data->description!!}

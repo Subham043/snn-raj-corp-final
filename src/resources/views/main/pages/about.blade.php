@@ -69,6 +69,8 @@
             padding: 5px;
             border-top-left-radius: 30px;
             border-bottom-right-radius: 30px;
+            height: 550px;
+            object-fit: cover;
         }
     </style>
 
@@ -137,13 +139,13 @@
                     @endif --}}
                     {{-- <div class="sub-title border-bot-light">About Us</div>
                 </div> --}}
-                <div class="col-md-auto " data-animate-effect="fadeInUp">
+                {{-- <div class="col-md-auto " data-animate-effect="fadeInUp"> --}}
                     {{-- @if($about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
                     @endif --}}
-                    <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$about->heading!!}</h2></div>
+                    {{-- <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$about->heading!!}</h2></div> --}}
 
-                </div>
+                {{-- </div> --}}
             </div>
             <div class="row align-items-center">
                 <div class="col-md-3" data-animate-effect="fadeInUp">
@@ -154,6 +156,12 @@
                     @endif
                 </div>
                 <div class="col-md-9 " data-animate-effect="fadeInUp">
+                    <div class="row">
+                        <div class="col-md-auto mb-4" data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$about->heading!!}</h2></div>
+
+                        </div>
+                    </div>
                     <div class="desc-ul">
                         {!!$about->description!!}
                     </div>
@@ -168,7 +176,7 @@
     @if(count($management)>0)
     <section class="about secondary-div mt-0 main-team-section">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row">
                 @if($managementHeading)
                     {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">{{$managementHeading->sub_heading}}</div>
@@ -242,7 +250,7 @@
     @if(count($staffs)>0)
     <section class="team section-padding pb-md-40">
         <div class="container">
-            <div class="row justify-content-center mb-4">
+            <div class="row mb-4">
                 @if($staffHeading)
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">{{$staffHeading->sub_heading}}</div>
@@ -458,7 +466,7 @@
     @if(count($partners)>0)
     <section class="partner section-padding">
         <div class="container">
-            <div class="row justify-content-center mb-4">
+            <div class="row mb-4">
                 @if($partnerHeading)
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">{{$partnerHeading->sub_heading}}</div>

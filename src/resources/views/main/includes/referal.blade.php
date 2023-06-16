@@ -6,7 +6,7 @@
                 {{-- <div class="sub-title border-bot-light">Referral Program</div> --}}
                 <div class="sub-title border-bot-light m-0"><div class="section-title m-0">BRING YOUR OWN <span>NEIGHBOUR</span></div></div>
             </div>
-            <div class="col-md-6 " data-animate-effect="fadeInUp">
+            <div class="col-md-12 mt-4 " data-animate-effect="fadeInUp">
                 <p class="m-0">
                     Our Referral Program gives you premium rewards and gets you closer to the SNN Raj life.
                 </p>

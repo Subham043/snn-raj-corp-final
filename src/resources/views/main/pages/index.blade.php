@@ -83,7 +83,7 @@
             opacity: 0.1; */
             /* background-image: linear-gradient(to right,rgba(27,25,25,0.1) 30%,transparent 100%); */
             /* background-image: linear-gradient(to right,rgba(27,25,25,0.2) 60%,transparent 100%); */
-            background-image: linear-gradient(to right,rgb(27 25 25 / 45%) 25%,transparent 100%);
+            /* background-image: linear-gradient(to right,rgb(27 25 25 / 45%) 25%,transparent 100%); */
         }
 
         .project_old .projects2-wrap h3 {
@@ -175,12 +175,12 @@
     <section class="about section-padding">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-auto " data-animate-effect="fadeInUp">
+                {{-- <div class="col-md-auto " data-animate-effect="fadeInUp"> --}}
                     {{-- @if(!$about->image)
                     @endif --}}
                     {{-- <div class="sub-title border-bot-light">{{$about->sub_heading}}</div> --}}
-                    <div class="sub-title border-bot-light mb-3"><h1 class="section-title m-0">{!!$about->heading!!}</h1></div>
-                </div>
+                    {{-- <div class="sub-title border-bot-light mb-3"><h1 class="section-title m-0">{!!$about->heading!!}</h1></div> --}}
+                {{-- </div> --}}
                 {{-- <div class="col-md-8 " data-animate-effect="fadeInUp"> --}}
                     {{-- @if($about->image)
                         <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
@@ -198,6 +198,11 @@
                     @endif
                 </div>
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
+                    <div class="row">
+                        <div class="col-md-auto " data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light mb-3"><h1 class="section-title m-0">{!!$about->heading!!}</h1></div>
+                        </div>
+                    </div>
                     <div class="desc-ul">
                         {!!$about->description!!}
                     </div>
@@ -213,7 +218,7 @@
     <section class="about lets-talk hero hero-contact py-5">
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
-                <div class="row justify-content-center">
+                <div class="row">
                     @if($counterHeading)
                         {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
@@ -269,12 +274,12 @@
                     <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0">{!!$projectHeading->heading!!}</h2></div>
                 </div>
                 @endif
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                <div class="col-md-12 mt-4" data-animate-effect="fadeInUp">
                     @if($projectHeading)
                     <p>{!!$projectHeading->description!!}</p>
                     @endif
                     <div class="row" data-animate-effect="fadeInUp" style="--bs-gutter-x: 0rem;">
-                        <ul class="projects2-filter">
+                        <ul class="projects2-filter text-center">
                             {{-- <li class="active" data-filter="*">All</li> --}}
                             <li class="active" data-filter=".ongoing">Ongoing Projects</li>
                             <li data-filter=".completed">Completed Projects</li>
@@ -307,13 +312,17 @@
                                 <a  aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
                                     <div class="projects-overlay">
                                         <img src="{{ $v->banner[0]->image_link }}" class="h-300-cover obj-cover" style="border-radius:10px;" fetchpriority="low" alt="">
+                                        <div class="mt-3" style="z-index: 5">
+                                            <p><img src="{{asset('assets/location.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
+                                            <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'Completed' : 'Ongoing'}}</p>
+                                        </div>
                                     </div>
                                 </a>
                             @endif
                             <div class="projects2-con" style="z-index: 5">
                                 <h3><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
-                                <p><img src="{{asset('assets/location.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
-                                <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'Completed' : 'Ongoing'}}</p>
+                                {{-- <p><img src="{{asset('assets/location.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
+                                <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'Completed' : 'Ongoing'}}</p> --}}
                                 <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
                             </div>
                         </div>
@@ -329,7 +338,7 @@
     <section class="testimonials">
         <div class="background bg-img bg-fixed section-padding">
             <div class="container">
-                <div class="row justify-content-center">
+                <div class="row">
                     @if($testimonialHeading)
                         {{-- <div class="col-md-4">
                             <h3 class="sub-title border-bot-light">{{$testimonialHeading->sub_heading}}</h3>
@@ -351,7 +360,7 @@
                                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                                         <div class="vid-area mb-30">
                                             <iframe loading="lazy" src="{{$testimonials->video}}" class="w-100" height="350" title="{{$testimonials->video_title}}" frameborder="0"></iframe>
-                                            <h3 class="sub-title">{{$testimonials->video_title}}</h3>
+                                            <h3 class="testimonial-name sub-title">{{$testimonials->video_title}}</h3>
                                             {{-- <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube">
                                                 <a class="video-gallery-button vid" href="https://youtu.be/{{$testimonials->video_id}}"> <span class="video-gallery-polygon">
                                                         <i class="ti-control-play"></i>
@@ -375,7 +384,7 @@
     @if(count($blogs) > 0)
     <section class="blog-home suffix-div mt-0">
         <div class="container">
-            <div class="row justify-content-center mb-5">
+            <div class="row mb-5">
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light">Blog</div>
                     </div> --}}

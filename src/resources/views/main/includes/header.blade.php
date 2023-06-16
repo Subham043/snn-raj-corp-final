@@ -17,10 +17,9 @@
                 <li><a aria-label="blogs page" href="{{route('blogs.get')}}">Blogs</a></li>
                 <li><a aria-label="contact us page" href="{{route('contact_page.get')}}">Contact</a></li>
                 <li><a aria-label="referral page" href="{{route('referal_page.get')}}">Referral</a></li>
-                <li><a aria-label="become a channel partner page" href="{{route('referal_page.get')}}">Become A Channel Partner</a></li>
-                <li><a aria-label="nri page" href="{{route('referal_page.get')}}">NRI's</a></li>
-                <li><a aria-label="land owner page" href="{{route('referal_page.get')}}">Land Owner</a></li>
-                <li><a aria-label="career page" href="{{route('referal_page.get')}}">Career</a></li>
+                <li><a aria-label="become a channel partner page" href="{{route('channel_partner.get')}}">Become A Channel Partner</a></li>
+                <li><a aria-label="land owner page" href="{{route('land_owner.get')}}">Land Owner</a></li>
+                <li><a aria-label="career page" href="{{route('career_page.get')}}">Career</a></li>
             </ul>
         </nav>
     </div>

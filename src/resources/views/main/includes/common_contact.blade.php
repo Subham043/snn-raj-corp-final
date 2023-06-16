@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-30">
-                    <div class="sub-title border-bot-light">Contact Us</div>
+                    <div class="no-stretch-line sub-title border-bot-light">Contact Us</div>
                 </div>
                 <div class="col-md-8">
                     <div class="section-title">Get in <span>touch</span></div>

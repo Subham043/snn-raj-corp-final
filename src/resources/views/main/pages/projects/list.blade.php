@@ -62,6 +62,10 @@
         .font-weight-normal{
             font-weight: normal;
         }
+        .sub-title:after{
+            width: 100%;
+            left: 0;
+        }
     </style>
 @stop
 

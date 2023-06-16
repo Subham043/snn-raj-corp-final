@@ -32,7 +32,8 @@
             display: inline;
         }
         .address-title{
-            font-size: 25px;
+            font-size: 20px;
+            text-transform: none;
         }
         .no-gutter{
             --bs-gutter-x:0;
@@ -68,16 +69,22 @@
         }
 
         .brochure-btn {
-            font-size: 15px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 700;
             font-family: Barlow,sans-serif;
             background: var(--theme-primary-color);
-            color: var(--theme-highlight-text-color);
+            border: 1px solid var(--theme-primary-color);
+            color: white;
             padding: 10px 30px;
             margin: 0;
             position: relative;
             border-radius: 50px;
             text-decoration: none;
+        }
+
+        .brochure-btn:hover{
+            background: transparent;
+            color: var(--theme-primary-color);
         }
 
         .project-wrap-div{
@@ -361,8 +368,13 @@
 
                 <div class="about mb-5">
                     <div class="row">
+                        <div class="col-md-auto " data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light mb-3">
+                                <h1 class="section-title m-0">{{$data->name}}</h1>
+                            </div>
+                        </div>
                         <div class="col-md-12">
-                            <h2>{{$data->name}}</h2>
+                            {{-- <h2>{{$data->name}}</h2> --}}
                             {{-- <h5><span class="text-dark">RERA :</span> {{$data->rera}}</h5> --}}
                             <p>{{$data->brief_description}}</p>
                        </div>
@@ -390,7 +402,14 @@
                             </div>
                             <div class="wrap project-wrap-div">
                                 <div class="number">
-                                    <h1>{!!$val->heading!!}</h1>
+                                    {{-- <h1>{!!$val->heading!!}</h1> --}}
+                                    <div class="row">
+                                        <div class="col-md-auto " data-animate-effect="fadeInUp">
+                                            <div class="sub-title border-bot-light mb-3">
+                                                <h1 class="section-title m-0">{!!$val->heading!!}</h1>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
@@ -410,7 +429,14 @@
                             </div>
                             <div class="wrap project-wrap-div">
                                 <div class="number">
-                                    <h1>{!!$val->heading!!}</h1>
+                                    {{-- <h1>{!!$val->heading!!}</h1> --}}
+                                    <div class="row">
+                                        <div class="col-md-auto " data-animate-effect="fadeInUp">
+                                            <div class="sub-title border-bot-light mb-3">
+                                                <h1 class="section-title m-0">{!!$val->heading!!}</h1>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
@@ -429,8 +455,12 @@
         <div class="container">
             <div class="row">
                 <div class="row mb-5 " data-animate-effect="fadeInUp">
-                    <div class="col-md-12">
-                        <div class="section-title text-center"><span>Floor</span> Plans</div>
+                    <div class="row">
+                        <div class="col-md-auto " data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light mb-3">
+                                <h1 class="section-title m-0"><span>Floor</span> Plans</h1>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -457,7 +487,7 @@
 @endif
 
 @if(count($data->accomodation)>0)
-<section class="about lets-talk hero hero-contact mt-5 py-5">
+<section class="about lets-talk hero hero-contact mt-5 py-5" style="background-color:#1b1919; border:1px solid #be932d;">
     <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">
             <div class="row">
@@ -470,7 +500,7 @@
                                     <h2 class="mb-1 text-white">{{$accomodation->room}}</h2>
                                 </div>
                                 <div class="text valign ml-1">
-                                    <p>
+                                    <p style="color: #be932d">
                                         {!!$accomodation->area!!}
                                     </p>
                                 </div>
@@ -490,8 +520,10 @@
     <section class="section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-30 " data-animate-effect="fadeInUp">
-                    <div class="section-title text-center"><span>Best Of Class</span> Amenities</div>
+                <div class="col-md-auto mb-30" data-animate-effect="fadeInUp">
+                    <div class="sub-title border-bot-light mb-5">
+                        <h1 class="section-title m-0"><span>Best Of Class</span> Amenities</h1>
+                    </div>
                 </div>
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="row amenity-row justify-content-center">
@@ -515,12 +547,11 @@
 @if($data->gallery_video_count>0)
     <section class="secondary-div my-0">
         <div class="container">
-        <div class="row mb-5 " data-animate-effect="fadeInUp">
-                <div class="col-md-4">
-                    <div class="sub-title border-bot-light">Videos</div>
-                </div>
-                <div class="col-md-8">
-                    <div class="section-title"><span>Video</span> Galleria</div>
+            <div class="row mb-5 " data-animate-effect="fadeInUp">
+                <div class="col-md-auto" data-animate-effect="fadeInUp">
+                    <div class="sub-title border-bot-light mb-2">
+                        <h1 class="section-title m-0"><span>Video</span> Galleria</h1>
+                    </div>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -547,11 +578,10 @@
     <section class="section-padding mb-5">
         <div class="container">
             <div class="row mb-5 " data-animate-effect="fadeInUp">
-                <div class="col-md-4">
-                    <div class="sub-title border-bot-light">Images</div>
-                </div>
-                <div class="col-md-8">
-                    <div class="section-title"><span>Image</span> Galleria</div>
+                <div class="col-md-auto" data-animate-effect="fadeInUp">
+                    <div class="sub-title border-bot-light mb-2">
+                        <h1 class="section-title m-0"><span>Image</span> Galleria</h1>
+                    </div>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -575,10 +605,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light">An address to be proud of</div>
+                    <div class="no-stretch-line sub-title border-bot-light">An address to be proud of</div>
                 </div>
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
-                    <div class="section-title address-title">{!!$data->address!!}</div>
+                    <div class="section-title address-title text-white">{!!$data->address!!}</div>
                 </div>
             </div>
         </div>
@@ -796,7 +826,7 @@
           })
 
 
-        </script>
+    </script>
 
 
 @stop

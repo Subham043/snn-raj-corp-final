@@ -186,6 +186,13 @@
         .button-light:hover {
             color: white;
         }
+        .no-line-heading.sub-title:after{
+            width: 100%;
+            left: 0;
+        }
+        .no-line-heading.sub-title {
+            font-size: 20px;
+        }
     </style>
 
     <title>{{$seo->meta_title}}</title>
@@ -288,7 +295,7 @@
             <div class="container">
                 <div class="row mb-5 " data-animate-effect="fadeInUp">
                     <div class="col-md-4">
-                        <div class="sub-title border-bot-light">REFERRAL PROGRAM</div>
+                        <div class="no-line-heading sub-title border-bot-light">REFERRAL PROGRAM</div>
                     </div>
                     <div class="col-md-8">
                         <h1 class="section-title"><span>Existing</span> Customer Details</h1>

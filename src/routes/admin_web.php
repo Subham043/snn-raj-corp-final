@@ -32,6 +32,9 @@ use App\Modules\Csr\Controllers\CsrDeleteController;
 use App\Modules\Csr\Controllers\CsrPaginateController;
 use App\Modules\Csr\Controllers\CsrUpdateController;
 use App\Modules\Dashboard\Controllers\DashboardController;
+use App\Modules\Enquiry\CareerForm\Controllers\CareerFormDeleteController;
+use App\Modules\Enquiry\CareerForm\Controllers\CareerFormExcelController;
+use App\Modules\Enquiry\CareerForm\Controllers\CareerFormPaginateController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormDeleteController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormExcelController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormPaginateController;
@@ -171,6 +174,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [ContactFormPaginateController::class, 'get', 'as' => 'enquiry.contact_form.paginate.get'])->name('enquiry.contact_form.paginate.get');
             Route::get('/excel', [ContactFormExcelController::class, 'get', 'as' => 'enquiry.contact_form.excel.get'])->name('enquiry.contact_form.excel.get');
             Route::get('/delete/{id}', [ContactFormDeleteController::class, 'get', 'as' => 'enquiry.contact_form.delete.get'])->name('enquiry.contact_form.delete.get');
+
+        });
+        Route::prefix('/career-form')->group(function () {
+            Route::get('/', [CareerFormPaginateController::class, 'get', 'as' => 'enquiry.career_form.paginate.get'])->name('enquiry.career_form.paginate.get');
+            Route::get('/excel', [CareerFormExcelController::class, 'get', 'as' => 'enquiry.career_form.excel.get'])->name('enquiry.career_form.excel.get');
+            Route::get('/delete/{id}', [CareerFormDeleteController::class, 'get', 'as' => 'enquiry.career_form.delete.get'])->name('enquiry.career_form.delete.get');
 
         });
         Route::prefix('/referal-form')->group(function () {

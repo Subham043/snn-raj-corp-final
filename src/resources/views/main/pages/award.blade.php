@@ -35,6 +35,13 @@
             object-fit: contain;
             width: auto;
         }
+        .sub-title:after{
+            width: 100%;
+            left: 0;
+        }
+        .sub-title {
+            font-size: 20px;
+        }
     </style>
 @stop
 

@@ -31,6 +31,12 @@
         .process .wrap, .process .wrap .cont{
             display: inline;
         }
+        .about_banner_img {
+            border: 1px solid #1c1919;
+            padding: 5px;
+            border-top-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
     </style>
 @stop
 
@@ -43,7 +49,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img fetchpriority="high" src="{{ $banner->image_link}}" alt="" class="img-fluid"></figure>
+                        <figure><img fetchpriority="high" src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img"></figure>
                         <div class="caption">
                             <h1 class="section-title">{!!$banner->heading!!}</h1>
                             <div class="desc-ul">

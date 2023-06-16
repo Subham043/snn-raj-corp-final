@@ -88,10 +88,13 @@
             color: var(--theme-primary-color);
         }
         .hero .sub-title:before{
+            /* background-color: white; */
+        }
+        .hero .sub-title:after{
             background-color: white;
         }
         .hero .sub-title.border-bot-light {
-            border-bottom: 1px solid white;
+            /* border-bottom: 1px solid white; */
         }
         .hero .button-light:hover {
             color: white;
@@ -194,6 +197,10 @@
             background-color: transparent;
             color: var(--theme-primary-color);
             border: 1px solid var(--theme-primary-color);
+        }
+
+        .testimonials .testimonial-name.sub-title:after{
+            background-color: transparent;
         }
 
         @media screen and (max-width: 600px) {

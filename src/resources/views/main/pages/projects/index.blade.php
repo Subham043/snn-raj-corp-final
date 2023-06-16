@@ -40,8 +40,10 @@
                 {{-- <div class="col-md-4 " data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light">Our Creations</div>
                 </div> --}}
-                <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    <h1 class="section-title">{{$status=='completed' ? 'COMPLETED PROJECTS' : 'ONGOING PROJECTS'}}</h1>
+                <div class="col-md-auto " data-animate-effect="fadeInUp">
+                    <div class="sub-title border-bot-light mb-3">
+                        <h1 class="section-title m-0">{{$status=='completed' ? 'COMPLETED PROJECTS' : 'ONGOING PROJECTS'}}</h1>
+                    </div>
                 </div>
             </div>
         </div>

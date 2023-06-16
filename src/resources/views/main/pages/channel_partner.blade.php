@@ -43,107 +43,35 @@
         .no-line-heading.sub-title {
             font-size: 20px;
         }
+        .hero p {
+            font-size: 16px;
+            color: #000;
+            font-weight: 500;
+        }
     </style>
 @stop
 
 @section('content')
 
-
-    <!-- Contact -->
-    <div class="contact secondary-div mt-0">
-        <div class="container">
-            <div class="row mb-5 " data-animate-effect="fadeInUp">
-                <div class="col-md-4">
-                    <div class="no-line-heading sub-title border-bot-light">Contact</div>
-                </div>
-                <div class="col-md-8">
-                    <h1 class="section-title">Get in <span>touch</span></h1>
-                    <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line and we’ll get back to you shortly.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 " data-animate-effect="fadeInUp">
-                    <!-- Contact Info -->
-                    <p>{{ empty($generalSetting) ? '' : $generalSetting->address}}</p>
-                    <p class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</p>
-                    <p class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email}}</p>
-                    <div class="social mt-2">
-                        <a aria-label="facebook" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
-                        <a aria-label="instagram" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
-                        <a aria-label="linkedin" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
-                        <a aria-label="youtube" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
+<section class="hero hero-main section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 " data-animate-effect="fadeInUp">
+                <div class="hero">
+                    <figure><img src="{{asset('admin/images/maintenance.png')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img"></figure>
+                    <div class="caption">
+                        <h1 class="section-title">Get associated with <span>SNN</span> Group</h1>
+                        <p>At Prestige Group, we value our relationship with our Channel Partners and look forward to building a long term association with mutual benefits.</p>
+                        <p>As a Channel Partner you get priority updates on offers and new launches, marketing support and training, invites to exclusive events, attractive commission schemes, timely pay-outs, and much more! Join us today to become an Esteemed Partner and reap the benefits of partnering with Prestige Group.</p>
+                        <p>To register as a Channel Partner, reach out to us at channelpartner@prestigeconstructions.com, with the scanned copy of the filled and signed Empanelment Form, along with documents required, or please follow the steps below to register online.</p>
                     </div>
                 </div>
-                <!-- form -->
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
-                    <form method="post" class="contact__form" id="contactForm">
-                        <!-- Form elements -->
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <input class="line-gray" name="name" id="name" type="text" placeholder="Your Name *" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <input class="line-gray" name="email" id="email" type="email" placeholder="Your Email *" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <input class="line-gray" name="phone" id="phone" type="text" placeholder="Your Number *" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <input class="line-gray" name="subject" id="subject" type="text" placeholder="Subject *" required>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <textarea class="line-gray" name="message" id="message" cols="30" rows="4" placeholder="Message *" required></textarea>
-                            </div>
-                            <div class="col-md-12 mt-2">
-                                <div class="col-md-12 mt-3 mb-5">
-                                    <input type="checkbox" class="line-gray">
-                                    <label>I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp me about its products and offers, this consent overrides any registration for DNC / NDNC</label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mt-2">
-                                <input name="submit" id="submitBtn" type="submit" value="Send Message">
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="modal fade" id="staticBackdropContact" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Verify Mobile Number</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <form id="otpForm" method="post">
-                        <div class="mb-3">
-                          <input type="text" class="form-control" id="otp" name="otp" aria-describedby="otpHelp" placeholder="OTP *">
-                          <div id="otpHelp" class="form-text">We have shared an OTP to your mobile via SMS.</div>
-                        </div>
-                        <button type="submit" id="submitOtpBtn" class="btn btn-dark">Submit</button>
-                        <button type="button" id="resendOtpBtn" class="btn btn-danger">Resend OTP</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @include('main.includes.referal')
-
-    <div class="py-3"></div>
-
-    <!-- Maps -->
-    {{-- <div class="google-maps">
-        <iframe id="gmap_canvas"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13419.032130422971!2d-79.94077173022463!3d32.772154400000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fe7a1ae84ff639%3A0xe5c782f71924a526!2s24%20King%20St%2C%20Charleston%2C%20SC%2029401%2C%20Amerika%20Birle%C5%9Fik%20Devletleri!5e0!3m2!1str!2str!4v1665070628853!5m2!1str!2str"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div> --}}
+    @include('main.includes.common_contact')
 
 
 @stop
