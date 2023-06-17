@@ -36,6 +36,8 @@
             padding: 5px;
             border-top-left-radius: 30px;
             border-bottom-right-radius: 30px;
+            height: 450px;
+            object-fit: cover;
         }
     </style>
 @stop

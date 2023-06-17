@@ -69,7 +69,7 @@
             padding: 5px;
             border-top-left-radius: 30px;
             border-bottom-right-radius: 30px;
-            height: 550px;
+            height: 610px;
             object-fit: cover;
         }
     </style>
