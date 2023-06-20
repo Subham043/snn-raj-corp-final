@@ -64,7 +64,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-5" data-animate-effect="fadeInUp">
-                <img src="{{asset('assets/channel-partner.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
+                <img src="{{asset('assets/partner.png')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
             </div>
             <div class="col-md-12 " data-animate-effect="fadeInUp">
                 <h1 class="section-title">BECOME OUR <span>CHANNEL PARTNER</span> & <span>BUSINESS ASSOCIATE</span>.</h1>
