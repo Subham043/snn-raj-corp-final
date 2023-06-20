@@ -48,24 +48,47 @@
             color: #000;
             font-weight: 500;
         }
+        .about_banner_img{
+            border: 1px solid #1c1919;
+            padding: 5px;
+            border-top-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            height: 610px;
+            object-fit: cover;
+        }
     </style>
 @stop
 
 @section('content')
 
-<section class="hero hero-main section-padding">
+<section class="hero hero-main section-padding pt-5">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 " data-animate-effect="fadeInUp">
-                <div class="hero">
-                    <figure><img src="{{asset('admin/images/maintenance.png')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img"></figure>
-                    <div class="caption">
-                        <h1 class="section-title">Get associated with <span>SNN</span> Group</h1>
-                        <p>At Prestige Group, we value our relationship with our Channel Partners and look forward to building a long term association with mutual benefits.</p>
-                        <p>As a Channel Partner you get priority updates on offers and new launches, marketing support and training, invites to exclusive events, attractive commission schemes, timely pay-outs, and much more! Join us today to become an Esteemed Partner and reap the benefits of partnering with Prestige Group.</p>
-                        <p>To register as a Channel Partner, reach out to us at channelpartner@prestigeconstructions.com, with the scanned copy of the filled and signed Empanelment Form, along with documents required, or please follow the steps below to register online.</p>
-                    </div>
-                </div>
+        <div class="row align-items-center">
+            <div class="col-md-6" data-animate-effect="fadeInUp">
+                <h1 class="section-title">Dear [<span>Land Owner</span>]</h1>
+                <p>We are always on the lookout for good land parcels for residential and commercial development. We would be delighted to receive more information about the land you have available.</p>
+                <p>To better evaluate the land, we kindly request you to provide us with the following details:
+                </p>
+                <ol>
+                    <li>
+                        Please share the specific location of the land by providing the Google coordinates. This will allow us to assess the area and its potential.
+                    </li>
+                    <li>
+                        Please provide additional information about the land, such as its size (in acres or square meters), zoning status (residential, commercial, mixed-use, etc.), any existing structures or developments on the land, and any other relevant details.
+                    </li>
+                    <li>
+                        Terms : Please specify whether the land is available for joint venture (JV) or for sale. If it is for sale, kindly mention the asking price or your expectations regarding the land's value. Additionally, if there are any specific terms and conditions associated with the land, such as development restrictions or legal considerations, please include those as well.
+                    </li>
+                </ol>
+                <p>
+                    Once we receive the above information, our team will thoroughly evaluate the land's potential and its alignment with our development goals. If we find it suitable, we will get in touch with you to discuss the next steps and negotiate any necessary agreements.
+                </p>
+                <p>
+                    Thank you once again for considering us as potential partners for your land development. We look forward to receiving the details and exploring the opportunity further as well.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <img src="{{asset('assets/land.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
             </div>
         </div>
     </div>

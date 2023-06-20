@@ -53,19 +53,38 @@
 
 @section('content')
 
-<section class="hero hero-main section-padding">
+<section class="hero hero-main section-padding pt-5">
     <div class="container">
         <div class="row">
+            <div class="col-md-12 mb-5" data-animate-effect="fadeInUp">
+                <img src="{{asset('assets/channel-partner.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
+            </div>
             <div class="col-md-12 " data-animate-effect="fadeInUp">
-                <div class="hero">
-                    <figure><img src="{{asset('admin/images/maintenance.png')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img"></figure>
-                    <div class="caption">
-                        <h1 class="section-title">Get associated with <span>SNN</span> Group</h1>
-                        <p>At Prestige Group, we value our relationship with our Channel Partners and look forward to building a long term association with mutual benefits.</p>
-                        <p>As a Channel Partner you get priority updates on offers and new launches, marketing support and training, invites to exclusive events, attractive commission schemes, timely pay-outs, and much more! Join us today to become an Esteemed Partner and reap the benefits of partnering with Prestige Group.</p>
-                        <p>To register as a Channel Partner, reach out to us at channelpartner@prestigeconstructions.com, with the scanned copy of the filled and signed Empanelment Form, along with documents required, or please follow the steps below to register online.</p>
-                    </div>
-                </div>
+                <h1 class="section-title">BECOME OUR <span>CHANNEL PARTNER</span> & <span>BUSINESS ASSOCIATE</span>.</h1>
+                <p>
+                    We greatly appreciate the value we place on building strong relationships with our business associates. Our goal is to establish a long-lasting partnership, and we have made the process of starting that journey simple and straightforward. Here's a step-by-step guide to get started:
+                </p>
+                <ol>
+                    <li>
+                        Take your time to explore our comprehensive website at <a href="www.snnrajcorp.com" target="_blank">www.snnrajcorp.com</a>. It will provide you with valuable insights into all of our projects.
+                    </li>
+                    <li>
+                        Once you have familiarized yourself with our offerings, navigate to the "CONTACTS" section and click on "CHANNEL PARTNERS." From there, you can access the Empanelment Form. Please complete the form and attach any necessary requirements as indicated in the enclosures section. Send the completed form and attachments to <a href="mailto:channelsales@snnrajcorp.com">channelsales@snnrajcorp.com</a>.
+                    </li>
+                    <li>
+                        After you have submitted the online registration form, our team will review your application thoroughly. Following this evaluation, our dedicated CP department coordinator will contact you either by phone or email to discuss the next steps in the process.
+                    </li>
+                    <li>
+                        We also take pride in our prompt payment processing for our esteemed partners. All the necessary details regarding pay-outs will be clearly outlined in the Memorandum of Understanding (MOU).
+                    </li>
+                    <li>
+                        We invite you to join us in doing business together.
+If you have any questions or require clarification at any point, please do not hesitate to reach out to our CP Coordinator at +91 8884123528.
+                    </li>
+                </ol>
+                <p>
+                    We look forward to the possibility of working together and building a mutually beneficial partnership.
+                </p>
             </div>
         </div>
     </div>
