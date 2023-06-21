@@ -38,6 +38,9 @@ use App\Modules\Enquiry\CareerForm\Controllers\CareerFormPaginateController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormDeleteController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormExcelController;
 use App\Modules\Enquiry\ContactForm\Controllers\ContactFormPaginateController;
+use App\Modules\Enquiry\EmpanelmentForm\Controllers\EmpanelmentFormDeleteController;
+use App\Modules\Enquiry\EmpanelmentForm\Controllers\EmpanelmentFormExcelController;
+use App\Modules\Enquiry\EmpanelmentForm\Controllers\EmpanelmentFormPaginateController;
 use App\Modules\Enquiry\ReferalForm\Controllers\ReferalFormDeleteController;
 use App\Modules\Enquiry\ReferalForm\Controllers\ReferalFormExcelController;
 use App\Modules\Enquiry\ReferalForm\Controllers\ReferalFormPaginateController;
@@ -180,6 +183,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [CareerFormPaginateController::class, 'get', 'as' => 'enquiry.career_form.paginate.get'])->name('enquiry.career_form.paginate.get');
             Route::get('/excel', [CareerFormExcelController::class, 'get', 'as' => 'enquiry.career_form.excel.get'])->name('enquiry.career_form.excel.get');
             Route::get('/delete/{id}', [CareerFormDeleteController::class, 'get', 'as' => 'enquiry.career_form.delete.get'])->name('enquiry.career_form.delete.get');
+
+        });
+        Route::prefix('/empanelment-form')->group(function () {
+            Route::get('/', [EmpanelmentFormPaginateController::class, 'get', 'as' => 'enquiry.empanelment_form.paginate.get'])->name('enquiry.empanelment_form.paginate.get');
+            Route::get('/excel', [EmpanelmentFormExcelController::class, 'get', 'as' => 'enquiry.empanelment_form.excel.get'])->name('enquiry.empanelment_form.excel.get');
+            Route::get('/delete/{id}', [EmpanelmentFormDeleteController::class, 'get', 'as' => 'enquiry.empanelment_form.delete.get'])->name('enquiry.empanelment_form.delete.get');
 
         });
         Route::prefix('/referal-form')->group(function () {

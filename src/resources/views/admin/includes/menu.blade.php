@@ -57,6 +57,10 @@
                                             </li>
 
                                             <li class="nav-item">
+                                                <a href="{{route('enquiry.empanelment_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.empanelment_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Empanelment Form </a>
+                                            </li>
+
+                                            <li class="nav-item">
                                                 <a href="{{route('enquiry.referal_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.referal_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Referal Form </a>
                                             </li>
                                         @endcan

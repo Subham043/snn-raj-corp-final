@@ -39,6 +39,7 @@ Route::get('/become-a-channel-partner', [ChannelPartnerPageController::class, 'g
 Route::get('/land-owner', [LandOwnerPageController::class, 'get', 'as' => 'land_owner.get'])->name('land_owner.get');
 Route::post('/contact-us-post', [ContactPageController::class, 'post', 'as' => 'contact_page.post'])->name('contact_page.post');
 Route::post('/career-post', [CareerPageController::class, 'post', 'as' => 'career_page.post'])->name('career_page.post');
+Route::post('/become-a-channel-partner-post', [ChannelPartnerPageController::class, 'post', 'as' => 'channel_partner.post'])->name('channel_partner.post');
 Route::post('/otp/resend', [ContactPageController::class, 'resendOtp', 'as' => 'contact_page.resendOtp'])->name('contact_page.resendOtp');
 Route::post('/otp/{uuid}', [ContactPageController::class, 'verifyOtp', 'as' => 'contact_page.verifyOtp'])->name('contact_page.verifyOtp');
 Route::post('/refer-now-post', [ReferalPageController::class, 'post', 'as' => 'referal_page.post'])->name('referal_page.post');
