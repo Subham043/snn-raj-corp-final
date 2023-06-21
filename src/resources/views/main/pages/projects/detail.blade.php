@@ -37,7 +37,7 @@
             font-weight:normal
         }
         .address-title span{
-            font-size: 14px;
+            font-size: 18px;
         }
         .no-gutter{
             --bs-gutter-x:0;
