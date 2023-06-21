@@ -440,7 +440,7 @@
                 </div>
             </section>
         @else
-            <section class="suffix-div">
+            <section class="suffix-div additional-content-project">
                 <div class="container">
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
