@@ -40,6 +40,9 @@
             left: 0;
         }
         .sub-title {
+            font-size: 30px;
+        }
+        .section-title {
             font-size: 20px;
         }
     </style>
@@ -50,7 +53,7 @@
     <!-- Awards -->
     <section class="services section-padding">
         <div class="container">
-            <div class="row mb-4">
+            <div class="row mb-4 align-item-end">
                 @if($awardHeading)
                     <div class="col-md-4 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light">{{$awardHeading->sub_heading}}</div>

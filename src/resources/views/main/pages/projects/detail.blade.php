@@ -34,6 +34,10 @@
         .address-title{
             font-size: 20px;
             text-transform: none;
+            font-weight:normal
+        }
+        .address-title span{
+            font-size: 14px;
         }
         .no-gutter{
             --bs-gutter-x:0;
@@ -111,6 +115,18 @@
             height: 85vh;
         }
 
+        .project-bar .project-detail-row .testimonials .wrap .item .info h6{
+            font-size: 18px;
+        }
+
+        .testimonials .wrap .item .info span{
+            font-size: 15px;
+        }
+
+        .gap-10{
+            gap: 5rem!important;
+        }
+
         @media screen and (max-width: 600px) {
             .project-detail-row>*{
                 width: 45% !important;
@@ -158,7 +174,7 @@
                     <div class="row no-gutter">
                         <div class="col-md-12">
                             <div class="project-bar" style="background-color: #1b1919">
-                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
+                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-10">
                                     <div class="col-auto mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
@@ -267,7 +283,7 @@
                     <div class="row no-gutter">
                         <div class="col-md-12 px-0">
                             <div class="project-bar" style="background-color:#1b1919;">
-                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
+                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-10">
                                     <div class="col-auto mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">

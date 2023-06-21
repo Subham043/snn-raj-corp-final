@@ -669,8 +669,9 @@ input[type="checkbox"] {
 
 .slider-fade .owl-theme .owl-nav [class*=owl-] {
     background: transparent;
-    color: var(--theme-highlight-text-color);
-    font-size: 10px;
+    /* color: var(--theme-highlight-text-color); */
+    color: white;
+    font-size: 14px;
     margin-right: 3px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -1378,8 +1379,9 @@ input[type="checkbox"] {
 }
 .owl-theme .owl-nav [class*=owl-] {
     background: transparent;
-    color: var(--theme-background-color);
-    font-size: 9px;
+    /* color: var(--theme-background-color); */
+    color: white;
+    font-size: 14px;
     margin-right: 3px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;

@@ -180,7 +180,7 @@
                             <div class="cont">
                                 <h3>{{$v->name}}</h3>
                                 <p>{{$v->brief_description}}</p>
-                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">Explore The Project</a></div>
+                                <div class="more d-flex justify-content-end"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn mx-0" tabindex="0">Explore The Project</a></div>
                             </div>
                         </div>
                     </div>
@@ -290,7 +290,7 @@
                             <div class="cont">
                                 <h3>{{$v->name}}</h3>
                                 <p>{{$v->brief_description}}</p>
-                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">Explore The Project</a></div>
+                                <div class="more d-flex justify-content-end"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn mx-0" tabindex="0">Explore The Project</a></div>
                             </div>
                         </div>
                     </div>

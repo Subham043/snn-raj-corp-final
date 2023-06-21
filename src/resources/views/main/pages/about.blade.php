@@ -59,6 +59,7 @@
         }
         .main-team-section .section-title, .main-team-section p{
             color: white;
+            text-align: justify;
         }
 
         .about.main-team-section .wrap .con .info .name{
@@ -71,6 +72,10 @@
             border-bottom-right-radius: 30px;
             height: 610px;
             object-fit: cover;
+        }
+
+        .about .desc-ul p{
+            text-align: justify;
         }
     </style>
 
@@ -147,7 +152,7 @@
 
                 {{-- </div> --}}
             </div>
-            <div class="row align-items-center">
+            <div class="row align-items-end">
                 <div class="col-md-3" data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
