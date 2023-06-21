@@ -66,6 +66,7 @@
         .project_old p {
             color: #fff;
             font-size: 16px;
+            font-weight: 400;
         }
 
         .project_old p img {
@@ -126,6 +127,10 @@
         .h-300-cover{
             height: 300px;
             object-fit: cover;
+        }
+
+        .about .desc-ul p{
+            text-align: justify;
         }
 
         @media screen and (max-width: 600px) {
@@ -189,7 +194,7 @@
 
                 {{-- </div> --}}
             </div>
-            <div class="row align-items-center">
+            <div class="row align-items-end">
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
@@ -200,7 +205,7 @@
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
                     <div class="row">
                         <div class="col-md-auto " data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light mb-3"><h1 class="section-title m-0">{!!$about->heading!!}</h1></div>
+                            <div class="sub-title border-bot-light mb-5"><h1 class="section-title m-0">{!!$about->heading!!}</h1></div>
                         </div>
                     </div>
                     <div class="desc-ul">
@@ -236,7 +241,7 @@
                                 {{-- <li class="flex"> --}}
                                 <li class="text-center col-md-4 col-sm-12 p-2 mx-0">
                                     <div class="numb valign justify-content-center">
-                                        <h1 class="m-0"><span class="text-white purecounter" data-purecounter-duration="5"  data-purecounter-start="0" data-purecounter-end="{{$counters->counter_number}}">0</span> {{$counters->counter_text}}</h1>
+                                        <h1 class="m-0"><span class="text-white purecounter" data-purecounter-duration="5"  data-purecounter-start="5000" data-purecounter-end="{{$counters->counter_number}}">0</span> {{$counters->counter_text}}</h1>
                                     </div>
                                     <div class="text valign justify-content-center">
                                         <p>
@@ -312,19 +317,20 @@
                                 <a  aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
                                     <div class="projects-overlay">
                                         <img src="{{ $v->banner[0]->image_link }}" class="h-300-cover obj-cover" style="border-radius:10px;" fetchpriority="low" alt="">
-                                        <div class="mt-3" style="z-index: 5">
-                                            <p><img src="{{asset('assets/location.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
-                                            <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'Completed' : 'Ongoing'}}</p>
+                                        <div class="mt-2" style="z-index: 5">
+                                            <h3 style="font-size: 20px;"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
+                                            <p><img src="{{asset('assets/location-2.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
+                                            {{-- <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'Completed' : 'Ongoing'}}</p> --}}
                                         </div>
                                     </div>
                                 </a>
                             @endif
-                            <div class="projects2-con" style="z-index: 5">
-                                <h3><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
+                            {{-- <div class="projects2-con" style="z-index: 5"> --}}
+                                {{-- <h3><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3> --}}
                                 {{-- <p><img src="{{asset('assets/location.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
                                 <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'Completed' : 'Ongoing'}}</p> --}}
-                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
-                            </div>
+                                {{-- <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a> --}}
+                            {{-- </div> --}}
                         </div>
                     </div>
                 @endforeach

@@ -55,6 +55,12 @@
             border-bottom-right-radius: 30px;
             object-fit: cover;
         }
+        .hero .wrap ol li{
+            margin-bottom: 10px;
+        }
+        .hero .wrap ol li a{
+            color: blue;
+        }
     </style>
 @stop
 
@@ -63,41 +69,101 @@
 <section class="hero hero-main section-padding pt-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mb-5" data-animate-effect="fadeInUp">
-                <img src="{{asset('assets/partner.png')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
-            </div>
             <div class="col-md-12 " data-animate-effect="fadeInUp">
-                <h1 class="section-title">BECOME OUR <span>CHANNEL PARTNER</span> & <span>BUSINESS ASSOCIATE</span>.</h1>
-                <p>
-                    We greatly appreciate the value we place on building strong relationships with our business associates. Our goal is to establish a long-lasting partnership, and we have made the process of starting that journey simple and straightforward. Here's a step-by-step guide to get started:
-                </p>
-                <ol>
-                    <li>
-                        Take your time to explore our comprehensive website at <a href="www.snnrajcorp.com" target="_blank">www.snnrajcorp.com</a>. It will provide you with valuable insights into all of our projects.
-                    </li>
-                    <li>
-                        Once you have familiarized yourself with our offerings, navigate to the "CONTACTS" section and click on "CHANNEL PARTNERS." From there, you can access the Empanelment Form. Please complete the form and attach any necessary requirements as indicated in the enclosures section. Send the completed form and attachments to <a href="mailto:channelsales@snnrajcorp.com">channelsales@snnrajcorp.com</a>.
-                    </li>
-                    <li>
-                        After you have submitted the online registration form, our team will review your application thoroughly. Following this evaluation, our dedicated CP department coordinator will contact you either by phone or email to discuss the next steps in the process.
-                    </li>
-                    <li>
-                        We also take pride in our prompt payment processing for our esteemed partners. All the necessary details regarding pay-outs will be clearly outlined in the Memorandum of Understanding (MOU).
-                    </li>
-                    <li>
-                        We invite you to join us in doing business together.
-If you have any questions or require clarification at any point, please do not hesitate to reach out to our CP Coordinator at +91 8884123528.
-                    </li>
-                </ol>
-                <p>
-                    We look forward to the possibility of working together and building a mutually beneficial partnership.
-                </p>
+                <div class="img fr-img" data-animate-effect="fadeInUp">
+                    <img src="{{asset('assets/partner.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
+                </div>
+                <div class="wrap">
+                    <h1 class="section-title">BECOME OUR <div style="display:inline; font-size:1.3rem;"><br><span>CHANNEL PARTNER</span> & <span>BUSINESS ASSOCIATE</span></div>.</h1>
+                    <p>
+                        We greatly appreciate the value we place on building strong relationships with our business associates. Our goal is to establish a long-lasting partnership, and we have made the process of starting your journey simple and straightforward. Here's a step-by-step guide to get started:
+                    </p>
+                    <ol>
+                        <li>
+                            Take your time to explore our comprehensive website at <a href="https://www.snnrajcorp.com" target="_blank">www.snnrajcorp.com</a>. It will provide you with valuable insights into all of our projects.
+                        </li>
+                        <li>
+                            Once you have familiarized yourself with our offerings, navigate to the "CONTACTS" section and click on "CHANNEL PARTNERS." You can access the Empanelment Form provided below. Please complete the form and attach all necessary requirements as indicated in the enclosures section. Send the completed form and attachments to <a href="mailto:channelsales@snnrajcorp.com">channelsales@snnrajcorp.com</a>.
+                        </li>
+                        <li>
+                            After you have submitted the online registration form, our team will review your application thoroughly. Following this evaluation, our dedicated CP department coordinator will contact you either by phone or email to discuss the next steps in the process.
+                        </li>
+                        <li>
+                            We also take pride in our prompt payment processing for our esteemed partners. All the necessary details regarding pay-outs will be clearly outlined in the Memorandum of Understanding (MOU).
+                        </li>
+                        <li>
+                            We invite you to join us in doing business together.
+    If you have any questions or require clarification at any point, please do not hesitate to reach out to our CP Coordinator at <br/><a href="tel:+918884123528">+91 8884123528</a>. We look forward to the possibility of working together and building a mutually beneficial partnership.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="lets-talk secondary-div mt-0">
+    <div class="background bg-img bg-fixed" data-overlay-dark="6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-30">
+                    <div class="no-stretch-line sub-title border-bot-light">Contact Us</div>
+                </div>
+                <div class="col-md-8">
+                    <div class="section-title">Get in <span>touch</span></div>
+                    <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line and we’ll get back to you shortly.</p>
+                    <form method="post" class="contact__form" id="contactForm">
+                        <!-- Form elements -->
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input class="line-gray" name="scope" id="scope" type="text" placeholder="Scope of Work *" required="">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input class="line-gray" name="channel_partner" id="channel_partner" type="text" placeholder="Name of Channel Partner *" required="">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <textarea class="line-gray" name="address" id="address" cols="30" rows="4" placeholder="Address *" required></textarea>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input class="line-gray" name="phone" id="phone" type="text" placeholder="Phone *" required="">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input class="line-gray" name="telephone" id="telephone" type="text" placeholder="Mobile *" required="">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input class="line-gray" name="email" id="email" type="email" placeholder="Email *" required="">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input class="line-gray" name="rera" id="rera" type="text" placeholder="Rera No. *" required="">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input class="line-gray" name="contact_person_name" id="contact_person_name" type="text" placeholder="Contact Person Name *" required="">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input class="line-gray" name="subject" id="subject" type="text" placeholder="Subject *" required="">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <textarea class="line-gray" name="message" id="message" cols="30" rows="4" placeholder="Message *" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mt-3 mb-5">
+                                <input type="checkbox" class="line-gray">
+                                <label>I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp me about its products and offers, this consent overrides any registration for DNC / NDNC</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="line-gray" name="submit" type="submit" id="submitBtn" value="Send Message">
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-    @include('main.includes.common_contact')
+    {{-- @include('main.includes.common_contact') --}}
 
 
 @stop

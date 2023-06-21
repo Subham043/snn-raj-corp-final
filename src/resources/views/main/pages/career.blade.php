@@ -43,6 +43,13 @@
         .no-line-heading.sub-title {
             font-size: 20px;
         }
+        .about_banner_img{
+            border: 1px solid #1c1919;
+            padding: 5px;
+            border-top-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            object-fit: cover;
+        }
     </style>
 @stop
 
@@ -50,9 +57,14 @@
 
 
     <!-- Contact -->
-    <div class="contact secondary-div mt-0">
+    <div class="contact secondary-div mt-0 pt-5">
         <div class="container">
             <div class="row mb-5 " data-animate-effect="fadeInUp">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
+                    <img src="{{asset('assets/career.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
+                </div>
+            </div>
+            {{-- <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
                     <div class="no-line-heading sub-title border-bot-light">Career</div>
                 </div>
@@ -60,25 +72,27 @@
                     <h1 class="section-title">Get in <span>touch</span></h1>
                     <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line and we’ll get back to you shortly.</p>
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
-                <div class="col-md-4 " data-animate-effect="fadeInUp">
+                <div class="col-md-12">
+                    <h1 class="section-title"><span>Career</span></h1>
+                    <p>If you’re looking for a career with us, drop us a line and we’ll get back to you shortly.</p>
                 </div>
                 <!-- form -->
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <form method="post" class="contact__form" id="contactForm">
                         <!-- Form elements -->
                         <div class="row">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-3 form-group">
                                 <input class="line-gray" name="name" id="name" type="text" placeholder="Your Name *" required>
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-3 form-group">
                                 <input class="line-gray" name="email" id="email" type="email" placeholder="Your Email *" required>
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-3 form-group">
                                 <input class="line-gray" name="phone" id="phone" type="text" placeholder="Your Number *" required>
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-3 form-group">
                                 <input class="line-gray" name="experience" id="experience" type="text" placeholder="Real Estate Experience *" required>
                             </div>
                             <div class="col-md-12 form-group">
@@ -87,12 +101,6 @@
                             <div class="col-md-12 form-group">
                                 <label for="cv">Upload CV (Only PDF Allowed) *</label>
                                 <input class="line-gray" name="cv" id="cv" type="file" required>
-                            </div>
-                            <div class="col-md-12 mt-2">
-                                <div class="col-md-12 mt-3 mb-5">
-                                    <input type="checkbox" class="line-gray">
-                                    <label>I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp me about its products and offers, this consent overrides any registration for DNC / NDNC</label>
-                                </div>
                             </div>
                             <div class="col-md-12 mt-2">
                                 <input name="submit" id="submitBtn" type="submit" value="Submit">
