@@ -127,6 +127,10 @@
             gap: 5rem!important;
         }
 
+        .additional-content-project .sub-title:before, .additional-content-project .sub-title:after{
+            display: none;
+        }
+
         @media screen and (max-width: 600px) {
             .project-detail-row>*{
                 width: 45% !important;
@@ -174,7 +178,7 @@
                     <div class="row no-gutter">
                         <div class="col-md-12">
                             <div class="project-bar" style="background-color: #1b1919">
-                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-10">
+                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
                                     <div class="col-auto mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
@@ -283,7 +287,7 @@
                     <div class="row no-gutter">
                         <div class="col-md-12 px-0">
                             <div class="project-bar" style="background-color:#1b1919;">
-                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-10">
+                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
                                     <div class="col-auto mb-15 text-center">
                                         <div class="testimonials">
                                             <div class="wrap">
@@ -409,7 +413,7 @@
 @if($data->additional_content_count>0)
     @foreach($data->additional_content as $key=>$val)
         @if(($key+1)%2!=0)
-            <section class="section-padding py-5 pb-md-0">
+            <section class="additional-content-project section-padding py-5 pb-md-0">
                 <div class="container">
                     <div class="row div-padding pb-md-0">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
@@ -619,12 +623,12 @@
 <section class="lets-talk hero hero-contact my-0 py-5">
     <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
                     <div class="no-stretch-line sub-title border-bot-light">An address to be proud of</div>
                 </div>
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
-                    <div class="section-title address-title text-white">{!!$data->address!!}</div>
+                    <div class="section-title address-title text-white m-0">{!!$data->address!!}</div>
                 </div>
             </div>
         </div>
