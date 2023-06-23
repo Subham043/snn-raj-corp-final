@@ -4099,6 +4099,10 @@ color: white;
     .lets-talk label, .contact label {
         padding: 0 40px 0 0px;
     }
+    .sub-title:after{
+        left: 12%;
+        width: 65%;
+    }
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: Barlow,sans-serif;

@@ -71,7 +71,7 @@
                     <img src="{{asset('assets/land.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
                 </div>
                 <div class="wrap">
-                    <h1 class="section-title">Dear [ <span style="color: black; text-transform:capitalize">Land Owner</span> ]</h1>
+                    {{-- <h1 class="section-title">Dear [ <span style="color: black; text-transform:capitalize">Land Owner</span> ]</h1> --}}
                     <p>We are always on the lookout for good land parcels for residential and commercial development. We would be delighted to receive more information about the land you have available.</p>
                     <p>To better evaluate the land, we kindly request you to provide us with the following details:
                     </p>

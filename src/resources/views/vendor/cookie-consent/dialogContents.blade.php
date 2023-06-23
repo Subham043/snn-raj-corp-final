@@ -16,7 +16,7 @@
     <div class="max-w-7xl mx-auto px-6">
         <div class="p-4 rounded-lg bg-yellow-100">
             <div class="d-flex align-items-center justify-content-between flex-wrap">
-                <div class="col-9 d-inline">
+                <div class="col-lg-9 col-md-12 d-inline">
                     <h5 class="ml-3 cookie-consent__message text-white d-inline">
                         By clicking “Allow Cookies”, you agree to the storing of cookies in your browser to enhance site navigation, analyze site usage, and provide our ad partners with information for ad personalization and measurement.
                     </h5>

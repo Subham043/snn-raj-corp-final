@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-12 mt-4 " data-animate-effect="fadeInUp">
                 <p class="m-0" style="font-size:20px;">
-                    Our Referral Program gives you premium rewards and gets you closer to the SNN Raj life.
+                    Our Referral Program gives you premium rewards and gets you closer to the SNN Raj Corp life.
                 </p>
                 {{-- <div class="section-title">Our <span>Referral Program</span> gives you premium rewards and gets you closer to the SNN Raj life.</div> --}}
             </div>
