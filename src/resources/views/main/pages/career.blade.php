@@ -179,7 +179,7 @@
             {
                 rule: 'customRegexp',
                 value: COMMON_REGEX,
-                errorMessage: 'Message is invalid',
+                errorMessage: 'Description is invalid',
             },
           ])
           .addField('#cv', [

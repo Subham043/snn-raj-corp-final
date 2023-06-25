@@ -98,7 +98,46 @@
     </div>
 </section>
 
-    @include('main.includes.common_contact')
+<div class="contact secondary-div mt-0 pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="section-title"><span>Land Owner</span></h1>
+                {{-- <p>If you’re looking for a career with us, drop us a line and we’ll get back to you shortly.</p> --}}
+            </div>
+            <!-- form -->
+            <div class="col-md-12 " data-animate-effect="fadeInUp">
+                <form method="post" class="contact__form" id="contactForm">
+                    <!-- Form elements -->
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            <input class="line-gray" name="name" id="name" type="text" placeholder="Your Name *" required>
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <input class="line-gray" name="email" id="email" type="email" placeholder="Your Email *" required>
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <input class="line-gray" name="phone" id="phone" type="text" placeholder="Your Number *" required>
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <select class="line-gray" name="subject" id="subject">
+                                <option value="">Subject</option>
+                                <option value="Land For Joint Development">Land For Joint Development</option>
+                                <option value="Land For Out Rate Purchase">Land For Out Rate Purchase</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <textarea class="line-gray" name="property_location" id="property_location" cols="30" rows="4" placeholder="Property Location *" required></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <input name="submit" id="submitBtn" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @stop
@@ -109,12 +148,6 @@
     {!!$seo->meta_footer_no_script_nonce!!}
 
     <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
-
-        let uuid = null;
-        let link = null;
-        var myModal = new bootstrap.Modal(document.getElementById('staticBackdropContact'), {
-            keyboard: false
-        })
 
         // initialize the validation library
         const validation = new JustValidate('#contactForm', {
@@ -159,26 +192,21 @@
               rule: 'required',
               errorMessage: 'Subject is required',
             },
-            {
-                rule: 'customRegexp',
-                value: COMMON_REGEX,
-                errorMessage: 'Subject is invalid',
-            },
           ])
-          .addField('#message', [
+          .addField('#property_location', [
             {
               rule: 'required',
-              errorMessage: 'Message is required',
+              errorMessage: 'Property Location is required',
             },
             {
                 rule: 'customRegexp',
                 value: COMMON_REGEX,
-                errorMessage: 'Message is invalid',
+                errorMessage: 'Property Location is invalid',
             },
           ])
           .onSuccess(async (event) => {
             var submitBtn = document.getElementById('submitBtn')
-            submitBtn.value = 'Sending Message ...'
+            submitBtn.value = 'Submitting ...'
             submitBtn.disabled = true;
             try {
                 var formData = new FormData();
@@ -186,14 +214,11 @@
                 formData.append('email',document.getElementById('email').value)
                 formData.append('phone',document.getElementById('phone').value)
                 formData.append('subject',document.getElementById('subject').value)
-                formData.append('message',document.getElementById('message').value)
-                formData.append('page_url','{{Request::url()}}')
+                formData.append('property_location',document.getElementById('property_location').value)
 
-                const response = await axios.post('{{route('contact_page.post')}}', formData)
+                const response = await axios.post('{{route('land_owner.post')}}', formData)
                 event.target.reset();
-                uuid = response.data.uuid;
-                link = response.data.link;
-                myModal.show()
+                successToast(response.data.message)
 
             }catch (error){
                 if(error?.response?.data?.errors?.name){
@@ -208,82 +233,17 @@
                 if(error?.response?.data?.errors?.subject){
                     validation.showErrors({'#subject': error?.response?.data?.errors?.subject[0]})
                 }
-                if(error?.response?.data?.errors?.message){
-                    validation.showErrors({'#message': error?.response?.data?.errors?.message[0]})
+                if(error?.response?.data?.errors?.property_location){
+                    validation.showErrors({'#property_location': error?.response?.data?.errors?.property_location[0]})
                 }
                 if(error?.response?.data?.message){
                     errorToast(error?.response?.data?.message)
                 }
             }finally{
-                submitBtn.value =  `Send Message`
+                submitBtn.value =  `Submit`
                 submitBtn.disabled = false;
             }
           });
-
-          // initialize the validation library
-        const validationOtp = new JustValidate('#otpForm', {
-              errorFieldCssClass: 'is-invalid',
-        });
-        // apply rules to form fields
-        validationOtp
-          .addField('#otp', [
-            {
-              rule: 'required',
-              errorMessage: 'OTP is required',
-            },
-            {
-                rule: 'customRegexp',
-                value: COMMON_REGEX,
-                errorMessage: 'OTP is invalid',
-            },
-          ])
-          .onSuccess(async (event) => {
-            var submitOtpBtn = document.getElementById('submitOtpBtn')
-            submitOtpBtn.value = 'Submitting ...'
-            submitOtpBtn.disabled = true;
-            try {
-                var formData = new FormData();
-                formData.append('otp',document.getElementById('otp').value)
-
-                const response = await axios.post(link, formData)
-                event.target.reset();
-                uuid = null;
-                link = null;
-                myModal.hide()
-                successToast(response.data.message)
-            }catch (error){
-                if(error?.response?.data?.errors?.otp){
-                    validationOtp.showErrors({'#otp': error?.response?.data?.errors?.otp[0]})
-                }
-                if(error?.response?.data?.message){
-                    errorToast(error?.response?.data?.message)
-                }
-            }finally{
-                submitOtpBtn.value =  `Submit`
-                submitOtpBtn.disabled = false;
-            }
-          });
-
-          document.getElementById('resendOtpBtn').addEventListener('click', async function(event){
-            if(uuid){
-                event.target.innerText = 'Sending ...'
-                event.target.disabled = true;
-                try {
-                    var formData = new FormData();
-                    formData.append('uuid',uuid)
-                    const response = await axios.post('{{route('contact_page.resendOtp')}}', formData)
-                    successToast(response.data.message)
-                }catch (error){
-                    if(error?.response?.data?.message){
-                        errorToast(error?.response?.data?.message)
-                    }
-                }finally{
-                    event.target.innerText = 'Resend OTP'
-                    event.target.disabled = false;
-                }
-            }
-          })
-
 
     </script>
 

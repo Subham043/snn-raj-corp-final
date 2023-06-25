@@ -41,6 +41,9 @@ use App\Modules\Enquiry\ContactForm\Controllers\ContactFormPaginateController;
 use App\Modules\Enquiry\EmpanelmentForm\Controllers\EmpanelmentFormDeleteController;
 use App\Modules\Enquiry\EmpanelmentForm\Controllers\EmpanelmentFormExcelController;
 use App\Modules\Enquiry\EmpanelmentForm\Controllers\EmpanelmentFormPaginateController;
+use App\Modules\Enquiry\LandOwnerForm\Controllers\LandOwnerFormDeleteController;
+use App\Modules\Enquiry\LandOwnerForm\Controllers\LandOwnerFormExcelController;
+use App\Modules\Enquiry\LandOwnerForm\Controllers\LandOwnerFormPaginateController;
 use App\Modules\Enquiry\ReferalForm\Controllers\ReferalFormDeleteController;
 use App\Modules\Enquiry\ReferalForm\Controllers\ReferalFormExcelController;
 use App\Modules\Enquiry\ReferalForm\Controllers\ReferalFormPaginateController;
@@ -177,6 +180,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [ContactFormPaginateController::class, 'get', 'as' => 'enquiry.contact_form.paginate.get'])->name('enquiry.contact_form.paginate.get');
             Route::get('/excel', [ContactFormExcelController::class, 'get', 'as' => 'enquiry.contact_form.excel.get'])->name('enquiry.contact_form.excel.get');
             Route::get('/delete/{id}', [ContactFormDeleteController::class, 'get', 'as' => 'enquiry.contact_form.delete.get'])->name('enquiry.contact_form.delete.get');
+
+        });
+        Route::prefix('/land-owner-form')->group(function () {
+            Route::get('/', [LandOwnerFormPaginateController::class, 'get', 'as' => 'enquiry.land_owner_form.paginate.get'])->name('enquiry.land_owner_form.paginate.get');
+            Route::get('/excel', [LandOwnerFormExcelController::class, 'get', 'as' => 'enquiry.land_owner_form.excel.get'])->name('enquiry.land_owner_form.excel.get');
+            Route::get('/delete/{id}', [LandOwnerFormDeleteController::class, 'get', 'as' => 'enquiry.land_owner_form.delete.get'])->name('enquiry.land_owner_form.delete.get');
 
         });
         Route::prefix('/career-form')->group(function () {

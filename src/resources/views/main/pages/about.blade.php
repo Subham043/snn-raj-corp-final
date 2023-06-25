@@ -70,7 +70,12 @@
             padding: 5px;
             border-top-left-radius: 30px;
             border-bottom-right-radius: 30px;
-            height: 610px;
+            height: 670px;
+            object-fit: cover;
+        }
+
+        .core_image{
+            height: 500px;
             object-fit: cover;
         }
 
@@ -85,7 +90,7 @@
 
     @if($banner)
     <!-- Hero -->
-    <section class="hero hero-main section-padding">
+    <section class="hero hero-main section-padding py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -269,7 +274,7 @@
                 <div class="col-md-12 owl-carousel owl-theme">
                     @foreach($staffs as $staffs)
                     <div class="wrap">
-                        <div class="con"> <img fetchpriority="low" src="{{$staffs->image_link}}" class="img-fluid" alt="">
+                        <div class="con"> <img fetchpriority="low" src="{{$staffs->image_link}}" class="img-fluid core_image" alt="">
                             <div class="info">
                                 <h4 class="name">{{$staffs->name}}</h4>
                             </div>

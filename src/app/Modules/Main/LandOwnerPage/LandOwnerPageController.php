@@ -3,6 +3,9 @@
 namespace App\Modules\Main\LandOwnerPage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\RateLimitService;
+use App\Modules\Enquiry\LandOwnerForm\Requests\LandOwnerFormRequest;
+use App\Modules\Enquiry\LandOwnerForm\Services\LandOwnerFormService;
 use App\Modules\Legal\Services\LegalService;
 use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\ChatbotService;
@@ -16,6 +19,7 @@ class LandOwnerPageController extends Controller
     private $themeService;
     private $chatbotService;
     private $legalService;
+    private $landOwnerFormService;
 
     public function __construct(
         SeoService $seoService,
@@ -23,6 +27,7 @@ class LandOwnerPageController extends Controller
         ThemeService $themeService,
         ChatbotService $chatbotService,
         LegalService $legalService,
+        LandOwnerFormService $landOwnerFormService,
     )
     {
         $this->seoService = $seoService;
@@ -30,6 +35,7 @@ class LandOwnerPageController extends Controller
         $this->themeService = $themeService;
         $this->chatbotService = $chatbotService;
         $this->legalService = $legalService;
+        $this->landOwnerFormService = $landOwnerFormService;
     }
 
     public function get(){
@@ -39,6 +45,24 @@ class LandOwnerPageController extends Controller
         $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
         return view('main.pages.land_owner', compact(['seo', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal']));
+    }
+
+    public function post(LandOwnerFormRequest $request){
+
+        try {
+            //code...
+            $this->landOwnerFormService->create(
+                [
+                    ...$request->validated(),
+                    'ip_address' => $request->ip(),
+                ]
+            );
+            (new RateLimitService($request))->clearRateLimit();
+            return response()->json(["message" => "Land Owner Enquiry recieved successfully."], 201);
+        } catch (\Throwable $th) {
+            return response()->json(["message" => "Something went wrong. Please try again"], 400);
+        }
+
     }
 
 }
