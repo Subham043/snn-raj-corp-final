@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\DecryptService;
 use App\Http\Services\OtpService;
 use App\Http\Services\RateLimitService;
+use App\Http\Services\SelldoService;
 use App\Modules\Enquiry\ContactForm\Requests\ContactFormRequest;
 use App\Modules\Enquiry\ContactForm\Requests\OtpFormRequest;
 use App\Modules\Enquiry\ContactForm\Requests\ResendOtpFormRequest;
@@ -64,6 +65,7 @@ class ContactPageController extends Controller
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
+            (new SelldoService)->create($request->name, $request->email, $request->phone);
             (new OtpService)->sendOtp($data->phone, $data->otp);
             $uuid = (new DecryptService)->encryptId($data->id);
             return response()->json(["uuid" => $uuid, "link" => route('contact_page.verifyOtp', $uuid)], 201);

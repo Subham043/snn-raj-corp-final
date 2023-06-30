@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Enquiry\LandOwnerForm\Exports;
+namespace App\Modules\Enquiry\CampaignForm\Exports;
 
-use App\Modules\Enquiry\LandOwnerForm\Models\LandOwnerForm;
+use App\Modules\Enquiry\CampaignForm\Models\CampaignForm;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class LandOwnerFormExport implements FromCollection,WithHeadings,WithMapping
+class CampaignFormExport implements FromCollection,WithHeadings,WithMapping
 {
 
     /**
@@ -20,8 +20,8 @@ class LandOwnerFormExport implements FromCollection,WithHeadings,WithMapping
             'email',
             'phone',
             'IP address',
-            'subject',
-            'property location',
+            'source',
+            'campaign',
             'created_at',
         ];
     }
@@ -33,13 +33,13 @@ class LandOwnerFormExport implements FromCollection,WithHeadings,WithMapping
             $data->email,
             $data->phone,
             $data->ip_address,
-            $data->subject,
-            $data->property_location,
+            $data->source,
+            $data->campaign,
             $data->created_at,
          ];
     }
     public function collection()
     {
-        return LandOwnerForm::all();
+        return CampaignForm::all();
     }
 }

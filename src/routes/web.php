@@ -4,6 +4,7 @@ use App\Modules\Main\AboutPage\AboutPageController;
 use App\Modules\Main\AwardPage\AwardPageController;
 use App\Modules\Main\BlogPage\BlogDetailPageController;
 use App\Modules\Main\BlogPage\BlogPageController;
+use App\Modules\Main\CampaignFormPage\CampaignFormPageController;
 use App\Modules\Main\CareerPage\CareerPageController;
 use App\Modules\Main\ChannelPartnerPage\ChannelPartnerPageController;
 use App\Modules\Main\ContactPage\ContactPageController;
@@ -38,6 +39,8 @@ Route::get('/refer-now', [ReferalPageController::class, 'get', 'as' => 'referal_
 Route::get('/become-a-channel-partner', [ChannelPartnerPageController::class, 'get', 'as' => 'channel_partner.get'])->name('channel_partner.get');
 Route::get('/land-owner', [LandOwnerPageController::class, 'get', 'as' => 'land_owner.get'])->name('land_owner.get');
 Route::post('/land-owner-post', [LandOwnerPageController::class, 'post', 'as' => 'land_owner.post'])->name('land_owner.post');
+Route::get('/campaign-form', [CampaignFormPageController::class, 'get', 'as' => 'campaign_form.get'])->name('campaign_form.get');
+Route::post('/campaign-form-post', [CampaignFormPageController::class, 'post', 'as' => 'campaign_form.post'])->name('campaign_form.post');
 Route::post('/contact-us-post', [ContactPageController::class, 'post', 'as' => 'contact_page.post'])->name('contact_page.post');
 Route::post('/career-post', [CareerPageController::class, 'post', 'as' => 'career_page.post'])->name('career_page.post');
 Route::post('/become-a-channel-partner-post', [ChannelPartnerPageController::class, 'post', 'as' => 'channel_partner.post'])->name('channel_partner.post');

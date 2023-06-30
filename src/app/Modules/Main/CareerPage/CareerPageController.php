@@ -4,6 +4,7 @@ namespace App\Modules\Main\CareerPage;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\RateLimitService;
+use App\Http\Services\SelldoService;
 use App\Modules\Enquiry\CareerForm\Requests\CareerFormRequest;
 use App\Modules\Enquiry\CareerForm\Services\CareerFormService;
 use App\Modules\Legal\Services\LegalService;
@@ -61,6 +62,7 @@ class CareerPageController extends Controller
                 $this->careerFormService->saveCv($career);
             }
             (new RateLimitService($request))->clearRateLimit();
+            (new SelldoService)->create($request->name, $request->email, $request->phone);
             return response()->json(["message" => "Career Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

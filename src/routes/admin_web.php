@@ -32,6 +32,9 @@ use App\Modules\Csr\Controllers\CsrDeleteController;
 use App\Modules\Csr\Controllers\CsrPaginateController;
 use App\Modules\Csr\Controllers\CsrUpdateController;
 use App\Modules\Dashboard\Controllers\DashboardController;
+use App\Modules\Enquiry\CampaignForm\Controllers\CampaignFormDeleteController;
+use App\Modules\Enquiry\CampaignForm\Controllers\CampaignFormExcelController;
+use App\Modules\Enquiry\CampaignForm\Controllers\CampaignFormPaginateController;
 use App\Modules\Enquiry\CareerForm\Controllers\CareerFormDeleteController;
 use App\Modules\Enquiry\CareerForm\Controllers\CareerFormExcelController;
 use App\Modules\Enquiry\CareerForm\Controllers\CareerFormPaginateController;
@@ -186,6 +189,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [LandOwnerFormPaginateController::class, 'get', 'as' => 'enquiry.land_owner_form.paginate.get'])->name('enquiry.land_owner_form.paginate.get');
             Route::get('/excel', [LandOwnerFormExcelController::class, 'get', 'as' => 'enquiry.land_owner_form.excel.get'])->name('enquiry.land_owner_form.excel.get');
             Route::get('/delete/{id}', [LandOwnerFormDeleteController::class, 'get', 'as' => 'enquiry.land_owner_form.delete.get'])->name('enquiry.land_owner_form.delete.get');
+
+        });
+        Route::prefix('/campaign-form')->group(function () {
+            Route::get('/', [CampaignFormPaginateController::class, 'get', 'as' => 'enquiry.campaign_form.paginate.get'])->name('enquiry.campaign_form.paginate.get');
+            Route::get('/excel', [CampaignFormExcelController::class, 'get', 'as' => 'enquiry.campaign_form.excel.get'])->name('enquiry.campaign_form.excel.get');
+            Route::get('/delete/{id}', [CampaignFormDeleteController::class, 'get', 'as' => 'enquiry.campaign_form.delete.get'])->name('enquiry.campaign_form.delete.get');
 
         });
         Route::prefix('/career-form')->group(function () {
