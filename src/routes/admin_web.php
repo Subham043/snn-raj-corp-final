@@ -44,6 +44,9 @@ use App\Modules\Enquiry\ContactForm\Controllers\ContactFormPaginateController;
 use App\Modules\Enquiry\EmpanelmentForm\Controllers\EmpanelmentFormDeleteController;
 use App\Modules\Enquiry\EmpanelmentForm\Controllers\EmpanelmentFormExcelController;
 use App\Modules\Enquiry\EmpanelmentForm\Controllers\EmpanelmentFormPaginateController;
+use App\Modules\Enquiry\FreeAdForm\Controllers\FreeAdFormDeleteController;
+use App\Modules\Enquiry\FreeAdForm\Controllers\FreeAdFormExcelController;
+use App\Modules\Enquiry\FreeAdForm\Controllers\FreeAdFormPaginateController;
 use App\Modules\Enquiry\LandOwnerForm\Controllers\LandOwnerFormDeleteController;
 use App\Modules\Enquiry\LandOwnerForm\Controllers\LandOwnerFormExcelController;
 use App\Modules\Enquiry\LandOwnerForm\Controllers\LandOwnerFormPaginateController;
@@ -195,6 +198,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [CampaignFormPaginateController::class, 'get', 'as' => 'enquiry.campaign_form.paginate.get'])->name('enquiry.campaign_form.paginate.get');
             Route::get('/excel', [CampaignFormExcelController::class, 'get', 'as' => 'enquiry.campaign_form.excel.get'])->name('enquiry.campaign_form.excel.get');
             Route::get('/delete/{id}', [CampaignFormDeleteController::class, 'get', 'as' => 'enquiry.campaign_form.delete.get'])->name('enquiry.campaign_form.delete.get');
+
+        });
+        Route::prefix('/free-ad-form')->group(function () {
+            Route::get('/', [FreeAdFormPaginateController::class, 'get', 'as' => 'enquiry.free_ad_form.paginate.get'])->name('enquiry.free_ad_form.paginate.get');
+            Route::get('/excel', [FreeAdFormExcelController::class, 'get', 'as' => 'enquiry.free_ad_form.excel.get'])->name('enquiry.free_ad_form.excel.get');
+            Route::get('/delete/{id}', [FreeAdFormDeleteController::class, 'get', 'as' => 'enquiry.free_ad_form.delete.get'])->name('enquiry.free_ad_form.delete.get');
 
         });
         Route::prefix('/career-form')->group(function () {

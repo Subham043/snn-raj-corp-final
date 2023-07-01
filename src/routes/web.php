@@ -9,6 +9,7 @@ use App\Modules\Main\CareerPage\CareerPageController;
 use App\Modules\Main\ChannelPartnerPage\ChannelPartnerPageController;
 use App\Modules\Main\ContactPage\ContactPageController;
 use App\Modules\Main\CsrPage\CsrPageController;
+use App\Modules\Main\FreeAdFormPage\FreeAdFormPageController;
 use App\Modules\Main\HomePage\HomePageController;
 use App\Modules\Main\LandOwnerPage\LandOwnerPageController;
 use App\Modules\Main\LegalPage\LegalPageController;
@@ -41,6 +42,8 @@ Route::get('/land-owner', [LandOwnerPageController::class, 'get', 'as' => 'land_
 Route::post('/land-owner-post', [LandOwnerPageController::class, 'post', 'as' => 'land_owner.post'])->name('land_owner.post');
 Route::get('/campaign-form', [CampaignFormPageController::class, 'get', 'as' => 'campaign_form.get'])->name('campaign_form.get');
 Route::post('/campaign-form-post', [CampaignFormPageController::class, 'post', 'as' => 'campaign_form.post'])->name('campaign_form.post');
+Route::get('/free-ad-form', [FreeAdFormPageController::class, 'get', 'as' => 'free_ad_form.get'])->name('free_ad_form.get');
+Route::post('/free-ad-form-post', [FreeAdFormPageController::class, 'post', 'as' => 'free_ad_form.post'])->name('free_ad_form.post');
 Route::post('/contact-us-post', [ContactPageController::class, 'post', 'as' => 'contact_page.post'])->name('contact_page.post');
 Route::post('/career-post', [CareerPageController::class, 'post', 'as' => 'career_page.post'])->name('career_page.post');
 Route::post('/become-a-channel-partner-post', [ChannelPartnerPageController::class, 'post', 'as' => 'channel_partner.post'])->name('channel_partner.post');
