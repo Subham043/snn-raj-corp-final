@@ -17,12 +17,15 @@ class SelldoService
         }
     }
 
-    public function get(string $phone): bool
+    public function verify(string $phone): bool
     {
         try {
-            Http::asForm()
-            ->post('https://app.sell.do/api/leads/phone/retrieve_lead?api_key=cb59ce73bf598b600fc107d640d03376&value='.$phone);
-            return true;
+            $response = Http::get('https://app.sell.do/api/leads/phone/retrieve_lead?api_key=26c5b0ac69821ba28d6293355d641ec9&value='.$phone);
+            $data = json_decode($response->body());
+            if($data->exists){
+                return true;
+            }
+            return false;
         } catch (\Throwable $th) {
             return false;
         }

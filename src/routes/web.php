@@ -44,6 +44,7 @@ Route::get('/campaign-form', [CampaignFormPageController::class, 'get', 'as' => 
 Route::post('/campaign-form-post', [CampaignFormPageController::class, 'post', 'as' => 'campaign_form.post'])->name('campaign_form.post');
 Route::get('/free-ad-form', [FreeAdFormPageController::class, 'get', 'as' => 'free_ad_form.get'])->name('free_ad_form.get');
 Route::post('/free-ad-form-post', [FreeAdFormPageController::class, 'post', 'as' => 'free_ad_form.post'])->name('free_ad_form.post');
+Route::post('/free-ad-form-verify', [FreeAdFormPageController::class, 'verify', 'as' => 'free_ad_form.verify'])->name('free_ad_form.verify');
 Route::post('/contact-us-post', [ContactPageController::class, 'post', 'as' => 'contact_page.post'])->name('contact_page.post');
 Route::post('/career-post', [CareerPageController::class, 'post', 'as' => 'career_page.post'])->name('career_page.post');
 Route::post('/become-a-channel-partner-post', [ChannelPartnerPageController::class, 'post', 'as' => 'channel_partner.post'])->name('channel_partner.post');

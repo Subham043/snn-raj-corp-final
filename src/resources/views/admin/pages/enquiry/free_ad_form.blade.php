@@ -37,6 +37,7 @@
                                             <th class="sort" data-sort="customer_name">Email</th>
                                             <th class="sort" data-sort="customer_name">Phone</th>
                                             <th class="sort" data-sort="customer_name">IP Address</th>
+                                            <th class="sort" data-sort="customer_name">Project</th>
                                             <th class="sort" data-sort="customer_name">Source</th>
                                             <th class="sort" data-sort="customer_name">Executive</th>
                                             <th class="sort" data-sort="date">Created On</th>
@@ -50,6 +51,7 @@
                                             <td class="customer_name">{{$item->email}}</td>
                                             <td class="customer_name">{{$item->phone}}</td>
                                             <td class="customer_name">{{$item->ip_address}}</td>
+                                            <td class="customer_name">{{$item->project}}</td>
                                             <td class="customer_name">{{$item->source}}</td>
                                             <td class="customer_name">{{$item->executive_name}}</td>
                                             <td class="date">{{$item->created_at->diffForHumans()}}</td>

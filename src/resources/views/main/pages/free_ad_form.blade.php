@@ -44,6 +44,11 @@
                 height: auto;
             }
         }
+
+        select.form-control, select.form-control:focus{
+            background: white;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -65,15 +70,28 @@
                         <div class="website-logo-inside">
                             <h3>Free Ad Form.</h3>
                         </div>
-                        <form id="contactForm">
+                        <form id="verifyForm">
                             <div>
                                 <input class="form-control" type="text" name="name" id="name" placeholder="Name" required>
                             </div>
                             <div>
-                                <input class="form-control" type="email" name="email" id="email" placeholder="Email" required>
+                                <input class="form-control" type="email" name="email" id="email" placeholder="Email">
                             </div>
                             <div>
                                 <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone" required>
+                            </div>
+                            <div class="form-button">
+                                <button id="submitBtnVerify" type="submit" class="ibtn">Verify</button>
+                            </div>
+                        </form>
+                        <form id="contactForm" style="display: none">
+                            <div>
+                                <select class="form-control" name="project" id="project" required>
+                                    <option value="">Project</option>
+                                    @foreach($projects as $p)
+                                        <option value="{{$p->name}}">{{$p->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div>
                                 <input class="form-control" type="text" name="source" id="source" placeholder="Source" required>
@@ -114,12 +132,17 @@
         });
     }
 
+    let nameValue = null;
+    let emailValue = null;
+    let phoneValue = null;
+
+
     // initialize the validation library
-    const validation = new JustValidate('#contactForm', {
+    const validationVerify = new JustValidate('#verifyForm', {
           errorFieldCssClass: 'is-invalid',
     });
     // apply rules to form fields
-    validation
+    validationVerify
       .addField('#name', [
         {
           rule: 'required',
@@ -134,12 +157,61 @@
       ])
       .addField('#email', [
         {
-            rule: 'required',
-            errorMessage: 'Email is required',
-        },
-        {
             rule: 'email',
             errorMessage: 'Email is invalid!',
+        },
+      ])
+      .onSuccess(async (event) => {
+        var submitBtn = document.getElementById('submitBtnVerify')
+        submitBtn.value = 'Verifying ...'
+        submitBtn.disabled = true;
+        try {
+            var formData = new FormData();
+            formData.append('name',document.getElementById('name').value)
+            formData.append('email',document.getElementById('email').value)
+            formData.append('phone',document.getElementById('phone').value)
+
+            const response = await axios.post('{{route('free_ad_form.verify')}}', formData)
+            successToast(response.data.message)
+            event.target.reset();
+
+        }catch (error){
+            if(error?.response?.data?.errors?.name){
+                validationVerify.showErrors({'#name': error?.response?.data?.errors?.name[0]})
+            }
+            if(error?.response?.data?.errors?.email){
+                validationVerify.showErrors({'#email': error?.response?.data?.errors?.email[0]})
+            }
+            if(error?.response?.data?.errors?.phone){
+                validationVerify.showErrors({'#phone': error?.response?.data?.errors?.phone[0]})
+            }
+            if(error?.response?.data?.message){
+                errorToast(error?.response?.data?.message)
+                nameValue = document.getElementById('name').value;
+                if(document.getElementById('email').value.length>0){
+                    emailValue = document.getElementById('email').value;
+                }
+                phoneValue = document.getElementById('phone').value;
+                event.target.style.display = "none";
+                event.target.reset();
+                document.getElementById('contactForm').style.display = "block";
+            }
+        }finally{
+            submitBtn.value =  `Verify`
+            submitBtn.disabled = false;
+        }
+      });
+
+      // initialize the validation library
+    const validation = new JustValidate('#contactForm', {
+          errorFieldCssClass: 'is-invalid',
+    });
+    // apply rules to form fields
+    validation
+      .addField('#project', [
+        {
+          rule: 'required',
+          errorMessage: 'Project is required',
         },
       ])
       .addField('#source', [
@@ -160,25 +232,25 @@
         submitBtn.disabled = true;
         try {
             var formData = new FormData();
-            formData.append('name',document.getElementById('name').value)
-            formData.append('email',document.getElementById('email').value)
-            formData.append('phone',document.getElementById('phone').value)
+            formData.append('name',nameValue)
+            formData.append('email',emailValue)
+            formData.append('phone',phoneValue)
+            formData.append('project',document.getElementById('project').value)
             formData.append('source',document.getElementById('source').value)
             formData.append('executive_name',document.getElementById('executive_name').value)
 
             const response = await axios.post('{{route('free_ad_form.post')}}', formData)
             event.target.reset();
+            nameValue = null;
+            emailValue = null;
+            phoneValue = null;
+            event.target.style.display = "none";
+            document.getElementById('verifyForm').style.display = "block";
             successToast(response.data.message)
 
         }catch (error){
-            if(error?.response?.data?.errors?.name){
-                validation.showErrors({'#name': error?.response?.data?.errors?.name[0]})
-            }
-            if(error?.response?.data?.errors?.email){
-                validation.showErrors({'#email': error?.response?.data?.errors?.email[0]})
-            }
-            if(error?.response?.data?.errors?.phone){
-                validation.showErrors({'#phone': error?.response?.data?.errors?.phone[0]})
+            if(error?.response?.data?.errors?.project){
+                validation.showErrors({'#project': error?.response?.data?.errors?.project[0]})
             }
             if(error?.response?.data?.errors?.executive_name){
                 validation.showErrors({'#executive_name': error?.response?.data?.errors?.executive_name[0]})
@@ -194,6 +266,7 @@
             submitBtn.disabled = false;
         }
       });
+
 
 </script>
 </html>

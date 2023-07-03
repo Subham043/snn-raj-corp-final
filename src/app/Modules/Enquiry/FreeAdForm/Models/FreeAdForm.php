@@ -22,6 +22,7 @@ class FreeAdForm extends Model
         'name',
         'email',
         'phone',
+        'project',
         'source',
         'executive_name',
         'ip_address',

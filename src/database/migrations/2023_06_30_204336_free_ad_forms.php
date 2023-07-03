@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 500);
             $table->string('phone', 500)->nullable();
             $table->string('email', 500)->nullable();
+            $table->string('project', 500)->nullable();
             $table->string('source', 500)->nullable();
             $table->string('executive_name', 500)->nullable();
             $table->string('ip_address', 500)->nullable();
