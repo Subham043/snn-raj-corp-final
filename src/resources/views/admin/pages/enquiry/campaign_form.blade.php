@@ -8,14 +8,14 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @include('admin.includes.breadcrumb', ['page'=>'Campaign Form Enquiry', 'page_link'=>route('enquiry.campaign_form.paginate.get'), 'list'=>['List']])
+        @include('admin.includes.breadcrumb', ['page'=>'Free Ad Form Enquiry', 'page_link'=>route('enquiry.campaign_form.paginate.get'), 'list'=>['List']])
         <!-- end page title -->
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title mb-0">Campaign Form Enquiry</h4>
+                        <h4 class="card-title mb-0">Free Ad Form Enquiry</h4>
                     </div><!-- end card header -->
 
                     <div class="card-body">
@@ -37,6 +37,7 @@
                                             <th class="sort" data-sort="customer_name">Email</th>
                                             <th class="sort" data-sort="customer_name">Phone</th>
                                             <th class="sort" data-sort="customer_name">IP Address</th>
+                                            <th class="sort" data-sort="customer_name">Project</th>
                                             <th class="sort" data-sort="customer_name">Source</th>
                                             <th class="sort" data-sort="customer_name">Campaign</th>
                                             <th class="sort" data-sort="date">Created On</th>
@@ -50,6 +51,7 @@
                                             <td class="customer_name">{{$item->email}}</td>
                                             <td class="customer_name">{{$item->phone}}</td>
                                             <td class="customer_name">{{$item->ip_address}}</td>
+                                            <td class="customer_name">{{$item->project}}</td>
                                             <td class="customer_name">{{$item->source}}</td>
                                             <td class="customer_name">{{$item->campaign}}</td>
                                             <td class="date">{{$item->created_at->diffForHumans()}}</td>

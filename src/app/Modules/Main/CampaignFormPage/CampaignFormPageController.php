@@ -7,20 +7,25 @@ use App\Http\Services\RateLimitService;
 use App\Http\Services\SelldoService;
 use App\Modules\Enquiry\CampaignForm\Requests\CampaignFormRequest;
 use App\Modules\Enquiry\CampaignForm\Services\CampaignFormService;
+use App\Modules\Project\Projects\Services\ProjectService;
 
 class CampaignFormPageController extends Controller
 {
     private $campaignFormService;
+    private $projectService;
 
     public function __construct(
         CampaignFormService $campaignFormService,
+        ProjectService $projectService,
     )
     {
         $this->campaignFormService = $campaignFormService;
+        $this->projectService = $projectService;
     }
 
     public function get(){
-        return view('main.pages.campaign_form');
+        $projects = $this->projectService->main_all();
+        return view('main.pages.campaign_form', compact('projects'));
     }
 
     public function post(CampaignFormRequest $request){
@@ -35,7 +40,7 @@ class CampaignFormPageController extends Controller
             );
             (new RateLimitService($request))->clearRateLimit();
             (new SelldoService)->create($request->name, $request->email, $request->phone);
-            return response()->json(["message" => "Campaign Enquiry recieved successfully."], 201);
+            return response()->json(["message" => "Free Ad Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);
         }

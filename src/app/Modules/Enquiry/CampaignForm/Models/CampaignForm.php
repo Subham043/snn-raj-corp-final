@@ -22,6 +22,7 @@ class CampaignForm extends Model
         'name',
         'email',
         'phone',
+        'project',
         'source',
         'campaign',
         'ip_address',

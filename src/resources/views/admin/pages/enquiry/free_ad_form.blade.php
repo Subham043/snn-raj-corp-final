@@ -8,14 +8,14 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @include('admin.includes.breadcrumb', ['page'=>'Free Ad Form Enquiry', 'page_link'=>route('enquiry.free_ad_form.paginate.get'), 'list'=>['List']])
+        @include('admin.includes.breadcrumb', ['page'=>'Campaign Form Enquiry', 'page_link'=>route('enquiry.free_ad_form.paginate.get'), 'list'=>['List']])
         <!-- end page title -->
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title mb-0">Free Ad Form Enquiry</h4>
+                        <h4 class="card-title mb-0">Campaign Form Enquiry</h4>
                     </div><!-- end card header -->
 
                     <div class="card-body">

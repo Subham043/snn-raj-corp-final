@@ -194,13 +194,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [LandOwnerFormDeleteController::class, 'get', 'as' => 'enquiry.land_owner_form.delete.get'])->name('enquiry.land_owner_form.delete.get');
 
         });
-        Route::prefix('/campaign-form')->group(function () {
+        Route::prefix('/free-ad-form')->group(function () {
             Route::get('/', [CampaignFormPaginateController::class, 'get', 'as' => 'enquiry.campaign_form.paginate.get'])->name('enquiry.campaign_form.paginate.get');
             Route::get('/excel', [CampaignFormExcelController::class, 'get', 'as' => 'enquiry.campaign_form.excel.get'])->name('enquiry.campaign_form.excel.get');
             Route::get('/delete/{id}', [CampaignFormDeleteController::class, 'get', 'as' => 'enquiry.campaign_form.delete.get'])->name('enquiry.campaign_form.delete.get');
 
         });
-        Route::prefix('/free-ad-form')->group(function () {
+        Route::prefix('/campaign-form')->group(function () {
             Route::get('/', [FreeAdFormPaginateController::class, 'get', 'as' => 'enquiry.free_ad_form.paginate.get'])->name('enquiry.free_ad_form.paginate.get');
             Route::get('/excel', [FreeAdFormExcelController::class, 'get', 'as' => 'enquiry.free_ad_form.excel.get'])->name('enquiry.free_ad_form.excel.get');
             Route::get('/delete/{id}', [FreeAdFormDeleteController::class, 'get', 'as' => 'enquiry.free_ad_form.delete.get'])->name('enquiry.free_ad_form.delete.get');

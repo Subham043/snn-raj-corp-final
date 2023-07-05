@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SnnRajCorp - Free Ad Form</title>
+    <title>SnnRajCorp - Campaign Form</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/logo.png') }}">
     <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin/css/iofrm-style.css')}}" rel="stylesheet" type="text/css" />
@@ -68,7 +68,7 @@
                 <div class="form-content">
                     <div class="form-items">
                         <div class="website-logo-inside">
-                            <h3>Free Ad Form.</h3>
+                            <h3>Campaign Form.</h3>
                         </div>
                         <form id="verifyForm">
                             <div>

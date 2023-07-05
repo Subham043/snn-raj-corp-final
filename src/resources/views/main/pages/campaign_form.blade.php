@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SnnRajCorp - Campaign Form</title>
+    <title>SnnRajCorp - Free Ad Form</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/logo.png') }}">
     <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin/css/iofrm-style.css')}}" rel="stylesheet" type="text/css" />
@@ -44,6 +44,10 @@
                 height: auto;
             }
         }
+        select.form-control, select.form-control:focus{
+            background: white;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -63,7 +67,7 @@
                 <div class="form-content">
                     <div class="form-items">
                         <div class="website-logo-inside">
-                            <h3>Campaign Form.</h3>
+                            <h3>Free Ad Form.</h3>
                         </div>
                         <form id="contactForm">
                             <div>
@@ -74,6 +78,14 @@
                             </div>
                             <div>
                                 <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone" required>
+                            </div>
+                            <div>
+                                <select class="form-control" name="project" id="project" required>
+                                    <option value="">Project</option>
+                                    @foreach($projects as $p)
+                                        <option value="{{$p->name}}">{{$p->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div>
                                 <input class="form-control" type="text" name="source" id="source" placeholder="Source" required>
@@ -134,12 +146,14 @@
       ])
       .addField('#email', [
         {
-            rule: 'required',
-            errorMessage: 'Email is required',
-        },
-        {
             rule: 'email',
             errorMessage: 'Email is invalid!',
+        },
+      ])
+      .addField('#project', [
+        {
+          rule: 'required',
+          errorMessage: 'Project is required',
         },
       ])
       .addField('#source', [
@@ -163,6 +177,7 @@
             formData.append('name',document.getElementById('name').value)
             formData.append('email',document.getElementById('email').value)
             formData.append('phone',document.getElementById('phone').value)
+            formData.append('project',document.getElementById('project').value)
             formData.append('source',document.getElementById('source').value)
             formData.append('campaign',document.getElementById('campaign').value)
 
@@ -179,6 +194,9 @@
             }
             if(error?.response?.data?.errors?.phone){
                 validation.showErrors({'#phone': error?.response?.data?.errors?.phone[0]})
+            }
+            if(error?.response?.data?.errors?.project){
+                validation.showErrors({'#project': error?.response?.data?.errors?.project[0]})
             }
             if(error?.response?.data?.errors?.campaign){
                 validation.showErrors({'#campaign': error?.response?.data?.errors?.campaign[0]})
