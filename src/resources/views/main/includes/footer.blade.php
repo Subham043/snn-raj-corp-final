@@ -13,7 +13,7 @@
                 <div class="col-md-3">
                     <div class="item">
                         <p>{{ empty($generalSetting) ? '' : $generalSetting->address}}</p>
-                        <a aria-label="phone" href="mailto:{{ empty($generalSetting) ? '' : $generalSetting->phone}}" class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</a>
+                        <a aria-label="phone" href="tel:{{ empty($generalSetting) ? '' : $generalSetting->phone}}" class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</a>
                         <a aria-label="email" href="mailto:{{ empty($generalSetting) ? '' : $generalSetting->email}}" class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email}}</a>
                         <div class="social mt-2">
                             <a aria-label="facebook" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
