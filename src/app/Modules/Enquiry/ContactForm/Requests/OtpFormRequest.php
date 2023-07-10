@@ -29,6 +29,7 @@ class OtpFormRequest extends FormRequest
     {
         return [
             'otp' => 'required|numeric|digits:4',
+            'project_id' => 'nullable',
         ];
     }
 

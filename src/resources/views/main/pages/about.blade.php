@@ -82,6 +82,14 @@
         .about .desc-ul p{
             text-align: justify;
         }
+
+        @media screen and (max-width: 600px) {
+            .about_banner_img {
+                height: auto;
+                object-fit: contain;
+            }
+
+        }
     </style>
 
 @stop
@@ -90,7 +98,7 @@
 
     @if($banner)
     <!-- Hero -->
-    <section class="hero hero-main section-padding py-5">
+    <section class="hero hero-main section-padding py-1">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">

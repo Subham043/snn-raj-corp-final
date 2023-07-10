@@ -805,6 +805,8 @@
             try {
                 var formData = new FormData();
                 formData.append('otp',document.getElementById('otp').value)
+                formData.append('page_url','{{Request::url()}}')
+                formData.append('project_id', '{{$data->id}}')
 
                 const response = await axios.post(link, formData)
                 event.target.reset();

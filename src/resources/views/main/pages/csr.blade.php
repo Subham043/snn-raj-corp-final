@@ -46,7 +46,7 @@
 
     @if($banner)
     <!-- Hero -->
-    <section class="hero hero-main section-padding">
+    <section class="hero hero-main section-padding py-1">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">

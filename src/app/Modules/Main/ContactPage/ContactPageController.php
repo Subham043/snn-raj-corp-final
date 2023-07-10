@@ -12,6 +12,7 @@ use App\Modules\Enquiry\ContactForm\Requests\OtpFormRequest;
 use App\Modules\Enquiry\ContactForm\Requests\ResendOtpFormRequest;
 use App\Modules\Enquiry\ContactForm\Services\ContactFormService;
 use App\Modules\Legal\Services\LegalService;
+use App\Modules\Project\Projects\Models\Project;
 use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
@@ -65,7 +66,6 @@ class ContactPageController extends Controller
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
-            (new SelldoService)->create($request->name, $request->email, $request->phone);
             (new OtpService)->sendOtp($data->phone, $data->otp);
             $uuid = (new DecryptService)->encryptId($data->id);
             return response()->json(["uuid" => $uuid, "link" => route('contact_page.verifyOtp', $uuid)], 201);
@@ -117,6 +117,36 @@ class ContactPageController extends Controller
                     ],
                     $data
                 );
+                if($request->project_id){
+                    $project = Project::find($request->project_id);
+                    if($project->is_completed){
+                        (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7ba980ad1ff2cf54646fe');
+                    }else{
+                        switch ($project->name) {
+                            case 'Raj High Gardens':
+                                # code...
+                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7b9070ad1ff10693d9cce');
+                                break;
+
+                            case 'Raj Bay Vista':
+                                # code...
+                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7b8a60ad1ff18a2973837');
+                                break;
+
+                            case 'Raj Viviente':
+                                # code...
+                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7b7240ad1ff10963d9873');
+                                break;
+
+                            default:
+                                # code...
+                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7ba980ad1ff2cf54646fe');
+                                break;
+                        }
+                    }
+                }else{
+                    (new SelldoService)->create($data->name, $data->email, $data->phone);
+                }
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }
             return response()->json(["message" => "Invalid OTP. Please try again"], 400);

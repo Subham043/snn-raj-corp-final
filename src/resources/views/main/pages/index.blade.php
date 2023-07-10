@@ -195,14 +195,14 @@
                 {{-- </div> --}}
             </div>
             <div class="row align-items-end">
-                {{-- <div class="col-md-4 " data-animate-effect="fadeInUp">
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
                         <img src="{{$about->image_link}}" fetchpriority="high" class="img-fluid shapeee" alt="">
                     </div>
                     @endif
-                </div> --}}
-                <div class="col-md-12 " data-animate-effect="fadeInUp">
+                </div>
+                <div class="col-md-8 " data-animate-effect="fadeInUp">
                     <div class="row">
                         <div class="col-md-auto " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light mb-5"><h1 class="section-title m-0">{!!$about->heading!!}</h1></div>

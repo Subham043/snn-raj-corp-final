@@ -51,7 +51,7 @@
 @section('content')
 
     <!-- Awards -->
-    <section class="services section-padding">
+    <section class="services section-padding pt-3">
         <div class="container">
             <div class="row mb-4 align-items-end">
                 @if($awardHeading)
