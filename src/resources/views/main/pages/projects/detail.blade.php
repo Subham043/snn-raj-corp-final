@@ -166,6 +166,9 @@
 
 @section('content')
 
+<h1 class="d-none">{{$data->page_keywords}}</h1>
+<h2 class="d-none">{{$data->page_keywords}}</h2>
+
 @if($data->use_in_banner)
     <section class="project-page suffix-div project-page-banner video-project-page mb-0 mt-0 py-0">
         <div class="container-fluid">

@@ -31,6 +31,7 @@ class Blog extends Model implements Sitemapable
         'description_unfiltered',
         'image',
         'is_draft',
+        'page_keywords',
         'meta_title',
         'meta_description',
         'meta_keywords',

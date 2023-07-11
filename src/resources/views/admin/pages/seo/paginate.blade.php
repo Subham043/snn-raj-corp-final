@@ -33,6 +33,7 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th class="sort" data-sort="customer_name">Page Name</th>
+                                            <th class="sort" data-sort="customer_name">Page Keywords</th>
                                             <th class="sort" data-sort="customer_name">Meta Title</th>
                                             <th class="sort" data-sort="customer_name">Meta Keywords</th>
                                             <th class="sort" data-sort="customer_name">Meta Description</th>
@@ -44,6 +45,7 @@
                                         @foreach ($data->items() as $item)
                                         <tr>
                                             <td class="customer_name">{{$item->page_name}}</td>
+                                            <td class="customer_name">{{ Str::limit($item->page_keywords, 20) }}</td>
                                             <td class="customer_name">{{ Str::limit($item->meta_title, 20) }}</td>
                                             <td class="customer_name">{{ Str::limit($item->meta_keywords, 20) }}</td>
                                             <td class="customer_name">{{ Str::limit($item->meta_description, 20) }}</td>

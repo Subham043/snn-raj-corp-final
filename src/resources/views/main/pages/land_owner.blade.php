@@ -98,6 +98,9 @@
     </div>
 </section>
 
+<h1 class="d-none">{{$seo->page_keywords}}</h1>
+<h2 class="d-none">{{$seo->page_keywords}}</h2>
+
 <div class="contact secondary-div mt-0 pt-5">
     <div class="container">
         <div class="row">

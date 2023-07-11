@@ -116,6 +116,9 @@
     </section>
     @endif
 
+    <h1 class="d-none">{{$seo->page_keywords}}</h1>
+    <h2 class="d-none">{{$seo->page_keywords}}</h2>
+
     {{-- <!-- About -->
     @if($about)
     <section class="lets-talk">

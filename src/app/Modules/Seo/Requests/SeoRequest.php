@@ -27,6 +27,7 @@ class SeoRequest extends FormRequest
     public function rules()
     {
         return [
+            'page_keywords' => 'nullable|string',
             'meta_title' => 'nullable|string',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',

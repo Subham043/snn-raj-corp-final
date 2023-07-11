@@ -31,6 +31,7 @@ return new class extends Migration
             $table->boolean('use_in_banner')->default(0);
             $table->boolean('is_draft')->default(0);
             $table->boolean('is_completed')->default(0);
+            $table->text('page_keywords')->nullable();
             $table->text('meta_title')->nullable();
             $table->text('meta_description')->nullable();
             $table->text('meta_keywords')->nullable();

@@ -71,6 +71,9 @@
 
 @section('content')
 
+    <h1 class="d-none">{{$seo->page_keywords}}</h1>
+    <h2 class="d-none">{{$seo->page_keywords}}</h2>
+
     <!-- Awards -->
     {{-- @if($projectHeading)
     <section class="projects3 pt-5">

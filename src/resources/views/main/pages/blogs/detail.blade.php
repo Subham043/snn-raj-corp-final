@@ -37,6 +37,9 @@
 
 @section('content')
 
+<h1 class="d-none">{{$data->page_keywords}}</h1>
+<h2 class="d-none">{{$data->page_keywords}}</h2>
+
 <!-- Post  -->
 <section class="post suffix-div mt-0">
     <div class="container">

@@ -65,6 +65,9 @@
     </section>
     @endif
 
+    <h1 class="d-none">{{$seo->page_keywords}}</h1>
+    <h2 class="d-none">{{$seo->page_keywords}}</h2>
+
     <!-- ADDITIONAL CONTENT -->
     @if(count($mainContent)>0)
             @foreach($mainContent as $key=>$val)

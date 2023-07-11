@@ -37,6 +37,7 @@ class ProjectUpdateRequest extends ProjectCreateRequest
             'meta_title' => 'nullable|string',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
+            'page_keywords' => 'nullable|string',
             'meta_header_script' => 'nullable|string',
             'meta_footer_script' => 'nullable|string',
             'meta_header_no_script' => 'nullable|string',

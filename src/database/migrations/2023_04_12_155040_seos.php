@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('page_name', 250);
             $table->string('slug', 250)->unique();
+            $table->text('page_keywords')->nullable();
             $table->text('meta_title')->nullable();
             $table->text('meta_description')->nullable();
             $table->text('meta_keywords')->nullable();

@@ -56,6 +56,9 @@
 @section('content')
 
 
+    <h1 class="d-none">{{$seo->page_keywords}}</h1>
+    <h2 class="d-none">{{$seo->page_keywords}}</h2>
+
     <!-- Contact -->
     <div class="contact secondary-div mt-0 pt-5">
         <div class="container">

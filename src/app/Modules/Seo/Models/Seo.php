@@ -24,6 +24,7 @@ class Seo extends Model
     protected $fillable = [
         'page_name',
         'slug',
+        'page_keywords',
         'meta_title',
         'meta_description',
         'meta_keywords',

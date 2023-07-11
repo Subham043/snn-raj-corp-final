@@ -179,6 +179,8 @@
         @endif
     @endif
     <!-- About -->
+    <h1 class="d-none">{{$seo->page_keywords}}</h1>
+    <h2 class="d-none">{{$seo->page_keywords}}</h2>
     @if($about)
     <section class="about section-padding">
         <div class="container">

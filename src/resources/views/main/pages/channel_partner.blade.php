@@ -109,6 +109,9 @@
     </div>
 </section>
 
+<h1 class="d-none">{{$seo->page_keywords}}</h1>
+<h2 class="d-none">{{$seo->page_keywords}}</h2>
+
 <section class="lets-talk secondary-div mt-0">
     <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">

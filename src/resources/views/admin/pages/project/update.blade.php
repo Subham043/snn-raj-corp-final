@@ -143,13 +143,16 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
+                                        @include('admin.includes.textarea', ['key'=>'page_keywords', 'label'=>'Page Keywords', 'value'=>$data->page_keywords])
+                                    </div>
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.textarea', ['key'=>'meta_title', 'label'=>'Meta Title', 'value'=>$data->meta_title])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.textarea', ['key'=>'meta_keywords', 'label'=>'Meta Keywords', 'value'=>$data->meta_keywords])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.textarea', ['key'=>'meta_description', 'label'=>'Meta Description', 'value'=>$data->meta_description])
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
@@ -353,6 +356,11 @@ validation
         validator: (value, fields) => true,
     },
   ])
+  .addField('#page_keywords', [
+    {
+        validator: (value, fields) => true,
+    },
+  ])
   .addField('#meta_description', [
     {
         validator: (value, fields) => true,
@@ -402,6 +410,7 @@ validation
         formData.append('brief_description',document.getElementById('brief_description').value)
         formData.append('meta_title',document.getElementById('meta_title').value)
         formData.append('meta_keywords',document.getElementById('meta_keywords').value)
+        formData.append('page_keywords',document.getElementById('page_keywords').value)
         formData.append('meta_description',document.getElementById('meta_description').value)
         formData.append('meta_header_script',document.getElementById('meta_header_script').value)
         formData.append('meta_footer_script',document.getElementById('meta_footer_script').value)
@@ -470,6 +479,9 @@ validation
         }
         if(error?.response?.data?.errors?.meta_keywords){
             validation.showErrors({'#meta_keywords': error?.response?.data?.errors?.meta_keywords[0]})
+        }
+        if(error?.response?.data?.errors?.page_keywords){
+            validation.showErrors({'#page_keywords': error?.response?.data?.errors?.page_keywords[0]})
         }
         if(error?.response?.data?.errors?.meta_header_script){
             validation.showErrors({'#meta_header_script': error?.response?.data?.errors?.meta_header_script[0]})

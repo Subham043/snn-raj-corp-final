@@ -64,6 +64,10 @@
                     </div>
                 @endif
             </div>
+
+            <h1 class="d-none">{{$seo->page_keywords}}</h1>
+            <h2 class="d-none">{{$seo->page_keywords}}</h2>
+
             @if(count($awards) > 0)
             <div class="row">
                 <div class="col-md-12">

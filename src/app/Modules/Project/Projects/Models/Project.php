@@ -48,6 +48,7 @@ class Project extends Model implements Sitemapable
         'use_in_banner',
         'is_draft',
         'is_completed',
+        'page_keywords',
         'meta_title',
         'meta_description',
         'meta_keywords',

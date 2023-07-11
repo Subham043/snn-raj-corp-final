@@ -49,6 +49,7 @@ class ProjectCreateRequest extends FormRequest
             'meta_title' => 'nullable|string',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
+            'page_keywords' => 'nullable|string',
             'meta_header_script' => 'nullable|string',
             'meta_footer_script' => 'nullable|string',
             'meta_header_no_script' => 'nullable|string',
