@@ -1594,13 +1594,15 @@ input[type="checkbox"] {
 
 /* ======= Section style ======= */
 .section-padding {
-    padding-top: 120px;
+    /* padding-top: 120px; */
+    padding-top: 50px;
     position: relative;
     z-index: 9;
     /* padding-bottom: 120px; */
 }
 .div-padding {
-    padding-top: 60px;
+    /* padding-top: 60px; */
+    padding-top: 50px;
     position: relative;
     z-index: 9;
     /* padding-bottom: 120px; */
@@ -2160,6 +2162,7 @@ input[type="checkbox"] {
 /* ======= Services style  ======== */
 .services .item {
     padding: 40px 20px;
+    padding-top: 0;
     position: relative;
     background-size: cover;
     background-position: 50% 0% !important;
@@ -2402,7 +2405,8 @@ input[type="checkbox"] {
     color: var(--theme-primary-color);
 }
 .projects2-wrap {
-    padding-bottom: 90px;
+    padding-bottom: 20px;
+    /* padding-bottom: 90px; */
     padding-right: 0;
     padding-left: 90px;
     position: relative;
@@ -3620,7 +3624,8 @@ input[type="checkbox"] {
 
 /* ======= Footer style ======= */
 .footer {
-    padding: 90px 0 0;
+    /* padding: 90px 0 0; */
+    padding: 40px 0 0;
     position: relative;
    border-top: 1px solid var(--theme-lines-color);
 }

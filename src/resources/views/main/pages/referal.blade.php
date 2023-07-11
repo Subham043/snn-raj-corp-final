@@ -109,7 +109,8 @@
         }
         .secondary-div{
             background: var(--theme-secondary-color);
-            padding: 125px 0;
+            /* padding: 125px 0; */
+            padding: 50px 0;
             margin-top: 60px;
         }
         .subject-div{

@@ -132,6 +132,7 @@
                 [{ 'list': 'ordered'}, { 'list': 'bullet' }],
                 [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
                 [{ 'indent': '-1'}, { 'indent': '+1' }],
+                ['link'],
                 [{ 'align': [] }],
                 ['clean']
             ];

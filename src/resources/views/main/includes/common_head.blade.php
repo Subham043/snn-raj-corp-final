@@ -110,21 +110,25 @@
         }
         .secondary-div{
             background: var(--theme-secondary-color);
-            padding: 125px 0;
+            /* padding: 125px 0; */
+            padding: 50px 0;
             margin-top: 60px;
         }
         .subject-div{
             background: var(--theme-subject-color);
-            padding: 125px 0;
+            /* padding: 125px 0; */
+            padding: 50px 0;
             margin-top: 60px;
         }
         .suffix-div{
             background: var(--theme-suffix-color);
-            padding: 125px 0;
+            /* padding: 125px 0; */
+            padding: 50px 0;
             margin-top: 60px;
         }
         .hero-contact{
-            padding: 125px 0;
+            /* padding: 125px 0; */
+            padding: 50px 0;
             margin-top: 60px;
         }
         .secondary-div input[type=password].line-gray, .secondary-div input[type=email].line-gray, .secondary-div input[type=text].line-gray, .secondary-div input[type=file].line-gray, .secondary-div textarea.line-gray, .secondary-div select.line-gray {
@@ -223,6 +227,9 @@
             .pb-md-40{
                 padding-bottom: 40px !important;
             }
+        }
+        .duru-header.scrolled{
+            background: #fff;
         }
     </style>
     @yield('css')

@@ -138,6 +138,9 @@
                 opacity: 1;
             }
         }
+        .duru-header {
+            position: fixed;
+        }
     </style>
 
 @stop
@@ -418,7 +421,7 @@
     @endif
 
     @include('main.includes.referal')
-    <div class="py-5"></div>
+    <div class="py-1"></div>
 
 @stop
 

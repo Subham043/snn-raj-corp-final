@@ -509,7 +509,7 @@
             </div>
         </div>
     </section>
-    <div class="py-5"></div>
+    <div class="py-3"></div>
     @endif
 
 @stop
