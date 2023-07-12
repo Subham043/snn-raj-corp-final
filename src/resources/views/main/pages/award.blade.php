@@ -95,6 +95,7 @@
     </section>
     <div class="py-1"></div>
 
+    @include('main.includes.common_contact_modal')
 @stop
 
 @section('js')
@@ -102,4 +103,5 @@
     {!!$seo->meta_footer_script_nonce!!}
     {!!$seo->meta_footer_no_script_nonce!!}
 
+    @include('main.includes.common_contact_modal_script')
 @stop

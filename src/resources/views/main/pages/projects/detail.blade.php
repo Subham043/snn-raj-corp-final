@@ -665,12 +665,15 @@
 
     @include('main.includes.common_contact')
 
+    @include('main.includes.common_contact_modal')
 @stop
 
 @section('js')
 
     {!!$data->meta_footer_script_nonce!!}
     {!!$data->meta_footer_no_script_nonce!!}
+
+    @include('main.includes.common_contact_modal_script')
 
     <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 

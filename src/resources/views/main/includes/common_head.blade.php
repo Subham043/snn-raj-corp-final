@@ -231,6 +231,13 @@
         .duru-header.scrolled{
             background: #fff;
         }
+        .modal-img{
+            height: 70px;
+            object-fit: contain;
+            margin-right: auto;
+            width: auto;
+        }
+        .modal-open { overflow-y: auto !important; }
     </style>
     @yield('css')
 </head>
