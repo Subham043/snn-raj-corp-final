@@ -124,7 +124,7 @@
                             @can('campaigns')
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('campaign_list.get')) !== false ? 'active' : ''}}" href="{{route('campaign_list.get')}}">
-                                    <i class="ri-article-line"></i> <span data-key="t-widgets">Campaigns</span>
+                                    <i class="ri-mail-volume-line"></i> <span data-key="t-widgets">Campaigns</span>
                                 </a>
                             </li>
                             @endcan
