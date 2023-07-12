@@ -45,7 +45,7 @@
                 </div> --}}
                 <div class="col-md-auto " data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light mb-3">
-                        <h1 class="section-title m-0">{{$status=='completed' ? 'COMPLETED PROJECTS' : 'ONGOING PROJECTS'}}</h1>
+                        <div class="section-title m-0">{{$status=='completed' ? 'COMPLETED PROJECTS' : 'ONGOING PROJECTS'}}</div>
                     </div>
                 </div>
             </div>

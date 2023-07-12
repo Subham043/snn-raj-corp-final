@@ -53,7 +53,7 @@
                     <div class="hero">
                         <figure><img fetchpriority="high" src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img"></figure>
                         <div class="caption">
-                            <h1 class="section-title">{!!$banner->heading!!}</h1>
+                            <div class="section-title">{!!$banner->heading!!}</div>
                             <div class="desc-ul">
                                 {!!$banner->description!!}
                             </div>
@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="wrap">
                                         <div class="number">
-                                            <h2 class="section-title">{!!$val->heading!!}</h2>
+                                            <div class="section-title">{!!$val->heading!!}</div>
                                         </div>
                                         <div class="cont desc-ul">
                                             {!!$val->description!!}
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="wrap">
                                     <div class="number">
-                                        <h2 class="section-title">{!!$val->heading!!}</h2>
+                                        <div class="section-title">{!!$val->heading!!}</div>
                                     </div>
                                     <div class="cont desc-ul">
                                         {!!$val->description!!}

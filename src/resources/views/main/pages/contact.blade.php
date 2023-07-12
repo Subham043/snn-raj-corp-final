@@ -60,7 +60,7 @@
                     <div class="no-line-heading sub-title border-bot-light">Contact</div>
                 </div>
                 <div class="col-md-8">
-                    <h1 class="section-title">Get in <span>touch</span></h1>
+                    <div class="section-title">Get in <span>touch</span></div>
                     <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line and we’ll get back to you shortly.</p>
                 </div>
             </div>

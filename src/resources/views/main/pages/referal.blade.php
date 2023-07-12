@@ -301,7 +301,7 @@
                         <div class="no-line-heading sub-title border-bot-light">REFERRAL PROGRAM</div>
                     </div>
                     <div class="col-md-8">
-                        <h1 class="section-title"><span>Existing</span> Customer Details</h1>
+                        <div class="section-title"><span>Existing</span> Customer Details</div>
                     </div>
                 </div>
                 <div class="row">
@@ -333,7 +333,7 @@
                                 <div class="col-md-6 form-group">
                                     <input class="line-gray" name="member_unit" id="member_unit" type="text" placeholder="Unit *" required>
                                 </div>
-                                <h2 class="section-title my-5">REFERENCE OF <span>NEW BUYER</span></h2>
+                                <div class="section-title my-5">REFERENCE OF <span>NEW BUYER</span></div>
                                 <div class="col-md-4 form-group">
                                     <input class="line-gray" name="referal_name" id="referal_name" type="text" placeholder="Name *" required>
                                 </div>

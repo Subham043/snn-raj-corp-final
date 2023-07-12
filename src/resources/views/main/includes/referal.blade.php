@@ -17,7 +17,7 @@
             <div class="col-md-4 valign " data-animate-effect="fadeInRight">
                 <div class="wrap">
                     <div class="number">
-                        <h1>01</h1>
+                        <div class="numbering">01</div>
                     </div>
                     <div class="cont">
                         <h3 style="font-weight:bold;color:#bd922d;">Register</h3>
@@ -28,7 +28,7 @@
             <div class="col-md-4 order2 valign " data-animate-effect="fadeInLeft">
                 <div class="wrap">
                     <div class="number">
-                        <h1>02</h1>
+                        <div class="numbering">02</div>
                     </div>
                     <div class="cont">
                         <h3 style="font-weight:bold;color:#bd922d;">Add reference</h3>
@@ -39,7 +39,7 @@
             <div class="col-md-4 valign " data-animate-effect="fadeInRight">
                 <div class="wrap">
                     <div class="number">
-                        <h1>03</h1>
+                        <div class="numbering">03</div>
                     </div>
                     <div class="cont">
                         <h3 style="font-weight:bold;color:#bd922d;">Keep earning</h3>

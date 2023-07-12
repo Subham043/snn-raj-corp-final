@@ -393,7 +393,7 @@
                     <div class="row">
                         <div class="col-md-auto " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light mb-3">
-                                <h1 class="section-title m-0">{{$data->name}}</h1>
+                                <div class="section-title m-0">{{$data->name}}</div>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -429,7 +429,7 @@
                                     <div class="row">
                                         <div class="col-md-auto " data-animate-effect="fadeInUp">
                                             <div class="sub-title border-bot-light mb-3">
-                                                <h1 class="section-title m-0">{!!$val->heading!!}</h1>
+                                                <div class="section-title m-0">{!!$val->heading!!}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -456,7 +456,7 @@
                                     <div class="row">
                                         <div class="col-md-auto " data-animate-effect="fadeInUp">
                                             <div class="sub-title border-bot-light mb-3">
-                                                <h1 class="section-title m-0">{!!$val->heading!!}</h1>
+                                                <div class="section-title m-0">{!!$val->heading!!}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -481,7 +481,7 @@
                     <div class="row">
                         <div class="col-md-auto " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light mb-3">
-                                <h1 class="section-title m-0"><span>Floor</span> Plans</h1>
+                                <div class="section-title m-0"><span>Floor</span> Plans</div>
                             </div>
                         </div>
                     </div>
@@ -520,7 +520,7 @@
                             @foreach($data->accomodation as $accomodation)
                             <li class="accom">
                                 <div class="numb valign">
-                                    <h2 class="mb-1 text-white">{{$accomodation->room}}</h2>
+                                    <div class="mb-1 text-white">{{$accomodation->room}}</div>
                                 </div>
                                 <div class="text valign ml-1">
                                     <p style="color: #be932d">
@@ -545,7 +545,7 @@
             <div class="row">
                 <div class="col-md-auto mb-30" data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light mb-5">
-                        <h1 class="section-title m-0"><span>Best Of Class</span> Amenities</h1>
+                        <div class="section-title m-0"><span>Best Of Class</span> Amenities</div>
                     </div>
                 </div>
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -573,7 +573,7 @@
             <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-auto" data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light mb-2">
-                        <h1 class="section-title m-0"><span>Video</span> Galleria</h1>
+                        <div class="section-title m-0"><span>Video</span> Galleria</div>
                     </div>
                 </div>
             </div>
@@ -603,7 +603,7 @@
             <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-auto" data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light mb-2">
-                        <h1 class="section-title m-0"><span>Image</span> Galleria</h1>
+                        <div class="section-title m-0"><span>Image</span> Galleria</div>
                     </div>
                 </div>
             </div>

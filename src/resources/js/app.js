@@ -289,6 +289,15 @@
     //     contentWayPoint();
     // });
 
+    if ($(".vdo-play-btn").length) {
+        $(".vdo-play-btn").on("click", function () {
+            $(this).parent().addClass("d-none");
+            var url = $(this).attr('data-href');
+            $(this).closest('.vid-area').find('.yt_iframe').attr("src",url);
+            $(this).closest('.vid-area').find('.yt_iframe').removeClass("d-none").addClass("d-block");
+        });
+    }
+
     // Accordion Box (for Faqs)
     if ($(".accordion-box").length) {
         $(".accordion-box").on("click", ".acc-btn", function () {
@@ -638,7 +647,7 @@
 
     // Testimonials owlCarousel
     $('.testimonials .owl-carousel').owlCarousel({
-        loop:true,
+        loop:false,
         margin: 20,
         mouseDrag: true,
         autoplay: true,

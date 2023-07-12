@@ -137,7 +137,7 @@
             <div class="container">
                 <div class="row align-items-end">
                     <div class="col-md-2 " data-animate-effect="fadeInUp">
-                        <h2 class="section-title font-weight-normal mb-md-0 mt-md-0">ONGOING <br/><span class="mx-4">PROJECTS</span></h2>
+                        <div class="section-title font-weight-normal mb-md-0 mt-md-0">ONGOING <br/><span class="mx-4">PROJECTS</span></div>
                     </div>
                     <div class="col-md-10 " data-animate-effect="fadeInUp">
                         <div class="no-dot sub-title border-bot-light pb-md-0 pt-md-0">&nbsp;</div>
@@ -247,7 +247,7 @@
             <div class="container">
                 <div class="row  align-items-end">
                     <div class="col-md-2 " data-animate-effect="fadeInUp">
-                        <h2 class="section-title font-weight-normal mb-md-0 mt-md-0">COMPLETED <br/><span class="mx-4">PROJECTS</span></h2>
+                        <div class="section-title font-weight-normal mb-md-0 mt-md-0">COMPLETED <br/><span class="mx-4">PROJECTS</span></div>
                     </div>
                     <div class="col-md-10 " data-animate-effect="fadeInUp">
                         <div class="no-dot sub-title border-bot-light pb-md-0 pt-md-0">&nbsp;</div>

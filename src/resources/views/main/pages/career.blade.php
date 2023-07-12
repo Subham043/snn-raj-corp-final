@@ -78,7 +78,7 @@
             </div> --}}
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="section-title"><span>Career</span></h1>
+                    <div class="section-title"><span>Career</span></div>
                     <p>If you’re looking for a career with us, drop us a line and we’ll get back to you shortly.</p>
                 </div>
                 <!-- form -->

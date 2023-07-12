@@ -80,7 +80,7 @@
                     <img src="{{asset('assets/partner.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
                 </div>
                 <div class="wrap">
-                    <h1 class="section-title">CHANNEL PARTNER <div style="display:inline;"><span>EMPANELMENT</span></div>.</h1>
+                    <div class="section-title">CHANNEL PARTNER <div style="display:inline;"><span>EMPANELMENT</span></div>.</div>
                     <p>
                         We greatly appreciate the value we place on building strong relationships with our business associates. Our goal is to establish a long-lasting partnership, and we have made the process of starting your journey simple and straightforward. Here's a step-by-step guide to get started:
                     </p>

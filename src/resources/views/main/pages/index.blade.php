@@ -141,6 +141,12 @@
         .duru-header {
             position: fixed;
         }
+
+        .counter-main{
+            font-size: 4rem;
+            line-height: 60px;
+            color: white;
+        }
     </style>
 
 @stop
@@ -210,7 +216,7 @@
                 <div class="col-md-8 " data-animate-effect="fadeInUp">
                     <div class="row">
                         <div class="col-md-auto " data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light mb-5"><h1 class="section-title m-0">{!!$about->heading!!}</h1></div>
+                            <div class="sub-title border-bot-light mb-5"><div class="section-title m-0">{!!$about->heading!!}</div></div>
                         </div>
                     </div>
                     <div class="desc-ul">
@@ -234,7 +240,7 @@
                             <div class="sub-title border-bot-light">{{$counterHeading->sub_heading}}</div>
                         </div> --}}
                         <div class="col-md-auto " data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0">{!!$counterHeading->heading!!}</h2></div>
+                            <div class="sub-title border-bot-light m-0"><div class="section-title m-0">{!!$counterHeading->heading!!}</div></div>
                         </div>
                     @endif
                 </div>
@@ -246,7 +252,7 @@
                                 {{-- <li class="flex"> --}}
                                 <li class="text-center col-md-4 col-sm-12 p-2 mx-0">
                                     <div class="numb valign justify-content-center">
-                                        <h1 class="m-0"><span class="text-white purecounter" data-purecounter-duration="5"  data-purecounter-start="5000" data-purecounter-end="{{$counters->counter_number}}">0</span> {{$counters->counter_text}}</h1>
+                                        <div class="m-0 counter-main"><span class="text-white purecounter" data-purecounter-duration="5"  data-purecounter-start="5000" data-purecounter-end="{{$counters->counter_number}}">0</span> {{$counters->counter_text}}</div>
                                     </div>
                                     <div class="text valign justify-content-center">
                                         <p>
@@ -281,7 +287,7 @@
                 @if($projectHeading)
                 <div class="col-md-auto " data-animate-effect="fadeInUp">
                     {{-- <div class="sub-title border-bot-light">{{$projectHeading->sub_heading}}</div> --}}
-                    <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0">{!!$projectHeading->heading!!}</h2></div>
+                    <div class="sub-title border-bot-light m-0"><div class="section-title m-0">{!!$projectHeading->heading!!}</div></div>
                 </div>
                 @endif
                 <div class="col-md-12 mt-4" data-animate-effect="fadeInUp">
@@ -357,7 +363,7 @@
                     @endif
                     <div class="col-md-auto">
                         @if($testimonialHeading)
-                        <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$testimonialHeading->heading!!}</h2></div>
+                        <div class="sub-title border-bot-light"><div class="section-title m-0">{!!$testimonialHeading->heading!!}</div></div>
                         @endif
                     </div>
                 </div>
@@ -370,13 +376,13 @@
                                 <div class="row">
                                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                                         <div class="vid-area mb-30">
-                                            <iframe loading="lazy" src="{{$testimonials->video}}" class="w-100" height="350" title="{{$testimonials->video_title}}" frameborder="0"></iframe>
-                                            <h3 class="testimonial-name sub-title">{{$testimonials->video_title}}</h3>
-                                            {{-- <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube">
-                                                <a class="video-gallery-button vid" href="https://youtu.be/{{$testimonials->video_id}}"> <span class="video-gallery-polygon">
+                                            <iframe id="yt_iframe_{{$testimonials->id}}" loading="lazy" src="" class="w-100 yt_iframe d-none" height="350" title="{{$testimonials->video_title}}"  allow='autoplay' frameborder="0"></iframe>
+                                            <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube">
+                                                <button class="video-gallery-button vid vdo-play-btn" data-iframe="yt_iframe_{{$testimonials->id}}" data-href="{{$testimonials->video}}?autoplay=1"> <span class="video-gallery-polygon">
                                                         <i class="ti-control-play"></i>
-                                                    </span> </a>
-                                            </div> --}}
+                                                    </span> </button>
+                                            </div>
+                                            <h3 class="testimonial-name sub-title">{{$testimonials->video_title}}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -400,7 +406,7 @@
                         <div class="sub-title border-bot-light">Blog</div>
                     </div> --}}
                     <div class="col-md-auto">
-                        <div class="sub-title border-bot-light m-0"><h2 class="section-title m-0"><span>Latest</span> News</h2></div>
+                        <div class="sub-title border-bot-light m-0"><div class="section-title m-0"><span>Latest</span> News</div></div>
                     </div>
             </div>
             <div class="row">

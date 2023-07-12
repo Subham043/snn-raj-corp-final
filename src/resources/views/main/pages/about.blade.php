@@ -105,7 +105,7 @@
                     <div class="hero">
                         <figure><img src="{{ $banner->image_link}}" fetchpriority="high" alt="" class="img-fluid about_banner_img"></figure>
                         <div class="caption">
-                            <h1 class="section-title">{!!$banner->heading!!}</h1>
+                            <div class="section-title">{!!$banner->heading!!}</div>
                             <p>{{$banner->description}}</p>
                             <a href="{{$banner->button_link}}" aria-label="{{$banner->button_text}}" class="button-light">{{$banner->button_text}}</a>
                         </div>
@@ -179,7 +179,7 @@
                 <div class="col-md-9 " data-animate-effect="fadeInUp">
                     <div class="row">
                         <div class="col-md-auto mb-4" data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$about->heading!!}</h2></div>
+                            <div class="sub-title border-bot-light"><div class="section-title m-0">{!!$about->heading!!}</div></div>
 
                         </div>
                     </div>
@@ -203,7 +203,7 @@
                         <div class="sub-title border-bot-light">{{$managementHeading->sub_heading}}</div>
                     </div> --}}
                     <div class="col-md-auto " data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$managementHeading->heading!!}</h2></div>
+                        <div class="sub-title border-bot-light"><div class="section-title m-0">{!!$managementHeading->heading!!}</div></div>
                     </div>
                 @endif
             </div>
@@ -277,7 +277,7 @@
                         <div class="sub-title border-bot-light">{{$staffHeading->sub_heading}}</div>
                     </div> --}}
                     <div class="col-md-auto">
-                        <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$staffHeading->heading!!}</h2></div>
+                        <div class="sub-title border-bot-light"><div class="section-title m-0">{!!$staffHeading->heading!!}</div></div>
                     </div>
                 @endif
             </div>
@@ -307,7 +307,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-auto mb-4" data-animate-effect="fadeInUp">
                         {{-- <div class="sub-title border-bot-light">Our Mission</div> --}}
-                        <div class="sub-title border-bot-light"><h2 class="section-title m-0">Our <span>Mission</span></h2></div>
+                        <div class="sub-title border-bot-light"><div class="section-title m-0">Our <span>Mission</span></div></div>
                     </div>
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <h3 class="text-white">{!!$banner->mission!!}</h5>
@@ -389,7 +389,7 @@
                         <div class="col-md-6 valign " data-animate-effect="fadeInRight">
                             <div class="wrap">
                                 <div class="number">
-                                    <h2 class="section-title">{!!$val->heading!!}</h2>
+                                    <div class="section-title">{!!$val->heading!!}</div>
                                 </div>
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
@@ -407,7 +407,7 @@
                         <div class="col-md-6 order2 valign " data-animate-effect="fadeInLeft">
                             <div class="wrap">
                                 <div class="number">
-                                    <h2 class="section-title">{!!$val->heading!!}</h2>
+                                    <div class="section-title">{!!$val->heading!!}</div>
                                 </div>
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
@@ -472,7 +472,7 @@
                         </div> --}}
                         <div class="col-md-auto mb-4" data-animate-effect="fadeInUp">
                             {{-- <div class="sub-title border-bot-light">Our Mission</div> --}}
-                            <div class="sub-title border-bot-light"><h2 class="section-title m-0">Our <span>Vision</span></h2></div>
+                            <div class="sub-title border-bot-light"><div class="section-title m-0">Our <span>Vision</span></div></div>
                         </div>
                         <div class="col-md-12 " data-animate-effect="fadeInUp">
                             <h3 class="text-white">{!!$banner->vission!!}</h5>
@@ -493,7 +493,7 @@
                         <div class="sub-title border-bot-light">{{$partnerHeading->sub_heading}}</div>
                     </div> --}}
                     <div class="col-md-auto mb-4">
-                        <div class="sub-title border-bot-light"> <h2 class="section-title m-0">{!!$partnerHeading->heading!!}</h2></div>
+                        <div class="sub-title border-bot-light"> <div class="section-title m-0">{!!$partnerHeading->heading!!}</div></div>
                     </div>
                 @endif
             </div>
