@@ -135,6 +135,44 @@ use App\Modules\Referal\Banners\Controllers\BannerDeleteController as ReferalBan
 use App\Modules\Referal\Banners\Controllers\BannerPaginateController as ReferalBannerPaginateController;
 use App\Modules\Referal\Banners\Controllers\BannerUpdateController as ReferalBannerUpdateController;
 use App\Modules\TextEditorImage\Controllers\TextEditorImageController;
+
+use App\Modules\Campaigns\Controllers\CampaignAboutController;
+use App\Modules\Campaigns\Controllers\CampaignAmenitiesCreateController;
+use App\Modules\Campaigns\Controllers\CampaignAmenitiesDeleteController;
+use App\Modules\Campaigns\Controllers\CampaignAmenitiesPaginateController;
+use App\Modules\Campaigns\Controllers\CampaignAmenitiesUpdateController;
+use App\Modules\Campaigns\Controllers\CampaignBannerController;
+use App\Modules\Campaigns\Controllers\CampaignConnectivityCreateController;
+use App\Modules\Campaigns\Controllers\CampaignConnectivityDeleteController;
+use App\Modules\Campaigns\Controllers\CampaignConnectivityPaginateController;
+use App\Modules\Campaigns\Controllers\CampaignConnectivityUpdateController;
+use App\Modules\Campaigns\Controllers\CampaignCreateController;
+use App\Modules\Campaigns\Controllers\CampaignDeleteController;
+use App\Modules\Campaigns\Controllers\CampaignGalleryCreateController;
+use App\Modules\Campaigns\Controllers\CampaignGalleryDeleteController;
+use App\Modules\Campaigns\Controllers\CampaignGalleryPaginateController;
+use App\Modules\Campaigns\Controllers\CampaignLocationController;
+use App\Modules\Campaigns\Controllers\CampaignPaginateController;
+use App\Modules\Campaigns\Controllers\CampaignPlanCategoryCreateController;
+use App\Modules\Campaigns\Controllers\CampaignPlanCategoryDeleteController;
+use App\Modules\Campaigns\Controllers\CampaignPlanCategoryPaginateController;
+use App\Modules\Campaigns\Controllers\CampaignPlanCategoryUpdateController;
+use App\Modules\Campaigns\Controllers\CampaignPlanImageCreateController;
+use App\Modules\Campaigns\Controllers\CampaignPlanImageDeleteController;
+use App\Modules\Campaigns\Controllers\CampaignPlanImagePaginateController;
+use App\Modules\Campaigns\Controllers\CampaignPreviewController;
+use App\Modules\Campaigns\Controllers\CampaignSectionHeadingController;
+use App\Modules\Campaigns\Controllers\CampaignSpecificationCreateController;
+use App\Modules\Campaigns\Controllers\CampaignSpecificationDeleteController;
+use App\Modules\Campaigns\Controllers\CampaignSpecificationPaginateController;
+use App\Modules\Campaigns\Controllers\CampaignSpecificationUpdateController;
+use App\Modules\Campaigns\Controllers\CampaignTableCreateController;
+use App\Modules\Campaigns\Controllers\CampaignTableDeleteController;
+use App\Modules\Campaigns\Controllers\CampaignTablePaginateController;
+use App\Modules\Campaigns\Controllers\CampaignTableUpdateController;
+use App\Modules\Campaigns\Controllers\CampaignThankController;
+use App\Modules\Campaigns\Controllers\CampaignUpdateController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -478,6 +516,87 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [UserUpdateController::class, 'get', 'as' => 'user.update.get'])->name('user.update.get');
         Route::post('/update/{id}', [UserUpdateController::class, 'post', 'as' => 'user.update.get'])->name('user.update.post');
         Route::get('/delete/{id}', [UserDeleteController::class, 'get', 'as' => 'user.delete.get'])->name('user.delete.get');
+    });
+
+    Route::prefix('/campaign')->group(function () {
+        Route::get('/create', [CampaignCreateController::class, 'get', 'as' => 'campaign_create.get'])->name('campaign_create.get');
+        Route::post('/create-post', [CampaignCreateController::class, 'post', 'as' => 'campaign_create.post'])->name('campaign_create.post');
+        Route::get('/', [CampaignPaginateController::class, 'get', 'as' => 'campaign_list.get'])->name('campaign_list.get');
+        Route::get('/preview/{id}', [CampaignPreviewController::class, 'get', 'as' => 'campaign_preview.get'])->name('campaign_preview.get');
+        Route::get('/delete/{id}', [CampaignDeleteController::class, 'get', 'as' => 'campaign_delete.get'])->name('campaign_delete.get');
+        Route::get('/update/{id}', [CampaignUpdateController::class, 'get', 'as' => 'campaign_update.get'])->name('campaign_update.get');
+        Route::post('/update-post/{id}', [CampaignUpdateController::class, 'post', 'as' => 'campaign_update.post'])->name('campaign_update.post');
+        Route::get('/about/{campaign_id}', [CampaignAboutController::class, 'get', 'as' => 'campaign_about.get'])->name('campaign_about.get');
+        Route::post('/about-post/{campaign_id}', [CampaignAboutController::class, 'post', 'as' => 'campaign_about.post'])->name('campaign_about.post');
+        Route::get('/thank-you/{campaign_id}', [CampaignThankController::class, 'get', 'as' => 'campaign_thank.get'])->name('campaign_thank.get');
+        Route::post('/thank-you-post/{campaign_id}', [CampaignThankController::class, 'post', 'as' => 'campaign_thank.post'])->name('campaign_thank.post');
+        Route::get('/banner/{campaign_id}', [CampaignBannerController::class, 'get', 'as' => 'campaign_banner.get'])->name('campaign_banner.get');
+        Route::post('/banner-post/{campaign_id}', [CampaignBannerController::class, 'post', 'as' => 'campaign_banner.post'])->name('campaign_banner.post');
+        Route::get('/location/{campaign_id}', [CampaignLocationController::class, 'get', 'as' => 'campaign_location.get'])->name('campaign_location.get');
+        Route::post('/location-post/{campaign_id}', [CampaignLocationController::class, 'post', 'as' => 'campaign_location.post'])->name('campaign_location.post');
+        Route::prefix('/heading/{campaign_id}')->group(function () {
+            Route::post('/', [CampaignSectionHeadingController::class, 'post', 'as' => 'campaign_heading.post'])->name('campaign_heading.post');
+
+        });
+        Route::prefix('/amenities/{campaign_id}')->group(function () {
+            Route::get('/create', [CampaignAmenitiesCreateController::class, 'get', 'as' => 'campaign_amenities_create.get'])->name('campaign_amenities_create.get');
+            Route::post('/create-post', [CampaignAmenitiesCreateController::class, 'post', 'as' => 'campaign_amenities_create.post'])->name('campaign_amenities_create.post');
+            Route::get('/', [CampaignAmenitiesPaginateController::class, 'get', 'as' => 'campaign_amenities_list.get'])->name('campaign_amenities_list.get');
+            Route::get('/delete/{id}', [CampaignAmenitiesDeleteController::class, 'get', 'as' => 'campaign_amenities_delete.get'])->name('campaign_amenities_delete.get');
+            Route::get('/update/{id}', [CampaignAmenitiesUpdateController::class, 'get', 'as' => 'campaign_amenities_update.get'])->name('campaign_amenities_update.get');
+            Route::post('/update-post/{id}', [CampaignAmenitiesUpdateController::class, 'post', 'as' => 'campaign_amenities_update.post'])->name('campaign_amenities_update.post');
+
+        });
+        Route::prefix('/table/{campaign_id}')->group(function () {
+            Route::get('/create', [CampaignTableCreateController::class, 'get', 'as' => 'campaign_table_create.get'])->name('campaign_table_create.get');
+            Route::post('/create-post', [CampaignTableCreateController::class, 'post', 'as' => 'campaign_table_create.post'])->name('campaign_table_create.post');
+            Route::get('/', [CampaignTablePaginateController::class, 'get', 'as' => 'campaign_table_list.get'])->name('campaign_table_list.get');
+            Route::get('/delete/{id}', [CampaignTableDeleteController::class, 'get', 'as' => 'campaign_table_delete.get'])->name('campaign_table_delete.get');
+            Route::get('/update/{id}', [CampaignTableUpdateController::class, 'get', 'as' => 'campaign_table_update.get'])->name('campaign_table_update.get');
+            Route::post('/update-post/{id}', [CampaignTableUpdateController::class, 'post', 'as' => 'campaign_table_update.post'])->name('campaign_table_update.post');
+
+        });
+        Route::prefix('/plan-category/{campaign_id}')->group(function () {
+            Route::get('/create', [CampaignPlanCategoryCreateController::class, 'get', 'as' => 'campaign_plan_category_create.get'])->name('campaign_plan_category_create.get');
+            Route::post('/create-post', [CampaignPlanCategoryCreateController::class, 'post', 'as' => 'campaign_plan_category_create.post'])->name('campaign_plan_category_create.post');
+            Route::get('/', [CampaignPlanCategoryPaginateController::class, 'get', 'as' => 'campaign_plan_category_list.get'])->name('campaign_plan_category_list.get');
+            Route::get('/delete/{id}', [CampaignPlanCategoryDeleteController::class, 'get', 'as' => 'campaign_plan_category_delete.get'])->name('campaign_plan_category_delete.get');
+            Route::get('/update/{id}', [CampaignPlanCategoryUpdateController::class, 'get', 'as' => 'campaign_plan_category_update.get'])->name('campaign_plan_category_update.get');
+            Route::post('/update-post/{id}', [CampaignPlanCategoryUpdateController::class, 'post', 'as' => 'campaign_plan_category_update.post'])->name('campaign_plan_category_update.post');
+
+            Route::prefix('/plan-image/{category_id}')->group(function () {
+                Route::get('/create', [CampaignPlanImageCreateController::class, 'get', 'as' => 'campaign_plan_image_create.get'])->name('campaign_plan_image_create.get');
+                Route::post('/create-post', [CampaignPlanImageCreateController::class, 'post', 'as' => 'campaign_plan_image_create.post'])->name('campaign_plan_image_create.post');
+                Route::get('/', [CampaignPlanImagePaginateController::class, 'get', 'as' => 'campaign_plan_image_list.get'])->name('campaign_plan_image_list.get');
+                Route::get('/delete/{id}', [CampaignPlanImageDeleteController::class, 'get', 'as' => 'campaign_plan_image_delete.get'])->name('campaign_plan_image_delete.get');
+
+            });
+        });
+        Route::prefix('/connectivity/{campaign_id}')->group(function () {
+            Route::get('/create', [CampaignConnectivityCreateController::class, 'get', 'as' => 'campaign_connectivity_create.get'])->name('campaign_connectivity_create.get');
+            Route::post('/create-post', [CampaignConnectivityCreateController::class, 'post', 'as' => 'campaign_connectivity_create.post'])->name('campaign_connectivity_create.post');
+            Route::get('/', [CampaignConnectivityPaginateController::class, 'get', 'as' => 'campaign_connectivity_list.get'])->name('campaign_connectivity_list.get');
+            Route::get('/delete/{id}', [CampaignConnectivityDeleteController::class, 'get', 'as' => 'campaign_connectivity_delete.get'])->name('campaign_connectivity_delete.get');
+            Route::get('/update/{id}', [CampaignConnectivityUpdateController::class, 'get', 'as' => 'campaign_connectivity_update.get'])->name('campaign_connectivity_update.get');
+            Route::post('/update-post/{id}', [CampaignConnectivityUpdateController::class, 'post', 'as' => 'campaign_connectivity_update.post'])->name('campaign_connectivity_update.post');
+
+        });
+        Route::prefix('/specifications/{campaign_id}')->group(function () {
+            Route::get('/create', [CampaignSpecificationCreateController::class, 'get', 'as' => 'campaign_specification_create.get'])->name('campaign_specification_create.get');
+            Route::post('/create-post', [CampaignSpecificationCreateController::class, 'post', 'as' => 'campaign_specification_create.post'])->name('campaign_specification_create.post');
+            Route::get('/', [CampaignSpecificationPaginateController::class, 'get', 'as' => 'campaign_specification_list.get'])->name('campaign_specification_list.get');
+            Route::get('/delete/{id}', [CampaignSpecificationDeleteController::class, 'get', 'as' => 'campaign_specification_delete.get'])->name('campaign_specification_delete.get');
+            Route::get('/update/{id}', [CampaignSpecificationUpdateController::class, 'get', 'as' => 'campaign_specification_update.get'])->name('campaign_specification_update.get');
+            Route::post('/update-post/{id}', [CampaignSpecificationUpdateController::class, 'post', 'as' => 'campaign_specification_update.post'])->name('campaign_specification_update.post');
+
+        });
+        Route::prefix('/gallery/{campaign_id}')->group(function () {
+            Route::get('/create', [CampaignGalleryCreateController::class, 'get', 'as' => 'campaign_gallery_create.get'])->name('campaign_gallery_create.get');
+            Route::post('/create-post', [CampaignGalleryCreateController::class, 'post', 'as' => 'campaign_gallery_create.post'])->name('campaign_gallery_create.post');
+            Route::get('/', [CampaignGalleryPaginateController::class, 'get', 'as' => 'campaign_gallery_list.get'])->name('campaign_gallery_list.get');
+            Route::get('/delete/{id}', [CampaignGalleryDeleteController::class, 'get', 'as' => 'campaign_gallery_delete.get'])->name('campaign_gallery_delete.get');
+
+        });
     });
 
     Route::post('/text-editor-image', [TextEditorImageController::class, 'post', 'as' => 'texteditor_image.post'])->name('texteditor_image.post');

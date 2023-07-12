@@ -121,6 +121,14 @@
                             </li>
                             @endcan
 
+                            @can('campaigns')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('campaign_list.get')) !== false ? 'active' : ''}}" href="{{route('campaign_list.get')}}">
+                                    <i class="ri-article-line"></i> <span data-key="t-widgets">Campaigns</span>
+                                </a>
+                            </li>
+                            @endcan
+
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('referal.banner.paginate.get')) !== false ? 'active' : ''}}" href="{{route('referal.banner.paginate.get')}}">
                                     <i class="ri-user-shared-line"></i> <span data-key="t-widgets">Referal Page Banner</span>
