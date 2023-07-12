@@ -51,6 +51,9 @@ class ContentSecurityPolicy extends Basic
 
         //start of common
         ->addDirective(Directive::SCRIPT, 'unpkg.com')
+        ->addDirective(Directive::SCRIPT, 'kit.fontawesome.com')
+        ->addDirective(Directive::CONNECT, 'ka-f.fontawesome.com')
+        ->addDirective(Directive::FONT, 'ka-f.fontawesome.com')
         ->addDirective(Directive::STYLE, 'unpkg.com')
         ->addDirective(Directive::IMG, 'i.ytimg.com')
         ->addDirective(Directive::IMG, 'i3.ytimg.com')

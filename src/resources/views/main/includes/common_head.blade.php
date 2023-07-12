@@ -238,6 +238,19 @@
             width: auto;
         }
         .modal-open { overflow-y: auto !important; }
+        .duru-nav-toggle.active i:before{
+            background: white !important;
+        }
+        .duru-nav-toggle.active i:after{
+            background: white !important;
+        }
+
+        .duru-header.scrolled .duru-nav-toggle.active i:before{
+            background: black !important;
+        }
+        .duru-header.scrolled  .duru-nav-toggle.active i:after{
+            background: black !important;
+        }
     </style>
     @yield('css')
 </head>

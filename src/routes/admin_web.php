@@ -172,7 +172,9 @@ use App\Modules\Campaigns\Controllers\CampaignTablePaginateController;
 use App\Modules\Campaigns\Controllers\CampaignTableUpdateController;
 use App\Modules\Campaigns\Controllers\CampaignThankController;
 use App\Modules\Campaigns\Controllers\CampaignUpdateController;
-
+use App\Modules\Enquiry\ProjectCampaignForm\Controllers\ProjectCampaignFormDeleteController;
+use App\Modules\Enquiry\ProjectCampaignForm\Controllers\ProjectCampaignFormExcelController;
+use App\Modules\Enquiry\ProjectCampaignForm\Controllers\ProjectCampaignFormPaginateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -242,6 +244,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [FreeAdFormPaginateController::class, 'get', 'as' => 'enquiry.free_ad_form.paginate.get'])->name('enquiry.free_ad_form.paginate.get');
             Route::get('/excel', [FreeAdFormExcelController::class, 'get', 'as' => 'enquiry.free_ad_form.excel.get'])->name('enquiry.free_ad_form.excel.get');
             Route::get('/delete/{id}', [FreeAdFormDeleteController::class, 'get', 'as' => 'enquiry.free_ad_form.delete.get'])->name('enquiry.free_ad_form.delete.get');
+
+        });
+        Route::prefix('/project-campaign-form')->group(function () {
+            Route::get('/', [ProjectCampaignFormPaginateController::class, 'get', 'as' => 'enquiry.project_campaign_form.paginate.get'])->name('enquiry.project_campaign_form.paginate.get');
+            Route::get('/excel', [ProjectCampaignFormExcelController::class, 'get', 'as' => 'enquiry.project_campaign_form.excel.get'])->name('enquiry.project_campaign_form.excel.get');
+            Route::get('/delete/{id}', [ProjectCampaignFormDeleteController::class, 'get', 'as' => 'enquiry.project_campaign_form.delete.get'])->name('enquiry.project_campaign_form.delete.get');
 
         });
         Route::prefix('/career-form')->group(function () {

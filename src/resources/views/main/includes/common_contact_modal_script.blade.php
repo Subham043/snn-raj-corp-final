@@ -11,7 +11,7 @@
 
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        if((scroll>650 && scroll<700) || (scroll>2600 && scroll<2700) || (scroll>4600 && scroll<4700)){
+        if((scroll>650 && scroll<700) || (scroll>4600 && scroll<4700)){
             contactModal.show()
         }
     });

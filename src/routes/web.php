@@ -1,5 +1,7 @@
 <?php
 
+use App\Modules\Campaigns\Controllers\Main\CampaignEnquiryMainController;
+use App\Modules\Campaigns\Controllers\Main\CampaignViewMainController;
 use App\Modules\Main\AboutPage\AboutPageController;
 use App\Modules\Main\AwardPage\AwardPageController;
 use App\Modules\Main\BlogPage\BlogDetailPageController;
@@ -58,4 +60,11 @@ Route::get('/ongoing-projects', [OngoingProjectPageController::class, 'get', 'as
 Route::get('/ongoing-projects/{slug}', [ProjectDetailPageController::class, 'get', 'as' => 'ongoing_projects_detail.get'])->name('ongoing_projects_detail.get');
 Route::get('/blogs', [BlogPageController::class, 'get', 'as' => 'blogs.get'])->name('blogs.get');
 Route::get('/blogs/{slug}', [BlogDetailPageController::class, 'get', 'as' => 'blogs_detail.get'])->name('blogs_detail.get');
+Route::group(['middleware' => 'throttle:3,1'], function () {
+    Route::post('/campaign/enquiry/create', [CampaignEnquiryMainController::class, 'post', 'as' => 'enquiry_create.post'])->name('enquiry_create.post');
+    Route::post('/campaign/otp/resend', [CampaignEnquiryMainController::class, 'resendOtp', 'as' => 'enquiry.resendOtp'])->name('enquiry.resendOtp');
+    Route::post('/campaign/otp/{uuid}', [CampaignEnquiryMainController::class, 'verifyOtp', 'as' => 'enquiry.verifyOtp'])->name('enquiry.verifyOtp');
+});
+Route::get('/campaign/{slug}', [CampaignViewMainController::class, 'get', 'as' => 'campaign_view_main.get'])->name('campaign_view_main.get');
+Route::get('/campaign/{slug}/thank-you', [CampaignViewMainController::class, 'thank', 'as' => 'campaign_view_thank.get'])->name('campaign_view_thank.get');
 Route::get('/{legal_slug}', [LegalPageController::class, 'get', 'as' => 'legal.get'])->name('legal.get');

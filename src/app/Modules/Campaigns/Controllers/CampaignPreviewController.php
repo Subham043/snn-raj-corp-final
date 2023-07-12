@@ -17,6 +17,6 @@ class CampaignPreviewController extends Controller
 
     public function get($id){
         $data = $this->campaignService->getPreview($id);
-        return view('campaign.pages.index')->with('data', $data);
+        return view('main.pages.campaign.index')->with('data', $data);
     }
 }
