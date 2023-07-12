@@ -36,6 +36,7 @@
                                             <th class="sort" data-sort="customer_name">Name</th>
                                             <th class="sort" data-sort="customer_name">Email</th>
                                             <th class="sort" data-sort="customer_name">Phone</th>
+                                            <th class="sort" data-sort="customer_name">Page Url</th>
                                             <th class="sort" data-sort="customer_name">IP Address</th>
                                             <th class="sort" data-sort="customer_name">Is Verified</th>
                                             <th class="sort" data-sort="date">Created On</th>
@@ -48,8 +49,9 @@
                                             <td class="customer_name">{{$item->name}}</td>
                                             <td class="customer_name">{{$item->email}}</td>
                                             <td class="customer_name">{{$item->phone}}</td>
+                                            <td class="customer_name">{{$item->page_url}}</td>
                                             <td class="customer_name">{{$item->ip_address}}</td>
-                                            <td class="customer_name">{{$item->is_verified}}</td>
+                                            <td class="customer_name">{{$item->is_verified ? 'Yes' : 'No'}}</td>
                                             <td class="date">{{$item->created_at->diffForHumans()}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">

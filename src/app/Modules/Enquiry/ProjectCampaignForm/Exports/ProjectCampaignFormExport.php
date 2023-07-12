@@ -19,6 +19,7 @@ class ProjectCampaignFormExport implements FromCollection,WithHeadings,WithMappi
             'name',
             'email',
             'phone',
+            'page url',
             'IP address',
             'is verified',
             'created_at',
@@ -31,8 +32,9 @@ class ProjectCampaignFormExport implements FromCollection,WithHeadings,WithMappi
             $data->name,
             $data->email,
             $data->phone,
+            $data->page_url,
             $data->ip_address,
-            $data->is_verified,
+            $data->is_verified ? 'Yes' : 'No',
             $data->created_at,
          ];
     }
