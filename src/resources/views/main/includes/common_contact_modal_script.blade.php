@@ -65,6 +65,17 @@
             errorMessage: 'Subject is invalid',
         },
       ])
+      .addField('#projectModal', [
+        {
+          rule: 'required',
+          errorMessage: 'Project is required',
+        },
+        {
+            rule: 'customRegexp',
+            value: COMMON_REGEX,
+            errorMessage: 'Project is invalid',
+        },
+      ])
       .addField('#messageModal', [
         {
           rule: 'required',
@@ -85,11 +96,12 @@
             formData.append('name',document.getElementById('nameModal').value)
             formData.append('email',document.getElementById('emailModal').value)
             formData.append('phone',document.getElementById('phoneModal').value)
+            formData.append('project',document.getElementById('projectModal').value)
             formData.append('subject',document.getElementById('subjectModal').value)
             formData.append('message',document.getElementById('messageModal').value)
             formData.append('page_url','{{Request::url()}}')
 
-            const response = await axios.post('{{route('contact_page.post')}}', formData)
+            const response = await axios.post('{{route('popup_page.post')}}', formData)
             event.target.reset();
             uuidModal = response.data.uuid;
             linkModal = response.data.link;
@@ -104,6 +116,9 @@
             }
             if(error?.response?.data?.errors?.phone){
                 validationModal.showErrors({'#phoneModal': error?.response?.data?.errors?.phone[0]})
+            }
+            if(error?.response?.data?.errors?.project){
+                validationModal.showErrors({'#projectModal': error?.response?.data?.errors?.project[0]})
             }
             if(error?.response?.data?.errors?.subject){
                 validationModal.showErrors({'#subjectModal': error?.response?.data?.errors?.subject[0]})
@@ -174,7 +189,7 @@
             try {
                 var formData = new FormData();
                 formData.append('uuid',uuidModal)
-                const response = await axios.post('{{route('contact_page.resendOtp')}}', formData)
+                const response = await axios.post('{{route('popup_page.resendOtp')}}', formData)
                 successToast(response.data.message)
             }catch (error){
                 if(error?.response?.data?.message){

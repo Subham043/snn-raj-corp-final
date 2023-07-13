@@ -38,12 +38,14 @@ class ProjectDetailPageController extends Controller
         $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
         $data = $this->projectService->getBySlugMain($slug);
+        $projects = $this->projectService->main_all();
         return view('main.pages.projects.detail', compact([
             'generalSetting',
             'themeSetting',
             'chatbotSetting',
             'data',
             'legal',
+            'projects'
         ]));
     }
 

@@ -22,6 +22,14 @@
                     <div class="col-md-6 form-group">
                         <input  id="subjectModal" type="text" placeholder="Subject *" required>
                     </div>
+                    <div class="col-md-12 form-group mt-2 mb-2">
+                        <select id="projectModal" required>
+                            <option value="">Project</option>
+                            @foreach($projects as $p)
+                                <option value="{{$p->name}}">{{$p->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="col-md-12 form-group">
                         <textarea id="messageModal" cols="30" rows="4" placeholder="Message *" required></textarea>
                     </div>

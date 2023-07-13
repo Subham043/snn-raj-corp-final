@@ -88,10 +88,24 @@
                                 </select>
                             </div>
                             <div>
-                                <input class="form-control" type="text" name="source" id="source" placeholder="Source" required>
+                                <select class="form-control" name="source" id="source" required>
+                                    <option value="">Source</option>
+                                    <option value="Free Ads">Free Ads</option>
+                                </select>
                             </div>
                             <div>
-                                <input class="form-control" type="text" name="campaign" id="campaign" placeholder="Campaign" required>
+                                <select class="form-control" name="campaign" id="campaign" required>
+                                    <option value="">Campaign</option>
+                                    <option value="OLX">OLX</option>
+                                    <option value="99 Acres">99 Acres</option>
+                                    <option value="MagicBricks">MagicBricks</option>
+                                    <option value="Facebook">Facebook</option>
+                                    <option value="Google">Google</option>
+                                    <option value="Housing">Housing</option>
+                                    <option value="CommonFloor">CommonFloor</option>
+                                    <option value="OLX">OLX</option>
+                                    <option value="Nobroker">Nobroker</option>
+                                </select>
                             </div>
                             <div class="form-button">
                                 <button id="submitBtn" type="submit" class="ibtn">Submit</button>

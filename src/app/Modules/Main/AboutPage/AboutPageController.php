@@ -9,6 +9,7 @@ use App\Modules\About\Main\Services\MainService;
 use App\Modules\Legal\Services\LegalService;
 use App\Modules\Partner\Services\PartnerHeadingService;
 use App\Modules\Partner\Services\PartnerService;
+use App\Modules\Project\Projects\Services\ProjectService;
 use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
@@ -34,6 +35,7 @@ class AboutPageController extends Controller
     private $themeService;
     private $chatbotService;
     private $legalService;
+    private $projectService;
 
     public function __construct(
         BannerService $bannerService,
@@ -50,6 +52,7 @@ class AboutPageController extends Controller
         ThemeService $themeService,
         ChatbotService $chatbotService,
         LegalService $legalService,
+        ProjectService $projectService,
     )
     {
         $this->bannerService = $bannerService;
@@ -66,6 +69,7 @@ class AboutPageController extends Controller
         $this->themeService = $themeService;
         $this->chatbotService = $chatbotService;
         $this->legalService = $legalService;
+        $this->projectService = $projectService;
     }
 
     public function get(){
@@ -83,7 +87,8 @@ class AboutPageController extends Controller
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
         $chatbotSetting = $this->chatbotService->getById(1);
-        return view('main.pages.about', compact(['banner', 'about', 'additionalContent', 'seo', 'staffs', 'management', 'managementHeading', 'staffHeading', 'partners', 'partnerHeading', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal']));
+        $projects = $this->projectService->main_all();
+        return view('main.pages.about', compact(['banner', 'about', 'additionalContent', 'seo', 'staffs', 'management', 'managementHeading', 'staffHeading', 'partners', 'partnerHeading', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal', 'projects']));
     }
 
 }

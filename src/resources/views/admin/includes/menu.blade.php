@@ -53,6 +53,10 @@
                                             </li>
 
                                             <li class="nav-item">
+                                                <a href="{{route('enquiry.popup_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.popup_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Popup Form </a>
+                                            </li>
+
+                                            <li class="nav-item">
                                                 <a href="{{route('enquiry.career_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.career_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Career Form </a>
                                             </li>
 
@@ -66,6 +70,14 @@
 
                                             <li class="nav-item">
                                                 <a href="{{route('enquiry.referal_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.referal_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Referal Form </a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a href="{{route('enquiry.campaign_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.campaign_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Free Ad Form </a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a href="{{route('enquiry.campaign_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.campaign_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Campaign Form </a>
                                             </li>
 
                                             <li class="nav-item">

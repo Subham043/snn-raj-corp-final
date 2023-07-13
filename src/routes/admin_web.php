@@ -172,6 +172,9 @@ use App\Modules\Campaigns\Controllers\CampaignTablePaginateController;
 use App\Modules\Campaigns\Controllers\CampaignTableUpdateController;
 use App\Modules\Campaigns\Controllers\CampaignThankController;
 use App\Modules\Campaigns\Controllers\CampaignUpdateController;
+use App\Modules\Enquiry\PopupForm\Controllers\PopupFormDeleteController;
+use App\Modules\Enquiry\PopupForm\Controllers\PopupFormExcelController;
+use App\Modules\Enquiry\PopupForm\Controllers\PopupFormPaginateController;
 use App\Modules\Enquiry\ProjectCampaignForm\Controllers\ProjectCampaignFormDeleteController;
 use App\Modules\Enquiry\ProjectCampaignForm\Controllers\ProjectCampaignFormExcelController;
 use App\Modules\Enquiry\ProjectCampaignForm\Controllers\ProjectCampaignFormPaginateController;
@@ -230,6 +233,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [ContactFormPaginateController::class, 'get', 'as' => 'enquiry.contact_form.paginate.get'])->name('enquiry.contact_form.paginate.get');
             Route::get('/excel', [ContactFormExcelController::class, 'get', 'as' => 'enquiry.contact_form.excel.get'])->name('enquiry.contact_form.excel.get');
             Route::get('/delete/{id}', [ContactFormDeleteController::class, 'get', 'as' => 'enquiry.contact_form.delete.get'])->name('enquiry.contact_form.delete.get');
+
+        });
+        Route::prefix('/popup-form')->group(function () {
+            Route::get('/', [PopupFormPaginateController::class, 'get', 'as' => 'enquiry.popup_form.paginate.get'])->name('enquiry.popup_form.paginate.get');
+            Route::get('/excel', [PopupFormExcelController::class, 'get', 'as' => 'enquiry.popup_form.excel.get'])->name('enquiry.popup_form.excel.get');
+            Route::get('/delete/{id}', [PopupFormDeleteController::class, 'get', 'as' => 'enquiry.popup_form.delete.get'])->name('enquiry.popup_form.delete.get');
 
         });
         Route::prefix('/land-owner-form')->group(function () {

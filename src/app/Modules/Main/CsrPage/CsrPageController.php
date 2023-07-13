@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Csr\Services\CsrBannerService;
 use App\Modules\Csr\Services\CsrService;
 use App\Modules\Legal\Services\LegalService;
+use App\Modules\Project\Projects\Services\ProjectService;
 use App\Modules\Seo\Services\SeoService;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
@@ -20,6 +21,7 @@ class CsrPageController extends Controller
     private $themeService;
     private $chatbotService;
     private $legalService;
+    private $projectService;
 
     public function __construct(
         CsrBannerService $csrBannerService,
@@ -29,6 +31,7 @@ class CsrPageController extends Controller
         ThemeService $themeService,
         ChatbotService $chatbotService,
         LegalService $legalService,
+        ProjectService $projectService,
     )
     {
         $this->csrBannerService = $csrBannerService;
@@ -38,6 +41,7 @@ class CsrPageController extends Controller
         $this->themeService = $themeService;
         $this->chatbotService = $chatbotService;
         $this->legalService = $legalService;
+        $this->projectService = $projectService;
     }
 
     public function get(){
@@ -48,7 +52,8 @@ class CsrPageController extends Controller
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
         $chatbotSetting = $this->chatbotService->getById(1);
-        return view('main.pages.csr', compact(['banner', 'mainContent', 'seo', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal']));
+        $projects = $this->projectService->main_all();
+        return view('main.pages.csr', compact(['projects', 'banner', 'mainContent', 'seo', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal']));
     }
 
 }
