@@ -121,7 +121,7 @@
                                                     </div>
 
                                                     <div class="edit">
-                                                        <a href="{{route('project.plan.paginate.get', $item->id)}}" class="btn btn-sm btn-secondary edit-item-btn">Plans</a>
+                                                        <a href="{{route('project.plan_category.paginate.get', $item->id)}}" class="btn btn-sm btn-secondary edit-item-btn">Plan Category</a>
                                                     </div>
 
                                                     <div class="edit">

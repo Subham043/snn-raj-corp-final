@@ -175,6 +175,10 @@ use App\Modules\Campaigns\Controllers\CampaignUpdateController;
 use App\Modules\Enquiry\ProjectCampaignForm\Controllers\ProjectCampaignFormDeleteController;
 use App\Modules\Enquiry\ProjectCampaignForm\Controllers\ProjectCampaignFormExcelController;
 use App\Modules\Enquiry\ProjectCampaignForm\Controllers\ProjectCampaignFormPaginateController;
+use App\Modules\Project\PlanCategory\Controllers\PlanCategoryCreateController;
+use App\Modules\Project\PlanCategory\Controllers\PlanCategoryDeleteController;
+use App\Modules\Project\PlanCategory\Controllers\PlanCategoryPaginateController;
+use App\Modules\Project\PlanCategory\Controllers\PlanCategoryUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -393,13 +397,21 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/delete/{id}', [ProjectBannerDeleteController::class, 'get', 'as' => 'project.banner.delete.get'])->name('project.banner.delete.get');
         });
 
-        Route::prefix('/{project_id}/plan')->group(function () {
-            Route::get('/', [PlanPaginateController::class, 'get', 'as' => 'project.plan.paginate.get'])->name('project.plan.paginate.get');
-            Route::get('/create', [PlanCreateController::class, 'get', 'as' => 'project.plan.create.get'])->name('project.plan.create.get');
-            Route::post('/create', [PlanCreateController::class, 'post', 'as' => 'project.plan.create.post'])->name('project.plan.create.post');
-            Route::get('/update/{id}', [PlanUpdateController::class, 'get', 'as' => 'project.plan.update.get'])->name('project.plan.update.get');
-            Route::post('/update/{id}', [PlanUpdateController::class, 'post', 'as' => 'project.plan.update.post'])->name('project.plan.update.post');
-            Route::get('/delete/{id}', [PlanDeleteController::class, 'get', 'as' => 'project.plan.delete.get'])->name('project.plan.delete.get');
+        Route::prefix('/{project_id}/plan-category')->group(function () {
+            Route::get('/', [PlanCategoryPaginateController::class, 'get', 'as' => 'project.plan_category.paginate.get'])->name('project.plan_category.paginate.get');
+            Route::get('/create', [PlanCategoryCreateController::class, 'get', 'as' => 'project.plan_category.create.get'])->name('project.plan_category.create.get');
+            Route::post('/create', [PlanCategoryCreateController::class, 'post', 'as' => 'project.plan_category.create.post'])->name('project.plan_category.create.post');
+            Route::get('/update/{id}', [PlanCategoryUpdateController::class, 'get', 'as' => 'project.plan_category.update.get'])->name('project.plan_category.update.get');
+            Route::post('/update/{id}', [PlanCategoryUpdateController::class, 'post', 'as' => 'project.plan_category.update.post'])->name('project.plan_category.update.post');
+            Route::get('/delete/{id}', [PlanCategoryDeleteController::class, 'get', 'as' => 'project.plan_category.delete.get'])->name('project.plan_category.delete.get');
+            Route::prefix('/{plan_category_id}/plan')->group(function () {
+                Route::get('/', [PlanPaginateController::class, 'get', 'as' => 'project.plan.paginate.get'])->name('project.plan.paginate.get');
+                Route::get('/create', [PlanCreateController::class, 'get', 'as' => 'project.plan.create.get'])->name('project.plan.create.get');
+                Route::post('/create', [PlanCreateController::class, 'post', 'as' => 'project.plan.create.post'])->name('project.plan.create.post');
+                Route::get('/update/{id}', [PlanUpdateController::class, 'get', 'as' => 'project.plan.update.get'])->name('project.plan.update.get');
+                Route::post('/update/{id}', [PlanUpdateController::class, 'post', 'as' => 'project.plan.update.post'])->name('project.plan.update.post');
+                Route::get('/delete/{id}', [PlanDeleteController::class, 'get', 'as' => 'project.plan.delete.get'])->name('project.plan.delete.get');
+            });
         });
 
         Route::prefix('/{project_id}/gallery-image')->group(function () {

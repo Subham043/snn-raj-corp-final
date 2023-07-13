@@ -161,8 +161,8 @@ class ProjectService
                 'gallery_video' =>  function($q) {
                     $q->where('is_draft', true);
                 },
-                'plan' =>  function($q) {
-                    $q->where('is_draft', true);
+                'plan_category' =>  function($q) {
+                    $q->with('plan');
                 },
                 'amenity',
                 'additional_content' =>  function($q) {
@@ -182,8 +182,8 @@ class ProjectService
                 'gallery_video' =>  function($q) {
                     $q->where('is_draft', true);
                 },
-                'plan' =>  function($q) {
-                    $q->where('is_draft', true);
+                'plan_category' =>  function($q) {
+                    $q->with('plan');
                 },
                 'amenity',
                 'additional_content' =>  function($q) {

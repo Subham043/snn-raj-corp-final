@@ -21,6 +21,8 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
+    <link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}">
+
     {!!$data->meta_header_script!!}
     {!!$data->meta_header_no_script!!}
 
@@ -159,6 +161,55 @@
                 height: 100%;
             }
 
+        }
+
+        .tab-panels .panel{
+            background: #c9c9c9;
+            padding: 0;
+            border-radius: unset;
+        }
+        .tab-panels .panel .slider .owl-item, .tab-panels .panel .slider-fade .owl-item{
+            height: auto;
+        }
+
+        .tab-panels ul {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tab-panels ul li.active {
+            color: #fff;
+            background: #be932d;
+        }
+        .tab-panels ul li:hover {
+            color: #fff;
+            background: #be932d;
+        }
+        .tab-panels ul li {
+            background: black;
+            color: #fff;
+            text-align: center;
+            font-weight: 500;
+            border-radius: 10px;
+            padding: 6px 10px;
+        }
+        .project-page .tab-panels .owl-nav {
+            bottom: 0;
+            right: 0;
+            background: white;
+            gap: 10px;
+        }
+        .project-page .tab-panels .owl-nav .owl-prev, .project-page .tab-panels .owl-nav .owl-next {
+            background: #be932d;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 
@@ -473,7 +524,7 @@
     @endforeach
 @endif
 
-@if($data->plan_count>0)
+@if($data->plan_category_count>0)
     <section class="project-page section-padding pt-5 pb-5">
         <div class="container">
             <div class="row">
@@ -490,10 +541,9 @@
             <!-- project slider -->
             <div class="row justify-content-center">
                 <div class="col-md-12">
-                    <div class="owl-carousel owl-theme">
+                    {{-- <div class="owl-carousel owl-theme">
                         @if($data->plan_count>0)
                             @foreach($data->plan as $plan)
-                                {{-- <div class="portfolio-item"> <img class="img-fluid" src="{{$plan->image_link}}" alt="{{$plan->image_alt}}" title="{{$plan->image_title}}"> </div> --}}
                                 <a aria-label="{{$plan->title}}" href="{{$plan->image_link}}" title="{{$plan->title}}" class="img-zoom">
                                     <div class="gallery-box">
                                         <div class="gallery-img"> <img fetchpriority="low" src="{{$plan->image_link}}" class="img-fluid mx-auto d-block" alt="{{$plan->alt}}" title="{{$plan->title}}"> </div>
@@ -502,6 +552,39 @@
                                 </a>
                             @endforeach
                         @endif
+                    </div> --}}
+                    <div class="tab-holder">
+                        <div class="tab-panels">
+                            <div class="row flex-wrap justify-content-between">
+                                <div class="col-lg-2 col-md-3 col-sm-12">
+                                    <ul class="tabs">
+                                        @foreach ($data->plan_category as $k=>$v)
+                                        <li data-panel-name="panel{{$k}}" data-panel-key="{{$k}}" class="{{$k==0 ? 'active' : ''}}">{{$v->title}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="col-lg-10 col-md-9 col-sm-12" style="position: relative;" id="floor-container">
+
+                                    @foreach ($data->plan_category as $k=>$v)
+                                    <div id="panel{{$k}}" class="panel {{$k==0 ? 'active' : ''}}">
+                                        @if($v->plan->count() > 0)
+                                        <div class="tab-regular slider owl-carousel">
+                                            @foreach ($v->plan as $item)
+                                            <div class="slider-img">
+                                                <img src="{{ $item->image_link }}" class="w-100"
+                                                    alt="Plan Image {{$item->id}}">
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                        @endif
+                                    </div>
+                                    @endforeach
+
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -855,6 +938,37 @@
 
 
     </script>
+
+
+<script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
+    $('.tab-panels .tabs li').click(function(){
+        var $panel = $(this).closest('.tab-panels');
+
+
+        //event listener listening for clicks on the tabs panels
+
+        //figure out which panel to show
+
+        $panel.find(' .tabs li.active').removeClass('active');
+
+        $(this).addClass('active');
+
+        var clickedPanel = $(this).attr('data-panel-name');
+        var clickedPanelKey = parseInt($(this).attr('data-panel-key'))
+
+        //hide current panel
+        $panel.find('.panel.active').slideUp(300, nextPanel);
+
+        //show new panel
+        function nextPanel(){
+            $(this).removeClass('active');
+
+            $('#'+clickedPanel).slideDown(300, function(){
+                $(this).addClass('active');
+            });
+        }
+    })
+</script>
 
 
 @stop

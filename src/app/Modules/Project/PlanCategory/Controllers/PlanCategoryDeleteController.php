@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Modules\Project\Plans\Controllers;
+namespace App\Modules\Project\PlanCategory\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Project\Plans\Services\PlanService;
+use App\Modules\Project\PlanCategory\Services\PlanCategoryService;
 use App\Modules\Project\Projects\Services\ProjectService;
 
-class PlanDeleteController extends Controller
+class PlanCategoryDeleteController extends Controller
 {
     private $planService;
     private $projectService;
 
-    public function __construct(PlanService $planService, ProjectService $projectService)
+    public function __construct(PlanCategoryService $planService, ProjectService $projectService)
     {
         $this->middleware('permission:list projects', ['only' => ['get']]);
         $this->planService = $planService;
         $this->projectService = $projectService;
     }
 
-    public function get($project_id, $plan_category_id, $id){
+    public function get($project_id, $id){
         $project = $this->projectService->getById($project_id);
-        $plan = $this->planService->getByIdAndProjectId($id, $plan_category_id);
+        $plan = $this->planService->getByIdAndProjectId($id, $project_id);
 
         try {
             //code...
@@ -28,7 +28,7 @@ class PlanDeleteController extends Controller
                 $plan
             );
             $this->projectService->clear_cache($project);
-            return redirect()->back()->with('success_status', 'Plan deleted successfully.');
+            return redirect()->back()->with('success_status', 'Plan Category deleted successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error_status', 'Something went wrong. Please try again');
         }

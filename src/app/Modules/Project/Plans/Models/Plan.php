@@ -3,7 +3,7 @@
 namespace App\Modules\Project\Plans\Models;
 
 use App\Modules\Authentication\Models\User;
-use App\Modules\Project\Projects\Models\Project;
+use App\Modules\Project\PlanCategory\Models\PlanCategory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -57,9 +57,9 @@ class Plan extends Model
         return $this->belongsTo(User::class, 'user_id')->withDefault();
     }
 
-    public function project()
+    public function plan_category()
     {
-        return $this->belongsTo(Project::class, 'project_id')->withDefault();
+        return $this->belongsTo(PlanCategory::class, 'plan_category_id')->withDefault();
     }
 
     public function getActivitylogOptions(): LogOptions

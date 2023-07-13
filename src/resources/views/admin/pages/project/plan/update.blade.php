@@ -7,14 +7,14 @@
 
         <!-- start page title -->
         @can('list projects')
-        @include('admin.includes.breadcrumb', ['page'=>'Plan', 'page_link'=>route('project.plan.paginate.get', $project_id), 'list'=>['Update']])
+        @include('admin.includes.breadcrumb', ['page'=>'Plan', 'page_link'=>route('project.plan.paginate.get', [$project_id, $plan_category_id]), 'list'=>['Update']])
         @endcan
         <!-- end page title -->
 
         <div class="row" id="image-container">
-            @include('admin.includes.back_button', ['link'=>route('project.plan.paginate.get', $project_id)])
+            @include('admin.includes.back_button', ['link'=>route('project.plan.paginate.get', [$project_id, $plan_category_id])])
             <div class="col-lg-12">
-                <form id="countryForm" method="post" action="{{route('project.plan.update.post', [$project_id, $data->id])}}" enctype="multipart/form-data">
+                <form id="countryForm" method="post" action="{{route('project.plan.update.post', [$project_id, $plan_category_id, $data->id])}}" enctype="multipart/form-data">
                 @csrf
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
@@ -158,7 +158,7 @@ validation
             formData.append('image',document.getElementById('image').files[0])
         }
 
-        const response = await axios.post('{{route('project.plan.update.post', [$project_id, $data->id])}}', formData)
+        const response = await axios.post('{{route('project.plan.update.post', [$project_id, $plan_category_id, $data->id])}}', formData)
         successToast(response.data.message)
         setInterval(location.reload(), 1500);
     }catch (error){

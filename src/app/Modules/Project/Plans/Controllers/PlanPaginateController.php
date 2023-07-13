@@ -19,10 +19,10 @@ class PlanPaginateController extends Controller
         $this->projectService = $projectService;
     }
 
-    public function get(Request $request, $project_id){
+    public function get(Request $request, $project_id, $plan_category_id){
         $this->projectService->getById($project_id);
-        $data = $this->planService->paginate($request->total ?? 10, $project_id);
-        return view('admin.pages.project.plan.paginate', compact(['data', 'project_id']))
+        $data = $this->planService->paginate($request->total ?? 10, $plan_category_id);
+        return view('admin.pages.project.plan.paginate', compact(['data', 'project_id', 'plan_category_id']))
             ->with('search', $request->query('filter')['search'] ?? '');
     }
 

@@ -9,6 +9,7 @@ use App\Modules\Project\Banners\Models\Banner;
 use App\Modules\Project\CommonAmenitys\Models\CommonAmenity;
 use App\Modules\Project\GalleryImages\Models\GalleryImage;
 use App\Modules\Project\GalleryVideos\Models\GalleryVideo;
+use App\Modules\Project\PlanCategory\Models\PlanCategory;
 use App\Modules\Project\Plans\Models\Plan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -174,9 +175,9 @@ class Project extends Model implements Sitemapable
         return $this->hasMany(GalleryVideo::class, 'project_id');
     }
 
-    public function plan()
+    public function plan_category()
     {
-        return $this->hasMany(Plan::class, 'project_id');
+        return $this->hasMany(PlanCategory::class, 'project_id');
     }
 
     public function amenity()

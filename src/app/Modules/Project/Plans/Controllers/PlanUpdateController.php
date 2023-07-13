@@ -19,15 +19,15 @@ class PlanUpdateController extends Controller
         $this->projectService = $projectService;
     }
 
-    public function get($project_id, $id){
+    public function get($project_id, $plan_category_id, $id){
         $this->projectService->getById($project_id);
-        $data = $this->planService->getByIdAndProjectId($id, $project_id);
-        return view('admin.pages.project.plan.update', compact('data', 'project_id'));
+        $data = $this->planService->getByIdAndProjectId($id, $plan_category_id);
+        return view('admin.pages.project.plan.update', compact('data', 'project_id', 'plan_category_id'));
     }
 
-    public function post(PlanUpdateRequest $request, $project_id, $id){
+    public function post(PlanUpdateRequest $request, $project_id, $plan_category_id, $id){
         $project = $this->projectService->getById($project_id);
-        $plan = $this->planService->getByIdAndProjectId($id, $project_id);
+        $plan = $this->planService->getByIdAndProjectId($id, $plan_category_id);
         try {
             //code...
             $this->planService->update(

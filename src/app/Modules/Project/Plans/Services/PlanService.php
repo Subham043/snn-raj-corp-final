@@ -19,9 +19,9 @@ class PlanService
         return Plan::all();
     }
 
-    public function paginate(Int $total = 10, Int $project_id): LengthAwarePaginator
+    public function paginate(Int $total = 10, Int $plan_category_id): LengthAwarePaginator
     {
-        $query = Plan::where('project_id', $project_id)->latest();
+        $query = Plan::where('plan_category_id', $plan_category_id)->latest();
         return QueryBuilder::for($query)
                 ->allowedFilters([
                     AllowedFilter::custom('search', new CommonFilter),
@@ -35,16 +35,16 @@ class PlanService
         return Plan::findOrFail($id);
     }
 
-    public function getByIdAndProjectId(Int $id, Int $project_id): Plan
+    public function getByIdAndProjectId(Int $id, Int $plan_category_id): Plan
     {
-        return Plan::where('id', $id)->where('project_id', $project_id)->firstOrFail();
+        return Plan::where('id', $id)->where('plan_category_id', $plan_category_id)->firstOrFail();
     }
 
-    public function create(array $data, Int $project_id): Plan
+    public function create(array $data, Int $plan_category_id): Plan
     {
         $plan = Plan::create($data);
         $plan->user_id = auth()->user()->id;
-        $plan->project_id = $project_id;
+        $plan->plan_category_id = $plan_category_id;
         $plan->save();
         return $plan;
     }

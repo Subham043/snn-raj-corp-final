@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('project_plans', function (Blueprint $table) {
+        Schema::create('plan_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('image_title', 500)->nullable();
-            $table->string('image_alt', 500)->nullable();
-            $table->string('image', 500)->nullable();
-            $table->boolean('is_draft')->default(0);
+            $table->string('title', 500)->nullable();
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->foreignId('plan_category_id')->nullable()->constrained('plan_categories')->nullOnDelete();
+            $table->foreignId('project_id')->nullable()->constrained('projects')->nullOnDelete();
             $table->timestamps();
             $table->index(['id', 'created_at']);
         });
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('project_plans');
+        Schema::dropIfExists('plan_categories');
     }
 };
