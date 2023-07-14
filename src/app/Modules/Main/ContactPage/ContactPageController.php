@@ -11,6 +11,7 @@ use App\Modules\Enquiry\ContactForm\Requests\ContactFormRequest;
 use App\Modules\Enquiry\ContactForm\Requests\OtpFormRequest;
 use App\Modules\Enquiry\ContactForm\Requests\ResendOtpFormRequest;
 use App\Modules\Enquiry\ContactForm\Services\ContactFormService;
+use App\Modules\Enquiry\ContactForm\Jobs\SendContactFormMailJob;
 use App\Modules\Legal\Services\LegalService;
 use App\Modules\Project\Projects\Models\Project;
 use App\Modules\Seo\Services\SeoService;
@@ -147,6 +148,7 @@ class ContactPageController extends Controller
                 }else{
                     (new SelldoService)->create($data->name, $data->email, $data->phone);
                 }
+                dispatch(new SendContactFormMailJob($data));
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }
             return response()->json(["message" => "Invalid OTP. Please try again"], 400);

@@ -5,6 +5,7 @@ namespace App\Modules\Main\LandOwnerPage;
 use App\Http\Controllers\Controller;
 use App\Http\Services\RateLimitService;
 use App\Http\Services\SelldoService;
+use App\Modules\Enquiry\LandOwnerForm\Jobs\SendLandOwnerFormMailJob;
 use App\Modules\Enquiry\LandOwnerForm\Requests\LandOwnerFormRequest;
 use App\Modules\Enquiry\LandOwnerForm\Services\LandOwnerFormService;
 use App\Modules\Legal\Services\LegalService;
@@ -52,7 +53,7 @@ class LandOwnerPageController extends Controller
 
         try {
             //code...
-            $this->landOwnerFormService->create(
+            $data=$this->landOwnerFormService->create(
                 [
                     ...$request->validated(),
                     'ip_address' => $request->ip(),
@@ -60,6 +61,7 @@ class LandOwnerPageController extends Controller
             );
             (new RateLimitService($request))->clearRateLimit();
             (new SelldoService)->create($request->name, $request->email, $request->phone);
+            dispatch(new SendLandOwnerFormMailJob($data));
             return response()->json(["message" => "Land Owner Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

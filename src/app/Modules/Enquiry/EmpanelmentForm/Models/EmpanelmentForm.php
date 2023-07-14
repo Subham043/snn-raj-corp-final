@@ -132,6 +132,20 @@ class EmpanelmentForm extends Model
         );
     }
 
+    protected function sealImage(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => 'storage/'.$this->file_path.'/'.$value,
+        );
+    }
+
+    protected function sealImageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset($this->seal_image),
+        );
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()

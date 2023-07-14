@@ -4,6 +4,7 @@ namespace App\Modules\Main\ChannelPartnerPage;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\RateLimitService;
+use App\Modules\Enquiry\EmpanelmentForm\Jobs\SendEmpanelmentFormMailJob;
 use App\Modules\Enquiry\EmpanelmentForm\Requests\EmpanelmentFormRequest;
 use App\Modules\Legal\Services\LegalService;
 use App\Modules\Seo\Services\SeoService;
@@ -58,24 +59,25 @@ class ChannelPartnerPageController extends Controller
                 ]
             );
             if($request->hasFile('msme_image')){
-                $this->empanelmentFormService->saveFile($empanelment, 'msme_image');
+                $data = $this->empanelmentFormService->saveFile($empanelment, 'msme_image');
             }
             if($request->hasFile('pan_image')){
-                $this->empanelmentFormService->saveFile($empanelment, 'pan_image');
+                $data = $this->empanelmentFormService->saveFile($empanelment, 'pan_image');
             }
             if($request->hasFile('gst_image')){
-                $this->empanelmentFormService->saveFile($empanelment, 'gst_image');
+                $data = $this->empanelmentFormService->saveFile($empanelment, 'gst_image');
             }
             if($request->hasFile('seal_image')){
-                $this->empanelmentFormService->saveFile($empanelment, 'seal_image');
+                $data = $this->empanelmentFormService->saveFile($empanelment, 'seal_image');
             }
             if($request->hasFile('cheque_image')){
-                $this->empanelmentFormService->saveFile($empanelment, 'cheque_image');
+                $data = $this->empanelmentFormService->saveFile($empanelment, 'cheque_image');
             }
             if($request->hasFile('rera_image')){
-                $this->empanelmentFormService->saveFile($empanelment, 'rera_image');
+                $data = $this->empanelmentFormService->saveFile($empanelment, 'rera_image');
             }
             (new RateLimitService($request))->clearRateLimit();
+            dispatch(new SendEmpanelmentFormMailJob($data));
             return response()->json(["message" => "Empanelment Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

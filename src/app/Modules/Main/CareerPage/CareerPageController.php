@@ -5,6 +5,7 @@ namespace App\Modules\Main\CareerPage;
 use App\Http\Controllers\Controller;
 use App\Http\Services\RateLimitService;
 use App\Http\Services\SelldoService;
+use App\Modules\Enquiry\CareerForm\Jobs\SendCareerFormMailJob;
 use App\Modules\Enquiry\CareerForm\Requests\CareerFormRequest;
 use App\Modules\Enquiry\CareerForm\Services\CareerFormService;
 use App\Modules\Legal\Services\LegalService;
@@ -59,7 +60,8 @@ class CareerPageController extends Controller
                 ]
             );
             if($request->hasFile('cv')){
-                $this->careerFormService->saveCv($career);
+                $data=$this->careerFormService->saveCv($career);
+                dispatch(new SendCareerFormMailJob($data));
             }
             (new RateLimitService($request))->clearRateLimit();
             (new SelldoService)->create($request->name, $request->email, $request->phone);

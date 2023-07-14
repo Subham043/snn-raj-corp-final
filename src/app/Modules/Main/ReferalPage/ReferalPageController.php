@@ -5,6 +5,7 @@ namespace App\Modules\Main\ReferalPage;
 use App\Http\Controllers\Controller;
 use App\Http\Services\RateLimitService;
 use App\Http\Services\SelldoService;
+use App\Modules\Enquiry\ReferalForm\Jobs\SendReferalFormMailJob;
 use App\Modules\Enquiry\ReferalForm\Requests\ReferalFormRequest;
 use App\Modules\Enquiry\ReferalForm\Services\ReferalFormService;
 use App\Modules\Legal\Services\LegalService;
@@ -62,11 +63,12 @@ class ReferalPageController extends Controller
 
         try {
             //code...
-            $this->referalFormService->create(
+            $data = $this->referalFormService->create(
                 $request->validated()
             );
             (new RateLimitService($request))->clearRateLimit();
             (new SelldoService)->create($request->referal_name, $request->referal_email, $request->referal_phone);
+            dispatch(new SendReferalFormMailJob($data));
             return response()->json(["message" => "Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);
