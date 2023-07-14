@@ -88,36 +88,32 @@ class PopupPageController extends Controller
                     ],
                     $data
                 );
-                if($request->project_id){
-                    $project = Project::find($request->project_id);
-                    if($project->is_completed){
-                        (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7ba980ad1ff2cf54646fe');
-                    }else{
-                        switch ($project->name) {
-                            case 'Raj High Gardens':
-                                # code...
-                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7b9070ad1ff10693d9cce');
-                                break;
+                switch ($data->project) {
+                    case 'Raj High Gardens':
+                        # code...
+                        $project_id = '63932f2ca6bbc90b878a7f02';
+                        $project_srd = '64a7b9070ad1ff10693d9cce';
+                        break;
 
-                            case 'Raj Bay Vista':
-                                # code...
-                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7b8a60ad1ff18a2973837');
-                                break;
+                    case 'Raj Bay Vista':
+                        # code...
+                        $project_id = '63aa8dddc8256132cbd821dd';
+                        $project_srd = '64a7b8a60ad1ff18a2973837';
+                        break;
 
-                            case 'Raj Viviente':
-                                # code...
-                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7b7240ad1ff10963d9873');
-                                break;
+                    case 'Raj Viviente':
+                        # code...
+                        $project_id = '63a1523ced23e9658b4a2293';
+                        $project_srd = '64a7b7240ad1ff10963d9873';
+                        break;
 
-                            default:
-                                # code...
-                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7ba980ad1ff2cf54646fe');
-                                break;
-                        }
-                    }
-                }else{
-                    (new SelldoService)->create($data->name, $data->email, $data->phone);
+                    default:
+                        # code...
+                        $project_id = '';
+                        $project_srd = '64a7ba980ad1ff2cf54646fe';
+                        break;
                 }
+                (new SelldoService)->popup_create($data->name, $data->email, $data->phone, $project_srd, $project_id);
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }
             return response()->json(["message" => "Invalid OTP. Please try again"], 400);
