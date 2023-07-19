@@ -28,6 +28,7 @@ class ProjectCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:500',
+            'srd_code' => 'required|string|max:500',
             'slug' => 'required|string|max:500|unique:projects,slug',
             'location' => 'required|string|max:500',
             'floor' => 'required|string|max:500',

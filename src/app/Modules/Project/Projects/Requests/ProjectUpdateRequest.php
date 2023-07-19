@@ -16,6 +16,7 @@ class ProjectUpdateRequest extends ProjectCreateRequest
     {
         return [
             'name' => 'required|string|max:500',
+            'srd_code' => 'required|string|max:500',
             'slug' => 'required|string|max:500|unique:projects,slug,'.$this->route('id'),
             'location' => 'required|string|max:500',
             'floor' => 'required|string|max:500',

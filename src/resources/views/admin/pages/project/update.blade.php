@@ -57,13 +57,16 @@
                                     <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'tower', 'label'=>'Tower', 'value'=>$data->tower])
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
+                                        @include('admin.includes.input', ['key'=>'srd_code', 'label'=>'SRD Code', 'value'=>$data->srd_code])
+                                    </div>
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'brochure', 'label'=>'Brochure (PDF)'])
                                         @if(!empty($data->brochure))
                                             <a href="{{$data->brochure_link}}" target="_blank" rel="noopener noreferrer">View PDF</a>
                                         @endif
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.select_multiple', ['key'=>'amenity', 'label'=>'Amenities'])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
@@ -223,6 +226,12 @@ validation
     {
       rule: 'required',
       errorMessage: 'Amenity is required',
+    },
+  ])
+  .addField('#srd_code', [
+    {
+      rule: 'required',
+      errorMessage: 'SRD Code is required',
     },
   ])
   .addField('#name', [
@@ -398,6 +407,7 @@ validation
         formData.append('video',document.getElementById('video').value)
         formData.append('name',document.getElementById('name').value)
         formData.append('slug',document.getElementById('slug').value)
+        formData.append('srd_code',document.getElementById('srd_code').value)
         formData.append('rera',document.getElementById('rera').value)
         formData.append('map_location_link',document.getElementById('map_location_link').value)
         formData.append('location',document.getElementById('location').value)
@@ -434,6 +444,9 @@ validation
         }
         if(error?.response?.data?.errors?.slug){
             validation.showErrors({'#slug': error?.response?.data?.errors?.slug[0]})
+        }
+        if(error?.response?.data?.errors?.srd_code){
+            validation.showErrors({'#srd_code': error?.response?.data?.errors?.srd_code[0]})
         }
         if(error?.response?.data?.errors?.rera){
             validation.showErrors({'#rera': error?.response?.data?.errors?.rera[0]})

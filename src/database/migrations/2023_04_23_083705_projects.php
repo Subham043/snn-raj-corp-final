@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 500);
             $table->string('slug', 500)->unique();
+            $table->string('srd_code', 500)->nullable();
             $table->string('location', 500)->nullable();
             $table->string('floor', 500)->nullable();
             $table->string('acre', 500)->nullable();

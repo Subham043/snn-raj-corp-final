@@ -57,10 +57,13 @@
                                     <div class="col-xxl-3 col-md-3">
                                         @include('admin.includes.input', ['key'=>'tower', 'label'=>'Tower', 'value'=>old('tower')])
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
+                                        @include('admin.includes.input', ['key'=>'srd_code', 'label'=>'SRD Code', 'value'=>old('srd_code')])
+                                    </div>
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'brochure', 'label'=>'Brochure (PDF)'])
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.select_multiple', ['key'=>'amenity', 'label'=>'Amenities'])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
@@ -220,6 +223,12 @@ validation
     {
       rule: 'required',
       errorMessage: 'Amenity is required',
+    },
+  ])
+  .addField('#srd_code', [
+    {
+      rule: 'required',
+      errorMessage: 'SRD Code is required',
     },
   ])
   .addField('#name', [
@@ -393,6 +402,7 @@ validation
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
         formData.append('is_completed',document.getElementById('is_completed').checked ? 1 : 0)
         formData.append('video',document.getElementById('video').value)
+        formData.append('srd_code',document.getElementById('srd_code').value)
         formData.append('name',document.getElementById('name').value)
         formData.append('slug',document.getElementById('slug').value)
         formData.append('rera',document.getElementById('rera').value)
@@ -431,6 +441,9 @@ validation
         }
         if(error?.response?.data?.errors?.slug){
             validation.showErrors({'#slug': error?.response?.data?.errors?.slug[0]})
+        }
+        if(error?.response?.data?.errors?.srd_code){
+            validation.showErrors({'#srd_code': error?.response?.data?.errors?.srd_code[0]})
         }
         if(error?.response?.data?.errors?.rera){
             validation.showErrors({'#rera': error?.response?.data?.errors?.rera[0]})

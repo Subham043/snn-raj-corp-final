@@ -57,6 +57,7 @@ class Project extends Model implements Sitemapable
         'meta_footer_script',
         'meta_header_no_script',
         'meta_footer_no_script',
+        'srd_code',
     ];
 
     protected $casts = [

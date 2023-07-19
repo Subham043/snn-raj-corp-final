@@ -35,8 +35,8 @@
                 <div class="col-md-3">
                     <div class="item">
                         <h3><span>Projects</span></h3>
-                        <a aria-label="completed projects" href="{{route('completed_projects.get')}}">Completed</a><br/>
-                        <a aria-label="ongoing projects" href="{{route('ongoing_projects.get')}}">Ongoing</a>
+                        <a aria-label="ongoing projects" href="{{route('ongoing_projects.get')}}">Ongoing</a><br/>
+                        <a aria-label="completed projects" href="{{route('completed_projects.get')}}">Completed</a>
                     </div>
                 </div>
                 <div class="col-md-3">

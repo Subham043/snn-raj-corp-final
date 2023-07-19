@@ -214,6 +214,7 @@ class CommonFilter implements Filter
         ->orWhere('tower', 'LIKE', '%' . $value . '%')
         ->orWhere('rera', 'LIKE', '%' . $value . '%')
         ->orWhere('brief_description', 'LIKE', '%' . $value . '%')
+        ->orWhere('srd_code', 'LIKE', '%' . $value . '%')
         ->orWhere('description_unfiltered', 'LIKE', '%' . $value . '%');
     }
 }
