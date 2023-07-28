@@ -51,6 +51,7 @@
                                             <th class="sort" data-sort="date">Bank Account Number</th>
                                             <th class="sort" data-sort="date">IFSC Code</th>
                                             <th class="sort" data-sort="date">Address</th>
+                                            <th class="sort" data-sort="date">Channel Type</th>
                                             <th class="sort" data-sort="date">MSME Registered</th>
                                             <th class="sort" data-sort="date">ESI Registered</th>
                                             <th class="sort" data-sort="date">EPF Registered</th>
@@ -79,6 +80,7 @@
                                             <td class="customer_name">{{$item->bank_account_number}}</td>
                                             <td class="customer_name">{{$item->ifsc}}</td>
                                             <td class="customer_name">{{$item->address}}</td>
+                                            <td class="customer_name">{{$item->company_type}}</td>
                                             <td class="customer_name">{{$item->msme ? 'Yes' : 'No'}}</td>
                                             <td class="customer_name">{{$item->esi ? 'Yes' : 'No'}}</td>
                                             <td class="customer_name">{{$item->epf ? 'Yes' : 'No'}}</td>

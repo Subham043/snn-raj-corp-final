@@ -127,11 +127,21 @@
                     <form method="post" class="contact__form" id="contactForm">
                         <!-- Form elements -->
                         <div class="row">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <input class="line-gray" name="scope" id="scope" type="text" placeholder="Scope of Work *" required="">
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <input class="line-gray" name="channel_partner" id="channel_partner" type="text" placeholder="Name of Channel Partner *" required="">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <select name="company_type" id="company_type" class="line-gray" required>
+                                    <option value="">Company Type</option>
+                                    <option value="Individual">Individual</option>
+                                    <option value="Proprietorship">Proprietorship</option>
+                                    <option value="Private Limited">Private Limited</option>
+                                    <option value="Limited">Limited</option>
+                                    <option value="LLP">LLP</option>
+                                </select>
                             </div>
                             <div class="col-md-12 form-group">
                                 <textarea class="line-gray" name="address" id="address" cols="30" rows="4" placeholder="Address *" required></textarea>
@@ -227,11 +237,11 @@
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
-                                <label for="msme_image">If MSME is registered, then upload the certificate (Only Image Allowed): *</label>
+                                <label for="msme_image">If MSME is registered, then upload the certificate (Only Image/PDF Allowed): *</label>
                                 <input class="line-gray" name="msme_image" id="msme_image" type="file" required>
                             </div>
                             <div class="col-md-12 form-group">
-                                <label for="msme_image"><b>Enclosures (Only Image Allowed):</b> *</label>
+                                <label for="msme_image"><b>Enclosures (Only Image/PDF Allowed):</b> *</label>
                             </div>
                             <div class="col-md-4 form-group">
                                 <label for="pan_image">Pan Copy:</label>
@@ -294,6 +304,12 @@
             {
               rule: 'required',
               errorMessage: 'Name of channel partner is required',
+            },
+          ])
+          .addField('#company_type', [
+            {
+              rule: 'required',
+              errorMessage: 'Company Type is required',
             },
           ])
           .addField('#telephone', [
@@ -415,9 +431,9 @@
                     rule: 'files',
                     value: {
                     files: {
-                        extensions: ['jpeg', 'jpg', 'png', 'webp'],
-                        maxSize: 500000,
-                        types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+                        extensions: ['jpeg', 'jpg', 'png', 'webp', 'pdf'],
+                        maxSize: 3000000,
+                        types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf'],
                     },
                     },
                     errorMessage: 'Pan Copy\'s with jpeg,jpg,png,webp extensions are allowed! Pan Copy size should not exceed 500kb!',
@@ -442,9 +458,9 @@
                     rule: 'files',
                     value: {
                     files: {
-                        extensions: ['jpeg', 'jpg', 'png', 'webp'],
-                        maxSize: 500000,
-                        types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+                        extensions: ['jpeg', 'jpg', 'png', 'webp', 'pdf'],
+                        maxSize: 3000000,
+                        types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf'],
                     },
                     },
                     errorMessage: 'GST Certificate Copy\'s with jpeg,jpg,png,webp extensions are allowed! GST Certificate Copy size should not exceed 500kb!',
@@ -469,9 +485,9 @@
                     rule: 'files',
                     value: {
                     files: {
-                        extensions: ['jpeg', 'jpg', 'png', 'webp'],
-                        maxSize: 500000,
-                        types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+                        extensions: ['jpeg', 'jpg', 'png', 'webp', 'pdf'],
+                        maxSize: 3000000,
+                        types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf'],
                     },
                     },
                     errorMessage: 'RERA Certificate\'s with jpeg,jpg,png,webp extensions are allowed! RERA Certificate size should not exceed 500kb!',
@@ -496,9 +512,9 @@
                     rule: 'files',
                     value: {
                     files: {
-                        extensions: ['jpeg', 'jpg', 'png', 'webp'],
-                        maxSize: 500000,
-                        types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+                        extensions: ['jpeg', 'jpg', 'png', 'webp', 'pdf'],
+                        maxSize: 3000000,
+                        types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf'],
                     },
                     },
                     errorMessage: 'Cancelled Cheque copy or front copy of passbook\'s with jpeg,jpg,png,webp extensions are allowed! Cancelled Cheque copy or front copy of passbook size should not exceed 500kb!',
@@ -523,9 +539,9 @@
                     rule: 'files',
                     value: {
                     files: {
-                        extensions: ['jpeg', 'jpg', 'png', 'webp'],
-                        maxSize: 500000,
-                        types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+                        extensions: ['jpeg', 'jpg', 'png', 'webp', 'pdf'],
+                        maxSize: 3000000,
+                        types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf'],
                     },
                     },
                     errorMessage: 'Seal & Signature\'s with jpeg,jpg,png,webp extensions are allowed! Seal & Signature size should not exceed 500kb!',
@@ -570,6 +586,7 @@
                 formData.append('gst',document.getElementById('gst').value)
                 formData.append('sac',document.getElementById('sac').value)
                 formData.append('tax',document.getElementById('tax').value)
+                formData.append('company_type',document.getElementById('company_type').value)
                 formData.append('bank_name',document.getElementById('bank_name').value)
                 formData.append('bank_address',document.getElementById('bank_address').value)
                 formData.append('bank_branch',document.getElementById('bank_branch').value)
@@ -641,6 +658,9 @@
                 }
                 if(error?.response?.data?.errors?.tax){
                     validation.showErrors({'#tax': error?.response?.data?.errors?.tax[0]})
+                }
+                if(error?.response?.data?.errors?.company_type){
+                    validation.showErrors({'#company_type': error?.response?.data?.errors?.company_type[0]})
                 }
                 if(error?.response?.data?.errors?.bank_name){
                     validation.showErrors({'#bank_name': error?.response?.data?.errors?.bank_name[0]})

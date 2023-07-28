@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('ifsc', 500)->nullable();
             $table->string('ip_address', 500)->nullable();
             $table->boolean('msme')->default(0);
+            $table->string('company_type', 500)->nullable();
             $table->string('msme_image', 500)->nullable();
             $table->boolean('esi')->default(0);
             $table->boolean('epf')->default(0);

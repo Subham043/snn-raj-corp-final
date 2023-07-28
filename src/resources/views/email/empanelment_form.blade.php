@@ -35,6 +35,9 @@
     <b>Tax Applicable:</b> {{$data->tax}}
 </p>
 <p>
+    <b>Company Type:</b> {{$data->company_type}}
+</p>
+<p>
     <b>Bank Name:</b> {{$data->bank_name}}
 </p>
 <p>

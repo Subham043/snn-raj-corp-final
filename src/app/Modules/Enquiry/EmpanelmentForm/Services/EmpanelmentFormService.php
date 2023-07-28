@@ -83,6 +83,7 @@ class CommonFilter implements Filter
         ->orWhere('bank_account_number', 'LIKE', '%' . $value . '%')
         ->orWhere('ifsc', 'LIKE', '%' . $value . '%')
         ->orWhere('address', 'LIKE', '%' . $value . '%')
+        ->orWhere('company_type', 'LIKE', '%' . $value . '%')
         ->orWhere('msme', 'LIKE', '%' . $value . '%')
         ->orWhere('esi', 'LIKE', '%' . $value . '%')
         ->orWhere('epf', 'LIKE', '%' . $value . '%');

@@ -39,6 +39,7 @@ class EmpanelmentForm extends Model
         'bank_account_number',
         'ifsc',
         'ip_address',
+        'company_type',
         'msme',
         'msme_image',
         'esi',
