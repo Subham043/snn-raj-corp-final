@@ -41,20 +41,6 @@ class Seo extends Model
 
     protected $appends = ['meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('seo_'.$model->slug);
-        });
-        self::updated(function ($model) {
-            Cache::forget('seo_'.$model->slug);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('seo_'.$model->slug);
-        });
-    }
-
     protected function metaHeaderScriptNonce(): Attribute
     {
         return new Attribute(

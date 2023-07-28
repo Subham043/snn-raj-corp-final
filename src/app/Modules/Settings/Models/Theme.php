@@ -37,20 +37,6 @@ class Theme extends Model
 
     protected $appends = ['lines_color_rgb'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('theme_settings_main_'.$model->id);
-        });
-        self::updated(function ($model) {
-            Cache::forget('theme_settings_main_'.$model->id);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('theme_settings_main_'.$model->id);
-        });
-    }
-
     protected function linesColorRgb(): Attribute
     {
         list($r, $g, $b) = array_map(

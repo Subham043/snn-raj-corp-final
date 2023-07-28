@@ -19,10 +19,7 @@
                     <div class="col-md-6 form-group">
                         <input id="phoneModal" type="text" placeholder="Your Number *" required>
                     </div>
-                    <div class="col-md-6 form-group">
-                        <input  id="subjectModal" type="text" placeholder="Subject *" required>
-                    </div>
-                    <div class="col-md-12 form-group mt-2 mb-2">
+                    <div class="col-md-6 form-group mt-2 mb-2">
                         <select id="projectModal" required>
                             <option value="">Project</option>
                             @foreach($projects as $p)

@@ -38,20 +38,6 @@ class Staff extends Model
 
     protected $appends = ['image_link'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('team_member_staff_main');
-        });
-        self::updated(function ($model) {
-            Cache::forget('team_member_staff_main');
-        });
-        self::deleted(function ($model) {
-            Cache::forget('team_member_staff_main');
-        });
-    }
-
     protected function image(): Attribute
     {
         return Attribute::make(

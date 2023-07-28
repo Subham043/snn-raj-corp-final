@@ -33,7 +33,6 @@ class PlanCategoryCreateController extends Controller
                 $request->except('image'),
                 $project_id
             );
-            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Plan Category created successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

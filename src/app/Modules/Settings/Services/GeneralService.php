@@ -11,9 +11,7 @@ class GeneralService
 
     public function getById(Int $id): General|null
     {
-        return Cache::remember('general_settings_main_'.$id, 60*60*24, function() use($id){
-            return General::where('id', $id)->first();
-        });
+        return General::where('id', $id)->first();
     }
 
     public function createOrUpdate(array $data): General

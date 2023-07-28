@@ -10,9 +10,7 @@ class StaffHeadingService
 
     public function getById(Int $id): StaffHeading|null
     {
-        return Cache::remember('team_member_staff_heading_main_'.$id, 60*60*24, function() use($id){
-            return StaffHeading::where('id', $id)->first();
-        });
+        return StaffHeading::where('id', $id)->first();
     }
 
     public function createOrUpdate(array $data): StaffHeading

@@ -38,23 +38,6 @@ class Legal extends Model implements Sitemapable
         'updated_at' => 'datetime',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('all_legal_main');
-            Cache::forget('legal_'.$model->slug);
-        });
-        self::updated(function ($model) {
-            Cache::forget('all_legal_main');
-            Cache::forget('legal_'.$model->slug);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('all_legal_main');
-            Cache::forget('legal_'.$model->slug);
-        });
-    }
-
     protected function slug(): Attribute
     {
         return Attribute::make(

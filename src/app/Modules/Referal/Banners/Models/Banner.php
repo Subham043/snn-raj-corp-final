@@ -38,20 +38,6 @@ class Banner extends Model
 
     protected $appends = ['image_link'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('referal_main');
-        });
-        self::updated(function ($model) {
-            Cache::forget('referal_main');
-        });
-        self::deleted(function ($model) {
-            Cache::forget('referal_main');
-        });
-    }
-
     protected function image(): Attribute
     {
         return Attribute::make(

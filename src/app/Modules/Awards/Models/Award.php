@@ -36,20 +36,6 @@ class Award extends Model
         'updated_at' => 'datetime',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('awards_main');
-        });
-        self::updated(function ($model) {
-            Cache::forget('awards_main');
-        });
-        self::deleted(function ($model) {
-            Cache::forget('awards_main');
-        });
-    }
-
     public $image_path = 'awards';
 
     protected $appends = ['image_link'];

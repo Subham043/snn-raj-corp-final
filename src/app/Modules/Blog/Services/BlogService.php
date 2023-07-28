@@ -73,18 +73,10 @@ class BlogService
         }
     }
 
-    public function clear_cache(Blog $blog): void
-    {
-        Cache::forget('all_blog_main');
-        Cache::forget('blog_'.$blog->slug);
-    }
-
     public function main_all()
     {
-        return Cache::remember('all_blog_main', 60*60*24, function(){
-            return Blog::where('is_draft', true)->limit(3)->latest()
-            ->get();
-        });
+        return Blog::where('is_draft', true)->limit(3)->latest()
+        ->get();
     }
 
     public function main_paginate(Int $total = 10): LengthAwarePaginator
@@ -101,11 +93,9 @@ class BlogService
 
     public function getBySlugMain(String $slug): Blog|null
     {
-        return Cache::remember('blog_'.$slug, 60*60*24, function() use($slug){
-            return Blog::where('slug', $slug)
-            ->where('is_draft', true)
-            ->firstOrFail();
-        });
+        return Blog::where('slug', $slug)
+        ->where('is_draft', true)
+        ->firstOrFail();
     }
 
     public function getPrev(Int $id): Blog|null

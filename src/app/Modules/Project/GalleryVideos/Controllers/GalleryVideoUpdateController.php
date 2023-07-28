@@ -34,7 +34,6 @@ class GalleryVideoUpdateController extends Controller
                 $request->validated(),
                 $gallery_video
             );
-            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Gallery Video updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

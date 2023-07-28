@@ -27,7 +27,6 @@ class GalleryImageDeleteController extends Controller
             $this->galleryImageService->delete(
                 $image
             );
-            $this->projectService->clear_cache($project);
             return redirect()->back()->with('success_status', 'Gallery Image deleted successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error_status', 'Something went wrong. Please try again');

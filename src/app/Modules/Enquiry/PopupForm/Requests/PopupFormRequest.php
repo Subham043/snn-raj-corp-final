@@ -32,7 +32,7 @@ class PopupFormRequest extends FormRequest
             'email' => 'required|string|email|max:255',
             'phone' => 'required|numeric|digits:10',
             'project' => 'required|string|max:500',
-            'subject' => 'required|string|max:255',
+            'subject' => 'nullable|string|max:255',
             'message' => 'required|string|max:500',
             'page_url' => 'required|url|max:500',
         ];

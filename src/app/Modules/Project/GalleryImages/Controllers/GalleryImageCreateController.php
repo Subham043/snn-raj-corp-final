@@ -36,7 +36,6 @@ class GalleryImageCreateController extends Controller
             if($request->hasFile('image')){
                 $this->galleryImageService->saveImage($gallery_image);
             }
-            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Gallery Image created successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

@@ -10,9 +10,7 @@ class ProjectHeadingService
 
     public function getById(Int $id): ProjectHeading|null
     {
-        return Cache::remember('project_heading_main_'.$id, 60*60*24, function() use($id){
-            return ProjectHeading::where('id', $id)->first();
-        });
+        return ProjectHeading::where('id', $id)->first();
     }
 
     public function createOrUpdate(array $data): ProjectHeading

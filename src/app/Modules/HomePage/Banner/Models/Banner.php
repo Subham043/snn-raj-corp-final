@@ -40,20 +40,6 @@ class Banner extends Model
 
     protected $appends = ['banner_image_link', 'banner_mobile_image_link'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('home_page_banners_main');
-        });
-        self::updated(function ($model) {
-            Cache::forget('home_page_banners_main');
-        });
-        self::deleted(function ($model) {
-            Cache::forget('home_page_banners_main');
-        });
-    }
-
     protected function bannerImage(): Attribute
     {
         return Attribute::make(

@@ -74,32 +74,24 @@ class ProjectService
         }
     }
 
-    public function clear_cache(Project $project): void
-    {
-        Cache::forget('all_project_main');
-        Cache::forget('project_'.$project->slug);
-    }
-
     public function main_all()
     {
-        return Cache::remember('all_project_main', 60*60*24, function(){
-            return Project::with([
-                'banner' =>  function($q) {
-                    $q->where('is_draft', true);
-                }
-            ])
-            ->withCount([
-                'banner' =>  function($q) {
-                    $q->where('is_draft', true);
-                }
-            ])
-            ->where('is_draft', true)
-            ->whereHas('banner', function($q) {
+        return Project::with([
+            'banner' =>  function($q) {
                 $q->where('is_draft', true);
-            })
-            ->orderBy('is_completed', 'ASC')
-            ->get();
-        });
+            }
+        ])
+        ->withCount([
+            'banner' =>  function($q) {
+                $q->where('is_draft', true);
+            }
+        ])
+        ->where('is_draft', true)
+        ->whereHas('banner', function($q) {
+            $q->where('is_draft', true);
+        })
+        ->orderBy('is_completed', 'ASC')
+        ->get();
     }
 
     public function main_paginate(Int $total = 10, bool $status = false): LengthAwarePaginator
@@ -150,53 +142,51 @@ class ProjectService
 
     public function getBySlugMain(String $slug): Project|null
     {
-        return Cache::remember('project_'.$slug, 60*60*24, function() use($slug){
-            return Project::with([
-                'banner' =>  function($q) {
-                    $q->where('is_draft', true);
-                },
-                'gallery_image' =>  function($q) {
-                    $q->where('is_draft', true);
-                },
-                'gallery_video' =>  function($q) {
-                    $q->where('is_draft', true);
-                },
-                'plan_category' =>  function($q) {
-                    $q->with('plan');
-                },
-                'amenity',
-                'additional_content' =>  function($q) {
-                    $q->where('is_draft', true);
-                },
-                'accomodation' =>  function($q) {
-                    $q->where('is_draft', true);
-                }
-            ])
-            ->withCount([
-                'banner' =>  function($q) {
-                    $q->where('is_draft', true);
-                },
-                'gallery_image' =>  function($q) {
-                    $q->where('is_draft', true);
-                },
-                'gallery_video' =>  function($q) {
-                    $q->where('is_draft', true);
-                },
-                'plan_category' =>  function($q) {
-                    $q->with('plan');
-                },
-                'amenity',
-                'additional_content' =>  function($q) {
-                    $q->where('is_draft', true);
-                },
-                'accomodation' =>  function($q) {
-                    $q->where('is_draft', true);
-                }
-            ])
-            ->where('slug', $slug)
-            ->where('is_draft', true)
-            ->firstOrFail();
-        });
+        return Project::with([
+            'banner' =>  function($q) {
+                $q->where('is_draft', true);
+            },
+            'gallery_image' =>  function($q) {
+                $q->where('is_draft', true);
+            },
+            'gallery_video' =>  function($q) {
+                $q->where('is_draft', true);
+            },
+            'plan_category' =>  function($q) {
+                $q->with('plan');
+            },
+            'amenity',
+            'additional_content' =>  function($q) {
+                $q->where('is_draft', true);
+            },
+            'accomodation' =>  function($q) {
+                $q->where('is_draft', true);
+            }
+        ])
+        ->withCount([
+            'banner' =>  function($q) {
+                $q->where('is_draft', true);
+            },
+            'gallery_image' =>  function($q) {
+                $q->where('is_draft', true);
+            },
+            'gallery_video' =>  function($q) {
+                $q->where('is_draft', true);
+            },
+            'plan_category' =>  function($q) {
+                $q->with('plan');
+            },
+            'amenity',
+            'additional_content' =>  function($q) {
+                $q->where('is_draft', true);
+            },
+            'accomodation' =>  function($q) {
+                $q->where('is_draft', true);
+            }
+        ])
+        ->where('slug', $slug)
+        ->where('is_draft', true)
+        ->firstOrFail();
     }
 
 }

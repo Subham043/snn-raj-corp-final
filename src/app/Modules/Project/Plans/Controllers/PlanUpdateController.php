@@ -37,7 +37,6 @@ class PlanUpdateController extends Controller
             if($request->hasFile('image')){
                 $this->planService->saveImage($plan);
             }
-            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Plan updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

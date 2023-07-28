@@ -75,9 +75,7 @@ class ManagementService
 
     public function main_all(): Collection
     {
-        return Cache::remember('team_member_management_main', 60*60*24, function(){
-            return Management::where('is_draft', true)->get();
-        });
+        return Management::where('is_draft', true)->get();
     }
 
 }

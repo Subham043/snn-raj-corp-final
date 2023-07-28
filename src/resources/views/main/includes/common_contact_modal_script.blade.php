@@ -54,17 +54,6 @@
             errorMessage: 'Email is invalid!',
         },
       ])
-      .addField('#subjectModal', [
-        {
-          rule: 'required',
-          errorMessage: 'Subject is required',
-        },
-        {
-            rule: 'customRegexp',
-            value: COMMON_REGEX,
-            errorMessage: 'Subject is invalid',
-        },
-      ])
       .addField('#projectModal', [
         {
           rule: 'required',
@@ -97,7 +86,6 @@
             formData.append('email',document.getElementById('emailModal').value)
             formData.append('phone',document.getElementById('phoneModal').value)
             formData.append('project',document.getElementById('projectModal').value)
-            formData.append('subject',document.getElementById('subjectModal').value)
             formData.append('message',document.getElementById('messageModal').value)
             formData.append('page_url','{{Request::url()}}')
 
@@ -119,9 +107,6 @@
             }
             if(error?.response?.data?.errors?.project){
                 validationModal.showErrors({'#projectModal': error?.response?.data?.errors?.project[0]})
-            }
-            if(error?.response?.data?.errors?.subject){
-                validationModal.showErrors({'#subjectModal': error?.response?.data?.errors?.subject[0]})
             }
             if(error?.response?.data?.errors?.message){
                 validationModal.showErrors({'#messageModal': error?.response?.data?.errors?.message[0]})

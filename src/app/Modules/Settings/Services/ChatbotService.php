@@ -10,9 +10,7 @@ class ChatbotService
 
     public function getById(Int $id): Chatbot|null
     {
-        return Cache::remember('chatbot_settings_main_'.$id, 60*60*24, function() use($id){
-            return Chatbot::where('id', $id)->first();
-        });
+        return Chatbot::where('id', $id)->first();
     }
 
     public function createOrUpdate(array $data): Chatbot

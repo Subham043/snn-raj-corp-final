@@ -51,23 +51,6 @@ class Blog extends Model implements Sitemapable
 
     protected $appends = ['image_link', 'meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('all_blog_main');
-            Cache::forget('blog_'.$model->slug);
-        });
-        self::updated(function ($model) {
-            Cache::forget('all_blog_main');
-            Cache::forget('blog_'.$model->slug);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('all_blog_main');
-            Cache::forget('blog_'.$model->slug);
-        });
-    }
-
     protected function image(): Attribute
     {
         return Attribute::make(

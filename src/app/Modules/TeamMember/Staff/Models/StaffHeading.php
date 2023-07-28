@@ -30,20 +30,6 @@ class StaffHeading extends Model
         'updated_at' => 'datetime',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('team_member_staff_heading_main_'.$model->id);
-        });
-        self::updated(function ($model) {
-            Cache::forget('team_member_staff_heading_main_'.$model->id);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('team_member_staff_heading_main_'.$model->id);
-        });
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id')->withDefault();

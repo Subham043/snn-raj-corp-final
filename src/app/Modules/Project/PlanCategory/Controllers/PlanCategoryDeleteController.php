@@ -27,7 +27,6 @@ class PlanCategoryDeleteController extends Controller
             $this->planService->delete(
                 $plan
             );
-            $this->projectService->clear_cache($project);
             return redirect()->back()->with('success_status', 'Plan Category deleted successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error_status', 'Something went wrong. Please try again');

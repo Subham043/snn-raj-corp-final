@@ -72,23 +72,6 @@ class Project extends Model implements Sitemapable
 
     protected $appends = ['brochure_link', 'meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce', 'video_id'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('all_project_main');
-            Cache::forget('project_'.$model->slug);
-        });
-        self::updated(function ($model) {
-            Cache::forget('all_project_main');
-            Cache::forget('project_'.$model->slug);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('all_project_main');
-            Cache::forget('project_'.$model->slug);
-        });
-    }
-
     protected function brochure(): Attribute
     {
         return Attribute::make(

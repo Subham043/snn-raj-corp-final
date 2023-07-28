@@ -46,20 +46,6 @@ class AdditionalContent extends Model
 
     protected $appends = ['image_link'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('about_page_additional_main');
-        });
-        self::updated(function ($model) {
-            Cache::forget('about_page_additional_main');
-        });
-        self::deleted(function ($model) {
-            Cache::forget('about_page_additional_main');
-        });
-    }
-
     protected function image(): Attribute
     {
         return Attribute::make(

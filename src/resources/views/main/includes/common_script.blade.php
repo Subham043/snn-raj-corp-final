@@ -45,6 +45,6 @@
 
 </script>
 
-{!! empty($chatbotSetting) ? '' : $chatbotSetting->chatbot_script_nonce !!}
+{{-- {!! empty($chatbotSetting) ? '' : $chatbotSetting->chatbot_script_nonce !!} --}}
 
 @yield('js')

@@ -75,9 +75,7 @@ class AdditionalContentService
 
     public function main_all(): Collection
     {
-        return Cache::remember('about_page_additional_main', 60*60*24, function(){
-            return AdditionalContent::where('is_draft', true)->get();
-        });
+        return AdditionalContent::where('is_draft', true)->get();
     }
 
 }

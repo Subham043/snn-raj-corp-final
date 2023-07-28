@@ -43,16 +43,12 @@ class LegalService
 
     public function getBySlugMain(String $slug): Legal|null
     {
-        return Cache::remember('legal_'.$slug, 60*60*24, function() use($slug){
-            return Legal::where('slug', $slug)->where('is_draft', true)->firstOrFail();
-        });
+        return Legal::where('slug', $slug)->where('is_draft', true)->firstOrFail();
     }
 
     public function main_all(): Collection
     {
-        return Cache::remember('all_legal_main', 60*60*24, function(){
-            return Legal::where('is_draft', true)->get();
-        });
+        return Legal::where('is_draft', true)->get();
     }
 
 }

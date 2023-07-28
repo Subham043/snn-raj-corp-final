@@ -11,9 +11,7 @@ class CsrBannerService
 
     public function getById(Int $id): CsrBanner|null
     {
-        return Cache::remember('csr_page_banner_main_'.$id, 60*60*24, function() use($id){
-            return CsrBanner::where('id', $id)->first();
-        });
+        return CsrBanner::where('id', $id)->first();
     }
 
     public function createOrUpdate(array $data): CsrBanner

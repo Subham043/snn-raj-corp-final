@@ -35,20 +35,6 @@ class Testimonial extends Model
 
     protected $appends = ['video_id'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('home_page_testimonials_main');
-        });
-        self::updated(function ($model) {
-            Cache::forget('home_page_testimonials_main');
-        });
-        self::deleted(function ($model) {
-            Cache::forget('home_page_testimonials_main');
-        });
-    }
-
     protected function videoId(): Attribute
     {
         return new Attribute(

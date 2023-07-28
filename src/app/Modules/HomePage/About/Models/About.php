@@ -41,20 +41,6 @@ class About extends Model
 
     protected $appends = ['image_link', 'video_id'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('home_page_about_main_'.$model->id);
-        });
-        self::updated(function ($model) {
-            Cache::forget('home_page_about_main_'.$model->id);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('home_page_about_main_'.$model->id);
-        });
-    }
-
     protected function image(): Attribute
     {
         return Attribute::make(

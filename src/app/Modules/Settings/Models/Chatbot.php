@@ -32,20 +32,6 @@ class Chatbot extends Model
 
     protected $appends = ['chatbot_script_nonce'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('chatbot_settings_main_'.$model->id);
-        });
-        self::updated(function ($model) {
-            Cache::forget('chatbot_settings_main_'.$model->id);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('chatbot_settings_main_'.$model->id);
-        });
-    }
-
     protected function chatbotScriptNonce(): Attribute
     {
         return new Attribute(

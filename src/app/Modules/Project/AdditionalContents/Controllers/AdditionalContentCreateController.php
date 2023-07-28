@@ -36,7 +36,6 @@ class AdditionalContentCreateController extends Controller
             if($request->hasFile('image')){
                 $this->additionalContentService->saveImage($additional_content);
             }
-            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Additional Content created successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

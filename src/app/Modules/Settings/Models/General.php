@@ -46,20 +46,6 @@ class General extends Model
 
     protected $appends = ['website_logo_link', 'website_favicon_link'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('general_settings_main_'.$model->id);
-        });
-        self::updated(function ($model) {
-            Cache::forget('general_settings_main_'.$model->id);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('general_settings_main_'.$model->id);
-        });
-    }
-
     protected function websiteLogo(): Attribute
     {
         return Attribute::make(

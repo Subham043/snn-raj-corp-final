@@ -30,20 +30,6 @@ class TestimonialHeading extends Model
         'updated_at' => 'datetime',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('testimonial_heading_'.$model->id);
-        });
-        self::updated(function ($model) {
-            Cache::forget('testimonial_heading_'.$model->id);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('testimonial_heading_'.$model->id);
-        });
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id')->withDefault();

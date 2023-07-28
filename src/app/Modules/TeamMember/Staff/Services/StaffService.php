@@ -75,9 +75,7 @@ class StaffService
 
     public function main_all(): Collection
     {
-        return Cache::remember('team_member_staff_main', 60*60*24, function(){
-            return Staff::where('is_draft', true)->get();
-        });
+        return Staff::where('is_draft', true)->get();
     }
 
 }

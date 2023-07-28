@@ -11,9 +11,7 @@ class BannerService
 
     public function getById(Int $id): Banner|null
     {
-        return Cache::remember('about_page_banner_main_'.$id, 60*60*24, function() use($id){
-            return Banner::where('id', $id)->first();
-        });
+        return Banner::where('id', $id)->first();
     }
 
     public function createOrUpdate(array $data): Banner

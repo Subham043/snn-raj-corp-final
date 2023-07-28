@@ -35,20 +35,6 @@ class Counter extends Model
 
     protected $appends = ['counter_number', 'counter_text'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('counters_main');
-        });
-        self::updated(function ($model) {
-            Cache::forget('counters_main');
-        });
-        self::deleted(function ($model) {
-            Cache::forget('counters_main');
-        });
-    }
-
     protected function counterNumber(): Attribute
     {
         return new Attribute(

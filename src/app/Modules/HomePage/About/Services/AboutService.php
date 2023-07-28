@@ -11,9 +11,7 @@ class AboutService
 
     public function getById(Int $id): About|null
     {
-        return Cache::remember('home_page_about_main_'.$id, 60*60*24, function() use($id){
-            return About::where('id', $id)->first();
-        });
+        return About::where('id', $id)->first();
     }
 
     public function createOrUpdate(array $data): About

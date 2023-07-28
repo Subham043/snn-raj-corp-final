@@ -37,20 +37,6 @@ class Main extends Model
 
     protected $appends = ['image_link'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('about_page_main_'.$model->id);
-        });
-        self::updated(function ($model) {
-            Cache::forget('about_page_main_'.$model->id);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('about_page_main_'.$model->id);
-        });
-    }
-
     protected function image(): Attribute
     {
         return Attribute::make(

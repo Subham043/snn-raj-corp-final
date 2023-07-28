@@ -4133,3 +4133,42 @@ h1, h2, h3, h4, h5, h6 {
     opacity: .8;
     margin-bottom: 20px;
 }
+
+.popup_btn_modal{
+    background-color: #010101 !important;
+    border-radius: 30px !important;
+    border: none 0 !important;
+    box-shadow: 1px 1px 2px #a6a29a !important;
+    color: white !important;
+    cursor: pointer !important;
+    height: 60px !important;
+    outline: 0 !important;
+    position: fixed !important;
+    text-align: center !important;
+    transition: 200ms background-color ease !important;
+    width: 60px !important;
+    z-index: 2000000000 !important;
+    bottom: 24px !important;
+    right: 24px !important;
+}
+
+.popup_btn_modal>svg {
+    cursor: pointer !important;
+    fill: #fff !important;
+    height: 37.5px !important;
+    stroke: #fff !important;
+    width: 37.5px !important;
+}
+
+@media screen and (min-width: 576px) {
+    #contactModal .modal-dialog {
+        margin-right: unset;
+    }
+
+    #contactModal .modal-content{
+        position: absolute;
+        bottom: 70px;
+        width: 70%;
+        right: 25px;
+    }
+}

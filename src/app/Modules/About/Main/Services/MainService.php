@@ -11,9 +11,7 @@ class MainService
 
     public function getById(Int $id): Main|null
     {
-        return Cache::remember('about_page_main_'.$id, 60*60*24, function() use($id){
-            return Main::where('id', $id)->first();
-        });
+        return Main::where('id', $id)->first();
     }
 
     public function createOrUpdate(array $data): Main

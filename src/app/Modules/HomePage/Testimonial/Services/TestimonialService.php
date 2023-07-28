@@ -56,9 +56,7 @@ class TestimonialService
 
     public function main_all(): Collection
     {
-        return Cache::remember('home_page_testimonials_main', 60*60*24, function(){
-            return Testimonial::where('is_draft', true)->latest()->get();
-        });
+        return Testimonial::where('is_draft', true)->latest()->get();
     }
 
 }

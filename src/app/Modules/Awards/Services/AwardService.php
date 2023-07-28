@@ -82,9 +82,7 @@ class AwardService
         //         ])
         //         ->paginate($total)
         //         ->appends(request()->query());
-        return Cache::remember('awards_main', 60*60*24, function(){
-            return Award::where('is_draft', true)->orderBy('year', 'DESC')->get();
-        });
+        return Award::where('is_draft', true)->orderBy('year', 'DESC')->get();
     }
 
 }

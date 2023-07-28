@@ -34,7 +34,6 @@ class AccomodationUpdateController extends Controller
                 $request->validated(),
                 $accomodation
             );
-            $this->projectService->clear_cache($project);
             return response()->json(["message" => "Accomodation updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

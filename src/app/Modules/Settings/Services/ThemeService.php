@@ -10,9 +10,7 @@ class ThemeService
 
     public function getById(Int $id): Theme|null
     {
-        return Cache::remember('theme_settings_main_'.$id, 60*60*24, function() use($id){
-            return Theme::where('id', $id)->first();
-        });
+        return Theme::where('id', $id)->first();
     }
 
     public function createOrUpdate(array $data): Theme
