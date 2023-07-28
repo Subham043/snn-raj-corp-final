@@ -36,13 +36,16 @@
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.textarea', ['key'=>'address', 'label'=>'Campaign Address', 'value'=>old('address') ? old('address') : $data->address])
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
+                                        @include('admin.includes.input', ['key'=>'srd', 'label'=>'Campaign SRD', 'value'=>old('srd') ? old('srd') : $data->srd])
+                                    </div>
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'header_logo', 'label'=>'Header Logo'])
                                         @if(!empty($data->header_logo_link))
                                             <img src="{{$data->header_logo_link}}" alt="" class="img-preview">
                                         @endif
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'footer_logo', 'label'=>'Footer Logo'])
                                         @if(!empty($data->footer_logo_link))
                                             <img src="{{$data->footer_logo_link}}" alt="" class="img-preview">
@@ -190,6 +193,12 @@ validation
         rule: 'customRegexp',
         value: COMMON_REGEX,
         errorMessage: 'Campaign Name is invalid',
+    },
+  ])
+  .addField('#srd', [
+    {
+      rule: 'required',
+      errorMessage: 'Campaign SRD is required',
     },
   ])
   .addField('#slug', [

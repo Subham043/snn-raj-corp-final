@@ -7,6 +7,7 @@ use App\Http\Services\DecryptService;
 use App\Http\Services\OtpService;
 use App\Http\Services\RateLimitService;
 use App\Http\Services\SelldoService;
+use App\Modules\Campaigns\Services\CampaignService;
 use App\Modules\Enquiry\ContactForm\Requests\OtpFormRequest;
 use App\Modules\Enquiry\ContactForm\Requests\ResendOtpFormRequest;
 use App\Modules\Enquiry\ProjectCampaignForm\Requests\ProjectCampaignFormRequest;
@@ -15,10 +16,12 @@ use App\Modules\Project\Projects\Models\Project;
 
 class CampaignEnquiryMainController extends Controller
 {
+    private $campaignFormService;
     private $campaignService;
 
-    public function __construct(ProjectCampaignFormService $campaignService)
+    public function __construct(ProjectCampaignFormService $campaignFormService, CampaignService $campaignService)
     {
+        $this->campaignFormService = $campaignFormService;
         $this->campaignService = $campaignService;
     }
 
@@ -26,7 +29,7 @@ class CampaignEnquiryMainController extends Controller
 
         try {
             //code...
-            $data = $this->campaignService->create(
+            $data = $this->campaignFormService->create(
                 [
                     ...$request->validated(),
                     'otp' => rand(1000,9999),
@@ -48,8 +51,8 @@ class CampaignEnquiryMainController extends Controller
         try {
             //code...
             $id = (new DecryptService)->decryptId($request->uuid);
-            $data = $this->campaignService->getById($id);
-            $new_data = $this->campaignService->update(
+            $data = $this->campaignFormService->getById($id);
+            $new_data = $this->campaignFormService->update(
                 [
                     'otp' => rand(1000,9999),
                 ],
@@ -69,7 +72,7 @@ class CampaignEnquiryMainController extends Controller
         try {
             //code...
             $id = (new DecryptService)->decryptId($uuid);
-            $data = $this->campaignService->getById($id);
+            $data = $this->campaignFormService->getById($id);
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json(["message" => "Invalid uuid"], 400);
@@ -79,42 +82,24 @@ class CampaignEnquiryMainController extends Controller
             //code...
             if($request->otp===$data->otp){
                 (new RateLimitService($request))->clearRateLimit();
-                $this->campaignService->update(
+                $this->campaignFormService->update(
                     [
                         'otp' => rand(1000,9999),
                         'is_verified' => true,
                     ],
                     $data
                 );
-                if($request->project_id){
-                    $project = Project::find($request->project_id);
-                    if($project->is_completed){
-                        (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7ba980ad1ff2cf54646fe');
-                    }else{
-                        switch ($project->name) {
-                            case 'Raj High Gardens':
-                                # code...
-                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7b9070ad1ff10693d9cce');
-                                break;
+                $campaign = $this->campaignService->getById($request->slug);
+                switch ($campaign->name) {
+                    case 'Raj Bay Vista':
+                        # code...
+                        (new SelldoService)->project_campaign_create($data->name, $data->email, $data->phone, $campaign->srd, '64a7b8a60ad1ff18a2973837');
+                        break;
 
-                            case 'Raj Bay Vista':
-                                # code...
-                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7b8a60ad1ff18a2973837');
-                                break;
-
-                            case 'Raj Viviente':
-                                # code...
-                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7b7240ad1ff10963d9873');
-                                break;
-
-                            default:
-                                # code...
-                                (new SelldoService)->project_create($data->name, $data->email, $data->phone, '64a7ba980ad1ff2cf54646fe');
-                                break;
-                        }
-                    }
-                }else{
-                    (new SelldoService)->create($data->name, $data->email, $data->phone);
+                    default:
+                        # code...
+                        (new SelldoService)->project_campaign_bare_create($data->name, $data->email, $data->phone, $campaign->srd);
+                        break;
                 }
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }

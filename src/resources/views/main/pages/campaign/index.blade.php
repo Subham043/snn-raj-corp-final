@@ -32,7 +32,7 @@
 
 
     <!-- Modal -->
-    @include('main.pages.campaign.includes.contact_modal')
+    @include('main.pages.campaign.includes.contact_modal', ['data' => $data])
 </body>
 <!-- Main JS -->
 @include('main.pages.campaign.includes.script', ['data' => $data])

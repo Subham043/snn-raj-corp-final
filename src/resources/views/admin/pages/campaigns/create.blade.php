@@ -37,10 +37,13 @@
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.textarea', ['key'=>'address', 'label'=>'Campaign Address', 'value'=>old('address')])
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
+                                        @include('admin.includes.input', ['key'=>'srd', 'label'=>'Campaign SRD', 'value'=>old('srd')])
+                                    </div>
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'header_logo', 'label'=>'Header Logo'])
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'footer_logo', 'label'=>'Footer Logo'])
                                     </div>
 
@@ -182,6 +185,12 @@ validation
         rule: 'customRegexp',
         value: COMMON_REGEX,
         errorMessage: 'Campaign Name is invalid',
+    },
+  ])
+  .addField('#srd', [
+    {
+      rule: 'required',
+      errorMessage: 'Campaign SRD is required',
     },
   ])
   .addField('#slug', [

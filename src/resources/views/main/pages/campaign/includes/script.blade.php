@@ -7,6 +7,31 @@
 <script src="{{ asset('campaign/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
 <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+<script nonce="{{ csp_nonce() }}" defer>
+  const countryData1 = window.intlTelInput(document.querySelector("#phone"), {
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+    autoInsertDialCode: true,
+    initialCountry: "auto",
+    geoIpLookup: callback => {
+        fetch("https://ipapi.co/json")
+        .then(res => res.json())
+        .then(data => callback(data.country_code))
+        .catch(() => callback("us"));
+    },
+  });
+  const countryData2 = window.intlTelInput(document.querySelector("#phone2"), {
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+    autoInsertDialCode: true,
+    initialCountry: "auto",
+    geoIpLookup: callback => {
+        fetch("https://ipapi.co/json")
+        .then(res => res.json())
+        .then(data => callback(data.country_code))
+        .catch(() => callback("us"));
+    },
+  });
+</script>
 
 {!!$data->meta_footer!!}
 
@@ -230,6 +255,7 @@ const successToast = (message) => {
             formData.append('email',document.getElementById('email').value)
             formData.append('phone',document.getElementById('phone').value)
             formData.append('page_url',document.getElementById('page_url').value)
+            formData.append('country_code',countryData1.getSelectedCountryData().dialCode)
             const response = await axios.post('{{route('enquiry_create.post')}}', formData)
             // successToast(response.data.message)
             // event.target.reset()
@@ -316,6 +342,7 @@ const successToast = (message) => {
             formData.append('email',document.getElementById('email2').value)
             formData.append('phone',document.getElementById('phone2').value)
             formData.append('page_url',document.getElementById('page_url').value)
+            formData.append('country_code',countryData2.getSelectedCountryData().dialCode)
             const response = await axios.post('{{route('enquiry_create.post')}}', formData)
             // console.log(response);
             // successToast(response.data.message)
@@ -367,6 +394,7 @@ const successToast = (message) => {
             try {
                 var formData = new FormData();
                 formData.append('otp',document.getElementById('otp').value)
+                formData.append('slug',document.getElementById('slug').value)
 
                 const response = await axios.post(link, formData)
                 event.target.reset();

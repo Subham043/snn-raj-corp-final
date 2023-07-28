@@ -19,6 +19,7 @@ class CampaignUpdateRequest extends CampaignCreateRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'srd' => 'required|string|max:255',
             'slug' => 'required|string|max:250|unique:campaigns,slug,'.$this->route('id'),
             'phone' => 'nullable|integer|digits:10',
             'email' => 'nullable|string|email|max:255',

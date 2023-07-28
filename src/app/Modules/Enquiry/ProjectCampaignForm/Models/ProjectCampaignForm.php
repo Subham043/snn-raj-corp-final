@@ -23,6 +23,7 @@ class ProjectCampaignForm extends Model
         'page_url',
         'email',
         'phone',
+        'country_code',
         'ip_address',
         'otp',
         'is_verified',

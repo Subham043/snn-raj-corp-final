@@ -103,6 +103,9 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create blogs']);
         Permission::create(['name' => 'list blogs']);
 
+        //permission for campaigns
+        Permission::create(['name' => 'campaigns']);
+
 
     }
 }

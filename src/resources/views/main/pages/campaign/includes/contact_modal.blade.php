@@ -43,6 +43,7 @@
                       <input type="text" class="form-control" id="otp" name="otp" aria-describedby="otpHelp" placeholder="OTP *">
                       <div id="otpHelp" class="form-text">We have shared an OTP to your mobile via SMS.</div>
                     </div>
+                    <input type="hidden" id="slug" name="slug" value="{{$data->id}}">
                     <button type="submit" id="submitOtpBtn" class="btn btn-dark">Submit</button>
                     <button type="button" id="resendOtpBtn" class="btn btn-danger">Resend OTP</button>
                 </form>

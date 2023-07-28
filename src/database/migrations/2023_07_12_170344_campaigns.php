@@ -35,6 +35,8 @@ return new class extends Migration
             $table->text('instagram')->nullable();
             $table->text('youtube')->nullable();
             $table->text('linkedin')->nullable();
+            $table->text('srd')->nullable();
+            $table->string('country_code', 500)->nullable();
             $table->integer('campaign_status')->default(CampaignStatusEnum::UPCOMING->label());
             $table->integer('publish_status')->default(PublishStatusEnum::ACTIVE->label());
             $table->text('table_heading')->default('Double Height Ceilings & <span>18 Feet Tall Windows</span>');

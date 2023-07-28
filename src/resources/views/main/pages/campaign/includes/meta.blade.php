@@ -22,6 +22,7 @@
     <link rel="apple-touch-icon" href="{{ empty($data->og_image) ? asset('campaign/images/favicon.png') : $data->og_image_link }}" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('campaign/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
     {{-- <link rel="stylesheet" href="https://kit.fontawesome.com/b6a944420c.css"> --}}
     <link rel="stylesheet" href="{{ asset('campaign/css/slick.css')}}">
     <link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}">
@@ -32,5 +33,12 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('campaign/css/styles.css')}}">
 
+    <style>
+        .iti {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
     {!!$data->meta_header!!}
 </head>

@@ -118,4 +118,26 @@ class SelldoService
         }
     }
 
+    public function project_campaign_create(string $name, string $email, string $phone, string $srd, string $project_id): bool
+    {
+        try {
+            $response = Http::asForm()->post('https://app.sell.do/api/leads/create?sell_do[form][lead][name]='.$name.'&sell_do[form][lead][email]='.$email.'&sell_do[form][lead][phone]='.$phone.'&sell_do[form][lead][source]=website&sell_do[campaign][srd]='.$srd.'&sell_do[form][lead][project_id]='.$project_id.'&api_key=26c5b0ac69821ba28d6293355d641ec9');
+            $data = json_decode($response->body());
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+
+    public function project_campaign_bare_create(string $name, string $email, string $phone, string $srd): bool
+    {
+        try {
+            $response = Http::asForm()->post('https://app.sell.do/api/leads/create?sell_do[form][lead][name]='.$name.'&sell_do[form][lead][email]='.$email.'&sell_do[form][lead][phone]='.$phone.'&sell_do[form][lead][source]=website&sell_do[campaign][srd]='.$srd.'&api_key=26c5b0ac69821ba28d6293355d641ec9');
+            $data = json_decode($response->body());
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+
 }

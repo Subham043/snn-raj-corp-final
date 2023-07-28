@@ -31,6 +31,7 @@ class ProjectCampaignFormRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'nullable|string|email|max:255',
             'phone' => 'required|numeric|digits:10',
+            'country_code' => 'required|string',
             'page_url' => 'nullable|string',
         ];
     }

@@ -27,6 +27,7 @@ class Campaign extends Model
         'address',
         'email',
         'phone',
+        'srd',
         'meta_title',
         'meta_description',
         'og_locale',

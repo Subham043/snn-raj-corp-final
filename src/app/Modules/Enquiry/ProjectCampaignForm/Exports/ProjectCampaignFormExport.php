@@ -31,7 +31,7 @@ class ProjectCampaignFormExport implements FromCollection,WithHeadings,WithMappi
             $data->id,
             $data->name,
             $data->email,
-            $data->phone,
+            $data->country_code.$data->phone,
             $data->page_url,
             $data->ip_address,
             $data->is_verified ? 'Yes' : 'No',
