@@ -64,7 +64,7 @@
                                         <tr>
                                             <td class="customer_name">{{$item->scope}}</td>
                                             <td class="customer_name">{{$item->channel_partner}}</td>
-                                            <td class="customer_name">{{$item->phone}}</td>
+                                            <td class="customer_name">{{$item->country_code}}{{$item->phone}}</td>
                                             <td class="customer_name">{{$item->telephone}}</td>
                                             <td class="customer_name">{{$item->email}}</td>
                                             <td class="customer_name">{{$item->rera}}</td>

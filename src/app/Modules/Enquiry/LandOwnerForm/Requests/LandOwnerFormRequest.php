@@ -30,6 +30,7 @@ class LandOwnerFormRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
+            'country_code' => 'required|string|max:255',
             'phone' => 'required|numeric|digits:10',
             'subject' => 'required|string|max:255',
             'property_location' => 'required|string|max:500',

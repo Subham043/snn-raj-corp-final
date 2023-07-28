@@ -50,6 +50,10 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::IMG, 's3.amazonaws.com')
 
         //start of common
+        ->addDirective(Directive::CONNECT, 'https://ipapi.co/json')
+        ->addDirective(Directive::STYLE, 'cdn.jsdelivr.net')
+        ->addDirective(Directive::IMG, 'cdn.jsdelivr.net')
+        ->addDirective(Directive::SCRIPT, 'cdn.jsdelivr.net')
         ->addDirective(Directive::SCRIPT, 'unpkg.com')
         ->addDirective(Directive::SCRIPT, 'kit.fontawesome.com')
         ->addDirective(Directive::CONNECT, 'ka-f.fontawesome.com')

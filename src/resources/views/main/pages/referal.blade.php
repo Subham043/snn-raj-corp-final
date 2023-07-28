@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;1,300;1,400&amp;family=Oswald:wght@300;400&amp;display=swap">
     <link href="{{ asset('admin/css/iziToast.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
     @vite(['resources/css/app.css'])
     <style nonce="{{ csp_nonce() }}">
         :root{
@@ -395,6 +396,32 @@
 <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
 @vite(['resources/js/app.js'])
 
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+<script nonce="{{ csp_nonce() }}" defer>
+    const countryData1 = window.intlTelInput(document.querySelector("#member_phone"), {
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+        autoInsertDialCode: true,
+        initialCountry: "auto",
+        geoIpLookup: callback => {
+            fetch("https://ipapi.co/json")
+            .then(res => res.json())
+            .then(data => callback(data.country_code))
+            .catch(() => callback("us"));
+        },
+    });
+    const countryData2 = window.intlTelInput(document.querySelector("#referal_phone"), {
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+        autoInsertDialCode: true,
+        initialCountry: "auto",
+        geoIpLookup: callback => {
+            fetch("https://ipapi.co/json")
+            .then(res => res.json())
+            .then(data => callback(data.country_code))
+            .catch(() => callback("us"));
+        },
+    });
+</script>
+
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 
@@ -531,11 +558,13 @@ validation
         formData.append('member_name',document.getElementById('member_name').value)
         formData.append('member_email',document.getElementById('member_email').value)
         formData.append('member_phone',document.getElementById('member_phone').value)
+        formData.append('country_code_1',countryData1.getSelectedCountryData().dialCode)
         formData.append('member_unit',document.getElementById('member_unit').value)
         formData.append('member_project_id',document.getElementById('member_project_id').value)
         formData.append('referal_name',document.getElementById('referal_name').value)
         formData.append('referal_email',document.getElementById('referal_email').value)
         formData.append('referal_phone',document.getElementById('referal_phone').value)
+        formData.append('country_code_2',countryData2.getSelectedCountryData().dialCode)
         formData.append('referal_relation',document.getElementById('referal_relation').value)
         formData.append('referal_project_id',document.getElementById('referal_project_id').value)
 
@@ -586,7 +615,7 @@ validation
 
 </script>
 
-{!! empty($chatbotSetting) ? '' : $chatbotSetting->chatbot_script_nonce !!}
+{{-- {!! empty($chatbotSetting) ? '' : $chatbotSetting->chatbot_script_nonce !!} --}}
 
 {!!$seo->meta_footer_script_nonce!!}
 {!!$seo->meta_footer_no_script_nonce!!}

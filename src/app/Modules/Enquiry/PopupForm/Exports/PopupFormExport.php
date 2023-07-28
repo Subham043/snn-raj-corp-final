@@ -33,7 +33,7 @@ class PopupFormExport implements FromCollection,WithHeadings,WithMapping
             $data->id,
             $data->name,
             $data->email,
-            $data->phone,
+            $data->country_code.$data->phone,
             $data->project,
             $data->ip_address,
             $data->subject,

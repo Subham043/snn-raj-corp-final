@@ -8,7 +8,7 @@
     <b>Channel Partner:</b> {{$data->channel_partner}}
 </p>
 <p>
-    <b>Phone:</b> {{$data->phone}}
+    <b>Phone:</b> {{$data->country_code}}{{$data->phone}}
 </p>
 <p>
     <b>Email:</b> {{$data->email}}

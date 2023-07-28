@@ -8,7 +8,7 @@
     <b>Member Email:</b> {{$data->member_email}}
 </p>
 <p>
-    <b>Member Phone:</b> {{$data->member_phone}}
+    <b>Member Phone:</b> {{$data->country_code_1}}{{$data->member_phone}}
 </p>
 <p>
     <b>Member Project Name:</b> {{$data->member_project->name}}
@@ -23,7 +23,7 @@
     <b>Referal Email:</b> {{$data->referal_email}}
 </p>
 <p>
-    <b>Referal Phone:</b> {{$data->referal_phone}}
+    <b>Referal Phone:</b> {{$data->country_code_2}}{{$data->referal_phone}}
 </p>
 <p>
     <b>Referal Project Name:</b> {{$data->referal_project->name}}

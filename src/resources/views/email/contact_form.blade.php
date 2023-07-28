@@ -8,7 +8,7 @@
     <b>Email:</b> {{$data->email}}
 </p>
 <p>
-    <b>Phone:</b> {{$data->phone}}
+    <b>Phone:</b> {{$data->country_code}}{{$data->phone}}
 </p>
 <p>
     <b>Page Url:</b> {{$data->page_url}}

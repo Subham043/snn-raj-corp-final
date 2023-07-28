@@ -47,7 +47,7 @@ class EmpanelmentFormExport implements FromCollection,WithHeadings,WithMapping
             $data->id,
             $data->scope,
             $data->channel_partner,
-            $data->phone,
+            $data->country_code.$data->phone,
             $data->telephone,
             $data->email,
             $data->rera,

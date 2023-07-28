@@ -123,6 +123,21 @@
     {!!$seo->meta_footer_script_nonce!!}
     {!!$seo->meta_footer_no_script_nonce!!}
 
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+    <script nonce="{{ csp_nonce() }}" defer>
+        const countryData = window.intlTelInput(document.querySelector("#phone"), {
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+            autoInsertDialCode: true,
+            initialCountry: "auto",
+            geoIpLookup: callback => {
+                fetch("https://ipapi.co/json")
+                .then(res => res.json())
+                .then(data => callback(data.country_code))
+                .catch(() => callback("us"));
+            },
+        });
+    </script>
+
     <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 
         // initialize the validation library
@@ -223,6 +238,7 @@
                 formData.append('phone',document.getElementById('phone').value)
                 formData.append('experience',document.getElementById('experience').value)
                 formData.append('description',document.getElementById('description').value)
+                formData.append('country_code',countryData.getSelectedCountryData().dialCode)
                 if((document.getElementById('cv').files).length>0){
                     formData.append('cv',document.getElementById('cv').files[0])
                 }

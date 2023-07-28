@@ -1,3 +1,17 @@
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+<script nonce="{{ csp_nonce() }}" defer>
+  const countryData = window.intlTelInput(document.querySelector("#phoneModal"), {
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+    autoInsertDialCode: true,
+    initialCountry: "auto",
+    geoIpLookup: callback => {
+        fetch("https://ipapi.co/json")
+        .then(res => res.json())
+        .then(data => callback(data.country_code))
+        .catch(() => callback("us"));
+    },
+  });
+</script>
 <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 
 
@@ -87,6 +101,7 @@
             formData.append('phone',document.getElementById('phoneModal').value)
             formData.append('project',document.getElementById('projectModal').value)
             formData.append('message',document.getElementById('messageModal').value)
+            formData.append('country_code',countryData.getSelectedCountryData().dialCode)
             formData.append('page_url','{{Request::url()}}')
 
             const response = await axios.post('{{route('popup_page.post')}}', formData)

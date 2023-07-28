@@ -286,6 +286,21 @@
     {!!$seo->meta_footer_script_nonce!!}
     {!!$seo->meta_footer_no_script_nonce!!}
 
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+    <script nonce="{{ csp_nonce() }}" defer>
+        const countryData = window.intlTelInput(document.querySelector("#phone"), {
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+            autoInsertDialCode: true,
+            initialCountry: "auto",
+            geoIpLookup: callback => {
+                fetch("https://ipapi.co/json")
+                .then(res => res.json())
+                .then(data => callback(data.country_code))
+                .catch(() => callback("us"));
+            },
+        });
+    </script>
+
     <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 
         // initialize the validation library
@@ -592,6 +607,7 @@
                 formData.append('bank_branch',document.getElementById('bank_branch').value)
                 formData.append('bank_account_number',document.getElementById('bank_account_number').value)
                 formData.append('ifsc',document.getElementById('ifsc').value)
+                formData.append('country_code',countryData.getSelectedCountryData().dialCode)
                 formData.append('msme',document.getElementById('msme_yes').checked ? document.getElementById('msme_yes').value : document.getElementById('msme_no').value)
                 formData.append('epf',document.getElementById('epf_yes').checked ? document.getElementById('epf_yes').value : document.getElementById('epf_no').value)
                 formData.append('esi',document.getElementById('esi_yes').checked ? document.getElementById('esi_yes').value : document.getElementById('esi_no').value)

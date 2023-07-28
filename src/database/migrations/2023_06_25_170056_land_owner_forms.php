@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 500);
             $table->text('property_location', 500)->nullable();
             $table->string('phone', 500)->nullable();
+            $table->string('country_code', 500)->nullable();
             $table->string('email', 500)->nullable();
             $table->string('subject', 500)->nullable();
             $table->string('ip_address', 500)->nullable();

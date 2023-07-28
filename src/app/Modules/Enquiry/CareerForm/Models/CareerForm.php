@@ -23,6 +23,7 @@ class CareerForm extends Model
         'name',
         'email',
         'phone',
+        'country_code',
         'experience',
         'description',
         'cv',

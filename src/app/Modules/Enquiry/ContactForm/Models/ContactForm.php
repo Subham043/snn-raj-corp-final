@@ -22,6 +22,7 @@ class ContactForm extends Model
         'name',
         'email',
         'phone',
+        'country_code',
         'subject',
         'message',
         'page_url',

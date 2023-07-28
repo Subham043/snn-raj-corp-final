@@ -22,6 +22,7 @@ class PopupForm extends Model
         'name',
         'email',
         'phone',
+        'country_code',
         'project',
         'subject',
         'message',

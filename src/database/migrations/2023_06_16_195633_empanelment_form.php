@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('channel_partner', 500);
             $table->text('address', 500)->nullable();
             $table->string('phone', 500)->nullable();
+            $table->string('country_code', 500)->nullable();
             $table->string('telephone', 500)->nullable();
             $table->string('email', 500)->nullable();
             $table->string('rera', 500)->nullable();

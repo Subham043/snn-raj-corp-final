@@ -24,6 +24,7 @@ class EmpanelmentForm extends Model
         'channel_partner',
         'address',
         'phone',
+        'country_code',
         'telephone',
         'email',
         'rera',

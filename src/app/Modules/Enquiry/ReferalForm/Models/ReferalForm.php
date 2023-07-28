@@ -23,11 +23,13 @@ class ReferalForm extends Model
         'member_name',
         'member_email',
         'member_phone',
+        'country_code_1',
         'member_unit',
         'member_project_id',
         'referal_name',
         'referal_email',
         'referal_phone',
+        'country_code_2',
         'referal_relation',
         'referal_project_id',
     ];

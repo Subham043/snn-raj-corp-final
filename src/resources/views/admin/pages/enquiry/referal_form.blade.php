@@ -52,12 +52,12 @@
                                         <tr>
                                             <td class="customer_name">{{$item->member_name}}</td>
                                             <td class="customer_name">{{$item->member_email}}</td>
-                                            <td class="customer_name">{{$item->member_phone}}</td>
+                                            <td class="customer_name">{{$item->country_code_1}}{{$item->member_phone}}</td>
                                             <td class="customer_name">{{$item->member_project->name}}</td>
                                             <td class="customer_name">{{$item->member_unit}}</td>
                                             <td class="customer_name">{{$item->referal_name}}</td>
                                             <td class="customer_name">{{$item->referal_email}}</td>
-                                            <td class="customer_name">{{$item->referal_phone}}</td>
+                                            <td class="customer_name">{{$item->country_code_2}}{{$item->referal_phone}}</td>
                                             <td class="customer_name">{{$item->referal_project->name}}</td>
                                             <td class="customer_name">{{$item->referal_relation}}</td>
                                             <td class="date">{{$item->created_at->diffForHumans()}}</td>

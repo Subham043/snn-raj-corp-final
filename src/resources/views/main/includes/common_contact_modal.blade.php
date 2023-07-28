@@ -5,7 +5,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="col-12 mt-2 text-center">
                     <img fetchpriority="low" class="modal-img" src="{{ asset('assets/black-logo.webp') }}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}" data-img="{{ asset('assets/black-logo.webp') }}">
-                    <h5 class="modal-title">Reach Out To us</h5>
+                    <h5 class="modal-title mt-1">Get A Callback</h5>
                 </div>
             </div>
             <div class="modal-body">

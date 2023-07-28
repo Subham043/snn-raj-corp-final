@@ -31,6 +31,7 @@ class EmpanelmentFormRequest extends FormRequest
             'scope' => 'required|string|max:255',
             'company_type' => 'required|string|max:255',
             'channel_partner' => 'required|string|max:255',
+            'country_code' => 'required|string|max:255',
             'phone' => 'required|numeric|digits:10',
             'telephone' => 'required|numeric',
             'email' => 'required|string|email',

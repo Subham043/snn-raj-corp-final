@@ -30,11 +30,13 @@ class ReferalFormRequest extends FormRequest
         return [
             'member_name' => 'required|string|max:255',
             'member_email' => 'required|string|email|max:255',
+            'country_code_1' => 'required|string|max:255',
             'member_phone' => 'required|numeric|digits:10',
             'member_unit' => 'required|string|max:255',
             'member_project_id' => 'required|numeric|exists:App\Modules\Project\Projects\Models\Project,id',
             'referal_name' => 'required|string|max:255',
             'referal_email' => 'required|string|email|max:255',
+            'country_code_2' => 'required|string|max:255',
             'referal_phone' => 'required|numeric|digits:10',
             'referal_relation' => 'required|string|max:255',
             'referal_project_id' => 'required|numeric|exists:App\Modules\Project\Projects\Models\Project,id',

@@ -50,7 +50,7 @@
                                         <tr>
                                             <td class="customer_name">{{$item->name}}</td>
                                             <td class="customer_name">{{$item->email}}</td>
-                                            <td class="customer_name">{{$item->phone}}</td>
+                                            <td class="customer_name">{{$item->country_code}}{{$item->phone}}</td>
                                             <td class="customer_name">{{$item->project}}</td>
                                             <td class="customer_name">{{$item->ip_address}}</td>
                                             <td class="customer_name"> <a href="{{$item->page_url}}" target="_blank" rel="noopener noreferrer">{{$item->page_url}}</a></td>

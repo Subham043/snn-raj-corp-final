@@ -48,7 +48,7 @@
                                         <tr>
                                             <td class="customer_name">{{$item->name}}</td>
                                             <td class="customer_name">{{$item->email}}</td>
-                                            <td class="customer_name">{{$item->phone}}</td>
+                                            <td class="customer_name">{{$item->country_code}}{{$item->phone}}</td>
                                             <td class="customer_name">{{$item->ip_address}}</td>
                                             <td class="customer_name">{{$item->subject}}</td>
                                             <td class="customer_name">{{$item->property_location}}</td>
