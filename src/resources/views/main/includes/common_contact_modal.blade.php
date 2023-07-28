@@ -32,6 +32,12 @@
                     <div class="col-md-12 form-group">
                         <textarea id="messageModal" cols="30" rows="4" placeholder="Message *" required></textarea>
                     </div>
+                    <div class="col-md-12 mt-2 mb-4">
+                        <div class="col-md-12">
+                            <input type="checkbox" class="line-gray">
+                            <label style="width: 290px">I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp me about its products and offers, this consent overrides any registration for DNC / NDNC</label>
+                        </div>
+                    </div>
                     <div class="col-md-4 text-center">
                         <button type="submit" id="submitBtnModal" class="btn btn-dark">Submit</button>
                     </div>

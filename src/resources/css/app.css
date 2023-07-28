@@ -4171,7 +4171,7 @@ h1, h2, h3, h4, h5, h6 {
 
     #contactModal .modal-content{
         position: absolute;
-        bottom: 70px;
+        bottom: 60px;
         width: 70%;
         right: 25px;
     }
