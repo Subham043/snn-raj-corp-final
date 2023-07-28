@@ -1,15 +1,17 @@
 <div class="modal fade" id="contactModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                {{-- <h5 class="modal-title">Reach Out To us</h5> --}}
-                <img fetchpriority="low" class="modal-img" src="{{ asset('assets/black-logo.webp') }}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}" data-img="{{ asset('assets/black-logo.webp') }}">
+            <div class="modal-header flex-wrap">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="col-12 mt-2 text-center">
+                    <img fetchpriority="low" class="modal-img" src="{{ asset('assets/black-logo.webp') }}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}" data-img="{{ asset('assets/black-logo.webp') }}">
+                    <h5 class="modal-title">Reach Out To us</h5>
+                </div>
             </div>
             <div class="modal-body">
 
                 <form id="contactFormModal" class="row justify-content-center" method="post">
-                    <h4 class="text-center">Reach Out To Us</h4>
+                    {{-- <h4 class="text-center">Reach Out To Us</h4> --}}
                     <div class="col-md-6 form-group">
                         <input id="nameModal" type="text" placeholder="Your Name *" required>
                     </div>
