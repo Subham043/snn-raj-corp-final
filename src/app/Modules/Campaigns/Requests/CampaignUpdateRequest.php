@@ -19,7 +19,8 @@ class CampaignUpdateRequest extends CampaignCreateRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'srd' => 'required|string|max:255',
+            'srd' => 'nullable|string|max:255',
+            'projectId' => 'nullable|string|max:255',
             'slug' => 'required|string|max:250|unique:campaigns,slug,'.$this->route('id'),
             'phone' => 'nullable|integer|digits:10',
             'email' => 'nullable|string|email|max:255',
@@ -39,6 +40,7 @@ class CampaignUpdateRequest extends CampaignCreateRequest
             'header_logo' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif',
             'footer_logo' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif',
             'og_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif',
+            'brochure_bg_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif',
             'campaign_status' => 'nullable',
             'publish_status' => 'nullable',
         ];

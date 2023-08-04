@@ -59,9 +59,19 @@ class ProjectService
         ], $project);
     }
 
+    public function saveImage(Project $project): Project
+    {
+        $this->deleteImage($project);
+        $brochure_bg_image = (new FileService)->save_file('brochure_bg_image', (new Project)->brochure_bg_image_path);
+        return $this->update([
+            'brochure_bg_image' => $brochure_bg_image,
+        ], $project);
+    }
+
     public function delete(Project $project): bool|null
     {
         $this->deleteBrochure($project);
+        $this->deleteImage($project);
         $project->amenity()->detach();
         return $project->delete();
     }
@@ -70,6 +80,14 @@ class ProjectService
     {
         if($project->brochure){
             $path = str_replace("storage","app/public",$project->brochure);
+            (new FileService)->delete_file($path);
+        }
+    }
+
+    public function deleteImage(Project $project): void
+    {
+        if($project->brochure_bg_image){
+            $path = str_replace("storage","app/public",$project->brochure_bg_image);
             (new FileService)->delete_file($path);
         }
     }

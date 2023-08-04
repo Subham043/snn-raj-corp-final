@@ -28,7 +28,8 @@ class ProjectCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:500',
-            'srd_code' => 'required|string|max:500',
+            'srd_code' => 'nullable|string|max:500',
+            'projectId' => 'nullable|string|max:500',
             'slug' => 'required|string|max:500|unique:projects,slug',
             'location' => 'required|string|max:500',
             'floor' => 'required|string|max:500',
@@ -40,7 +41,8 @@ class ProjectCreateRequest extends FormRequest
             'brief_description' => 'required|string|max:500',
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',
-            'brochure' => 'nullable|mimes:pdf|min:10|max:5000',
+            'brochure' => 'nullable|mimes:pdf|max:5000',
+            'brochure_bg_image' => 'required|image|mimes:jpeg,png,jpg,webp,avif',
             'video' => 'required_if:use_in_banner,1|url|max:500|nullable',
             'use_in_banner' => 'required|boolean',
             'amenity' => 'required|array|min:4',
@@ -70,6 +72,9 @@ class ProjectCreateRequest extends FormRequest
             'is_completed' => 'Completed',
             'video' => 'Video',
             'use_in_banner' => 'Use the video in home page banner',
+            'brochure_bg_image' => 'Brochure Background Image',
+            'srd_code' => 'SellDo SRD Code',
+            'projectId' => 'SellDo Project ID',
         ];
     }
 

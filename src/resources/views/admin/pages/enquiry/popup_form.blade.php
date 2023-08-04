@@ -39,7 +39,6 @@
                                             <th class="sort" data-sort="customer_name">Project</th>
                                             <th class="sort" data-sort="customer_name">IP Address</th>
                                             <th class="sort" data-sort="customer_name">Page Url</th>
-                                            <th class="sort" data-sort="customer_name">Subject</th>
                                             <th class="sort" data-sort="customer_name">Message</th>
                                             <th class="sort" data-sort="date">Created On</th>
                                             <th class="sort" data-sort="action">Action</th>
@@ -54,7 +53,6 @@
                                             <td class="customer_name">{{$item->project}}</td>
                                             <td class="customer_name">{{$item->ip_address}}</td>
                                             <td class="customer_name"> <a href="{{$item->page_url}}" target="_blank" rel="noopener noreferrer">{{$item->page_url}}</a></td>
-                                            <td class="customer_name">{{$item->subject}}</td>
                                             <td class="customer_name">{{$item->message}}</td>
                                             <td class="date">{{$item->created_at->diffForHumans()}}</td>
                                             <td>

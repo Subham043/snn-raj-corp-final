@@ -24,10 +24,12 @@ class Campaign extends Model
         'slug',
         'header_logo',
         'footer_logo',
+        'brochure_bg_image',
         'address',
         'email',
         'phone',
         'srd',
+        'projectId',
         'meta_title',
         'meta_description',
         'og_locale',
@@ -66,7 +68,7 @@ class Campaign extends Model
         'amenities_heading' => '20+ Worldclass <span>Amenities</span>',
     ];
 
-    protected $appends = ['campaign_status_type', 'publish_status_type', 'header_logo_link', 'footer_logo_link', 'og_image_link'];
+    protected $appends = ['campaign_status_type', 'publish_status_type', 'header_logo_link', 'footer_logo_link', 'og_image_link', 'brochure_bg_image_link'];
 
     protected function campaignStatusType(): Attribute
     {
@@ -100,6 +102,13 @@ class Campaign extends Model
     {
         return new Attribute(
             get: fn () => !empty($this->og_image) ? asset('storage/campaigns/'.$this->og_image): null,
+        );
+    }
+
+    protected function brochureBgImageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => !empty($this->brochure_bg_image) ? asset('storage/campaigns/'.$this->brochure_bg_image): null,
         );
     }
 

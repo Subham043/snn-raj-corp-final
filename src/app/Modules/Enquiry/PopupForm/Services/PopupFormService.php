@@ -59,7 +59,6 @@ class CommonFilter implements Filter
         $query->where('name', 'LIKE', '%' . $value . '%')
         ->orWhere('phone', 'LIKE', '%' . $value . '%')
         ->orWhere('project', 'LIKE', '%' . $value . '%')
-        ->orWhere('subject', 'LIKE', '%' . $value . '%')
         ->orWhere('message', 'LIKE', '%' . $value . '%')
         ->orWhere('email', 'LIKE', '%' . $value . '%');
     }

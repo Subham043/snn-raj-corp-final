@@ -58,7 +58,10 @@
                                         @include('admin.includes.input', ['key'=>'tower', 'label'=>'Tower', 'value'=>$data->tower])
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'srd_code', 'label'=>'SRD Code', 'value'=>$data->srd_code])
+                                        @include('admin.includes.file_input', ['key'=>'brochure_bg_image', 'label'=>'Brochure Background Image'])
+                                        @if(!empty($data->brochure_bg_image))
+                                            <img src="{{$data->brochure_bg_image_link}}" alt="" class="img-preview">
+                                        @endif
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'brochure', 'label'=>'Brochure (PDF)'])
@@ -131,6 +134,26 @@
                                             </div>
 
                                         </div>
+                                    </div>
+                                </div>
+                                <!--end row-->
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header align-items-center d-flex">
+                            <h4 class="card-title mb-0 flex-grow-1">Sell Do</h4>
+                        </div><!-- end card header -->
+                        <div class="card-body">
+                            <div class="live-preview">
+                                <div class="row gy-4">
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'srd_code', 'label'=>'Sell Do SRD', 'value'=>$data->srd_code])
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'projectId', 'label'=>'Sell Do Project ID', 'value'=>$data->projectId])
                                     </div>
                                 </div>
                                 <!--end row-->
@@ -230,8 +253,12 @@ validation
   ])
   .addField('#srd_code', [
     {
-      rule: 'required',
-      errorMessage: 'SRD Code is required',
+        validator: (value, fields) => true,
+    },
+  ])
+  .addField('#projectId', [
+    {
+        validator: (value, fields) => true,
     },
   ])
   .addField('#name', [
@@ -350,6 +377,25 @@ validation
         },
     },
   ])
+  .addField('#brochure_bg_image', [
+    {
+        rule: 'minFilesCount',
+        value: 0,
+    },
+    {
+        rule: 'maxFilesCount',
+        value: 1,
+    },
+    {
+        rule: 'files',
+        value: {
+        files: {
+            extensions: ['jpeg', 'png', 'jpg', 'webp', 'avif'],
+            maxSize: 5000000,
+        },
+        },
+    },
+  ])
   .addField('#map_location_link', [
     {
         validator: (value, fields) => true,
@@ -408,6 +454,7 @@ validation
         formData.append('name',document.getElementById('name').value)
         formData.append('slug',document.getElementById('slug').value)
         formData.append('srd_code',document.getElementById('srd_code').value)
+        formData.append('projectId',document.getElementById('projectId').value)
         formData.append('rera',document.getElementById('rera').value)
         formData.append('map_location_link',document.getElementById('map_location_link').value)
         formData.append('location',document.getElementById('location').value)
@@ -429,6 +476,9 @@ validation
         if((document.getElementById('brochure').files).length>0){
             formData.append('brochure',document.getElementById('brochure').files[0])
         }
+        if((document.getElementById('brochure_bg_image').files).length>0){
+            formData.append('brochure_bg_image',document.getElementById('brochure_bg_image').files[0])
+        }
         if(document.getElementById('amenity')?.length>0){
             for (let index = 0; index < document.getElementById('amenity').length; index++) {
                 formData.append('amenity[]',document.getElementById('amenity')[index].value)
@@ -447,6 +497,9 @@ validation
         }
         if(error?.response?.data?.errors?.srd_code){
             validation.showErrors({'#srd_code': error?.response?.data?.errors?.srd_code[0]})
+        }
+        if(error?.response?.data?.errors?.projectId){
+            validation.showErrors({'#projectId': error?.response?.data?.errors?.projectId[0]})
         }
         if(error?.response?.data?.errors?.rera){
             validation.showErrors({'#rera': error?.response?.data?.errors?.rera[0]})
@@ -486,6 +539,9 @@ validation
         }
         if(error?.response?.data?.errors?.brochure){
             validation.showErrors({'#brochure': error?.response?.data?.errors?.brochure[0]})
+        }
+        if(error?.response?.data?.errors?.brochure_bg_image){
+            validation.showErrors({'#brochure_bg_image': error?.response?.data?.errors?.brochure_bg_image[0]})
         }
         if(error?.response?.data?.errors?.meta_title){
             validation.showErrors({'#meta_title': error?.response?.data?.errors?.meta_title[0]})

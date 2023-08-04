@@ -18,6 +18,12 @@
                     <div class="col-md-6 form-group">
                         <input id="emailModal" type="email" placeholder="Your Email *" required>
                     </div>
+                    @if(request()->is('ongoing-projects/*') || request()->is('completed-projects/*'))
+                    <div class="col-md-12 form-group">
+                        <input id="phoneModal" type="text" placeholder="Your Number *" required>
+                    </div>
+                    <input type="hidden" id="projectModal" value="{{$data->name}}">
+                    @else
                     <div class="col-md-6 form-group">
                         <input id="phoneModal" type="text" placeholder="Your Number *" required>
                     </div>
@@ -29,13 +35,16 @@
                             @endforeach
                         </select>
                     </div>
+                    @endif
                     <div class="col-md-12 form-group">
-                        <textarea id="messageModal" cols="30" rows="4" placeholder="Message *" required></textarea>
+                        <textarea id="messageModal" cols="30" rows="1" placeholder="Message *" required></textarea>
                     </div>
                     <div class="col-md-12 mt-2 mb-4">
                         <div class="col-md-12">
                             <input type="checkbox" class="line-gray">
-                            <label style="width: 290px">I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp me about its products and offers, this consent overrides any registration for DNC / NDNC</label>
+                            <label style="width: 290px;font-size:0.8rem;line-height: 15px;">
+                                I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp me about its products and offers, this consent overrides any registration for DNC / NDNC
+                            </label>
                         </div>
                     </div>
                     <div class="col-md-4 text-center">

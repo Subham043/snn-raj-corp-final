@@ -56,11 +56,13 @@ class CampaignService
         $header_logo = (new CampaignFileService)->save_file($request, 'header_logo', $this->path);
         $footer_logo = (new CampaignFileService)->save_file($request, 'footer_logo', $this->path);
         $og_image = (new CampaignFileService)->save_file($request, 'og_image', $this->path);
+        $brochure_bg_image = (new CampaignFileService)->save_file($request, 'brochure_bg_image', $this->path);
         $this->campaignModel->create([
-            ...$request->except('header_logo', 'footer_logo', 'og_image'),
+            ...$request->except('header_logo', 'footer_logo', 'og_image', 'brochure_bg_image'),
             'header_logo' => $header_logo,
             'footer_logo' => $footer_logo,
             'og_image' => $og_image,
+            'brochure_bg_image' => $brochure_bg_image,
         ]);
     }
 
@@ -74,7 +76,7 @@ class CampaignService
     public function update(CampaignUpdateRequest $request, Campaign $data) : void
     {
         $data->update([
-            ...$request->except('header_logo', 'footer_logo', 'og_image'),
+            ...$request->except('header_logo', 'footer_logo', 'og_image', 'brochure_bg_image'),
         ]);
     }
 
@@ -107,6 +109,15 @@ class CampaignService
                 'og_image' => $og_image,
             ]);
         }
+        if($request->hasFile('brochure_bg_image')){
+            $brochure_bg_image = (new CampaignFileService)->save_file($request, 'brochure_bg_image', $this->path);
+            if($data->brochure_bg_image){
+                (new CampaignFileService)->delete_file('app/public/'.$this->path.'/'.$data->brochure_bg_image);
+            }
+            $data->update([
+                'brochure_bg_image' => $brochure_bg_image,
+            ]);
+        }
     }
 
     public function delete(Campaign $data): void
@@ -119,6 +130,9 @@ class CampaignService
         }
         if(!empty($data->og_image)){
             (new CampaignFileService)->delete_file('app/public/'.$this->path.'/'.$data->og_image);
+        }
+        if(!empty($data->brochure_bg_image)){
+            (new CampaignFileService)->delete_file('app/public/'.$this->path.'/'.$data->brochure_bg_image);
         }
         $data->delete();
     }

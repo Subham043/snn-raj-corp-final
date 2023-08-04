@@ -16,7 +16,8 @@ class ProjectUpdateRequest extends ProjectCreateRequest
     {
         return [
             'name' => 'required|string|max:500',
-            'srd_code' => 'required|string|max:500',
+            'srd_code' => 'nullable|string|max:500',
+            'projectId' => 'nullable|string|max:500',
             'slug' => 'required|string|max:500|unique:projects,slug,'.$this->route('id'),
             'location' => 'required|string|max:500',
             'floor' => 'required|string|max:500',
@@ -28,7 +29,8 @@ class ProjectUpdateRequest extends ProjectCreateRequest
             'brief_description' => 'required|string|max:500',
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',
-            'brochure' => 'nullable|mimes:pdf|min:10|max:5000',
+            'brochure' => 'nullable|mimes:pdf|max:5000',
+            'brochure_bg_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif',
             'video' => 'required_if:use_in_banner,1|url|max:500|nullable',
             'use_in_banner' => 'required|boolean',
             'amenity' => 'required|array|min:4',

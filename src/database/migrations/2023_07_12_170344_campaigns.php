@@ -36,6 +36,8 @@ return new class extends Migration
             $table->text('youtube')->nullable();
             $table->text('linkedin')->nullable();
             $table->text('srd')->nullable();
+            $table->text('projectId')->nullable();
+            $table->text('brochure_bg_image')->nullable();
             $table->string('country_code', 500)->nullable();
             $table->integer('campaign_status')->default(CampaignStatusEnum::UPCOMING->label());
             $table->integer('publish_status')->default(PublishStatusEnum::ACTIVE->label());

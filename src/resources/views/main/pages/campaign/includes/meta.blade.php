@@ -39,6 +39,9 @@
             display: inline-block;
             width: 100%;
         }
+        .contact-holder {
+            background-image: linear-gradient(45deg,rgba(245,70,66,.75),rgba(8,83,156,.75)),url('{{$data->brochure_bg_image_link}}');
+        }
     </style>
     {!!$data->meta_header!!}
 </head>

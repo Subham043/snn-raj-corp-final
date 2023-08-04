@@ -31,11 +31,14 @@ class ProjectUpdateController extends Controller
         try {
             //code...
             $this->projectService->update(
-                $request->except(['brochure', 'amenity']),
+                $request->except(['brochure', 'amenity', 'brochure_bg_image']),
                 $project
             );
             if($request->hasFile('brochure')){
                 $this->projectService->saveBrochure($project);
+            }
+            if($request->hasFile('brochure_bg_image')){
+                $this->projectService->saveImage($project);
             }
             $amenities = array();
             foreach ($request->amenity as $key => $value) {

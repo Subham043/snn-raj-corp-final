@@ -45,6 +45,7 @@ class Project extends Model implements Sitemapable
         'address',
         'map_location_link',
         'brochure',
+        'brochure_bg_image',
         'video',
         'use_in_banner',
         'is_draft',
@@ -58,6 +59,7 @@ class Project extends Model implements Sitemapable
         'meta_header_no_script',
         'meta_footer_no_script',
         'srd_code',
+        'projectId',
     ];
 
     protected $casts = [
@@ -69,8 +71,9 @@ class Project extends Model implements Sitemapable
     ];
 
     public $brochure_path = 'projects';
+    public $brochure_bg_image_path = 'projects';
 
-    protected $appends = ['brochure_link', 'meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce', 'video_id'];
+    protected $appends = ['brochure_link', 'brochure_bg_image_link', 'meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce', 'video_id'];
 
     protected function brochure(): Attribute
     {
@@ -83,6 +86,20 @@ class Project extends Model implements Sitemapable
     {
         return new Attribute(
             get: fn () => asset($this->brochure),
+        );
+    }
+
+    protected function brochureBgImage(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => 'storage/'.$this->brochure_bg_image_path.'/'.$value,
+        );
+    }
+
+    protected function brochureBgImageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset($this->brochure_bg_image),
         );
     }
 

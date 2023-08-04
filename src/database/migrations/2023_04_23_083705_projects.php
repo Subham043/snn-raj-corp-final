@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name', 500);
             $table->string('slug', 500)->unique();
             $table->string('srd_code', 500)->nullable();
+            $table->string('projectId', 500)->nullable();
             $table->string('location', 500)->nullable();
             $table->string('floor', 500)->nullable();
             $table->string('acre', 500)->nullable();
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->string('address', 500)->nullable();
             $table->string('map_location_link', 500)->nullable();
             $table->string('brochure', 500)->nullable();
+            $table->string('brochure_bg_image', 500)->nullable();
             $table->string('video', 500)->nullable();
             $table->boolean('use_in_banner')->default(0);
             $table->boolean('is_draft')->default(0);

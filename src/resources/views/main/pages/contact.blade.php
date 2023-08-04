@@ -161,7 +161,7 @@
         const countryData = window.intlTelInput(document.querySelector("#phone"), {
             utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
             autoInsertDialCode: true,
-            initialCountry: "auto",
+            initialCountry: "in",
             geoIpLookup: callback => {
                 fetch("https://ipapi.co/json")
                 .then(res => res.json())

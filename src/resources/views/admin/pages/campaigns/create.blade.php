@@ -38,13 +38,13 @@
                                         @include('admin.includes.textarea', ['key'=>'address', 'label'=>'Campaign Address', 'value'=>old('address')])
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'srd', 'label'=>'Campaign SRD', 'value'=>old('srd')])
-                                    </div>
-                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'header_logo', 'label'=>'Header Logo'])
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'footer_logo', 'label'=>'Footer Logo'])
+                                    </div>
+                                    <div class="col-xxl-4 col-md-4">
+                                        @include('admin.includes.file_input', ['key'=>'brochure_bg_image', 'label'=>'Brochure Background Image'])
                                     </div>
 
                                     <!--end col-->
@@ -70,6 +70,26 @@
 
                                         </div>
                                     </div><!--end col-->
+
+                                </div>
+                                <!--end row-->
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header align-items-center d-flex">
+                            <h4 class="card-title mb-0 flex-grow-1">Sell Do</h4>
+                        </div><!-- end card header -->
+                        <div class="card-body">
+                            <div class="live-preview">
+                                <div class="row gy-4">
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'srd', 'label'=>'Sell Do SRD', 'value'=>old('srd')])
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'projectId', 'label'=>'Sell Do Project ID', 'value'=>old('projectId')])
+                                    </div>
 
                                 </div>
                                 <!--end row-->
@@ -189,8 +209,12 @@ validation
   ])
   .addField('#srd', [
     {
-      rule: 'required',
-      errorMessage: 'Campaign SRD is required',
+        validator: (value, fields) => true,
+    },
+  ])
+  .addField('#projectId', [
+    {
+        validator: (value, fields) => true,
     },
   ])
   .addField('#slug', [
@@ -256,7 +280,7 @@ validation
         rule: 'files',
         value: {
             files: {
-                extensions: ['jpeg', 'png', 'jpg', 'webp', 'avif',]
+                extensions: ['jpeg', 'png', 'jpg', 'webp', 'avif']
             },
         },
         errorMessage: 'Please select a valid header logo',
@@ -287,6 +311,22 @@ validation
             },
         },
         errorMessage: 'Please select a valid og image',
+    },
+  ])
+  .addField('#brochure_bg_image', [
+    {
+        rule: 'minFilesCount',
+        value: 1,
+        errorMessage: 'Please select a brochure background image',
+    },
+    {
+        rule: 'files',
+        value: {
+            files: {
+                extensions: ['jpeg', 'png', 'jpg', 'webp', 'avif',]
+            },
+        },
+        errorMessage: 'Please select a valid brochure background image',
     },
   ])
   .onSuccess(async (event) => {

@@ -30,7 +30,8 @@ class CampaignCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'srd' => 'required|string|max:255',
+            'srd' => 'nullable|string|max:255',
+            'projectId' => 'nullable|string|max:255',
             'slug' => 'required|string|max:250|unique:campaigns,slug',
             'phone' => 'nullable|integer|digits:10',
             'email' => 'nullable|string|email|max:255',
@@ -50,6 +51,7 @@ class CampaignCreateRequest extends FormRequest
             'header_logo' => 'required|image|mimes:jpeg,png,jpg,webp,avif',
             'footer_logo' => 'required|image|mimes:jpeg,png,jpg,webp,avif',
             'og_image' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif',
+            'brochure_bg_image' => 'required|image|mimes:jpeg,png,jpg,webp,avif',
             'campaign_status' => 'nullable',
             'publish_status' => 'nullable',
         ];
@@ -70,6 +72,9 @@ class CampaignCreateRequest extends FormRequest
             'og_image' => 'Og Image',
             'header_logo' => 'Header Logo',
             'footer_logo' => 'Footer Logo',
+            'brochure_bg_image' => 'Brochure Background Image',
+            'srd' => 'SellDo SRD Code',
+            'projectId' => 'SellDo Project ID',
         ];
     }
 
