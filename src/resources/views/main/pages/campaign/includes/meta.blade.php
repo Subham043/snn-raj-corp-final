@@ -124,5 +124,5 @@
             }
         }
     </style>
-    {!!$data->meta_header!!}
+    {!!$data->meta_header_nonce!!}
 </head>

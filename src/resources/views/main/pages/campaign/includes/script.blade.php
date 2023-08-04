@@ -33,7 +33,7 @@
   });
 </script>
 
-{!!$data->meta_footer!!}
+{!!$data->meta_footer_nonce!!}
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 (function( $ ) {

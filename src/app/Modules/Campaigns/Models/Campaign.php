@@ -68,7 +68,7 @@ class Campaign extends Model
         'amenities_heading' => '20+ Worldclass <span>Amenities</span>',
     ];
 
-    protected $appends = ['campaign_status_type', 'publish_status_type', 'header_logo_link', 'footer_logo_link', 'og_image_link', 'brochure_bg_image_link'];
+    protected $appends = ['campaign_status_type', 'publish_status_type', 'header_logo_link', 'footer_logo_link', 'og_image_link', 'brochure_bg_image_link', 'meta_header_nonce', 'meta_footer_nonce'];
 
     protected function campaignStatusType(): Attribute
     {
@@ -109,6 +109,20 @@ class Campaign extends Model
     {
         return new Attribute(
             get: fn () => !empty($this->brochure_bg_image) ? asset('storage/campaigns/'.$this->brochure_bg_image): null,
+        );
+    }
+
+    protected function metaHeaderNonce(): Attribute
+    {
+        return new Attribute(
+            get: fn () => str_replace("<script","<script nonce='".csp_nonce()."'",$this->meta_header),
+        );
+    }
+
+    protected function metaFooterNonce(): Attribute
+    {
+        return new Attribute(
+            get: fn () => str_replace("<script","<script nonce='".csp_nonce()."'",$this->meta_footer),
         );
     }
 
