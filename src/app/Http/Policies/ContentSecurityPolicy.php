@@ -53,9 +53,12 @@ class ContentSecurityPolicy extends Basic
 
         //start of common
         ->addDirective(Directive::CONNECT, 'https://ipapi.co/json')
+        ->addDirective(Directive::CONNECT, 'www.googletagmanager.com')
+        ->addDirective(Directive::CONNECT, 'www.google-analytics.com')
         ->addDirective(Directive::STYLE, 'cdn.jsdelivr.net')
         ->addDirective(Directive::IMG, 'cdn.jsdelivr.net')
         ->addDirective(Directive::SCRIPT, 'cdn.jsdelivr.net')
+        ->addDirective(Directive::SCRIPT, 'www.googletagmanager.com')
         ->addDirective(Directive::SCRIPT, 'unpkg.com')
         ->addDirective(Directive::SCRIPT, 'kit.fontawesome.com')
         ->addDirective(Directive::CONNECT, 'ka-f.fontawesome.com')
