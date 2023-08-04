@@ -58,6 +58,8 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::STYLE, 'cdn.jsdelivr.net')
         ->addDirective(Directive::IMG, 'cdn.jsdelivr.net')
         ->addDirective(Directive::IMG, 'www.google.com')
+        ->addDirective(Directive::IMG, 'www.google.co.in')
+        ->addDirective(Directive::IMG, 'googleads.g.doubleclick.net')
         ->addDirective(Directive::SCRIPT, 'cdn.jsdelivr.net')
         ->addDirective(Directive::SCRIPT, 'www.googletagmanager.com')
         ->addDirective(Directive::SCRIPT, 'unpkg.com')
