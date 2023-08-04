@@ -20,7 +20,7 @@
                     <div class="col-lg-8 col-md-6 col-sm-12 contact-col">
                         <h2>GET COST SHEET & BROCHURE</h2>
                         <p>Click Below To Download Floorplans & Cost Sheet of {{$data->name}} & Register for special offers.</p>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary formbuttonstyler" aria-label="Download Brouchure">Download Now</button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#contactModal" class="btn btn-primary formbuttonstyler" aria-label="Download Brouchure">Download Now</button>
                     </div>
                 </div>
             </div>

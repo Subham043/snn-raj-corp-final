@@ -32,7 +32,7 @@
                                         style="background-color: black !important; background-image: linear-gradient(315deg,#000000 0%,#191919 74%); color: white;font-weight:bold;"
                                         type="button"
                                         aria-label="Unlock Price"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal">🔒 Unlock Price</button></td>
+                                        data-bs-toggle="modal" data-bs-target="#contactModal">🔒 Unlock Price</button></td>
                                 <td class="tg-0lay unlocked" style="display:none;">3891 Sqft<br>3.88 Cr*</td>
                             </tr>
                             @endforeach

@@ -6,7 +6,7 @@
                 <h2 class="main-title">
                     {!!$data->plan_heading!!}
                 </h2>
-                <button data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="Download PDF">
+                <button data-bs-toggle="modal" data-bs-target="#contactModal" aria-label="Download PDF">
                     Download PDF <i class="fas fa-download"></i>
                 </button>
             </div>
