@@ -57,6 +57,7 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::CONNECT, 'www.google-analytics.com')
         ->addDirective(Directive::STYLE, 'cdn.jsdelivr.net')
         ->addDirective(Directive::IMG, 'cdn.jsdelivr.net')
+        ->addDirective(Directive::IMG, 'www.google.com')
         ->addDirective(Directive::SCRIPT, 'cdn.jsdelivr.net')
         ->addDirective(Directive::SCRIPT, 'www.googletagmanager.com')
         ->addDirective(Directive::SCRIPT, 'unpkg.com')
