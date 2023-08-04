@@ -24,7 +24,7 @@
                                 <div class="col-sm-auto">
                                     <div>
                                         <a href="{{route('campaign_list.get')}}" type="button" class="btn btn-dark add-btn" id="create-btn"><i class="ri-arrow-go-back-line align-bottom me-1"></i> Go Back</a>
-                                        <a href="{{route('campaign_gallery_create.get', $campaign_id)}}" style="background:green;border-color:green;" type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
+                                        <a href="{{route('campaign_gallery_create.get', $campaign_id)}}" type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <div class="remove">
-                                                        <button class="btn btn-sm btn-danger remove-item-btn" style="background:red" onclick="deleteHandler('{{route('campaign_gallery_delete.get', [$campaign_id, $item->id])}}')">Delete</button>
+                                                        <button class="btn btn-sm btn-danger remove-item-btn" data-link="{{route('campaign_gallery_delete.get', [$campaign_id, $item->id])}}">Delete</button>
                                                     </div>
                                                 </div>
                                             </td>

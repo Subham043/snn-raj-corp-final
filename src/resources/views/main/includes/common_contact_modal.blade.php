@@ -37,7 +37,7 @@
                     </div>
                     @endif
                     <div class="col-md-12 form-group">
-                        <textarea id="messageModal" cols="30" rows="1" placeholder="Message *" required></textarea>
+                        <textarea id="messageModal" cols="30" rows="2" placeholder="Message *" required></textarea>
                     </div>
                     <div class="col-md-12 mt-2 mb-4">
                         <div class="col-md-12">

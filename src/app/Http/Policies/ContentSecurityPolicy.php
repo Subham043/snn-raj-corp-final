@@ -13,7 +13,9 @@ class ContentSecurityPolicy extends Basic
         // parent::configure();
 
         if(request()->is('admin/*')){
-            $this->addNonceForDirective(Directive::STYLE);
+            if(!request()->is('admin/campaign/preview/*')){
+                $this->addNonceForDirective(Directive::STYLE);
+            }
         }
 
         $this

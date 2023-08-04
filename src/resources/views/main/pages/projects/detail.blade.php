@@ -90,7 +90,8 @@
 
         .brochure-btn:hover{
             background: transparent;
-            color: var(--theme-primary-color);
+            color: white;
+            border: 1px solid white;
         }
 
         .project-wrap-div{
@@ -210,6 +211,29 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .contact-holder {
+            width: 100%;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 150px 0;
+        }
+
+        .contact-holder {
+            background-image: linear-gradient(45deg,rgba(245,70,66,.75),rgba(8,83,156,.75)),url('{{$data->brochure_bg_image_link}}');
+        }
+
+        .contact-holder .contact-col {
+            text-align: center;
+            color: #fff;
+        }
+
+        .contact-holder .contact-col h2 {
+            font-weight: 800;
+            color: #fff;
         }
     </style>
 
@@ -454,9 +478,9 @@
                        </div>
                        <div class="col-md-12">
                             {!!$data->description!!}
-                            @if($data->brochure)
+                            {{-- @if($data->brochure)
                                 <a aria-label="brochure" href="{{$data->brochure_link}}" class="brochure-btn" download>Download Brochure</a>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </div>
@@ -746,7 +770,20 @@
     </section>
 @endif --}}
 
-    @include('main.includes.common_contact')
+    {{-- @include('main.includes.common_contact') --}}
+    <section class="mb-0">
+        <div class="contact-holder" id="contact-section">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-8 col-md-6 col-sm-12 contact-col">
+                        <h2>GET COST SHEET & BROCHURE</h2>
+                        <p class="text-light">Click Below To Download Floorplans & Cost Sheet of {{$data->name}} & Register for special offers.</p>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#contactModal" class="brochure-btn" aria-label="Download Brouchure">Download Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal"  data-bs-toggle="modal" data-bs-target="#contactModal">
@@ -761,8 +798,8 @@
 
     @include('main.includes.common_contact_modal_script')
 
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
-    <script nonce="{{ csp_nonce() }}" defer>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script> --}}
+    {{-- <script nonce="{{ csp_nonce() }}" defer>
     const countryData2 = window.intlTelInput(document.querySelector("#phone"), {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
         autoInsertDialCode: true,
@@ -774,9 +811,9 @@
             .catch(() => callback("us"));
         },
     });
-    </script>
+    </script> --}}
 
-    <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
+    {{-- <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 
         let uuid = null;
         let link = null;
@@ -956,7 +993,7 @@
           })
 
 
-    </script>
+    </script> --}}
 
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>

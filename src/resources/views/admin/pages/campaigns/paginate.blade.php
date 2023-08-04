@@ -23,7 +23,7 @@
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
                                     <div>
-                                        <a href="{{route('campaign_create.get')}}" style="background:green;border-color:green;" type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
+                                        <a href="{{route('campaign_create.get')}}" type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
                                     </div>
                                 </div>
                                 <div class="col-sm">
@@ -63,7 +63,7 @@
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <div class="edit">
-                                                        <a href="{{route('campaign_update.get', $item->id)}}" style="background:yellow;color:black;border-color:yellow;" class="btn btn-sm btn-success edit-item-btn">Edit</a>
+                                                        <a href="{{route('campaign_update.get', $item->id)}}" class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                                     </div>
                                                     <div class="edit">
                                                         <a href="{{route('campaign_banner.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">Banner Section</a>
@@ -96,10 +96,10 @@
                                                         <a href="{{route('campaign_thank.get', $item->id)}}" class="btn btn-sm btn-info edit-item-btn">Thank You Section</a>
                                                     </div>
                                                     <div class="edit">
-                                                        <a href="{{route('campaign_preview.get', $item->id)}}" target="_blank" style="background:purple;color:white;border-color:purple;" class="btn btn-sm btn-success edit-item-btn">Preview</a>
+                                                        <a href="{{route('campaign_preview.get', $item->id)}}" target="_blank" class="btn btn-sm btn-success edit-item-btn">Preview</a>
                                                     </div>
                                                     <div class="remove">
-                                                        <button class="btn btn-sm btn-danger remove-item-btn" style="background:red" onclick="deleteHandler('{{route('campaign_delete.get', $item->id)}}')">Delete</button>
+                                                        <button class="btn btn-sm btn-danger remove-item-btn" data-link="{{route('campaign_delete.get', $item->id)}}">Delete</button>
                                                     </div>
                                                 </div>
                                             </td>

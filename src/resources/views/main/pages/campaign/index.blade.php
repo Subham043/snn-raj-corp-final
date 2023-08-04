@@ -28,11 +28,11 @@
     </section>
     {{-- @include('main.pages.campaign.includes.creations') --}}
     {{-- @include('main.pages.campaign.includes.footer', ['data' => $data]) --}}
+    @include('main.pages.campaign.includes.contact_modal', ['data' => $data])
     @include('main.pages.campaign.includes.new_footer', ['data' => $data])
 
 
     <!-- Modal -->
-    @include('main.pages.campaign.includes.contact_modal', ['data' => $data])
 </body>
 <!-- Main JS -->
 @include('main.pages.campaign.includes.script', ['data' => $data])

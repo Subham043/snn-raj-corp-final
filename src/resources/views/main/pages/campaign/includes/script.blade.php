@@ -9,7 +9,7 @@
 <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
 <script nonce="{{ csp_nonce() }}" defer>
-  const countryData1 = window.intlTelInput(document.querySelector("#phone"), {
+  const countryData1 = window.intlTelInput(document.querySelector("#phoneModal"), {
     utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
     autoInsertDialCode: true,
     initialCountry: "in",
@@ -173,7 +173,7 @@
             }
         })
 
-        const myModal = new bootstrap.Modal('#exampleModal', {
+        const myModal = new bootstrap.Modal('#contactModal', {
             keyboard: false
         })
         setTimeout(function() {
@@ -181,21 +181,21 @@
         }, 5000);
 
         const errorToast = (message) => {
-    iziToast.error({
-        title: 'Error',
-        message: message,
-        position: 'bottomCenter',
-        timeout: 7000
-    });
-}
-const successToast = (message) => {
-    iziToast.success({
-        title: 'Success',
-        message: message,
-        position: 'bottomCenter',
-        timeout: 6000
-    });
-}
+            iziToast.error({
+                title: 'Error',
+                message: message,
+                position: 'bottomCenter',
+                timeout: 7000
+            });
+        }
+        const successToast = (message) => {
+            iziToast.success({
+                title: 'Success',
+                message: message,
+                position: 'bottomCenter',
+                timeout: 6000
+            });
+        }
     let uuid = null;
     let link = null;
     var myModalOtp = new bootstrap.Modal(document.getElementById('staticBackdropContact'), {
@@ -203,18 +203,18 @@ const successToast = (message) => {
     })
 
     // initialize the validation library
-    const validation = new JustValidate('#contact-form', {
+    const validation = new JustValidate('#contactFormModal', {
           errorFieldCssClass: 'is-invalid',
     });
     // apply rules to form fields
     validation
-      .addField('#name', [
+      .addField('#nameModal', [
         {
           rule: 'required',
           errorMessage: 'Name is required',
         },
       ])
-      .addField('#email', [
+      .addField('#emailModal', [
         {
           rule: 'required',
           errorMessage: 'Email is required',
@@ -224,7 +224,7 @@ const successToast = (message) => {
           errorMessage: 'Email is invalid',
         },
       ])
-      .addField('#phone', [
+      .addField('#phoneModal', [
         {
           rule: 'required',
           errorMessage: 'Phone is required',
@@ -237,24 +237,21 @@ const successToast = (message) => {
       ])
       .onSuccess(async (event) => {
         event.target.preventDefault;
-        var submitBtn = document.getElementById('submitBtn')
+        var submitBtn = document.getElementById('submitBtnModal')
         submitBtn.innerHTML = `
         <span class="d-flex align-items-center">
             <span class="spinner-border flex-shrink-0" role="status">
                 <span class="visually-hidden"></span>
-            </span>
-            <span class="flex-grow-1 ms-2">
-                &nbsp; Submiting...
             </span>
         </span>
         `
         submitBtn.disabled = true;
         try {
             var formData = new FormData();
-            formData.append('name',document.getElementById('name').value)
-            formData.append('email',document.getElementById('email').value)
-            formData.append('phone',document.getElementById('phone').value)
-            formData.append('page_url',document.getElementById('page_url').value)
+            formData.append('name',document.getElementById('nameModal').value)
+            formData.append('email',document.getElementById('emailModal').value)
+            formData.append('phone',document.getElementById('phoneModal').value)
+            formData.append('page_url','{{Request::url()}}')
             formData.append('country_code',countryData1.getSelectedCountryData().dialCode)
             const response = await axios.post('{{route('enquiry_create.post')}}', formData)
             // successToast(response.data.message)
@@ -266,8 +263,8 @@ const successToast = (message) => {
             event.target.reset();
             uuid = response.data.uuid;
             link = response.data.link;
-            myModal.hide()
-            myModalOtp.show()
+            event.target.classList.add("d-none")
+            document.getElementById('otpFormModal').classList.remove("d-none")
         } catch (error) {
             if(error?.response?.data?.errors?.name){
                 errorToast(error?.response?.data?.errors?.name[0])
@@ -288,6 +285,68 @@ const successToast = (message) => {
             submitBtn.disabled = false;
         }
       });
+
+      const validationOtpModal = new JustValidate('#otpFormModal', {
+          errorFieldCssClass: 'is-invalid',
+    });
+    // apply rules to form fields
+    validationOtpModal
+      .addField('#otpModal', [
+        {
+          rule: 'required',
+          errorMessage: 'OTP is required',
+        },
+      ])
+      .onSuccess(async (event) => {
+        var submitOtpBtnModal = document.getElementById('submitOtpBtnModal')
+        submitOtpBtnModal.value = 'Submitting ...'
+        submitOtpBtnModal.disabled = true;
+        try {
+            var formData = new FormData();
+            formData.append('otp',document.getElementById('otpModal').value)
+            formData.append('slug',document.getElementById('slugModal').value)
+
+            const response = await axios.post(link, formData)
+            event.target.reset();
+            uuid = null;
+            link = null;
+            myModal.hide()
+            event.target.classList.add("d-none")
+            document.getElementById('contactFormModal').classList.remove("d-none")
+            successToast(response.data.message)
+        }catch (error){
+            console.log(error);
+            if(error?.response?.data?.errors?.otp){
+                validationOtpModal.showErrors({'#otpModal': error?.response?.data?.errors?.otp[0]})
+            }
+            if(error?.response?.data?.message){
+                errorToast(error?.response?.data?.message)
+            }
+        }finally{
+            submitOtpBtnModal.value =  `Submit`
+            submitOtpBtnModal.disabled = false;
+        }
+      });
+
+      document.getElementById('resendOtpBtnModal').addEventListener('click', async function(event){
+        if(uuid){
+            event.target.innerText = 'Sending ...'
+            event.target.disabled = true;
+            try {
+                var formData = new FormData();
+                formData.append('uuid',uuid)
+                const response = await axios.post('{{route('popup_page.resendOtp')}}', formData)
+                successToast(response.data.message)
+            }catch (error){
+                if(error?.response?.data?.message){
+                    errorToast(error?.response?.data?.message)
+                }
+            }finally{
+                event.target.innerText = 'Resend OTP'
+                event.target.disabled = false;
+            }
+        }
+      })
 
     // initialize the validation library
     const validation2 = new JustValidate('#banner-form', {

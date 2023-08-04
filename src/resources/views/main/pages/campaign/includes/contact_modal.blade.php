@@ -1,33 +1,56 @@
-<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" id="contactModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Enquire Now</h1>
+            <div class="modal-header flex-wrap">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="col-12 mt-2 text-center">
+                    <img fetchpriority="low" class="modal-img" src="{{ asset('assets/black-logo.webp') }}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}" data-img="{{ asset('assets/black-logo.webp') }}">
+                    <h5 class="modal-title mt-1">Get A Callback</h5>
+                </div>
             </div>
             <div class="modal-body">
-                <form id="contact-form" method="post">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="John">
+
+                <form id="contactFormModal" class="row justify-content-center" method="post">
+                    {{-- <h4 class="text-center">Reach Out To Us</h4> --}}
+                    <div class="col-md-12 form-group">
+                        <input id="nameModal" type="text" placeholder="Your Name *" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email"
-                            aria-describedby="emailHelp" placeholder="john@domain.com">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <div class="col-md-12 form-group">
+                        <input id="emailModal" type="email" placeholder="Your Email *" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Phone</label>
-                        <input type="number" class="form-control" id="phone" name="phone" placeholder="983*******">
+                    <div class="col-md-12 form-group">
+                        <input id="phoneModal" type="text" placeholder="Your Number *" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="submitBtn" aria-label="Submit Form">Submit</button>
+                    <div class="col-md-12 mt-4 mb-4">
+                        <div class="col-md-12">
+                            <label style="width: 270px;font-size:0.8rem;line-height: 15px;">
+                                <input type="checkbox" class="line-gray">
+                                I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp me about its products and offers, this consent overrides any registration for DNC / NDNC
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button type="submit" id="submitBtnModal" class="btn btn-dark">Submit</button>
+                    </div>
+                </form>
+                <form id="otpFormModal" class="d-none" method="post">
+                    <div class="mb-3">
+                      <input type="text" id="otpModal" aria-describedby="otpHelp" placeholder="OTP *">
+                      <div id="otpHelp" class="form-text">We have shared an OTP to your mobile via SMS.</div>
+                    </div>
+                    <input type="hidden" id="slugModal" value="{{$data->id}}">
+                    <button type="submit" id="submitOtpBtnModal" class="btn btn-dark">Submit</button>
+                    <button type="button" id="resendOtpBtnModal" class="btn btn-danger">Resend OTP</button>
                 </form>
 
             </div>
         </div>
     </div>
 </div>
+<button type="button" class="popup_btn_modal"  data-bs-toggle="modal" data-bs-target="#contactModal">
+    <img src="{{asset('smartphone.svg')}}" style="height: 35px; width:35px;" />
+</button>
+
 
 <div class="modal fade" id="staticBackdropContact" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
