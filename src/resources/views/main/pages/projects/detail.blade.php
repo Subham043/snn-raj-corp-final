@@ -94,6 +94,12 @@
             border: 1px solid white;
         }
 
+        .brochure-btn-2:hover{
+            background: transparent;
+            color: var(--theme-primary-color);
+            border: 1px solid var(--theme-primary-color);
+        }
+
         .project-wrap-div{
             height: 100%;
             display: flex;
@@ -603,6 +609,10 @@
                                         @endif
                                     </div>
                                     @endforeach
+
+                                    <div class="text-center mt-3">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#contactModal" class="brochure-btn brochure-btn-2" aria-label="Download Brouchure">Download Brochure</button>
+                                    </div>
 
                                 </div>
                             </div>
