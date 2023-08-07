@@ -260,7 +260,7 @@
             //     window.location.replace("{{route('campaign_view_thank.get', $data->slug)}}");
             // }
             // ,3000);
-            event.target.reset();
+            // event.target.reset();
             uuid = response.data.uuid;
             link = response.data.link;
             event.target.classList.add("d-none")
@@ -308,6 +308,7 @@
 
             const response = await axios.post(link, formData)
             event.target.reset();
+            document.getElementById('contactFormModal').reset();
             uuid = null;
             link = null;
             myModal.hide()
@@ -346,6 +347,13 @@
                 event.target.disabled = false;
             }
         }
+      })
+
+      document.getElementById('backOtpBtnModal').addEventListener('click', async function(event){
+        uuidModal = null;
+        linkModal = null;
+        document.getElementById('otpFormModal').classList.add("d-none")
+        document.getElementById('contactFormModal').classList.remove("d-none")
       })
 
     // initialize the validation library

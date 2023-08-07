@@ -105,7 +105,6 @@
             formData.append('page_url','{{Request::url()}}')
 
             const response = await axios.post('{{route('popup_page.post')}}', formData)
-            event.target.reset();
             uuidModal = response.data.uuid;
             linkModal = response.data.link;
             event.target.classList.add("d-none")
@@ -167,6 +166,7 @@
             contactModal.hide()
             event.target.classList.add("d-none")
             document.getElementById('contactFormModal').classList.remove("d-none")
+            document.getElementById('contactFormModal').reset()
             successToast(response.data.message)
         }catch (error){
             console.log(error);
@@ -200,6 +200,13 @@
                 event.target.disabled = false;
             }
         }
+      })
+
+      document.getElementById('backOtpBtnModal').addEventListener('click', async function(event){
+        uuidModal = null;
+        linkModal = null;
+        document.getElementById('otpFormModal').classList.add("d-none")
+        document.getElementById('contactFormModal').classList.remove("d-none")
       })
 
 

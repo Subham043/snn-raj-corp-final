@@ -34,6 +34,7 @@
                     </div>
                 </form>
                 <form id="otpFormModal" class="d-none" method="post">
+                    <button type="button" id="backOtpBtnModal" class="btn btn-link px-0" style="text-decoration: none"><i class="fa-solid fa-arrow-left"></i> Go Back</button>
                     <div class="mb-3">
                       <input type="text" id="otpModal" aria-describedby="otpHelp" placeholder="OTP *">
                       <div id="otpHelp" class="form-text">We have shared an OTP to your mobile via SMS.</div>

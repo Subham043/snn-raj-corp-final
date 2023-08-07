@@ -31,7 +31,9 @@
                         <select id="projectModal" required>
                             <option value="">Project</option>
                             @foreach($projects as $p)
+                                @if(!$p->is_completed)
                                 <option value="{{$p->name}}">{{$p->name}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -52,6 +54,7 @@
                     </div>
                 </form>
                 <form id="otpFormModal" class="d-none" method="post">
+                    <button type="button" id="backOtpBtnModal" class="btn btn-link px-0" style="text-decoration: none"><i class="ti-angle-left" aria-hidden="true"></i> Go Back</button>
                     <div class="mb-3">
                       <input type="text" id="otpModal" aria-describedby="otpHelp" placeholder="OTP *">
                       <div id="otpHelp" class="form-text">We have shared an OTP to your mobile via SMS.</div>
