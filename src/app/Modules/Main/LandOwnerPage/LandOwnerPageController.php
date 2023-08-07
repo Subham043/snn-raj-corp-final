@@ -60,7 +60,6 @@ class LandOwnerPageController extends Controller
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
-            (new SelldoService)->create($request->name, $request->email, $request->phone);
             dispatch(new SendLandOwnerFormMailJob($data));
             return response()->json(["message" => "Land Owner Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {

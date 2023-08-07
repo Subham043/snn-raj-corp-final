@@ -34,6 +34,11 @@ class PopupFormService
         return PopupForm::findOrFail($id);
     }
 
+    public function getByIdOrNull(Int $id): PopupForm|null
+    {
+        return PopupForm::find($id);
+    }
+
     public function create(array $data): PopupForm
     {
         return PopupForm::create($data);

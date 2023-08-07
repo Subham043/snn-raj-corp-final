@@ -64,7 +64,6 @@ class CareerPageController extends Controller
                 dispatch(new SendCareerFormMailJob($data));
             }
             (new RateLimitService($request))->clearRateLimit();
-            (new SelldoService)->create($request->name, $request->email, $request->phone);
             return response()->json(["message" => "Career Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

@@ -31,7 +31,7 @@ class FreeAdFormRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'nullable|string|email|max:255',
             'phone' => 'required|numeric|digits:10',
-            'project' => 'required|string|max:500',
+            'project' => 'required|numeric|exists:projects,id',
             'source' => 'required|string|max:255',
             'executive_name' => 'required|string|max:500',
         ];

@@ -29,17 +29,18 @@ class CampaignFormPageController extends Controller
     }
 
     public function post(CampaignFormRequest $request){
-
+        $project = $this->projectService->getById($request->project);
         try {
             //code...
             $this->campaignFormService->create(
                 [
-                    ...$request->validated(),
+                    ...$request->except('project'),
                     'ip_address' => $request->ip(),
+                    'project' => $project->name
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
-            (new SelldoService)->free_ad_create($request->name, $request->email, $request->phone, $request->source, $request->project);
+            (new SelldoService)->free_ad_form_create($request->name, $request->email, $request->phone, $request->source, $project->projectId);
             return response()->json(["message" => "Free Ad Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

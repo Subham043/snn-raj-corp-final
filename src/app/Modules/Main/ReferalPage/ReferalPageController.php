@@ -67,7 +67,7 @@ class ReferalPageController extends Controller
                 $request->validated()
             );
             (new RateLimitService($request))->clearRateLimit();
-            (new SelldoService)->create($request->referal_name, $request->referal_email, $request->referal_phone);
+            (new SelldoService)->contact_create($request->referal_name, $request->referal_email, $request->referal_phone);
             dispatch(new SendReferalFormMailJob($data));
             return response()->json(["message" => "Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {

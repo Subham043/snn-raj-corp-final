@@ -11,21 +11,25 @@ use App\Modules\Enquiry\PopupForm\Requests\PopupFormRequest;
 use App\Modules\Enquiry\ContactForm\Requests\OtpFormRequest;
 use App\Modules\Enquiry\ContactForm\Requests\ResendOtpFormRequest;
 use App\Modules\Enquiry\PopupForm\Services\PopupFormService;
-use App\Modules\Project\Projects\Models\Project;
+use App\Modules\Project\Projects\Services\ProjectService;
 
 class PopupPageController extends Controller
 {
     private $contactFormService;
+    private $projectService;
 
     public function __construct(
         PopupFormService $contactFormService,
+        ProjectService $projectService,
     )
     {
         $this->contactFormService = $contactFormService;
+        $this->projectService = $projectService;
     }
 
     public function post(PopupFormRequest $request){
 
+        $project = $this->projectService->getById($request->project_id);
         try {
             //code...
             $data = $this->contactFormService->create(
@@ -34,6 +38,7 @@ class PopupPageController extends Controller
                     'otp' => rand(1000,9999),
                     'ip_address' => $request->ip(),
                     'is_verified' => false,
+                    'project' => $project->name,
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
@@ -88,32 +93,8 @@ class PopupPageController extends Controller
                     ],
                     $data
                 );
-                switch ($data->project) {
-                    case 'Raj High Gardens':
-                        # code...
-                        $project_id = '63932f2ca6bbc90b878a7f02';
-                        $project_srd = '64a7b9070ad1ff10693d9cce';
-                        break;
 
-                    case 'Raj Bay Vista':
-                        # code...
-                        $project_id = '63aa8dddc8256132cbd821dd';
-                        $project_srd = '64a7b8a60ad1ff18a2973837';
-                        break;
-
-                    case 'Raj Viviente':
-                        # code...
-                        $project_id = '63a1523ced23e9658b4a2293';
-                        $project_srd = '64a7b7240ad1ff10963d9873';
-                        break;
-
-                    default:
-                        # code...
-                        $project_id = '';
-                        $project_srd = '64a7ba980ad1ff2cf54646fe';
-                        break;
-                }
-                (new SelldoService)->popup_create($data->name, $data->email, $data->phone, $project_srd, $project_id);
+                (new SelldoService)->popup_form_create($data->name, $data->email, $data->phone, $data->project_detail->srd_code, $data->project_detail->projectId);
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }
             return response()->json(["message" => "Invalid OTP. Please try again"], 400);

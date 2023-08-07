@@ -99,7 +99,7 @@
             formData.append('name',document.getElementById('nameModal').value)
             formData.append('email',document.getElementById('emailModal').value)
             formData.append('phone',document.getElementById('phoneModal').value)
-            formData.append('project',document.getElementById('projectModal').value)
+            formData.append('project_id',document.getElementById('projectModal').value)
             formData.append('message',document.getElementById('messageModal').value)
             formData.append('country_code',countryData.getSelectedCountryData().dialCode)
             formData.append('page_url','{{Request::url()}}')
@@ -119,8 +119,8 @@
             if(error?.response?.data?.errors?.phone){
                 validationModal.showErrors({'#phoneModal': error?.response?.data?.errors?.phone[0]})
             }
-            if(error?.response?.data?.errors?.project){
-                validationModal.showErrors({'#projectModal': error?.response?.data?.errors?.project[0]})
+            if(error?.response?.data?.errors?.project_id){
+                validationModal.showErrors({'#projectModal': error?.response?.data?.errors?.project_id[0]})
             }
             if(error?.response?.data?.errors?.message){
                 validationModal.showErrors({'#messageModal': error?.response?.data?.errors?.message[0]})

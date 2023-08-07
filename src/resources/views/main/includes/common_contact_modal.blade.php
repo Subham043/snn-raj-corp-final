@@ -22,7 +22,7 @@
                     <div class="col-md-12 form-group">
                         <input id="phoneModal" type="text" placeholder="Your Number *" required>
                     </div>
-                    <input type="hidden" id="projectModal" value="{{$data->name}}">
+                    <input type="hidden" id="projectModal" value="{{$data->id}}">
                     @else
                     <div class="col-md-6 form-group">
                         <input id="phoneModal" type="text" placeholder="Your Number *" required>
@@ -32,7 +32,7 @@
                             <option value="">Project</option>
                             @foreach($projects as $p)
                                 @if(!$p->is_completed)
-                                <option value="{{$p->name}}">{{$p->name}}</option>
+                                <option value="{{$p->id}}">{{$p->name}}</option>
                                 @endif
                             @endforeach
                         </select>

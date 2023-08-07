@@ -31,7 +31,7 @@ class FreeAdFormPageController extends Controller
 
     public function verify(FreeAdFormVerifyRequest $request){
 
-        $status = (new SelldoService)->verify($request->phone);
+        $status = (new SelldoService)->campaign_form_verify($request->phone);
         if($status){
             (new RateLimitService($request))->clearRateLimit();
             return response()->json(["message" => "Verified successfully.", "status" => $status], 200);
@@ -41,17 +41,18 @@ class FreeAdFormPageController extends Controller
     }
 
     public function post(FreeAdFormRequest $request){
-
+        $project = $this->projectService->getById($request->project);
         try {
             //code...
             $this->freeAdFormService->create(
                 [
-                    ...$request->validated(),
+                    ...$request->except('project'),
                     'ip_address' => $request->ip(),
+                    'project' => $project->projectId
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
-            (new SelldoService)->campaign_create($request->name, $request->email, $request->phone, $request->source, $request->project, $request->executive_name);
+            (new SelldoService)->campaign_form_create($request->name, $request->email, $request->phone, $request->source, $project->projectId, $request->executive_name);
             return response()->json(["message" => "Campaign Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

@@ -2,6 +2,7 @@
 
 namespace App\Modules\Enquiry\PopupForm\Models;
 
+use App\Modules\Project\Projects\Models\Project;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -24,6 +25,7 @@ class PopupForm extends Model
         'phone',
         'country_code',
         'project',
+        'project_id',
         'subject',
         'message',
         'page_url',
@@ -37,6 +39,11 @@ class PopupForm extends Model
         'updated_at' => 'datetime',
         'is_verified' => 'boolean',
     ];
+
+    public function project_detail()
+    {
+        return $this->belongsTo(Project::class, 'project_id')->withDefault();
+    }
 
     public function getActivitylogOptions(): LogOptions
     {

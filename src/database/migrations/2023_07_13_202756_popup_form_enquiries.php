@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('country_code', 500)->nullable();
             $table->string('phone', 500)->nullable();
             $table->string('project', 500)->nullable();
+            $table->foreignId('project_id')->nullable()->constrained('projects')->nullOnDelete();
             $table->string('ip_address', 500)->nullable();
             $table->string('otp', 500)->nullable();
             $table->string('subject', 500)->nullable();

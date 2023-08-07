@@ -83,7 +83,7 @@
                                 <select class="form-control" name="project" id="project" required>
                                     <option value="">Project</option>
                                     @foreach($projects as $p)
-                                        <option value="{{$p->name}}">{{$p->name}}</option>
+                                        <option value="{{$p->id}}">{{$p->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
