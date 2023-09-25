@@ -27,12 +27,18 @@
                             <tr>
                                 <td class="tg-0lax"><b>{{$item->unit}}</b></td>
                                 <td class="tg-0lax"><b>{{$item->type}}</b></td>
-                                <td class="tg-0lay locked" style="display:table-cell;"><button
+                                <td class="tg-0lay locked" style="display:table-cell;">
+                                    @if($item->is_available)
+                                        <button
                                         class="unlockbuttonstyler"
                                         style="background-color: black !important; background-image: linear-gradient(315deg,#000000 0%,#191919 74%); color: white;font-weight:bold;"
                                         type="button"
                                         aria-label="Unlock Price"
-                                        data-bs-toggle="modal" data-bs-target="#contactModal">🔒 Unlock Price</button></td>
+                                        data-bs-toggle="modal" data-bs-target="#contactModal">🔒 Unlock Price</button>
+                                    @else
+                                        <button class="btn btn-danger" disabled>Closed</button>
+                                    @endif
+                                </td>
                                 <td class="tg-0lay unlocked" style="display:none;">3891 Sqft<br>3.88 Cr*</td>
                             </tr>
                             @endforeach

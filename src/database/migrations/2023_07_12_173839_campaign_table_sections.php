@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('unit', 500);
             $table->string('type', 500);
+            $table->boolean('is_available')->default(1);
             $table->foreignId('campaign_id')->nullable()->constrained('campaigns')->nullOnDelete();
             $table->timestamps();
             $table->index(['campaign_id', 'id', 'created_at']);

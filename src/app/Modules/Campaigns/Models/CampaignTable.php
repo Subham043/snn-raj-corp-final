@@ -19,7 +19,12 @@ class CampaignTable extends Model
     protected $fillable = [
         'unit',
         'type',
+        'is_available',
         'campaign_id',
+    ];
+
+    protected $casts = [
+        'is_available' => 'boolean',
     ];
 
     public function Campaign()

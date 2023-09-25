@@ -28,6 +28,17 @@
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'type', 'label'=>'Type', 'value'=>old('type') ? old('type') : $data->type])
                                     </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="mt-4 mt-md-0">
+                                            <div>
+                                                <div class="form-check form-switch form-check-right mb-2">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="is_available" name="is_available" value="1" {{$data->is_available==false ? '' : 'checked'}}>
+                                                    <label class="form-check-label" for="is_available">Is Available?</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                     <div class="col-xxl-12 col-md-12">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
                                     </div>

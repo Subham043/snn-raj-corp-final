@@ -42,6 +42,7 @@
                                         <tr>
                                             <th class="sort" data-sort="customer_name">Unit</th>
                                             <th class="sort" data-sort="customer_name">Type</th>
+                                            <th class="sort" data-sort="customer_name">Status</th>
                                             <th class="sort" data-sort="date">Created Date</th>
                                             <th class="sort" data-sort="action">Action</th>
                                             </tr>
@@ -52,6 +53,11 @@
                                         <tr>
                                             <td class="customer_name">{{$item->unit}}</td>
                                             <td class="customer_name">{{$item->type}}</td>
+                                            @if($item->is_available == 1)
+                                            <td class="status"><span class="badge badge-soft-success text-uppercase">Available</span></td>
+                                            @else
+                                            <td class="status"><span class="badge badge-soft-danger text-uppercase">Closed</span></td>
+                                            @endif
                                             <td class="date">{{$item->created_at}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">

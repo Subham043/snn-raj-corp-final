@@ -29,6 +29,7 @@ class CampaignTableRequest extends FormRequest
         return [
             'unit' => 'required|string|max:500',
             'type' => 'required|string|max:500',
+            'is_available' => 'nullable|boolean',
         ];
     }
 
@@ -52,7 +53,8 @@ class CampaignTableRequest extends FormRequest
      */
     protected function passedValidation()
     {
-        $request = $this->validated();
+        $request = $this->safe()->except('is_available');
+        $request['is_available'] = $this->is_available ? 1 : 0;
         $this->replace(Purify::clean($request));
     }
 }
