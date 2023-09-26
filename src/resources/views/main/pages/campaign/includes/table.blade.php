@@ -36,7 +36,7 @@
                                         aria-label="Unlock Price"
                                         data-bs-toggle="modal" data-bs-target="#contactModal">🔒 Unlock Price</button>
                                     @else
-                                        <button class="btn btn-danger" disabled>Closed</button>
+                                        <button class="btn btn-danger" disabled>Sold Out</button>
                                     @endif
                                 </td>
                                 <td class="tg-0lay unlocked" style="display:none;">3891 Sqft<br>3.88 Cr*</td>
