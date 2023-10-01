@@ -611,7 +611,7 @@
                                     @endforeach
 
                                     <div class="text-center mt-3">
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#contactModal" class="brochure-btn brochure-btn-2" aria-label="Download Brouchure">Download Brochure</button>
+                                        <button aria-label="Brochure Popup" type="button" data-bs-toggle="modal" data-bs-target="#contactModal" class="brochure-btn brochure-btn-2" aria-label="Download Brouchure">Download Brochure</button>
                                     </div>
 
                                 </div>
@@ -788,7 +788,7 @@
                     <div class="col-lg-8 col-md-6 col-sm-12 contact-col">
                         <h2>GET COST SHEET & BROCHURE</h2>
                         <p class="text-light">Click Below To Download Floorplans & Cost Sheet of {{$data->name}} & Register for special offers.</p>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#contactModal" class="brochure-btn" aria-label="Download Brouchure">Download Now</button>
+                        <button type="button" aria-label="Floor Plan Popup" data-bs-toggle="modal" data-bs-target="#contactModal" class="brochure-btn" aria-label="Download Brouchure">Download Now</button>
                     </div>
                 </div>
             </div>
@@ -796,7 +796,7 @@
     </section>
 
     @include('main.includes.common_contact_modal')
-    <button type="button" class="popup_btn_modal"  data-bs-toggle="modal" data-bs-target="#contactModal">
+    <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">
         <img data-src="{{asset('smartphone.svg')}}" class="lazyload" style="height: 35px; width:35px;" />
     </button>
 @stop

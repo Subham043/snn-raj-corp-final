@@ -4,7 +4,7 @@
         <nav class="duru-menu">
             <ul>
                 <li><a aria-label="home page" href="{{route('home_page.get')}}">Home</a></li>
-                <li><a aria-label="about page" href="{{route('about_page.get')}}">About Us</a></li>
+                <li><a aria-label="about us page" href="{{route('about_page.get')}}">About Us</a></li>
                 <li><a aria-label="projects page" href="{{route('projects.get')}}">Projects</a></li>
                 {{-- <li class='duru-menu-sub'><a href='#'>Projects <i class="ti-angle-down"></i></a>
                     <ul>

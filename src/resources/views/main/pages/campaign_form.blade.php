@@ -108,7 +108,7 @@
                                 </select>
                             </div>
                             <div class="form-button">
-                                <button id="submitBtn" type="submit" class="ibtn">Submit</button>
+                                <button aria-label="Submit Form" id="submitBtn" type="submit" class="ibtn">Submit</button>
                             </div>
                         </form>
                     </div>

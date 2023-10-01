@@ -444,12 +444,12 @@
                         <div class="modal-body">
                             <div class="col-12">
                                 <div class="row justify-content-end">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button  aria-label="Close Popup" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                             </div>
                             {!!$val->popup_description!!}
                             <div class="text-center">
-                                <button type="button" class="btn btn-secondary" aria-label="Close" data-bs-dismiss="modal">Close</button>
+                                <button type="button"  aria-label="Close Popup" class="btn btn-secondary" aria-label="Close" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
@@ -520,7 +520,7 @@
     @endif
 
     @include('main.includes.common_contact_modal')
-    <button type="button" class="popup_btn_modal"  data-bs-toggle="modal" data-bs-target="#contactModal">
+    <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">
         <img data-src="{{asset('smartphone.svg')}}" class="lazyload" style="height: 35px; width:35px;" />
     </button>
 

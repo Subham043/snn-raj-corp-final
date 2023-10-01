@@ -378,7 +378,7 @@
                                         <div class="vid-area mb-30">
                                             <iframe id="yt_iframe_{{$testimonials->id}}" loading="lazy" src="" class="w-100 yt_iframe d-none" height="350" title="{{$testimonials->video_title}}"  allow='autoplay' frameborder="0"></iframe>
                                             <div class="vid-icon"> <img data-src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube" class="lazyload">
-                                                <button class="video-gallery-button vid vdo-play-btn" data-iframe="yt_iframe_{{$testimonials->id}}" data-href="{{$testimonials->video}}?autoplay=1"> <span class="video-gallery-polygon">
+                                                <button class="video-gallery-button vid vdo-play-btn" aria-label="{{$testimonials->video_title}}" data-iframe="yt_iframe_{{$testimonials->id}}" data-href="{{$testimonials->video}}?autoplay=1"> <span class="video-gallery-polygon">
                                                         <i class="ti-control-play"></i>
                                                     </span> </button>
                                             </div>
@@ -432,8 +432,8 @@
     <div class="py-1"></div>
 
     @include('main.includes.common_contact_modal')
-    <button type="button" class="popup_btn_modal"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img data-src="{{asset('smartphone.svg')}}" class="lazyload" style="height: 35px; width:35px;" />
+    <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup" data-bs-toggle="modal" data-bs-target="#contactModal">
+        <img data-src="{{asset('smartphone.svg')}}" alt="Enquiry Popup" class="lazyload" style="height: 35px; width:35px;" />
     </button>
 
 @stop

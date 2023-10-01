@@ -118,7 +118,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Verify Mobile Number</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button aria-label="Close Popup" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
@@ -127,8 +127,8 @@
                           <input type="text" class="form-control" id="otp" name="otp" aria-describedby="otpHelp" placeholder="OTP *">
                           <div id="otpHelp" class="form-text">We have shared an OTP to your mobile via SMS.</div>
                         </div>
-                        <button type="submit" id="submitOtpBtn" class="btn btn-dark">Submit</button>
-                        <button type="button" id="resendOtpBtn" class="btn btn-danger">Resend OTP</button>
+                        <button aria-label="Submit Otp" type="submit" id="submitOtpBtn" class="btn btn-dark">Submit</button>
+                        <button aria-label="Resend Otp" type="button" id="resendOtpBtn" class="btn btn-danger">Resend OTP</button>
                     </form>
 
                 </div>

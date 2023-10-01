@@ -13,8 +13,8 @@
                 <div class="col-md-3">
                     <div class="item">
                         <p>{{ empty($generalSetting) ? '' : $generalSetting->address}}</p>
-                        <a aria-label="phone" href="tel:{{ empty($generalSetting) ? '' : $generalSetting->phone}}" class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</a>
-                        <a aria-label="email" href="mailto:{{ empty($generalSetting) ? '' : $generalSetting->email}}" class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email}}</a>
+                        <a aria-label="{{ empty($generalSetting) ? '' : $generalSetting->phone}}" href="tel:{{ empty($generalSetting) ? '' : $generalSetting->phone}}" class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</a>
+                        <a aria-label="{{ empty($generalSetting) ? '' : $generalSetting->email}}" href="mailto:{{ empty($generalSetting) ? '' : $generalSetting->email}}" class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email}}</a>
                         <div class="social mt-2">
                             <a aria-label="facebook" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
                             <a aria-label="instagram" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
@@ -44,7 +44,7 @@
                         <h3><span>Get In Touch</span></h3>
                         <a aria-label="contact us" href="{{route('contact_page.get')}}">Contact Us</a><br/>
                         <a aria-label="referral" href="{{route('referal_page.get')}}">Referral</a><br/>
-                        <a aria-label="channel partner" href="{{route('channel_partner.get')}}">Become A Channel Partner</a><br/>
+                        <a aria-label="become a channel partner" href="{{route('channel_partner.get')}}">Become A Channel Partner</a><br/>
                         <a aria-label="land owner" href="{{route('land_owner.get')}}">Land Owner</a><br/>
                         <a aria-label="career" href="{{route('career_page.get')}}">Career</a>
                     </div>
