@@ -53,7 +53,7 @@
                         <div class="col-md-4 div-padding">
                             <div class="item mb-3">
                                 <div class="post-img">
-                                    <a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img src="{{$v->image_link}}" alt=""> </div></a>
+                                    <a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img data-src="{{$v->image_link}}" class="lazyload" alt=""> </div></a>
                                 </div>
                                 <div class="cont">
                                     <h4><a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}">{{$v->name}}</a></h4>

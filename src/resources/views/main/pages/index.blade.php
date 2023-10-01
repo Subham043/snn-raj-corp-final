@@ -156,7 +156,7 @@
     <!-- Slider -->
     @if($about->use_in_banner)
         <header class="p-relative header-video-container">
-            <iframe src="{{$about->video}}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video" width="560" height="315" frameborder="0"></iframe>
+            <iframe data-src="{{$about->video}}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video lazyload" width="560" height="315" frameborder="0"></iframe>
         </header>
     @else
         @if(count($banners)>0)
@@ -169,10 +169,10 @@
                             <a aria-label="{{$banners->banner_image_title}}" href="{{$banners->button_link ? $banners->button_link : '#'}}">
                                 {{-- <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high"> --}}
                                 <picture>
-                                    <source srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)">
-                                    <source srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)">
-                                    <source srcset="{{$banners->banner_image_link}}">
-                                    <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high">
+                                    <source data-srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)" class="lazyload">
+                                    <source data-srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)" class="lazyload">
+                                    <source data-srcset="{{$banners->banner_image_link}}" class="lazyload">
+                                    <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high" class="lazyload">
                                 </picture>
                             </a>
                         </div>
@@ -209,7 +209,7 @@
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
-                        <img src="{{$about->image_link}}" fetchpriority="high" class="img-fluid shapeee" alt="">
+                        <img data-src="{{$about->image_link}}" fetchpriority="high" class="img-fluid shapeee lazyload" alt="">
                     </div>
                     @endif
                 </div>
@@ -327,10 +327,10 @@
                             @if($v->banner_count>0)
                                 <a  aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
                                     <div class="projects-overlay">
-                                        <img src="{{ $v->banner[0]->image_link }}" class="h-300-cover obj-cover" style="border-radius:10px;" fetchpriority="low" alt="">
+                                        <img data-src="{{ $v->banner[0]->image_link }}" class="h-300-cover obj-cover lazyload" style="border-radius:10px;" fetchpriority="low" alt="">
                                         <div class="mt-2" style="z-index: 5">
                                             <h3 style="font-size: 20px;"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
-                                            <p><img src="{{asset('assets/location-2.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
+                                            <p><img data-src="{{asset('assets/location-2.svg')}}" alt="" class="lazyload"> {{Str::limit($v->location, 30)}}</p>
                                             {{-- <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'Completed' : 'Ongoing'}}</p> --}}
                                         </div>
                                     </div>
@@ -377,7 +377,7 @@
                                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                                         <div class="vid-area mb-30">
                                             <iframe id="yt_iframe_{{$testimonials->id}}" loading="lazy" src="" class="w-100 yt_iframe d-none" height="350" title="{{$testimonials->video_title}}"  allow='autoplay' frameborder="0"></iframe>
-                                            <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube">
+                                            <div class="vid-icon"> <img data-src="https://i3.ytimg.com/vi/{{$testimonials->video_id}}/maxresdefault.jpg" alt="YouTube" class="lazyload">
                                                 <button class="video-gallery-button vid vdo-play-btn" data-iframe="yt_iframe_{{$testimonials->id}}" data-href="{{$testimonials->video}}?autoplay=1"> <span class="video-gallery-polygon">
                                                         <i class="ti-control-play"></i>
                                                     </span> </button>
@@ -414,7 +414,7 @@
                     <div class="col-md-4">
                         <div class="item mb-5">
                             <div class="post-img">
-                                <a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img src="{{$v->image_link}}" alt="" fetchpriority="low"> </div></a>
+                                <a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}"><div class="img"> <img data-src="{{$v->image_link}}" class="lazyload" alt="" fetchpriority="low"> </div></a>
                             </div>
                             <div class="cont">
                                 <h4><a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}">{{$v->name}}</a></h4>
@@ -433,7 +433,7 @@
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img src="{{asset('smartphone.svg')}}" style="height: 35px; width:35px;" />
+        <img data-src="{{asset('smartphone.svg')}}" class="lazyload" style="height: 35px; width:35px;" />
     </button>
 
 @stop

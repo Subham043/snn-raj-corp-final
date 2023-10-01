@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img fetchpriority="high" src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img"></figure>
+                        <figure><img fetchpriority="high" data-src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img lazyload"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <div class="desc-ul">
@@ -82,7 +82,7 @@
                             <div class="row div-padding">
                                 <div class="col-md-12 " data-animate-effect="fadeInRight">
                                     <div class="img fl-img">
-                                        <img fetchpriority="low" src="{{$val->image_link}}" alt="">
+                                        <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="">
                                     </div>
                                     <div class="wrap">
                                         <div class="number">
@@ -102,7 +102,7 @@
                         <div class="row div-padding">
                             <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
                                 <div class="img fr-img">
-                                    <img fetchpriority="low" src="{{$val->image_link}}" alt="">
+                                    <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="">
                                 </div>
                                 <div class="wrap">
                                     <div class="number">
@@ -122,7 +122,7 @@
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img src="{{asset('smartphone.svg')}}" style="height: 35px; width:35px;" />
+        <img data-src="{{asset('smartphone.svg')}}" class="lazyload" style="height: 35px; width:35px;" />
     </button>
 
 @stop

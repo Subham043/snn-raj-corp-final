@@ -107,7 +107,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img src="{{ $banner->image_link}}" fetchpriority="high" alt="" class="img-fluid about_banner_img"></figure>
+                        <figure><img data-src="{{ $banner->image_link}}" fetchpriority="high" alt="" class="img-fluid about_banner_img lazyload"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <p>{{$banner->description}}</p>
@@ -176,7 +176,7 @@
                 <div class="col-md-3" data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
-                        <img src="{{$about->image_link}}"  fetchpriority="low"class="img-fluid" alt="">
+                        <img data-src="{{$about->image_link}}"  fetchpriority="low" class="img-fluid lazyload" alt="">
                     </div>
                     @endif
                 </div>
@@ -222,7 +222,7 @@
                             </div>
                             <div class="col-md-6 " data-animate-effect="fadeInUp">
                                 <div class="wrap">
-                                    <div class="con"> <img fetchpriority="low" src="{{$val->image_link}}" class="img-fluid" alt="">
+                                    <div class="con"> <img fetchpriority="low" data-src="{{$val->image_link}}" class="img-fluid lazyload" alt="">
                                         <div class="info">
                                             <h4 class="name">{{$val->name}}</h4>
                                         </div>
@@ -234,7 +234,7 @@
                     @else
                         <div class="col-md-6 " data-animate-effect="fadeInUp">
                             <div class="wrap">
-                                <div class="con"> <img fetchpriority="low" src="{{$val->image_link}}" class="img-fluid" alt="">
+                                <div class="con"> <img fetchpriority="low" data-src="{{$val->image_link}}" class="img-fluid lazyload" alt="">
                                     <div class="info">
                                         <h4 class="name">{{$val->name}}</h4>
                                     </div>
@@ -289,7 +289,7 @@
                 <div class="col-md-12 owl-carousel owl-theme">
                     @foreach($staffs as $staffs)
                     <div class="wrap">
-                        <div class="con"> <img fetchpriority="low" src="{{$staffs->image_link}}" class="img-fluid core_image" alt="">
+                        <div class="con"> <img fetchpriority="low" data-src="{{$staffs->image_link}}" class="img-fluid core_image lazyload" alt="">
                             <div class="info">
                                 <h4 class="name">{{$staffs->name}}</h4>
                             </div>
@@ -387,7 +387,7 @@
                     <div class="row div-padding">
                         <div class="col-md-6 " data-animate-effect="fadeInLeft">
                             <div class="img">
-                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
+                                <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="">
                             </div>
                         </div>
                         <div class="col-md-6 valign " data-animate-effect="fadeInRight">
@@ -425,7 +425,7 @@
                         </div>
                         <div class="col-md-6 order1 " data-animate-effect="fadeInRight">
                             <div class="img">
-                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
+                                <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="">
                             </div>
                         </div>
                     </div>
@@ -508,7 +508,7 @@
                     @foreach($partners as $partners)
                     <div class="wrap swiper-slide">
                         <div class="con">
-                            <img src="{{$partners->image_link}}" class="img-fluid" alt="{{$partners->image_alt}}" title="{{$partners->image_title}}">
+                            <img data-src="{{$partners->image_link}}" class="img-fluid lazyload" alt="{{$partners->image_alt}}" title="{{$partners->image_title}}">
                         </div>
                     </div>
                     @endforeach
@@ -521,7 +521,7 @@
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img src="{{asset('smartphone.svg')}}" style="height: 35px; width:35px;" />
+        <img data-src="{{asset('smartphone.svg')}}" class="lazyload" style="height: 35px; width:35px;" />
     </button>
 
 @stop

@@ -68,7 +68,7 @@
         <div class="row align-items-center">
             <div class="col-md-12" data-animate-effect="fadeInUp">
                 <div class="img fr-img" data-animate-effect="fadeInUp">
-                    <img src="{{asset('assets/land.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
+                    <img data-src="{{asset('assets/land.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img lazyload">
                 </div>
                 <div class="wrap">
                     {{-- <h1 class="section-title">Dear [ <span style="color: black; text-transform:capitalize">Land Owner</span> ]</h1> --}}

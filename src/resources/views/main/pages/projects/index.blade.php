@@ -63,7 +63,7 @@
                                 <div class="col-md-8 " data-animate-effect="fadeInUp">
                                     @if($v->banner_count>0)
                                         <div class="img">
-                                            <a aria-label="{{$v->name}}" href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" src="{{$v->banner[0]->image_link}}" alt=""></a>
+                                            <a aria-label="{{$v->name}}" href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt=""></a>
                                         </div>
                                     @endif
                                 </div>
@@ -97,7 +97,7 @@
                                 <div class="col-md-8 order1 " data-animate-effect="fadeInUp">
                                     @if($v->banner_count>0)
                                         <div class="img">
-                                            <a aria-label="{{$v->name}}" href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" src="{{$v->banner[0]->image_link}}" alt=""></a>
+                                            <a aria-label="{{$v->name}}" href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt=""></a>
                                         </div>
                                     @endif
                                 </div>

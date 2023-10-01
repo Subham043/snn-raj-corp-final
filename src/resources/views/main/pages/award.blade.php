@@ -78,7 +78,7 @@
                                 <div class="con">
                                     <div class="numb">{{$item->year}}</div>
                                     <div class="con">
-                                        <img src="{{$item->image_link}}" class="img-fluid award-img mb-3" alt="">
+                                        <img data-src="{{$item->image_link}}" class="img-fluid award-img mb-3 lazyload" alt="">
                                     </div>
                                     <h5 class="font-weight-bold">{!!$item->title!!}</h5>
                                     <h6>{{$item->sub_title}}</h6>
@@ -97,7 +97,7 @@
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img src="{{asset('smartphone.svg')}}" style="height: 35px; width:35px;" />
+        <img data-src="{{asset('smartphone.svg')}}" class="lazyload" style="height: 35px; width:35px;" />
     </button>
 @stop
 

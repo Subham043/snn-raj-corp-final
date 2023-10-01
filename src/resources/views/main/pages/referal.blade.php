@@ -281,7 +281,7 @@
                 @foreach($banner as $banner)
                     <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banner->image_link}}">
                         <div class="v-middle caption">
-                            <img src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}" fetchpriority="high">
+                            <img data-src="{{$banner->image_link}}" class="lazyload" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}" fetchpriority="high">
                         </div>
                     </div>
                 @endforeach

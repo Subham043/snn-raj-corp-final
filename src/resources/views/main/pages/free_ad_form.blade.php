@@ -59,7 +59,7 @@
                 <div class="info-holder">
                     <a href="{{route('home_page.get')}}">
                         <div class="logo">
-                            <img class="logo-size" src="{{ asset('admin/images/logo.png') }}" alt="">
+                            <img class="logo-size lazyload" data-src="{{ asset('admin/images/logo.png') }}" alt="">
                         </div>
                     </a>
                 </div>

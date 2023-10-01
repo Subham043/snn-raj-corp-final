@@ -64,7 +64,7 @@
         <div class="container">
             <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    <img src="{{asset('assets/career.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
+                    <img data-src="{{asset('assets/career.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img lazyload">
                 </div>
             </div>
             {{-- <div class="row mb-5 " data-animate-effect="fadeInUp">

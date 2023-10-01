@@ -77,7 +77,7 @@
         <div class="row">
             <div class="col-md-12 " data-animate-effect="fadeInUp">
                 <div class="img fr-img" data-animate-effect="fadeInUp">
-                    <img src="{{asset('assets/partner.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img">
+                    <img data-src="{{asset('assets/partner.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img lazyload">
                 </div>
                 <div class="wrap">
                     <div class="section-title">CHANNEL PARTNER <div style="display:inline;"><span>EMPANELMENT</span></div>.</div>

@@ -257,7 +257,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-12 px-0">
                     <header class="p-relative header-video-container">
-                        <iframe src="{{$data->video}}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video" width="560" height="315" frameborder="0"></iframe>
+                        <iframe data-src="{{$data->video}}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video lazyload" width="560" height="315" frameborder="0"></iframe>
                     </header>
                     <div class="row no-gutter">
                         <div class="col-md-12">
@@ -268,7 +268,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/floors.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->floor}}</h6> <span style="color: #fff">Floors</span>
                                                         </div>
@@ -282,7 +282,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/tower.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->tower}}</h6> <span style="color: #fff">Towers</span>
                                                         </div>
@@ -296,7 +296,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/acre.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->acre}}</h6> <span style="color: #fff">Acre</span>
                                                         </div>
@@ -310,7 +310,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/location.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
                                                         </div>
@@ -324,7 +324,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/rera.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
@@ -338,7 +338,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/status.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
                                                         </div>
@@ -364,7 +364,7 @@
                     <div class="owl-carousel owl-theme">
                         @if($data->banner_count>0)
                             @foreach($data->banner as $banner)
-                                <div class="portfolio-item"> <img fetchpriority="high" class="img-fluid project-page-banner-img" src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
+                                <div class="portfolio-item"> <img fetchpriority="high" class="img-fluid project-page-banner-img lazyload" data-src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
                             @endforeach
                         @endif
                     </div>
@@ -377,7 +377,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/floors.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->floor}}</h6> <span style="color: #fff">Floors</span>
                                                         </div>
@@ -391,7 +391,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/tower.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->tower}}</h6> <span style="color: #fff">Towers</span>
                                                         </div>
@@ -405,7 +405,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/acre.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->acre}}</h6> <span style="color: #fff">Acre</span>
                                                         </div>
@@ -419,7 +419,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/location.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
                                                         </div>
@@ -433,7 +433,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/rera.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
@@ -447,7 +447,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" alt=""> </div>
+                                                        <div class="author-img"> <img data-src="{{asset('assets/status.svg')}}" class="lazyload" alt=""> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
                                                         </div>
@@ -502,7 +502,7 @@
                     <div class="row div-padding pb-md-0">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
                             <div class="img fl-img">
-                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
+                                <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="">
                             </div>
                             <div class="wrap project-wrap-div">
                                 <div class="number">
@@ -529,7 +529,7 @@
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
                             <div class="img fr-img">
-                                <img fetchpriority="low" src="{{$val->image_link}}" alt="">
+                                <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="">
                             </div>
                             <div class="wrap project-wrap-div">
                                 <div class="number">
@@ -601,7 +601,7 @@
                                         <div class="tab-regular slider owl-carousel">
                                             @foreach ($v->plan as $item)
                                             <div class="slider-img">
-                                                <img src="{{ $item->image_link }}" class="w-100"
+                                                <img data-src="{{ $item->image_link }}" class="w-100 lazyload"
                                                     alt="Plan Image {{$item->id}}">
                                             </div>
                                             @endforeach
@@ -670,7 +670,7 @@
                         @foreach($data->amenity as $amenity)
                             <div class="col-md-3 col-sm-6 mb-4">
                                 <div class="about-box">
-                                    <img fetchpriority="low" src="{{$amenity->image_link}}" class="icon" alt="">
+                                    <img fetchpriority="low" data-src="{{$amenity->image_link}}" class="icon lazyload" alt="">
                                     <h5>{{$amenity->title}}</h5>
                                 </div>
                             </div>
@@ -699,7 +699,7 @@
                 @foreach($data->gallery_video as $gallery_video)
                     <div class="col-md-6 " data-animate-effect="fadeInUp">
                         <div class="vid-area mb-30">
-                            <iframe loading="lazy" src="{{$gallery_video->video}}" title="{{$gallery_video->video_title}}" class="w-100" height="350" frameborder="0"></iframe>
+                            <iframe loading="lazy" data-src="{{$gallery_video->video}}" title="{{$gallery_video->video_title}}" class="w-100 lazyload" height="350" frameborder="0"></iframe>
                             {{-- <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$gallery_video->video_id}}/maxresdefault.jpg" alt="YouTube">
                                 <a class="video-gallery-button vid" href="https://youtu.be/{{$gallery_video->video_id}}"> <span class="video-gallery-polygon">
                                         <i class="ti-control-play"></i>
@@ -729,7 +729,7 @@
                     <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
                         <a aria-label="{{$gallery_image->title}}" href="{{$gallery_image->image_link}}" title="{{$gallery_image->title}}" class="img-zoom">
                             <div class="gallery-box">
-                                <div class="gallery-img"> <img fetchpriority="low" src="{{$gallery_image->image_link}}" class="img-fluid mx-auto d-block" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}"> </div>
+                                <div class="gallery-img"> <img fetchpriority="low" data-src="{{$gallery_image->image_link}}" class="img-fluid mx-auto d-block lazyload" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}"> </div>
                                 <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
                             </div>
                         </a>
@@ -761,7 +761,7 @@
         <div class="row">
             <div class="col-md-12" data-animate-effect="fadeInUp">
                 <div>
-                    <iframe loading="lazy" src="{{$data->map_location_link}}" class="w-100 map-shape" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 map-shape lazyload" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -797,7 +797,7 @@
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img src="{{asset('smartphone.svg')}}" style="height: 35px; width:35px;" />
+        <img data-src="{{asset('smartphone.svg')}}" class="lazyload" style="height: 35px; width:35px;" />
     </button>
 @stop
 

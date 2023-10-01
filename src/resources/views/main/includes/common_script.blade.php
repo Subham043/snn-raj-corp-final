@@ -18,6 +18,7 @@
 <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
 <script src="{{ asset('admin/js/pages/iziToast.min.js') }}"></script>
 <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/lazysizes.min.js') }}"></script>
 @vite(['resources/js/app.js'])
 
 
