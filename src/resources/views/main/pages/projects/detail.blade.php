@@ -1,5 +1,11 @@
 @extends('main.layouts.index')
 
+@section('css_import')
+<link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}" type="text/css">
+@stop
+
 @section('css')
 
     <title>{{$data->meta_title}}</title>
@@ -17,9 +23,6 @@
     <meta name="twitter:label1" content="{{$data->meta_title}}" />
     <meta name="twitter:data1" content="{{$data->meta_description}}" />
 
-    <link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}" type="text/css">
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="32x32" />
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
