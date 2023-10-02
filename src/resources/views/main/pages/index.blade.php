@@ -246,7 +246,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
-                        <div class="states">
+                        <div id="purecounter" class="states">
                             <ul class="flex gap-2 align-items-center justify-content-between">
                                 @foreach($counters as $counters)
                                 {{-- <li class="flex"> --}}
@@ -295,7 +295,7 @@
                     <p>{!!$projectHeading->description!!}</p>
                     @endif
                     <div class="row" data-animate-effect="fadeInUp" style="--bs-gutter-x: 0rem;">
-                        <ul class="projects2-filter text-center">
+                        <ul id="projects2-filter" class="projects2-filter text-center">
                             {{-- <li class="active" data-filter="*">All</li> --}}
                             <li class="active" data-filter=".ongoing">Ongoing Projects</li>
                             <li data-filter=".completed">Completed Projects</li>
@@ -303,7 +303,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row projects2-items " data-animate-effect="fadeInUp">
+            <div id="projects2-items" class="row projects2-items " data-animate-effect="fadeInUp">
                 @php
                     $height = 0;
                     $symbol = "greater";
@@ -352,7 +352,7 @@
 
     <!-- Testiominals -->
     @if(count($testimonials)>0)
-    <section class="testimonials">
+    <section id="testimonials-area" class="testimonials">
         <div class="background bg-img bg-fixed section-padding">
             <div class="container">
                 <div class="row">
@@ -370,7 +370,7 @@
                 <div class="row">
                     <div class="col-md-12 mt-5">
                         <div class="wrap">
-                            <div class="owl-carousel owl-theme">
+                            <div id="vdo-play-btn" class="owl-carousel owl-theme">
 
                                 @foreach($testimonials as $testimonials)
                                 <div class="row">

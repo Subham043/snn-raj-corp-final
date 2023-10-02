@@ -356,7 +356,7 @@
         </div>
     </section>
 @else
-    <section class="project-page  project-page-banner suffix-div mb-0 mt-0 py-0">
+    <section id="project-page-banner" class="project-page  project-page-banner suffix-div mb-0 mt-0 py-0">
         <div class="container-fluid">
         <!-- project slider -->
             <div class="row justify-content-center">

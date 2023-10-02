@@ -8,11 +8,6 @@
     @cspMetaTag(App\Http\Policies\ContentSecurityPolicy::class)
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;1,300;1,400&amp;family=Oswald:wght@300;400&amp;display=swap">
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('admin/css/iziToast.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/intlTelInput.css') }}" rel="stylesheet" type="text/css" />
     @vite(['resources/css/app.css'])
     <style nonce="{{ csp_nonce() }}">
         :root{

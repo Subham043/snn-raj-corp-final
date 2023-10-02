@@ -1,5 +1,5 @@
 <!-- Menu -->
-<div class="duru-wrap">
+<div id="duru-wrap-main" class="duru-wrap">
     <div class="duru-wrap-inner">
         <nav class="duru-menu">
             <ul>
@@ -25,7 +25,7 @@
     </div>
 </div>
 <!-- Logo & Menu Burger -->
-<header class="duru-header">
+<header id="duru-header" class="duru-header">
     <div class="container">
         <div class="row align-items-center">
             <!-- Logo -->
@@ -34,7 +34,7 @@
                 <a aria-label="logo" href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="high" class="lazyload" data-src="{{ asset('assets/black-logo.webp') }}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}" data-img="{{ asset('assets/black-logo.webp') }}"></a>
             </div>
             <!-- Menu Burger -->
-            <div class="col-6 col-md-6 text-right duru-wrap-burger-wrap"> <a aria-label="menu" href="#" class="duru-nav-toggle duru-js-duru-nav-toggle"><i></i></a> </div>
+            <div class="col-6 col-md-6 text-right duru-wrap-burger-wrap"> <a aria-label="menu" href="#" id="duru-js-duru-nav-toggle" class="duru-nav-toggle duru-js-duru-nav-toggle"><i></i></a> </div>
         </div>
     </div>
 </header>

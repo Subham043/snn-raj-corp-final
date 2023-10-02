@@ -123,54 +123,11 @@
     <h1 class="d-none">{{$seo->page_keywords}}</h1>
     <h2 class="d-none">{{$seo->page_keywords}}</h2>
 
-    {{-- <!-- About -->
-    @if($about)
-    <section class="lets-talk">
-        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="6">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
-                        @if(!$about->image)
-                            <div class="sub-title border-bot-light">About Us</div>
-                        @endif
-                        @if($about->image)
-                        <div class="con">
-                            <img src="{{$about->image_link}}" class="img-fluid" alt="">
-                        </div>
-                        @endif
-                    </div>
-                    <div class="col-md-8 " data-animate-effect="fadeInUp">
-                        @if($about->image)
-                            <div class="sub-title border-bot-light">About Us</div>
-                        @endif
-                        <div class="section-title">{!!$about->heading!!}</div>
-                        <div class="desc-ul">
-                            {!!$about->description!!}
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif --}}
-
     @if($about)
     <section class="about suffix-div mt-0">
         <div class="container">
             <div class="row justify-content-center">
-                {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp"> --}}
-                    {{-- @if(!$about->image)
-                    @endif --}}
-                    {{-- <div class="sub-title border-bot-light">About Us</div>
-                </div> --}}
-                {{-- <div class="col-md-auto " data-animate-effect="fadeInUp"> --}}
-                    {{-- @if($about->image)
-                        <div class="sub-title border-bot-light">{{$about->sub_heading}}</div>
-                    @endif --}}
-                    {{-- <div class="sub-title border-bot-light"><h2 class="section-title m-0">{!!$about->heading!!}</h2></div> --}}
 
-                {{-- </div> --}}
             </div>
             <div class="row align-items-end">
                 <div class="col-md-3" data-animate-effect="fadeInUp">
