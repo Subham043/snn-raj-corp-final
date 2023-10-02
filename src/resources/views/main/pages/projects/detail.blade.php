@@ -1,11 +1,5 @@
 @extends('main.layouts.index')
 
-@section('css_import')
-<link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}" type="text/css">
-@stop
-
 @section('css')
 
     <title>{{$data->meta_title}}</title>
@@ -27,6 +21,7 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
+    <link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}">
 
     {!!$data->meta_header_script!!}
     {!!$data->meta_header_no_script!!}
@@ -729,15 +724,15 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" id="image-container">
                 @foreach($data->gallery_image as $gallery_image)
                     <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
-                        <a aria-label="{{$gallery_image->title}}" href="{{$gallery_image->image_link}}" title="{{$gallery_image->title}}" class="img-zoom">
-                            <div class="gallery-box">
-                                <div class="gallery-img"> <img fetchpriority="low" data-src="{{$gallery_image->image_link}}" class="img-fluid mx-auto d-block lazyload" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}"> </div>
-                                <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
+                        <div class="gallery-box">
+                            <div class="gallery-img">
+                                <img fetchpriority="low" data-src="{{$gallery_image->image_link}}" class="img-fluid mx-auto d-block lazyload" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}">
                             </div>
-                        </a>
+                            <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -808,8 +803,8 @@
 
 @section('js')
     <script src="{{ asset('assets/js/plugins/owl.carousel.min.js')}}" defer></script>
-    <script src="{{ asset('assets/modules/magnific-popup/jquery.magnific-popup.js')}}" defer></script>
     <script src="{{ asset('assets/js/project.js') }}" defer></script>
+    <script src="{{ asset('assets/js/plugins/img-previewer.min.js' ) }}" defer></script>
 
     {!!$data->meta_footer_script_nonce!!}
     {!!$data->meta_footer_no_script_nonce!!}
@@ -847,7 +842,29 @@
                             });
                         }
                     })
+                    const myViewer = new ImgPreviewer('#image-container',{
+                        // aspect ratio of image
+                        fillRatio: 0.9,
+                        // attribute that holds the image
+                        dataUrlKey: 'src',
+                        // additional styles
+                        style: {
+                            modalOpacity: 0.6,
+                            headerOpacity: 0,
+                            zIndex: 99
+                        },
+                        // zoom options
+                        imageZoom: {
+                            min: 0.1,
+                            max: 5,
+                            step: 0.1
+                        },
+                        // detect whether the parent element of the image is hidden by the css style
+                        bubblingLevel: 0,
+
+                    });
                 });
+
             })();
     </script>
 

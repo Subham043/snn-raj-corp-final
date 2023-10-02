@@ -50,8 +50,15 @@
     --theme-highlight-text-color: #fff;
 } */
 
-/* @import url('./animate.css'); */
+@import url('./swiper-bundle.min.css');
+@import url('./bootstrap.min.css');
 @import url('./themify-icons.css');
+/* @import url('./magnific-popup.css'); */
+@import url('./owl.carousel.min.css');
+@import url('./owl.theme.default.min.css');
+@import url('./intlTelInput.css');
+@import url('./iziToast.min.css');
+@import url('./image-previewer.css');
 
 html,
 body {
@@ -2866,9 +2873,11 @@ input[type="checkbox"] {
     top: 50%;
     transform: translate(0, -50%);
     opacity: 1;
+    pointer-events: none;
 }
 .gallery-box:hover .gallery-img:after {
     background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
 }
 .gallery-box:hover .gallery-img > img {
     transform: scale(1.05);

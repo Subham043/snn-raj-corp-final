@@ -1,12 +1,5 @@
 @extends('main.layouts.index')
 
-@section('css_import')
-<link href="{{ asset('assets/css/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/css/magnific-popup.css') }}" rel="stylesheet" type="text/css" />
-@stop
-
 @section('css')
 
     <title>{{$seo->meta_title}}</title>
