@@ -439,6 +439,10 @@
 @stop
 
 @section('js')
+    <script src="{{ asset('assets/js/plugins/purecounter.js')}}" defer></script>
+    <script src="{{ asset('assets/js/plugins/jquery.isotope.v3.0.2.js')}}" defer></script>
+    <script src="{{ asset('assets/js/plugins/owl.carousel.min.js')}}" defer></script>
+    <script src="{{ asset('assets/js/home.js') }}" defer></script>
 
     {!!$seo->meta_footer_script_nonce!!}
     {!!$seo->meta_footer_no_script_nonce!!}

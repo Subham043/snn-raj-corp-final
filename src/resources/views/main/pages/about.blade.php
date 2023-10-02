@@ -322,62 +322,6 @@
     </section>
     @endif
 
-    <!-- AWARDS -->
-    {{-- <section class="section-padding">
-        <div class="container">
-            <div class="row mb-5 " data-animate-effect="fadeInUp">
-                <div class="col-md-4">
-                    <div class="sub-title border-bot-light">AWARDS</div>
-                </div>
-                <div class="col-md-8">
-                    <div class="section-title mb-5">Awards & <span>Recognition</span></div>
-                    <ul class="accordion-box clearfix">
-                        <li class="accordion block">
-                            <div class="acc-btn">Modern Architectural Structures</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Architecture viverra tristique justo duis vitae diam neque nivamus aestan ateuene artines aringianu atelit finibus viverra nec lacus. Nedana theme erodino setlie suscipe no tristique.</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="accordion block">
-                            <div class="acc-btn">Modern Building Structures</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Architecture viverra tristique justo duis vitae diam neque nivamus aestan ateuene artines aringianu atelit finibus viverra nec lacus. Nedana theme erodino setlie suscipe no tristique.</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="accordion block">
-                            <div class="acc-btn">Modern Design Structures</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Architecture viverra tristique justo duis vitae diam neque nivamus aestan ateuene artines aringianu atelit finibus viverra nec lacus. Nedana theme erodino setlie suscipe no tristique.</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="accordion block">
-                            <div class="acc-btn">Modern Urban Structures</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Architecture viverra tristique justo duis vitae diam neque nivamus aestan ateuene artines aringianu atelit finibus viverra nec lacus. Nedana theme erodino setlie suscipe no tristique.</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="accordion block">
-                            <div class="acc-btn">Modern Interior Structures</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Architecture viverra tristique justo duis vitae diam neque nivamus aestan ateuene artines aringianu atelit finibus viverra nec lacus. Nedana theme erodino setlie suscipe no tristique.</div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
     <!-- ADDITIONAL CONTENT -->
     @if(count($additionalContent)>0)
     <section class="process suffix-div mt-0">
@@ -532,5 +476,79 @@
     {!!$seo->meta_footer_no_script_nonce!!}
 
     @include('main.includes.common_contact_modal_script')
+    <script src="{{ asset('assets/js/plugins/swiper-bundle.min.js')}}" defer></script>
+    <script src="{{ asset('assets/js/plugins/owl.carousel.min.js')}}" defer></script>
+
+    <script nonce="{{ csp_nonce() }}" defer>
+        (function () {
+            "use strict";
+            $(document).ready(function () {
+                var swiperOptions = {
+                    loop: true,
+                    autoplay: {
+                    delay: 1,
+                    disableOnInteraction: false
+                    },
+                    speed: 2000,
+                    grabCursor: true,
+                    mousewheelControl: true,
+                    keyboardControl: true,
+                    navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                    },
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                    // Responsive breakpoints
+                    breakpoints: {
+                        // when window width is >= 320px
+                        320: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                        },
+                        // when window width is >= 480px
+                        480: {
+                        slidesPerView: 3,
+                        spaceBetween: 30
+                        },
+                        // when window width is >= 640px
+                        640: {
+                        slidesPerView: 4,
+                        spaceBetween: 40
+                        },
+                        // when window width is >= 990px
+                        990: {
+                        slidesPerView: 8,
+                        spaceBetween: 40
+                        }
+                    }
+                };
+                var swiper = new Swiper(".swiper-container", swiperOptions);
+
+                $('.team .owl-carousel').owlCarousel({
+                    loop: true
+                    , margin: 20
+                    , mouseDrag: true
+                    , autoplay: false
+                    , dots: true
+                    , nav: false
+                    , navText: ["<span class='lnr ti-arrow-left'></span>","<span class='lnr ti-arrow-right'></span>"]
+                    , autoplayHoverPause:true
+                    , responsiveClass: true
+                    , responsive: {
+                        0: {
+                            items: 1
+                        , }
+                        , 600: {
+                            items: 2
+                        }
+                        , 1000: {
+                            items: 3
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
 
 @stop

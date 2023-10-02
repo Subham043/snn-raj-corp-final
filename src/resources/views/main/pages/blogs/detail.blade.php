@@ -105,7 +105,7 @@
 
     <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 
-let uuid = null;
+        let uuid = null;
         let link = null;
         var myModal = new bootstrap.Modal(document.getElementById('staticBackdropContact'), {
             keyboard: false
