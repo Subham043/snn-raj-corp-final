@@ -10,9 +10,9 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/iziToast.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/intlTelInput.css') }}" rel="stylesheet" type="text/css" />
+    @yield('css')
     @vite(['resources/css/app.css'])
     @include('main.includes.common_head')
-    @yield('css')
 </head>
 
 <body>
