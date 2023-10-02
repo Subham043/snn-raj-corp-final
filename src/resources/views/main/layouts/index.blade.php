@@ -19,7 +19,8 @@
         const nonce = '{{ csp_nonce() }}';
     </script>
 
-    <script src="{{ asset('assets/js/plugins/jquery-3.6.1.min.js')}}"></script>
+    {{-- <script src="{{ asset('assets/js/plugins/jquery-3.6.1.min.js')}}"></script> --}}
+    <script src="{{ asset('assets/js/plugins/jq.min.js')}}"></script>
     <script src="{{ asset('assets/js/plugins/bootstrap.min.js')}}" async></script>
     <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
     <script src="{{ asset('admin/js/pages/iziToast.min.js') }}" async></script>
