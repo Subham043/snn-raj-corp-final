@@ -50,14 +50,8 @@
     --theme-highlight-text-color: #fff;
 } */
 
-@import url('./swiper-bundle.min.css');
-@import url('./bootstrap.min.css');
-@import url('./animate.css');
+/* @import url('./animate.css'); */
 @import url('./themify-icons.css');
-@import url('./owl.carousel.min.css');
-@import url('./owl.theme.default.min.css');
-@import url('./magnific-popup.css');
-@import url('./YouTubePopUp.css');
 
 html,
 body {
