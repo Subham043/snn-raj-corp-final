@@ -584,7 +584,7 @@
                         @endif
                     </div> --}}
                     <div class="tab-holder">
-                        <div class="tab-panels">
+                        <div id="tab-panels" class="tab-panels">
                             <div class="row flex-wrap justify-content-between">
                                 <div class="col-lg-2 col-md-3 col-sm-12">
                                     <ul class="tabs">
@@ -815,8 +815,8 @@
             (function () {
                 "use strict";
                 $(document).ready(function () {
-                    $('.tab-panels .tabs li').click(function(){
-                        var $panel = $(this).closest('.tab-panels');
+                    $('#tab-panels .tabs li').click(function(){
+                        var $panel = $(this).closest('#tab-panels');
 
 
                         //event listener listening for clicks on the tabs panels
