@@ -169,10 +169,10 @@
                             <a aria-label="{{$banners->banner_image_title}}" href="{{$banners->button_link ? $banners->button_link : '#'}}">
                                 {{-- <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high"> --}}
                                 <picture>
-                                    <source srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)" class="">
-                                    <source srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)" class="">
-                                    <source srcset="{{$banners->banner_image_link}}" class="">
-                                    <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" fetchpriority="high" class="">
+                                    <source data-srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)" class="lazyload">
+                                    <source data-srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)" class="lazyload">
+                                    <source data-srcset="{{$banners->banner_image_link}}" class="lazyload">
+                                    <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" fetchpriority="high" class="lazyload">
                                 </picture>
                             </a>
                         </div>
