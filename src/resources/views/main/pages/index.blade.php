@@ -209,7 +209,7 @@
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
-                        <img data-src="{{$about->image_link}}" fetchpriority="high" class="img-fluid shapeee lazyload" alt="">
+                        <img src="{{$about->image_link}}" fetchpriority="high" class="img-fluid shapeee" alt="">
                     </div>
                     @endif
                 </div>
