@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 order2 valign " data-animate-effect="fadeInLeft">
+            <div class="col-md-4 valign " data-animate-effect="fadeInLeft">
                 <div class="wrap">
                     <div class="number">
                         <div class="numbering">02</div>
