@@ -52,7 +52,7 @@ class FreeAdFormPageController extends Controller
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
-            (new SelldoService)->campaign_form_create($request->name, $request->email, $request->phone, $request->source, $project->projectId, $request->executive_name);
+            // (new SelldoService)->campaign_form_create($request->name, $request->email, $request->phone, $request->source, $project->projectId, $request->executive_name);
             return response()->json(["message" => "Campaign Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

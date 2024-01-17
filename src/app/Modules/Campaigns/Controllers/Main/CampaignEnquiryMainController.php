@@ -90,7 +90,7 @@ class CampaignEnquiryMainController extends Controller
                     $data
                 );
                 $campaign = $this->campaignService->getById($request->slug);
-                (new SelldoService)->project_campaign_create($data->name, $data->email, $data->phone, $campaign->srd, $campaign->projectId);
+                // (new SelldoService)->project_campaign_create($data->name, $data->email, $data->phone, $campaign->srd, $campaign->projectId);
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }
             return response()->json(["message" => "Invalid OTP. Please try again"], 400);

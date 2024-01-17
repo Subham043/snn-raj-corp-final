@@ -118,7 +118,7 @@ class ContactPageController extends Controller
                     ],
                     $data
                 );
-                (new SelldoService)->contact_create($data->name, $data->email, $data->phone);
+                // (new SelldoService)->contact_create($data->name, $data->email, $data->phone);
                 dispatch(new SendContactFormMailJob($data));
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }
