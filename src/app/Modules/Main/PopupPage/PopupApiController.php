@@ -5,6 +5,7 @@ namespace App\Modules\Main\PopupPage;
 use App\Http\Controllers\Controller;
 use App\Http\Services\DecryptService;
 use App\Http\Services\OtpService;
+use App\Http\Services\ParamantraService;
 use App\Http\Services\RateLimitService;
 use App\Http\Services\SelldoService;
 use App\Modules\Enquiry\PopupForm\Services\PopupFormService;
@@ -128,6 +129,7 @@ class PopupApiController extends Controller
                 );
 
                 // (new SelldoService)->popup_form_create($data->name, $data->email, $data->phone, $data->project_detail->srd_code, $data->project_detail->projectId);
+                (new ParamantraService)->popup_form_create($data->name, $data->email, $data->phone, $data->project);
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }
             return response()->json(["message" => "Invalid OTP. Please try again"], 400);

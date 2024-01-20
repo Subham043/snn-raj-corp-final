@@ -5,6 +5,7 @@ namespace App\Modules\Campaigns\Controllers\Main;
 use App\Http\Controllers\Controller;
 use App\Http\Services\DecryptService;
 use App\Http\Services\OtpService;
+use App\Http\Services\ParamantraService;
 use App\Http\Services\RateLimitService;
 use App\Http\Services\SelldoService;
 use App\Modules\Campaigns\Services\CampaignService;
@@ -91,6 +92,7 @@ class CampaignEnquiryMainController extends Controller
                 );
                 $campaign = $this->campaignService->getById($request->slug);
                 // (new SelldoService)->project_campaign_create($data->name, $data->email, $data->phone, $campaign->srd, $campaign->projectId);
+                (new ParamantraService)->project_campaign_create($data->name, $data->email, $data->phone, $campaign->name);
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }
             return response()->json(["message" => "Invalid OTP. Please try again"], 400);

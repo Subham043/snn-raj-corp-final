@@ -3,6 +3,7 @@
 namespace App\Modules\Main\ReferalPage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\ParamantraService;
 use App\Http\Services\RateLimitService;
 use App\Http\Services\SelldoService;
 use App\Modules\Enquiry\ReferalForm\Jobs\SendReferalFormMailJob;
@@ -68,6 +69,7 @@ class ReferalPageController extends Controller
             );
             (new RateLimitService($request))->clearRateLimit();
             // (new SelldoService)->contact_create($request->referal_name, $request->referal_email, $request->referal_phone);
+            (new ParamantraService)->contact_create($request->referal_name, $request->referal_email, $request->referal_phone, 'Lead from Website_Referal');
             dispatch(new SendReferalFormMailJob($data));
             return response()->json(["message" => "Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {

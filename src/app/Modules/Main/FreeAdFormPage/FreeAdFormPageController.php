@@ -31,12 +31,13 @@ class FreeAdFormPageController extends Controller
 
     public function verify(FreeAdFormVerifyRequest $request){
 
-        $status = (new SelldoService)->campaign_form_verify($request->phone);
-        if($status){
-            (new RateLimitService($request))->clearRateLimit();
-            return response()->json(["message" => "Verified successfully.", "status" => $status], 200);
-        }
-        return response()->json(["message" => "Not verified.", "status" => $status], 400);
+        // $status = (new SelldoService)->campaign_form_verify($request->phone);
+        // if($status){
+        //     (new RateLimitService($request))->clearRateLimit();
+        //     return response()->json(["message" => "Verified successfully.", "status" => $status], 200);
+        // }
+        // return response()->json(["message" => "Not verified.", "status" => $status], 400);
+        return response()->json(["message" => "Not verified."], 400);
 
     }
 

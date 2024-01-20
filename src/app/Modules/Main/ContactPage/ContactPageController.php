@@ -5,6 +5,7 @@ namespace App\Modules\Main\ContactPage;
 use App\Http\Controllers\Controller;
 use App\Http\Services\DecryptService;
 use App\Http\Services\OtpService;
+use App\Http\Services\ParamantraService;
 use App\Http\Services\RateLimitService;
 use App\Http\Services\SelldoService;
 use App\Modules\Enquiry\ContactForm\Requests\ContactFormRequest;
@@ -119,6 +120,7 @@ class ContactPageController extends Controller
                     $data
                 );
                 // (new SelldoService)->contact_create($data->name, $data->email, $data->phone);
+                (new ParamantraService)->contact_create($data->name, $data->email, $data->phone, 'Lead from Website_Contact_Us');
                 dispatch(new SendContactFormMailJob($data));
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }
