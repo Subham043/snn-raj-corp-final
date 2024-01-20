@@ -96,7 +96,7 @@ class PopupPageController extends Controller
                 );
 
                 // (new SelldoService)->popup_form_create($data->name, $data->email, $data->phone, $data->project_detail->srd_code, $data->project_detail->projectId);
-                (new ParamantraService)->popup_form_create($data->name, $data->email, $data->phone, $data->project);
+                // (new ParamantraService)->popup_form_create($data->name, $data->email, $data->phone, $data->project);
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }
             return response()->json(["message" => "Invalid OTP. Please try again"], 400);
