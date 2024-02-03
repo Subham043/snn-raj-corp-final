@@ -32,6 +32,6 @@ class SendCareerFormMailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to('careers@snnrajcorp.com')->send(new SendCareerFormMail($this->details));
+        Mail::to('hr@snnrajcorp.com')->send(new SendCareerFormMail($this->details));
     }
 }
