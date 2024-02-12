@@ -21,6 +21,8 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
+    <link rel="preload" type="image/webp" fetchpriority="high" href="{{asset('assets/career.webp')}}" as="image">
+
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}
 
@@ -50,6 +52,16 @@
             border-bottom-right-radius: 30px;
             object-fit: cover;
         }
+
+        .image-row-min{
+            min-height: 532px
+        }
+
+        @media screen and (max-width: 600px) {
+            .image-row-min{
+                min-height: 227px
+            }
+        }
     </style>
 @stop
 
@@ -62,9 +74,9 @@
     <!-- Contact -->
     <div class="contact secondary-div mt-0 pt-5">
         <div class="container">
-            <div class="row mb-5 " data-animate-effect="fadeInUp">
+            <div class="row mb-5 image-row-min" data-animate-effect="fadeInUp">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    <img data-src="{{asset('assets/career.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img lazyload">
+                    <img data-src="{{asset('assets/career.webp')}}" fetchpriority="low" alt="" class="img-fluid about_banner_img lazyload" width="1166" height="532">
                 </div>
             </div>
             {{-- <div class="row mb-5 " data-animate-effect="fadeInUp">
