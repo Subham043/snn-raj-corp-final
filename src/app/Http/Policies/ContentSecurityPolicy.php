@@ -64,6 +64,7 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::SCRIPT, 'www.googletagmanager.com')
         ->addDirective(Directive::SCRIPT, 'unpkg.com')
         ->addDirective(Directive::SCRIPT, 'kit.fontawesome.com')
+        ->addDirective(Directive::SCRIPT, 'www.googletagmanager.com')
         ->addDirective(Directive::CONNECT, 'ka-f.fontawesome.com')
         ->addDirective(Directive::FONT, 'ka-f.fontawesome.com')
         ->addDirective(Directive::STYLE, 'unpkg.com')

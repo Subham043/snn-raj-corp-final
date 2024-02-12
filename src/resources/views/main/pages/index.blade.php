@@ -21,12 +21,12 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
     @if(count($banners)>0)
-    @foreach($banners as $k=>$v)
-        @if($k==0)
-        <link rel="preload" href="{{$v->banner_image_link}}" as="image">
-        <link rel="preload" href="{{$v->banner_mobile_image_link}}" as="image">
-        @endif
-    @endforeach
+        @foreach($banners as $k=>$v)
+            @if($k==0)
+                <link rel="preload" href="{{$v->banner_image_link}}" as="image">
+                <link rel="preload" href="{{$v->banner_mobile_image_link}}" as="image">
+            @endif
+        @endforeach
     @endif
 
     {!!$seo->meta_header_script_nonce!!}
@@ -171,20 +171,36 @@
         <header id="slider-area" class="header slider-fade">
             <div class="owl-carousel owl-theme">
                 <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-                @foreach($banners as $banners)
-                    <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
-                        <div class="v-middle caption">
-                            <a aria-label="{{$banners->banner_image_title}}" href="{{$banners->button_link ? $banners->button_link : '#'}}">
-                                {{-- <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high"> --}}
-                                <picture>
-                                    <source data-srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)" class="lazyload">
-                                    <source data-srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)" class="lazyload">
-                                    <source data-srcset="{{$banners->banner_image_link}}" class="lazyload">
-                                    <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" fetchpriority="high" class="lazyload">
-                                </picture>
-                            </a>
+                @foreach($banners as $keys=>$banners)
+                    @if($k==0)
+                        <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
+                            <div class="v-middle caption">
+                                <a aria-label="{{$banners->banner_image_title}}" href="{{$banners->button_link ? $banners->button_link : '#'}}">
+                                    {{-- <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high"> --}}
+                                    <picture>
+                                        <source srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)">
+                                        <source srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)">
+                                        <source srcset="{{$banners->banner_image_link}}">
+                                        <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" fetchpriority="high">
+                                    </picture>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
+                            <div class="v-middle caption">
+                                <a aria-label="{{$banners->banner_image_title}}" href="{{$banners->button_link ? $banners->button_link : '#'}}">
+                                    {{-- <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high"> --}}
+                                    <picture>
+                                        <source data-srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)" class="lazyload">
+                                        <source data-srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)" class="lazyload">
+                                        <source data-srcset="{{$banners->banner_image_link}}" class="lazyload">
+                                        <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" fetchpriority="high" class="lazyload">
+                                    </picture>
+                                </a>
+                            </div>
+                        </div>
+                    @endif
                 @endforeach
             </div>
             <div class="slide-num" id="snh-1"></div>
