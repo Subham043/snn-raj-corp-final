@@ -21,6 +21,10 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
+    @if($banner)
+    <link rel="preload" fetchpriority="high" href="{{$banner->image_link}}" as="image" type="image/webp">
+    @endif
+
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}
 
@@ -51,7 +55,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img fetchpriority="high" data-src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img lazyload"></figure>
+                        <figure><img fetchpriority="low" src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img" width="583" height="450"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <div class="desc-ul">
