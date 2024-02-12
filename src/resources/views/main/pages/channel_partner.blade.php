@@ -21,6 +21,8 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
+    <link rel="preload" type="image/webp" fetchpriority="high" href="{{asset('assets/partner.webp')}}" as="image">
+
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}
 
@@ -67,6 +69,16 @@
         input[type=checkbox]:after {
             top: 3px;
         }
+
+        .hero-main{
+            min-height: 712px
+        }
+
+        @media screen and (max-width: 600px) {
+            .hero-main{
+                min-height: 1249px
+            }
+        }
     </style>
 @stop
 
@@ -77,7 +89,7 @@
         <div class="row">
             <div class="col-md-12 " data-animate-effect="fadeInUp">
                 <div class="img fr-img" data-animate-effect="fadeInUp">
-                    <img data-src="{{asset('assets/partner.webp')}}" fetchpriority="high" alt="" class="img-fluid about_banner_img lazyload">
+                    <img data-src="{{asset('assets/partner.webp')}}" fetchpriority="low" alt="" class="img-fluid about_banner_img lazyload">
                 </div>
                 <div class="wrap">
                     <div class="section-title">CHANNEL PARTNER <div style="display:inline;"><span>EMPANELMENT</span></div>.</div>
