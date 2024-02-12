@@ -82,7 +82,7 @@
                                 <div class="con">
                                     <div class="numb">{{$item->year}}</div>
                                     <div class="con">
-                                        <img data-src="{{$item->image_link}}" class="img-fluid award-img mb-3 lazyload" alt="">
+                                        <img data-src="{{$item->image_link}}" class="img-fluid award-img mb-3 lazyload" alt="" width="255" height="255">
                                     </div>
                                     <h5 class="font-weight-bold">{!!$item->title!!}</h5>
                                     <h6>{{$item->sub_title}}</h6>
