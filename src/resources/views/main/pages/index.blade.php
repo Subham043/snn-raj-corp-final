@@ -181,7 +181,7 @@
                                         <source data-srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)" class="lazyload">
                                         <source data-srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)" class="lazyload">
                                         <source data-srcset="{{$banners->banner_image_link}}" class="lazyload">
-                                        <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" fetchpriority="low" class="lazyload">
+                                        <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" class="lazyload">
                                     </picture>
                                 </a>
                             </div>
@@ -195,7 +195,7 @@
                                         <source data-srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)" class="lazyload">
                                         <source data-srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)" class="lazyload">
                                         <source data-srcset="{{$banners->banner_image_link}}" class="lazyload">
-                                        <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" fetchpriority="low" class="lazyload">
+                                        <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" class="lazyload">
                                     </picture>
                                 </a>
                             </div>
