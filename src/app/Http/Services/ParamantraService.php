@@ -42,7 +42,6 @@ class ParamantraService
             $data_resp = curl_exec($ch);
             $err = curl_error($ch);
             curl_close($ch);
-
         if ($err) {
             return false;
         } else {
