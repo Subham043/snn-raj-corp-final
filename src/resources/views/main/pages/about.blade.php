@@ -21,7 +21,7 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
     @if($banner)
-    <link rel="preload" href="{{$banner->image_link}}" as="image">
+    <link rel="preload" fetchpriority="high" href="{{$banner->image_link}}" as="image" type="image/webp">
     @endif
 
     {!!$seo->meta_header_script!!}

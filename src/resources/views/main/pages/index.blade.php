@@ -23,8 +23,8 @@
     @if(count($banners)>0)
         @foreach($banners as $k=>$v)
             @if($k==0)
-                <link rel="preload" href="{{$v->banner_image_link}}" as="image">
-                <link rel="preload" href="{{$v->banner_mobile_image_link}}" as="image">
+                <link rel="preload" type="image/webp" fetchpriority="high" href="{{$v->banner_image_link}}" as="image">
+                <link rel="preload" type="image/webp" fetchpriority="high" href="{{$v->banner_mobile_image_link}}" as="image">
             @endif
         @endforeach
     @endif
