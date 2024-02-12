@@ -7,7 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @cspMetaTag(App\Http\Policies\ContentSecurityPolicy::class)
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;1,300;1,400&amp;family=Oswald:wght@300;400&amp;display=swap">
+    @if(count($banner)>0)
+        @foreach($banner as $k=>$v)
+            @if($k==0)
+                <link rel="preload" type="image/webp" fetchpriority="high" href="{{$v->image_link}}" as="image">
+            @endif
+        @endforeach
+    @endif
+
+    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;1,300;1,400&amp;family=Oswald:wght@300;400&amp;display=swap"> --}}
     @vite(['resources/css/app.css'])
     <style nonce="{{ csp_nonce() }}">
         :root{
@@ -262,6 +270,16 @@
                 opacity: 1;
             }
         }
+
+        #slider-area{
+            min-height: 651px;
+        }
+
+        @media screen and (max-width: 600px) {
+            #slider-area {
+                min-height: 217px;
+            }
+        }
     </style>
 </head>
 
@@ -276,12 +294,20 @@
         <header id="slider-area" class="header slider-fade">
             <div class="owl-carousel owl-theme">
                 <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-                @foreach($banner as $banner)
+                @foreach($banner as $keys=>$banner)
+                    @if($k==0)
                     <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banner->image_link}}">
                         <div class="v-middle caption">
-                            <img data-src="{{$banner->image_link}}" class="lazyload" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}" fetchpriority="high">
+                            <img data-src="{{$banner->image_link}}" class="lazyload" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}" width="1256" height="644" fetchpriority="low">
                         </div>
                     </div>
+                    @else
+                    <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banner->image_link}}">
+                        <div class="v-middle caption">
+                            <img data-src="{{$banner->image_link}}" class="lazyload" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}" fetchpriority="low">
+                        </div>
+                    </div>
+                    @endif
                 @endforeach
             </div>
             <div class="slide-num" id="snh-1"></div>
@@ -377,7 +403,8 @@
     const nonce = '{{ csp_nonce() }}';
 </script>
 
-<script src="{{ asset('assets/js/plugins/jquery-3.6.1.min.js')}}"></script>
+{{-- <script src="{{ asset('assets/js/plugins/jquery-3.6.1.min.js')}}"></script> --}}
+<script src="{{ asset('assets/js/plugins/jq.min.js')}}"></script>
 <script src="{{ asset('assets/js/plugins/bootstrap.min.js')}}" async></script>
 <script src="{{ asset('assets/js/plugins/owl.carousel.min.js')}}" defer></script>
 <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
