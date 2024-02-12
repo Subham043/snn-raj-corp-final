@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img fetchpriority="low" src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img" width="583" height="450"></figure>
+                        <figure><img fetchpriority="low" data-src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img lazyload" width="583" height="450"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <div class="desc-ul">
