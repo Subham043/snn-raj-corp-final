@@ -155,6 +155,16 @@
             line-height: 60px;
             color: white;
         }
+
+        #slider-area{
+            min-height: 644px;
+        }
+
+        @media screen and (max-width: 600px) {
+            #slider-area {
+                min-height: 350px;
+            }
+        }
     </style>
 
 @stop
