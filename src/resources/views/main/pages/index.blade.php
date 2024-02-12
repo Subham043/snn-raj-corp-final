@@ -20,6 +20,14 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="32x32" />
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
+    @if(count($banners)>0)
+    @foreach($banners as $k=>$v)
+        @if($k==0)
+        <link rel="preload" href="{{$v->banner_image_link}}" as="image">
+        <link rel="preload" href="{{$v->banner_mobile_image_link}}" as="image">
+        @endif
+    @endforeach
+    @endif
 
     {!!$seo->meta_header_script_nonce!!}
     {!!$seo->meta_header_no_script_nonce!!}
