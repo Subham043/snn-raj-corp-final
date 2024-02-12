@@ -45,6 +45,10 @@
         .section-title {
             font-size: 20px;
         }
+
+        .services .item{
+            min-height: 496px;
+        }
     </style>
 @stop
 
