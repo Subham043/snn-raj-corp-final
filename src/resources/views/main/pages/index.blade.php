@@ -176,12 +176,12 @@
                         <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
                             <div class="v-middle caption">
                                 <a aria-label="{{$banners->banner_image_title}}" href="{{$banners->button_link ? $banners->button_link : '#'}}">
-                                    {{-- <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high"> --}}
+                                    {{-- <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="low"> --}}
                                     <picture>
                                         <source data-srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)" class="lazyload">
                                         <source data-srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)" class="lazyload">
                                         <source data-srcset="{{$banners->banner_image_link}}" class="lazyload">
-                                        <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" fetchpriority="high" class="lazyload">
+                                        <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" fetchpriority="low" class="lazyload">
                                     </picture>
                                 </a>
                             </div>
@@ -190,12 +190,12 @@
                         <div class="text-left item bg-img" data-overlay-dark="4" data-background="{{$banners->banner_image_link}}">
                             <div class="v-middle caption">
                                 <a aria-label="{{$banners->banner_image_title}}" href="{{$banners->button_link ? $banners->button_link : '#'}}">
-                                    {{-- <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="high"> --}}
+                                    {{-- <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="low"> --}}
                                     <picture>
                                         <source data-srcset="{{$banners->banner_mobile_image_link}}" media="(max-width: 600px)" class="lazyload">
                                         <source data-srcset="{{$banners->banner_image_link}}" media="(max-width: 1920px)" class="lazyload">
                                         <source data-srcset="{{$banners->banner_image_link}}" class="lazyload">
-                                        <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" fetchpriority="high" class="lazyload">
+                                        <img data-src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" width="1256" height="644" title="{{$banners->banner_image_title}}" fetchpriority="low" class="lazyload">
                                     </picture>
                                 </a>
                             </div>
@@ -233,7 +233,7 @@
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
-                        <img data-src="{{$about->image_link}}" width="373" height="375" fetchpriority="high" class="img-fluid shapeee lazyload" alt="">
+                        <img data-src="{{$about->image_link}}" width="373" height="375" fetchpriority="low" class="img-fluid shapeee lazyload" alt="">
                     </div>
                     @endif
                 </div>
