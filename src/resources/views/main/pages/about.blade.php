@@ -110,7 +110,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img" width="571" height="658"></figure>
+                        <figure><img data-src="{{ $banner->image_link}}" fetchpriority="high" alt="" class="img-fluid about_banner_img lazyload" width="571" height="658"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <p>{{$banner->description}}</p>
