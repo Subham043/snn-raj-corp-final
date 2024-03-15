@@ -33,7 +33,7 @@ class CampaignUpdateController extends Controller
             $this->campaignService->update($request, $data);
             return redirect()->intended(route('campaign_update.get', $id))->with('success_status', 'Campaign updated successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_update.get', $id))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

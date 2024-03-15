@@ -27,7 +27,7 @@ class CampaignCreateController extends Controller
             $this->campaignService->create($request);
             return redirect()->intended(route('campaign_create.get'))->with('success_status', 'Campaign created successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_create.get'))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

@@ -35,7 +35,7 @@ class CampaignGalleryCreateController extends Controller
             $this->campaignGalleryService->create($request, $campaign_id);
             return redirect()->intended(route('campaign_gallery_create.get', $campaign_id))->with('success_status', 'Campaign Gallery Image created successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_gallery_create.get', $campaign_id))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

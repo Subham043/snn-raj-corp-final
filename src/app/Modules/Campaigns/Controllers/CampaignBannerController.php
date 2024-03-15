@@ -37,7 +37,7 @@ class CampaignBannerController extends Controller
             $this->campaignBannerService->createOrUpdate($request, $campaign_id);
             return redirect()->intended(route('campaign_banner.get', $campaign_id))->with('success_status', 'Campaign Banner Details saved successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_banner.get', $campaign_id))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

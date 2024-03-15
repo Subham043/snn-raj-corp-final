@@ -77,7 +77,11 @@
                                             </li>
 
                                             <li class="nav-item">
-                                                <a href="{{route('enquiry.free_ad_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.free_ad_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Enquiry Form </a>
+                                                <a href="{{route('enquiry.free_ad_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.free_ad_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Site Enquiry Form </a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a href="{{route('enquiry.channel_partner_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.channel_partner_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Channel Partner Form </a>
                                             </li>
 
                                             <li class="nav-item">

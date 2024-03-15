@@ -24,7 +24,7 @@ class CampaignSectionHeadingController extends Controller
             $this->campaignService->updateHeading([$request->key => $request->heading], $campaign);
             return redirect()->intended(URL::previous())->with('success_status', 'Heading saved successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(URL::previous())->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

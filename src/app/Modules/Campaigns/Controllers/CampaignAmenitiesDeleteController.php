@@ -22,7 +22,7 @@ class CampaignAmenitiesDeleteController extends Controller
             $this->campaignAmenitiesService->delete($data);
             return redirect()->intended(route('campaign_amenities_list.get', $campaign_id))->with('success_status', 'Campaign Amenity deleted successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_amenities_list.get', $campaign_id))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
     }

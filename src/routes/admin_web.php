@@ -172,6 +172,9 @@ use App\Modules\Campaigns\Controllers\CampaignTablePaginateController;
 use App\Modules\Campaigns\Controllers\CampaignTableUpdateController;
 use App\Modules\Campaigns\Controllers\CampaignThankController;
 use App\Modules\Campaigns\Controllers\CampaignUpdateController;
+use App\Modules\Enquiry\ChannelPartnerForm\Controllers\ChannelPartnerFormDeleteController;
+use App\Modules\Enquiry\ChannelPartnerForm\Controllers\ChannelPartnerFormExcelController;
+use App\Modules\Enquiry\ChannelPartnerForm\Controllers\ChannelPartnerFormPaginateController;
 use App\Modules\Enquiry\PopupForm\Controllers\PopupFormDeleteController;
 use App\Modules\Enquiry\PopupForm\Controllers\PopupFormExcelController;
 use App\Modules\Enquiry\PopupForm\Controllers\PopupFormPaginateController;
@@ -257,6 +260,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [FreeAdFormPaginateController::class, 'get', 'as' => 'enquiry.free_ad_form.paginate.get'])->name('enquiry.free_ad_form.paginate.get');
             Route::get('/excel', [FreeAdFormExcelController::class, 'get', 'as' => 'enquiry.free_ad_form.excel.get'])->name('enquiry.free_ad_form.excel.get');
             Route::get('/delete/{id}', [FreeAdFormDeleteController::class, 'get', 'as' => 'enquiry.free_ad_form.delete.get'])->name('enquiry.free_ad_form.delete.get');
+
+        });
+        Route::prefix('/channel-partner-form')->group(function () {
+            Route::get('/', [ChannelPartnerFormPaginateController::class, 'get', 'as' => 'enquiry.channel_partner_form.paginate.get'])->name('enquiry.channel_partner_form.paginate.get');
+            Route::get('/excel', [ChannelPartnerFormExcelController::class, 'get', 'as' => 'enquiry.channel_partner_form.excel.get'])->name('enquiry.channel_partner_form.excel.get');
+            Route::get('/delete/{id}', [ChannelPartnerFormDeleteController::class, 'get', 'as' => 'enquiry.channel_partner_form.delete.get'])->name('enquiry.channel_partner_form.delete.get');
 
         });
         Route::prefix('/project-campaign-form')->group(function () {

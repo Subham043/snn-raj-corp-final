@@ -34,7 +34,7 @@ class CampaignAmenitiesUpdateController extends Controller
             $this->campaignAmenitiesService->update($request, $data);
             return redirect()->intended(route('campaign_amenities_update.get', [$campaign_id, $id]))->with('success_status', 'Campaign Amenity updated successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_amenities_update.get', [$campaign_id, $id]))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

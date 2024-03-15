@@ -33,7 +33,7 @@ class CampaignPlanCategoryUpdateController extends Controller
             $this->campaignPlanCategoryService->update($request, $data);
             return redirect()->intended(route('campaign_plan_category_update.get', [$campaign_id, $id]))->with('success_status', 'Campaign Plan Category updated successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_plan_category_update.get', [$campaign_id, $id]))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

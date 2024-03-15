@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('channel_partner_forms', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 500);
+            $table->string('phone', 500)->nullable();
+            $table->string('email', 500)->nullable();
+            $table->string('project', 500)->nullable();
+            $table->string('source', 500)->nullable();
+            $table->string('executive_name', 500)->nullable();
+            $table->string('ip_address', 500)->nullable();
+            $table->timestamps();
+            $table->index(['id', 'created_at']);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('channel_partner_forms');
+    }
+};

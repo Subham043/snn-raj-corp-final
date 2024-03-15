@@ -22,7 +22,7 @@ class CampaignTableDeleteController extends Controller
             $this->campaignTableService->delete($data);
             return redirect()->intended(route('campaign_table_list.get', $campaign_id))->with('success_status', 'Campaign Table Data deleted successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_table_list.get', $campaign_id))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
     }

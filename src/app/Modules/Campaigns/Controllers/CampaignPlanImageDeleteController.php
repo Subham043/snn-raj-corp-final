@@ -22,7 +22,7 @@ class CampaignPlanImageDeleteController extends Controller
             $this->campaignPlanImageService->delete($data);
             return redirect()->intended(route('campaign_plan_image_list.get', [$campaign_id, $category_id]))->with('success_status', 'Campaign Plan Image deleted successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_plan_image_list.get', [$campaign_id, $category_id]))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
     }

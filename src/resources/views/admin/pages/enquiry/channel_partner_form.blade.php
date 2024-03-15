@@ -8,24 +8,24 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        @include('admin.includes.breadcrumb', ['page'=>'Site Enquiry Form', 'page_link'=>route('enquiry.free_ad_form.paginate.get'), 'list'=>['List']])
+        @include('admin.includes.breadcrumb', ['page'=>'Channel Form Enquiry', 'page_link'=>route('enquiry.channel_partner_form.paginate.get'), 'list'=>['List']])
         <!-- end page title -->
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title mb-0">Site Enquiry Form</h4>
+                        <h4 class="card-title mb-0">Channel Form Enquiry</h4>
                     </div><!-- end card header -->
 
                     <div class="card-body">
                         <div id="customerList">
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
-                                    <a href="{{route('enquiry.free_ad_form.excel.get')}}" download type="button" class="btn btn-info add-btn" id="create-btn"><i class="ri-file-excel-fill align-bottom me-1"></i> Excel Download</a>
+                                    <a href="{{route('enquiry.channel_partner_form.excel.get')}}" download type="button" class="btn btn-info add-btn" id="create-btn"><i class="ri-file-excel-fill align-bottom me-1"></i> Excel Download</a>
                                 </div>
                                 <div class="col-sm">
-                                    @include('admin.includes.search_list', ['link'=>route('enquiry.free_ad_form.paginate.get'), 'search'=>$search])
+                                    @include('admin.includes.search_list', ['link'=>route('enquiry.channel_partner_form.paginate.get'), 'search'=>$search])
                                 </div>
                             </div>
                             <div class="table-responsive table-card mt-3 mb-1">
@@ -60,7 +60,7 @@
 
                                                     @can('delete enquiries')
                                                     <div class="remove">
-                                                        <button class="btn btn-sm btn-danger remove-item-btn" data-link="{{route('enquiry.free_ad_form.delete.get', $item->id)}}">Delete</button>
+                                                        <button class="btn btn-sm btn-danger remove-item-btn" data-link="{{route('enquiry.channel_partner_form.delete.get', $item->id)}}">Delete</button>
                                                     </div>
                                                     @endcan
                                                 </div>

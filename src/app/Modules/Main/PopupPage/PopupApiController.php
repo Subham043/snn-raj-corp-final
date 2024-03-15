@@ -62,7 +62,7 @@ class PopupApiController extends Controller
             $uuid = (new DecryptService)->encryptId($data->id);
             return response()->json(["uuid" => $uuid, "link" => route('popup_api.verifyOtp', $uuid)], 201);
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return response()->json(["message" => "Something went wrong. Please try again"], 400);
         }
 

@@ -63,25 +63,75 @@ class ParamantraService
         }
     }
 
-    public function free_ad_form_create(string $name, string $email, string $phone, string $source, string $projectId): bool
+    public function free_ad_form_create(string $name, string $email, string $phone, string $source, string $campaign, string $project): bool|string
     {
-        try {
-            $response = Http::asForm()->post('https://app.sell.do/api/leads/create?sell_do[form][lead][name]='.$name.'&sell_do[form][lead][email]='.$email.'&sell_do[form][lead][phone]='.$phone.'&sell_do[form][lead][source]='.$source.'&sell_do[campaign][srd]=64a7bd5c0ad1ff18a297393b&sell_do[form][lead][project_id]='.$projectId.'&api_key=26c5b0ac69821ba28d6293355d641ec9');
-            $data = json_decode($response->body());
-            return true;
-        } catch (\Throwable $th) {
+        $data = $this->input;
+        $data['f_name'] = $name;
+        $data['l_name'] = '';
+        $data['email'] = $email;
+        $data['phonefax'] = $phone;
+        $data['channel_id'] = 'Walk-In';
+        $data['subject'] = 'Lead from Walk-In';
+        $data['project'] = $project;
+        $data['alert_client'] = 0;
+        $data['alert_rep'] = 0;
+        $data['USOURCE']= $source;
+        $data['utm_campaign'] = $campaign;
+        $data['utm_ad_name'] ='Free Ad Form';
+        $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->url);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-API-KEY: $this->api_key ","ACTION-ON: $this->app_name"));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 300);
+            curl_setopt($ch, CURLOPT_USERPWD, $this->api_key );
+            $data_resp = curl_exec($ch);
+            $err = curl_error($ch);
+            curl_close($ch);
+        if ($err) {
             return false;
+        } else {
+            $resp = json_decode($data_resp)[0];
+            if($resp->message == 'contact_number_added'){
+                return "Record created successfully.";
+            }
+            return "Record already exists.";
         }
     }
 
-    public function campaign_form_create(string $name, string $email, string $phone, string $source, string $projectId, string $executive_name): bool
+    public function campaign_form_create(string $name, string $email, string $phone, string $source, string $project, string $executive_name): bool|string
     {
-        try {
-            $response = Http::asForm()->post('https://app.sell.do/api/leads/create?sell_do[form][lead][name]='.$name.'&sell_do[form][lead][email]='.$email.'&sell_do[form][lead][phone]='.$phone.'&sell_do[form][lead][source]='.$source.'&sell_do[campaign][srd]=64a7c07b0ad1ff19f1e846f4&sell_do[form][lead][project_id]='.$projectId.'&sell_do[form][lead][sales]='.$executive_name.'&api_key=26c5b0ac69821ba28d6293355d641ec9');
-            $data = json_decode($response->body());
-            return true;
-        } catch (\Throwable $th) {
+        $data = $this->input;
+        $data['f_name'] = $name;
+        $data['l_name'] = '';
+        $data['email'] = $email;
+        $data['phonefax'] = $phone;
+        $data['channel_id'] = 'Walk-In';
+        $data['subject'] = 'Lead from Site-Enquiry-Form';
+        $data['project'] = $project;
+        $data['alert_client'] = 0;
+        $data['alert_rep'] = 0;
+        $data['rep_id']= $executive_name;
+        $data['USOURCE']= $source;
+        $data['utm_ad_name'] ='Site Enquiry Form';
+        $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->url);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-API-KEY: $this->api_key ","ACTION-ON: $this->app_name"));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 300);
+            curl_setopt($ch, CURLOPT_USERPWD, $this->api_key );
+            $data_resp = curl_exec($ch);
+            $err = curl_error($ch);
+            curl_close($ch);
+        if ($err) {
             return false;
+        } else {
+            $resp = json_decode($data_resp)[0];
+            if($resp->message == 'contact_number_added'){
+                return "Record created successfully.";
+            }
+            return "Record already exists.";
         }
     }
 

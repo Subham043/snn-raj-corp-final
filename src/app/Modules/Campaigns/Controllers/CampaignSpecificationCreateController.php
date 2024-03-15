@@ -35,7 +35,7 @@ class CampaignSpecificationCreateController extends Controller
             $this->campaignSpecificationService->create($request, $campaign_id);
             return redirect()->intended(route('campaign_specification_create.get', $campaign_id))->with('success_status', 'Campaign Specification created successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_specification_create.get', $campaign_id))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

@@ -35,7 +35,7 @@ class CampaignTableCreateController extends Controller
             $this->campaignTableService->create($request, $campaign_id);
             return redirect()->intended(route('campaign_table_create.get', $campaign_id))->with('success_status', 'Campaign Table Data created successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_table_create.get', $campaign_id))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

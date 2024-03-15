@@ -22,7 +22,7 @@ class CampaignConnectivityDeleteController extends Controller
             $this->campaignConnectivityService->delete($data);
             return redirect()->intended(route('campaign_connectivity_list.get', $campaign_id))->with('success_status', 'Campaign Connectivity deleted successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_connectivity_list.get', $campaign_id))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
     }

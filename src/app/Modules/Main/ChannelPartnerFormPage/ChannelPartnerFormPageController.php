@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Modules\Main\FreeAdFormPage;
+namespace App\Modules\Main\ChannelPartnerFormPage;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\ParamantraService;
 use App\Http\Services\RateLimitService;
-use App\Modules\Enquiry\FreeAdForm\Requests\FreeAdFormRequest;
-use App\Modules\Enquiry\FreeAdForm\Services\FreeAdFormService;
+use App\Modules\Enquiry\ChannelPartnerForm\Requests\ChannelPartnerFormRequest;
+use App\Modules\Enquiry\ChannelPartnerForm\Services\ChannelPartnerFormService;
 use App\Modules\Project\Projects\Services\ProjectService;
 
-class FreeAdFormPageController extends Controller
+class ChannelPartnerFormPageController extends Controller
 {
     private $freeAdFormService;
     private $projectService;
 
     public function __construct(
-        FreeAdFormService $freeAdFormService,
+        ChannelPartnerFormService $freeAdFormService,
         ProjectService $projectService,
     )
     {
@@ -25,10 +25,10 @@ class FreeAdFormPageController extends Controller
 
     public function get(){
         $projects = $this->projectService->main_all();
-        return view('main.pages.free_ad_form', compact('projects'));
+        return view('main.pages.channel_partner_form', compact('projects'));
     }
 
-    public function post(FreeAdFormRequest $request){
+    public function post(ChannelPartnerFormRequest $request){
         $project = $this->projectService->getById($request->project);
         try {
             //code...
@@ -36,13 +36,15 @@ class FreeAdFormPageController extends Controller
                 [
                     ...$request->except('project'),
                     'ip_address' => $request->ip(),
+                    'executive_name' => 'Geeta',
                     'project' => $project->projectId
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
-            $response = (new ParamantraService)->campaign_form_create($request->name, $request->email, $request->phone, $request->source, $project->name, $request->executive_name);
+            $response = (new ParamantraService)->campaign_form_create($request->name, $request->email, $request->phone, $request->source, $project->name, 'Geeta');
             return response()->json(["message" => $response], 201);
         } catch (\Throwable $th) {
+            // throw $th;
             return response()->json(["message" => "Something went wrong. Please try again"], 400);
         }
 

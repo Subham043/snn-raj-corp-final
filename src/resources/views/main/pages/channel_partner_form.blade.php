@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SnnRajCorp - Free Ad Form</title>
+    <title>SnnRajCorp - Campaign Form</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/logo.png') }}">
     <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin/css/iofrm-style.css')}}" rel="stylesheet" type="text/css" />
@@ -44,6 +44,7 @@
                 height: auto;
             }
         }
+
         select.form-control, select.form-control:focus{
             background: white;
             margin-bottom: 15px;
@@ -67,14 +68,14 @@
                 <div class="form-content">
                     <div class="form-items">
                         <div class="website-logo-inside">
-                            <h3>Free Ad Form.</h3>
+                            <h3>Channel Partner Form.</h3>
                         </div>
                         <form id="contactForm">
                             <div>
                                 <input class="form-control" type="text" name="name" id="name" placeholder="Name" required>
                             </div>
                             <div>
-                                <input class="form-control" type="email" name="email" id="email" placeholder="Email" required>
+                                <input class="form-control" type="email" name="email" id="email" placeholder="Email">
                             </div>
                             <div>
                                 <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone" required>
@@ -88,27 +89,10 @@
                                 </select>
                             </div>
                             <div>
-                                <select class="form-control" name="source" id="source" required>
-                                    <option value="">Source</option>
-                                    <option value="Free Ads">Free Ads</option>
-                                </select>
-                            </div>
-                            <div>
-                                <select class="form-control" name="campaign" id="campaign" required>
-                                    <option value="">Campaign</option>
-                                    <option value="OLX">OLX</option>
-                                    <option value="99 Acres">99 Acres</option>
-                                    <option value="MagicBricks">MagicBricks</option>
-                                    <option value="Facebook">Facebook</option>
-                                    <option value="Google">Google</option>
-                                    <option value="Housing">Housing</option>
-                                    <option value="CommonFloor">CommonFloor</option>
-                                    <option value="OLX">OLX</option>
-                                    <option value="Nobroker">Nobroker</option>
-                                </select>
+                                <input class="form-control" type="text" name="source" id="source" placeholder="Source" required>
                             </div>
                             <div class="form-button">
-                                <button aria-label="Submit Form" id="submitBtn" type="submit" class="ibtn">Submit</button>
+                                <button id="submitBtn" type="submit" class="ibtn">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -140,7 +124,7 @@
         });
     }
 
-    // initialize the validation library
+      // initialize the validation library
     const validation = new JustValidate('#contactForm', {
           errorFieldCssClass: 'is-invalid',
     });
@@ -160,6 +144,10 @@
       ])
       .addField('#email', [
         {
+          rule: 'required',
+          errorMessage: 'Email is required',
+        },
+        {
             rule: 'email',
             errorMessage: 'Email is invalid!',
         },
@@ -176,12 +164,6 @@
           errorMessage: 'Source is required',
         },
       ])
-      .addField('#campaign', [
-        {
-          rule: 'required',
-          errorMessage: 'Campaign is required',
-        },
-      ])
       .onSuccess(async (event) => {
         var submitBtn = document.getElementById('submitBtn')
         submitBtn.value = 'Submitting ...'
@@ -193,27 +175,23 @@
             formData.append('phone',document.getElementById('phone').value)
             formData.append('project',document.getElementById('project').value)
             formData.append('source',document.getElementById('source').value)
-            formData.append('campaign',document.getElementById('campaign').value)
 
-            const response = await axios.post('{{route('campaign_form.post')}}', formData)
+            const response = await axios.post('{{route('channel_partner_form.post')}}', formData)
             event.target.reset();
             successToast(response.data.message)
 
         }catch (error){
             if(error?.response?.data?.errors?.name){
-                validation.showErrors({'#name': error?.response?.data?.errors?.name[0]})
+                validationVerify.showErrors({'#name': error?.response?.data?.errors?.name[0]})
             }
             if(error?.response?.data?.errors?.email){
-                validation.showErrors({'#email': error?.response?.data?.errors?.email[0]})
+                validationVerify.showErrors({'#email': error?.response?.data?.errors?.email[0]})
             }
             if(error?.response?.data?.errors?.phone){
-                validation.showErrors({'#phone': error?.response?.data?.errors?.phone[0]})
+                validationVerify.showErrors({'#phone': error?.response?.data?.errors?.phone[0]})
             }
             if(error?.response?.data?.errors?.project){
                 validation.showErrors({'#project': error?.response?.data?.errors?.project[0]})
-            }
-            if(error?.response?.data?.errors?.campaign){
-                validation.showErrors({'#campaign': error?.response?.data?.errors?.campaign[0]})
             }
             if(error?.response?.data?.errors?.source){
                 validation.showErrors({'#source': error?.response?.data?.errors?.source[0]})
@@ -226,6 +204,7 @@
             submitBtn.disabled = false;
         }
       });
+
 
 </script>
 </html>

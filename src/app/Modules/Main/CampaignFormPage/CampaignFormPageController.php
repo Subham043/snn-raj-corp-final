@@ -3,8 +3,8 @@
 namespace App\Modules\Main\CampaignFormPage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\ParamantraService;
 use App\Http\Services\RateLimitService;
-use App\Http\Services\SelldoService;
 use App\Modules\Enquiry\CampaignForm\Requests\CampaignFormRequest;
 use App\Modules\Enquiry\CampaignForm\Services\CampaignFormService;
 use App\Modules\Project\Projects\Services\ProjectService;
@@ -36,13 +36,14 @@ class CampaignFormPageController extends Controller
                 [
                     ...$request->except('project'),
                     'ip_address' => $request->ip(),
-                    'project' => $project->name
+                    'project' => $project->name,
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
-            // (new SelldoService)->free_ad_form_create($request->name, $request->email, $request->phone, $request->source, $project->projectId);
-            return response()->json(["message" => "Free Ad Enquiry recieved successfully."], 201);
+            $response = (new ParamantraService)->free_ad_form_create($request->name, $request->email, $request->phone, $request->source, $request->campaign, $project->name);
+            return response()->json(["message" => $response], 201);
         } catch (\Throwable $th) {
+            // throw $th;
             return response()->json(["message" => "Something went wrong. Please try again"], 400);
         }
 

@@ -33,7 +33,7 @@ class CampaignConnectivityUpdateController extends Controller
             $this->campaignConnectivityService->update($request, $data);
             return redirect()->intended(route('campaign_connectivity_update.get', [$campaign_id, $id]))->with('success_status', 'Campaign Connectivity updated successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_connectivity_update.get', [$campaign_id, $id]))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

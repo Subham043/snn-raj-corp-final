@@ -39,7 +39,7 @@ class CampaignLocationController extends Controller
             $this->campaignService->updateHeading($request->only('location_heading'), $campaign);
             return redirect()->intended(route('campaign_location.get', $campaign_id))->with('success_status', 'Campaign Location Details saved successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_location.get', $campaign_id))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 

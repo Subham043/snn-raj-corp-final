@@ -59,7 +59,7 @@
                 <div class="info-holder">
                     <a href="{{route('home_page.get')}}">
                         <div class="logo">
-                            <img class="logo-size lazyload" data-src="{{ asset('admin/images/logo.png') }}" alt="">
+                            <img class="logo-size" src="{{ asset('admin/images/logo.png') }}" alt="">
                         </div>
                     </a>
                 </div>
@@ -68,9 +68,9 @@
                 <div class="form-content">
                     <div class="form-items">
                         <div class="website-logo-inside">
-                            <h3>Campaign Form.</h3>
+                            <h3>Site Enquiry Form.</h3>
                         </div>
-                        <form id="verifyForm">
+                        <form id="contactForm">
                             <div>
                                 <input class="form-control" type="text" name="name" id="name" placeholder="Name" required>
                             </div>
@@ -80,11 +80,6 @@
                             <div>
                                 <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone" required>
                             </div>
-                            <div class="form-button">
-                                <button id="submitBtnVerify" type="submit" class="ibtn">Verify</button>
-                            </div>
-                        </form>
-                        <form id="contactForm" style="display: none">
                             <div>
                                 <select class="form-control" name="project" id="project" required>
                                     <option value="">Project</option>
@@ -132,17 +127,12 @@
         });
     }
 
-    let nameValue = null;
-    let emailValue = null;
-    let phoneValue = null;
-
-
-    // initialize the validation library
-    const validationVerify = new JustValidate('#verifyForm', {
+      // initialize the validation library
+    const validation = new JustValidate('#contactForm', {
           errorFieldCssClass: 'is-invalid',
     });
     // apply rules to form fields
-    validationVerify
+    validation
       .addField('#name', [
         {
           rule: 'required',
@@ -157,57 +147,14 @@
       ])
       .addField('#email', [
         {
+          rule: 'required',
+          errorMessage: 'Email is required',
+        },
+        {
             rule: 'email',
             errorMessage: 'Email is invalid!',
         },
       ])
-      .onSuccess(async (event) => {
-        var submitBtn = document.getElementById('submitBtnVerify')
-        submitBtn.value = 'Verifying ...'
-        submitBtn.disabled = true;
-        try {
-            var formData = new FormData();
-            formData.append('name',document.getElementById('name').value)
-            formData.append('email',document.getElementById('email').value)
-            formData.append('phone',document.getElementById('phone').value)
-
-            const response = await axios.post('{{route('free_ad_form.verify')}}', formData)
-            successToast(response.data.message)
-            event.target.reset();
-
-        }catch (error){
-            if(error?.response?.data?.errors?.name){
-                validationVerify.showErrors({'#name': error?.response?.data?.errors?.name[0]})
-            }
-            if(error?.response?.data?.errors?.email){
-                validationVerify.showErrors({'#email': error?.response?.data?.errors?.email[0]})
-            }
-            if(error?.response?.data?.errors?.phone){
-                validationVerify.showErrors({'#phone': error?.response?.data?.errors?.phone[0]})
-            }
-            if(error?.response?.data?.message){
-                errorToast(error?.response?.data?.message)
-                nameValue = document.getElementById('name').value;
-                if(document.getElementById('email').value.length>0){
-                    emailValue = document.getElementById('email').value;
-                }
-                phoneValue = document.getElementById('phone').value;
-                event.target.style.display = "none";
-                event.target.reset();
-                document.getElementById('contactForm').style.display = "block";
-            }
-        }finally{
-            submitBtn.value =  `Verify`
-            submitBtn.disabled = false;
-        }
-      });
-
-      // initialize the validation library
-    const validation = new JustValidate('#contactForm', {
-          errorFieldCssClass: 'is-invalid',
-    });
-    // apply rules to form fields
-    validation
       .addField('#project', [
         {
           rule: 'required',
@@ -232,23 +179,27 @@
         submitBtn.disabled = true;
         try {
             var formData = new FormData();
-            formData.append('name',nameValue)
-            formData.append('email',emailValue)
-            formData.append('phone',phoneValue)
+            formData.append('name',document.getElementById('name').value)
+            formData.append('email',document.getElementById('email').value)
+            formData.append('phone',document.getElementById('phone').value)
             formData.append('project',document.getElementById('project').value)
             formData.append('source',document.getElementById('source').value)
             formData.append('executive_name',document.getElementById('executive_name').value)
 
             const response = await axios.post('{{route('free_ad_form.post')}}', formData)
             event.target.reset();
-            nameValue = null;
-            emailValue = null;
-            phoneValue = null;
-            event.target.style.display = "none";
-            document.getElementById('verifyForm').style.display = "block";
             successToast(response.data.message)
 
         }catch (error){
+            if(error?.response?.data?.errors?.name){
+                validationVerify.showErrors({'#name': error?.response?.data?.errors?.name[0]})
+            }
+            if(error?.response?.data?.errors?.email){
+                validationVerify.showErrors({'#email': error?.response?.data?.errors?.email[0]})
+            }
+            if(error?.response?.data?.errors?.phone){
+                validationVerify.showErrors({'#phone': error?.response?.data?.errors?.phone[0]})
+            }
             if(error?.response?.data?.errors?.project){
                 validation.showErrors({'#project': error?.response?.data?.errors?.project[0]})
             }

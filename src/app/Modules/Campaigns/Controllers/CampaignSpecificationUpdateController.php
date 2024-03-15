@@ -34,7 +34,7 @@ class CampaignSpecificationUpdateController extends Controller
             $this->campaignSpecificationService->update($request, $data);
             return redirect()->intended(route('campaign_specification_update.get', [$campaign_id, $id]))->with('success_status', 'Campaign Specification updated successfully.');
         } catch (\Throwable $th) {
-            throw $th;
+            // throw $th;
             return redirect(route('campaign_specification_update.get', [$campaign_id, $id]))->with('error_status', 'Oops! Something went wrong. Please try again!');
         }
 
