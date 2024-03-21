@@ -38,8 +38,8 @@
                                             <th class="sort" data-sort="customer_name">Phone</th>
                                             <th class="sort" data-sort="customer_name">IP Address</th>
                                             <th class="sort" data-sort="customer_name">Project</th>
-                                            <th class="sort" data-sort="customer_name">Source</th>
-                                            <th class="sort" data-sort="customer_name">Executive</th>
+                                            <th class="sort" data-sort="customer_name">Notes</th>
+                                            <th class="sort" data-sort="customer_name">Channel Partner Phone</th>
                                             <th class="sort" data-sort="date">Created On</th>
                                             <th class="sort" data-sort="action">Action</th>
                                             </tr>
@@ -52,8 +52,8 @@
                                             <td class="customer_name">{{$item->phone}}</td>
                                             <td class="customer_name">{{$item->ip_address}}</td>
                                             <td class="customer_name">{{$item->project}}</td>
-                                            <td class="customer_name">{{$item->source}}</td>
-                                            <td class="customer_name">{{$item->executive_name}}</td>
+                                            <td class="customer_name">{{$item->notes}}</td>
+                                            <td class="customer_name">{{$item->channel_partner_phone}}</td>
                                             <td class="date">{{$item->created_at->diffForHumans()}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
