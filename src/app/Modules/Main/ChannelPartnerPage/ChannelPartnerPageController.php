@@ -3,6 +3,7 @@
 namespace App\Modules\Main\ChannelPartnerPage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\ParamantraService;
 use App\Http\Services\RateLimitService;
 use App\Modules\Enquiry\EmpanelmentForm\Jobs\SendEmpanelmentFormMailJob;
 use App\Modules\Enquiry\EmpanelmentForm\Requests\EmpanelmentFormRequest;
@@ -78,7 +79,8 @@ class ChannelPartnerPageController extends Controller
             }
             (new RateLimitService($request))->clearRateLimit();
             dispatch(new SendEmpanelmentFormMailJob($data));
-            return response()->json(["message" => "Empanelment Enquiry recieved successfully."], 201);
+            $response = (new ParamantraService)->empanelment_form_create($request->channel_partner, $request->email, $request->phone, $request->address);
+            return response()->json(["message" => $response], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);
         }

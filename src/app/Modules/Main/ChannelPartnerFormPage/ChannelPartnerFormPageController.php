@@ -36,15 +36,14 @@ class ChannelPartnerFormPageController extends Controller
                 [
                     ...$request->except('project'),
                     'ip_address' => $request->ip(),
-                    'executive_name' => 'Geeta',
-                    'project' => $project->projectId
+                    'project' => $project->name
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
-            $response = (new ParamantraService)->campaign_form_create($request->name, $request->email, $request->phone, $request->source, $project->name, 'Geeta');
+            $response = (new ParamantraService)->channel_partner_form_create($request->name, $request->email, $request->phone, $project->name, $request->notes, $request->channel_partner_phone);
             return response()->json(["message" => $response], 201);
         } catch (\Throwable $th) {
-            // throw $th;
+            throw $th;
             return response()->json(["message" => "Something went wrong. Please try again"], 400);
         }
 

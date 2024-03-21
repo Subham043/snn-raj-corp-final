@@ -21,8 +21,8 @@ class ChannelPartnerFormExport implements FromCollection,WithHeadings,WithMappin
             'phone',
             'IP address',
             'project',
-            'source',
-            'executive',
+            'notes',
+            'channel partner phone',
             'created_at',
         ];
     }
@@ -35,8 +35,8 @@ class ChannelPartnerFormExport implements FromCollection,WithHeadings,WithMappin
             $data->phone,
             $data->ip_address,
             $data->project,
-            $data->source,
-            $data->executive_name,
+            $data->notes,
+            $data->channel_partner_phone,
             $data->created_at,
          ];
     }

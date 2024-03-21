@@ -23,8 +23,8 @@ class ChannelPartnerForm extends Model
         'email',
         'phone',
         'project',
-        'source',
-        'executive_name',
+        'notes',
+        'channel_partner_phone',
         'ip_address',
     ];
 

@@ -89,7 +89,10 @@
                                 </select>
                             </div>
                             <div>
-                                <input class="form-control" type="text" name="source" id="source" placeholder="Source" required>
+                                <input class="form-control" type="text" name="channel_partner_phone" id="channel_partner_phone" placeholder="Channel Partner Regd. Phone" required>
+                            </div>
+                            <div>
+                                <textarea name="notes" id="notes" cols="30" rows="10" placeholder="Notes" class="form-control" required></textarea>
                             </div>
                             <div class="form-button">
                                 <button id="submitBtn" type="submit" class="ibtn">Submit</button>
@@ -158,10 +161,16 @@
           errorMessage: 'Project is required',
         },
       ])
-      .addField('#source', [
+      .addField('#notes', [
         {
           rule: 'required',
-          errorMessage: 'Source is required',
+          errorMessage: 'Notes is required',
+        },
+      ])
+      .addField('#channel_partner_phone', [
+        {
+          rule: 'required',
+          errorMessage: 'Channel Partner Regd Phone is required',
         },
       ])
       .onSuccess(async (event) => {
@@ -174,7 +183,8 @@
             formData.append('email',document.getElementById('email').value)
             formData.append('phone',document.getElementById('phone').value)
             formData.append('project',document.getElementById('project').value)
-            formData.append('source',document.getElementById('source').value)
+            formData.append('notes',document.getElementById('notes').value)
+            formData.append('channel_partner_phone',document.getElementById('channel_partner_phone').value)
 
             const response = await axios.post('{{route('channel_partner_form.post')}}', formData)
             event.target.reset();
@@ -193,8 +203,11 @@
             if(error?.response?.data?.errors?.project){
                 validation.showErrors({'#project': error?.response?.data?.errors?.project[0]})
             }
-            if(error?.response?.data?.errors?.source){
-                validation.showErrors({'#source': error?.response?.data?.errors?.source[0]})
+            if(error?.response?.data?.errors?.channel_partner_phone){
+                validation.showErrors({'#channel_partner_phone': error?.response?.data?.errors?.channel_partner_phone[0]})
+            }
+            if(error?.response?.data?.errors?.notes){
+                validation.showErrors({'#notes': error?.response?.data?.errors?.notes[0]})
             }
             if(error?.response?.data?.message){
                 errorToast(error?.response?.data?.message)

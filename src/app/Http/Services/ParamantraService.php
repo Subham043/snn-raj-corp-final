@@ -63,6 +63,66 @@ class ParamantraService
         }
     }
 
+    public function empanelment_form_create(string $name, string $email, string $phone, string $address):string|bool
+    {
+        $data = array (
+            'company_name' => $name,
+            'email' => $email,
+            'contact_num' => $phone,
+            'address' => $address,
+        );
+        $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "https://cloud.paramantra.com/paramantra/api/channel_partner/createChannelPartner/format/json");
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-API-KEY: $this->api_key ","ACTION-ON: $this->app_name"));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 300);
+            curl_setopt($ch, CURLOPT_USERPWD, $this->api_key );
+            $data_resp = curl_exec($ch);
+            $err = curl_error($ch);
+            curl_close($ch);
+        if ($err) {
+            return false;
+        } else {
+            $resp = json_decode($data_resp);
+            if($resp->response){
+                return $resp->response->message;
+            }
+            return "Record already exists.";
+        }
+    }
+
+    public function channel_partner_form_create(string $name, string $email, string $phone, string $project, string $notes, string $channel_partner_phone):string|bool
+    {
+        $data = array (
+            'f_name' => $name,
+            'email' => $email,
+            'phonefax' => $phone,
+            'projectname' => $project,
+            'notes' => $notes,
+            'channel_partner' => $channel_partner_phone,
+        );
+        $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "http://cloud.paramantra.com/paramantra/api/channel_partner/gneLead/format/json");
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-API-KEY: $this->api_key ","ACTION-ON: $this->app_name"));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 300);
+            curl_setopt($ch, CURLOPT_USERPWD, $this->api_key );
+            $data_resp = curl_exec($ch);
+            $err = curl_error($ch);
+            curl_close($ch);
+        if ($err) {
+            return false;
+        } else {
+            $resp = json_decode($data_resp);
+            if($resp->response){
+                return $resp->response->message;
+            }
+            return "Record already exists.";
+        }
+    }
+
     public function free_ad_form_create(string $name, string $email, string $phone, string $source, string $campaign, string $project): bool|string
     {
         $data = $this->input;

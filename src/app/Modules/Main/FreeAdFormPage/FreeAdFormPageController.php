@@ -36,7 +36,7 @@ class FreeAdFormPageController extends Controller
                 [
                     ...$request->except('project'),
                     'ip_address' => $request->ip(),
-                    'project' => $project->projectId
+                    'project' => $project->name
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
