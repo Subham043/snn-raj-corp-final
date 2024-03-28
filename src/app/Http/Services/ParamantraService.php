@@ -101,6 +101,7 @@ class ParamantraService
             'projectname' => $project,
             'notes' => $notes,
             'channel_partner' => $channel_partner_phone,
+            'channel_id' => 'Channel Partner',
         );
         $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "http://cloud.paramantra.com/paramantra/api/channel_partner/gneLead/format/json");
