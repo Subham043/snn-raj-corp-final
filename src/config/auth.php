@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'channel_partner' => [
+            'driver' => 'session',
+            'provider' => 'empanelment',
+        ],
     ],
 
     /*
@@ -63,6 +67,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Modules\Authentication\Models\User::class,
+        ],
+
+        'empanelment' => [
+            'driver' => 'eloquent',
+            'model' => App\Modules\Enquiry\EmpanelmentForm\Models\EmpanelmentForm::class,
         ],
 
         // 'users' => [

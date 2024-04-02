@@ -59,6 +59,11 @@ class EmpanelmentFormService
         return $user->delete();
     }
 
+    public function getByPhone(string $phone): EmpanelmentForm|null
+    {
+        return EmpanelmentForm::where('phone',$phone)->firstOrFail();
+    }
+
 }
 
 class CommonFilter implements Filter

@@ -29,6 +29,17 @@ class ChannelPartnerFormService
                 ->appends(request()->query());
     }
 
+    public function paginatePartner(Int $total = 10, string $phone): LengthAwarePaginator
+    {
+        $query = ChannelPartnerForm::where('channel_partner_phone', $phone)->latest();
+        return QueryBuilder::for($query)
+                ->allowedFilters([
+                    AllowedFilter::custom('search', new CommonFilter),
+                ])
+                ->paginate($total)
+                ->appends(request()->query());
+    }
+
     public function getById(Int $id): ChannelPartnerForm|null
     {
         return ChannelPartnerForm::findOrFail($id);

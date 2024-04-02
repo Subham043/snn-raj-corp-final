@@ -284,7 +284,7 @@
             }
           });
 
-          // initialize the validation library
+        // initialize the validation library
         const validationOtp = new JustValidate('#otpForm', {
               errorFieldCssClass: 'is-invalid',
         });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AuthenticateChannelPartner;
 use App\Modules\Campaigns\Controllers\Main\CampaignEnquiryMainController;
 use App\Modules\Campaigns\Controllers\Main\CampaignViewMainController;
 use App\Modules\Main\AboutPage\AboutPageController;
@@ -50,6 +51,17 @@ Route::get('/site-enquiry-form', [FreeAdFormPageController::class, 'get', 'as' =
 Route::post('/site-enquiry-form-post', [FreeAdFormPageController::class, 'post', 'as' => 'free_ad_form.post'])->name('free_ad_form.post');
 Route::get('/channel-partner-form', [ChannelPartnerFormPageController::class, 'get', 'as' => 'channel_partner_form.get'])->name('channel_partner_form.get');
 Route::post('/channel-partner-form-post', [ChannelPartnerFormPageController::class, 'post', 'as' => 'channel_partner_form.post'])->name('channel_partner_form.post');
+Route::middleware(['guest:channel_partner'])->group(function () {
+    Route::get('/channel-partner-form-login', [ChannelPartnerFormPageController::class, 'login', 'as' => 'channel_partner_form.login'])->name('channel_partner_form.login');
+    Route::post('/channel-partner-form-login-post', [ChannelPartnerFormPageController::class, 'loginPost', 'as' => 'channel_partner_form.login_post'])->name('channel_partner_form.login_post');
+});
+Route::post('/channel-partner-form-verify', [ChannelPartnerFormPageController::class, 'verifyOtp', 'as' => 'channel_partner_form.verify_post'])->name('channel_partner_form.verify_post');
+Route::post('/channel-partner-form-resend-otp', [ChannelPartnerFormPageController::class, 'resendOtp', 'as' => 'channel_partner_form.resend_post'])->name('channel_partner_form.resend_post');
+Route::middleware([AuthenticateChannelPartner::class])->prefix('/channel-partner-form')->group(function () {
+    Route::get('/data', [ChannelPartnerFormPageController::class, 'data', 'as' => 'channel_partner_form.data'])->name('channel_partner_form.data');
+    Route::get('/excel', [ChannelPartnerFormPageController::class, 'excel', 'as' => 'channel_partner_form.excel'])->name('channel_partner_form.excel');
+    Route::get('/logout', [ChannelPartnerFormPageController::class, 'logout', 'as' => 'channel_partner_form.logout'])->name('channel_partner_form.logout');
+});
 Route::post('/contact-us-post', [ContactPageController::class, 'post', 'as' => 'contact_page.post'])->name('contact_page.post');
 Route::post('/popup-us-post', [PopupPageController::class, 'post', 'as' => 'popup_page.post'])->name('popup_page.post');
 Route::post('/career-post', [CareerPageController::class, 'post', 'as' => 'career_page.post'])->name('career_page.post');

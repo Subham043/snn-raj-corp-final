@@ -43,6 +43,7 @@ return new class extends Migration
             $table->string('seal_image', 500)->nullable();
             $table->string('cheque_image', 500)->nullable();
             $table->string('rera_image', 500)->nullable();
+            $table->string('otp', 500)->nullable();
             $table->timestamps();
             $table->index(['id', 'created_at']);
         });

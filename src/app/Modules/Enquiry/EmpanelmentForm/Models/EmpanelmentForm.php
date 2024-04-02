@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class EmpanelmentForm extends Model
+class EmpanelmentForm extends Authenticatable
 {
     use HasFactory, LogsActivity;
 

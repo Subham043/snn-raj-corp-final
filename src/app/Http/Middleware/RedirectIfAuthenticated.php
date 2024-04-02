@@ -21,6 +21,9 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                if ($guard == 'channel_partner') {
+                    return redirect(route('channel_partner_form.data'));
+                }
                 return redirect(RouteServiceProvider::HOME);
             }
         }
