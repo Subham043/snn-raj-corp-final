@@ -185,6 +185,10 @@ use App\Modules\Project\PlanCategory\Controllers\PlanCategoryCreateController;
 use App\Modules\Project\PlanCategory\Controllers\PlanCategoryDeleteController;
 use App\Modules\Project\PlanCategory\Controllers\PlanCategoryPaginateController;
 use App\Modules\Project\PlanCategory\Controllers\PlanCategoryUpdateController;
+use App\Modules\SiteEnquiryExecutive\Controllers\SiteEnquiryExecutiveCreateController;
+use App\Modules\SiteEnquiryExecutive\Controllers\SiteEnquiryExecutiveDeleteController;
+use App\Modules\SiteEnquiryExecutive\Controllers\SiteEnquiryExecutivePaginateController;
+use App\Modules\SiteEnquiryExecutive\Controllers\SiteEnquiryExecutiveUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -554,6 +558,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [UserUpdateController::class, 'get', 'as' => 'user.update.get'])->name('user.update.get');
         Route::post('/update/{id}', [UserUpdateController::class, 'post', 'as' => 'user.update.get'])->name('user.update.post');
         Route::get('/delete/{id}', [UserDeleteController::class, 'get', 'as' => 'user.delete.get'])->name('user.delete.get');
+    });
+
+    Route::prefix('/site-enquiry-executive')->group(function () {
+        Route::get('/', [SiteEnquiryExecutivePaginateController::class, 'get', 'as' => 'site_enquiry_executive.paginate.get'])->name('site_enquiry_executive.paginate.get');
+        Route::get('/create', [SiteEnquiryExecutiveCreateController::class, 'get', 'as' => 'site_enquiry_executive.create.get'])->name('site_enquiry_executive.create.get');
+        Route::post('/create', [SiteEnquiryExecutiveCreateController::class, 'post', 'as' => 'site_enquiry_executive.create.get'])->name('site_enquiry_executive.create.post');
+        Route::get('/update/{id}', [SiteEnquiryExecutiveUpdateController::class, 'get', 'as' => 'site_enquiry_executive.update.get'])->name('site_enquiry_executive.update.get');
+        Route::post('/update/{id}', [SiteEnquiryExecutiveUpdateController::class, 'post', 'as' => 'site_enquiry_executive.update.get'])->name('site_enquiry_executive.update.post');
+        Route::get('/delete/{id}', [SiteEnquiryExecutiveDeleteController::class, 'get', 'as' => 'site_enquiry_executive.delete.get'])->name('site_enquiry_executive.delete.get');
     });
 
     Route::prefix('/campaign')->group(function () {
