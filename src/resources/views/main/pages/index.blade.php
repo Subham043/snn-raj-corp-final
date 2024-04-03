@@ -452,7 +452,7 @@
                             </div>
                             <div class="cont">
                                 <h4><a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}">{{$v->name}}</a></h4>
-                                <div class="date"><a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}"><span class="ti-time"></span>&nbsp;&nbsp;<span>{{$v->created_at->diffForHumans()}}</span></a> </div>
+                                <div class="date"><a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}"><span class="ti-time"></span>&nbsp;&nbsp;<span>{{$v->created_at->format('M d, Y h:i A')}}</span></a> </div>
                             </div>
                         </div>
                     </div>

@@ -84,7 +84,7 @@
                                             <td class="customer_name">{{$item->msme ? 'Yes' : 'No'}}</td>
                                             <td class="customer_name">{{$item->esi ? 'Yes' : 'No'}}</td>
                                             <td class="customer_name">{{$item->epf ? 'Yes' : 'No'}}</td>
-                                            <td class="date">{{$item->created_at->diffForHumans()}}</td>
+                                            <td class="date">{{$item->created_at->format('M d, Y h:i A')}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
 

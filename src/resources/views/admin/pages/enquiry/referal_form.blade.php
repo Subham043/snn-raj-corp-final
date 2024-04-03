@@ -60,7 +60,7 @@
                                             <td class="customer_name">{{$item->country_code_2}}{{$item->referal_phone}}</td>
                                             <td class="customer_name">{{$item->referal_project->name}}</td>
                                             <td class="customer_name">{{$item->referal_relation}}</td>
-                                            <td class="date">{{$item->created_at->diffForHumans()}}</td>
+                                            <td class="date">{{$item->created_at->format('M d, Y h:i A')}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
 

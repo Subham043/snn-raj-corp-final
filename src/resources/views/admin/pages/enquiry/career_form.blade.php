@@ -52,7 +52,7 @@
                                             <td class="customer_name">{{$item->ip_address}}</td>
                                             <td class="customer_name">{{$item->experience}}</td>
                                             <td class="customer_name">{{$item->description}}</td>
-                                            <td class="date">{{$item->created_at->diffForHumans()}}</td>
+                                            <td class="date">{{$item->created_at->format('M d, Y h:i A')}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
 

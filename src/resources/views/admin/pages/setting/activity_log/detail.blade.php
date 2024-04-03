@@ -44,7 +44,7 @@
                                         <div class="col-lg-3 col-sm-6">
                                             <div>
                                                 <p class="mb-2 text-uppercase fw-medium fs-13">Performed :</p>
-                                                <h5 class="fs-15 mb-0 text-capitalize">{{$data->created_at->diffForHumans()}}</h5>
+                                                <h5 class="fs-15 mb-0 text-capitalize">{{$data->created_at->format('M d, Y h:i A')}}</h5>
                                             </div>
                                         </div>
 

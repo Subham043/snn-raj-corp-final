@@ -46,7 +46,7 @@
         <div class="row">
             <div class="col-md-12 " data-animate-effect="fadeInUp">
                 <img data-src="{{$data->image_link}}" class="img-responsive mb-5 lazyload" alt="">
-                <div class="date"> <span class="ti-time"></span> {{$data->created_at->diffForHumans()}}</div>
+                <div class="date"> <span class="ti-time"></span> {{$data->created_at->format('M d, Y h:i A')}}</div>
                 <h2>{!!$data->heading!!}</h2>
                 <div class="desc-ul">
                     {!!$data->description!!}

@@ -48,7 +48,7 @@
                                         <tr>
                                             <td class="customer_name">{{$item->name}}</td>
                                             <td class="customer_name">{{$item->email}}</td>
-                                            <td class="date">{{$item->created_at->diffForHumans()}}</td>
+                                            <td class="date">{{$item->created_at->format('M d, Y h:i A')}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     @can('edit users')

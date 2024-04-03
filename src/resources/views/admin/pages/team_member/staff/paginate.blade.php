@@ -90,7 +90,7 @@
                                             @else
                                             <td class="status"><span class="badge badge-soft-danger text-uppercase">Draft</span></td>
                                             @endif
-                                            <td class="date">{{$item->created_at->diffForHumans()}}</td>
+                                            <td class="date">{{$item->created_at->format('M d, Y h:i A')}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     @can('edit team member staffs')

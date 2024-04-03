@@ -49,7 +49,7 @@
                                             <td class="customer_name">{{ Str::limit($item->meta_title, 20) }}</td>
                                             <td class="customer_name">{{ Str::limit($item->meta_keywords, 20) }}</td>
                                             <td class="customer_name">{{ Str::limit($item->meta_description, 20) }}</td>
-                                            <td class="date">{{$item->updated_at->diffForHumans()}}</td>
+                                            <td class="date">{{$item->updated_at->format('M d, Y h:i A')}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     @can('edit pages seo')

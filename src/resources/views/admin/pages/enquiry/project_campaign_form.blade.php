@@ -52,7 +52,7 @@
                                             <td class="customer_name">{{$item->page_url}}</td>
                                             <td class="customer_name">{{$item->ip_address}}</td>
                                             <td class="customer_name">{{$item->is_verified ? 'Yes' : 'No'}}</td>
-                                            <td class="date">{{$item->created_at->diffForHumans()}}</td>
+                                            <td class="date">{{$item->created_at->format('M d, Y h:i A')}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
 

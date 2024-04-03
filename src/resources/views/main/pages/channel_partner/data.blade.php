@@ -62,7 +62,7 @@
                                             <td class="customer_name">{{$item->project}}</td>
                                             <td class="customer_name">{{$item->notes}}</td>
                                             <td class="customer_name">{{$item->channel_partner_phone}}</td>
-                                            <td class="date">{{$item->created_at->diffForHumans()}}</td>
+                                            <td class="date">{{$item->created_at->format('M d, Y h:i A')}}</td>
                                         </tr>
                                         @endforeach
 
