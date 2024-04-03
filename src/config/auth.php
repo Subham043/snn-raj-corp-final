@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'empanelment',
         ],
+        'site_enquiry' => [
+            'driver' => 'session',
+            'provider' => 'site_enquiry_executive',
+        ],
     ],
 
     /*
@@ -72,6 +76,11 @@ return [
         'empanelment' => [
             'driver' => 'eloquent',
             'model' => App\Modules\Enquiry\EmpanelmentForm\Models\EmpanelmentForm::class,
+        ],
+
+        'site_enquiry_executive' => [
+            'driver' => 'eloquent',
+            'model' => App\Modules\SiteEnquiryExecutive\Models\SiteEnquiryExecutive::class,
         ],
 
         // 'users' => [

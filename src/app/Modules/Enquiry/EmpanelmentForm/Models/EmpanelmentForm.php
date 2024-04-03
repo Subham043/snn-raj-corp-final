@@ -14,6 +14,7 @@ class EmpanelmentForm extends Authenticatable
     use HasFactory, LogsActivity;
 
     protected $table = 'empanelment_forms';
+    protected $guard = 'channel_partner';
 
     /**
      * The attributes that are mass assignable.

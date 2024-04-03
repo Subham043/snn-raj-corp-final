@@ -5,9 +5,14 @@ namespace App\Modules\Main\FreeAdFormPage;
 use App\Http\Controllers\Controller;
 use App\Http\Services\ParamantraService;
 use App\Http\Services\RateLimitService;
+use App\Modules\Enquiry\FreeAdForm\Exports\FreeAdFormExport;
+use App\Modules\Enquiry\FreeAdForm\Requests\FreeAdFormLoginRequest;
 use App\Modules\Enquiry\FreeAdForm\Requests\FreeAdFormRequest;
 use App\Modules\Enquiry\FreeAdForm\Services\FreeAdFormService;
 use App\Modules\Project\Projects\Services\ProjectService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FreeAdFormPageController extends Controller
 {
@@ -46,6 +51,34 @@ class FreeAdFormPageController extends Controller
             return response()->json(["message" => "Something went wrong. Please try again"], 400);
         }
 
+    }
+
+    public function login(){
+        return view('main.pages.site_enquiry.login');
+    }
+
+    public function loginPost(FreeAdFormLoginRequest $request){
+        if (Auth::guard('site_enquiry')->attempt($request->validated())) {
+            (new RateLimitService($request))->clearRateLimit();
+            return redirect(route('free_ad_form.data'))->with('success_status', 'Logged in successfully.');
+        }
+
+        return redirect(route('free_ad_form.login'))->with('error_status', 'Oops! You have entered invalid credentials');
+    }
+
+    public function data(Request $request){
+        $data = $this->freeAdFormService->paginate($request->total ?? 10);
+        return view('main.pages.site_enquiry.data', compact(['data']))
+            ->with('search', $request->query('filter')['search'] ?? '');
+    }
+
+    public function excel(){
+        return Excel::download(new FreeAdFormExport, 'site_enquiry_form.xlsx');
+    }
+
+    public function logout(){
+        Auth::guard('site_enquiry')->logout();
+        return redirect()->route('free_ad_form.login');
     }
 
 }

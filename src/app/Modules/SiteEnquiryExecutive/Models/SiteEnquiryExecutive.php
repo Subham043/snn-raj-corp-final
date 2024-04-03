@@ -14,6 +14,7 @@ class SiteEnquiryExecutive extends Authenticatable
     use LogsActivity;
 
     protected $table = 'site_enquiry_executives';
+    protected $guard = 'site_enquiry';
 
     /**
      * The attributes that are mass assignable.

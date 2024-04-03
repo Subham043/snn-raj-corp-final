@@ -24,6 +24,9 @@ class RedirectIfAuthenticated
                 if ($guard == 'channel_partner') {
                     return redirect(route('channel_partner_form.data'));
                 }
+                if ($guard == 'site_enquiry') {
+                    return redirect(route('free_ad_form.data'));
+                }
                 return redirect(RouteServiceProvider::HOME);
             }
         }

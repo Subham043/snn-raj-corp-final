@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AuthenticateChannelPartner;
+use App\Http\Middleware\AuthenticateSiteEnquiry;
 use App\Modules\Campaigns\Controllers\Main\CampaignEnquiryMainController;
 use App\Modules\Campaigns\Controllers\Main\CampaignViewMainController;
 use App\Modules\Main\AboutPage\AboutPageController;
@@ -49,14 +50,23 @@ Route::get('/free-ad-form', [CampaignFormPageController::class, 'get', 'as' => '
 Route::post('/free-ad-form-post', [CampaignFormPageController::class, 'post', 'as' => 'campaign_form.post'])->name('campaign_form.post');
 Route::get('/site-enquiry-form', [FreeAdFormPageController::class, 'get', 'as' => 'free_ad_form.get'])->name('free_ad_form.get');
 Route::post('/site-enquiry-form-post', [FreeAdFormPageController::class, 'post', 'as' => 'free_ad_form.post'])->name('free_ad_form.post');
+Route::middleware(['guest:site_enquiry'])->group(function () {
+    Route::get('/site-enquiry-form-login', [FreeAdFormPageController::class, 'login', 'as' => 'free_ad_form.login'])->name('free_ad_form.login');
+    Route::post('/site-enquiry-form-login-post', [FreeAdFormPageController::class, 'loginPost', 'as' => 'free_ad_form.login_post'])->name('free_ad_form.login_post');
+});
+Route::middleware([AuthenticateSiteEnquiry::class])->prefix('/site-enquiry-form')->group(function () {
+    Route::get('/data', [FreeAdFormPageController::class, 'data', 'as' => 'free_ad_form.data'])->name('free_ad_form.data');
+    Route::get('/excel', [FreeAdFormPageController::class, 'excel', 'as' => 'free_ad_form.excel'])->name('free_ad_form.excel');
+    Route::get('/logout', [FreeAdFormPageController::class, 'logout', 'as' => 'free_ad_form.logout'])->name('free_ad_form.logout');
+});
 Route::get('/channel-partner-form', [ChannelPartnerFormPageController::class, 'get', 'as' => 'channel_partner_form.get'])->name('channel_partner_form.get');
 Route::post('/channel-partner-form-post', [ChannelPartnerFormPageController::class, 'post', 'as' => 'channel_partner_form.post'])->name('channel_partner_form.post');
 Route::middleware(['guest:channel_partner'])->group(function () {
     Route::get('/channel-partner-form-login', [ChannelPartnerFormPageController::class, 'login', 'as' => 'channel_partner_form.login'])->name('channel_partner_form.login');
     Route::post('/channel-partner-form-login-post', [ChannelPartnerFormPageController::class, 'loginPost', 'as' => 'channel_partner_form.login_post'])->name('channel_partner_form.login_post');
+    Route::post('/channel-partner-form-verify', [ChannelPartnerFormPageController::class, 'verifyOtp', 'as' => 'channel_partner_form.verify_post'])->name('channel_partner_form.verify_post');
+    Route::post('/channel-partner-form-resend-otp', [ChannelPartnerFormPageController::class, 'resendOtp', 'as' => 'channel_partner_form.resend_post'])->name('channel_partner_form.resend_post');
 });
-Route::post('/channel-partner-form-verify', [ChannelPartnerFormPageController::class, 'verifyOtp', 'as' => 'channel_partner_form.verify_post'])->name('channel_partner_form.verify_post');
-Route::post('/channel-partner-form-resend-otp', [ChannelPartnerFormPageController::class, 'resendOtp', 'as' => 'channel_partner_form.resend_post'])->name('channel_partner_form.resend_post');
 Route::middleware([AuthenticateChannelPartner::class])->prefix('/channel-partner-form')->group(function () {
     Route::get('/data', [ChannelPartnerFormPageController::class, 'data', 'as' => 'channel_partner_form.data'])->name('channel_partner_form.data');
     Route::get('/excel', [ChannelPartnerFormPageController::class, 'excel', 'as' => 'channel_partner_form.excel'])->name('channel_partner_form.excel');
