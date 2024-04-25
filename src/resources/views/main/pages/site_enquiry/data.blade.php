@@ -21,6 +21,7 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <h4 class="card-title mb-0">Site Enquiry Form</h4>
                             <div class="col-auto">
+                                <a href="{{route('free_ad_form.get')}}" class="btn btn-secondary">Form</a>
                                 <a href="{{route('free_ad_form.excel')}}" download type="button" class="btn btn-info">Excel</a>
                                 <a href="{{route('free_ad_form.logout')}}" type="button" class="btn btn-danger">Logout</a>
                             </div>

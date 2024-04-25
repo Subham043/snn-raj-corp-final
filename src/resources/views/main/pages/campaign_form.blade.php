@@ -96,15 +96,14 @@
                             <div>
                                 <select class="form-control" name="campaign" id="campaign" required>
                                     <option value="">Campaign</option>
-                                    <option value="OLX">OLX</option>
-                                    <option value="99 Acres">99 Acres</option>
-                                    <option value="MagicBricks">MagicBricks</option>
-                                    <option value="Facebook">Facebook</option>
-                                    <option value="Google">Google</option>
-                                    <option value="Housing">Housing</option>
-                                    <option value="CommonFloor">CommonFloor</option>
-                                    <option value="OLX">OLX</option>
-                                    <option value="Nobroker">Nobroker</option>
+                                    <option value="Website">Website</option>
+                                    <option value="99acres OL">99 Acres</option>
+                                    <option value="Housing OL">Housing</option>
+                                    <option value="MagicBricks OL">MagicBricks</option>
+                                    <option value="Olx OL">OLX</option>
+                                    <option value="No Broker OL">Nobroker</option>
+                                    <option value="Facebook OL">Facebook</option>
+                                    <option value="Property Wala OL">Property Wala</option>
                                 </select>
                             </div>
                             <div class="form-button">

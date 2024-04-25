@@ -89,13 +89,23 @@
                                 </select>
                             </div>
                             <div>
-                                <input class="form-control" type="text" name="source" id="source" placeholder="Source" required>
+                                <select class="form-control" name="source" id="source" required>
+                                    <option value="">Source</option>
+                                    <option value="Hoarding">Hoarding</option>
+                                    <option value="Television">Television</option>
+                                    <option value="Radio">Radio</option>
+                                    <option value="Newspaper">Newspaper</option>
+                                    <option value="Online">Online</option>
+                                    <option value="Word of Mouth">Word of Mouth</option>
+                                    <option value="Self Search">Self Search</option>
+                                </select>
                             </div>
                             <div>
                                 <input class="form-control" type="text" name="executive_name" id="executive_name" placeholder="Executive Name" required>
                             </div>
                             <div class="form-button">
                                 <button id="submitBtn" type="submit" class="ibtn">Submit</button>
+                                <a href="{{route('free_ad_form.data')}}" type="button" class="ibtn bg-secondary text-light">View Data</a>
                             </div>
                         </form>
                     </div>

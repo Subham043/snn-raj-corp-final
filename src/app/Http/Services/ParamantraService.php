@@ -131,8 +131,8 @@ class ParamantraService
         $data['l_name'] = '';
         $data['email'] = $email;
         $data['phonefax'] = $phone;
-        $data['channel_id'] = 'Walk-In';
-        $data['subject'] = 'Lead from Walk-In';
+        $data['channel_id'] = $campaign;
+        $data['subject'] = 'Lead from Organic';
         $data['project'] = $project;
         $data['alert_client'] = 0;
         $data['alert_rep'] = 0;
@@ -167,8 +167,8 @@ class ParamantraService
         $data['l_name'] = '';
         $data['email'] = $email;
         $data['phonefax'] = $phone;
-        $data['channel_id'] = 'Walk-In';
-        $data['subject'] = 'Lead from Site-Enquiry-Form';
+        $data['channel_id'] = $source;
+        $data['subject'] = 'Lead from Site Walkin';
         $data['project'] = $project;
         $data['alert_client'] = 0;
         $data['alert_rep'] = 0;
@@ -230,6 +230,7 @@ class ParamantraService
         $data['l_name'] = '';
         $data['email'] = $email;
         $data['phonefax'] = $phone;
+        $data['channel_id'] = 'Google';
         $data['subject'] = 'Lead from Campaign';
         $data['project'] = $project;
         $ch = curl_init();

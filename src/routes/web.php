@@ -48,12 +48,12 @@ Route::get('/land-owner', [LandOwnerPageController::class, 'get', 'as' => 'land_
 Route::post('/land-owner-post', [LandOwnerPageController::class, 'post', 'as' => 'land_owner.post'])->name('land_owner.post');
 Route::get('/free-ad-form', [CampaignFormPageController::class, 'get', 'as' => 'campaign_form.get'])->name('campaign_form.get');
 Route::post('/free-ad-form-post', [CampaignFormPageController::class, 'post', 'as' => 'campaign_form.post'])->name('campaign_form.post');
-Route::get('/site-enquiry-form', [FreeAdFormPageController::class, 'get', 'as' => 'free_ad_form.get'])->name('free_ad_form.get');
-Route::post('/site-enquiry-form-post', [FreeAdFormPageController::class, 'post', 'as' => 'free_ad_form.post'])->name('free_ad_form.post');
 Route::middleware(['guest:site_enquiry'])->group(function () {
     Route::get('/site-enquiry-form-login', [FreeAdFormPageController::class, 'login', 'as' => 'free_ad_form.login'])->name('free_ad_form.login');
     Route::post('/site-enquiry-form-login-post', [FreeAdFormPageController::class, 'loginPost', 'as' => 'free_ad_form.login_post'])->name('free_ad_form.login_post');
 });
+Route::get('/site-enquiry-form', [FreeAdFormPageController::class, 'get', 'as' => 'free_ad_form.get'])->name('free_ad_form.get')->middleware([AuthenticateSiteEnquiry::class]);
+Route::post('/site-enquiry-form-post', [FreeAdFormPageController::class, 'post', 'as' => 'free_ad_form.post'])->name('free_ad_form.post')->middleware([AuthenticateSiteEnquiry::class]);
 Route::middleware([AuthenticateSiteEnquiry::class])->prefix('/site-enquiry-form')->group(function () {
     Route::get('/data', [FreeAdFormPageController::class, 'data', 'as' => 'free_ad_form.data'])->name('free_ad_form.data');
     Route::get('/excel', [FreeAdFormPageController::class, 'excel', 'as' => 'free_ad_form.excel'])->name('free_ad_form.excel');
