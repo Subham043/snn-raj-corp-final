@@ -27,6 +27,8 @@ class ParamantraService
     public function contact_create(string $name, string $email, string $phone, string $subject): bool
     {
         $data = $this->input;
+        $data['channel_id'] = 'Organic';
+        $data['source'] = 'Website';
         $data['f_name'] = $name;
         $data['l_name'] = '';
         $data['email'] = $email;
@@ -131,8 +133,9 @@ class ParamantraService
         $data['l_name'] = '';
         $data['email'] = $email;
         $data['phonefax'] = $phone;
+        $data['source'] = $source;
         $data['channel_id'] = $campaign;
-        $data['subject'] = 'Lead from Organic';
+        $data['subject'] = 'Lead from Free Ad Form';
         $data['project'] = $project;
         $data['alert_client'] = 0;
         $data['alert_rep'] = 0;
@@ -203,7 +206,9 @@ class ParamantraService
         $data['l_name'] = '';
         $data['email'] = $email;
         $data['phonefax'] = $phone;
-        $data['subject'] = 'Lead from Popup_Form';
+        $data['channel_id'] = 'Organic';
+        $data['source'] = 'Website';
+        $data['subject'] = 'Lead from Popup Form';
         $data['project'] = $project;
         $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $this->url);

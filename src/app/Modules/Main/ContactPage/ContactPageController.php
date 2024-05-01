@@ -120,7 +120,7 @@ class ContactPageController extends Controller
                     $data
                 );
                 // (new SelldoService)->contact_create($data->name, $data->email, $data->phone);
-                (new ParamantraService)->contact_create($data->name, $data->email, $data->phone, 'Lead from Website_Contact_Us');
+                (new ParamantraService)->contact_create($data->name, $data->email, $data->phone, 'Lead from Contact Us Page');
                 dispatch(new SendContactFormMailJob($data));
                 return response()->json(["message" => "Enquiry recieved successfully."], 201);
             }

@@ -67,7 +67,7 @@
                 <div class="form-content">
                     <div class="form-items">
                         <div class="website-logo-inside">
-                            <h3>Free Ad Form.</h3>
+                            <h3>Organic Form.</h3>
                         </div>
                         <form id="contactForm">
                             <div>
@@ -85,12 +85,6 @@
                                     @foreach($projects as $p)
                                         <option value="{{$p->id}}">{{$p->name}}</option>
                                     @endforeach
-                                </select>
-                            </div>
-                            <div>
-                                <select class="form-control" name="source" id="source" required>
-                                    <option value="">Source</option>
-                                    <option value="Free Ads">Free Ads</option>
                                 </select>
                             </div>
                             <div>
@@ -169,12 +163,6 @@
           errorMessage: 'Project is required',
         },
       ])
-      .addField('#source', [
-        {
-          rule: 'required',
-          errorMessage: 'Source is required',
-        },
-      ])
       .addField('#campaign', [
         {
           rule: 'required',
@@ -191,7 +179,6 @@
             formData.append('email',document.getElementById('email').value)
             formData.append('phone',document.getElementById('phone').value)
             formData.append('project',document.getElementById('project').value)
-            formData.append('source',document.getElementById('source').value)
             formData.append('campaign',document.getElementById('campaign').value)
 
             const response = await axios.post('{{route('campaign_form.post')}}', formData)
@@ -213,9 +200,6 @@
             }
             if(error?.response?.data?.errors?.campaign){
                 validation.showErrors({'#campaign': error?.response?.data?.errors?.campaign[0]})
-            }
-            if(error?.response?.data?.errors?.source){
-                validation.showErrors({'#source': error?.response?.data?.errors?.source[0]})
             }
             if(error?.response?.data?.message){
                 errorToast(error?.response?.data?.message)

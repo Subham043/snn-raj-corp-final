@@ -10,6 +10,7 @@ use App\Modules\Enquiry\FreeAdForm\Requests\FreeAdFormLoginRequest;
 use App\Modules\Enquiry\FreeAdForm\Requests\FreeAdFormRequest;
 use App\Modules\Enquiry\FreeAdForm\Services\FreeAdFormService;
 use App\Modules\Project\Projects\Services\ProjectService;
+use App\Modules\SiteEnquiryExecutive\Services\SiteEnquiryExecutiveService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -30,7 +31,8 @@ class FreeAdFormPageController extends Controller
 
     public function get(){
         $projects = $this->projectService->main_all();
-        return view('main.pages.free_ad_form', compact('projects'));
+        $executives = (new SiteEnquiryExecutiveService)->all();
+        return view('main.pages.free_ad_form', compact(['projects', 'executives']));
     }
 
     public function post(FreeAdFormRequest $request){

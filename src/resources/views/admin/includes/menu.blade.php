@@ -73,7 +73,7 @@
                                             </li>
 
                                             <li class="nav-item">
-                                                <a href="{{route('enquiry.campaign_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.campaign_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Free Ad Form </a>
+                                                <a href="{{route('enquiry.campaign_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.campaign_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Organic Form </a>
                                             </li>
 
                                             <li class="nav-item">

@@ -37,10 +37,11 @@ class CampaignFormPageController extends Controller
                     ...$request->except('project'),
                     'ip_address' => $request->ip(),
                     'project' => $project->name,
+                    'source' => 'Organic',
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
-            $response = (new ParamantraService)->free_ad_form_create($request->name, $request->email, $request->phone, $request->source, $request->campaign, $project->name);
+            $response = (new ParamantraService)->free_ad_form_create($request->name, $request->email, $request->phone, 'Organic', $request->campaign, $project->name);
             return response()->json(["message" => $response], 201);
         } catch (\Throwable $th) {
             // throw $th;

@@ -101,7 +101,12 @@
                                 </select>
                             </div>
                             <div>
-                                <input class="form-control" type="text" name="executive_name" id="executive_name" placeholder="Executive Name" required>
+                                <select class="form-control" name="executive_name" id="executive_name" required>
+                                    <option value="">Executive Name</option>
+                                    @foreach($executives as $executive)
+                                        <option value="{{$executive->name}}">{{$executive->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-button">
                                 <button id="submitBtn" type="submit" class="ibtn">Submit</button>

@@ -46,8 +46,8 @@ Route::get('/refer-now', [ReferalPageController::class, 'get', 'as' => 'referal_
 Route::get('/become-a-channel-partner', [ChannelPartnerPageController::class, 'get', 'as' => 'channel_partner.get'])->name('channel_partner.get');
 Route::get('/land-owner', [LandOwnerPageController::class, 'get', 'as' => 'land_owner.get'])->name('land_owner.get');
 Route::post('/land-owner-post', [LandOwnerPageController::class, 'post', 'as' => 'land_owner.post'])->name('land_owner.post');
-Route::get('/free-ad-form', [CampaignFormPageController::class, 'get', 'as' => 'campaign_form.get'])->name('campaign_form.get');
-Route::post('/free-ad-form-post', [CampaignFormPageController::class, 'post', 'as' => 'campaign_form.post'])->name('campaign_form.post');
+Route::get('/organic-form', [CampaignFormPageController::class, 'get', 'as' => 'campaign_form.get'])->name('campaign_form.get');
+Route::post('/organic-form-post', [CampaignFormPageController::class, 'post', 'as' => 'campaign_form.post'])->name('campaign_form.post');
 Route::middleware(['guest:site_enquiry'])->group(function () {
     Route::get('/site-enquiry-form-login', [FreeAdFormPageController::class, 'login', 'as' => 'free_ad_form.login'])->name('free_ad_form.login');
     Route::post('/site-enquiry-form-login-post', [FreeAdFormPageController::class, 'loginPost', 'as' => 'free_ad_form.login_post'])->name('free_ad_form.login_post');

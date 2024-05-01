@@ -96,6 +96,7 @@
                             </div>
                             <div class="form-button">
                                 <button id="submitBtn" type="submit" class="ibtn">Submit</button>
+                                <a href="{{route('channel_partner_form.data')}}" type="button" class="ibtn bg-secondary text-light">View Data</a>
                             </div>
                         </form>
                     </div>
