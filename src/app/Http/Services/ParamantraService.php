@@ -27,7 +27,7 @@ class ParamantraService
     public function contact_create(string $name, string $email, string $phone, string $subject): bool
     {
         $data = $this->input;
-        $data['channel_id'] = 'Organic';
+        $data['channel_id'] = 'Website';
         $data['source'] = 'Website';
         $data['f_name'] = $name;
         $data['l_name'] = '';
@@ -206,7 +206,7 @@ class ParamantraService
         $data['l_name'] = '';
         $data['email'] = $email;
         $data['phonefax'] = $phone;
-        $data['channel_id'] = 'Organic';
+        $data['channel_id'] = 'Website';
         $data['source'] = 'Website';
         $data['subject'] = 'Lead from Popup Form';
         $data['project'] = $project;
