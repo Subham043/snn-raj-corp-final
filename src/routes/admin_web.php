@@ -189,6 +189,10 @@ use App\Modules\SiteEnquiryExecutive\Controllers\SiteEnquiryExecutiveCreateContr
 use App\Modules\SiteEnquiryExecutive\Controllers\SiteEnquiryExecutiveDeleteController;
 use App\Modules\SiteEnquiryExecutive\Controllers\SiteEnquiryExecutivePaginateController;
 use App\Modules\SiteEnquiryExecutive\Controllers\SiteEnquiryExecutiveUpdateController;
+use App\Modules\SiteEnquiryRepresentative\Controllers\SiteEnquiryRepresentativeCreateController;
+use App\Modules\SiteEnquiryRepresentative\Controllers\SiteEnquiryRepresentativeDeleteController;
+use App\Modules\SiteEnquiryRepresentative\Controllers\SiteEnquiryRepresentativePaginateController;
+use App\Modules\SiteEnquiryRepresentative\Controllers\SiteEnquiryRepresentativeUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -567,6 +571,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [SiteEnquiryExecutiveUpdateController::class, 'get', 'as' => 'site_enquiry_executive.update.get'])->name('site_enquiry_executive.update.get');
         Route::post('/update/{id}', [SiteEnquiryExecutiveUpdateController::class, 'post', 'as' => 'site_enquiry_executive.update.get'])->name('site_enquiry_executive.update.post');
         Route::get('/delete/{id}', [SiteEnquiryExecutiveDeleteController::class, 'get', 'as' => 'site_enquiry_executive.delete.get'])->name('site_enquiry_executive.delete.get');
+    });
+
+    Route::prefix('/site-enquiry-representative')->group(function () {
+        Route::get('/', [SiteEnquiryRepresentativePaginateController::class, 'get', 'as' => 'site_enquiry_representative.paginate.get'])->name('site_enquiry_representative.paginate.get');
+        Route::get('/create', [SiteEnquiryRepresentativeCreateController::class, 'get', 'as' => 'site_enquiry_representative.create.get'])->name('site_enquiry_representative.create.get');
+        Route::post('/create', [SiteEnquiryRepresentativeCreateController::class, 'post', 'as' => 'site_enquiry_representative.create.get'])->name('site_enquiry_representative.create.post');
+        Route::get('/update/{id}', [SiteEnquiryRepresentativeUpdateController::class, 'get', 'as' => 'site_enquiry_representative.update.get'])->name('site_enquiry_representative.update.get');
+        Route::post('/update/{id}', [SiteEnquiryRepresentativeUpdateController::class, 'post', 'as' => 'site_enquiry_representative.update.get'])->name('site_enquiry_representative.update.post');
+        Route::get('/delete/{id}', [SiteEnquiryRepresentativeDeleteController::class, 'get', 'as' => 'site_enquiry_representative.delete.get'])->name('site_enquiry_representative.delete.get');
     });
 
     Route::prefix('/campaign')->group(function () {

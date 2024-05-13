@@ -104,7 +104,7 @@
                                 <select class="form-control" name="executive_name" id="executive_name" required>
                                     <option value="">Executive Name</option>
                                     @foreach($executives as $executive)
-                                        <option value="{{$executive->name}}">{{$executive->name}}</option>
+                                        <option value="{{$executive->id}}">{{$executive->name}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Enquiry\FreeAdForm\Requests;
+namespace App\Modules\SiteEnquiryRepresentative\Requests;
 
-use App\Http\Services\RateLimitService;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 
 
-class FreeAdFormRequest extends FormRequest
+class SiteEnquiryRepresentativeCreatePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,8 +16,7 @@ class FreeAdFormRequest extends FormRequest
      */
     public function authorize()
     {
-        (new RateLimitService($this))->ensureIsNotRateLimited(3);
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -29,11 +28,7 @@ class FreeAdFormRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'nullable|string|email|max:255',
-            'phone' => 'required|numeric|digits:10',
-            'project' => 'required|numeric|exists:projects,id',
-            'source' => 'required|string|max:255',
-            'executive_name' => 'required|numeric|exists:site_enquiry_representatives,id',
+            'paramantra_code' => 'required|string|max:255',
         ];
     }
 

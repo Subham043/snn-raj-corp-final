@@ -112,6 +112,11 @@
                                     <i class="ri-user-add-fill"></i> <span data-key="t-widgets">Site Enquiry Executive</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('site_enquiry_representative.paginate.get')) !== false ? 'active' : ''}}" href="{{route('site_enquiry_representative.paginate.get')}}">
+                                    <i class="ri-user-add-fill"></i> <span data-key="t-widgets">Site Enquiry Representative</span>
+                                </a>
+                            </li>
                             @endcan
 
                             @can('list awards')

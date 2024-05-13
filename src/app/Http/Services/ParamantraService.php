@@ -163,7 +163,7 @@ class ParamantraService
         }
     }
 
-    public function campaign_form_create(string $name, string $email, string $phone, string $source, string $project, string $executive_name): bool|string
+    public function campaign_form_create(string $name, string $email, string $phone, string $source, string $project, string $executive_code): bool|string
     {
         $data = $this->input;
         $data['f_name'] = $name;
@@ -175,7 +175,7 @@ class ParamantraService
         $data['project'] = $project;
         $data['alert_client'] = 0;
         $data['alert_rep'] = 0;
-        $data['rep_id']= $executive_name;
+        $data['rep_id']= $executive_code;
         $data['USOURCE']= $source;
         $data['utm_ad_name'] ='Site Enquiry Form';
         $ch = curl_init();

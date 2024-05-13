@@ -10,7 +10,7 @@ use App\Modules\Enquiry\FreeAdForm\Requests\FreeAdFormLoginRequest;
 use App\Modules\Enquiry\FreeAdForm\Requests\FreeAdFormRequest;
 use App\Modules\Enquiry\FreeAdForm\Services\FreeAdFormService;
 use App\Modules\Project\Projects\Services\ProjectService;
-use App\Modules\SiteEnquiryExecutive\Services\SiteEnquiryExecutiveService;
+use App\Modules\SiteEnquiryRepresentative\Services\SiteEnquiryRepresentativeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -31,23 +31,25 @@ class FreeAdFormPageController extends Controller
 
     public function get(){
         $projects = $this->projectService->main_all();
-        $executives = (new SiteEnquiryExecutiveService)->all();
+        $executives = (new SiteEnquiryRepresentativeService)->all();
         return view('main.pages.free_ad_form', compact(['projects', 'executives']));
     }
 
     public function post(FreeAdFormRequest $request){
         $project = $this->projectService->getById($request->project);
+        $executive = (new SiteEnquiryRepresentativeService)->getById($request->executive_name);
         try {
             //code...
             $this->freeAdFormService->create(
                 [
-                    ...$request->except('project'),
+                    ...$request->except(['project', 'executive_name']),
                     'ip_address' => $request->ip(),
-                    'project' => $project->name
+                    'project' => $project->name,
+                    'executive_name' => $executive->name,
                 ]
             );
             (new RateLimitService($request))->clearRateLimit();
-            $response = (new ParamantraService)->campaign_form_create($request->name, $request->email, $request->phone, $request->source, $project->name, $request->executive_name);
+            $response = (new ParamantraService)->campaign_form_create($request->name, $request->email, $request->phone, $request->source, $project->name, $executive->paramantra_code);
             return response()->json(["message" => $response], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);
