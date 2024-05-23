@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('referal_name', 500);
             $table->string('referal_email', 500);
             $table->string('referal_phone', 500)->nullable();
-            $table->string('country_code_1', 500)->nullable();
+            $table->string('country_code_2', 500)->nullable();
             $table->string('referal_relation', 500)->nullable();
             $table->foreignId('referal_project_id')->nullable()->constrained('projects')->nullOnDelete();
             $table->timestamps();
