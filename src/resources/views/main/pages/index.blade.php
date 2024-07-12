@@ -105,7 +105,7 @@
 
 								.project_old .projects-overlay:before {
 												/* background: #000;
-																																																																																																																																																																																																																																																																																																																																																																																																								opacity: 0.1; */
+																																																																																																																																																																																																																																																																																																																																																																																																																				opacity: 0.1; */
 												/* background-image: linear-gradient(to right,rgba(27,25,25,0.1) 30%,transparent 100%); */
 												/* background-image: linear-gradient(to right,rgba(27,25,25,0.2) 60%,transparent 100%); */
 												/* background-image: linear-gradient(to right,rgb(27 25 25 / 45%) 25%,transparent 100%); */
@@ -212,10 +212,17 @@
 																visibility: visible;
 												}
 
+												.header-video-container {
+																position: static;
+																padding-bottom: 0;
+												}
+
 												.header-video-overflow {
 																overflow: hidden;
 																width: 100%;
-																height: 99.5dvh;
+																/* height: 99.5dvh; */
+																padding-bottom: 55.62%;
+																position: relative;
 												}
 
 												#ytplayer-mute img {
@@ -227,7 +234,7 @@
 												#ytplayer-mute {
 																position: absolute;
 																/* bottom: 70px; */
-																bottom: 10%;
+																bottom: 5%;
 																left: 15px;
 																z-index: 8;
 												}
@@ -260,7 +267,7 @@
 				<!-- Slider -->
 				@if ($about->use_in_banner)
 								<div class="header-video-overflow">
-												<header class="p-relative header-video-container">
+												<header class="header-video-container">
 																<div id="ytplayer" class="header-video"></div>
 																{{-- <iframe src="{{ $about->video }}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=0&enablejsapi=1"
                                                                     data-src="{{ $about->video }}?&autoplay=1&mute=1&loop=1&rel=0&showinfo=0&color=white&iv_load_policy=3&playsinline=1&controls=1&playlist=aQ9l_gXhGSk"
