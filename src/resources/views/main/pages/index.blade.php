@@ -105,7 +105,7 @@
 
 								.project_old .projects-overlay:before {
 												/* background: #000;
-																																																																																																																																																																																																																																																																																																																																																																																																																				opacity: 0.1; */
+																																																																																																																																																																																																																																																																																																																																																																																																																								opacity: 0.1; */
 												/* background-image: linear-gradient(to right,rgba(27,25,25,0.1) 30%,transparent 100%); */
 												/* background-image: linear-gradient(to right,rgba(27,25,25,0.2) 60%,transparent 100%); */
 												/* background-image: linear-gradient(to right,rgb(27 25 25 / 45%) 25%,transparent 100%); */
@@ -221,7 +221,7 @@
 																overflow: hidden;
 																width: 100%;
 																/* height: 99.5dvh; */
-																padding-bottom: 55.62%;
+																padding-bottom: 55.82%;
 																position: relative;
 												}
 
