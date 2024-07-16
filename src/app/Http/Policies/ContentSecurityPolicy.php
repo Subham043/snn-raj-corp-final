@@ -61,7 +61,7 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::IMG, 'www.google.co.in')
         ->addDirective(Directive::IMG, 'googleads.g.doubleclick.net')
         ->addDirective(Directive::SCRIPT, 'www.youtube.com/iframe_api')
-        ->addDirective(Directive::SCRIPT, 'www.youtube.com/s/player/8d9f6215/www-widgetapi.vflset/www-widgetapi.js')
+        ->addDirective(Directive::SCRIPT, 'www.youtube.com')
         ->addDirective(Directive::SCRIPT, 'cdn.jsdelivr.net')
         ->addDirective(Directive::SCRIPT, 'www.googletagmanager.com')
         ->addDirective(Directive::SCRIPT, 'unpkg.com')

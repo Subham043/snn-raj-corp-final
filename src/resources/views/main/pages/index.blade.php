@@ -105,7 +105,7 @@
 
 								.project_old .projects-overlay:before {
 												/* background: #000;
-																																																																																																																																																																																																																																																																																																																																																																																																																								opacity: 0.1; */
+																																																																																																																																																																																																																																																																																																																																																																																																																												opacity: 0.1; */
 												/* background-image: linear-gradient(to right,rgba(27,25,25,0.1) 30%,transparent 100%); */
 												/* background-image: linear-gradient(to right,rgba(27,25,25,0.2) 60%,transparent 100%); */
 												/* background-image: linear-gradient(to right,rgb(27 25 25 / 45%) 25%,transparent 100%); */
@@ -668,12 +668,9 @@
 												// 4. The API will call this function when the video player is ready.
 												function onPlayerReady(event) {
 																event.target.playVideo();
-																console.log('target:', event.target)
-																console.log('player:', player)
 												}
 
 												document.getElementById('ytplayer-mute').addEventListener('click', function() {
-																console.log('target:', player.isMuted())
 																if (player.isMuted()) {
 																				player.unMute();
 																				document.querySelector('#ytplayer-mute img').src = "{{ asset("unmute.svg") }}";
