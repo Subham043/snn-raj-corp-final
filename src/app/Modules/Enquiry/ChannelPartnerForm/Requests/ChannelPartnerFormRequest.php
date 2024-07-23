@@ -33,7 +33,8 @@ class ChannelPartnerFormRequest extends FormRequest
             'phone' => 'required|numeric|digits:10',
             'project' => 'required|numeric|exists:projects,id',
             'notes' => 'required|string|max:500',
-            'channel_partner_phone' => 'required|numeric|digits:10|exists:empanelment_forms,phone',
+            // 'channel_partner_phone' => 'required|numeric|digits:10|exists:empanelment_forms,phone',
+            'channel_partner_phone' => 'required|numeric|digits:10',
         ];
     }
 
