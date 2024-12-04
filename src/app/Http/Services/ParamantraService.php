@@ -256,4 +256,34 @@ class ParamantraService
         }
     }
 
+    public function referral_create(string $name, string $email, string $phone, string $project): bool
+    {
+        $data = $this->input;
+        $data['channel_id'] = 'Customer Referral';
+        $data['subject'] = 'Lead from Referral';
+        $data['source'] = 'Website';
+        $data['f_name'] = $name;
+        $data['l_name'] = '';
+        $data['email'] = $email;
+        $data['phonefax'] = $phone;
+        $data['project'] = $project;
+        $data['notes'] = 'I am Interested in this project.Please call me';
+        $this->api_key = 'w3yKsNz2oMDIq3HrABzKuqywKB';
+        $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->url);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-API-KEY: $this->api_key ","ACTION-ON: $this->app_name"));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 300);
+            curl_setopt($ch, CURLOPT_USERPWD, $this->api_key );
+            $data_resp = curl_exec($ch);
+            $err = curl_error($ch);
+            curl_close($ch);
+        if ($err) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }

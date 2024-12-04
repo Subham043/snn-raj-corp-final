@@ -5,11 +5,11 @@ namespace App\Modules\Main\ReferalPage;
 use App\Http\Controllers\Controller;
 use App\Http\Services\ParamantraService;
 use App\Http\Services\RateLimitService;
-use App\Http\Services\SelldoService;
 use App\Modules\Enquiry\ReferalForm\Jobs\SendReferalFormMailJob;
 use App\Modules\Enquiry\ReferalForm\Requests\ReferalFormRequest;
 use App\Modules\Enquiry\ReferalForm\Services\ReferalFormService;
 use App\Modules\Legal\Services\LegalService;
+use App\Modules\Project\Projects\Models\Project;
 use App\Modules\Project\Projects\Services\ProjectService;
 use App\Modules\Referal\Banners\Services\BannerService;
 use App\Modules\Seo\Services\SeoService;
@@ -62,6 +62,8 @@ class ReferalPageController extends Controller
 
     public function post(ReferalFormRequest $request){
 
+        $project = Project::findOrFail($request->referal_project_id);
+
         try {
             //code...
             $data = $this->referalFormService->create(
@@ -69,7 +71,7 @@ class ReferalPageController extends Controller
             );
             (new RateLimitService($request))->clearRateLimit();
             // (new SelldoService)->contact_create($request->referal_name, $request->referal_email, $request->referal_phone);
-            (new ParamantraService)->contact_create($request->referal_name, $request->referal_email, $request->referal_phone, 'Lead from Website_Referal');
+            (new ParamantraService)->referral_create($request->referal_name, $request->referal_email, $request->referal_phone, $project->name);
             dispatch(new SendReferalFormMailJob($data));
             return response()->json(["message" => "Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {
