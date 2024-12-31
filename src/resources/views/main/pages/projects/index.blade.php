@@ -123,4 +123,14 @@
     {!!$seo->meta_footer_script_nonce!!}
     {!!$seo->meta_footer_no_script_nonce!!}
 
+    <script type='text/javascript' nonce="{{ csp_nonce() }}">
+        (function () {
+        var p5 = document.createElement('script');
+        p5.type = 'text/javascript';
+        p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
+        var p5s = document.getElementsByTagName('script')[0];
+        p5s.parentNode.insertBefore(p5, p5s);
+        })();
+    </script>
+
 @stop
