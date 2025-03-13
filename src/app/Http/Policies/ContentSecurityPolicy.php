@@ -53,6 +53,8 @@ class ContentSecurityPolicy extends Basic
 
         //start of common
         ->addDirective(Directive::CONNECT, 'https://ipapi.co/json')
+        ->addDirective(Directive::CONNECT, 'pgtrack.plumb5.com')
+        ->addDirective(Directive::FORM_ACTION, 'pgtrack.plumb5.com')
         ->addDirective(Directive::CONNECT, 'www.googletagmanager.com')
         ->addDirective(Directive::CONNECT, 'www.google-analytics.com')
         ->addDirective(Directive::CONNECT, 'pgtrack.plumb5.com')
@@ -65,9 +67,9 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::SCRIPT, 'www.youtube.com')
         ->addDirective(Directive::SCRIPT, 'cdn.jsdelivr.net')
         ->addDirective(Directive::SCRIPT, 'www.googletagmanager.com')
+        ->addDirective(Directive::SCRIPT, 'pgtrack.plumb5.com')
         ->addDirective(Directive::SCRIPT, 'unpkg.com')
         ->addDirective(Directive::SCRIPT, 'kit.fontawesome.com')
-        ->addDirective(Directive::SCRIPT, 'www.googletagmanager.com')
         ->addDirective(Directive::SCRIPT, 'src.plumb5.com')
         ->addDirective(Directive::SCRIPT, 'pgchat.plumb5.com')
         ->addDirective(Directive::IMG, 'src.plumb5.com')

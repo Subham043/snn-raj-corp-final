@@ -16,6 +16,9 @@
 				<meta name="twitter:card" content="{{ asset("assets/images/logo.png") }}" />
 				<meta name="twitter:label1" content="{{ $seo->meta_title }}" />
 				<meta name="twitter:data1" content="{{ $seo->meta_description }}" />
+				@if ($about && $about->image)
+				<link rel="preload" as="image" href="{{ $about->image_link }}" type="image/webp">
+				@endif
 
 				<link rel="icon"
 								href="{{ empty($generalSetting) ? asset("assets/images/favicon.png") : $generalSetting->website_favicon_link }}"
@@ -201,7 +204,8 @@
 												}
 
 												.header-video {
-																top: -20px;
+																/* top: -20px; */
+																position: static;
 												}
 
 												.duru-header .duru-logo img {
@@ -221,7 +225,7 @@
 																overflow: hidden;
 																width: 100%;
 																/* height: 99.5dvh; */
-																padding-bottom: 55.82%;
+																/* padding-bottom: 55.82%; */
 																position: relative;
 												}
 
@@ -268,10 +272,10 @@
 				@if ($about->use_in_banner)
 								<div class="header-video-overflow">
 												<header class="header-video-container">
-																<div id="ytplayer" class="header-video"></div>
-																{{-- <iframe src="{{ $about->video }}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=0&enablejsapi=1"
-                                                                    data-src="{{ $about->video }}?&autoplay=1&mute=1&loop=1&rel=0&showinfo=0&color=white&iv_load_policy=3&playsinline=1&controls=1&playlist=aQ9l_gXhGSk"
-                                                                    class="header-video lazyload" width="560" height="315" frameborder="0" id="ytbannerplayer"></iframe> --}}
+																<video id="ytplayer" class="header-video" width="100" height="100" autoplay loop muted playsinline>
+																	<source src="{{asset('home.mp4')}}" type="video/mp4">
+																</video>
+																{{-- <div id="ytplayer" class="header-video"></div> --}}
 																<button id="ytplayer-mute"><img src="{{ asset("mute.svg") }}" alt="mute"></button>
 												</header>
 								</div>
@@ -354,8 +358,13 @@
 																				<div class="col-md-4" data-animate-effect="fadeInUp">
 																								@if ($about->image)
 																												<div class="con">
+																														{{-- @if(request()->header('User-Agent') && preg_match('/mobile/i', request()->header('User-Agent'))) --}}
+																																{{-- <img src="{{ $about->image_link }}" width="373" height="375"
+																																				class="img-fluid shapeee" alt=""> --}}
+																														{{-- @else --}}
 																																<img data-src="{{ $about->image_link }}" width="373" height="375"
 																																				fetchpriority="low" class="img-fluid shapeee lazyload" alt="">
+																														{{-- @endif --}}
 																												</div>
 																								@endif
 																				</div>
@@ -628,68 +637,53 @@
 				<script src="{{ asset("assets/js/plugins/purecounter.js") }}" defer></script>
 				<script src="{{ asset("assets/js/plugins/jquery.isotope.v3.0.2.js") }}" defer></script>
 				<script src="{{ asset("assets/js/plugins/owl.carousel.min.js") }}" defer></script>
-				<script src="{{ asset("assets/js/home.js") }}" defer></script>
-				<script src="https://www.youtube.com/iframe_api" defer></script>
+				@if ($about->use_in_banner)
+					<script type="text/javascript" nonce="{{ csp_nonce() }}">
+						window.addEventListener("load", function () {
+							document.getElementById('ytplayer-mute').addEventListener('click', function() {
+								const player = document.getElementById('ytplayer');
+								if (player.muted) {
+									player.muted = false;
+									player.volume = 1; // Ensure volume is set
+									player.play().catch(error => console.error("Playback error:", error));
+									document.querySelector('#ytplayer-mute img').src = "{{ asset("mute.svg") }}";
+								} else {
+									player.muted = true;
+									player.volume = 0; // Ensure volume is set
+									player.play().catch(error => console.error("Playback error:", error));
+									document.querySelector('#ytplayer-mute img').src = "{{ asset("unmute.svg") }}";
+								}
+							})
+						})
+					</script>
+				@else
+					@if( count($banners) > 0)
+						<script src="{{ asset("assets/js/home/>banner_slider.js") }}" defer></script>
+					@endif
+				@endif
+				<script src="{{ asset("assets/js/home.js") }}" async></script>
 
 				{!! $seo->meta_footer_script_nonce !!}
 				{!! $seo->meta_footer_no_script_nonce !!}
 
 				@include("main.includes.common_contact_modal_script")
 
-				@if ($about->use_in_banner)
-								<script nonce="{{ csp_nonce() }}">
-												const VIDEO_ID = '{{ str_replace("https://youtu.be/embed/", "", $about->video) }}';
-												var player;
-
-												function onYouTubeIframeAPIReady() {
-																player = new YT.Player('ytplayer', {
-																				height: '390',
-																				width: '640',
-																				videoId: VIDEO_ID,
-																				playerVars: {
-																								'playsinline': 1,
-																								'autoplay': 1,
-																								'mute': 1,
-																								'loop': 1,
-																								'rel': 0,
-																								'showinfo': 0,
-																								'controls': 0,
-																								'iv_load_policy': 3,
-																								'enablejsapi': 1,
-																								'playlist': VIDEO_ID,
-																				},
-																				events: {
-																								'onReady': onPlayerReady,
-																								// 'onStateChange': onPlayerStateChange
-																				}
-																});
-												}
-
-												// 4. The API will call this function when the video player is ready.
-												function onPlayerReady(event) {
-																event.target.playVideo();
-												}
-
-												document.getElementById('ytplayer-mute').addEventListener('click', function() {
-																if (player.isMuted()) {
-																				player.unMute();
-																				document.querySelector('#ytplayer-mute img').src = "{{ asset("unmute.svg") }}";
-																} else {
-																				player.mute();
-																				document.querySelector('#ytplayer-mute img').src = "{{ asset("mute.svg") }}";
-																}
-												})
-								</script>
-
-                                <script type='text/javascript' nonce="{{ csp_nonce() }}">
-                                    (function () {
-                                    var p5 = document.createElement('script');
-                                    p5.type = 'text/javascript';
-                                    p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
-                                    var p5s = document.getElementsByTagName('script')[0];
-                                    p5s.parentNode.insertBefore(p5, p5s);
-                                    })();
-                                </script>
-				@endif
+				{{-- <script type='text/javascript' nonce="{{ csp_nonce() }}" defer>
+					(function () {
+						var p5 = document.createElement('script');
+						p5.type = 'text/javascript';
+						p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
+						var p5s = document.getElementsByTagName('script')[0];
+						p5s.parentNode.insertBefore(p5, p5s);
+					})();
+				</script> --}}
+				<script type='text/javascript' nonce="{{ csp_nonce() }}">
+					window.requestIdleCallback(() => {
+						var p5 = document.createElement('script');
+						p5.type = 'text/javascript';
+						p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
+						document.body.appendChild(p5);
+					});
+				</script>
 
 @stop
