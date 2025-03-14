@@ -110,7 +110,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img src="{{ $banner->image_link}}" fetchpriority="low" alt="" class="img-fluid about_banner_img" width="571" height="658"></figure>
+                        <figure><img src="{{ $banner->image_link}}" fetchpriority="low" alt="" class="img-fluid about_banner_img" width="583" height="570"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <p>{{$banner->description}}</p>
@@ -438,77 +438,6 @@
     @include('main.includes.common_contact_modal_script')
     <script src="{{ asset('assets/js/plugins/swiper-bundle.min.js')}}" defer></script>
     <script src="{{ asset('assets/js/plugins/owl.carousel.min.js')}}" defer></script>
-
-    <script nonce="{{ csp_nonce() }}" defer>
-        (function () {
-            "use strict";
-            $(document).ready(function () {
-                var swiperOptions = {
-                    loop: true,
-                    autoplay: {
-                    delay: 1,
-                    disableOnInteraction: false
-                    },
-                    speed: 2000,
-                    grabCursor: true,
-                    mousewheelControl: true,
-                    keyboardControl: true,
-                    navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev"
-                    },
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                    // Responsive breakpoints
-                    breakpoints: {
-                        // when window width is >= 320px
-                        320: {
-                        slidesPerView: 2,
-                        spaceBetween: 20
-                        },
-                        // when window width is >= 480px
-                        480: {
-                        slidesPerView: 3,
-                        spaceBetween: 30
-                        },
-                        // when window width is >= 640px
-                        640: {
-                        slidesPerView: 4,
-                        spaceBetween: 40
-                        },
-                        // when window width is >= 990px
-                        990: {
-                        slidesPerView: 8,
-                        spaceBetween: 40
-                        }
-                    }
-                };
-                var swiper = new Swiper("#swiper-container", swiperOptions);
-
-                $('#team-area.team .owl-carousel').owlCarousel({
-                    loop: true
-                    , margin: 20
-                    , mouseDrag: true
-                    , autoplay: false
-                    , dots: true
-                    , nav: false
-                    , navText: ["<span class='lnr ti-arrow-left'></span>","<span class='lnr ti-arrow-right'></span>"]
-                    , autoplayHoverPause:true
-                    , responsiveClass: true
-                    , responsive: {
-                        0: {
-                            items: 1
-                        , }
-                        , 600: {
-                            items: 2
-                        }
-                        , 1000: {
-                            items: 3
-                        }
-                    }
-                });
-            });
-        })();
-    </script>
+    <script src="{{ asset('assets/js/about.js')}}" defer></script>
 
 @stop
