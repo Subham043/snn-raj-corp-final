@@ -21,6 +21,10 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
+    @if (count($ongoing_projects) > 0 && $ongoing_projects[0]->banner_count>0)
+        <link rel="preload" as="image" href="{{ $ongoing_projects[0]->banner[0]->image_link }}" type="image/webp">
+    @endif
+
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}
 
@@ -156,7 +160,13 @@
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
                         @if($v->banner_count>0)
                             <div class="img">
-                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt=""></a>
+                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
+                                    @if($k==0)
+                                    <img fetchpriority="high" src="{{$v->banner[0]->image_link}}" alt="">
+                                    @else
+                                    <img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt="">
+                                    @endif
+                                </a>
                             </div>
                         @endif
                     </div>
@@ -317,15 +327,5 @@
 
     {!!$seo->meta_footer_script_nonce!!}
     {!!$seo->meta_footer_no_script_nonce!!}
-
-    <script type='text/javascript' nonce="{{ csp_nonce() }}">
-        (function () {
-        var p5 = document.createElement('script');
-        p5.type = 'text/javascript';
-        p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
-        var p5s = document.getElementsByTagName('script')[0];
-        p5s.parentNode.insertBefore(p5, p5s);
-        })();
-    </script>
 
 @stop

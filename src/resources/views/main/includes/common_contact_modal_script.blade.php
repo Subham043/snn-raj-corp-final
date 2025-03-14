@@ -51,10 +51,20 @@ window.addEventListener("load", function () {
       loadIntlTelInput();
     })
     
+    // window.addEventListener("scroll", (event) => {
+    //     let scroll = this.scrollY;
+    //     if((scroll>850 && scroll<900)){
+    //         contactModal.show()
+    //     }
+    // });
+
     window.addEventListener("scroll", (event) => {
-        let scroll = this.scrollY;
-        if((scroll>850 && scroll<900)){
-            contactModal.show()
+        const scrollPosition = window.scrollY + window.innerHeight; // Current scroll position + viewport height
+        const pageHeight = document.documentElement.scrollHeight; // Total page height
+
+        // Trigger when user is within 100px of the bottom
+        if (pageHeight - scrollPosition <= 100) {
+            contactModal.show();
         }
     });
     

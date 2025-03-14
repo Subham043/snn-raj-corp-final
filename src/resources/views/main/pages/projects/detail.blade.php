@@ -21,6 +21,10 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
+    @if ($data->banner_count > 0)
+        <link rel="preload" as="image" href="{{ $data->banner[0]->image_link }}" type="image/webp">
+    @endif
+
     <link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}">
 
     {!!$data->meta_header_script!!}
@@ -363,8 +367,12 @@
                 <div class="col-md-12 px-0">
                     <div class="owl-carousel owl-theme">
                         @if($data->banner_count>0)
-                            @foreach($data->banner as $banner)
-                                <div class="portfolio-item"> <img fetchpriority="high" class="img-fluid project-page-banner-img lazyload" data-src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
+                            @foreach($data->banner as $k => $banner)
+                                @if($k==0)
+                                <div class="portfolio-item"> <img fetchpriority="high" class="img-fluid project-page-banner-img" src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
+                                @else
+                                <div class="portfolio-item"> <img fetchpriority="low" class="img-fluid project-page-banner-img lazyload" data-src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
+                                @endif
                             @endforeach
                         @endif
                     </div>
@@ -803,80 +811,13 @@
 
 @section('js')
     <script src="{{ asset('assets/js/plugins/owl.carousel.min.js')}}" defer></script>
-    <script src="{{ asset('assets/js/project.js') }}" defer></script>
     <script src="{{ asset('assets/js/plugins/img-previewer.min.js' ) }}" defer></script>
+    <script src="{{ asset('assets/js/project.js') }}" defer></script>
 
     {!!$data->meta_footer_script_nonce!!}
     {!!$data->meta_footer_no_script_nonce!!}
 
     @include('main.includes.common_contact_modal_script')
-
-    <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
-            (function () {
-                "use strict";
-                $(document).ready(function () {
-                    $('#tab-panels .tabs li').click(function(){
-                        var $panel = $(this).closest('#tab-panels');
-
-
-                        //event listener listening for clicks on the tabs panels
-
-                        //figure out which panel to show
-
-                        $panel.find(' .tabs li.active').removeClass('active');
-
-                        $(this).addClass('active');
-
-                        var clickedPanel = $(this).attr('data-panel-name');
-                        var clickedPanelKey = parseInt($(this).attr('data-panel-key'))
-
-                        //hide current panel
-                        $panel.find('.panel.active').slideUp(300, nextPanel);
-
-                        //show new panel
-                        function nextPanel(){
-                            $(this).removeClass('active');
-
-                            $('#'+clickedPanel).slideDown(300, function(){
-                                $(this).addClass('active');
-                            });
-                        }
-                    })
-                    const myViewer = new ImgPreviewer('#image-container',{
-                        // aspect ratio of image
-                        fillRatio: 0.9,
-                        // attribute that holds the image
-                        dataUrlKey: 'src',
-                        // additional styles
-                        style: {
-                            modalOpacity: 0.6,
-                            headerOpacity: 0,
-                            zIndex: 99
-                        },
-                        // zoom options
-                        imageZoom: {
-                            min: 0.1,
-                            max: 5,
-                            step: 0.1
-                        },
-                        // detect whether the parent element of the image is hidden by the css style
-                        bubblingLevel: 0,
-
-                    });
-                });
-
-            })();
-    </script>
-
-    <script type='text/javascript' nonce="{{ csp_nonce() }}">
-        (function () {
-        var p5 = document.createElement('script');
-        p5.type = 'text/javascript';
-        p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
-        var p5s = document.getElementsByTagName('script')[0];
-        p5s.parentNode.insertBefore(p5, p5s);
-        })();
-    </script>
 
 
 @stop
