@@ -4,6 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @cspMetaTag(App\Http\Policies\ContentSecurityPolicy::class)
 
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">	
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://src.plumb5.com/snnrajcorp_com.js">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://src.plumb5.com/snnrajcorp_com.js">
+
     {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;1,300;1,400&amp;family=Oswald:wght@300;400&amp;display=swap"> --}}
     @vite(['resources/css/app.css'])
     <style nonce="{{ csp_nonce() }}">

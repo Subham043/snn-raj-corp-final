@@ -276,7 +276,6 @@
 																	<source src="{{asset('home.mp4')}}" type="video/mp4">
 																</video>
 																{{-- <div id="ytplayer" class="header-video"></div> --}}
-																<button id="ytplayer-mute"><img src="{{ asset("mute.svg") }}" alt="mute"></button>
 												</header>
 								</div>
 				@else
@@ -359,11 +358,11 @@
 																								@if ($about->image)
 																												<div class="con">
 																														{{-- @if(request()->header('User-Agent') && preg_match('/mobile/i', request()->header('User-Agent'))) --}}
-																																{{-- <img src="{{ $about->image_link }}" width="373" height="375"
-																																				class="img-fluid shapeee" alt=""> --}}
+																																<img src="{{ $about->image_link }}" width="373" height="375"
+																																				class="img-fluid shapeee" alt="">
 																														{{-- @else --}}
-																																<img data-src="{{ $about->image_link }}" width="373" height="375"
-																																				fetchpriority="low" class="img-fluid shapeee lazyload" alt="">
+																																{{-- <img data-src="{{ $about->image_link }}" width="373" height="375"
+																																				fetchpriority="low" class="img-fluid shapeee lazyload" alt=""> --}}
 																														{{-- @endif --}}
 																												</div>
 																								@endif
@@ -635,48 +634,18 @@
 
 @section("js")
 				<script src="{{ asset("assets/js/plugins/purecounter.js") }}" defer></script>
-				<script src="{{ asset("assets/js/plugins/jquery.isotope.v3.0.2.js") }}" defer></script>
+				<script src="{{ asset("assets/js/plugins/jquery.isotope.v3.0.2.js") }}"  defer></script>
 				<script src="{{ asset("assets/js/plugins/owl.carousel.min.js") }}" defer></script>
-				@if ($about->use_in_banner)
-					<script type="text/javascript" nonce="{{ csp_nonce() }}">
-						window.addEventListener("load", function () {
-							document.getElementById('ytplayer-mute').addEventListener('click', function() {
-								const player = document.getElementById('ytplayer');
-								if (player.muted) {
-									player.muted = false;
-									player.volume = 1; // Ensure volume is set
-									player.play().catch(error => console.error("Playback error:", error));
-									document.querySelector('#ytplayer-mute img').src = "{{ asset("mute.svg") }}";
-								} else {
-									player.muted = true;
-									player.volume = 0; // Ensure volume is set
-									player.play().catch(error => console.error("Playback error:", error));
-									document.querySelector('#ytplayer-mute img').src = "{{ asset("unmute.svg") }}";
-								}
-							})
-						})
-					</script>
-				@else
-					@if( count($banners) > 0)
-						<script src="{{ asset("assets/js/home/>banner_slider.js") }}" defer></script>
-					@endif
+				@if (!$about->use_in_banner && count($banners) > 0)
+				<script src="{{ asset("assets/js/home/>banner_slider.js") }}" defer></script>
 				@endif
-				<script src="{{ asset("assets/js/home.js") }}" async></script>
+				<script src="{{ asset("assets/js/home.js") }}"  defer></script>
 
 				{!! $seo->meta_footer_script_nonce !!}
 				{!! $seo->meta_footer_no_script_nonce !!}
 
 				@include("main.includes.common_contact_modal_script")
 
-				{{-- <script type='text/javascript' nonce="{{ csp_nonce() }}" defer>
-					(function () {
-						var p5 = document.createElement('script');
-						p5.type = 'text/javascript';
-						p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
-						var p5s = document.getElementsByTagName('script')[0];
-						p5s.parentNode.insertBefore(p5, p5s);
-					})();
-				</script> --}}
 				<script type='text/javascript' nonce="{{ csp_nonce() }}">
 					window.requestIdleCallback(() => {
 						var p5 = document.createElement('script');
