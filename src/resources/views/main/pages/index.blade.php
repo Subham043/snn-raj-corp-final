@@ -646,13 +646,4 @@
 
 				@include("main.includes.common_contact_modal_script")
 
-				<script type='text/javascript' nonce="{{ csp_nonce() }}">
-					window.requestIdleCallback(() => {
-						var p5 = document.createElement('script');
-						p5.type = 'text/javascript';
-						p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
-						document.body.appendChild(p5);
-					});
-				</script>
-
 @stop

@@ -50,4 +50,12 @@
     </script>
     <script src="{{ asset('assets/js/common_script.js') }}" defer></script>
     @yield('js')
+    <script type='text/javascript' nonce="{{ csp_nonce() }}">
+        window.requestIdleCallback(() => {
+            var p5 = document.createElement('script');
+            p5.type = 'text/javascript';
+            p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
+            document.body.appendChild(p5);
+        });
+    </script>
 </html>
