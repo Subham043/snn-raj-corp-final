@@ -88,7 +88,7 @@
                 <div class="col-md-12" data-animate-effect="fadeInUp">
                     <div class="img fr-img" data-animate-effect="fadeInUp">
                         <img src="{{ asset('assets/land.webp') }}" fetchpriority="high" alt=""
-                            class="img-fluid about_banner_img" width="583" height="240">
+                            class="img-fluid about_banner_img" width="583" height="351">
                     </div>
                     <div class="wrap">
                         {{-- <h1 class="section-title">Dear [ <span style="color: black; text-transform:capitalize">Land Owner</span> ]</h1> --}}

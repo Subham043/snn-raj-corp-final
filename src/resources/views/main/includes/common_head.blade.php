@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://src.plumb5.com/snnrajcorp_com.js">
 
+    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/black-logo.webp') }}" as="image">
+
     {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;1,300;1,400&amp;family=Oswald:wght@300;400&amp;display=swap"> --}}
     @vite(['resources/css/app.css'])
     <style nonce="{{ csp_nonce() }}">

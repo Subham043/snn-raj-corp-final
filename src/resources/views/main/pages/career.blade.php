@@ -27,6 +27,7 @@
         href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link }}" />
 
     <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/career.webp') }}" as="image">
+    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/career_mobile.webp') }}" as="image">
 
     {!! $seo->meta_header_script !!}
     {!! $seo->meta_header_no_script !!}
@@ -76,6 +77,14 @@
             .image-row-min {
                 min-height: 227px
             }
+
+            .about_banner_img{
+                margin-bottom: 0 !important
+            }
+
+            .image-row-min{
+                min-height: auto !important
+            }
         }
     </style>
 @stop
@@ -91,8 +100,17 @@
         <div class="container">
             <div class="row mb-5 image-row-min" data-animate-effect="fadeInUp">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    <img src="{{ asset('assets/career.webp') }}" fetchpriority="high" alt=""
-                        class="img-fluid about_banner_img lazyload" width="1166" height="532">
+                    {{-- <img src="{{ asset('assets/career.webp') }}" fetchpriority="high" alt=""
+                        class="img-fluid about_banner_img" width="1166" height="532"> --}}
+                    <picture>
+                        <source srcset="{{ asset('assets/career_mobile.webp') }}"
+                                        media="(max-width: 991px)">
+                        <source srcset="{{ asset('assets/career.webp') }}"
+                                        media="(max-width: 1200px)">
+                        <img src="{{ asset('assets/career.webp') }}" width="1166" height="532" fetchpriority="high"
+                            alt="career"
+                            title="career" class="img-fluid about_banner_img">
+                    </picture>
                 </div>
             </div>
             {{-- <div class="row mb-5 " data-animate-effect="fadeInUp">
