@@ -189,7 +189,6 @@
     {!! $seo->meta_footer_script_nonce !!}
     {!! $seo->meta_footer_no_script_nonce !!}
 
-    {{-- <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script> --}}
     <script nonce="{{ csp_nonce() }}" defer>
         window.addEventListener("load", function() {
             const intlScriptId = "intl-tel-input-script-id";

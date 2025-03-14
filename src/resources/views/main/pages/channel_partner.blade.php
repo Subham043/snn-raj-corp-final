@@ -94,6 +94,11 @@
             min-height: 712px
         }
 
+        .special-link{
+            color: #be932d !important;
+            font-weight: 600;
+        }
+
         @media screen and (max-width: 600px) {
             .hero-main {
                 min-height: 1249px
@@ -123,7 +128,7 @@
                         <ol>
                             <li>
                                 Take your time to explore our comprehensive website at <a href="https://www.snnrajcorp.com"
-                                    target="_blank">www.snnrajcorp.com</a>. It will provide you with valuable insights into
+                                    target="_blank" class="special-link" class="special-link">www.snnrajcorp.com</a>. It will provide you with valuable insights into
                                 all of our projects.
                             </li>
                             <li>
@@ -131,7 +136,7 @@
                                 and click on "CHANNEL PARTNERS." You can access the Empanelment Form provided below. Please
                                 complete the form and attach all necessary requirements as indicated in the enclosures
                                 section. Send the completed form and attachments to <a
-                                    href="mailto:channelsales@snnrajcorp.com">channelsales@snnrajcorp.com</a>.
+                                    href="mailto:channelsales@snnrajcorp.com" class="special-link">channelsales@snnrajcorp.com</a>.
                             </li>
                             <li>
                                 After you have submitted the online registration form, our team will review your application
@@ -146,7 +151,7 @@
                             <li>
                                 We invite you to join us in doing business together.
                                 If you have any questions or require clarification at any point, please do not hesitate to
-                                reach out to our CP Coordinator at <br /><a href="tel:+918884123528">+91 8884123528</a>. We
+                                reach out to our CP Coordinator at <br /><a href="tel:+918884123528" class="special-link">+91 8884123528</a>. We
                                 look forward to the possibility of working together and building a mutually beneficial
                                 partnership.
                             </li>
@@ -362,7 +367,6 @@
     {!! $seo->meta_footer_script_nonce !!}
     {!! $seo->meta_footer_no_script_nonce !!}
 
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
     <script nonce="{{ csp_nonce() }}" defer>
         window.addEventListener("load", function() {
             const intlScriptId = "intl-tel-input-script-id";
