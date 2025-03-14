@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img fetchpriority="low" data-src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img lazyload" width="583" height="450"></figure>
+                        <figure><img fetchpriority="high" src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img" width="583" height="450"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <div class="desc-ul">
@@ -86,7 +86,7 @@
                             <div class="row div-padding">
                                 <div class="col-md-12 " data-animate-effect="fadeInRight">
                                     <div class="img fl-img">
-                                        <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="">
+                                        <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="" width="583" height="296">
                                     </div>
                                     <div class="wrap">
                                         <div class="number">
