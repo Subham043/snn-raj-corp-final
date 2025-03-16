@@ -23,9 +23,9 @@
     <script src="{{ asset('assets/js/plugins/jq.min.js')}}" defer></script>
     <script src="{{ asset('assets/js/plugins/bootstrap.min.js')}}" defer></script>
     <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}" defer></script>
+    <script src="{{ asset('assets/js/plugins/lazysizes.min.js') }}" defer></script>
     <script src="{{ asset('admin/js/pages/iziToast.min.js') }}" async></script>
     <script src="{{ asset('admin/js/pages/axios.min.js') }}" async></script>
-    <script src="{{ asset('assets/js/plugins/lazysizes.min.js') }}" async></script>
     <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
         const errorToast = (message) =>{
             iziToast.error({

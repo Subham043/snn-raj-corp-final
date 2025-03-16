@@ -24,8 +24,14 @@
     <link rel="preload" fetchpriority="high" href="{{$banner->image_link}}" as="image" type="image/webp">
     @endif
 
+    <link rel="preload" as="script" href="{{ asset("assets/js/plugins/owl.carousel.min.js") }}">
+    <link rel="preload" as="script" href="{{ asset("assets/js/plugins/swiper-bundle.min.js") }}">
+    <link rel="preload" as="script" href="{{ asset("assets/js/about.js") }}">
+
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}
+
+    @vite(['resources/css/owl.carousel.min.css', 'resources/css/owl.theme.default.min.css', 'resources/css/swiper-bundle.min.css'])
 
     <style nonce="{{ csp_nonce() }}">
         .partner .owl-dots{
@@ -110,7 +116,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img src="{{ $banner->image_link}}" fetchpriority="low" alt="" class="img-fluid about_banner_img" width="583" height="570"></figure>
+                        <figure><img src="{{ $banner->image_link}}" fetchpriority="high" loading="eager" alt="" class="img-fluid about_banner_img" width="583" height="570"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <p>{{$banner->description}}</p>

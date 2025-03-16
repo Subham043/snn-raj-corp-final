@@ -14,6 +14,13 @@
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://src.plumb5.com/snnrajcorp_com.js">
+
+    <link rel="preload" as="script" href="{{ asset('assets/js/plugins/jq.min.js')}}">
+    <link rel="preload" as="script" href="{{ asset('assets/js/plugins/bootstrap.min.js')}}">
+    <link rel="preload" as="script" href="{{ asset('admin/js/pages/just-validate.production.min.js') }}">
+    <link rel="preload" as="script" href="{{ asset('assets/js/plugins/lazysizes.min.js') }}">
+    <link rel="preload" as="script" href="{{ asset('assets/js/common_script.js') }}">
+    <link rel="preload" as="script" href="{{ asset('assets/js/referral.js') }}">
     
     {{-- <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHsv4kjgoGqM7E_CfOQ4mohvToJdLm8BvE.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHsv4kjgoGqM7E_CfOQ4mogvToJdLm8BvE.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -30,7 +37,7 @@
     
     <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/black-logo.webp') }}" as="image">
     {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;1,300;1,400&amp;family=Oswald:wght@300;400&amp;display=swap"> --}}
-    @vite(['resources/css/app.css'])
+    @vite(['resources/css/bootstrap.min.css', 'resources/css/themify-icons.css', 'resources/css/iziToast.min.css', 'resources/css/intlTelInput.css', 'resources/css/owl.carousel.min.css', 'resources/css/owl.theme.default.min.css', 'resources/css/app.css'])
     <style nonce="{{ csp_nonce() }}">
         :root {
 
@@ -515,10 +522,10 @@
     <script src="{{ asset('assets/js/plugins/jq.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/plugins/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/plugins/owl.carousel.min.js') }}" defer></script>
-    <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}" async></script>
+    <script src="{{ asset('assets/js/plugins/lazysizes.min.js') }}" defer></script>
+    <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}" defer></script>
     <script src="{{ asset('admin/js/pages/iziToast.min.js') }}" async></script>
     <script src="{{ asset('admin/js/pages/axios.min.js') }}" async></script>
-    <script src="{{ asset('assets/js/plugins/lazysizes.min.js') }}" async></script>
     <script src="{{ asset('assets/js/common_script.js') }}" defer></script>
     <script src="{{ asset('assets/js/referral.js') }}" defer></script>
     {{-- @vite(['resources/js/app.js']) --}}

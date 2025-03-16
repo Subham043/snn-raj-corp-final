@@ -87,7 +87,7 @@
             <div class="row align-items-center">
                 <div class="col-md-12" data-animate-effect="fadeInUp">
                     <div class="img fr-img" data-animate-effect="fadeInUp">
-                        <img src="{{ asset('assets/land.webp') }}" fetchpriority="high" alt=""
+                        <img src="{{ asset('assets/land.webp') }}" fetchpriority="high" loading="eager" alt=""
                             class="img-fluid about_banner_img" width="583" height="351">
                     </div>
                     <div class="wrap">

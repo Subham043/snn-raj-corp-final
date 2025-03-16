@@ -27,8 +27,14 @@
 
     <link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}">
 
+    <link rel="preload" as="script" href="{{ asset("assets/js/plugins/owl.carousel.min.js") }}">
+    <link rel="preload" as="script" href="{{ asset("assets/js/plugins/img-previewer.min.js") }}">
+    <link rel="preload" as="script" href="{{ asset("assets/js/project.js") }}">
+
     {!!$data->meta_header_script!!}
     {!!$data->meta_header_no_script!!}
+
+    @vite(['resources/css/owl.carousel.min.css', 'resources/css/owl.theme.default.min.css', 'resources/css/image-previewer.css'])
 
     <style nonce="{{ csp_nonce() }}">
         .process .wrap{
@@ -142,6 +148,10 @@
 
         .additional-content-project .sub-title:before, .additional-content-project .sub-title:after{
             display: none;
+        }
+
+        .owl-theme .owl-nav.disabled+.owl-dots {
+            margin-top: 0px !important;
         }
 
         @media screen and (max-width: 600px) {

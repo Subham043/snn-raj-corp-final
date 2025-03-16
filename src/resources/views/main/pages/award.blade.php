@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
     @if (count($awards) > 0)
-        <link rel="preload" as="image" href="{{ $awards[0]->image_link }}" type="image/webp">
+        <link rel="preload" as="image" fetchpriority="high" href="{{ $awards[0]->image_link }}" type="image/webp">
     @endif
 
     {!!$seo->meta_header_script!!}
@@ -87,7 +87,7 @@
                                     <div class="numb">{{$item->year}}</div>
                                     <div class="con">
                                         @if($key==0)
-                                        <img src="{{$item->image_link}}" class="img-fluid award-img mb-3" alt="" width="255" height="255">
+                                        <img src="{{$item->image_link}}" fetchpriority="high" loading="eager" class="img-fluid award-img mb-3" alt="" width="255" height="255">
                                         @else
                                         <img data-src="{{$item->image_link}}" class="img-fluid award-img mb-3 lazyload" alt="" width="255" height="255">
                                         @endif

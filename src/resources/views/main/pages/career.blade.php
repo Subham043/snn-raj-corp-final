@@ -107,7 +107,7 @@
                                         media="(max-width: 991px)">
                         <source srcset="{{ asset('assets/career.webp') }}"
                                         media="(max-width: 1200px)">
-                        <img src="{{ asset('assets/career.webp') }}" width="1166" height="532" fetchpriority="high"
+                        <img src="{{ asset('assets/career.webp') }}" width="1166" height="532" fetchpriority="high" loading="eager"
                             alt="career"
                             title="career" class="img-fluid about_banner_img">
                     </picture>

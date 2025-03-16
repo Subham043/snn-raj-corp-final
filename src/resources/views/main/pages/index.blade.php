@@ -17,18 +17,24 @@
 				<meta name="twitter:label1" content="{{ $seo->meta_title }}" />
 				<meta name="twitter:data1" content="{{ $seo->meta_description }}" />
 				@if ($about && $about->image)
-				<link rel="preload" as="image" href="{{ $about->image_link }}" type="image/webp">
+				<link rel="preload" as="image" fetchpriority="high" href="{{ $about->image_link }}" type="image/webp">
 				@endif
 
+				<link rel="preload" as="script" href="{{ asset("assets/js/plugins/purecounter.js") }}">
+				<link rel="preload" as="script" href="{{ asset("assets/js/plugins/jquery.isotope.v3.0.2.js") }}">
+				<link rel="preload" as="script" href="{{ asset("assets/js/plugins/owl.carousel.min.js") }}">
+				<link rel="preload" as="script" href="{{ asset("assets/js/home.js") }}">
+				
 				<link rel="icon"
-								href="{{ empty($generalSetting) ? asset("assets/images/favicon.png") : $generalSetting->website_favicon_link }}"
-								sizes="32x32" />
+				href="{{ empty($generalSetting) ? asset("assets/images/favicon.png") : $generalSetting->website_favicon_link }}"
+				sizes="32x32" />
 				<link rel="icon"
-								href="{{ empty($generalSetting) ? asset("assets/images/favicon.png") : $generalSetting->website_favicon_link }}"
-								sizes="192x192" />
+				href="{{ empty($generalSetting) ? asset("assets/images/favicon.png") : $generalSetting->website_favicon_link }}"
+				sizes="192x192" />
 				<link rel="apple-touch-icon"
-								href="{{ empty($generalSetting) ? asset("assets/images/favicon.png") : $generalSetting->website_favicon_link }}" />
+				href="{{ empty($generalSetting) ? asset("assets/images/favicon.png") : $generalSetting->website_favicon_link }}" />
 				@if (!$about->use_in_banner && count($banners) > 0)
+						<link rel="preload" as="script" href="{{ asset("assets/js/home/banner_slider.js") }}">
 								@foreach ($banners as $k => $v)
 												@if ($k == 0)
 																<link rel="preload" type="image/webp" fetchpriority="high" href="{{ $v->banner_image_link }}"
@@ -41,6 +47,8 @@
 
 				{!! $seo->meta_header_script_nonce !!}
 				{!! $seo->meta_header_no_script_nonce !!}
+
+				@vite(['resources/css/owl.carousel.min.css', 'resources/css/owl.theme.default.min.css'])
 
 				<style nonce="{{ csp_nonce() }}">
 								.p-relative {
@@ -293,13 +301,13 @@
 																																								{{-- <img src="{{$banners->banner_image_link}}" alt="{{$banners->banner_image_alt}}" title="{{$banners->banner_image_title}}" fetchpriority="low"> --}}
 																																								<picture>
 																																												<source data-srcset="{{ $banners->banner_mobile_image_link }}"
-																																																media="(max-width: 991px)" class="lazyload">
+																																																media="(max-width: 991px)">
 																																												<source data-srcset="{{ $banners->banner_image_link }}"
-																																																media="(max-width: 1200px)" class="lazyload">
+																																																media="(max-width: 1200px)">
 																																												{{-- <source data-srcset="{{ $banners->banner_image_link }}" class="lazyload"> --}}
-																																												<img data-src="{{ $banners->banner_image_link }}"
+																																												<img src="{{ $banners->banner_image_link }}"
 																																																alt="{{ $banners->banner_image_alt }}" width="1256" height="644"
-																																																title="{{ $banners->banner_image_title }}" class="lazyload">
+																																																title="{{ $banners->banner_image_title }}" fetchpriority="high" loading="eager">
 																																								</picture>
 																																				</a>
 																																</div>
@@ -358,7 +366,7 @@
 																								@if ($about->image)
 																												<div class="con">
 																														{{-- @if(request()->header('User-Agent') && preg_match('/mobile/i', request()->header('User-Agent'))) --}}
-																																<img src="{{ $about->image_link }}" width="373" height="375"
+																																<img src="{{ $about->image_link }}" fetchpriority="high" loading="eager" width="373" height="375"
 																																				class="img-fluid shapeee" alt="">
 																														{{-- @else --}}
 																																{{-- <img data-src="{{ $about->image_link }}" width="373" height="375"
@@ -637,7 +645,7 @@
 				<script src="{{ asset("assets/js/plugins/jquery.isotope.v3.0.2.js") }}"  defer></script>
 				<script src="{{ asset("assets/js/plugins/owl.carousel.min.js") }}" defer></script>
 				@if (!$about->use_in_banner && count($banners) > 0)
-				<script src="{{ asset("assets/js/home/>banner_slider.js") }}" defer></script>
+				<script src="{{ asset("assets/js/home/banner_slider.js") }}" defer></script>
 				@endif
 				<script src="{{ asset("assets/js/home.js") }}"  defer></script>
 

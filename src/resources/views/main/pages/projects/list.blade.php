@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
     @if (count($ongoing_projects) > 0 && $ongoing_projects[0]->banner_count>0)
-        <link rel="preload" as="image" href="{{ $ongoing_projects[0]->banner[0]->image_link }}" type="image/webp">
+        <link rel="preload" as="image" fetchpriority="high" href="{{ $ongoing_projects[0]->banner[0]->image_link }}" type="image/webp">
     @endif
 
     {!!$seo->meta_header_script!!}
@@ -162,7 +162,7 @@
                             <div class="img">
                                 <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
                                     @if($k==0)
-                                    <img fetchpriority="high" src="{{$v->banner[0]->image_link}}" alt="">
+                                    <img fetchpriority="high" loading="eager" src="{{$v->banner[0]->image_link}}" alt="">
                                     @else
                                     <img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt="">
                                     @endif

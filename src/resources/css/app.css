@@ -50,15 +50,15 @@
     --theme-highlight-text-color: #fff;
 } */
 
-@import url('./swiper-bundle.min.css');
+/* @import url('./magnific-popup.css'); */
+/* @import url('./swiper-bundle.min.css');
 @import url('./bootstrap.min.css');
 @import url('./themify-icons.css');
-/* @import url('./magnific-popup.css'); */
 @import url('./owl.carousel.min.css');
 @import url('./owl.theme.default.min.css');
 @import url('./intlTelInput.css');
 @import url('./iziToast.min.css');
-@import url('./image-previewer.css');
+@import url('./image-previewer.css'); */
 
 /* vietnamese */
 @font-face {
