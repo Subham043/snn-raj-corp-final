@@ -86,7 +86,7 @@
                             <div class="row div-padding">
                                 <div class="col-md-12 " data-animate-effect="fadeInRight">
                                     <div class="img fl-img">
-                                        <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="" width="583" height="296">
+                                        <img fetchpriority="low" data-src="{{$val->image_link}}" title="{!!$val->heading!!}" alt="{!!$val->heading!!}" class="lazyload" alt="" width="583" height="296">
                                     </div>
                                     <div class="wrap">
                                         <div class="number">

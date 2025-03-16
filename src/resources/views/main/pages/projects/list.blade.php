@@ -21,8 +21,12 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
-    @if (count($ongoing_projects) > 0 && $ongoing_projects[0]->banner_count>0)
-        <link rel="preload" as="image" fetchpriority="high" href="{{ $ongoing_projects[0]->banner[0]->image_link }}" type="image/webp">
+    @if (count($ongoing_projects) > 0)
+        @foreach($ongoing_projects as $og)
+            @if($og->banner_count > 0)
+                <link rel="preload" as="image" fetchpriority="high" href="{{ $og->banner[0]->image_link }}" type="image/webp">
+            @endif
+        @endforeach
     @endif
 
     {!!$seo->meta_header_script!!}
@@ -161,11 +165,11 @@
                         @if($v->banner_count>0)
                             <div class="img">
                                 <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
-                                    @if($k==0)
-                                    <img fetchpriority="high" loading="eager" src="{{$v->banner[0]->image_link}}" alt="">
-                                    @else
-                                    <img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt="">
-                                    @endif
+                                    {{-- @if($k==0) --}}
+                                    <img fetchpriority="high" loading="eager" src="{{$v->banner[0]->image_link}}" alt="{{$v->name}}" title="{{$v->name}}">
+                                    {{-- @else
+                                    <img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt="{{$v->name}}" title="{{$v->name}}">
+                                    @endif --}}
                                 </a>
                             </div>
                         @endif
@@ -200,7 +204,7 @@
                     <div class="col-md-8 order1 " data-animate-effect="fadeInUp">
                         @if($v->banner_count>0)
                             <div class="img">
-                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt=""></a>
+                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="low" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt="{{$v->name}}" title="{{$v->name}}"></a>
                             </div>
                         @endif
                     </div>

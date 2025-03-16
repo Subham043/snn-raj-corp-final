@@ -125,8 +125,8 @@
                             </div>
                             <div class="col-md-12 mt-2">
                                 <div class="col-md-12 mt-3 mb-5">
-                                    <input type="checkbox" class="line-gray">
-                                    <label>I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp
+                                    <input type="checkbox" class="line-gray" id="consent">
+                                    <label for="consent">I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp
                                         me about its products and offers, this consent overrides any registration for DNC /
                                         NDNC</label>
                                 </div>

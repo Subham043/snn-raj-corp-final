@@ -294,7 +294,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->floor}}</h6> <span style="color: #fff">Floors</span>
                                                         </div>
@@ -308,7 +308,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" fetchpriority="high" loading="eager" alt="Towers"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Towers"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->tower}}</h6> <span style="color: #fff">Towers</span>
                                                         </div>
@@ -322,7 +322,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" fetchpriority="high" loading="eager" alt="Acre"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Acre"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->acre}}</h6> <span style="color: #fff">Acre</span>
                                                         </div>
@@ -336,7 +336,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" fetchpriority="high" loading="eager" alt="Status"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Status"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
                                                         </div>
@@ -350,7 +350,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" fetchpriority="high" loading="eager" alt="Location"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Location"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
                                                         </div>
@@ -364,7 +364,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" fetchpriority="high" loading="eager" alt="RERA No."> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="RERA No."> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
@@ -380,7 +380,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" fetchpriority="high" loading="eager" alt="Location"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Location"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
                                                         </div>
@@ -394,7 +394,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" fetchpriority="high" loading="eager" alt="RERA No."> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="RERA No."> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
@@ -437,7 +437,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->floor}}</h6> <span style="color: #fff">Floors</span>
                                                         </div>
@@ -451,7 +451,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" fetchpriority="high" loading="eager" alt="Towers"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Towers"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->tower}}</h6> <span style="color: #fff">Towers</span>
                                                         </div>
@@ -465,7 +465,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" fetchpriority="high" loading="eager" alt="Acre"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Acre"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->acre}}</h6> <span style="color: #fff">Acre</span>
                                                         </div>
@@ -479,7 +479,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" fetchpriority="high" loading="eager" alt="Status"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Status"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
                                                         </div>
@@ -493,7 +493,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" fetchpriority="high" loading="eager" alt="Location"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Location"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
                                                         </div>
@@ -507,7 +507,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" fetchpriority="high" loading="eager" alt="RERA No."> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="RERA No."> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
@@ -523,7 +523,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" fetchpriority="high" loading="eager" alt="Location"> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Location"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
                                                         </div>
@@ -537,7 +537,7 @@
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" fetchpriority="high" loading="eager" alt="RERA No."> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="RERA No."> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
@@ -760,7 +760,7 @@
                         @foreach($data->amenity as $amenity)
                             <div class="col-md-3 col-sm-6 mb-4">
                                 <div class="about-box">
-                                    <img fetchpriority="low" data-src="{{$amenity->image_link}}" class="icon lazyload" alt="{{$amenity->title}}" title="{{$amenity->title}}">
+                                    <img fetchpriority="low" data-src="{{$amenity->image_link}}" class="icon lazyload" width="273" height="70" alt="{{$amenity->title}}" title="{{$amenity->title}}">
                                     <h5>{{$amenity->title}}</h5>
                                 </div>
                             </div>
@@ -819,7 +819,7 @@
                     <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
                         <div class="gallery-box">
                             <div class="gallery-img">
-                                <img fetchpriority="low" data-src="{{$gallery_image->image_link}}" class="img-fluid mx-auto d-block lazyload" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}">
+                                <img fetchpriority="low" data-src="{{$gallery_image->image_link}}" width="372" height="372" class="img-fluid mx-auto d-block lazyload" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}">
                             </div>
                             <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
                         </div>

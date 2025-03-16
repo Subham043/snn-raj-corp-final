@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="xyz">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -443,7 +443,7 @@
                                         placeholder="Phone *" required>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <select class="line-gray" name="member_project_id" id="member_project_id"
+                                    <select class="line-gray" name="member_project_id" id="member_project_id" aria-label="Project Name"
                                         required>
                                         <option value="">Project Name *</option>
                                         @foreach ($projects as $p)
@@ -473,7 +473,7 @@
                                         type="text" placeholder="Relation *" required>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <select class="line-gray" name="referal_project_id" id="referal_project_id"
+                                    <select class="line-gray" name="referal_project_id" id="referal_project_id" aria-label="Project Name"
                                         required>
                                         <option value="">Project Name *</option>
                                         @foreach ($projects as $p)
@@ -483,8 +483,8 @@
                                 </div>
                                 <div class="col-md-12 mt-2">
                                     <div class="col-md-12 mt-3 mb-5">
-                                        <input type="checkbox" class="line-gray">
-                                        <label>I agree with the <a href="{{ route('legal.get', 'privacy-policy') }}"
+                                        <input type="checkbox" class="line-gray" id="consent">
+                                        <label for="consent">I agree with the <a href="{{ route('legal.get', 'privacy-policy') }}"
                                                 aria-label="privacy policy" class="underline line-gray">privacy
                                                 policy</a></label>
                                     </div>

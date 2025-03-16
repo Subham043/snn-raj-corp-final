@@ -198,7 +198,7 @@
                                         placeholder="Name of Channel Partner *" required="">
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <select name="company_type" id="company_type" class="line-gray" required>
+                                    <select name="company_type" id="company_type" class="line-gray" aria-label="Company Type" required>
                                         <option value="">Company Type</option>
                                         <option value="Individual">Individual</option>
                                         <option value="Proprietorship">Proprietorship</option>
