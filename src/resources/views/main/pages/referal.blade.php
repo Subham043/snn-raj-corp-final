@@ -19,21 +19,10 @@
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/bootstrap.min.js')}}">
     <link rel="preload" as="script" href="{{ asset('admin/js/pages/just-validate.production.min.js') }}">
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/lazysizes.min.js') }}">
+    <link rel="preload" as="script" href="{{ asset('assets/js/plugins/intlTelInput.min.js') }}">
     <link rel="preload" as="script" href="{{ asset('assets/js/common_script.js') }}">
     <link rel="preload" as="script" href="{{ asset('assets/js/referral.js') }}">
     
-    {{-- <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHsv4kjgoGqM7E_CfOQ4mohvToJdLm8BvE.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHsv4kjgoGqM7E_CfOQ4mogvToJdLm8BvE.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHsv4kjgoGqM7E_CfOQ4mouvToJdLm8.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHrv4kjgoGqM7E_Cfs0wH8DnzcjTrA.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHrv4kjgoGqM7E_Cfs1wH8DnzcjTrA.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHrv4kjgoGqM7E_Cfs7wH8Dnzcj.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHqv4kjgoGqM7E3p-ks6Fostz0rdom9.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHqv4kjgoGqM7E3p-ks6Vostz0rdom9.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHqv4kjgoGqM7E3p-ks51ostz0rdg.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHpv4kjgoGqM7E_A8s5ynghnQci.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHpv4kjgoGqM7E_Ass5ynghnQci.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.gstatic.com/s/barlow/v12/7cHpv4kjgoGqM7E_DMs5ynghnQ.woff2" as="font" type="font/woff2" crossorigin="anonymous"> --}}
     
     <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/black-logo.webp') }}" as="image">
     {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;1,300;1,400&amp;family=Oswald:wght@300;400&amp;display=swap"> --}}
@@ -557,12 +546,12 @@
             let scriptEle = document.createElement("script");
             scriptEle.setAttribute("type", "text/javascript");
             scriptEle.setAttribute("src",
-                "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js");
+                "{{ asset('assets/js/plugins/intlTelInput.min.js')}}");
             scriptEle.setAttribute("id", intlScriptId);
             document.body.appendChild(scriptEle);
             scriptEle.addEventListener("load", () => {
                 countryData1 = window.intlTelInput(document.querySelector("#member_phone"), {
-                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+                    utilsScript: "{{ asset('assets/js/plugins/intlTelInput.utils.js')}}",
                     autoInsertDialCode: true,
                     initialCountry: "in",
                     geoIpLookup: callback => {
@@ -573,7 +562,7 @@
                     },
                 });
                 countryData2 = window.intlTelInput(document.querySelector("#referal_phone"), {
-                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+                    utilsScript: "{{ asset('assets/js/plugins/intlTelInput.utils.js')}}",
                     autoInsertDialCode: true,
                     initialCountry: "in",
                     geoIpLookup: callback => {

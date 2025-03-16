@@ -181,12 +181,12 @@
             let scriptEle = document.createElement("script");
             scriptEle.setAttribute("type", "text/javascript");
             scriptEle.setAttribute("src",
-                "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js");
+                "{{ asset('assets/js/plugins/intlTelInput.min.js')}}");
             scriptEle.setAttribute("id", intlScriptId);
             document.body.appendChild(scriptEle);
             scriptEle.addEventListener("load", () => {
                 countryData = window.intlTelInput(document.querySelector("#phone"), {
-                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+                    utilsScript: "{{ asset('assets/js/plugins/intlTelInput.utils.js')}}",
                     autoInsertDialCode: true,
                     initialCountry: "in",
                     geoIpLookup: callback => {

@@ -1,17 +1,3 @@
-{{-- <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
-<script nonce="{{ csp_nonce() }}" defer>
-  const countryData = window.intlTelInput(document.querySelector("#phoneModal"), {
-    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
-    autoInsertDialCode: true,
-    initialCountry: "in",
-    geoIpLookup: callback => {
-        fetch("https://ipapi.co/json")
-        .then(res => res.json())
-        .then(data => callback(data.country_code))
-        .catch(() => callback("in"));
-    },
-  });
-</script> --}}
 <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 window.addEventListener("load", function () {
     const intlScriptId = "intl-tel-input-script-id";
@@ -27,12 +13,12 @@ window.addEventListener("load", function () {
         if(!document.querySelector(`script#${intlScriptId}`)){
             let scriptEle = document.createElement("script");
             scriptEle.setAttribute("type", "text/javascript");
-            scriptEle.setAttribute("src", "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js");
+            scriptEle.setAttribute("src", "{{ asset('assets/js/plugins/intlTelInput.min.js')}}");
             scriptEle.setAttribute("id", intlScriptId);
             document.body.appendChild(scriptEle);
             scriptEle.addEventListener("load", () => {
                 countryData = window.intlTelInput(document.querySelector("#phoneModal"), {
-                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+                    utilsScript: "{{ asset('assets/js/plugins/intlTelInput.utils.js')}}",
                     autoInsertDialCode: true,
                     initialCountry: "in",
                     geoIpLookup: callback => {

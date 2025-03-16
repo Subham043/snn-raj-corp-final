@@ -56,12 +56,12 @@
 
 @section('js')
 
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+    <script src="{{ asset('assets/js/plugins/intlTelInput.min.js')}}"></script>
 
     <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 
                 const countryData = window.intlTelInput(document.querySelector("#phone"), {
-                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+                    utilsScript: "{{ asset('assets/js/plugins/intlTelInput.utils.js')}}",
                     autoInsertDialCode: true,
                     initialCountry: "in",
                     geoIpLookup: callback => {

@@ -7,10 +7,10 @@
 <script src="{{ asset('campaign/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
 <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+<script src="{{ asset('assets/js/plugins/intlTelInput.min.js')}}"></script>
 <script nonce="{{ csp_nonce() }}" defer>
   const countryData1 = window.intlTelInput(document.querySelector("#phoneModal"), {
-    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+    utilsScript: "{{ asset('assets/js/plugins/intlTelInput.utils.js')}}",
     autoInsertDialCode: true,
     initialCountry: "in",
     geoIpLookup: callback => {
@@ -21,7 +21,7 @@
     },
   });
   const countryData2 = window.intlTelInput(document.querySelector("#phone2"), {
-    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+    utilsScript: "{{ asset('assets/js/plugins/intlTelInput.utils.js')}}",
     autoInsertDialCode: true,
     initialCountry: "in",
     geoIpLookup: callback => {
