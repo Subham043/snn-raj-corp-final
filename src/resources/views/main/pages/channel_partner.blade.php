@@ -27,6 +27,7 @@
         href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link }}" />
 
     <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/partner.webp') }}" as="image">
+    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/partner_mobile.webp') }}" as="image">
 
     {!! $seo->meta_header_script !!}
     {!! $seo->meta_header_no_script !!}
@@ -114,8 +115,15 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="img fr-img" data-animate-effect="fadeInUp">
-                        <img src="{{ asset('assets/partner.webp') }}" fetchpriority="high" loading="eager" alt=""
-                            class="img-fluid about_banner_img" width="583" height="351">
+                        <picture>
+                            <source srcset="{{ asset('assets/partner_mobile.webp') }}"
+                                            media="(max-width: 991px)">
+                            <source srcset="{{ asset('assets/partner.webp') }}"
+                                            media="(max-width: 1200px)">
+                            <img src="{{ asset('assets/partner.webp') }}" width="583" height="351" fetchpriority="high" loading="eager"
+                                alt="partner"
+                                title="partner" class="img-fluid about_banner_img">
+                        </picture>
                     </div>
                     <div class="wrap">
                         <div class="section-title">CHANNEL PARTNER <div style="display:inline;"><span>EMPANELMENT</span>

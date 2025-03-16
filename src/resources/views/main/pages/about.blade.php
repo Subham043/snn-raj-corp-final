@@ -431,7 +431,7 @@
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img src="{{asset('smartphone.svg')}}" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
+        <img src="{{asset('smartphone.svg')}}" fetchpriority="high" loading="eager" title="Enquiry Popup" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
     </button>
 
 @stop

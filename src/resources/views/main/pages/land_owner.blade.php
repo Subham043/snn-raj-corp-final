@@ -27,6 +27,7 @@
         href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link }}" />
 
     <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/land.webp') }}" as="image">
+    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/land_mobile.webp') }}" as="image">
 
     {!! $seo->meta_header_script !!}
     {!! $seo->meta_header_no_script !!}
@@ -87,8 +88,15 @@
             <div class="row align-items-center">
                 <div class="col-md-12" data-animate-effect="fadeInUp">
                     <div class="img fr-img" data-animate-effect="fadeInUp">
-                        <img src="{{ asset('assets/land.webp') }}" fetchpriority="high" loading="eager" alt=""
-                            class="img-fluid about_banner_img" width="583" height="351">
+                        <picture>
+                            <source srcset="{{ asset('assets/land_mobile.webp') }}"
+                                            media="(max-width: 991px)">
+                            <source srcset="{{ asset('assets/land.webp') }}"
+                                            media="(max-width: 1200px)">
+                            <img src="{{ asset('assets/land.webp') }}" width="583" height="351" fetchpriority="high" loading="eager"
+                                alt="land"
+                                title="land" class="img-fluid about_banner_img">
+                        </picture>
                     </div>
                     <div class="wrap">
                         {{-- <h1 class="section-title">Dear [ <span style="color: black; text-transform:capitalize">Land Owner</span> ]</h1> --}}

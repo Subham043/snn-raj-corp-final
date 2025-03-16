@@ -20,10 +20,16 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="32x32" />
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
-
+    
     @if ($data->banner_count > 0)
-        <link rel="preload" as="image" href="{{ $data->banner[0]->image_link }}" type="image/webp">
+    <link rel="preload" fetchPriority="high" as="image" href="{{ $data->banner[0]->image_link }}" type="image/webp">
     @endif
+    
+    <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/floors.svg') }}">
+    <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/tower.svg') }}">
+    <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/acre.svg') }}">
+    <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/location.svg') }}">
+    <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/rera.svg') }}">
 
     <link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}">
 
@@ -255,6 +261,12 @@
             font-weight: 800;
             color: #fff;
         }
+
+        @media screen and (max-width: 600px) {
+            .project-cntr-info-col, .project-page .project-detail-row>*{
+                width: 100% !important;
+            }
+        }
     </style>
 
 @stop
@@ -277,12 +289,12 @@
                         <div class="col-md-12">
                             <div class="project-bar" style="background-color: #1b1919">
                                 <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/floors.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" fetchpriority="high" loading="eager" alt="Floors"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->floor}}</h6> <span style="color: #fff">Floors</span>
                                                         </div>
@@ -291,12 +303,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/tower.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" fetchpriority="high" loading="eager" alt="Towers"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->tower}}</h6> <span style="color: #fff">Towers</span>
                                                         </div>
@@ -305,12 +317,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/acre.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" fetchpriority="high" loading="eager" alt="Acre"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->acre}}</h6> <span style="color: #fff">Acre</span>
                                                         </div>
@@ -319,12 +331,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/location.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" fetchpriority="high" loading="eager" alt="Status"> </div>
+                                                        <div class="cont">
+                                                            <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="col-auto mb-15 text-center project-cntr-info-col">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" fetchpriority="high" loading="eager" alt="Location"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
                                                         </div>
@@ -333,12 +359,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/rera.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" fetchpriority="high" loading="eager" alt="RERA No."> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
@@ -346,15 +372,31 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    </div> --}}
+                                </div>
+                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/status.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" fetchpriority="high" loading="eager" alt="Location"> </div>
                                                         <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
+                                                            <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" fetchpriority="high" loading="eager" alt="RERA No."> </div>
+                                                        <div class="cont">
+                                                            <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -379,7 +421,7 @@
                         @if($data->banner_count>0)
                             @foreach($data->banner as $k => $banner)
                                 @if($k==0)
-                                <div class="portfolio-item"> <img fetchpriority="high" class="img-fluid project-page-banner-img" src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
+                                <div class="portfolio-item"> <img fetchpriority="high" loading="eager" class="img-fluid project-page-banner-img" src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
                                 @else
                                 <div class="portfolio-item"> <img fetchpriority="low" class="img-fluid project-page-banner-img lazyload" data-src="{{$banner->image_link}}" alt="{{$banner->image_alt}}" title="{{$banner->image_title}}"> </div>
                                 @endif
@@ -390,12 +432,12 @@
                         <div class="col-md-12 px-0">
                             <div class="project-bar" style="background-color:#1b1919;">
                                 <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/floors.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" fetchpriority="high" loading="eager" alt="Floors"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->floor}}</h6> <span style="color: #fff">Floors</span>
                                                         </div>
@@ -404,12 +446,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/tower.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" fetchpriority="high" loading="eager" alt="Towers"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->tower}}</h6> <span style="color: #fff">Towers</span>
                                                         </div>
@@ -418,12 +460,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/acre.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" fetchpriority="high" loading="eager" alt="Acre"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->acre}}</h6> <span style="color: #fff">Acre</span>
                                                         </div>
@@ -432,12 +474,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/location.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" fetchpriority="high" loading="eager" alt="Status"> </div>
+                                                        <div class="cont">
+                                                            <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="col-auto mb-15 text-center project-cntr-info-col">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" fetchpriority="high" loading="eager" alt="Location"> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
                                                         </div>
@@ -446,12 +502,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/rera.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" fetchpriority="high" loading="eager" alt="RERA No."> </div>
                                                         <div class="cont">
                                                             <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
@@ -459,15 +515,31 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center">
+                                    </div> --}}
+                                </div>
+                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
                                         <div class="testimonials">
                                             <div class="wrap">
                                                 <div class="item">
                                                     <div class="info">
-                                                        <div class="author-img"> <img data-src="{{asset('assets/status.svg')}}" class="lazyload" alt=""> </div>
+                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" fetchpriority="high" loading="eager" alt="Location"> </div>
                                                         <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
+                                                            <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
+                                        <div class="testimonials">
+                                            <div class="wrap">
+                                                <div class="item">
+                                                    <div class="info">
+                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" fetchpriority="high" loading="eager" alt="RERA No."> </div>
+                                                        <div class="cont">
+                                                            <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -520,7 +592,7 @@
                     <div class="row div-padding pb-md-0">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
                             <div class="img fl-img">
-                                <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="">
+                                <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
                             </div>
                             <div class="wrap project-wrap-div">
                                 <div class="number">
@@ -547,7 +619,7 @@
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
                             <div class="img fr-img">
-                                <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="">
+                                <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
                             </div>
                             <div class="wrap project-wrap-div">
                                 <div class="number">
@@ -619,8 +691,8 @@
                                         <div class="tab-regular slider owl-carousel">
                                             @foreach ($v->plan as $item)
                                             <div class="slider-img">
-                                                <img data-src="{{ $item->image_link }}" class="w-100 lazyload"
-                                                    alt="Plan Image {{$item->id}}">
+                                                <img data-src="{{ $item->image_link }}" width="968" height="645" class="w-100 lazyload"
+                                                title="Plan Image {{$item->id}}" alt="Plan Image {{$item->id}}">
                                             </div>
                                             @endforeach
                                         </div>
@@ -688,7 +760,7 @@
                         @foreach($data->amenity as $amenity)
                             <div class="col-md-3 col-sm-6 mb-4">
                                 <div class="about-box">
-                                    <img fetchpriority="low" data-src="{{$amenity->image_link}}" class="icon lazyload" alt="">
+                                    <img fetchpriority="low" data-src="{{$amenity->image_link}}" class="icon lazyload" alt="{{$amenity->title}}" title="{{$amenity->title}}">
                                     <h5>{{$amenity->title}}</h5>
                                 </div>
                             </div>
@@ -779,7 +851,7 @@
         <div class="row">
             <div class="col-md-12" data-animate-effect="fadeInUp">
                 <div>
-                    <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 map-shape lazyload" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 map-shape lazyload" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -815,7 +887,7 @@
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img data-src="{{asset('smartphone.svg')}}" class="lazyload" style="height: 35px; width:35px;" />
+        <img src="{{asset('smartphone.svg')}}" fetchpriority="high" loading="eager" title="Enquiry Popup" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
     </button>
 @stop
 

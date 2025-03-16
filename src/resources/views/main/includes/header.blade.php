@@ -34,7 +34,7 @@
                 <a aria-label="logo" href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="high" src="{{ asset('assets/black-logo.webp') }}" width="70" height="70" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}" data-img="{{ asset('assets/black-logo.webp') }}"></a>
             </div>
             <!-- Menu Burger -->
-            <div class="col-6 col-md-6 text-right duru-wrap-burger-wrap"> <a aria-label="menu" id="duru-js-duru-nav-toggle" class="duru-nav-toggle duru-js-duru-nav-toggle"><i></i></a> </div>
+            <div class="col-6 col-md-6 text-right duru-wrap-burger-wrap"> <a aria-label="menu" role="button" id="duru-js-duru-nav-toggle" class="duru-nav-toggle duru-js-duru-nav-toggle"><i></i></a> </div>
         </div>
     </div>
 </header>
