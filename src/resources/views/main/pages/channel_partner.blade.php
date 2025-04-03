@@ -179,7 +179,7 @@
             <div class="container">
                 <div class="row">
                     {{-- <div class="col-md-4 mb-30">
-                    <div class="no-stretch-line sub-title border-bot-light">Empanelment Form</div>
+                    <div class="no-stretch-line sub-title border-bot-light pb-0">Empanelment Form</div>
                 </div> --}}
                     <div class="col-md-8">
                         <div class="section-title"><span>Empanelment</span> Form</div>

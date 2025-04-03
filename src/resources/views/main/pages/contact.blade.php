@@ -71,7 +71,7 @@
         <div class="container">
             <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
-                    <div class="no-line-heading sub-title border-bot-light">Contact</div>
+                    <div class="no-line-heading sub-title border-bot-light pb-0">Contact</div>
                 </div>
                 <div class="col-md-8">
                     <div class="section-title">Get in <span>touch</span></div>

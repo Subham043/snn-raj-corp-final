@@ -64,7 +64,7 @@
             <div class="row mb-4 align-items-end">
                 @if($awardHeading)
                     <div class="col-md-4 " data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light">{{$awardHeading->sub_heading}}</div>
+                        <div class="sub-title border-bot-light pb-0">{{$awardHeading->sub_heading}}</div>
                     </div>
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
                         <div class="section-title">{!!$awardHeading->heading!!}</div>

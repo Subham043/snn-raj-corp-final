@@ -52,7 +52,8 @@
         .address-title{
             font-size: 20px;
             text-transform: none;
-            font-weight:normal
+            font-weight:normal;
+            color: #a68b5d !important;
         }
         .address-title span{
             font-size: 18px;
@@ -131,8 +132,10 @@
         .map-shape{
             /* border-top-left-radius: 20px;
             border-bottom-right-radius: 20px; */
-            box-shadow: 5px 10px 10px 2px #818181;
+            /* box-shadow: 5px 10px 10px 2px #818181; */
             /* border: 6px double #ddce79; */
+            border: 3px double #cea467;
+            border-radius: 5px;
         }
 
         .project-page-banner-img{
@@ -158,6 +161,19 @@
 
         .owl-theme .owl-nav.disabled+.owl-dots {
             margin-top: 0px !important;
+        }
+
+        .duru-header {
+            position: fixed;
+        }
+
+        .counter-main {
+            font-size: 4rem;
+            line-height: 60px;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--theme-primary-color);
+            opacity: .8;
+            font-family: Barlow, sans-serif;
         }
 
         @media screen and (max-width: 600px) {
@@ -201,9 +217,10 @@
 
         .tab-panels ul {
             display: flex;
-            flex-direction: column;
+            /* flex-direction: column; */
             flex-wrap: wrap;
             gap: 10px;
+            justify-content: center;
         }
         .tab-panels ul li.active {
             color: #fff;
@@ -214,12 +231,13 @@
             background: #be932d;
         }
         .tab-panels ul li {
-            background: black;
+            background: #1e202d;
             color: #fff;
             text-align: center;
             font-weight: 500;
             border-radius: 10px;
             padding: 6px 10px;
+            min-width: 100px;
         }
         .project-page .tab-panels .owl-nav {
             bottom: 0;
@@ -262,6 +280,104 @@
             color: #fff;
         }
 
+        .about table{
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .about table tbody th{
+            background: #1e202d;
+            text-align: center;
+            width: 20%;
+        }
+
+        .about table tbody td{
+            background: #fff;
+            width: 80%;
+        }
+        
+        .about table tbody th h6{
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .about table tbody th img{
+            width: 30px;
+            height: 30px;
+        }
+
+        .about table tbody td h6{
+            margin: 0;
+            font-size: 1rem;
+            word-wrap: break-word;
+        }
+
+        .suffix-div{
+            background: var(--theme-header-color);
+            margin-top: 0px !important;
+        }
+
+        .section-padding, .div-padding {
+            padding-top: inherit;
+            position: relative;
+            z-index: 9;
+        }
+
+        .address-panel{
+            background: var(--theme-hero-color);;
+            /* padding: 10px 15px; */
+            border-radius: 10px;
+        }
+
+        .ribbon {
+            /* height: 188px; */
+            position: relative;
+            margin-bottom: 15px;
+            /* background: url(https://html5book.ru/wp-content/uploads/2015/10/snow-road.jpg);
+            background-size: cover;
+            text-transform: uppercase; */
+            color: white;
+        }
+
+        .ribbon5 {
+            display: block;
+            width: calc(100% + 20px);
+            /* height: 50px;
+            line-height: 50px; */
+            text-align: center;
+            margin-left: -10px;
+            margin-right: -10px;
+            background: #cea467;
+            position: relative;
+            top: 10px;
+            padding: 5px 10px;
+            font-family: Barlow, sans-serif;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+        .ribbon5:before, .ribbon5:after {
+            content: "";
+            position: absolute;
+        }
+        .ribbon5:before {
+            height: 0;
+            width: 0;
+            bottom: -10px;
+            left: 0;
+            border-top: 10px solid #cd8d11;
+            border-left: 10px solid transparent;
+        }
+        .ribbon5:after {
+            height: 0;
+            width: 0;
+            right: 0;
+            bottom: -10px;
+            border-top: 10px solid #cd8d11;
+            border-right: 10px solid transparent;
+        }
+
         @media screen and (max-width: 600px) {
             .project-cntr-info-col, .project-page .project-detail-row>*{
                 width: 100% !important;
@@ -285,7 +401,7 @@
                     <header class="p-relative header-video-container">
                         <iframe data-src="{{$data->video}}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video lazyload" width="560" height="315" frameborder="0"></iframe>
                     </header>
-                    <div class="row no-gutter">
+                    {{-- <div class="row no-gutter">
                         <div class="col-md-12">
                             <div class="project-bar" style="background-color: #1b1919">
                                 <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
@@ -345,34 +461,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Location"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="RERA No."> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                 </div>
                                 <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
                                     <div class="col-auto mb-15 text-center project-cntr-info-col">
@@ -406,7 +494,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -428,7 +516,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <div class="row no-gutter">
+                    {{-- <div class="row no-gutter">
                         <div class="col-md-12 px-0">
                             <div class="project-bar" style="background-color:#1b1919;">
                                 <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
@@ -488,34 +576,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Location"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="RERA No."> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                 </div>
                                 <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
                                     <div class="col-auto mb-15 text-center project-cntr-info-col">
@@ -549,21 +609,21 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </section>
 @endif
 
-<section class="suffix-div pt-0 pb-5 mt-0">
+<section class="suffix-div pt-4 pb-4 mt-0">
     <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
 
-                <div class="about mb-5">
+                <div class="about col-lg-8 col-md-6">
                     <div class="row">
                         <div class="col-md-auto " data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light mb-3">
+                            <div class="sub-title border-bot-light pb-0 mb-3">
                                 <div class="section-title m-0">{{$data->name}}</div>
                             </div>
                         </div>
@@ -580,6 +640,66 @@
                         </div>
                     </div>
                 </div>
+                <div class="about col-lg-4 col-md-6">
+                    <table class="w-100">
+                        <tbody class="w-100">
+                            <tr class="w-100">
+                                <th>
+                                    <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    <h6 style="color: #be932d"><span style="color: #fff">Floors</span>
+                                </th>
+                                <td>
+                                    <h6 style="color: #be932d">{{$data->floor}}</h6>
+                                </td>
+                            </tr>
+                            <tr class="w-100">
+                                <th>
+                                    <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    <h6 style="color: #be932d"><span style="color: #fff">Towers</span>
+                                </th>
+                                <td>
+                                    <h6 style="color: #be932d">{{$data->tower}}</h6>
+                                </td>
+                            </tr>
+                            <tr class="w-100">
+                                <th>
+                                    <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    <h6 style="color: #be932d"><span style="color: #fff">Acre</span>
+                                </th>
+                                <td>
+                                    <h6 style="color: #be932d">{{$data->acre}}</h6>
+                                </td>
+                            </tr>
+                            <tr class="w-100">
+                                <th>
+                                    <div class="author-img"> <img src="{{asset('assets/status.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    <h6 style="color: #be932d"><span style="color: #fff">Status</span>
+                                </th>
+                                <td>
+                                    <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6>
+                                </td>
+                            </tr>
+                            <tr class="w-100">
+                                <th>
+                                    <div class="author-img"> <img src="{{asset('assets/location.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    <h6 style="color: #be932d"><span style="color: #fff">Location</span>
+                                </th>
+                                <td>
+                                    <h6 style="color: #be932d">{{$data->location}}</h6>
+                                </td>
+                            </tr>
+                            <tr class="w-100">
+                                <th>
+                                    <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    <h6 style="color: #be932d"><span style="color: #fff">RERA No.</span>
+                                </th>
+                                <td>
+                                    <h6 style="color: #be932d">{{$data->rera}}</h6>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
         </div>
     </div>
 </section>
@@ -587,7 +707,7 @@
 @if($data->additional_content_count>0)
     @foreach($data->additional_content as $key=>$val)
         @if(($key+1)%2!=0)
-            <section class="additional-content-project section-padding py-5 pb-md-0">
+            <section class="additional-content-project section-padding py-4 pb-md-0">
                 <div class="container">
                     <div class="row div-padding pb-md-0">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
@@ -599,7 +719,7 @@
                                     {{-- <h1>{!!$val->heading!!}</h1> --}}
                                     <div class="row">
                                         <div class="col-md-auto " data-animate-effect="fadeInUp">
-                                            <div class="sub-title border-bot-light mb-3">
+                                            <div class="sub-title border-bot-light pb-0 mb-3">
                                                 <div class="section-title m-0">{!!$val->heading!!}</div>
                                             </div>
                                         </div>
@@ -614,7 +734,7 @@
                 </div>
             </section>
         @else
-            <section class="suffix-div additional-content-project">
+            <section class="suffix-div additional-content-project py-4">
                 <div class="container">
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
@@ -626,7 +746,7 @@
                                     {{-- <h1>{!!$val->heading!!}</h1> --}}
                                     <div class="row">
                                         <div class="col-md-auto " data-animate-effect="fadeInUp">
-                                            <div class="sub-title border-bot-light mb-3">
+                                            <div class="sub-title border-bot-light pb-0 mb-3">
                                                 <div class="section-title m-0">{!!$val->heading!!}</div>
                                             </div>
                                         </div>
@@ -645,14 +765,14 @@
 @endif
 
 @if($data->plan_category_count>0)
-    <section class="project-page section-padding pt-5 pb-5">
+    <section class="project-page section-padding pt-4 pb-4">
         <div class="container">
             <div class="row">
-                <div class="row mb-5 " data-animate-effect="fadeInUp">
-                    <div class="row">
-                        <div class="col-md-auto " data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light mb-3">
-                                <div class="section-title m-0"><span>Floor</span> Plans</div>
+                <div class="row mb-0 " data-animate-effect="fadeInUp">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 " data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light pb-0 mb-3">
+                                <div class="section-title text-center m-0"><span>Floor</span> Plans</div>
                             </div>
                         </div>
                     </div>
@@ -661,29 +781,17 @@
             <!-- project slider -->
             <div class="row justify-content-center">
                 <div class="col-md-12">
-                    {{-- <div class="owl-carousel owl-theme">
-                        @if($data->plan_count>0)
-                            @foreach($data->plan as $plan)
-                                <a aria-label="{{$plan->title}}" href="{{$plan->image_link}}" title="{{$plan->title}}" class="img-zoom">
-                                    <div class="gallery-box">
-                                        <div class="gallery-img"> <img fetchpriority="low" src="{{$plan->image_link}}" class="img-fluid mx-auto d-block" alt="{{$plan->alt}}" title="{{$plan->title}}"> </div>
-                                        <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
-                                    </div>
-                                </a>
-                            @endforeach
-                        @endif
-                    </div> --}}
                     <div class="tab-holder">
                         <div id="tab-panels" class="tab-panels">
                             <div class="row flex-wrap justify-content-between">
-                                <div class="col-lg-2 col-md-3 col-sm-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
                                     <ul class="tabs">
                                         @foreach ($data->plan_category as $k=>$v)
                                         <li data-panel-name="panel{{$k}}" data-panel-key="{{$k}}" class="{{$k==0 ? 'active' : ''}}">{{$v->title}}</li>
                                         @endforeach
                                     </ul>
                                 </div>
-                                <div class="col-lg-10 col-md-9 col-sm-12" style="position: relative;" id="floor-container">
+                                <div class="col-lg-12 col-md-12 col-sm-12" style="position: relative;" id="floor-container">
 
                                     @foreach ($data->plan_category as $k=>$v)
                                     <div id="panel{{$k}}" class="panel {{$k==0 ? 'active' : ''}}">
@@ -717,24 +825,25 @@
 @endif
 
 @if(count($data->accomodation)>0)
-<section class="about lets-talk hero hero-contact mt-5 py-5" style="background-color:#1b1919; border:1px solid #be932d;">
+<section class="about lets-talk hero hero-contact pt-4 pb-4">
     <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    <div class="states">
-                        <ul class="flex gap-5 align-items-center justify-content-center">
-                            @foreach($data->accomodation as $accomodation)
-                            <li class="accom">
-                                <div class="numb valign">
-                                    <div class="mb-1 text-white">{{$accomodation->room}}</div>
-                                </div>
-                                <div class="text valign ml-1">
-                                    <p style="color: #be932d">
-                                        {!!$accomodation->area!!}
-                                    </p>
-                                </div>
-                            </li>
+                <div class="col-md-12" data-animate-effect="fadeInUp">
+                    <div id="purecounter" class="states">
+                        <ul class="align-items-center justify-content-between flex gap-2">
+                            @foreach ($data->accomodation as $accomodation)
+                                {{-- <li class="flex"> --}}
+                                <li class="col-md-4 col-sm-12 mx-0 p-2 text-center">
+                                    <div class="numb valign justify-content-center">
+                                        <div class="counter-main m-0"><span class="purecounter" style="color: transparent">{{ $accomodation->room }}</span></div>
+                                    </div>
+                                    <div class="text valign justify-content-center">
+                                        <p>
+                                            {!! $accomodation->area !!}
+                                        </p>
+                                    </div>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -747,12 +856,12 @@
 
 <!-- Amenities -->
 @if($data->amenity_count>0)
-    <section class="section-padding">
+    <section class="section-padding pt-4 pb-4">
         <div class="container">
-            <div class="row">
-                <div class="col-md-auto mb-30" data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light mb-5">
-                        <div class="section-title m-0"><span>Best Of Class</span> Amenities</div>
+            <div class="row justify-content-center">
+                <div class="col-md-12" data-animate-effect="fadeInUp">
+                    <div class="sub-title border-bot-light pb-0 mb-4">
+                        <div class="section-title text-center m-0"><span>Best Of Class</span> Amenities</div>
                     </div>
                 </div>
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -770,17 +879,44 @@
             </div>
         </div>
     </section>
-    {{-- <div class="py-5"></div> --}}
 @endif
+
+<section class="about section-padding pt-4 pb-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-12 " data-animate-effect="fadeInUp">
+                {{-- <div class="no-stretch-line sub-title border-bot-light pb-0">An address to be proud of</div> --}}
+                <div class="sub-title border-bot-light pb-0 mb-0">
+                    <div class="section-title text-center m-0">An <span>address</span> to be proud of</div>
+                </div>
+            </div>
+            <div class="col-md-12 " data-animate-effect="fadeInUp">
+                <div class="ribbons-wrapper">
+                    <div class="address-panel map-shape">
+                        <div class="ribbon">
+                            <span class="ribbon5">{!!$data->address!!}</span>
+                        </div>
+                        {{-- <div class="section-title address-title m-0">{!!$data->address!!}</div> --}}
+                        @if($data->map_location_link)
+                        <div class="p-1">
+                            <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!--  Video Gallery -->
 @if($data->gallery_video_count>0)
-    <section class="secondary-div my-0">
+    <section class="secondary-div my-0 pt-4 pb-4">
         <div class="container">
-            <div class="row mb-5 " data-animate-effect="fadeInUp">
+            <div class="row justify-content-center" data-animate-effect="fadeInUp">
                 <div class="col-md-auto" data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light mb-2">
-                        <div class="section-title m-0"><span>Video</span> Galleria</div>
+                    <div class="sub-title border-bot-light pb-0 mb-3">
+                        <div class="section-title text-center m-0"><span>Video</span> Galleria</div>
                     </div>
                 </div>
             </div>
@@ -805,12 +941,12 @@
 
 <!-- Image Galleria -->
 @if($data->gallery_image_count>0)
-    <section class="section-padding mb-5">
+    <section class="section-padding pt-4 pb-4">
         <div class="container">
-            <div class="row mb-5 " data-animate-effect="fadeInUp">
+            <div class="row justify-content-center" data-animate-effect="fadeInUp">
                 <div class="col-md-auto" data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light mb-2">
-                        <div class="section-title m-0"><span>Image</span> Galleria</div>
+                    <div class="sub-title border-bot-light pb-0 mb-3">
+                        <div class="section-title text-center m-0"><span>Image</span> Galleria</div>
                     </div>
                 </div>
             </div>
@@ -830,22 +966,7 @@
     </section>
 @endif
 
-<section class="lets-talk hero hero-contact my-0 py-5">
-    <div class="background bg-img bg-fixed" data-overlay-dark="6">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-4 " data-animate-effect="fadeInUp">
-                    <div class="no-stretch-line sub-title border-bot-light">An address to be proud of</div>
-                </div>
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
-                    <div class="section-title address-title text-white m-0">{!!$data->address!!}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-@if($data->map_location_link)
+{{-- @if($data->map_location_link)
 <section class="suffix-div py-5 mt-0">
     <div class="container-fluid">
         <div class="row">
@@ -857,7 +978,7 @@
         </div>
     </div>
 </section>
-@endif
+@endif --}}
 
 
 {{-- @if(!$data->use_in_banner)

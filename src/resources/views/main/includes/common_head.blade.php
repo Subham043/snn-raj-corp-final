@@ -36,20 +36,21 @@
             --theme-text-color: {{ empty($themeSetting) ? '#999' : $themeSetting->text_color}};
             --theme-highlight-text-color: {{ empty($themeSetting) ? '#fff' : $themeSetting->highlight_text_color}};
 
-            --theme-header-color: #1b1919;
-            --theme-footer-color: #1b1919;
-            --theme-primary-color: #be932d;
+            --theme-header-color: #f5f4f0;
+            --theme-footer-color: #1e202d;
+            --theme-primary-color: #a68b5d;
             /* --theme-hero-color: #e5d1c6; */
-            --theme-hero-color: #be932d;
+            /* --theme-hero-color: #faf3df; */
+            --theme-hero-color: #f7f2ee;
             --theme-secondary-color: #ece9de;
             --theme-subject-color: #f6f6f4;
             --theme-suffix-color: #f6f6f4;
             --theme-hero-title-color: #fff;
             --theme-hero-title-span-color: #1b1919;
             --theme-text-color: #000;
-            --theme-highlight-text-color: #000;
+            --theme-highlight-text-color: #1e202d;
             /* --theme-lines-color:#3d3b3b0f; */
-            --theme-lines-color:#be932d;
+            --theme-lines-color:#a68b5d;
         }
         body {
             color: #000000 !important;
@@ -67,7 +68,8 @@
             font-weight: 600;
         }
         .duru-wrap {
-            background: var(--theme-header-color);
+            /* background: var(--theme-header-color); */
+            background: #1e202d;
         }
         .duru-menu>ul>li>a, .duru-menu ul ul li a{
             color: #fff;
@@ -97,10 +99,10 @@
             color: #fff;
         }
         .hero .section-title, .secondary-div .section-title {
-            color: #000;
+            color: #1e202d;
         }
         .hero .section-title span {
-            color: #fff;
+            color: #a68b5d;
         }
         .hero-main .section-title span {
             color: var(--theme-primary-color);
@@ -126,7 +128,8 @@
             color: var(--theme-primary-color);
         }
         .secondary-div{
-            background: var(--theme-secondary-color);
+            /* background: var(--theme-secondary-color); */
+            background: var(--theme-header-color);
             /* padding: 125px 0; */
             padding: 50px 0;
             margin-top: 60px;
@@ -146,7 +149,7 @@
         .hero-contact{
             /* padding: 125px 0; */
             padding: 50px 0;
-            margin-top: 60px;
+            /* margin-top: 60px; */
         }
         .secondary-div input[type=password].line-gray, .secondary-div input[type=email].line-gray, .secondary-div input[type=text].line-gray, .secondary-div input[type=file].line-gray, .secondary-div textarea.line-gray, .secondary-div select.line-gray {
             border-bottom: 1px solid black;
@@ -223,6 +226,19 @@
 
         .testimonials .testimonial-name.sub-title:after{
             background-color: transparent;
+        }
+
+        .pt-4{
+            padding-top: 2rem !important;
+        }
+
+        .pb-4{
+            padding-bottom: 2rem !important;
+        }
+
+        .py-4{
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
         }
 
         @media screen and (max-width: 600px) {

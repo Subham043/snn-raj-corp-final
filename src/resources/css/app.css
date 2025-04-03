@@ -1885,22 +1885,40 @@ input[type="checkbox"] {
     margin-top: 5px;
 }
 .sub-title:before {
-    left: 0;
+    /* left: 0;
     width: 5px;
-    height: 5px;
+    height: 5px; */
     /* background-color: var(--theme-primary-color); */
-    background-color: transparent;
-    border-radius: 50%;
-}
-.sub-title:after {
+    /* background-color: transparent;
+    border-radius: 50%; */
+    /* width: 28px;
+    height: 5px;
+    display: block;
     content: "";
     position: absolute;
-    left: 25%;
+    bottom: 3px;
+    left: 50%;
+    margin-left: -14px;
+    background-color: #b80000; */
+}
+.sub-title:after {
+    /* content: "";
+    position: absolute;
+    left: 0;
     top: unset !important;
-    bottom: 0;
-    width: 85%;
+    bottom: 10px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--theme-primary-color); */
+    /* width: 100px;
     height: 1px;
-    background-color: var(--theme-primary-color);
+    display: block;
+    content: "";
+    position: relative;
+    margin-top: 25px;
+    left: 50%;
+    margin-left: -50px;
+    background-color: #b80000; */
 }
 .no-stretch-line.sub-title:after {
     left: 0;
@@ -1917,7 +1935,7 @@ input[type="checkbox"] {
     border-radius: 50%;
     top: 45%;
 }
-.sub-title:before,
+/* .sub-title:before,
 .sub-title:after {
     content: "";
     position: absolute;
@@ -1926,7 +1944,7 @@ input[type="checkbox"] {
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-}
+} */
 .sub-title.border-bot-light {
     position: relative;
     /* border-bottom: 1px solid var(--theme-lines-color); */
@@ -4131,7 +4149,7 @@ color: white;
     }
     .div-padding {
         padding-top: 0px;
-        padding-bottom: 40px;
+        /* padding-bottom: 40px; */
     }
     .wrap-2{
         padding-left: 0 !important;
@@ -4200,10 +4218,10 @@ color: white;
         margin-bottom: 10px;
         width: 100%;;
     }
-    .hero-contact {
+    /* .hero-contact {
         padding: 40px 0 !important;
         margin-top: 40px;
-    }
+    } */
     .about .states ul.flex li {
         justify-content: center;
         padding: 0;
@@ -4337,7 +4355,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .popup_btn_modal{
-    background-color: #010101 !important;
+    background-color: #1e202d !important;
     border-radius: 30px !important;
     border: none 0 !important;
     box-shadow: 1px 1px 2px #a6a29a !important;

@@ -43,6 +43,14 @@
             height: 450px;
             object-fit: cover;
         }
+
+        .section-padding, .div-padding {
+            padding-top: 0px !important;
+        }
+
+        .process p {
+            margin-bottom: 3px;
+        }
     </style>
 @stop
 
@@ -79,8 +87,8 @@
                     <section @class([
                         "process",
                         "suffix-div",
-                        "mt-0" => $key==0,
-                        "py-5" => $key!=0
+                        "py-4",
+                        "mt-0"
                     ])>
                         <div class="container">
                             <div class="row div-padding">
@@ -101,7 +109,7 @@
                         </div>
                     </section>
                 @else
-                <section class="process section-padding mb-0 mt-0">
+                <section class="process mb-0 mt-0 py-4">
                     <div class="container">
                         <div class="row div-padding">
                             <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">

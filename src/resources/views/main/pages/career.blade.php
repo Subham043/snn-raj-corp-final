@@ -115,7 +115,7 @@
             </div>
             {{-- <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
-                    <div class="no-line-heading sub-title border-bot-light">Career</div>
+                    <div class="no-line-heading sub-title border-bot-light pb-0">Career</div>
                 </div>
                 <div class="col-md-8">
                     <h1 class="section-title">Get in <span>touch</span></h1>
