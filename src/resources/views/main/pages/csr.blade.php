@@ -43,6 +43,14 @@
             height: 450px;
             object-fit: cover;
         }
+
+        .section-padding, .div-padding {
+            padding-top: 0px !important;
+        }
+
+        .process p {
+            margin-bottom: 3px;
+        }
     </style>
 @stop
 
@@ -55,7 +63,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img fetchpriority="low" data-src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img lazyload" width="583" height="450"></figure>
+                        <figure><img fetchpriority="high" loading="eager" src="{{ $banner->image_link}}" alt="" class="img-fluid about_banner_img" width="583" height="450"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <div class="desc-ul">
@@ -79,14 +87,14 @@
                     <section @class([
                         "process",
                         "suffix-div",
-                        "mt-0" => $key==0,
-                        "py-5" => $key!=0
+                        "py-4",
+                        "mt-0"
                     ])>
                         <div class="container">
                             <div class="row div-padding">
                                 <div class="col-md-12 " data-animate-effect="fadeInRight">
                                     <div class="img fl-img">
-                                        <img fetchpriority="low" data-src="{{$val->image_link}}" class="lazyload" alt="">
+                                        <img fetchpriority="low" data-src="{{$val->image_link}}" title="{!!$val->heading!!}" alt="{!!$val->heading!!}" class="lazyload" alt="" width="583" height="296">
                                     </div>
                                     <div class="wrap">
                                         <div class="number">
@@ -101,7 +109,7 @@
                         </div>
                     </section>
                 @else
-                <section class="process section-padding mb-0 mt-0">
+                <section class="process mb-0 mt-0 py-4">
                     <div class="container">
                         <div class="row div-padding">
                             <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
@@ -126,7 +134,7 @@
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img data-src="{{asset('smartphone.svg')}}" alt="Enquiry Popup" class="lazyload" style="height: 35px; width:35px;" />
+        <img src="{{asset('smartphone.svg')}}" fetchpriority="high" loading="eager" title="Enquiry Popup" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
     </button>
 
 @stop

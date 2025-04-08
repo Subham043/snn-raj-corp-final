@@ -20,12 +20,12 @@
     </script>
 
     {{-- <script src="{{ asset('assets/js/plugins/jquery-3.6.1.min.js')}}"></script> --}}
-    <script src="{{ asset('assets/js/plugins/jq.min.js')}}"></script>
-    <script src="{{ asset('assets/js/plugins/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jq.min.js')}}" defer></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap.min.js')}}" defer></script>
+    <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}" defer></script>
+    <script src="{{ asset('assets/js/plugins/lazysizes.min.js') }}" defer></script>
     <script src="{{ asset('admin/js/pages/iziToast.min.js') }}" async></script>
     <script src="{{ asset('admin/js/pages/axios.min.js') }}" async></script>
-    <script src="{{ asset('assets/js/plugins/lazysizes.min.js') }}" async></script>
     <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
         const errorToast = (message) =>{
             iziToast.error({
@@ -50,4 +50,12 @@
     </script>
     <script src="{{ asset('assets/js/common_script.js') }}" defer></script>
     @yield('js')
+    <script type='text/javascript' nonce="{{ csp_nonce() }}">
+        window.requestIdleCallback(() => {
+            var p5 = document.createElement('script');
+            p5.type = 'text/javascript';
+            p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
+            document.body.appendChild(p5);
+        });
+    </script>
 </html>

@@ -37,7 +37,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
-                        {{-- <div class="no-line-heading sub-title border-bot-light">{{$data->page_name}}</div> --}}
+                        {{-- <div class="no-line-heading sub-title border-bot-light pb-0">{{$data->page_name}}</div> --}}
                         <h1 class="section-title">{!!$data->heading!!}</h1>
                         <div class="desc-ul">
                             {!!$data->description!!}
@@ -56,12 +56,12 @@
 
 @section('js')
 
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+    <script src="{{ asset('assets/js/plugins/intlTelInput.min.js')}}"></script>
 
     <script type="text/javascript" nonce="{{ csp_nonce() }}" defer>
 
                 const countryData = window.intlTelInput(document.querySelector("#phone"), {
-                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+                    utilsScript: "{{ asset('assets/js/plugins/intlTelInput.utils.js')}}",
                     autoInsertDialCode: true,
                     initialCountry: "in",
                     geoIpLookup: callback => {

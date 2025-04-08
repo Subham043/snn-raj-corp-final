@@ -21,6 +21,14 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
+    @if (count($ongoing_projects) > 0)
+        @foreach($ongoing_projects as $og)
+            @if($og->banner_count > 0)
+                <link rel="preload" as="image" fetchpriority="high" href="{{ $og->banner[0]->image_link }}" type="image/webp">
+            @endif
+        @endforeach
+    @endif
+
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}
 
@@ -65,6 +73,22 @@
         .sub-title:after{
             width: 100%;
             left: 0;
+        }
+
+        .projects3 .content{
+            padding: 0 !important;
+        }
+
+        .projects3 .content .cont h3{
+            margin-bottom: 10px;
+        }
+
+        .section-padding, .div-padding {
+            padding-top: 0px;
+        }
+
+        .projects3 .img {
+            border-radius: 5px;
         }
     </style>
 @stop
@@ -133,15 +157,12 @@
 
     @if(count($ongoing_projects)>0)
     <section class="lets-talk hero hero-contact py-2 mt-0">
-        <div class="background bg-img bg-fixed" data-overlay-dark="6">
-            <div class="container">
-                <div class="row align-items-end">
-                    <div class="col-md-2 " data-animate-effect="fadeInUp">
-                        <div class="section-title font-weight-normal mb-md-0 mt-md-0">ONGOING <br/><span class="mx-4">PROJECTS</span></div>
-                    </div>
-                    <div class="col-md-10 " data-animate-effect="fadeInUp">
-                        <div class="no-dot sub-title border-bot-light pb-md-0 pt-md-0">&nbsp;</div>
-                    </div>
+        {{-- <div class="background bg-img bg-fixed" data-overlay-dark="6">
+        </div> --}}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
+                    <div class="section-title font-weight-normal mb-md-0 mt-md-0 text-center">ONGOING <span>PROJECTS</span></div>
                 </div>
             </div>
         </div>
@@ -150,13 +171,19 @@
 
     @foreach($ongoing_projects as $k => $v)
         @if(($k+1)%2!=0)
-        <section class="projects3 py-5">
+        <section class="projects3 py-4">
             <div class="container">
                 <div class="row div-padding pb-md-0">
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
                         @if($v->banner_count>0)
                             <div class="img">
-                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt=""></a>
+                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
+                                    {{-- @if($k==0) --}}
+                                    <img fetchpriority="high" loading="eager" src="{{$v->banner[0]->image_link}}" alt="{{$v->name}}" title="{{$v->name}}">
+                                    {{-- @else
+                                    <img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt="{{$v->name}}" title="{{$v->name}}">
+                                    @endif --}}
+                                </a>
                             </div>
                         @endif
                     </div>
@@ -175,7 +202,7 @@
 
         @else
 
-        <section class="projects3 suffix-div mt-md-0 py-5">
+        <section class="projects3 suffix-div mt-md-0 py-4">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
@@ -190,7 +217,7 @@
                     <div class="col-md-8 order1 " data-animate-effect="fadeInUp">
                         @if($v->banner_count>0)
                             <div class="img">
-                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt=""></a>
+                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="low" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt="{{$v->name}}" title="{{$v->name}}"></a>
                             </div>
                         @endif
                     </div>
@@ -243,15 +270,12 @@
 
     @if(count($completed_projects)>0)
     <section class="lets-talk hero hero-contact py-2 mt-md-0 mt-0">
-        <div class="background bg-img bg-fixed" data-overlay-dark="6">
-            <div class="container">
-                <div class="row  align-items-end">
-                    <div class="col-md-2 " data-animate-effect="fadeInUp">
-                        <div class="section-title font-weight-normal mb-md-0 mt-md-0">COMPLETED <br/><span class="mx-4">PROJECTS</span></div>
-                    </div>
-                    <div class="col-md-10 " data-animate-effect="fadeInUp">
-                        <div class="no-dot sub-title border-bot-light pb-md-0 pt-md-0">&nbsp;</div>
-                    </div>
+        {{-- <div class="background bg-img bg-fixed" data-overlay-dark="6">
+        </div> --}}
+        <div class="container">
+            <div class="row  justify-content-center">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
+                    <div class="section-title font-weight-normal mb-md-0 mt-md-0 text-center">COMPLETED <span>PROJECTS</span></div>
                 </div>
             </div>
         </div>
@@ -260,7 +284,7 @@
 
     @foreach($completed_projects as $k => $v)
         @if(($k+1)%2!=0)
-        <section class="projects3 py-5">
+        <section class="projects3 py-4">
             <div class="container">
                 <div class="row div-padding pb-md-0">
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
@@ -285,7 +309,7 @@
 
         @else
 
-        <section class="projects3 suffix-div mt-md-0 py-5">
+        <section class="projects3 suffix-div mt-md-0 py-4">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
@@ -317,15 +341,5 @@
 
     {!!$seo->meta_footer_script_nonce!!}
     {!!$seo->meta_footer_no_script_nonce!!}
-
-    <script type='text/javascript' nonce="{{ csp_nonce() }}">
-        (function () {
-        var p5 = document.createElement('script');
-        p5.type = 'text/javascript';
-        p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
-        var p5s = document.getElementsByTagName('script')[0];
-        p5s.parentNode.insertBefore(p5, p5s);
-        })();
-    </script>
 
 @stop

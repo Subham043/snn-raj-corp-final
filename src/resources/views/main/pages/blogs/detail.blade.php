@@ -88,10 +88,10 @@
     {!!$data->meta_footer_script_nonce!!}
     {!!$data->meta_footer_no_script_nonce!!}
 
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+    <script src="{{ asset('assets/js/plugins/intlTelInput.min.js')}}"></script>
     <script nonce="{{ csp_nonce() }}" defer>
     const countryData2 = window.intlTelInput(document.querySelector("#phone"), {
-        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+        utilsScript: "{{ asset('assets/js/plugins/intlTelInput.utils.js')}}",
         autoInsertDialCode: true,
         initialCountry: "in",
         geoIpLookup: callback => {

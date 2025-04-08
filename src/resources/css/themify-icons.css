@@ -23,7 +23,7 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
+/* 
 .ti-wand:before {
 	content: "\e600";
 }
@@ -143,14 +143,14 @@
 }
 .ti-arrow-up:before {
 	content: "\e627";
-}
+} */
 .ti-arrow-right:before {
 	content: "\e628";
 }
 .ti-arrow-left:before {
 	content: "\e629";
 }
-.ti-arrow-down:before {
+/* .ti-arrow-down:before {
 	content: "\e62a";
 }
 .ti-lock:before {
@@ -242,14 +242,14 @@
 }
 .ti-angle-up:before {
 	content: "\e648";
-}
+}*/
 .ti-angle-right:before {
 	content: "\e649";
 }
 .ti-angle-left:before {
 	content: "\e64a";
-}
-.ti-angle-down:before {
+} 
+/* .ti-angle-down:before {
 	content: "\e64b";
 }
 .ti-check:before {
@@ -290,11 +290,11 @@
 }
 .ti-arrows-horizontal:before {
 	content: "\e658";
-}
+} */
 .ti-fullscreen:before {
 	content: "\e659";
 }
-.ti-arrow-top-right:before {
+/* .ti-arrow-top-right:before {
 	content: "\e65a";
 }
 .ti-arrow-top-left:before {
@@ -542,11 +542,11 @@
 }
 .ti-control-shuffle:before {
 	content: "\e6ac";
-}
+} */
 .ti-control-play:before {
 	content: "\e6ad";
 }
-.ti-control-pause:before {
+/* .ti-control-pause:before {
 	content: "\e6ae";
 }
 .ti-control-forward:before {
@@ -815,11 +815,11 @@
 }
 .ti-layout-grid4:before {
 	content: "\e707";
-}
+} */
 .ti-layout-grid3:before {
 	content: "\e708";
 }
-.ti-layout-grid2:before {
+/* .ti-layout-grid2:before {
 	content: "\e709";
 }
 .ti-layout-grid2-thumb:before {
@@ -911,20 +911,20 @@
 }
 .ti-brush-alt:before {
 	content: "\e727";
-}
+} */
 .ti-youtube:before {
 	content: "\e728";
 }
-.ti-vimeo:before {
+/* .ti-vimeo:before {
 	content: "\e729";
 }
 .ti-twitter:before {
 	content: "\e72a";
-}
+} */
 .ti-time:before {
 	content: "\e72b";
 }
-.ti-tumblr:before {
+/* .ti-tumblr:before {
 	content: "\e72c";
 }
 .ti-skype:before {
@@ -950,11 +950,11 @@
 }
 .ti-list-ol:before {
 	content: "\e734";
-}
+} */
 .ti-linkedin:before {
 	content: "\e735";
 }
-.ti-layout-sidebar-2:before {
+/* .ti-layout-sidebar-2:before {
 	content: "\e736";
 }
 .ti-layout-grid4-alt:before {
@@ -974,11 +974,11 @@
 }
 .ti-layout-column2-alt:before {
 	content: "\e73c";
-}
+} */
 .ti-instagram:before {
 	content: "\e73d";
 }
-.ti-google:before {
+/* .ti-google:before {
 	content: "\e73e";
 }
 .ti-github:before {
@@ -986,11 +986,11 @@
 }
 .ti-flickr:before {
 	content: "\e740";
-}
+} */
 .ti-facebook:before {
 	content: "\e741";
 }
-.ti-dropbox:before {
+/* .ti-dropbox:before {
 	content: "\e742";
 }
 .ti-dribbble:before {
@@ -1079,4 +1079,4 @@
 }
 .ti-rss-alt:before {
 	content: "\e75f";
-}
+} */

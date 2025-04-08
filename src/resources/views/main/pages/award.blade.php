@@ -21,6 +21,10 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
+    @if (count($awards) > 0)
+        <link rel="preload" as="image" fetchpriority="high" href="{{ $awards[0]->image_link }}" type="image/webp">
+    @endif
+
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}
 
@@ -60,7 +64,7 @@
             <div class="row mb-4 align-items-end">
                 @if($awardHeading)
                     <div class="col-md-4 " data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light">{{$awardHeading->sub_heading}}</div>
+                        <div class="sub-title border-bot-light pb-0">{{$awardHeading->sub_heading}}</div>
                     </div>
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
                         <div class="section-title">{!!$awardHeading->heading!!}</div>
@@ -76,13 +80,17 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        @foreach ($awards as $item)
+                        @foreach ($awards as $key => $item)
                         <div class="col-md-4 " data-animate-effect="fadeInUp">
                             <div class="item">
                                 <div class="con">
                                     <div class="numb">{{$item->year}}</div>
                                     <div class="con">
+                                        @if($key==0)
+                                        <img src="{{$item->image_link}}" fetchpriority="high" loading="eager" class="img-fluid award-img mb-3" alt="" width="255" height="255">
+                                        @else
                                         <img data-src="{{$item->image_link}}" class="img-fluid award-img mb-3 lazyload" alt="" width="255" height="255">
+                                        @endif
                                     </div>
                                     <h5 class="font-weight-bold">{!!$item->title!!}</h5>
                                     <h6>{{$item->sub_title}}</h6>
@@ -101,7 +109,7 @@
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup" data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img data-src="{{asset('smartphone.svg')}}" alt="Enquiry Popup" class="lazyload" style="height: 35px; width:35px;" />
+        <img src="{{asset('smartphone.svg')}}" fetchpriority="high" loading="eager" title="Enquiry Popup" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
     </button>
 @stop
 

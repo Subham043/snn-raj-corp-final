@@ -24,8 +24,14 @@
     <link rel="preload" fetchpriority="high" href="{{$banner->image_link}}" as="image" type="image/webp">
     @endif
 
+    <link rel="preload" as="script" href="{{ asset("assets/js/plugins/owl.carousel.min.js") }}">
+    <link rel="preload" as="script" href="{{ asset("assets/js/plugins/swiper-bundle.min.js") }}">
+    <link rel="preload" as="script" href="{{ asset("assets/js/about.js") }}">
+
     {!!$seo->meta_header_script!!}
     {!!$seo->meta_header_no_script!!}
+
+    @vite(['resources/css/owl.carousel.min.css', 'resources/css/owl.theme.default.min.css', 'resources/css/swiper-bundle.min.css'])
 
     <style nonce="{{ csp_nonce() }}">
         .partner .owl-dots{
@@ -57,8 +63,8 @@
             color: var(--theme-primary-color);
         }
         .main-team-section{
-            background: #1b1919;
-            background-color: #1b1919;
+            background: var(--theme-footer-color);
+            background-color: var(--theme-footer-color);
         }
         .main-team-section .section-title, .main-team-section p{
             color: white;
@@ -80,6 +86,7 @@
         .core_image{
             height: 500px;
             object-fit: cover;
+            border-radius: 5px;
         }
 
         .about .desc-ul p{
@@ -110,7 +117,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img src="{{ $banner->image_link}}" fetchpriority="low" alt="" class="img-fluid about_banner_img" width="571" height="658"></figure>
+                        <figure><img src="{{ $banner->image_link}}" fetchpriority="high" loading="eager" alt="" class="img-fluid about_banner_img" width="583" height="570"></figure>
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <p>{{$banner->description}}</p>
@@ -127,7 +134,7 @@
     <h2 class="d-none">{{$seo->page_keywords}}</h2>
 
     @if($about)
-    <section class="about suffix-div mt-0">
+    <section class="about suffix-div mt-0 py-4">
         <div class="container">
             <div class="row justify-content-center">
 
@@ -142,8 +149,8 @@
                 </div>
                 <div class="col-md-9 " data-animate-effect="fadeInUp">
                     <div class="row">
-                        <div class="col-md-auto mb-4" data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light"><div class="section-title m-0">{!!$about->heading!!}</div></div>
+                        <div class="col-md-auto" data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light pb-0"><div class="section-title m-0">{!!$about->heading!!}</div></div>
 
                         </div>
                     </div>
@@ -159,19 +166,19 @@
 
     <!-- Management -->
     @if(count($management)>0)
-    <section class="about secondary-div mt-0 main-team-section">
+    <section class="about secondary-div mt-0 main-team-section py-4">
         <div class="container">
             <div class="row">
                 @if($managementHeading)
                     {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light">{{$managementHeading->sub_heading}}</div>
+                        <div class="sub-title border-bot-light pb-0">{{$managementHeading->sub_heading}}</div>
                     </div> --}}
                     <div class="col-md-auto " data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light"><div class="section-title m-0">{!!$managementHeading->heading!!}</div></div>
+                        <div class="sub-title border-bot-light pb-0"><div class="section-title m-0">{!!$managementHeading->heading!!}</div></div>
                     </div>
                 @endif
             </div>
-            <div class="row mt-4">
+            <div class="row">
                 @foreach($management as $key=>$val)
                     @if($key==0)
                         <div class="row mt-4">
@@ -233,15 +240,15 @@
 
     <!-- Staff -->
     @if(count($staffs)>0)
-    <section id="team-area" class="team section-padding pb-md-40">
+    <section id="team-area" class="team section-padding py-4">
         <div class="container">
-            <div class="row mb-4">
+            <div class="row mb-3 justify-content-center">
                 @if($staffHeading)
                     {{-- <div class="col-md-4">
-                        <div class="sub-title border-bot-light">{{$staffHeading->sub_heading}}</div>
+                        <div class="sub-title border-bot-light pb-0">{{$staffHeading->sub_heading}}</div>
                     </div> --}}
                     <div class="col-md-auto">
-                        <div class="sub-title border-bot-light"><div class="section-title m-0">{!!$staffHeading->heading!!}</div></div>
+                        <div class="sub-title border-bot-light pb-0"><div class="section-title text-center m-0">{!!$staffHeading->heading!!}</div></div>
                     </div>
                 @endif
             </div>
@@ -250,10 +257,11 @@
                     @foreach($staffs as $staffs)
                     <div class="wrap">
                         <div class="con"> <img fetchpriority="low" width="335" height="500" data-src="{{$staffs->image_link}}" class="img-fluid core_image lazyload" alt="">
-                            <div class="info">
+                            {{-- <div class="info">
                                 <h4 class="name">{{$staffs->name}}</h4>
-                            </div>
+                            </div> --}}
                         </div>
+                        <h4 class="name text-center m-0">{{$staffs->name}}</h4>
                         <p>{{$staffs->designation}}</p>
                     </div>
                     @endforeach
@@ -265,16 +273,16 @@
 
     <!-- Mission -->
     @if($banner)
-    <section class="lets-talk hero hero-contact py-5">
+    <section class="lets-talk hero hero-contact py-4">
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-auto mb-4" data-animate-effect="fadeInUp">
-                        {{-- <div class="sub-title border-bot-light">Our Mission</div> --}}
-                        <div class="sub-title border-bot-light"><div class="section-title m-0">Our <span>Mission</span></div></div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12 mb-2" data-animate-effect="fadeInUp">
+                        {{-- <div class="sub-title border-bot-light pb-0">Our Mission</div> --}}
+                        <div class="sub-title border-bot-light pb-0"><div class="section-title text-center m-0">Our <span>Mission</span></div></div>
                     </div>
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
-                        <h3 class="text-white">{!!$banner->mission!!}</h5>
+                        <h3 class="text-center" style="color: black !important">{!!$banner->mission!!}</h5>
                     </div>
                 </div>
             </div>
@@ -284,7 +292,7 @@
 
     <!-- ADDITIONAL CONTENT -->
     @if(count($additionalContent)>0)
-    <section class="process suffix-div mt-0">
+    <section class="process about mt-0 pb-5">
         <div class="container">
             @foreach($additionalContent as $key=>$val)
                 @if(($key+1)%2!=0)
@@ -302,9 +310,9 @@
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
                                     @if($val->activate_popup)
-                                        <button type="button" class="button-light goldern-btn-signup mx-2" aria-label="{{$val->heading}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
+                                        <button type="button" class="button-light goldern-btn-signup mx-2 mt-3" aria-label="{{$val->heading}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
                                     @else
-                                        <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light goldern-btn-signup">{{$val->button_text}}</a>
+                                        <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light goldern-btn-signup mt-3">{{$val->button_text}}</a>
                                     @endif
                                 </div>
                             </div>
@@ -320,9 +328,9 @@
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
                                     @if($val->activate_popup)
-                                        <button type="button" class="button-light goldern-btn-signup mx-2" data-bs-toggle="modal" aria-label="{{$val->heading}}" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
+                                        <button type="button" class="button-light goldern-btn-signup mx-2 mt-3" data-bs-toggle="modal" aria-label="{{$val->heading}}" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
                                     @else
-                                        <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light goldern-btn-signup">{{$val->button_text}}</a>
+                                        <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light goldern-btn-signup mt-3">{{$val->button_text}}</a>
                                     @endif
                                 </div>
                             </div>
@@ -368,22 +376,22 @@
 
         <!-- Vision -->
         @if($banner)
-        <section class="lets-talk hero hero-contact mt-0 py-5">
+        <section class="lets-talk hero hero-contact mt-0 py-4">
             <div class="background bg-img bg-fixed" data-overlay-dark="6">
                 <div class="container">
-                    <div class="row align-items-center">
+                    <div class="row align-items-center justify-content-center">
                         {{-- <div class="col-md-4 mb-3" data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light">Our Vision</div>
+                            <div class="sub-title border-bot-light pb-0">Our Vision</div>
                         </div>
                         <div class="col-md-12 " data-animate-effect="fadeInUp">
                             <h2 class="section-title">{!!$banner->vission!!}</h2>
                         </div> --}}
-                        <div class="col-md-auto mb-4" data-animate-effect="fadeInUp">
-                            {{-- <div class="sub-title border-bot-light">Our Mission</div> --}}
-                            <div class="sub-title border-bot-light"><div class="section-title m-0">Our <span>Vision</span></div></div>
+                        <div class="col-md-12 mb-2" data-animate-effect="fadeInUp">
+                            {{-- <div class="sub-title border-bot-light pb-0">Our Mission</div> --}}
+                            <div class="sub-title border-bot-light pb-0"><div class="section-title text-center m-0">Our <span>Vision</span></div></div>
                         </div>
                         <div class="col-md-12 " data-animate-effect="fadeInUp">
-                            <h3 class="text-white">{!!$banner->vission!!}</h5>
+                            <h3 class="text-black text-center" style="color: black !important">{!!$banner->vission!!}</h5>
                         </div>
                     </div>
                 </div>
@@ -393,15 +401,15 @@
 
     <!-- Partner -->
     @if(count($partners)>0)
-    <section class="partner section-padding">
+    <section class="partner section-padding py-4">
         <div class="container">
-            <div class="row mb-4">
+            <div class="row mb-3 justify-content-center">
                 @if($partnerHeading)
                     {{-- <div class="col-md-4">
-                        <div class="sub-title border-bot-light">{{$partnerHeading->sub_heading}}</div>
+                        <div class="sub-title border-bot-light pb-0">{{$partnerHeading->sub_heading}}</div>
                     </div> --}}
-                    <div class="col-md-auto mb-4">
-                        <div class="sub-title border-bot-light"> <div class="section-title m-0">{!!$partnerHeading->heading!!}</div></div>
+                    <div class="col-md-auto mb-0">
+                        <div class="sub-title border-bot-light pb-0"> <div class="section-title text-center m-0">{!!$partnerHeading->heading!!}</div></div>
                     </div>
                 @endif
             </div>
@@ -420,12 +428,11 @@
             </div>
         </div>
     </section>
-    <div class="py-3"></div>
     @endif
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img src="{{asset('smartphone.svg')}}" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
+        <img src="{{asset('smartphone.svg')}}" fetchpriority="high" loading="eager" title="Enquiry Popup" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
     </button>
 
 @stop
@@ -438,77 +445,6 @@
     @include('main.includes.common_contact_modal_script')
     <script src="{{ asset('assets/js/plugins/swiper-bundle.min.js')}}" defer></script>
     <script src="{{ asset('assets/js/plugins/owl.carousel.min.js')}}" defer></script>
-
-    <script nonce="{{ csp_nonce() }}" defer>
-        (function () {
-            "use strict";
-            $(document).ready(function () {
-                var swiperOptions = {
-                    loop: true,
-                    autoplay: {
-                    delay: 1,
-                    disableOnInteraction: false
-                    },
-                    speed: 2000,
-                    grabCursor: true,
-                    mousewheelControl: true,
-                    keyboardControl: true,
-                    navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev"
-                    },
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                    // Responsive breakpoints
-                    breakpoints: {
-                        // when window width is >= 320px
-                        320: {
-                        slidesPerView: 2,
-                        spaceBetween: 20
-                        },
-                        // when window width is >= 480px
-                        480: {
-                        slidesPerView: 3,
-                        spaceBetween: 30
-                        },
-                        // when window width is >= 640px
-                        640: {
-                        slidesPerView: 4,
-                        spaceBetween: 40
-                        },
-                        // when window width is >= 990px
-                        990: {
-                        slidesPerView: 8,
-                        spaceBetween: 40
-                        }
-                    }
-                };
-                var swiper = new Swiper("#swiper-container", swiperOptions);
-
-                $('#team-area.team .owl-carousel').owlCarousel({
-                    loop: true
-                    , margin: 20
-                    , mouseDrag: true
-                    , autoplay: false
-                    , dots: true
-                    , nav: false
-                    , navText: ["<span class='lnr ti-arrow-left'></span>","<span class='lnr ti-arrow-right'></span>"]
-                    , autoplayHoverPause:true
-                    , responsiveClass: true
-                    , responsive: {
-                        0: {
-                            items: 1
-                        , }
-                        , 600: {
-                            items: 2
-                        }
-                        , 1000: {
-                            items: 3
-                        }
-                    }
-                });
-            });
-        })();
-    </script>
+    <script src="{{ asset('assets/js/about.js')}}" defer></script>
 
 @stop
