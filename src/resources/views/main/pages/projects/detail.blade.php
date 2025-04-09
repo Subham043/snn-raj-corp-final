@@ -20,11 +20,11 @@
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="32x32" />
     <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
-    
+
     @if ($data->banner_count > 0)
     <link rel="preload" fetchPriority="high" as="image" href="{{ $data->banner[0]->image_link }}" type="image/webp">
     @endif
-    
+
     <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/floors.svg') }}">
     <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/tower.svg') }}">
     <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/acre.svg') }}">
@@ -168,7 +168,7 @@
         }
 
         .counter-main {
-            font-size: 4rem;
+            font-size: 2.5rem;
             line-height: 60px;
             color: transparent;
             -webkit-text-stroke: 1px var(--theme-primary-color);
@@ -231,7 +231,7 @@
             background: #be932d;
         }
         .tab-panels ul li {
-            background: #1e202d;
+            background: #183e62;
             color: #fff;
             text-align: center;
             font-weight: 500;
@@ -267,7 +267,7 @@
         }
 
         .contact-holder {
-            background-image: linear-gradient(45deg,rgba(245,70,66,.75),rgba(8,83,156,.75)),url('{{$data->brochure_bg_image_link}}');
+            background-image: linear-gradient(45deg, rgb(114 138 158 / 54%), rgb(23 63 99)), url('{{$data->brochure_bg_image_link}}');
         }
 
         .contact-holder .contact-col {
@@ -280,27 +280,44 @@
             color: #fff;
         }
 
+        .table-about{
+            border-left: 2px solid #e1e1e1;
+        }
+
         .about table{
             table-layout: fixed;
             width: 100%;
+            border: none;
+        }
+
+        .about table tr{
+            border: none;
         }
 
         .about table tbody th{
-            background: #1e202d;
-            text-align: center;
-            width: 20%;
+            /* background: #183e62; */
+            text-align: left;
+            width: 36%;
+            border: none;
         }
 
         .about table tbody td{
-            background: #fff;
+            /* background: #fff; */
             width: 80%;
+            border: none;
         }
-        
+
         .about table tbody th h6{
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            color: #1b1919;
+            font-weight: 900;
         }
-        
+
+        .about table tbody th h6 span{
+            color: #1b1919 !important;
+        }
+
         .about table tbody th img{
             width: 30px;
             height: 30px;
@@ -310,6 +327,7 @@
             margin: 0;
             font-size: 1rem;
             word-wrap: break-word;
+            color: #66717a !important;
         }
 
         .suffix-div{
@@ -381,6 +399,70 @@
         @media screen and (max-width: 600px) {
             .project-cntr-info-col, .project-page .project-detail-row>*{
                 width: 100% !important;
+            }
+        }
+
+        .about .states li{
+            margin-right: 0 !important;
+        }
+
+        .tab-panels .panel, .tab-panels .panel img{
+            min-height: 70vh;
+            background-color: transparent !important;
+            width: 100%;
+            /* height: 100%; */
+        }
+
+        .tab-panels .panel img{
+            position: relative;
+            z-index: 3;
+        }
+
+        .tab-regular .slider-img{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .tab-img-loader{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        #floor-container .owl-nav{
+            top: 50%;
+            left: 50%;
+            bottom: unset;
+            right: unset;
+            transform: translate(-50%, -50%);
+            justify-content: space-between;
+            background-color: transparent !important;
+        }
+
+        #floor-container .owl-nav .owl-prev{
+            margin-left: -20px;
+        }
+
+        #floor-container .owl-nav .owl-next{
+            margin-right: -20px;
+        }
+
+        @media screen and (max-width: 600px){
+            .table-about{
+                border-top: 2px solid #e1e1e1;
+                border-right: 2px solid #e1e1e1;
+            }
+
+            .about table tbody th, .about table tbody td{
+                border-bottom: 2px solid #e1e1e1;
+            }
+
+            .tab-panels .panel, .tab-panels .panel img{
+                min-height: 40dvh;
             }
         }
     </style>
@@ -616,11 +698,11 @@
     </section>
 @endif
 
-<section class="suffix-div pt-4 pb-4 mt-0">
+<section class="pt-4 pb-4 mt-0">
     <div class="container">
         <div class="row align-items-center">
 
-                <div class="about col-lg-8 col-md-6">
+                <div class="about col-lg-9 col-md-6">
                     <div class="row">
                         <div class="col-md-auto " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light pb-0 mb-3">
@@ -640,12 +722,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="about col-lg-4 col-md-6">
+                <div class="table-about about col-lg-3 col-md-6">
                     <table class="w-100">
                         <tbody class="w-100">
                             <tr class="w-100">
                                 <th>
-                                    <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    {{-- <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div> --}}
                                     <h6 style="color: #be932d"><span style="color: #fff">Floors</span>
                                 </th>
                                 <td>
@@ -654,7 +736,7 @@
                             </tr>
                             <tr class="w-100">
                                 <th>
-                                    <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    {{-- <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div> --}}
                                     <h6 style="color: #be932d"><span style="color: #fff">Towers</span>
                                 </th>
                                 <td>
@@ -663,7 +745,7 @@
                             </tr>
                             <tr class="w-100">
                                 <th>
-                                    <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    {{-- <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div> --}}
                                     <h6 style="color: #be932d"><span style="color: #fff">Acre</span>
                                 </th>
                                 <td>
@@ -672,7 +754,7 @@
                             </tr>
                             <tr class="w-100">
                                 <th>
-                                    <div class="author-img"> <img src="{{asset('assets/status.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    {{-- <div class="author-img"> <img src="{{asset('assets/status.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div> --}}
                                     <h6 style="color: #be932d"><span style="color: #fff">Status</span>
                                 </th>
                                 <td>
@@ -681,7 +763,7 @@
                             </tr>
                             <tr class="w-100">
                                 <th>
-                                    <div class="author-img"> <img src="{{asset('assets/location.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    {{-- <div class="author-img"> <img src="{{asset('assets/location.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div> --}}
                                     <h6 style="color: #be932d"><span style="color: #fff">Location</span>
                                 </th>
                                 <td>
@@ -690,7 +772,7 @@
                             </tr>
                             <tr class="w-100">
                                 <th>
-                                    <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
+                                    {{-- <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div> --}}
                                     <h6 style="color: #be932d"><span style="color: #fff">RERA No.</span>
                                 </th>
                                 <td>
@@ -707,7 +789,7 @@
 @if($data->additional_content_count>0)
     @foreach($data->additional_content as $key=>$val)
         @if(($key+1)%2!=0)
-            <section class="additional-content-project section-padding py-4 pb-md-0">
+            <section class="suffix-div additional-content-project py-4">
                 <div class="container">
                     <div class="row div-padding pb-md-0">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
@@ -734,7 +816,7 @@
                 </div>
             </section>
         @else
-            <section class="suffix-div additional-content-project py-4">
+            <section class="additional-content-project section-padding py-4 pb-md-0 ">
                 <div class="container">
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
@@ -799,6 +881,11 @@
                                         <div class="tab-regular slider owl-carousel">
                                             @foreach ($v->plan as $item)
                                             <div class="slider-img">
+                                                <div class="tab-img-loader">
+                                                    <div class="spinner-border" role="status">
+                                                        <span class="sr-only"></span>
+                                                    </div>
+                                                </div>
                                                 <img data-src="{{ $item->image_link }}" width="968" height="645" class="w-100 lazyload"
                                                 title="Plan Image {{$item->id}}" alt="Plan Image {{$item->id}}">
                                             </div>
@@ -825,13 +912,13 @@
 @endif
 
 @if(count($data->accomodation)>0)
-<section class="about lets-talk hero hero-contact pt-4 pb-4">
+<section class="about lets-talk hero hero-contact pt-4 pb-4" id="callback-popup-trigger">
     <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">
             <div class="row">
                 <div class="col-md-12" data-animate-effect="fadeInUp">
                     <div id="purecounter" class="states">
-                        <ul class="align-items-center justify-content-between flex gap-2">
+                        <ul class="align-items-center justify-content-center flex flex-wrap">
                             @foreach ($data->accomodation as $accomodation)
                                 {{-- <li class="flex"> --}}
                                 <li class="col-md-4 col-sm-12 mx-0 p-2 text-center">
@@ -881,11 +968,10 @@
     </section>
 @endif
 
-<section class="about section-padding pt-4 pb-4">
+{{-- <section class="about section-padding pt-4 pb-4">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-12 " data-animate-effect="fadeInUp">
-                {{-- <div class="no-stretch-line sub-title border-bot-light pb-0">An address to be proud of</div> --}}
                 <div class="sub-title border-bot-light pb-0 mb-0">
                     <div class="section-title text-center m-0">An <span>address</span> to be proud of</div>
                 </div>
@@ -896,7 +982,6 @@
                         <div class="ribbon">
                             <span class="ribbon5">{!!$data->address!!}</span>
                         </div>
-                        {{-- <div class="section-title address-title m-0">{!!$data->address!!}</div> --}}
                         @if($data->map_location_link)
                         <div class="p-1">
                             <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -907,7 +992,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!--  Video Gallery -->
 @if($data->gallery_video_count>0)
@@ -938,6 +1023,20 @@
         </div>
     </section>
 @endif
+
+<section class="mb-0">
+    <div class="contact-holder" id="contact-section">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-8 col-md-6 col-sm-12 contact-col">
+                    <h2>GET COST SHEET & BROCHURE</h2>
+                    <p class="text-light">Click Below To Download Floorplans & Cost Sheet of {{$data->name}} & Register for special offers.</p>
+                    <button type="button" aria-label="Floor Plan Popup" data-bs-toggle="modal" data-bs-target="#contactModal" class="brochure-btn" aria-label="Download Brouchure">Download Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Image Galleria -->
 @if($data->gallery_image_count>0)
@@ -992,19 +1091,6 @@
 @endif --}}
 
     {{-- @include('main.includes.common_contact') --}}
-    <section class="mb-0">
-        <div class="contact-holder" id="contact-section">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-8 col-md-6 col-sm-12 contact-col">
-                        <h2>GET COST SHEET & BROCHURE</h2>
-                        <p class="text-light">Click Below To Download Floorplans & Cost Sheet of {{$data->name}} & Register for special offers.</p>
-                        <button type="button" aria-label="Floor Plan Popup" data-bs-toggle="modal" data-bs-target="#contactModal" class="brochure-btn" aria-label="Download Brouchure">Download Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">

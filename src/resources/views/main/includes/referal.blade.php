@@ -20,7 +20,7 @@
                         <div class="numbering">01</div>
                     </div>
                     <div class="cont">
-                        <h3 style="font-weight:bold;color:##1e202d;">Register</h3>
+                        <h3 style="font-weight:bold;color:##183e62;">Register</h3>
                         <p>Enter your details to <a href="{{route('referal_page.get')}}">sign up</a> for our referral program.</p>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                         <div class="numbering">02</div>
                     </div>
                     <div class="cont">
-                        <h3 style="font-weight:bold;color:##1e202d;">Add reference</h3>
+                        <h3 style="font-weight:bold;color:##183e62;">Add reference</h3>
                         <p>Tell us about any friends or family who you think would love living in an SNN Raj home.</p>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                         <div class="numbering">03</div>
                     </div>
                     <div class="cont">
-                        <h3 style="font-weight:bold;color:##1e202d;">Keep earning</h3>
+                        <h3 style="font-weight:bold;color:##183e62;">Keep earning</h3>
                         <p>Earn huge rewards and benefits with every referral conversion.</p>
                     </div>
                 </div>

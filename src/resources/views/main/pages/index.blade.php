@@ -73,16 +73,17 @@
         }
 
         .project_old {
-            background: var(--theme-header-color);
+            /* background: var(--theme-header-color); */
+            background: #f6f6f6;
         }
 
         .project_old .sub-title,
         .project_old .section-title span {
-            color: #1e202d;
+            color: #183e62;
         }
 
         .project_old .projects2-filter li {
-            color: #1e202d;
+            color: #183e62;
         }
 
         .project_old .projects2-filter li.active {
@@ -200,6 +201,233 @@
                 min-height: 350px;
             }
         }
+
+        .grid-wrapper .grid-item{
+            position: relative;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .grid-wrapper .grid-item:hover a .img-overlay img{
+            transform: scale(1.1);
+            transition: all 0.7s ease;
+        }
+
+        .grid-wrapper .grid-item .img-content{
+            color: white;
+            position: relative;
+        }
+
+        .grid-wrapper .grid-item .img-content h3{
+            color: white;
+            font-weight: 600;
+            line-height: 1.15em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+        }
+
+        .grid-wrapper .grid-item .img-content h3 a{
+            color: white;
+        }
+
+        .grid-wrapper .grid-item .img-content p{
+            color: white;
+            margin: 0;
+            font-size: 16px;
+            font-weight: 400;
+            text-align: justify;
+            font-style: italic;
+        }
+
+        .grid-wrapper .grid-item .img-overlay{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            /* z-index: -1; */
+        }
+
+        .grid-wrapper .grid-item .img-overlay::after {
+            content: '';
+            background-color: #183e6275;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .grid-wrapper .grid-item .img-overlay img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .grid-ribbon{
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: auto;
+            right: 0;
+            transform: rotate(90deg);
+            width: 150px;
+            overflow: hidden;
+            height: 150px;
+            transform: rotate(90deg);
+            left: auto;
+            right: 0;
+        }
+
+        .grid-ribbon-content{
+            text-align: center;
+            left: 0;
+            width: 200%;
+            transform: translateY(-50%) translateX(-50%) translateX(35px) rotate(-45deg);
+            margin-top: 35px;
+            font-size: 13px;
+            line-height: 2;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: #000;
+            color: #fff;
+            margin-top: 35px;
+            transform: translateY(-50%) translateX(-50%) translateX(35px) rotate(-45deg);
+        }
+
+        .grid-wrapper {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-auto-rows: 200px;
+            grid-auto-flow: dense;
+        }
+        .grid-wrapper .wide {
+            /* grid-column: span 2; */
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+        .grid-wrapper .tall {
+            /* grid-row: span 2; */
+            /* grid-row: span 4; */
+            grid-row: span 4;
+            grid-column: span 2;
+        }
+        .grid-wrapper .big {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        #award-area{
+            background: var(--theme-footer-color);
+        }
+
+        #award-area .section-title{
+            color: white;
+        }
+
+        #award-area .section-title span{
+            color: #be932d;
+        }
+
+        #award-area .award-container{
+            padding: 40px 5px;
+            text-align: center;
+        }
+
+        #award-area .award-container img{
+            object-fit: contain;
+            margin: auto;
+            height: 80px;
+        }
+
+        #award-area .award-container h5{
+            margin: 0;
+            color: #be932d;
+            font-weight: 600;
+        }
+
+        #award-area .award-container h4{
+            margin: 0;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        #award-area .award-container p{
+            margin: 0;
+            color: #b0b9c1;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        #award-area .owl-theme .owl-nav, #testimonials-area .owl-nav{
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            justify-content: space-between;
+        }
+
+        #award-area .owl-theme .owl-nav [class*=owl-]{
+            color: #000 !important;
+            background-color: #fff !important;
+        }
+
+        #testimonials-area .owl-nav [class*=owl-]{
+            color: #000 !important;
+            background-color: var(--theme-primary-color) !important;
+        }
+
+        #award-area .owl-theme .owl-nav .owl-prev, #testimonials-area .owl-nav .owl-prev{
+            margin-left: -20px;
+        }
+
+        #award-area .owl-theme .owl-nav .owl-next, #testimonials-area .owl-nav .owl-next{
+            margin-right: -20px;
+        }
+
+        #award-area .owl-theme .owl-dots .owl-dot span, #testimonials-area .owl-dots .owl-dot span{
+            background: white;
+        }
+
+        #award-area .owl-theme .owl-dots .owl-dot.active span, #award-area .owl-theme .owl-dots .owl-dot:hover span, #testimonials-area .owl-dots .owl-dot.active span, #testimonials-area .owl-dots .owl-dot:hover span{
+            background: #be932d;
+        }
+
+        .special-contact-section{
+            margin-top: -2rem !important;
+        }
+
+        .process .wrap{
+            margin-top: 0 !important;
+        }
+
+        @media screen and (max-width: 600px){
+            .grid-wrapper .wide {
+                /* grid-column: span 2; */
+                grid-column: unset;
+                grid-row: span 2;
+            }
+            .grid-wrapper .tall {
+                /* grid-row: span 2; */
+                /* grid-row: span 4; */
+                grid-row: span 2;
+                grid-column: unset;
+            }
+            .grid-wrapper .big {
+                grid-column: unset;
+                grid-row: span 2;
+            }
+        }
+
+
     </style>
     @if ($about->use_in_banner)
         <style nonce="{{ csp_nonce() }}">
@@ -264,6 +492,26 @@
                 opacity: 0.8;
             }
 
+            .contact-img-wrapper{
+                padding: 15px;
+                position: relative;
+            }
+
+            .contact-img-wrapper img{
+                width: 100%;
+                height: 80dvh;
+            }
+
+            .contact-img-wrapper a{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 5px 10px;
+                border-radius: 2px;
+            }
+
             @media screen and (max-width: 600px) {
                 .header-video-overflow {
                     height: auto;
@@ -275,6 +523,13 @@
 
                 #ytplayer-mute {
                     bottom: 15px;
+                }
+
+                .contact-img-wrapper img {
+                    max-height: 100px;
+                    object-fit: cover;
+                    vertical-align: middle;
+                    filter: blur(1.5px);
                 }
             }
         </style>
@@ -412,44 +667,159 @@
         </section>
     @endif --}}
 
-    <!-- Counter -->
-    @if (count($counters) > 0)
-        <section class="about lets-talk hero hero-contact pt-4 pb-4">
-            <div class="background bg-img bg-fixed" data-overlay-dark="6">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        @if ($counterHeading)
-                            {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light pb-0">{{$counterHeading->sub_heading}}</div>
-                        </div> --}}
-                            <div class="col-md-auto" data-animate-effect="fadeInUp">
-                                <div class="sub-title border-bot-light pb-0 m-0">
-                                    <div class="section-title text-center m-0">{!! $counterHeading->heading !!}</div>
-                                </div>
-                            </div>
-                        @endif
+    <!-- Projects 2 -->
+    <div class="projects2 project_old subject-div pt-4 pb-4" id="callback-popup-trigger">
+        <div class="container">
+            <div class="row mb-4">
+                @if ($projectHeading)
+                    <div class="col-md-12" data-animate-effect="fadeInUp">
+                        {{-- <div class="sub-title border-bot-light pb-0">{{$projectHeading->sub_heading}}</div> --}}
+                        <div class="sub-title border-bot-light pb-0 m-0">
+                            <div class="section-title m-0 text-center">{!! $projectHeading->heading !!}</div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12" data-animate-effect="fadeInUp">
-                            <div id="purecounter" class="states">
-                                <ul class="align-items-center justify-content-between flex gap-2">
-                                    @foreach ($counters as $counters)
-                                        {{-- <li class="flex"> --}}
-                                        <li class="col-md-4 col-sm-12 mx-0 p-2 text-center">
-                                            <div class="numb valign justify-content-center">
-                                                <div class="counter-main m-0"><span class="purecounter" style="color: transparent"
-                                                        data-purecounter-duration="5" data-purecounter-start="5000"
-                                                        data-purecounter-end="{{ $counters->counter_number }}">0</span>
-                                                    {{ $counters->counter_text }}</div>
-                                            </div>
-                                            <div class="text valign justify-content-center">
-                                                <p>
-                                                    {!! $counters->title !!}
-                                                </p>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
+                @endif
+                <div class="col-md-12" data-animate-effect="fadeInUp">
+                    @if ($projectHeading)
+                        <p>{!! $projectHeading->description !!}</p>
+                    @endif
+                    {{-- <div class="row" data-animate-effect="fadeInUp" style="--bs-gutter-x: 0rem;">
+                        <ul id="projects2-filter" class="projects2-filter text-center">
+                            <li class="active" data-filter=".ongoing">Ongoing Projects</li>
+                            <li data-filter=".completed">Completed Projects</li>
+                        </ul>
+                    </div> --}}
+                </div>
+            </div>
+            <div class="grid-wrapper">
+                @foreach ($projects as $k => $v)
+                    @php
+                        $total = count($projects);
+                        $remainder = $total % 3;
+                        $isLastRow = $k >= $total - $remainder;
+
+                        $rowIndex = floor($k / 3);
+                        $colIndex = $k % 3;
+
+                        $isEvenRow = $rowIndex % 2 === 0;
+
+                        // Apply tall/big only in full rows
+                        $isTall = !$isLastRow && (
+                            ($isEvenRow && $colIndex === 0) ||
+                            (!$isEvenRow && $colIndex !== 0)
+                        );
+
+                        $isBig = !$isLastRow && !$isTall;
+
+                        // Apply wide if item is in an incomplete last row
+                        $isWide = $isLastRow && $remainder !== 0;
+                    @endphp
+
+                    <div
+                    @class([
+                        'tall' => $isTall,
+                        'big' => $isBig,
+                        'wide' => $isWide,
+                        'grid-item'
+                    ])>
+                        <a
+                        aria-label="{{ $v->name }}"
+                        class="w-100 h-100"
+                        href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
+                        <div class="img-overlay">
+                            <img data-src="{{ $v->banner[0]->image_link }}" class="lazyload" alt="{{ $v->name }}" />
+                        </div>
+                        <div class="grid-ribbon">
+                            <div class="grid-ribbon-content">
+                                {{ $v->is_completed == true ? 'COMPLETED' : 'ONGOING' }}
+                            </div>
+                        </div>
+                        <div class="img-content">
+                            <h3><a aria-label="{{ $v->name }}"
+                                    href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">{{ $v->name }}</a>
+                            </h3>
+                            <p>{{ $v->location }}</p>
+                        </div>
+                        </a>
+                    </div>
+                @endforeach
+
+
+            </div>
+            {{-- <div id="projects2-items" class="row projects2-items" data-animate-effect="fadeInUp">
+                @php
+                    $height = 0;
+                    $symbol = 'greater';
+                @endphp
+                @foreach ($projects as $k => $v)
+                    @php
+                        if ($symbol == 'greater') {
+                            $newHeight = rand(500, 600);
+                            $height = $newHeight > $height ? $newHeight : $height;
+                            $symbol = 'lesser';
+                        } else {
+                            $newHeight = rand(300, 400);
+                            $height = $newHeight < $height ? $newHeight : $height;
+                            $symbol = 'greater';
+                        }
+                    @endphp
+
+                    <div class="col-md-6 single-item {{ $v->is_completed == true ? 'completed' : 'ongoing' }}">
+                        <div class="projects2-wrap p-relative" style="z-index: 5">
+                            @if ($v->banner_count > 0)
+                                <a aria-label="{{ $v->name }}"
+                                    href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
+                                    <div class="projects-overlay">
+                                        <img data-src="{{ $v->banner[0]->image_link }}"
+                                            class="h-300-cover obj-cover lazyload" style="border-radius:10px;"
+                                            fetchpriority="low" alt="">
+                                        <div class="mt-2" style="z-index: 5">
+                                            <h3 style="font-size: 20px;"><a aria-label="{{ $v->name }}"
+                                                    href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">{{ $v->name }}</a>
+                                            </h3>
+                                            <p><img data-src="{{ asset('assets/location-2.svg') }}" alt=""
+                                                    width="481" height="300" class="lazyload">
+                                                {{ Str::limit($v->location, 30) }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div> --}}
+
+        </div>
+    </div>
+
+    <!-- AWARDS -->
+    @if (count($awards) > 0)
+        <section id="award-area" class="testimonials pt-5 pb-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-auto">
+                        <div class="sub-title border-bot-light pb-0">
+                            <div class="section-title text-center m-0"><span>Accolades</span> Our creations have won many <span>hearts</span>.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-3">
+                        <div class="wrap">
+                            <div class="owl-carousel owl-theme">
+
+                                @foreach ($awards as $award)
+                                    <div class="award-container">
+                                        <img src="{{asset('assets/crown.png')}}" alt="">
+                                        <h5>
+                                            {{ $award->year}}
+                                        </h5>
+                                        <h4>
+                                            {!! $award->title !!}</h4>
+                                        <p>{{$award->sub_title}}</p>
+                                    </div>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -458,17 +828,13 @@
         </section>
     @endif
 
-    
 
     <!-- Testiominals -->
-    @if (count($testimonials) > 0)
+    {{-- @if (count($testimonials) > 0)
         <section id="testimonials-area" class="testimonials pt-4 pb-4">
             <div class="container">
                 <div class="row justify-content-center">
                     @if ($testimonialHeading)
-                        {{-- <div class="col-md-4">
-                        <h3 class="sub-title border-bot-light pb-0">{{$testimonialHeading->sub_heading}}</h3>
-                    </div> --}}
                     @endif
                     <div class="col-md-auto">
                         @if ($testimonialHeading)
@@ -516,85 +882,7 @@
                 </div>
             </div>
         </section>
-    @endif
-
-    <!-- Projects 2 -->
-    <div class="projects2 project_old subject-div pt-4 pb-4">
-        <div class="container">
-            <div class="row mb-4">
-                @if ($projectHeading)
-                    <div class="col-md-auto" data-animate-effect="fadeInUp">
-                        {{-- <div class="sub-title border-bot-light pb-0">{{$projectHeading->sub_heading}}</div> --}}
-                        <div class="sub-title border-bot-light pb-0 m-0">
-                            <div class="section-title m-0">{!! $projectHeading->heading !!}</div>
-                        </div>
-                    </div>
-                @endif
-                <div class="col-md-12" data-animate-effect="fadeInUp">
-                    @if ($projectHeading)
-                        <p>{!! $projectHeading->description !!}</p>
-                    @endif
-                    <div class="row" data-animate-effect="fadeInUp" style="--bs-gutter-x: 0rem;">
-                        <ul id="projects2-filter" class="projects2-filter text-center">
-                            {{-- <li class="active" data-filter="*">All</li> --}}
-                            <li class="active" data-filter=".ongoing">Ongoing Projects</li>
-                            <li data-filter=".completed">Completed Projects</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="projects2-items" class="row projects2-items" data-animate-effect="fadeInUp">
-                @php
-                    $height = 0;
-                    $symbol = 'greater';
-                @endphp
-                @foreach ($projects as $k => $v)
-                    @php
-                        if ($symbol == 'greater') {
-                            $newHeight = rand(500, 600);
-                            $height = $newHeight > $height ? $newHeight : $height;
-                            $symbol = 'lesser';
-                        } else {
-                            $newHeight = rand(300, 400);
-                            $height = $newHeight < $height ? $newHeight : $height;
-                            $symbol = 'greater';
-                        }
-                    @endphp
-
-                    <div class="col-md-6 single-item {{ $v->is_completed == true ? 'completed' : 'ongoing' }}">
-                        <div class="projects2-wrap p-relative" style="z-index: 5">
-                            @if ($v->banner_count > 0)
-                                <a aria-label="{{ $v->name }}"
-                                    href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
-                                    <div class="projects-overlay">
-                                        <img data-src="{{ $v->banner[0]->image_link }}"
-                                            class="h-300-cover obj-cover lazyload" style="border-radius:10px;"
-                                            fetchpriority="low" alt="">
-                                        <div class="mt-2" style="z-index: 5">
-                                            <h3 style="font-size: 20px;"><a aria-label="{{ $v->name }}"
-                                                    href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">{{ $v->name }}</a>
-                                            </h3>
-                                            <p><img data-src="{{ asset('assets/location-2.svg') }}" alt=""
-                                                    width="481" height="300" class="lazyload">
-                                                {{ Str::limit($v->location, 30) }}</p>
-                                            {{-- <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'Completed' : 'Ongoing'}}</p> --}}
-                                        </div>
-                                    </div>
-                                </a>
-                            @endif
-                            {{-- <div class="projects2-con" style="z-index: 5"> --}}
-                            {{-- <h3><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3> --}}
-                            {{-- <p><img src="{{asset('assets/location.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
-                                <p><img src="{{asset('assets/status.svg')}}" alt=""> {{$v->is_completed==true ? 'Completed' : 'Ongoing'}}</p> --}}
-                            {{-- <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a> --}}
-                            {{-- </div> --}}
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-        </div>
-    </div>
+    @endif --}}
 
     <!-- Blog -->
     @if (count($blogs) > 0)
@@ -637,8 +925,91 @@
         </section>
     @endif
 
+    <!-- Counter -->
+    @if (count($counters) > 0)
+        <section class="about lets-talk hero hero-contact pt-4 pb-4">
+            <div class="background bg-img bg-fixed" data-overlay-dark="6">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        @if ($counterHeading)
+                            {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light pb-0">{{$counterHeading->sub_heading}}</div>
+                        </div> --}}
+                            <div class="col-md-auto" data-animate-effect="fadeInUp">
+                                <div class="sub-title border-bot-light pb-0 m-0">
+                                    <div class="section-title text-center m-0">{!! $counterHeading->heading !!}</div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" data-animate-effect="fadeInUp">
+                            <div id="purecounter" class="states">
+                                <ul class="align-items-center justify-content-between flex gap-2">
+                                    @foreach ($counters as $counters)
+                                        {{-- <li class="flex"> --}}
+                                        <li class="col-md-4 col-sm-12 mx-0 p-2 text-center">
+                                            <div class="numb valign justify-content-center">
+                                                <div class="counter-main m-0"><span class="purecounter" style="color: transparent"
+                                                        data-purecounter-duration="5" data-purecounter-start="5000"
+                                                        data-purecounter-end="{{ $counters->counter_number }}">0</span>
+                                                    {{ $counters->counter_text }}</div>
+                                            </div>
+                                            <div class="text valign justify-content-center">
+                                                <p>
+                                                    {!! $counters->title !!}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
     @include('main.includes.referal')
-    <div class="py-1"></div>
+
+    <section class="blog-home special-contact-section mt-0 pt-0 pb-4">
+        <div class="container-fluid">
+            <div class="row mb-2 justify-content-center">
+                <div class="col-md-auto">
+                    <div class="sub-title border-bot-light pb-0 m-0">
+                        <div class="section-title text-center m-0">GET IN <span>TOUCH</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="contact-img-wrapper">
+                        <img src="{{asset('assets/contact-1.jpg')}}" alt="">
+                        <a href="{{route('contact_page.get')}}">CLIENTS</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="contact-img-wrapper">
+                        <img src="{{asset('assets/contact-2.jpg')}}" alt="">
+                        <a href="{{route('channel_partner.get')}}">CHANNEL PARTNER</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="contact-img-wrapper">
+                        <img src="{{asset('assets/contact-3.png')}}" alt="">
+                        <a href="{{route('land_owner.get')}}">LAND OWNER</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="contact-img-wrapper">
+                        <img src="{{asset('assets/contact-4.png')}}" alt="">
+                        <a href="{{route('career_page.get')}}">CAREER</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup" data-bs-toggle="modal"

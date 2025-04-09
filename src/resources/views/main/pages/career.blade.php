@@ -83,7 +83,8 @@
             }
 
             .image-row-min{
-                min-height: auto !important
+                min-height: auto !important;
+                margin-bottom: 1rem !important;
             }
         }
     </style>

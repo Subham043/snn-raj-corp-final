@@ -43,7 +43,7 @@
             background-image: linear-gradient(45deg,rgba(245,70,66,.75),rgba(8,83,156,.75)),url('{{$data->brochure_bg_image_link}}');
         }
         .popup_btn_modal {
-            background-color: #1e202d !important;
+            background-color: #183e62 !important;
             border-radius: 30px!important;
             border: none 0!important;
             box-shadow: 1px 1px 2px #a6a29a!important;

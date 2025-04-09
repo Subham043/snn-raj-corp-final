@@ -3,6 +3,7 @@
 namespace App\Modules\Main\HomePage;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Awards\Services\AwardService;
 use App\Modules\Blog\Services\BlogService;
 use App\Modules\Counter\Services\CounterHeadingService;
 use App\Modules\Counter\Services\CounterService;
@@ -50,6 +51,7 @@ class HomePageController extends Controller
         ChatbotService $chatbotService,
         ProjectService $projectService,
         LegalService $legalService,
+        private AwardService $awardService,
     )
     {
         $this->bannerService = $bannerService;
@@ -83,6 +85,7 @@ class HomePageController extends Controller
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
         $chatbotSetting = $this->chatbotService->getById(1);
+        $awards = $this->awardService->latestLimit();
         return view('main.pages.index', compact([
             'banners',
             'blogs',
@@ -98,6 +101,7 @@ class HomePageController extends Controller
             'generalSetting',
             'themeSetting',
             'chatbotSetting',
+            'awards',
         ]));
     }
 

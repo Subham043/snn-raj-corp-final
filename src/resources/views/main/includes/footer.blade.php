@@ -1,26 +1,38 @@
 <!-- Footer -->
 <footer class="footer" id="footer_main_id">
-    <div class="top">
+    <div class="footer-bg">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-30">
-                    {{-- <div class="sub-title border-footer-light">Contact Us</div> --}}
-                    <div class="duru-logo-wrap footer-logo">
+                    <div class="duru-logo-wrap footer-logo text-center">
                         <a aria-label="logo" href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="low" class="lazyload" width="98" height="100" data-src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a>
-                    </div>
-
-                </div>
-                <div class="col-md-3">
-                    <div class="item">
-                        <p>{{ empty($generalSetting) ? '' : $generalSetting->address}}</p>
-                        <a aria-label="{{ empty($generalSetting) ? '' : $generalSetting->phone}}" href="tel:{{ empty($generalSetting) ? '' : $generalSetting->phone}}" class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</a>
-                        <a aria-label="{{ empty($generalSetting) ? '' : $generalSetting->email}}" href="mailto:{{ empty($generalSetting) ? '' : $generalSetting->email}}" class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email}}</a>
                         <div class="social mt-2">
                             <a aria-label="facebook" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
                             <a aria-label="instagram" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
                             <a aria-label="linkedin" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
                             <a aria-label="youtube" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
                         </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="item">
+                        <h3><span>Get In Touch</span></h3>
+                        <p>{{ empty($generalSetting) ? '' : $generalSetting->address}}</p>
+                        <a aria-label="{{ empty($generalSetting) ? '' : $generalSetting->phone}}" href="tel:{{ empty($generalSetting) ? '' : $generalSetting->phone}}" class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone}}</a>
+                        <a aria-label="{{ empty($generalSetting) ? '' : $generalSetting->email}}" href="mailto:{{ empty($generalSetting) ? '' : $generalSetting->email}}" class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email}}</a>
+                        {{-- <div class="social mt-2">
+                            <a aria-label="facebook" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
+                            <a aria-label="instagram" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
+                            <a aria-label="linkedin" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
+                            <a aria-label="youtube" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
+                        </div> --}}
                     </div>
 
                 </div>

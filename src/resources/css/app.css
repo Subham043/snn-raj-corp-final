@@ -3914,7 +3914,7 @@ color: white;
 .footer .top .item .social {
     margin-bottom: 15px;
 }
-.footer .top .item .social a {
+.footer .top .item .social a, .footer .footer-bg .social a {
     width: 40px;
     height: 40px;
     line-height: 40px;
@@ -3929,7 +3929,7 @@ color: white;
     transition: all .4s;
     display: inline-block;
 }
-.footer .top .item .social a:hover {
+.footer .top .item .social a:hover, .footer .footer-bg .social a:hover {
     border: 1px solid var(--theme-primary-color);
     background: transparent;
     color: #FFF;
@@ -4255,7 +4255,8 @@ color: white;
     }
     .row{
         --bs-gutter-x: 0rem !important;
-        margin: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
     .process .valign {
         text-align: left;
@@ -4355,7 +4356,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .popup_btn_modal{
-    background-color: #1e202d !important;
+    background-color: #183e62 !important;
     border-radius: 30px !important;
     border: none 0 !important;
     box-shadow: 1px 1px 2px #a6a29a !important;

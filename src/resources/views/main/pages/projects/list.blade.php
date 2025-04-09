@@ -90,6 +90,16 @@
         .projects3 .img {
             border-radius: 5px;
         }
+
+        @media screen and (max-width:600px){
+            .projects3 .content{
+                margin-bottom: 0 !important;
+            }
+
+            .justify-content-end{
+                justify-content: unset !important;
+            }
+        }
     </style>
 @stop
 
@@ -162,7 +172,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    <div class="section-title font-weight-normal mb-md-0 mt-md-0 text-center">ONGOING <span>PROJECTS</span></div>
+                    <div class="section-title font-weight-normal mb-md-0 mt-md-0 text-center mb-0">ONGOING <span>PROJECTS</span></div>
                 </div>
             </div>
         </div>
@@ -275,7 +285,7 @@
         <div class="container">
             <div class="row  justify-content-center">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    <div class="section-title font-weight-normal mb-md-0 mt-md-0 text-center">COMPLETED <span>PROJECTS</span></div>
+                    <div class="section-title font-weight-normal mb-md-0 mt-md-0 text-center mb-0">COMPLETED <span>PROJECTS</span></div>
                 </div>
             </div>
         </div>

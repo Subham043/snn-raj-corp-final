@@ -97,10 +97,32 @@
             z-index: 0;
         }
 
+        #team-area .owl-dots .owl-dot span{
+            background: white;
+        }
+
+        #team-area .owl-dots .owl-dot.active span, #team-area .owl-dots .owl-dot:hover span{
+            background: #be932d;
+        }
+
         @media screen and (max-width: 600px) {
             .about_banner_img {
                 height: auto;
                 object-fit: contain;
+            }
+
+            .team .wrap .con{
+                margin-bottom: 0;
+            }
+
+            .team .wrap{
+                padding-left: 0;
+                padding-bottom: 10px;
+            }
+
+            .process .wrap{
+                margin-top: 10px;
+                margin-bottom: 0px;
             }
 
         }
@@ -292,11 +314,11 @@
 
     <!-- ADDITIONAL CONTENT -->
     @if(count($additionalContent)>0)
-    <section class="process about mt-0 pb-5">
+    <section class="process about mt-0">
         <div class="container">
             @foreach($additionalContent as $key=>$val)
                 @if(($key+1)%2!=0)
-                    <div class="row div-padding">
+                    <div class="row py-4">
                         <div class="col-md-6 " data-animate-effect="fadeInLeft">
                             <div class="img">
                                 <img fetchpriority="low" data-src="{{$val->image_link}}" width="571" height="651" class="lazyload" alt="">
@@ -319,7 +341,7 @@
                         </div>
                     </div>
                 @else
-                    <div class="row div-padding">
+                    <div class="row py-4">
                         <div class="col-md-6 order2 valign " data-animate-effect="fadeInLeft">
                             <div class="wrap">
                                 <div class="number">

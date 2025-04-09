@@ -85,6 +85,18 @@ class AwardService
         return Award::where('is_draft', true)->orderBy('year', 'DESC')->get();
     }
 
+    public function latestLimit(Int $total = 10): Collection
+    {
+        // $query = Award::where('is_draft', true)->orderBy('year', 'DESC');
+        // return QueryBuilder::for($query)
+        //         ->allowedFilters([
+        //             AllowedFilter::custom('search', new CommonFilter),
+        //         ])
+        //         ->paginate($total)
+        //         ->appends(request()->query());
+        return Award::where('is_draft', true)->limit($total)->orderBy('year', 'DESC')->get();
+    }
+
 }
 
 class CommonFilter implements Filter

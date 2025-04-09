@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @cspMetaTag(App\Http\Policies\ContentSecurityPolicy::class)
 
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">	
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://src.plumb5.com/snnrajcorp_com.js">
 
@@ -18,7 +18,7 @@
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/lazysizes.min.js') }}">
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/intlTelInput.min.js') }}">
     <link rel="preload" as="script" href="{{ asset('assets/js/common_script.js') }}">
-    
+
     <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/black-logo.webp') }}" as="image">
     <link rel="preload" as="image" href="{{ asset('smartphone.svg') }}">
 
@@ -36,9 +36,9 @@
             --theme-text-color: {{ empty($themeSetting) ? '#999' : $themeSetting->text_color}};
             --theme-highlight-text-color: {{ empty($themeSetting) ? '#fff' : $themeSetting->highlight_text_color}};
 
-            --theme-header-color: #f5f4f0;
-            --theme-footer-color: #1e202d;
-            --theme-primary-color: #a68b5d;
+            --theme-header-color: #f6f6f6;
+            --theme-footer-color: #183e62;
+            --theme-primary-color: #be932d;
             /* --theme-hero-color: #e5d1c6; */
             /* --theme-hero-color: #faf3df; */
             --theme-hero-color: #f7f2ee;
@@ -48,7 +48,7 @@
             --theme-hero-title-color: #fff;
             --theme-hero-title-span-color: #1b1919;
             --theme-text-color: #000;
-            --theme-highlight-text-color: #1e202d;
+            --theme-highlight-text-color: #183e62;
             /* --theme-lines-color:#3d3b3b0f; */
             --theme-lines-color:#a68b5d;
         }
@@ -69,7 +69,7 @@
         }
         .duru-wrap {
             /* background: var(--theme-header-color); */
-            background: #1e202d;
+            background: #183e62;
         }
         .duru-menu>ul>li>a, .duru-menu ul ul li a{
             color: #fff;
@@ -99,10 +99,10 @@
             color: #fff;
         }
         .hero .section-title, .secondary-div .section-title {
-            color: #1e202d;
+            color: #183e62;
         }
         .hero .section-title span {
-            color: #a68b5d;
+            color: #be932d;
         }
         .hero-main .section-title span {
             color: var(--theme-primary-color);
@@ -239,6 +239,20 @@
         .py-4{
             padding-top: 2rem !important;
             padding-bottom: 2rem !important;
+        }
+
+        .footer{
+            padding: 0 !important;
+        }
+
+        .footer-bg{
+            background-image: url('{{asset("assets/footer_bg_1.jpg")}}');
+            padding: 150px 0px 150px 0px;
+            background-repeat: no-repeat;
+            display: grid;
+            place-content: center;
+            background-position: bottom;
+            background-size: cover;
         }
 
         @media screen and (max-width: 600px) {

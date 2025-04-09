@@ -51,6 +51,17 @@
         .process p {
             margin-bottom: 3px;
         }
+
+        @media screen and (max-width:600px){
+            .process.suffix-div {
+                padding-bottom: 2rem !important;
+            }
+
+            .hero-main {
+                padding-top: 2rem !important;
+                padding-bottom: 1rem !important;
+            }
+        }
     </style>
 @stop
 
@@ -131,6 +142,8 @@
                 @endif
             @endforeach
     @endif
+
+    <div id="callback-popup-trigger"></div>
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">

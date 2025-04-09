@@ -4,7 +4,7 @@ window.addEventListener("load", function () {
     let countryData = null;
     let uuidModal = null;
     let linkModal = null;
-    
+
     var contactModal = new bootstrap.Modal(document.getElementById('contactModal'), {
         keyboard: false
     })
@@ -31,12 +31,12 @@ window.addEventListener("load", function () {
             });
         }
     }
-    
+
     document.getElementById('contactModal').addEventListener('show.bs.modal', function (event) {
       // do something...
       loadIntlTelInput();
     })
-    
+
     // window.addEventListener("scroll", (event) => {
     //     let scroll = this.scrollY;
     //     if((scroll>850 && scroll<900)){
@@ -44,16 +44,39 @@ window.addEventListener("load", function () {
     //     }
     // });
 
-    window.addEventListener("scroll", (event) => {
-        const scrollPosition = window.scrollY + window.innerHeight; // Current scroll position + viewport height
-        const pageHeight = document.documentElement.scrollHeight; // Total page height
+    // window.addEventListener("scroll", (event) => {
+    //     const scrollPosition = window.scrollY + window.innerHeight; // Current scroll position + viewport height
+    //     const pageHeight = document.documentElement.scrollHeight; // Total page height
 
-        // Trigger when user is within 100px of the bottom
-        if (pageHeight - scrollPosition <= 100) {
+    //     // Trigger when user is within 100px of the bottom
+    //     if (pageHeight - scrollPosition <= 100) {
+    //         contactModal.show();
+    //     }
+    // });
+
+    let hasShownModal = false;
+
+    window.addEventListener("scroll", () => {
+
+        if (hasShownModal) return;
+
+        const triggerElement = document.getElementById("callback-popup-trigger");
+
+        if (!triggerElement) return;
+
+        const rect = triggerElement.getBoundingClientRect();
+
+        // Check if the element is within the viewport
+        if (
+            // rect.top >= 0 &&
+            // rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+            rect.bottom <= window.innerHeight && rect.bottom > 0
+        ) {
             contactModal.show();
+             hasShownModal = true;
         }
     });
-    
+
     // initialize the validation library
     const validationModal = new JustValidate('#contactFormModal', {
             errorFieldCssClass: 'is-invalid',
@@ -127,7 +150,7 @@ window.addEventListener("load", function () {
             formData.append('message',document.getElementById('messageModal').value)
             formData.append('country_code',countryData.getSelectedCountryData().dialCode)
             formData.append('page_url','{{Request::url()}}')
-    
+
             const response = await axios.post('{{route('popup_page.post')}}', formData)
             uuidModal = response.data.uuid;
             linkModal = response.data.link;
@@ -158,7 +181,7 @@ window.addEventListener("load", function () {
             submitBtnModal.disabled = false;
         }
         });
-    
+
         // initialize the validation library
     const validationOtpModal = new JustValidate('#otpFormModal', {
             errorFieldCssClass: 'is-invalid',
@@ -183,7 +206,7 @@ window.addEventListener("load", function () {
         try {
             var formData = new FormData();
             formData.append('otp',document.getElementById('otpModal').value)
-    
+
             const response = await axios.post(linkModal, formData)
             event.target.reset();
             uuidModal = null;
@@ -206,7 +229,7 @@ window.addEventListener("load", function () {
             submitOtpBtnModal.disabled = false;
         }
         });
-    
+
         document.getElementById('resendOtpBtnModal').addEventListener('click', async function(event){
         if(uuidModal){
             event.target.innerText = 'Sending ...'
@@ -226,7 +249,7 @@ window.addEventListener("load", function () {
             }
         }
         })
-    
+
         document.getElementById('backOtpBtnModal').addEventListener('click', async function(event){
         uuidModal = null;
         linkModal = null;

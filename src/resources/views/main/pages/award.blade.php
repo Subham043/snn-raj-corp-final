@@ -53,6 +53,12 @@
         .services .item{
             min-height: 496px;
         }
+
+        @media screen and (max-width: 600px){
+            .section-title{
+                margin-bottom: 0 !important;
+            }
+        }
     </style>
 @stop
 
@@ -61,14 +67,14 @@
     <!-- Awards -->
     <section class="services section-padding pt-3">
         <div class="container">
-            <div class="row mb-4 align-items-end">
+            <div class="row mb-4 align-items-center">
                 @if($awardHeading)
                     <div class="col-md-4 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light pb-0">{{$awardHeading->sub_heading}}</div>
                     </div>
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
-                        <div class="section-title">{!!$awardHeading->heading!!}</div>
-                        <p>{!!$awardHeading->description!!}</p>
+                        <div class="section-title mb-0">{!!$awardHeading->heading!!}</div>
+                        @if(!empty($awardHeading->description))<p>{!!$awardHeading->description!!}</p>@endif
                     </div>
                 @endif
             </div>
@@ -105,7 +111,7 @@
             @endif
         </div>
     </section>
-    <div class="py-1"></div>
+    <div class="py-1" id="callback-popup-trigger"></div>
 
     @include('main.includes.common_contact_modal')
     <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup" data-bs-toggle="modal" data-bs-target="#contactModal">
