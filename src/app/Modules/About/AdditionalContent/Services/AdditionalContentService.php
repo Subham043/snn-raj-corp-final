@@ -78,6 +78,11 @@ class AdditionalContentService
         return AdditionalContent::where('is_draft', true)->get();
     }
 
+    public function main_by_slug($popup_button_slug): AdditionalContent
+    {
+        return AdditionalContent::where('is_draft', true)->where('popup_button_slug', $popup_button_slug)->firstOrFail();
+    }
+
 }
 
 class CommonFilter implements Filter

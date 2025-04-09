@@ -466,7 +466,7 @@
                 border-bottom: 2px solid #e1e1e1;
             }
 
-            .tab-panels .panel, .tab-panels .panel img{
+            #tab-panels.tab-panels .panel, #tab-panels.tab-panels .panel img{
                 min-height: 40dvh;
             }
         }

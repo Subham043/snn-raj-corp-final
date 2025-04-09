@@ -91,4 +91,19 @@ class AboutPageController extends Controller
         return view('main.pages.about', compact(['banner', 'about', 'additionalContent', 'seo', 'staffs', 'management', 'managementHeading', 'staffHeading', 'partners', 'partnerHeading', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal', 'projects']));
     }
 
+    public function slug($slug){
+        $generalSetting = $this->generalService->getById(1);
+        $themeSetting = $this->themeService->getById(1);
+        $chatbotSetting = $this->chatbotService->getById(1);
+        $legal = $this->legalService->main_all();
+        $data = $this->additionalContentService->main_by_slug($slug);
+        return view('main.pages.about_slug', compact([
+            'generalSetting',
+            'themeSetting',
+            'chatbotSetting',
+            'data',
+            'legal',
+        ]));
+    }
+
 }

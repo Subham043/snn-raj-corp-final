@@ -332,7 +332,8 @@
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
                                     @if($val->activate_popup)
-                                        <button type="button" class="button-light goldern-btn-signup mx-2 mt-3" aria-label="{{$val->heading}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
+                                        {{-- <button type="button" class="button-light goldern-btn-signup mx-2 mt-3" aria-label="{{$val->heading}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button> --}}
+                                        <a href="{{route('about_page.slug', $val->popup_button_slug)}}" aria-label="{{$val->button_text}}" class="button-light goldern-btn-signup mt-3">{!!$val->popup_button_text!!}</a>
                                     @else
                                         <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light goldern-btn-signup mt-3">{{$val->button_text}}</a>
                                     @endif
@@ -350,7 +351,8 @@
                                 <div class="cont desc-ul">
                                     {!!$val->description!!}
                                     @if($val->activate_popup)
-                                        <button type="button" class="button-light goldern-btn-signup mx-2 mt-3" data-bs-toggle="modal" aria-label="{{$val->heading}}" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button>
+                                        {{-- <button type="button" class="button-light goldern-btn-signup mx-2 mt-3" data-bs-toggle="modal" aria-label="{{$val->heading}}" data-bs-target="#staticBackdrop{{$val->id}}">{!!$val->popup_button_text!!}</button> --}}
+                                        <a href="{{route('about_page.slug', $val->popup_button_slug)}}" aria-label="{{$val->button_text}}" class="button-light goldern-btn-signup mt-3">{!!$val->popup_button_text!!}</a>
                                     @else
                                         <a href="{{$val->button_link}}" aria-label="{{$val->button_text}}" class="button-light goldern-btn-signup mt-3">{{$val->button_text}}</a>
                                     @endif
@@ -368,7 +370,7 @@
         </div>
     </section>
 
-    @foreach($additionalContent as $key=>$val)
+    {{-- @foreach($additionalContent as $key=>$val)
 
         @if($val->activate_popup)
             <!-- Modal -->
@@ -391,7 +393,7 @@
             </div>
         @endif
 
-    @endforeach
+    @endforeach --}}
 
 
     @endif
