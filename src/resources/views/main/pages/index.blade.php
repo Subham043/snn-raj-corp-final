@@ -726,7 +726,7 @@
                                 'grid-item'
                             ])>
                                 <a
-                                aria-label="{{ $v->name }} {{$k}}"
+                                aria-label="{{ $v->name }}"
                                 class="w-100 h-100"
                                 href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
                                 <div class="img-overlay">
@@ -753,7 +753,7 @@
                                 'leftover-'.$group->count()
                             ])>
                                 <a
-                                aria-label="{{ $v->name }} {{$k}}"
+                                aria-label="{{ $v->name }}"
                                 class="w-100 h-100"
                                 href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
                                 <div class="img-overlay">
@@ -781,7 +781,7 @@
                                         'grid-item',
                                     ])>
                                         <a
-                                        aria-label="{{ $v->name }} {{$k}}"
+                                        aria-label="{{ $v->name }}"
                                         class="w-100 h-100"
                                         href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
                                         <div class="img-overlay">
