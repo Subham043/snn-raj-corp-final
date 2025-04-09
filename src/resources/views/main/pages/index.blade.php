@@ -873,7 +873,7 @@
 
                                 @foreach ($awards as $award)
                                     <div class="award-container">
-                                        <img src="{{asset('assets/crown.png')}}" alt="">
+                                        <img data-src="{{asset('assets/crown.webp')}}" alt="{!! $award->title !!}" class="lazyload">
                                         <h5>
                                             {{ $award->year}}
                                         </h5>
@@ -1048,25 +1048,25 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
-                        <img src="{{asset('assets/contact-1.jpg')}}" alt="">
+                        <img data-src="{{asset('assets/contact-1.webp')}}" class="lazyload" alt="CLIENTS">
                         <a href="{{route('contact_page.get')}}">CLIENTS</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
-                        <img src="{{asset('assets/contact-2.jpg')}}" alt="">
+                        <img data-src="{{asset('assets/contact-2.webp')}}" class="lazyload" alt="CHANNEL PARTNER">
                         <a href="{{route('channel_partner.get')}}">CHANNEL PARTNER</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
-                        <img src="{{asset('assets/contact-3.png')}}" alt="">
+                        <img data-src="{{asset('assets/contact-3.webp')}}" class="lazyload" alt="LAND OWNER">
                         <a href="{{route('land_owner.get')}}">LAND OWNER</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
-                        <img src="{{asset('assets/contact-4.png')}}" alt="">
+                        <img data-src="{{asset('assets/contact-4.webp')}}" class="lazyload" alt="CAREER">
                         <a href="{{route('career_page.get')}}">CAREER</a>
                     </div>
                 </div>

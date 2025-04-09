@@ -246,7 +246,7 @@
         }
 
         .footer-bg{
-            background-image: url('{{asset("assets/footer_bg_1.jpg")}}');
+            background-image: url('{{asset("assets/footer_bg_1.webp")}}');
             padding: 150px 0px 150px 0px;
             background-repeat: no-repeat;
             display: grid;
