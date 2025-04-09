@@ -38,6 +38,7 @@ class AdditionalContentCreateRequest extends FormRequest
             'popup_button_text' => 'nullable|required_if:activate_popup,1|string|max:250',
             'popup_description' => 'nullable|required_if:activate_popup,1|string',
             'popup_description_unfiltered' => 'nullable|required_if:activate_popup,1|string',
+            'popup_button_slug' => 'nullable|required_if:activate_popup,1|string|max:500|unique:about_contents,popup_button_slug',
         ];
     }
 

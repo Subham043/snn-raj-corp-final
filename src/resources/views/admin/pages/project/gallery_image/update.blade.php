@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
                                         <p>
                                             <code>Note: </code> Banner Size : 500 x 334
@@ -32,10 +32,13 @@
                                             <img src="{{$data->image_link}}" alt="" class="img-preview">
                                         @endif
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.select', ['key'=>'type', 'label'=>'Type'])
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'image_title', 'label'=>'Image Title', 'value'=>$data->image_title])
                                     </div>
-                                    <div class="col-xxl-4 col-md-4">
+                                    <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'image_alt', 'label'=>'Image Alt', 'value'=>$data->image_alt])
                                     </div>
 
@@ -78,6 +81,8 @@
 
 
 @section('javascript')
+
+<script src="{{ asset('admin/js/pages/choices.min.js') }}"></script>
 
 <script type="text/javascript" nonce="{{ csp_nonce() }}">
 
@@ -123,6 +128,12 @@ validation
         errorMessage: 'Image Alt is invalid',
     },
   ])
+  .addField('#type', [
+    {
+        rule: 'required',
+        errorMessage: 'Type is required',
+    },
+  ])
   .addField('#image', [
     {
         rule: 'minFilesCount',
@@ -154,6 +165,7 @@ validation
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
         formData.append('image_title',document.getElementById('image_title').value)
         formData.append('image_alt',document.getElementById('image_alt').value)
+        formData.append('type',document.getElementById('type').value)
         if((document.getElementById('image').files).length>0){
             formData.append('image',document.getElementById('image').files[0])
         }
@@ -162,6 +174,9 @@ validation
         successToast(response.data.message)
         setInterval(location.reload(), 1500);
     }catch (error){
+        if(error?.response?.data?.errors?.type){
+            validation.showErrors({'#type': error?.response?.data?.errors?.type[0]})
+        }
         if(error?.response?.data?.errors?.image_title){
             validation.showErrors({'#image_title': error?.response?.data?.errors?.image_title[0]})
         }
@@ -182,5 +197,25 @@ validation
     }
   });
 
+  const typeChoice = new Choices('#type', {
+        choices: [
+            {
+                value: '',
+                label: 'Select a type',
+                disabled: true,
+            },
+            @foreach($gallery_statuses as $gallery_statuses)
+                {
+                    value: '{{$gallery_statuses}}',
+                    label: '{{str($gallery_statuses)->replace("_", " ")}}',
+                    selected: {{ $gallery_statuses == $data->type ? 'true' : 'false'}}
+                },
+            @endforeach
+        ],
+        placeholderValue: 'Select a type',
+        ...CHOICE_CONFIG,
+        shouldSort: false,
+        shouldSortItems: false,
+    });
   </script>
 @stop

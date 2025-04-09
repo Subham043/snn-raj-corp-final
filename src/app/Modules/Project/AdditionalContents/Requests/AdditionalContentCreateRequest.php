@@ -28,6 +28,7 @@ class AdditionalContentCreateRequest extends FormRequest
     {
         return [
             'is_draft' => 'required|boolean',
+            'attatch_map' => 'required|boolean',
             'heading' => 'required|string|max:250',
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',

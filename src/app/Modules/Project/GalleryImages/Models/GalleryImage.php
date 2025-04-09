@@ -25,6 +25,7 @@ class GalleryImage extends Model
         'image',
         'image_title',
         'image_alt',
+        'type',
         'is_draft'
     ];
 

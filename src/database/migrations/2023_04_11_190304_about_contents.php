@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->boolean('activate_popup')->default(0);
             $table->string('popup_button_text', 250)->nullable();
+            $table->string('popup_button_slug', 500)->unique()->nullable();
             $table->text('popup_description')->nullable();
             $table->text('popup_description_unfiltered')->nullable();
             $table->timestamps();
@@ -38,3 +39,5 @@ return new class extends Migration
         Schema::dropIfExists('about_contents');
     }
 };
+
+// ALTER TABLE `about_contents` ADD `popup_button_slug` VARCHAR(500) NULL DEFAULT NULL AFTER `popup_button_text`, ADD UNIQUE (`popup_button_slug`);

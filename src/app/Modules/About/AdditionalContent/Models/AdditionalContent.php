@@ -30,6 +30,7 @@ class AdditionalContent extends Model
         'image',
         'is_draft',
         'activate_popup',
+        'popup_button_slug',
         'popup_button_text',
         'popup_description',
         'popup_description_unfiltered',
@@ -57,6 +58,13 @@ class AdditionalContent extends Model
     {
         return new Attribute(
             get: fn () => asset($this->image),
+        );
+    }
+
+    protected function popupButtonSlug(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => !empty($value) ? str()->slug($value) : null,
         );
     }
 

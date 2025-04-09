@@ -8,6 +8,8 @@ use App\Modules\Project\Projects\Services\ProjectService;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
 use App\Modules\Settings\Services\ThemeService;
+use App\Enums\ProjectGalleryStatusEnum;
+use Illuminate\Support\Arr;
 
 class ProjectDetailPageController extends Controller
 {
@@ -46,7 +48,9 @@ class ProjectDetailPageController extends Controller
             'data',
             'legal',
             'projects'
-        ]));
+        ]))->with([
+            'gallery_statuses' => Arr::map(ProjectGalleryStatusEnum::cases(), fn($enum) => $enum->value),
+        ]);
     }
 
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('image_title', 500)->nullable();
             $table->string('image_alt', 500)->nullable();
             $table->string('image', 500)->nullable();
+            $table->string('type', 500)->default('PROJECT');
             $table->boolean('is_draft')->default(0);
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('project_id')->nullable()->constrained('projects')->nullOnDelete();
@@ -32,3 +33,5 @@ return new class extends Migration
         Schema::dropIfExists('project_gallery_images');
     }
 };
+
+// ALTER TABLE `project_gallery_images` ADD `type` VARCHAR(500) NOT NULL DEFAULT 'PROJECT' AFTER `image_alt`;

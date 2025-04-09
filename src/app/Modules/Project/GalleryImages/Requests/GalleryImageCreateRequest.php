@@ -2,9 +2,11 @@
 
 namespace App\Modules\Project\GalleryImages\Requests;
 
+use App\Enums\ProjectGalleryStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
+use Illuminate\Validation\Rules\Enum;
 
 
 class GalleryImageCreateRequest extends FormRequest
@@ -28,6 +30,7 @@ class GalleryImageCreateRequest extends FormRequest
     {
         return [
             'is_draft' => 'required|boolean',
+            'type' => ['required', new Enum(ProjectGalleryStatusEnum::class)],
             'image' => 'required|image|max:500',
             'image_alt' => 'nullable|string|max:500',
             'image_title' => 'nullable|string|max:500',

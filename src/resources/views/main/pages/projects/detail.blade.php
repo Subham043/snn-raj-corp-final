@@ -406,26 +406,26 @@
             margin-right: 0 !important;
         }
 
-        .tab-panels .panel, .tab-panels .panel img{
+        #tab-panels.tab-panels .panel, #tab-panels.tab-panels .panel img{
             min-height: 70vh;
             background-color: transparent !important;
             width: 100%;
             /* height: 100%; */
         }
 
-        .tab-panels .panel img{
+        #tab-panels.tab-panels .panel img{
             position: relative;
             z-index: 3;
         }
 
-        .tab-regular .slider-img{
+        #tab-panels .tab-regular .slider-img{
             position: relative;
             width: 100%;
             height: 100%;
             z-index: 2;
         }
 
-        .tab-img-loader{
+        #tab-panels .tab-img-loader{
             position: absolute;
             top: 50%;
             left: 50%;
@@ -449,6 +449,11 @@
 
         #floor-container .owl-nav .owl-next{
             margin-right: -20px;
+        }
+
+        #gallery-tab-panels.tab-panels .panel{
+            background-color: transparent !important;
+            min-height: 70vh;
         }
 
         @media screen and (max-width: 600px){
@@ -794,7 +799,25 @@
                     <div class="row div-padding pb-md-0">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
                             <div class="img fl-img">
-                                <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
+                                @if($val->attatch_map)
+                                    <div class="ribbons-wrapper">
+                                        <div class="address-panel map-shape">
+                                            <div class="ribbon">
+                                                <span class="ribbon5">
+                                                    <marquee width="100%" height="100px" direction="left" behavior="scroll" scrollamount="4">
+                                                        {!!$data->address!!}</span>
+                                                    </marquee>
+                                            </div>
+                                            @if($data->map_location_link)
+                                            <div class="p-1">
+                                                <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                            </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @else
+                                    <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
+                                @endif
                             </div>
                             <div class="wrap project-wrap-div">
                                 <div class="number">
@@ -821,7 +844,26 @@
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
                             <div class="img fr-img">
-                                <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
+                                @if($val->attatch_map)
+                                    <div class="ribbons-wrapper">
+                                        <div class="address-panel map-shape">
+                                            <div class="ribbon">
+                                                <span class="ribbon5">
+                                                    <marquee width="100%" direction="left" behavior="scroll" scrollamount="5">
+                                                        {!!$data->address!!}</span>
+                                                    </marquee>
+                                                </span>
+                                            </div>
+                                            @if($data->map_location_link)
+                                            <div class="p-1">
+                                                <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                            </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @else
+                                    <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
+                                @endif
                             </div>
                             <div class="wrap project-wrap-div">
                                 <div class="number">
@@ -1050,16 +1092,43 @@
                 </div>
             </div>
             <div class="row justify-content-center" id="image-container">
-                @foreach($data->gallery_image as $gallery_image)
-                    <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
-                        <div class="gallery-box">
-                            <div class="gallery-img">
-                                <img fetchpriority="low" data-src="{{$gallery_image->image_link}}" width="372" height="372" class="img-fluid mx-auto d-block lazyload" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}">
+                <div class="tab-holder">
+                    <div id="gallery-tab-panels" class="tab-panels">
+                        <div class="row flex-wrap justify-content-between">
+                            <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                                <ul class="tabs">
+                                    @foreach ($gallery_statuses as $k=>$v)
+                                    <li data-panel-name="gallery_panel{{$k}}" data-panel-key="{{$k}}" class="{{$k==0 ? 'active' : ''}}">{{str($v)->replace('_', ' ')}}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-                            <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="position: relative;">
+
+                                @foreach ($gallery_statuses as $k=>$v)
+                                <div id="gallery_panel{{$k}}" class="panel {{$k==0 ? 'active' : ''}}">
+                                    <div class="row justify-content-center">
+                                        @foreach($data->gallery_image as $gallery_image)
+                                            @if($gallery_image->type == $v)
+                                            <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
+                                                <div class="gallery-box">
+                                                    <div class="gallery-img">
+                                                        <img fetchpriority="low" data-src="{{$gallery_image->image_link}}" width="372" height="372" class="img-fluid mx-auto d-block lazyload" alt="{{$gallery_image->alt}}" title="{{$gallery_image->title}}">
+                                                    </div>
+                                                    <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                                @endforeach
+
+                            </div>
                         </div>
+
+
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
     </section>

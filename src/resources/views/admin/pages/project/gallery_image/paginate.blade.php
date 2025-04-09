@@ -38,6 +38,7 @@
                                         <tr>
                                             <th class="sort" data-sort="customer_name">Image Title</th>
                                             <th class="sort" data-sort="customer_name">Image Alt</th>
+                                            <th class="sort" data-sort="customer_name">Type</th>
                                             <th class="sort" data-sort="customer_name">Status</th>
                                             <th class="sort" data-sort="date">Created On</th>
                                             <th class="sort" data-sort="action">Action</th>
@@ -48,6 +49,7 @@
                                         <tr>
                                             <td class="customer_name">{{$item->image_title}}</td>
                                             <td class="customer_name">{{$item->image_alt}}</td>
+                                            <td class="customer_name">{{str($item->type)->replace("_", " ")}}</td>
                                             @if($item->is_draft == 1)
                                             <td class="status"><span class="badge badge-soft-success text-uppercase">Active</span></td>
                                             @else

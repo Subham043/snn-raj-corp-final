@@ -84,8 +84,11 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-12 col-md-12">
+                                    <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'popup_button_text', 'label'=>'Popup Button Text', 'value'=>old('popup_button_text')])
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'popup_button_slug', 'label'=>'Popup Button Slug', 'value'=>old('popup_button_slug')])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.quill', ['key'=>'popup_description', 'label'=>'Popup Description', 'value'=>old('popup_description')])
@@ -259,6 +262,7 @@ validation
         formData.append('activate_popup',document.getElementById('activate_popup').checked ? 1 : 0)
         formData.append('heading',document.getElementById('heading').value)
         formData.append('popup_button_text',document.getElementById('popup_button_text').value)
+        formData.append('popup_button_slug',document.getElementById('popup_button_slug').value)
         formData.append('button_text',document.getElementById('button_text').value)
         formData.append('button_link',document.getElementById('button_link').value)
         formData.append('description',quillDescription.root.innerHTML)
@@ -282,6 +286,9 @@ validation
         }
         if(error?.response?.data?.errors?.popup_button_text){
             validation.showErrors({'#popup_button_text': error?.response?.data?.errors?.popup_button_text[0]})
+        }
+        if(error?.response?.data?.errors?.popup_button_slug){
+            validation.showErrors({'#popup_button_slug': error?.response?.data?.errors?.popup_button_slug[0]})
         }
         if(error?.response?.data?.errors?.description){
             validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})

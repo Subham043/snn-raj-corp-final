@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description_unfiltered')->nullable();
             $table->string('image', 500)->nullable();
             $table->boolean('is_draft')->default(0);
+            $table->boolean('attatch_map')->default(0);
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('project_id')->nullable()->constrained('projects')->nullOnDelete();
             $table->timestamps();
@@ -33,3 +34,5 @@ return new class extends Migration
         Schema::dropIfExists('project_additional_contents');
     }
 };
+
+// ALTER TABLE `project_additional_contents` ADD `attatch_map` TINYINT(1) NOT NULL DEFAULT '0' AFTER `is_draft`;

@@ -830,7 +830,7 @@
 
 
     <!-- Testiominals -->
-    {{-- @if (count($testimonials) > 0)
+    @if (count($testimonials) > 0)
         <section id="testimonials-area" class="testimonials pt-4 pb-4">
             <div class="container">
                 <div class="row justify-content-center">
@@ -882,7 +882,7 @@
                 </div>
             </div>
         </section>
-    @endif --}}
+    @endif
 
     <!-- Blog -->
     @if (count($blogs) > 0)

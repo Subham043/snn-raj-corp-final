@@ -49,12 +49,23 @@
                                         @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>old('description')])
                                     </div>
 
-                                    <div class="col-lg-12 col-md-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="mt-4 mt-md-0">
                                             <div>
                                                 <div class="form-check form-switch form-check-right mb-2">
                                                     <input class="form-check-input" type="checkbox" role="switch" id="is_draft" name="is_draft" checked>
                                                     <label class="form-check-label" for="is_draft">Additional Content Status</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="mt-4 mt-md-0">
+                                            <div>
+                                                <div class="form-check form-switch form-check-right mb-2">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="attatch_map" name="attatch_map">
+                                                    <label class="form-check-label" for="attatch_map">Attatch Map</label>
                                                 </div>
                                             </div>
 
@@ -158,6 +169,7 @@ validation
     try {
         var formData = new FormData();
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
+        formData.append('attatch_map',document.getElementById('attatch_map').checked ? 1 : 0)
         formData.append('heading',document.getElementById('heading').value)
         formData.append('description',quillDescription.root.innerHTML)
         formData.append('description_unfiltered',quillDescription.getText())

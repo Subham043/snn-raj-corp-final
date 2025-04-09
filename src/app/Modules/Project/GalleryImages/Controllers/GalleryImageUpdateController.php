@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Modules\Project\GalleryImages\Requests\GalleryImageUpdateRequest;
 use App\Modules\Project\GalleryImages\Services\GalleryImageService;
 use App\Modules\Project\Projects\Services\ProjectService;
+use Illuminate\Support\Arr;
+use App\Enums\ProjectGalleryStatusEnum;
 
 class GalleryImageUpdateController extends Controller
 {
@@ -22,7 +24,9 @@ class GalleryImageUpdateController extends Controller
     public function get($project_id, $id){
         $this->projectService->getById($project_id);
         $data = $this->galleryImageService->getByIdAndProjectId($id, $project_id);
-        return view('admin.pages.project.gallery_image.update', compact('data', 'project_id'));
+        return view('admin.pages.project.gallery_image.update', compact('data', 'project_id'))->with([
+            'gallery_statuses' => Arr::map(ProjectGalleryStatusEnum::cases(), fn($enum) => $enum->value),
+        ]);
     }
 
     public function post(GalleryImageUpdateRequest $request, $project_id, $id){

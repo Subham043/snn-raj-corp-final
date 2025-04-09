@@ -26,11 +26,13 @@ class AdditionalContent extends Model
         'heading',
         'description',
         'description_unfiltered',
-        'is_draft'
+        'is_draft',
+        'attatch_map',
     ];
 
     protected $casts = [
         'is_draft' => 'boolean',
+        'attatch_map' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
