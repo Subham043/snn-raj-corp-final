@@ -210,6 +210,7 @@
             justify-content: end;
             border-radius: 5px;
             overflow: hidden;
+            height: 100%;
         }
 
         .grid-wrapper .grid-item:hover a .img-overlay img{
@@ -303,25 +304,38 @@
 
         .grid-wrapper {
             display: grid;
-            grid-gap: 10px;
+            /* grid-gap: 10px;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             grid-auto-rows: 200px;
-            grid-auto-flow: dense;
+            grid-auto-flow: dense; */
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 400px;
+            gap: 24px;
         }
         .grid-wrapper .wide {
             /* grid-column: span 2; */
-            grid-column: span 1;
-            grid-row: span 2;
+            /* grid-column: span 1;
+            grid-row: span 2; */
+            grid-column: span 2;
         }
         .grid-wrapper .tall {
             /* grid-row: span 2; */
             /* grid-row: span 4; */
-            grid-row: span 4;
-            grid-column: span 2;
+            /* grid-row: span 4;
+            grid-column: span 2; */
+            grid-row: span 2;
         }
         .grid-wrapper .big {
             grid-column: span 2;
             grid-row: span 2;
+        }
+
+        .grid-wrapper .leftover-1 {
+            grid-column: span 3;
+        }
+
+        .grid-wrapper .leftover-3 {
+            grid-column: span 1;
         }
 
         #award-area{
@@ -424,6 +438,11 @@
             .grid-wrapper .big {
                 grid-column: unset;
                 grid-row: span 2;
+            }
+
+            .grid-wrapper .grid-item{
+                grid-column: span 3 !important;
+                grid-row: unset !important;
             }
         }
 
@@ -692,56 +711,100 @@
                 </div>
             </div>
             <div class="grid-wrapper">
-                @foreach ($projects as $k => $v)
+                @foreach ($projects->chunk(5) as $group)
+
+                    @foreach ($group->values() as $k => $v)
                     @php
-                        $total = count($projects);
-                        $remainder = $total % 3;
-                        $isLastRow = $k >= $total - $remainder;
+                        $remainder = count($group->values()) % 5;
 
-                        $rowIndex = floor($k / 3);
-                        $colIndex = $k % 3;
-
-                        $isEvenRow = $rowIndex % 2 === 0;
-
-                        // Apply tall/big only in full rows
-                        $isTall = !$isLastRow && (
-                            ($isEvenRow && $colIndex === 0) ||
-                            (!$isEvenRow && $colIndex !== 0)
-                        );
-
-                        $isBig = !$isLastRow && !$isTall;
-
-                        // Apply wide if item is in an incomplete last row
-                        $isWide = $isLastRow && $remainder !== 0;
+                        $isTall = $k === 1 && $remainder === 0;
                     @endphp
-
-                    <div
-                    @class([
-                        'tall' => $isTall,
-                        'big' => $isBig,
-                        'wide' => $isWide,
-                        'grid-item'
-                    ])>
-                        <a
-                        aria-label="{{ $v->name }}"
-                        class="w-100 h-100"
-                        href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
-                        <div class="img-overlay">
-                            <img data-src="{{ $v->banner[0]->image_link }}" class="lazyload" alt="{{ $v->name }}" />
-                        </div>
-                        <div class="grid-ribbon">
-                            <div class="grid-ribbon-content">
-                                {{ $v->is_completed == true ? 'COMPLETED' : 'ONGOING' }}
+                        @if($remainder === 0)
+                            <div
+                            @class([
+                                'tall' => $isTall,
+                                'grid-item'
+                            ])>
+                                <a
+                                aria-label="{{ $v->name }} {{$k}}"
+                                class="w-100 h-100"
+                                href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
+                                <div class="img-overlay">
+                                    <img data-src="{{ $v->banner[0]->image_link }}" class="lazyload" alt="{{ $v->name }}" />
+                                </div>
+                                <div class="grid-ribbon">
+                                    <div class="grid-ribbon-content">
+                                        {{ $v->is_completed == true ? 'COMPLETED' : 'ONGOING' }}
+                                    </div>
+                                </div>
+                                <div class="img-content">
+                                    <h3><a aria-label="{{ $v->name }}"
+                                            href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">{{ $v->name }}</a>
+                                    </h3>
+                                    <p>{{ $v->location }}</p>
+                                </div>
+                                </a>
                             </div>
-                        </div>
-                        <div class="img-content">
-                            <h3><a aria-label="{{ $v->name }}"
-                                    href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">{{ $v->name }}</a>
-                            </h3>
-                            <p>{{ $v->location }}</p>
-                        </div>
-                        </a>
-                    </div>
+                        @else
+                            @if($group->count() === 1 || $group->count() === 3)
+                            <div
+                            @class([
+                                'grid-item',
+                                'leftover-'.$group->count()
+                            ])>
+                                <a
+                                aria-label="{{ $v->name }} {{$k}}"
+                                class="w-100 h-100"
+                                href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
+                                <div class="img-overlay">
+                                    <img data-src="{{ $v->banner[0]->image_link }}" class="lazyload" alt="{{ $v->name }}" />
+                                </div>
+                                <div class="grid-ribbon">
+                                    <div class="grid-ribbon-content">
+                                        {{ $v->is_completed == true ? 'COMPLETED' : 'ONGOING' }}
+                                    </div>
+                                </div>
+                                <div class="img-content">
+                                    <h3><a aria-label="{{ $v->name }}"
+                                            href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">{{ $v->name }}</a>
+                                    </h3>
+                                    <p>{{ $v->location }}</p>
+                                </div>
+                                </a>
+                            </div>
+                            @else
+                                @foreach($v->chunk(2) as $key => $grp)
+                                    @foreach($v->values() as $ke => $va)
+                                    <div
+                                    @class([
+                                        'wide' => ($key===0 && $ke===0) || ($key===1 && $ke===1),
+                                        'grid-item',
+                                    ])>
+                                        <a
+                                        aria-label="{{ $v->name }} {{$k}}"
+                                        class="w-100 h-100"
+                                        href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
+                                        <div class="img-overlay">
+                                            <img data-src="{{ $v->banner[0]->image_link }}" class="lazyload" alt="{{ $v->name }}" />
+                                        </div>
+                                        <div class="grid-ribbon">
+                                            <div class="grid-ribbon-content">
+                                                {{ $v->is_completed == true ? 'COMPLETED' : 'ONGOING' }}
+                                            </div>
+                                        </div>
+                                        <div class="img-content">
+                                            <h3><a aria-label="{{ $v->name }}"
+                                                    href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">{{ $v->name }}</a>
+                                            </h3>
+                                            <p>{{ $v->location }}</p>
+                                        </div>
+                                        </a>
+                                    </div>
+                                    @endforeach
+                                @endforeach
+                            @endif
+                        @endif
+                @endforeach
                 @endforeach
 
 
