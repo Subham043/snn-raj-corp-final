@@ -804,7 +804,7 @@
                                         <div class="address-panel map-shape">
                                             <div class="ribbon">
                                                 <span class="ribbon5">
-                                                    <marquee width="100%" height="100px" direction="left" behavior="scroll" scrollamount="4">
+                                                    <marquee width="100%" direction="left" behavior="scroll" scrollamount="4">
                                                         {!!$data->address!!}</span>
                                                     </marquee>
                                             </div>
