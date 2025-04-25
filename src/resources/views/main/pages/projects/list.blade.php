@@ -172,7 +172,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    <div class="section-title font-weight-normal mb-md-0 mt-md-0 text-center mb-0">ONGOING <span>PROJECTS</span></div>
+                    <div class="section-title font-weight-normal mb-md-0 mt-md-0 text-center mb-0">ONGOING PROJECTS</div>
                 </div>
             </div>
         </div>
@@ -181,7 +181,7 @@
 
     @foreach($ongoing_projects as $k => $v)
         @if(($k+1)%2!=0)
-        <section class="projects3 py-4">
+        <section class="projects3 py-5">
             <div class="container">
                 <div class="row div-padding pb-md-0">
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
@@ -212,7 +212,7 @@
 
         @else
 
-        <section class="projects3 suffix-div mt-md-0 py-4">
+        <section class="projects3 suffix-div mt-md-0 py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
@@ -285,7 +285,7 @@
         <div class="container">
             <div class="row  justify-content-center">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    <div class="section-title font-weight-normal mb-md-0 mt-md-0 text-center mb-0">COMPLETED <span>PROJECTS</span></div>
+                    <div class="section-title font-weight-normal mb-md-0 mt-md-0 text-center mb-0">COMPLETED PROJECTS</div>
                 </div>
             </div>
         </div>
@@ -294,7 +294,7 @@
 
     @foreach($completed_projects as $k => $v)
         @if(($k+1)%2!=0)
-        <section class="projects3 py-4">
+        <section class="projects3 py-5">
             <div class="container">
                 <div class="row div-padding pb-md-0">
                     <div class="col-md-8 " data-animate-effect="fadeInUp">
@@ -319,7 +319,7 @@
 
         @else
 
-        <section class="projects3 suffix-div mt-md-0 py-4">
+        <section class="projects3 suffix-div mt-md-0 py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">

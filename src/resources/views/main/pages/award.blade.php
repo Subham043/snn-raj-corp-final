@@ -67,7 +67,7 @@
     <!-- Awards -->
     <section class="services section-padding pt-3">
         <div class="container">
-            <div class="row mb-4 align-items-center">
+            <div class="row mb-5 align-items-center">
                 @if($awardHeading)
                     <div class="col-md-4 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light pb-0">{{$awardHeading->sub_heading}}</div>

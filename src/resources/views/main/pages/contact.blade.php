@@ -74,7 +74,7 @@
                     <div class="no-line-heading sub-title border-bot-light pb-0">Contact</div>
                 </div>
                 <div class="col-md-8">
-                    <div class="section-title">Get in <span>touch</span></div>
+                    <div class="section-title">Get in touch</div>
                     <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line
                         and we’ll get back to you shortly.</p>
                 </div>

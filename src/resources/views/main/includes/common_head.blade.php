@@ -38,13 +38,13 @@
 
             --theme-header-color: #f6f6f6;
             --theme-footer-color: #183e62;
-            --theme-primary-color: #be932d;
+            --theme-primary-color: #bda588;
             /* --theme-hero-color: #e5d1c6; */
             /* --theme-hero-color: #faf3df; */
             --theme-hero-color: #f7f2ee;
             --theme-secondary-color: #ece9de;
             --theme-subject-color: #f6f6f4;
-            --theme-suffix-color: #f6f6f4;
+            --theme-suffix-color: #f7f2ee;
             --theme-hero-title-color: #fff;
             --theme-hero-title-span-color: #1b1919;
             --theme-text-color: #000;
@@ -102,7 +102,7 @@
             color: #183e62;
         }
         .hero .section-title span {
-            color: #be932d;
+            color: #bda588;
         }
         .hero-main .section-title span {
             color: var(--theme-primary-color);
@@ -129,7 +129,7 @@
         }
         .secondary-div{
             /* background: var(--theme-secondary-color); */
-            background: var(--theme-header-color);
+            background: var(--theme-hero-color);
             /* padding: 125px 0; */
             padding: 50px 0;
             margin-top: 60px;
@@ -255,6 +255,19 @@
             background-size: cover;
         }
 
+        .py-6{
+            padding-top: 4rem !important;
+            padding-bottom: 4rem !important;
+        }
+
+        .pt-6{
+            padding-top: 4rem !important;
+        }
+
+        .pb-6{
+            padding-bottom: 4rem !important;
+        }
+
         @media screen and (max-width: 600px) {
             .text-md-center{
                 text-align: center !important;
@@ -284,7 +297,7 @@
             margin-right: auto;
             width: auto;
         }
-        .modal-open { overflow-y: auto !important; }
+        .modal-open { overflow-y: auto !important; padding-right: 0px !important; }
         .duru-nav-toggle.active i:before{
             background: white !important;
         }

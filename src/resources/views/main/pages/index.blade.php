@@ -74,7 +74,7 @@
 
         .project_old {
             /* background: var(--theme-header-color); */
-            background: #f6f6f6;
+            background: #ffffff;
         }
 
         .project_old .sub-title,
@@ -187,7 +187,7 @@
         .counter-main {
             font-size: 4rem;
             line-height: 60px;
-            color: transparent;
+            color: #bda588;
             -webkit-text-stroke: 1px var(--theme-primary-color);
             opacity: .8;
         }
@@ -347,7 +347,7 @@
         }
 
         #award-area .section-title span{
-            color: #be932d;
+            color: #bda588;
         }
 
         #award-area .award-container{
@@ -363,7 +363,7 @@
 
         #award-area .award-container h5{
             margin: 0;
-            color: #be932d;
+            color: #bda588;
             font-weight: 600;
         }
 
@@ -412,7 +412,7 @@
         }
 
         #award-area .owl-theme .owl-dots .owl-dot.active span, #award-area .owl-theme .owl-dots .owl-dot:hover span, #testimonials-area .owl-dots .owl-dot.active span, #testimonials-area .owl-dots .owl-dot:hover span{
-            background: #be932d;
+            background: #bda588;
         }
 
         .special-contact-section{
@@ -508,7 +508,7 @@
             }
 
             #ytplayer-mute:hover {
-                background-color: #be932d;
+                background-color: #bda588;
                 opacity: 0.8;
             }
 
@@ -635,7 +635,7 @@
     <h1 class="d-none">{{ $seo->page_keywords }}</h1>
     <h2 class="d-none">{{ $seo->page_keywords }}</h2>
     @if ($about)
-        <section class="about section-padding pt-4 pb-4">
+        <section class="about section-padding pt-5 pb-5">
             <div class="container">
                 <div class="row justify-content-center">
                     {{-- <div class="col-md-auto " data-animate-effect="fadeInUp"> --}}
@@ -694,8 +694,54 @@
         </section>
     @endif --}}
 
+    <!-- Counter -->
+    @if (count($counters) > 0)
+        <section class="about lets-talk hero hero-contact pt-5 pb-5">
+            <div class="background bg-img bg-fixed" data-overlay-dark="6">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        @if ($counterHeading)
+                            {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light pb-0">{{$counterHeading->sub_heading}}</div>
+                        </div> --}}
+                            <div class="col-md-auto" data-animate-effect="fadeInUp">
+                                <div class="sub-title border-bot-light pb-0 m-0">
+                                    <div class="section-title text-center m-0">{!! $counterHeading->heading !!}</div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" data-animate-effect="fadeInUp">
+                            <div id="purecounter" class="states">
+                                <ul class="align-items-center justify-content-between flex gap-2">
+                                    @foreach ($counters as $counters)
+                                        {{-- <li class="flex"> --}}
+                                        <li class="col-md-4 col-sm-12 mx-0 p-2 text-center">
+                                            <div class="numb valign justify-content-center">
+                                                <div class="counter-main m-0"><span class="purecounter" style="color: #bda588"
+                                                        data-purecounter-duration="5" data-purecounter-start="5000"
+                                                        data-purecounter-end="{{ $counters->counter_number }}">0</span>
+                                                    {{ $counters->counter_text }}</div>
+                                            </div>
+                                            <div class="text valign justify-content-center">
+                                                <p>
+                                                    {!! $counters->title !!}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
     <!-- Projects 2 -->
-    <div class="projects2 project_old subject-div pt-4 pb-4" id="callback-popup-trigger">
+    <div class="projects2 project_old subject-div pt-5 pb-5" id="callback-popup-trigger">
         <div class="container">
             <div class="row mb-4">
                 @if ($projectHeading)
@@ -870,7 +916,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-auto">
                         <div class="sub-title border-bot-light pb-0">
-                            <div class="section-title text-center m-0"><span>Accolades</span> Our creations have won many <span>hearts</span>.</div>
+                            <div class="section-title text-center m-0">Accolades Our creations have won many hearts.</div>
                         </div>
                     </div>
                 </div>
@@ -902,7 +948,7 @@
 
     <!-- Testiominals -->
     @if (count($testimonials) > 0)
-        <section id="testimonials-area" class="testimonials pt-4 pb-4">
+        <section id="testimonials-area" class="testimonials pt-5 pb-5">
             <div class="container">
                 <div class="row justify-content-center">
                     @if ($testimonialHeading)
@@ -957,7 +1003,7 @@
 
     <!-- Blog -->
     @if (count($blogs) > 0)
-        <section class="blog-home suffix-div mt-0 pt-4 pb-4">
+        <section class="blog-home suffix-div mt-0 pt-5 pb-5">
             <div class="container">
                 <div class="row mb-5 justify-content-center">
                     {{-- <div class="col-md-4">
@@ -996,60 +1042,14 @@
         </section>
     @endif
 
-    <!-- Counter -->
-    @if (count($counters) > 0)
-        <section class="about lets-talk hero hero-contact pt-4 pb-4">
-            <div class="background bg-img bg-fixed" data-overlay-dark="6">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        @if ($counterHeading)
-                            {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light pb-0">{{$counterHeading->sub_heading}}</div>
-                        </div> --}}
-                            <div class="col-md-auto" data-animate-effect="fadeInUp">
-                                <div class="sub-title border-bot-light pb-0 m-0">
-                                    <div class="section-title text-center m-0">{!! $counterHeading->heading !!}</div>
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12" data-animate-effect="fadeInUp">
-                            <div id="purecounter" class="states">
-                                <ul class="align-items-center justify-content-between flex gap-2">
-                                    @foreach ($counters as $counters)
-                                        {{-- <li class="flex"> --}}
-                                        <li class="col-md-4 col-sm-12 mx-0 p-2 text-center">
-                                            <div class="numb valign justify-content-center">
-                                                <div class="counter-main m-0"><span class="purecounter" style="color: transparent"
-                                                        data-purecounter-duration="5" data-purecounter-start="5000"
-                                                        data-purecounter-end="{{ $counters->counter_number }}">0</span>
-                                                    {{ $counters->counter_text }}</div>
-                                            </div>
-                                            <div class="text valign justify-content-center">
-                                                <p>
-                                                    {!! $counters->title !!}
-                                                </p>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
+    {{-- @include('main.includes.referal') --}}
 
-    @include('main.includes.referal')
-
-    <section class="blog-home special-contact-section mt-0 pt-0 pb-4">
+    <section class="blog-home special-contact-section mt-0 pt-2 pb-5">
         <div class="container-fluid">
             <div class="row mb-2 justify-content-center">
                 <div class="col-md-auto">
                     <div class="sub-title border-bot-light pb-0 m-0">
-                        <div class="section-title text-center m-0">GET IN <span>TOUCH</span></div>
+                        <div class="section-title text-center m-0"><span>GET IN TOUCH</span></div>
                     </div>
                 </div>
             </div>
@@ -1057,7 +1057,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
                         <img data-src="{{asset('assets/contact-1.webp')}}" class="lazyload" alt="CLIENTS">
-                        <a href="{{route('contact_page.get')}}">CLIENTS</a>
+                        <a href="{{route('referal_page.get')}}">REFERRAL</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">

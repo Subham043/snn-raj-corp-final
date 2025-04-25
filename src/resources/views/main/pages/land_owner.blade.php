@@ -144,7 +144,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="section-title"><span>Land Owner</span></div>
+                    <div class="section-title">Land Owner</div>
                     {{-- <p>If you’re looking for a career with us, drop us a line and we’ll get back to you shortly.</p> --}}
                 </div>
                 <!-- form -->

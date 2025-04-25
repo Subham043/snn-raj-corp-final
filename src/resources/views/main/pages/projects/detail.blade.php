@@ -224,11 +224,11 @@
         }
         .tab-panels ul li.active {
             color: #fff;
-            background: #be932d;
+            background: #bda588;
         }
         .tab-panels ul li:hover {
             color: #fff;
-            background: #be932d;
+            background: #bda588;
         }
         .tab-panels ul li {
             background: #183e62;
@@ -246,7 +246,7 @@
             gap: 10px;
         }
         .project-page .tab-panels .owl-nav .owl-prev, .project-page .tab-panels .owl-nav .owl-next {
-            background: #be932d;
+            background: #bda588;
             color: #fff;
             width: 40px;
             height: 40px;
@@ -331,7 +331,7 @@
         }
 
         .suffix-div{
-            background: var(--theme-header-color);
+            /* background: var(--theme-header-color); */
             margin-top: 0px !important;
         }
 
@@ -454,6 +454,14 @@
         #gallery-tab-panels.tab-panels .panel{
             background-color: transparent !important;
             min-height: 70vh;
+        }
+
+        .br-1{
+            border-radius: 5px;
+        }
+
+        .bg-beige{
+            background: #f7f2ee;
         }
 
         @media screen and (max-width: 600px){
@@ -703,7 +711,7 @@
     </section>
 @endif
 
-<section class="pt-4 pb-4 mt-0">
+<section class="pt-5 pb-5 mt-0">
     <div class="container">
         <div class="row align-items-center">
 
@@ -791,26 +799,57 @@
     </div>
 </section>
 
+@if(count($data->accomodation)>0)
+<section class="about lets-talk hero hero-contact pt-5 pb-5" id="callback-popup-trigger">
+    <div class="background bg-img bg-fixed" data-overlay-dark="6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" data-animate-effect="fadeInUp">
+                    <div id="purecounter" class="states">
+                        <ul class="align-items-center justify-content-center flex flex-wrap">
+                            @foreach ($data->accomodation as $accomodation)
+                                {{-- <li class="flex"> --}}
+                                <li class="col-md-4 col-sm-12 mx-0 p-2 text-center">
+                                    <div class="numb valign justify-content-center">
+                                        <div class="counter-main m-0"><span class="purecounter">{{ $accomodation->room }}</span></div>
+                                    </div>
+                                    <div class="text valign justify-content-center">
+                                        <p>
+                                            {!! $accomodation->area !!}
+                                        </p>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+
 @if($data->additional_content_count>0)
     @foreach($data->additional_content as $key=>$val)
         @if(($key+1)%2!=0)
-            <section class="suffix-div additional-content-project py-4">
+            <section class=" additional-content-project section-padding py-5">
                 <div class="container">
-                    <div class="row div-padding pb-md-0">
+                    <div class="row div-padding">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
-                            <div class="img fl-img">
+                            <div class="img fl-img {{$val->attatch_map ? "h-100" : ""}}">
                                 @if($val->attatch_map)
-                                    <div class="ribbons-wrapper">
-                                        <div class="address-panel map-shape">
-                                            <div class="ribbon">
+                                    <div class="ribbons-wrapper {{$val->attatch_map ? "h-100" : ""}}">
+                                        <div class="address-panel {{$val->attatch_map ? "h-100" : ""}}">
+                                        {{-- <div class="address-panel map-shape"> --}}
+                                            {{-- <div class="ribbon">
                                                 <span class="ribbon5">
                                                     <marquee width="100%" direction="left" behavior="scroll" scrollamount="4">
                                                         {!!$data->address!!}</span>
                                                     </marquee>
-                                            </div>
+                                            </div> --}}
                                             @if($data->map_location_link)
-                                            <div class="p-1">
-                                                <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                            <div class="p-1 {{$val->attatch_map ? "h-100" : ""}}">
+                                                <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload {{$val->attatch_map ? "h-100 br-1" : ""}}" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                             </div>
                                             @endif
                                         </div>
@@ -819,7 +858,7 @@
                                     <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
                                 @endif
                             </div>
-                            <div class="wrap project-wrap-div">
+                            <div class="wrap project-wrap-div {{$val->attatch_map ? "bg-beige p-2 br-1" : ""}}">
                                 <div class="number">
                                     {{-- <h1>{!!$val->heading!!}</h1> --}}
                                     <div class="row">
@@ -839,24 +878,25 @@
                 </div>
             </section>
         @else
-            <section class="additional-content-project section-padding py-4 pb-md-0 ">
+            <section class="suffix-div additional-content-project py-5 ">
                 <div class="container">
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
-                            <div class="img fr-img">
+                            <div class="img fr-img {{$val->attatch_map ? "h-100" : ""}}">
                                 @if($val->attatch_map)
-                                    <div class="ribbons-wrapper">
-                                        <div class="address-panel map-shape">
-                                            <div class="ribbon">
+                                    <div class="ribbons-wrapper {{$val->attatch_map ? "h-100" : ""}}">
+                                        <div class="address-panel {{$val->attatch_map ? "h-100" : ""}}">
+                                        {{-- <div class="address-panel map-shape"> --}}
+                                            {{-- <div class="ribbon">
                                                 <span class="ribbon5">
                                                     <marquee width="100%" direction="left" behavior="scroll" scrollamount="5">
                                                         {!!$data->address!!}</span>
                                                     </marquee>
                                                 </span>
-                                            </div>
+                                            </div> --}}
                                             @if($data->map_location_link)
-                                            <div class="p-1">
-                                                <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                            <div class="p-1 {{$val->attatch_map ? "h-100" : ""}}">
+                                                <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload {{$val->attatch_map ? "h-100 br-1" : ""}}" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                             </div>
                                             @endif
                                         </div>
@@ -865,7 +905,7 @@
                                     <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
                                 @endif
                             </div>
-                            <div class="wrap project-wrap-div">
+                            <div class="wrap project-wrap-div {{$val->attatch_map ? "bg-white p-2 br-1" : ""}}">
                                 <div class="number">
                                     {{-- <h1>{!!$val->heading!!}</h1> --}}
                                     <div class="row">
@@ -889,14 +929,14 @@
 @endif
 
 @if($data->plan_category_count>0)
-    <section class="project-page section-padding pt-4 pb-4">
+    <section class="project-page section-padding pt-5 pb-5">
         <div class="container">
             <div class="row">
                 <div class="row mb-0 " data-animate-effect="fadeInUp">
                     <div class="row justify-content-center">
                         <div class="col-md-12 " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light pb-0 mb-3">
-                                <div class="section-title text-center m-0"><span>Floor</span> Plans</div>
+                                <div class="section-title text-center m-0"><span>Floor Plans</span></div>
                             </div>
                         </div>
                     </div>
@@ -953,44 +993,14 @@
     </section>
 @endif
 
-@if(count($data->accomodation)>0)
-<section class="about lets-talk hero hero-contact pt-4 pb-4" id="callback-popup-trigger">
-    <div class="background bg-img bg-fixed" data-overlay-dark="6">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12" data-animate-effect="fadeInUp">
-                    <div id="purecounter" class="states">
-                        <ul class="align-items-center justify-content-center flex flex-wrap">
-                            @foreach ($data->accomodation as $accomodation)
-                                {{-- <li class="flex"> --}}
-                                <li class="col-md-4 col-sm-12 mx-0 p-2 text-center">
-                                    <div class="numb valign justify-content-center">
-                                        <div class="counter-main m-0"><span class="purecounter" style="color: transparent">{{ $accomodation->room }}</span></div>
-                                    </div>
-                                    <div class="text valign justify-content-center">
-                                        <p>
-                                            {!! $accomodation->area !!}
-                                        </p>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-
 <!-- Amenities -->
 @if($data->amenity_count>0)
-    <section class="section-padding pt-4 pb-4">
+    <section class="section-padding pt-0 pb-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12" data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light pb-0 mb-4">
-                        <div class="section-title text-center m-0"><span>Best Of Class</span> Amenities</div>
+                        <div class="section-title text-center m-0"><span>Best Of Class Amenities</span></div>
                     </div>
                 </div>
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -1010,7 +1020,7 @@
     </section>
 @endif
 
-{{-- <section class="about section-padding pt-4 pb-4">
+{{-- <section class="about section-padding pt-5 pb-5">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -1038,12 +1048,12 @@
 
 <!--  Video Gallery -->
 @if($data->gallery_video_count>0)
-    <section class="secondary-div my-0 pt-4 pb-4">
+    <section class="secondary-div my-0 pt-5 pb-5">
         <div class="container">
             <div class="row justify-content-center" data-animate-effect="fadeInUp">
                 <div class="col-md-auto" data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light pb-0 mb-3">
-                        <div class="section-title text-center m-0"><span>Video</span> Galleria</div>
+                        <div class="section-title text-center m-0"><span>Video Galleria</span></div>
                     </div>
                 </div>
             </div>
@@ -1082,12 +1092,12 @@
 
 <!-- Image Galleria -->
 @if($data->gallery_image_count>0)
-    <section class="section-padding pt-4 pb-4">
+    <section class="section-padding pt-5 pb-5">
         <div class="container">
             <div class="row justify-content-center" data-animate-effect="fadeInUp">
                 <div class="col-md-auto" data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light pb-0 mb-3">
-                        <div class="section-title text-center m-0"><span>Image</span> Galleria</div>
+                        <div class="section-title text-center m-0"><span>Image Galleria</span></div>
                     </div>
                 </div>
             </div>
