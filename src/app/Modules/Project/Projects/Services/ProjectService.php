@@ -92,9 +92,9 @@ class ProjectService
         }
     }
 
-    public function main_all()
+    public function main_all($limit = null)
     {
-        return Project::with([
+        $data = Project::with([
             'banner' =>  function($q) {
                 $q->where('is_draft', true);
             }
@@ -108,8 +108,11 @@ class ProjectService
         ->whereHas('banner', function($q) {
             $q->where('is_draft', true);
         })
-        ->orderBy('is_completed', 'ASC')
-        ->get();
+        ->orderBy('is_completed', 'ASC');
+        if($limit){
+            $data->limit($limit);
+        }
+        return $data->get();
     }
 
     public function main_paginate(Int $total = 10, bool $status = false): LengthAwarePaginator

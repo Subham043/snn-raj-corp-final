@@ -98,7 +98,7 @@
                     <section @class([
                         "process",
                         "suffix-div",
-                        "py-4",
+                        "py-5",
                         "mt-0"
                     ])>
                         <div class="container">
@@ -120,7 +120,7 @@
                         </div>
                     </section>
                 @else
-                <section class="process mb-0 mt-0 py-4">
+                <section class="process mb-0 mt-0 py-5">
                     <div class="container">
                         <div class="row div-padding">
                             <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">

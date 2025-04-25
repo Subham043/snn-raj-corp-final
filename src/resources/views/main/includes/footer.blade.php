@@ -5,7 +5,12 @@
             <div class="row">
                 <div class="col-md-12 mb-30">
                     <div class="duru-logo-wrap footer-logo text-center">
-                        <a aria-label="logo" href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="low" class="lazyload" width="98" height="100" data-src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a>
+                        <a aria-label="logo" href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="low" class="lazyload" width="130" height="130" data-src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a>
+                        <div class="row justify-content-center py-3">
+                            <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                                <p class="text-white m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quidem culpa a placeat nihil ex quasi, ab facilis fugiat? Quas similique distinctio alias eos amet vero quasi aliquam quidem vel.</p>
+                            </div>
+                        </div>
                         <div class="social mt-2">
                             <a aria-label="facebook" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
                             <a aria-label="instagram" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>

@@ -126,8 +126,7 @@
                         </picture>
                     </div>
                     <div class="wrap">
-                        <div class="section-title">CHANNEL PARTNER <div style="display:inline;"><span>EMPANELMENT</span>
-                            </div>.</div>
+                        <div class="section-title">CHANNEL PARTNER EMPANELMENT.</div>
                         <p>
                             We greatly appreciate the value we place on building strong relationships with our business
                             associates. Our goal is to establish a long-lasting partnership, and we have made the process of
@@ -182,7 +181,7 @@
                     <div class="no-stretch-line sub-title border-bot-light pb-0">Empanelment Form</div>
                 </div> --}}
                     <div class="col-md-8">
-                        <div class="section-title"><span>Empanelment</span> Form</div>
+                        <div class="section-title">Empanelment Form</div>
                         {{-- <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line and we’ll get back to you shortly.</p> --}}
                     </div>
                     <div class="col-md-12">

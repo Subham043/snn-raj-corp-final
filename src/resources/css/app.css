@@ -1068,7 +1068,7 @@ input[type="checkbox"] {
 /* navigation footer */
 
 .footer-logo img{
-    height: 100px;
+    height: 120px;
     object-fit: contain;
     width: auto;
 }
@@ -3859,8 +3859,12 @@ input[type="checkbox"] {
    border-top: 1px solid var(--theme-lines-color);
 }
 
-.footer a:hover{
+.footer a{
 color: white;
+}
+
+.footer a:hover{
+color: var(--theme-primary-color);
 }
 
 .footer .top {}

@@ -63,17 +63,21 @@
             color: var(--theme-primary-color);
         }
         .main-team-section{
-            background: var(--theme-footer-color);
-            background-color: var(--theme-footer-color);
+            background: #fff;
+            background-color: #fff;
         }
-        .main-team-section .section-title, .main-team-section p{
-            color: white;
+        .main-team-section .section-title{
+            color: var(--theme-footer-color);
+            text-align: justify;
+        }
+        .main-team-section p{
+            color: var(--theme-text-color);
             text-align: justify;
         }
 
-        .about.main-team-section .wrap .con .info .name{
+        /* .about.main-team-section .wrap .con .info .name{
             color: white;
-        }
+        } */
         .about_banner_img{
             border: 1px solid #1c1919;
             padding: 5px;
@@ -156,7 +160,7 @@
     <h2 class="d-none">{{$seo->page_keywords}}</h2>
 
     @if($about)
-    <section class="about suffix-div mt-0 py-4">
+    <section class="about suffix-div mt-0 py-5">
         <div class="container">
             <div class="row justify-content-center">
 
@@ -188,7 +192,7 @@
 
     <!-- Management -->
     @if(count($management)>0)
-    <section class="about secondary-div mt-0 main-team-section py-4">
+    <section class="about secondary-div mt-0 main-team-section pt-5 pb-4">
         <div class="container">
             <div class="row">
                 @if($managementHeading)
@@ -262,7 +266,7 @@
 
     <!-- Staff -->
     @if(count($staffs)>0)
-    <section id="team-area" class="team section-padding py-4">
+    <section id="team-area" class="team section-padding pb-4 pt-0">
         <div class="container">
             <div class="row mb-3 justify-content-center">
                 @if($staffHeading)
@@ -301,7 +305,7 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-12 mb-2" data-animate-effect="fadeInUp">
                         {{-- <div class="sub-title border-bot-light pb-0">Our Mission</div> --}}
-                        <div class="sub-title border-bot-light pb-0"><div class="section-title text-center m-0">Our <span>Mission</span></div></div>
+                        <div class="sub-title border-bot-light pb-0"><div class="section-title text-center m-0">Our Mission</div></div>
                     </div>
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <h3 class="text-center" style="color: black !important">{!!$banner->mission!!}</h5>
@@ -318,7 +322,7 @@
         <div class="container">
             @foreach($additionalContent as $key=>$val)
                 @if(($key+1)%2!=0)
-                    <div class="row py-4">
+                    <div class="row pt-5 pb-4">
                         <div class="col-md-6 " data-animate-effect="fadeInLeft">
                             <div class="img">
                                 <img fetchpriority="low" data-src="{{$val->image_link}}" width="571" height="651" class="lazyload" alt="">
@@ -342,7 +346,7 @@
                         </div>
                     </div>
                 @else
-                    <div class="row py-4">
+                    <div class="row pt-5 pb-4">
                         <div class="col-md-6 order2 valign " data-animate-effect="fadeInLeft">
                             <div class="wrap">
                                 <div class="number">
@@ -412,7 +416,7 @@
                         </div> --}}
                         <div class="col-md-12 mb-2" data-animate-effect="fadeInUp">
                             {{-- <div class="sub-title border-bot-light pb-0">Our Mission</div> --}}
-                            <div class="sub-title border-bot-light pb-0"><div class="section-title text-center m-0">Our <span>Vision</span></div></div>
+                            <div class="sub-title border-bot-light pb-0"><div class="section-title text-center m-0">Our Vision</div></div>
                         </div>
                         <div class="col-md-12 " data-animate-effect="fadeInUp">
                             <h3 class="text-black text-center" style="color: black !important">{!!$banner->vission!!}</h5>
@@ -425,7 +429,7 @@
 
     <!-- Partner -->
     @if(count($partners)>0)
-    <section class="partner section-padding py-4">
+    <section class="partner section-padding pt-5 pb-4">
         <div class="container">
             <div class="row mb-3 justify-content-center">
                 @if($partnerHeading)
