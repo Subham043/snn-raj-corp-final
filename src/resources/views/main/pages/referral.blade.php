@@ -97,7 +97,11 @@
 
         @media screen and (max-width: 600px) {
             #slider-area {
-                min-height: 350px;
+                min-height: auto;
+            }
+
+            .owl-carousel .owl-item img{
+                height: 100%;
             }
         }
 

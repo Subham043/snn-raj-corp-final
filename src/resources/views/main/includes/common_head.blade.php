@@ -16,7 +16,7 @@
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/bootstrap.min.js')}}">
     <link rel="preload" as="script" href="{{ asset('admin/js/pages/just-validate.production.min.js') }}">
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/lazysizes.min.js') }}">
-    <link rel="preload" as="script" href="{{ asset('assets/js/plugins/intlTelInput.min.js') }}">
+    {{-- <link rel="preload" as="script" href="{{ asset('assets/js/plugins/intlTelInput.min.js') }}"> --}}
     <link rel="preload" as="script" href="{{ asset('assets/js/common_script.js') }}">
 
     <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/black-logo.webp') }}" as="image">
