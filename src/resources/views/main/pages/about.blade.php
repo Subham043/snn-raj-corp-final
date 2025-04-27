@@ -202,6 +202,10 @@
                 margin-bottom: 0px;
             }
 
+            .mb-sm-5{
+                margin-bottom: 3rem;
+            }
+
         }
     </style>
 
@@ -233,7 +237,7 @@
     <h2 class="d-none">{{$seo->page_keywords}}</h2>
 
     @if($about)
-    <section class="about suffix-div mt-0 py-5 pb-6">
+    <section class="about suffix-div mt-0 py-5 pb-6 mb-sm-5">
         <div class="container">
             <div class="row justify-content-center">
 
@@ -269,7 +273,7 @@
     <section class="mt-0 py-5 pb-3">
         <div class="container">
             <div class="row justify-content-between h-100">
-                <div class="col-md-6 col-sm-12 p-2 h-100" data-animate-effect="fadeInUp">
+                <div class="col-md-6 col-sm-12 p-2 h-100 mb-sm-5" data-animate-effect="fadeInUp">
                     <div class="hero w-100 h-100 mb-0 p-1 br-1">
                         <span class="ribbon1"><span>Our Mission</span></span>
                         {{-- <div class="col-md-12 mb-2" data-animate-effect="fadeInUp">

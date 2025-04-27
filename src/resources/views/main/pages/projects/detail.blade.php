@@ -25,12 +25,6 @@
     <link rel="preload" fetchPriority="high" as="image" href="{{ $data->banner[0]->image_link }}" type="image/webp">
     @endif
 
-    <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/floors.svg') }}">
-    <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/tower.svg') }}">
-    <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/acre.svg') }}">
-    <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/location.svg') }}">
-    <link rel="preload" fetchPriority="high" as="image" href="{{ asset('assets/rera.svg') }}">
-
     <link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}">
 
     <link rel="preload" as="script" href="{{ asset("assets/js/plugins/owl.carousel.min.js") }}">
@@ -195,7 +189,7 @@
             }
 
             .project-wrap-div{
-                height: 100%;
+                height: unset;
                 display: block;
             }
 
@@ -461,6 +455,10 @@
             object-fit: cover;
         }
 
+        #pills-tabContent .slider .owl-item{
+            height: auto;
+        }
+
         @media screen and (max-width: 600px){
             .table-about{
                 border-top: 2px solid #e1e1e1;
@@ -472,7 +470,12 @@
             }
 
             #pills-tabContent .tab-regular, #pills-tabContent .tab-regular img{
-                min-height: 40dvh;
+                min-height: auto;
+                height: auto;
+            }
+
+            .map-frame{
+                height: 450px !important;
             }
         }
     </style>
@@ -645,10 +648,10 @@
                 <div class="container">
                     <div class="row div-padding">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
-                            <div class="img fl-img {{$val->attatch_map ? "h-100" : ""}}">
+                            <div class="img fl-img {{$val->attatch_map ? "h-100 map-frame" : ""}}">
                                 @if($val->attatch_map)
-                                    <div class="ribbons-wrapper {{$val->attatch_map ? "h-100" : ""}}">
-                                        <div class="address-panel {{$val->attatch_map ? "h-100" : ""}}">
+                                    <div class="ribbons-wrapper {{$val->attatch_map ? "h-100 map-frame" : ""}}">
+                                        <div class="address-panel {{$val->attatch_map ? "h-100 map-frame" : ""}}">
                                         {{-- <div class="address-panel map-shape"> --}}
                                             {{-- <div class="ribbon">
                                                 <span class="ribbon5">
@@ -657,8 +660,8 @@
                                                     </marquee>
                                             </div> --}}
                                             @if($data->map_location_link)
-                                            <div class="p-1 {{$val->attatch_map ? "h-100" : ""}}">
-                                                <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload {{$val->attatch_map ? "h-100 br-1" : ""}}" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                            <div class="p-1 {{$val->attatch_map ? "h-100 map-frame" : ""}}">
+                                                <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload {{$val->attatch_map ? "h-100 br-1 map-frame" : ""}}" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                             </div>
                                             @endif
                                         </div>
@@ -691,10 +694,10 @@
                 <div class="container">
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
-                            <div class="img fr-img {{$val->attatch_map ? "h-100" : ""}}">
+                            <div class="img fr-img {{$val->attatch_map ? "h-100 map-frame" : ""}}">
                                 @if($val->attatch_map)
-                                    <div class="ribbons-wrapper {{$val->attatch_map ? "h-100" : ""}}">
-                                        <div class="address-panel {{$val->attatch_map ? "h-100" : ""}}">
+                                    <div class="ribbons-wrapper {{$val->attatch_map ? "h-100 map-frame" : ""}}">
+                                        <div class="address-panel {{$val->attatch_map ? "h-100 map-frame" : ""}}">
                                         {{-- <div class="address-panel map-shape"> --}}
                                             {{-- <div class="ribbon">
                                                 <span class="ribbon5">
@@ -704,8 +707,8 @@
                                                 </span>
                                             </div> --}}
                                             @if($data->map_location_link)
-                                            <div class="p-1 {{$val->attatch_map ? "h-100" : ""}}">
-                                                <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload {{$val->attatch_map ? "h-100 br-1" : ""}}" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                            <div class="p-1 {{$val->attatch_map ? "h-100 map-frame" : ""}}">
+                                                <iframe loading="lazy" data-src="{{$data->map_location_link}}" class="w-100 lazyload {{$val->attatch_map ? "h-100 br-1 map-frame" : ""}}" height="450" allowfullscreen="" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                             </div>
                                             @endif
                                         </div>
