@@ -36,8 +36,9 @@
             font-weight: 700;
         }
         .award-img{
-            object-fit: contain;
+            object-fit: cover;
             width: auto;
+            height: 200px;
         }
         .sub-title:after{
             width: 100%;
@@ -114,9 +115,6 @@
     <div class="py-1" id="callback-popup-trigger"></div>
 
     @include('main.includes.common_contact_modal')
-    <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup" data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img src="{{asset('smartphone.svg')}}" fetchpriority="high" loading="eager" title="Enquiry Popup" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
-    </button>
 @stop
 
 @section('js')

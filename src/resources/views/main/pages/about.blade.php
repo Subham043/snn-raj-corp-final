@@ -109,6 +109,79 @@
             background: #be932d;
         }
 
+        .process .img img{
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .about .wrap{
+            padding-left: 0;
+        }
+
+        .team .wrap{
+            padding-left: 0;
+            padding-bottom: 0;
+        }
+
+        .br-1{
+            border-radius: 5px;
+        }
+
+        .hero{
+            position: relative;
+        }
+
+        .ribbon1 {
+            position: absolute;
+            top: -6.1px;
+            right: 10px;
+        }
+        .ribbon1:after {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 0;
+            border-left: 65px solid transparent;
+            border-right: 65px solid transparent;
+            border-top: 17px solid var(--theme-primary-color);
+        }
+        .ribbon1 span {
+            position: relative;
+            display: block;
+            text-align: center;
+            background: var(--theme-primary-color);;
+            font-size: 22px;
+            color: white;
+            line-height: 1;
+            padding: 12px 8px 3px;
+            border-top-right-radius: 8px;
+            width: 130px;
+            font-weight: 700;
+        }
+        .ribbon1 span:before, .ribbon1 span:after {
+            position: absolute;
+            content: "";
+        }
+        .ribbon1 span:before {
+            height: 6px;
+            width: 6px;
+            left: -6px;
+            top: 0;
+            background: var(--theme-primary-color);
+        }
+        .ribbon1 span:after {
+            height: 6px;
+            width: 8px;
+            left: -8px;
+            top: 0;
+            border-radius: 8px 8px 0 0;
+            background: #a68b6a;
+        }
+
+        .mt-6{
+            margin-top: 3.5rem;
+        }
+
         @media screen and (max-width: 600px) {
             .about_banner_img {
                 height: auto;
@@ -138,7 +211,7 @@
 
     @if($banner)
     <!-- Hero -->
-    <section class="hero hero-main section-padding py-1">
+    <section class="hero hero-main section-padding py-4 pb-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -160,7 +233,7 @@
     <h2 class="d-none">{{$seo->page_keywords}}</h2>
 
     @if($about)
-    <section class="about suffix-div mt-0 py-5">
+    <section class="about suffix-div mt-0 py-5 pb-6">
         <div class="container">
             <div class="row justify-content-center">
 
@@ -190,36 +263,73 @@
     </section>
     @endif
 
+    <!-- Mission -->
+    <!-- Vision -->
+    @if($banner)
+    <section class="mt-0 py-5 pb-3">
+        <div class="container">
+            <div class="row justify-content-between h-100">
+                <div class="col-md-6 col-sm-12 p-2 h-100" data-animate-effect="fadeInUp">
+                    <div class="hero w-100 h-100 mb-0 p-1 br-1">
+                        <span class="ribbon1"><span>Our Mission</span></span>
+                        {{-- <div class="col-md-12 mb-2" data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light pb-0"><h2 class="text-center m-0">Our Mission</h2></div>
+                        </div> --}}
+                        <div class="col-md-12 mt-6" data-animate-effect="fadeInUp">
+                            <p class="text-black text-center" style="color: black !important">{!!$banner->mission!!}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 p-2 h-100" data-animate-effect="fadeInUp">
+                    <div class="hero w-100 h-100 mb-0 p-1 br-1">
+                        <span class="ribbon1"><span>Our Vision</span></span>
+                        {{-- <div class="col-md-12 mb-2" data-animate-effect="fadeInUp">
+                            <div class="sub-title border-bot-light pb-0"><h2 class="text-center m-0">Our Vision</h2></div>
+                        </div> --}}
+                        <div class="col-md-12 mt-6" data-animate-effect="fadeInUp">
+                            <p class="text-black text-center" style="color: black !important">{!!$banner->vission!!}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
+
     <!-- Management -->
     @if(count($management)>0)
-    <section class="about secondary-div mt-0 main-team-section pt-5 pb-4">
+    <section class="about secondary-div mt-0 main-team-section pt-3 pb-3" id="callback-popup-trigger">
         <div class="container">
-            <div class="row">
+            {{-- <div class="row">
                 @if($managementHeading)
-                    {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
+                    <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light pb-0">{{$managementHeading->sub_heading}}</div>
-                    </div> --}}
+                    </div>
                     <div class="col-md-auto " data-animate-effect="fadeInUp">
                         <div class="sub-title border-bot-light pb-0"><div class="section-title m-0">{!!$managementHeading->heading!!}</div></div>
                     </div>
                 @endif
-            </div>
+            </div> --}}
             <div class="row">
                 @foreach($management as $key=>$val)
                     @if($key==0)
                         <div class="row mt-4">
                             <div class="col-md-6 " data-animate-effect="fadeInUp">
+                                @if($managementHeading)
+                                <div class="sub-title border-bot-light pt-0 mt-0"><div class="section-title m-0">{!!$managementHeading->heading!!}</div></div>
+                                @endif
                                 <div class="desc-ul">
                                     {!!$val->description!!}
                                 </div>
                             </div>
                             <div class="col-md-6 " data-animate-effect="fadeInUp">
                                 <div class="wrap">
-                                    <div class="con"> <img fetchpriority="low" data-src="{{$val->image_link}}"  width="519" height="761" class="img-fluid lazyload" alt="">
-                                        <div class="info">
+                                    <div class="con mb-1"> <img fetchpriority="low" data-src="{{$val->image_link}}"  width="519" height="761" class="img-fluid lazyload" alt="">
+                                        {{-- <div class="info">
                                             <h4 class="name">{{$val->name}}</h4>
-                                        </div>
+                                        </div> --}}
                                     </div>
+                                    <h4 class="name text-center m-0">{{$val->name}}</h4>
                                     <p>{{$val->designation}}</p>
                                 </div>
                             </div>
@@ -227,11 +337,12 @@
                     @else
                         <div class="col-md-6 " data-animate-effect="fadeInUp">
                             <div class="wrap">
-                                <div class="con"> <img fetchpriority="low" data-src="{{$val->image_link}}" width="519" height="761" class="img-fluid lazyload" alt="">
-                                    <div class="info">
+                                <div class="con mb-1"> <img fetchpriority="low" data-src="{{$val->image_link}}" width="519" height="761" class="img-fluid lazyload" alt="">
+                                    {{-- <div class="info">
                                         <h4 class="name">{{$val->name}}</h4>
-                                    </div>
+                                    </div> --}}
                                 </div>
+                                <h4 class="name text-center m-0">{{$val->name}}</h4>
                                 <p>{{$val->designation}}</p>
                             </div>
                             <div class="desc-ul">
@@ -266,7 +377,7 @@
 
     <!-- Staff -->
     @if(count($staffs)>0)
-    <section id="team-area" class="team section-padding pb-4 pt-0">
+    <section id="team-area" class="team section-padding pb-4 pt-2">
         <div class="container">
             <div class="row mb-3 justify-content-center">
                 @if($staffHeading)
@@ -282,7 +393,7 @@
                 <div class="col-md-12 owl-carousel owl-theme">
                     @foreach($staffs as $staffs)
                     <div class="wrap">
-                        <div class="con"> <img fetchpriority="low" width="335" height="500" data-src="{{$staffs->image_link}}" class="img-fluid core_image lazyload" alt="">
+                        <div class="con mb-1"> <img fetchpriority="low" width="335" height="500" data-src="{{$staffs->image_link}}" class="img-fluid core_image lazyload" alt="">
                             {{-- <div class="info">
                                 <h4 class="name">{{$staffs->name}}</h4>
                             </div> --}}
@@ -297,32 +408,13 @@
     </section>
     @endif
 
-    <!-- Mission -->
-    @if($banner)
-    <section class="lets-talk hero hero-contact py-4">
-        <div class="background bg-img bg-fixed" data-overlay-dark="6">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-md-12 mb-2" data-animate-effect="fadeInUp">
-                        {{-- <div class="sub-title border-bot-light pb-0">Our Mission</div> --}}
-                        <div class="sub-title border-bot-light pb-0"><div class="section-title text-center m-0">Our Mission</div></div>
-                    </div>
-                    <div class="col-md-12 " data-animate-effect="fadeInUp">
-                        <h3 class="text-center" style="color: black !important">{!!$banner->mission!!}</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif
-
     <!-- ADDITIONAL CONTENT -->
     @if(count($additionalContent)>0)
-    <section class="process about mt-0">
+    <section class="process about mt-0 pt-2">
         <div class="container">
             @foreach($additionalContent as $key=>$val)
                 @if(($key+1)%2!=0)
-                    <div class="row pt-5 pb-4">
+                    <div class="row pt-4 pb-5">
                         <div class="col-md-6 " data-animate-effect="fadeInLeft">
                             <div class="img">
                                 <img fetchpriority="low" data-src="{{$val->image_link}}" width="571" height="651" class="lazyload" alt="">
@@ -346,7 +438,7 @@
                         </div>
                     </div>
                 @else
-                    <div class="row pt-5 pb-4">
+                    <div class="row pt-4 pb-4">
                         <div class="col-md-6 order2 valign " data-animate-effect="fadeInLeft">
                             <div class="wrap">
                                 <div class="number">
@@ -402,36 +494,11 @@
 
     @endif
 
-        <!-- Vision -->
-        @if($banner)
-        <section class="lets-talk hero hero-contact mt-0 py-4">
-            <div class="background bg-img bg-fixed" data-overlay-dark="6">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        {{-- <div class="col-md-4 mb-3" data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light pb-0">Our Vision</div>
-                        </div>
-                        <div class="col-md-12 " data-animate-effect="fadeInUp">
-                            <h2 class="section-title">{!!$banner->vission!!}</h2>
-                        </div> --}}
-                        <div class="col-md-12 mb-2" data-animate-effect="fadeInUp">
-                            {{-- <div class="sub-title border-bot-light pb-0">Our Mission</div> --}}
-                            <div class="sub-title border-bot-light pb-0"><div class="section-title text-center m-0">Our Vision</div></div>
-                        </div>
-                        <div class="col-md-12 " data-animate-effect="fadeInUp">
-                            <h3 class="text-black text-center" style="color: black !important">{!!$banner->vission!!}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        @endif
-
     <!-- Partner -->
     @if(count($partners)>0)
-    <section class="partner section-padding pt-5 pb-4">
+    <section class="partner section-padding pt-3 pb-5">
         <div class="container">
-            <div class="row mb-3 justify-content-center">
+            <div class="row mb-4 justify-content-center">
                 @if($partnerHeading)
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light pb-0">{{$partnerHeading->sub_heading}}</div>
@@ -459,9 +526,6 @@
     @endif
 
     @include('main.includes.common_contact_modal')
-    <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img src="{{asset('smartphone.svg')}}" fetchpriority="high" loading="eager" title="Enquiry Popup" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
-    </button>
 
 @stop
 

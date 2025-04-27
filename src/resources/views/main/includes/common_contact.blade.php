@@ -1,5 +1,5 @@
 <!-- Lets Talk -->
-<section class="lets-talk secondary-div mt-0">
+<section class="contact secondary-div mt-0">
     <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">
             <div class="row">
@@ -7,8 +7,31 @@
                     <div class="no-stretch-line sub-title border-bot-light">Contact Us</div>
                 </div>
                 <div class="col-md-8">
-                    <div class="section-title">Get in <span>touch</span></div>
-                    <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line and we’ll get back to you shortly.</p>
+                    <div class="section-title">Get in touch</div>
+                    <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line
+                        and we’ll get back to you shortly.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 " data-animate-effect="fadeInUp">
+                    <!-- Contact Info -->
+                    <p>{{ empty($generalSetting) ? '' : $generalSetting->address }}</p>
+                    <a aria-label="phone" href="tel:{{ empty($generalSetting) ? '' : $generalSetting->phone }}"
+                        class="phone">{{ empty($generalSetting) ? '' : $generalSetting->phone }}</a>
+                    <a aria-label="email" href="mailto:{{ empty($generalSetting) ? '' : $generalSetting->email }}"
+                        class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email }}</a>
+                    <div class="social mt-2">
+                        <a aria-label="facebook" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook }}"><i
+                                class="ti-facebook"></i></a>
+                        <a aria-label="instagram" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram }}"><i
+                                class="ti-instagram"></i></a>
+                        <a aria-label="linkedin" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin }}"><i
+                                class="ti-linkedin"></i></a>
+                        <a aria-label="youtube" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube }}"><i
+                                class="ti-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-8">
                     <form method="post" class="contact__form" id="contactForm">
                         <!-- Form elements -->
                         <div class="row">
@@ -30,8 +53,10 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 mt-3 mb-5">
-                                <input type="checkbox" class="line-gray">
-                                <label>I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp me about its products and offers, this consent overrides any registration for DNC / NDNC</label>
+                                <label>
+                                    <input type="checkbox" class="line-gray">
+                                    I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp me about its products and offers, this consent overrides any registration for DNC / NDNC
+                                </label>
                             </div>
                             <div class="col-md-2">
                                 <input class="line-gray" name="submit" type="submit" id="submitBtn" value="Send Message">

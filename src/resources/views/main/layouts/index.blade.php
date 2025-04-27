@@ -6,11 +6,13 @@
         @include('main.includes.loader')
         @include('main.includes.scroll_top')
         @include('main.includes.lines')
-        @include('main.includes.header')
+        <div class="w-100" id="content-wrapper">
+            @include('main.includes.header')
 
-        @yield('content')
+            @yield('content')
 
-        @include('main.includes.footer')
+            @include('main.includes.footer')
+        </div>
         @include('cookie-consent::index')
     </div>
     <!-- jQuery -->
