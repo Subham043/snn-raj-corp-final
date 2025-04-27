@@ -37,17 +37,13 @@ class ProjectDetailPageController extends Controller
     public function get($slug){
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
         $data = $this->projectService->getBySlugMain($slug);
-        $projects = $this->projectService->main_all();
         return view('main.pages.projects.detail', compact([
             'generalSetting',
             'themeSetting',
-            'chatbotSetting',
             'data',
             'legal',
-            'projects'
         ]))->with([
             'gallery_statuses' => Arr::map(ProjectGalleryStatusEnum::cases(), fn($enum) => $enum->value),
         ]);

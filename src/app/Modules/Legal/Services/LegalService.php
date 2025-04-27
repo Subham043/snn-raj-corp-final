@@ -48,7 +48,7 @@ class LegalService
 
     public function main_all(): Collection
     {
-        return Legal::where('is_draft', true)->get();
+        return Legal::select('page_name', 'slug')->where('is_draft', true)->get();
     }
 
 }

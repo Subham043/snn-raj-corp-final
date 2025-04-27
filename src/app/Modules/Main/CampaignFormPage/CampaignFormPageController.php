@@ -24,7 +24,7 @@ class CampaignFormPageController extends Controller
     }
 
     public function get(){
-        $projects = $this->projectService->main_all();
+        $projects = $this->projectService->main_listing();
         return view('main.pages.campaign_form', compact('projects'));
     }
 

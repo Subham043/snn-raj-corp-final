@@ -30,7 +30,7 @@ class FreeAdFormPageController extends Controller
     }
 
     public function get(){
-        $projects = $this->projectService->main_all();
+        $projects = $this->projectService->main_listing();
         $executives = (new SiteEnquiryRepresentativeService)->all();
         return view('main.pages.free_ad_form', compact(['projects', 'executives']));
     }

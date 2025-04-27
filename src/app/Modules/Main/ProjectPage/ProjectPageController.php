@@ -45,7 +45,6 @@ class ProjectPageController extends Controller
         $seo = $this->seoService->getBySlugMain('project-completed-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $projectHeading = $this->projectHeadingService->getById(1);
         $ongoing_projects = $this->projectService->main_paginate_all(false);
         $completed_projects = $this->projectService->main_paginate_all(true);
@@ -54,7 +53,6 @@ class ProjectPageController extends Controller
             'seo',
             'generalSetting',
             'themeSetting',
-            'chatbotSetting',
             'ongoing_projects',
             'completed_projects',
             'projectHeading',

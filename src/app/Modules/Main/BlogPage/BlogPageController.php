@@ -41,14 +41,12 @@ class BlogPageController extends Controller
         $seo = $this->seoService->getBySlugMain('blog-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $blogs = $this->blogService->main_paginate($request->total ?? 10);
         $legal = $this->legalService->main_all();
         return view('main.pages.blogs.index', compact([
             'seo',
             'generalSetting',
             'themeSetting',
-            'chatbotSetting',
             'blogs',
             'legal'
         ]));

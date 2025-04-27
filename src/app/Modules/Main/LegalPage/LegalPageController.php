@@ -31,13 +31,11 @@ class LegalPageController extends Controller
     public function get($legal_slug){
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
         $data = $this->legalService->getBySlugMain($legal_slug);
         return view('main.pages.legal', compact([
             'generalSetting',
             'themeSetting',
-            'chatbotSetting',
             'data',
             'legal',
         ]));

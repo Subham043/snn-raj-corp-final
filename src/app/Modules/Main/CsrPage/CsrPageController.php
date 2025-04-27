@@ -51,9 +51,8 @@ class CsrPageController extends Controller
         $seo = $this->seoService->getBySlugMain('csr-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
-        $projects = $this->projectService->main_all();
-        return view('main.pages.csr', compact(['projects', 'banner', 'mainContent', 'seo', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal']));
+        $projects = $this->projectService->main_listing();
+        return view('main.pages.csr', compact(['projects', 'banner', 'mainContent', 'seo', 'generalSetting', 'themeSetting', 'legal']));
     }
 
 }
