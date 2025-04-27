@@ -1,3 +1,7 @@
+<button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">
+    <img src="{{asset('smartphone.svg')}}" fetchpriority="high" loading="eager" title="Enquiry Popup" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
+</button>
+
 <div class="modal fade" id="contactModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
@@ -5,7 +9,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="col-12 mt-2 text-center">
                     <img fetchpriority="low" class="modal-img lazyload" data-src="{{ asset('assets/black-logo.webp') }}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}" data-img="{{ asset('assets/black-logo.webp') }}">
-                    <h5 class="modal-title mt-1">Get A Callback</h5>
+                    <h5 class="modal-title mt-1 fw-bold"><strong>Get A Callback</strong></h5>
                 </div>
             </div>
             <div class="modal-body">
@@ -43,8 +47,8 @@
                     </div>
                     <div class="col-md-12 mt-2 mb-4">
                         <div class="col-md-12">
-                            <input type="checkbox" class="line-gray">
                             <label style="width: 290px;font-size:0.8rem;line-height: 15px;">
+                                <input type="checkbox" class="line-gray">
                                 I authorize SNN Raj Corp and its representatives to call, SMS, email, or WhatsApp me about its products and offers, this consent overrides any registration for DNC / NDNC
                             </label>
                         </div>

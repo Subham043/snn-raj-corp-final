@@ -635,7 +635,7 @@
     <h1 class="d-none">{{ $seo->page_keywords }}</h1>
     <h2 class="d-none">{{ $seo->page_keywords }}</h2>
     @if ($about)
-        <section class="about section-padding pt-5 pb-5">
+        <section class="about section-padding pt-6 pb-6">
             <div class="container">
                 <div class="row justify-content-center">
                     {{-- <div class="col-md-auto " data-animate-effect="fadeInUp"> --}}
@@ -696,7 +696,7 @@
 
     <!-- Counter -->
     @if (count($counters) > 0)
-        <section class="about lets-talk hero hero-contact pt-5 pb-5">
+        <section class="about lets-talk hero hero-contact pt-4 pb-4">
             <div class="background bg-img bg-fixed" data-overlay-dark="6">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -741,7 +741,7 @@
     @endif
 
     <!-- Projects 2 -->
-    <div class="projects2 project_old subject-div pt-5 pb-5" id="callback-popup-trigger">
+    <div class="projects2 project_old subject-div pt-5 pb-6" id="callback-popup-trigger">
         <div class="container">
             <div class="row mb-4">
                 @if ($projectHeading)
@@ -756,6 +756,7 @@
                     @if ($projectHeading)
                         <p>{!! $projectHeading->description !!}</p>
                     @endif
+                    <div class="more w-100 d-flex justify-content-end"><a aria-label="All Projects" href="{{route('projects.get')}}" class="link-btn" tabindex="0">Explore More</a></div>
                     {{-- <div class="row" data-animate-effect="fadeInUp" style="--bs-gutter-x: 0rem;">
                         <ul id="projects2-filter" class="projects2-filter text-center">
                             <li class="active" data-filter=".ongoing">Ongoing Projects</li>
@@ -1083,11 +1084,6 @@
     </section>
 
     @include('main.includes.common_contact_modal')
-    <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup" data-bs-toggle="modal"
-        data-bs-target="#contactModal">
-        <img src="{{ asset('smartphone.svg') }}" fetchpriority="high" loading="eager" title="Enquiry Popup"
-            alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
-    </button>
 
 @stop
 

@@ -140,7 +140,7 @@
 
         .project-page-banner-img{
             object-fit: cover;
-            height: 85vh;
+            height: 100dvh;
         }
 
         .project-bar .project-detail-row .testimonials .wrap .item .info h6{
@@ -206,31 +206,31 @@
 
         }
 
-        .tab-panels .panel{
+        #pills-tabContent .tab-regular{
             background: #c9c9c9;
             padding: 0;
             border-radius: unset;
         }
-        .tab-panels .panel .slider .owl-item, .tab-panels .panel .slider-fade .owl-item{
+        #pills-tabContent .tab-regular .slider .owl-item, #pills-tabContent .tab-regular .slider-fade .owl-item{
             height: auto;
         }
 
-        .tab-panels ul {
+        ul#pills-tab, ul#gallery-tab {
             display: flex;
             /* flex-direction: column; */
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
         }
-        .tab-panels ul li.active {
+        ul#pills-tab li button.active, ul#gallery-tab li button.active {
             color: #fff;
             background: #bda588;
         }
-        .tab-panels ul li:hover {
+        ul#pills-tab li button:hover, ul#gallery-tab li button:hover {
             color: #fff;
             background: #bda588;
         }
-        .tab-panels ul li {
+        ul#pills-tab li button, ul#gallery-tab li button {
             background: #183e62;
             color: #fff;
             text-align: center;
@@ -239,13 +239,13 @@
             padding: 6px 10px;
             min-width: 100px;
         }
-        .project-page .tab-panels .owl-nav {
-            bottom: 0;
-            right: 0;
+        .project-page #pills-tabContent .owl-nav {
+            /* bottom: 0;
+            right: 0; */
             background: white;
             gap: 10px;
         }
-        .project-page .tab-panels .owl-nav .owl-prev, .project-page .tab-panels .owl-nav .owl-next {
+        .project-page #pills-tabContent .owl-nav .owl-prev, .project-page #pills-tabContent .owl-nav .owl-next {
             background: #bda588;
             color: #fff;
             width: 40px;
@@ -406,34 +406,26 @@
             margin-right: 0 !important;
         }
 
-        #tab-panels.tab-panels .panel, #tab-panels.tab-panels .panel img{
+        #pills-tabContent .tab-regular, #pills-tabContent .tab-regular img{
             min-height: 70vh;
             background-color: transparent !important;
             width: 100%;
             /* height: 100%; */
         }
 
-        #tab-panels.tab-panels .panel img{
+        #pills-tabContent .tab-regular img{
             position: relative;
             z-index: 3;
         }
 
-        #tab-panels .tab-regular .slider-img{
+        #pills-tabContent .tab-regular .slider-img{
             position: relative;
             width: 100%;
             height: 100%;
             z-index: 2;
         }
 
-        #tab-panels .tab-img-loader{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-        }
-
-        #floor-container .owl-nav{
+        #pills-tabContent .owl-nav{
             top: 50%;
             left: 50%;
             bottom: unset;
@@ -443,11 +435,11 @@
             background-color: transparent !important;
         }
 
-        #floor-container .owl-nav .owl-prev{
+        #pills-tabContent .owl-nav .owl-prev{
             margin-left: -20px;
         }
 
-        #floor-container .owl-nav .owl-next{
+        #pills-tabContent .owl-nav .owl-next{
             margin-right: -20px;
         }
 
@@ -464,6 +456,11 @@
             background: #f7f2ee;
         }
 
+        .content-img{
+            height: 400px;
+            object-fit: cover;
+        }
+
         @media screen and (max-width: 600px){
             .table-about{
                 border-top: 2px solid #e1e1e1;
@@ -474,7 +471,7 @@
                 border-bottom: 2px solid #e1e1e1;
             }
 
-            #tab-panels.tab-panels .panel, #tab-panels.tab-panels .panel img{
+            #pills-tabContent .tab-regular, #pills-tabContent .tab-regular img{
                 min-height: 40dvh;
             }
         }
@@ -496,100 +493,6 @@
                     <header class="p-relative header-video-container">
                         <iframe data-src="{{$data->video}}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video lazyload" width="560" height="315" frameborder="0"></iframe>
                     </header>
-                    {{-- <div class="row no-gutter">
-                        <div class="col-md-12">
-                            <div class="project-bar" style="background-color: #1b1919">
-                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->floor}}</h6> <span style="color: #fff">Floors</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Towers"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->tower}}</h6> <span style="color: #fff">Towers</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Acre"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->acre}}</h6> <span style="color: #fff">Acre</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Status"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="Location"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" widht="40" height="40" fetchpriority="high" loading="eager" alt="RERA No."> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -611,100 +514,6 @@
                             @endforeach
                         @endif
                     </div>
-                    {{-- <div class="row no-gutter">
-                        <div class="col-md-12 px-0">
-                            <div class="project-bar" style="background-color:#1b1919;">
-                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/floors.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Floors"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->floor}}</h6> <span style="color: #fff">Floors</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/tower.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Towers"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->tower}}</h6> <span style="color: #fff">Towers</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/acre.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Acre"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->acre}}</h6> <span style="color: #fff">Acre</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/status.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Status"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</h6> <span style="color: #fff">Status</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row project-detail-row justify-content-center align-items-center text-left text-lg-start gap-5">
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/location.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="Location"> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->location}}</h6> <span style="color: #fff">Location</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto mb-15 text-center project-cntr-info-col">
-                                        <div class="testimonials">
-                                            <div class="wrap">
-                                                <div class="item">
-                                                    <div class="info">
-                                                        <div class="author-img"> <img src="{{asset('assets/rera.svg')}}" width="40" height="40" fetchpriority="high" loading="eager" alt="RERA No."> </div>
-                                                        <div class="cont">
-                                                            <h6 style="color: #be932d">{{$data->rera}}</h6> <span style="color: #fff">RERA No.</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -719,7 +528,7 @@
                     <div class="row">
                         <div class="col-md-auto " data-animate-effect="fadeInUp">
                             <div class="sub-title border-bot-light pb-0 mb-3">
-                                <div class="section-title m-0">{{$data->name}}</div>
+                                <div class="section-title m-0"><span>{{$data->name}}</span></div>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -800,7 +609,7 @@
 </section>
 
 @if(count($data->accomodation)>0)
-<section class="about lets-talk hero hero-contact pt-5 pb-5" id="callback-popup-trigger">
+<section class="about lets-talk hero hero-contact pt-4 pb-4">
     <div class="background bg-img bg-fixed" data-overlay-dark="6">
         <div class="container">
             <div class="row">
@@ -832,7 +641,7 @@
 @if($data->additional_content_count>0)
     @foreach($data->additional_content as $key=>$val)
         @if(($key+1)%2!=0)
-            <section class=" additional-content-project section-padding py-5">
+            <section class=" additional-content-project section-padding pt-6 {{$val->attatch_map ? "suffix-div pb-6" : ""}} {{($data->additional_content_count-1)==($key+1) && ($key+1) != 1 && !$val->attatch_map ? "pb-6" : ""}}">
                 <div class="container">
                     <div class="row div-padding">
                         <div class="col-md-12 " data-animate-effect="fadeInRight">
@@ -855,10 +664,10 @@
                                         </div>
                                     </div>
                                 @else
-                                    <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
+                                    <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload content-img" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
                                 @endif
                             </div>
-                            <div class="wrap project-wrap-div {{$val->attatch_map ? "bg-beige p-2 br-1" : ""}}">
+                            <div class="wrap project-wrap-div {{$val->attatch_map ? "bg-white p-2 br-1 px-3" : ""}}">
                                 <div class="number">
                                     {{-- <h1>{!!$val->heading!!}</h1> --}}
                                     <div class="row">
@@ -878,7 +687,7 @@
                 </div>
             </section>
         @else
-            <section class="suffix-div additional-content-project py-5 ">
+            <section class="additional-content-project pt-6 {{$val->attatch_map ? "suffix-div pb-6" : ""}} {{($data->additional_content_count-1)==($key+1) && ($key+1) != 1 && !$val->attatch_map ? "pb-6" : ""}}">
                 <div class="container">
                     <div class="row div-padding">
                         <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
@@ -902,10 +711,10 @@
                                         </div>
                                     </div>
                                 @else
-                                    <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
+                                    <img fetchpriority="low" width="583" height="587" data-src="{{$val->image_link}}" class="lazyload content-img" title="{!!$val->heading!!}" alt="{!!$val->heading!!}">
                                 @endif
                             </div>
-                            <div class="wrap project-wrap-div {{$val->attatch_map ? "bg-white p-2 br-1" : ""}}">
+                            <div class="wrap project-wrap-div {{$val->attatch_map ? "bg-white p-2 br-1 px-3" : ""}}">
                                 <div class="number">
                                     {{-- <h1>{!!$val->heading!!}</h1> --}}
                                     <div class="row">
@@ -928,8 +737,10 @@
     @endforeach
 @endif
 
+<div id="callback-popup-trigger"></div>
+
 @if($data->plan_category_count>0)
-    <section class="project-page section-padding pt-5 pb-5">
+    <section class="project-page section-padding pt-5 pb-0">
         <div class="container">
             <div class="row">
                 <div class="row mb-0 " data-animate-effect="fadeInUp">
@@ -945,47 +756,31 @@
             <!-- project slider -->
             <div class="row justify-content-center">
                 <div class="col-md-12">
-                    <div class="tab-holder">
-                        <div id="tab-panels" class="tab-panels">
-                            <div class="row flex-wrap justify-content-between">
-                                <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
-                                    <ul class="tabs">
-                                        @foreach ($data->plan_category as $k=>$v)
-                                        <li data-panel-name="panel{{$k}}" data-panel-key="{{$k}}" class="{{$k==0 ? 'active' : ''}}">{{$v->title}}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12" style="position: relative;" id="floor-container">
-
-                                    @foreach ($data->plan_category as $k=>$v)
-                                    <div id="panel{{$k}}" class="panel {{$k==0 ? 'active' : ''}}">
-                                        @if($v->plan->count() > 0)
-                                        <div class="tab-regular slider owl-carousel">
-                                            @foreach ($v->plan as $item)
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        @foreach ($data->plan_category as $k=>$v)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{$k==0 ? 'active' : ''}}" id="pills-tab-{{$k}}" data-bs-toggle="pill" data-bs-target="#pills-{{$k}}" type="button" role="tab" aria-controls="pills-{{$k}}" aria-selected="{{$k==0 ? 'true' : 'false'}}">{{$v->title}}</button>
+                        </li>
+                        @endforeach
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        @foreach ($data->plan_category as $k=>$v)
+                            <div class="tab-pane fade {{$k==0 ? 'show active' : ''}} " id="pills-{{$k}}" role="tabpanel" aria-labelledby="pills-tab-{{$k}}">
+                                @if($v->plan->count() > 0)
+                                    <div class="tab-regular slider owl-carousel">
+                                        @foreach ($v->plan as $item)
                                             <div class="slider-img">
-                                                <div class="tab-img-loader">
-                                                    <div class="spinner-border" role="status">
-                                                        <span class="sr-only"></span>
-                                                    </div>
-                                                </div>
                                                 <img data-src="{{ $item->image_link }}" width="968" height="645" class="w-100 lazyload"
                                                 title="Plan Image {{$item->id}}" alt="Plan Image {{$item->id}}">
                                             </div>
-                                            @endforeach
-                                        </div>
-                                        @endif
+                                        @endforeach
                                     </div>
-                                    @endforeach
-
-                                    <div class="text-center mt-3">
-                                        <button aria-label="Brochure Popup" type="button" data-bs-toggle="modal" data-bs-target="#contactModal" class="brochure-btn brochure-btn-2" aria-label="Download Brouchure">Download Brochure</button>
-                                    </div>
-
-                                </div>
+                                @endif
                             </div>
-
-
-                        </div>
+                        @endforeach
+                    </div>
+                    <div class="text-center mt-5">
+                        <button aria-label="Brochure Popup" type="button" data-bs-toggle="modal" data-bs-target="#contactModal" class="brochure-btn brochure-btn-2" aria-label="Download Brouchure">Download Brochure</button>
                     </div>
                 </div>
             </div>
@@ -995,7 +790,7 @@
 
 <!-- Amenities -->
 @if($data->amenity_count>0)
-    <section class="section-padding pt-0 pb-5">
+    <section class="section-padding pt-5 pb-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12" data-animate-effect="fadeInUp">
@@ -1102,23 +897,20 @@
                 </div>
             </div>
             <div class="row justify-content-center" id="image-container">
-                <div class="tab-holder">
-                    <div id="gallery-tab-panels" class="tab-panels">
-                        <div class="row flex-wrap justify-content-between">
-                            <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
-                                <ul class="tabs">
-                                    @foreach ($gallery_statuses as $k=>$v)
-                                    <li data-panel-name="gallery_panel{{$k}}" data-panel-key="{{$k}}" class="{{$k==0 ? 'active' : ''}}">{{str($v)->replace('_', ' ')}}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12" style="position: relative;">
-
-                                @foreach ($gallery_statuses as $k=>$v)
-                                <div id="gallery_panel{{$k}}" class="panel {{$k==0 ? 'active' : ''}}">
-                                    <div class="row justify-content-center">
-                                        @foreach($data->gallery_image as $gallery_image)
-                                            @if($gallery_image->type == $v)
+                <div class="col-12">
+                    <ul class="nav nav-pills mb-3" id="gallery-tab" role="tablist">
+                        @foreach ($gallery_statuses as $k=>$v)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{$k==0 ? 'active' : ''}}" id="gallery-tab-{{$k}}" data-bs-toggle="pill" data-bs-target="#gallery-{{$k}}" type="button" role="tab" aria-controls="gallery-{{$k}}" aria-selected="{{$k==0 ? 'true' : 'false'}}">{{str($v)->replace('_', ' ')}}</button>
+                        </li>
+                        @endforeach
+                    </ul>
+                    <div class="tab-content" id="gallery-tabContent">
+                        @foreach ($gallery_statuses as $k=>$v)
+                            <div class="tab-pane fade {{$k==0 ? 'show active' : ''}} " id="gallery-{{$k}}" role="tabpanel" aria-labelledby="gallery-tab-{{$k}}">
+                                <div class="row justify-content-center">
+                                    @foreach($data->gallery_image as $gallery_image)
+                                        @if($gallery_image->type == $v)
                                             <div class="col-md-4 gallery-item " data-animate-effect="fadeInUp">
                                                 <div class="gallery-box">
                                                     <div class="gallery-img">
@@ -1127,16 +919,11 @@
                                                     <div class="gallery-detail text-center"> <i class="ti-fullscreen"></i> </div>
                                                 </div>
                                             </div>
-                                            @endif
-                                        @endforeach
-                                    </div>
+                                        @endif
+                                    @endforeach
                                 </div>
-                                @endforeach
-
                             </div>
-                        </div>
-
-
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -1172,9 +959,7 @@
     {{-- @include('main.includes.common_contact') --}}
 
     @include('main.includes.common_contact_modal')
-    <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img src="{{asset('smartphone.svg')}}" fetchpriority="high" loading="eager" title="Enquiry Popup" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
-    </button>
+
 @stop
 
 @section('js')

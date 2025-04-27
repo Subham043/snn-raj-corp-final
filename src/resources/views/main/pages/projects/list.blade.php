@@ -91,6 +91,11 @@
             border-radius: 5px;
         }
 
+        .projects3 .img img{
+            height: 300px;
+            object-fit: cover;
+        }
+
         @media screen and (max-width:600px){
             .projects3 .content{
                 margin-bottom: 0 !important;
@@ -116,7 +121,7 @@
                 <div class="col-md-4 " data-animate-effect="fadeInUp">
                     <div class="sub-title border-bot-light">{{$projectHeading->sub_heading}}</div>
                 </div>
-                <div class="col-md-8 " data-animate-effect="fadeInUp">
+                <div class="col-md-6 " data-animate-effect="fadeInUp">
                     <h1 class="section-title">{!!$projectHeading->heading!!}</h1>
                     <p>{!!$projectHeading->description!!}</p>
                 </div>
@@ -181,10 +186,10 @@
 
     @foreach($ongoing_projects as $k => $v)
         @if(($k+1)%2!=0)
-        <section class="projects3 py-5">
+        <section class="projects3 py-6">
             <div class="container">
                 <div class="row div-padding pb-md-0">
-                    <div class="col-md-8 " data-animate-effect="fadeInUp">
+                    <div class="col-md-6 " data-animate-effect="fadeInUp">
                         @if($v->banner_count>0)
                             <div class="img">
                                 <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
@@ -197,10 +202,10 @@
                             </div>
                         @endif
                     </div>
-                    <div class="col-md-4 valign " data-animate-effect="fadeInUp">
+                    <div class="col-md-6 valign " data-animate-effect="fadeInUp">
                         <div class="content">
                             <div class="cont">
-                                <h3>{{$v->name}}</h3>
+                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="mx-0" tabindex="0"><h3>{{$v->name}}</h3></a>
                                 <p>{{ Str::limit($v->brief_description, 300) }}</p>
                                 <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">Explore The Project</a></div>
                             </div>
@@ -212,19 +217,19 @@
 
         @else
 
-        <section class="projects3 suffix-div mt-md-0 py-5">
+        <section class="projects3 suffix-div mt-md-0 py-6">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
+                    <div class="col-md-6 order2 valign " data-animate-effect="fadeInUp">
                         <div class="content">
                             <div class="cont">
-                                <h3>{{$v->name}}</h3>
+                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="mx-0" tabindex="0"><h3>{{$v->name}}</h3></a>
                                 <p>{{$v->brief_description}}</p>
-                                <div class="more d-flex justify-content-end"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn mx-0" tabindex="0">Explore The Project</a></div>
+                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn mx-0" tabindex="0">Explore The Project</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8 order1 " data-animate-effect="fadeInUp">
+                    <div class="col-md-6 order1 " data-animate-effect="fadeInUp">
                         @if($v->banner_count>0)
                             <div class="img">
                                 <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="low" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt="{{$v->name}}" title="{{$v->name}}"></a>
@@ -294,20 +299,20 @@
 
     @foreach($completed_projects as $k => $v)
         @if(($k+1)%2!=0)
-        <section class="projects3 py-5">
+        <section class="projects3 py-6">
             <div class="container">
                 <div class="row div-padding pb-md-0">
-                    <div class="col-md-8 " data-animate-effect="fadeInUp">
+                    <div class="col-md-6 " data-animate-effect="fadeInUp">
                         @if($v->banner_count>0)
                             <div class="img">
                                 <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt=""></a>
                             </div>
                         @endif
                     </div>
-                    <div class="col-md-4 valign " data-animate-effect="fadeInUp">
+                    <div class="col-md-6 valign " data-animate-effect="fadeInUp">
                         <div class="content">
                             <div class="cont">
-                                <h3>{{$v->name}}</h3>
+                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="mx-0" tabindex="0"><h3>{{$v->name}}</h3></a>
                                 <p>{{ Str::limit($v->brief_description, 300) }}</p>
                                 <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">Explore The Project</a></div>
                             </div>
@@ -319,19 +324,19 @@
 
         @else
 
-        <section class="projects3 suffix-div mt-md-0 py-5">
+        <section class="projects3 suffix-div mt-md-0 py-6">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
+                    <div class="col-md-6 order2 valign " data-animate-effect="fadeInUp">
                         <div class="content">
                             <div class="cont">
-                                <h3>{{$v->name}}</h3>
+                                <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="mx-0" tabindex="0"><h3>{{$v->name}}</h3></a>
                                 <p>{{$v->brief_description}}</p>
-                                <div class="more d-flex justify-content-end"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn mx-0" tabindex="0">Explore The Project</a></div>
+                                <div class="more"><a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn mx-0" tabindex="0">Explore The Project</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8 order1 " data-animate-effect="fadeInUp">
+                    <div class="col-md-6 order1 " data-animate-effect="fadeInUp">
                         @if($v->banner_count>0)
                             <div class="img">
                                 <a aria-label="{{$v->name}}" href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt=""></a>

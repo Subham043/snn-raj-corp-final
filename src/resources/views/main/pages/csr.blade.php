@@ -44,7 +44,7 @@
             object-fit: cover;
         }
 
-        .section-padding, .div-padding {
+        .div-padding {
             padding-top: 0px !important;
         }
 
@@ -69,7 +69,7 @@
 
     @if($banner)
     <!-- Hero -->
-    <section class="hero hero-main section-padding py-1">
+    <section class="hero hero-main section-padding py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
@@ -98,7 +98,7 @@
                     <section @class([
                         "process",
                         "suffix-div",
-                        "py-5",
+                        "py-6",
                         "mt-0"
                     ])>
                         <div class="container">
@@ -120,7 +120,7 @@
                         </div>
                     </section>
                 @else
-                <section class="process mb-0 mt-0 py-5">
+                <section class="process mb-0 mt-0 py-6">
                     <div class="container">
                         <div class="row div-padding">
                             <div class="col-md-12 order2 " data-animate-effect="fadeInLeft">
@@ -146,9 +146,6 @@
     <div id="callback-popup-trigger"></div>
 
     @include('main.includes.common_contact_modal')
-    <button type="button" class="popup_btn_modal" aria-label="Enquiry Popup"  data-bs-toggle="modal" data-bs-target="#contactModal">
-        <img src="{{asset('smartphone.svg')}}" fetchpriority="high" loading="eager" title="Enquiry Popup" alt="Enquiry Popup" width="35" height="35" style="height: 35px; width:35px;" />
-    </button>
 
 @stop
 
