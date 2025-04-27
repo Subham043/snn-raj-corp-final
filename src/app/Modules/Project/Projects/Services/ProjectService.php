@@ -68,10 +68,20 @@ class ProjectService
         ], $project);
     }
 
+    public function saveHomeImage(Project $project): Project
+    {
+        $this->deleteHomeImage($project);
+        $home_image = (new FileService)->save_file('home_image', (new Project)->home_image_path);
+        return $this->update([
+            'home_image' => $home_image,
+        ], $project);
+    }
+
     public function delete(Project $project): bool|null
     {
         $this->deleteBrochure($project);
         $this->deleteImage($project);
+        $this->deleteHomeImage($project);
         $project->amenity()->detach();
         return $project->delete();
     }
@@ -88,6 +98,14 @@ class ProjectService
     {
         if($project->brochure_bg_image){
             $path = str_replace("storage","app/public",$project->brochure_bg_image);
+            (new FileService)->delete_file($path);
+        }
+    }
+
+    public function deleteHomeImage(Project $project): void
+    {
+        if($project->home_image){
+            $path = str_replace("storage","app/public",$project->home_image);
             (new FileService)->delete_file($path);
         }
     }
@@ -113,6 +131,26 @@ class ProjectService
             $data->limit($limit);
         }
         return $data->get();
+    }
+
+    public function home_main_all()
+    {
+        return Project::with([
+            'banner' =>  function($q) {
+                $q->where('is_draft', true);
+            }
+        ])
+        ->withCount([
+            'banner' =>  function($q) {
+                $q->where('is_draft', true);
+            }
+        ])
+        ->where('is_draft', true)
+        ->where('use_in_home', true)
+        ->orderBy('position', 'ASC')
+        ->orderBy('is_completed', 'ASC')
+        ->limit(5)
+        ->get();
     }
 
     public function main_paginate(Int $total = 10, bool $status = false): LengthAwarePaginator

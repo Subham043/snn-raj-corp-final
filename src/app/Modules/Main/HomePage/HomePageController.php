@@ -76,7 +76,8 @@ class HomePageController extends Controller
         $about = $this->aboutService->getById(1);
         $testimonials = $this->testimonialService->main_all();
         $counters = $this->counterService->main_all();
-        $projects = $this->projectService->main_all(5);
+        $projects = $this->projectService->main_all();
+        $display_projects = $this->projectService->home_main_all();
         $legal = $this->legalService->main_all();
         $counterHeading = $this->counterHeadingService->getById(1);
         $testimonialHeading = $this->testimonialHeadingService->getById(1);
@@ -93,6 +94,7 @@ class HomePageController extends Controller
             'testimonials',
             'counters',
             'projects',
+            'display_projects',
             'legal',
             'seo',
             'counterHeading',
