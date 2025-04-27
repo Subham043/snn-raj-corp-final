@@ -71,12 +71,12 @@ class HomePageController extends Controller
     }
 
     public function get(){
-        $banners = $this->bannerService->main_all();
-        $blogs = $this->blogService->main_all();
         $about = $this->aboutService->getById(1);
+        $banners = $about->use_in_banner ? collect([]) : $this->bannerService->main_all();
+        $blogs = $this->blogService->main_all();
         $testimonials = $this->testimonialService->main_all();
         $counters = $this->counterService->main_all();
-        $projects = $this->projectService->main_all();
+        $projects = $this->projectService->main_listing();
         $display_projects = $this->projectService->home_main_all();
         $legal = $this->legalService->main_all();
         $counterHeading = $this->counterHeadingService->getById(1);
@@ -85,7 +85,6 @@ class HomePageController extends Controller
         $seo = $this->seoService->getBySlugMain('home-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $awards = $this->awardService->latestLimit();
         return view('main.pages.index', compact([
             'banners',
@@ -102,7 +101,6 @@ class HomePageController extends Controller
             'projectHeading',
             'generalSetting',
             'themeSetting',
-            'chatbotSetting',
             'awards',
         ]));
     }

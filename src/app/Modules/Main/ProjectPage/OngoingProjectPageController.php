@@ -41,15 +41,13 @@ class OngoingProjectPageController extends Controller
         $seo = $this->seoService->getBySlugMain('project-ongoing-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
-        $projects = $this->projectService->main_paginate($request->total ?? 10, false);
+        $projects = $this->projectService->main_paginate_all(false);
         $status = 'ongoing';
         return view('main.pages.projects.index', compact([
             'seo',
             'generalSetting',
             'themeSetting',
-            'chatbotSetting',
             'projects',
             'status',
             'legal'

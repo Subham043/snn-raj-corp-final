@@ -133,19 +133,27 @@ class ProjectService
         return $data->get();
     }
 
+    public function main_listing($limit = null)
+    {
+        $data = Project::select('id', 'name')
+        ->where('is_draft', true)
+        ->whereHas('banner', function($q) {
+            $q->where('is_draft', true);
+        })
+        ->orderBy('is_completed', 'ASC');
+        if($limit){
+            $data->limit($limit);
+        }
+        return $data->get();
+    }
+
     public function home_main_all()
     {
-        return Project::with([
-            'banner' =>  function($q) {
-                $q->where('is_draft', true);
-            }
-        ])
-        ->withCount([
-            'banner' =>  function($q) {
-                $q->where('is_draft', true);
-            }
-        ])
+        return Project::select('id', 'slug', 'location', 'name', 'is_completed', 'position', 'home_image')
         ->where('is_draft', true)
+        ->whereHas('banner', function($q) {
+            $q->where('is_draft', true);
+        })
         ->where('use_in_home', true)
         ->orderBy('position', 'ASC')
         ->orderBy('is_completed', 'ASC')
@@ -181,7 +189,7 @@ class ProjectService
 
     public function main_paginate_all(bool $status): Collection
     {
-                return Project::with([
+                return Project::select('id', 'name', 'slug', 'is_completed', 'brief_description')->with([
                         'banner' =>  function($q) {
                             $q->where('is_draft', true);
                         }
@@ -193,8 +201,7 @@ class ProjectService
                     ])
                     ->where('is_draft', true)
                     ->whereHas('banner', function($q) use($status) {
-                        $q->where('is_draft', true);
-                        $q->where('is_completed', $status);
+                        $q->where('is_draft', true)->where('is_completed', $status)->limit(1);
                     })
                     ->get();
     }

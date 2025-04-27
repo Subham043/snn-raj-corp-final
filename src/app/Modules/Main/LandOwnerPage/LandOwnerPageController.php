@@ -44,9 +44,8 @@ class LandOwnerPageController extends Controller
         $seo = $this->seoService->getBySlugMain('land-owner-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
-        return view('main.pages.land_owner', compact(['seo', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal']));
+        return view('main.pages.land_owner', compact(['seo', 'generalSetting', 'themeSetting', 'legal']));
     }
 
     public function post(LandOwnerFormRequest $request){

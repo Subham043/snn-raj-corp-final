@@ -44,9 +44,8 @@ class ChannelPartnerPageController extends Controller
         $seo = $this->seoService->getBySlugMain('channel-partner-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
-        return view('main.pages.channel_partner', compact(['seo', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal']));
+        return view('main.pages.channel_partner', compact(['seo', 'generalSetting', 'themeSetting', 'legal']));
     }
 
     public function post(EmpanelmentFormRequest $request){

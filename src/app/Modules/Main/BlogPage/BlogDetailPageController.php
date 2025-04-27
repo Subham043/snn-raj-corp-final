@@ -35,7 +35,6 @@ class BlogDetailPageController extends Controller
     public function get($slug){
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
         $data = $this->blogService->getBySlugMain($slug);
         $next = $this->blogService->getNext($data->id);
@@ -43,7 +42,6 @@ class BlogDetailPageController extends Controller
         return view('main.pages.blogs.detail', compact([
             'generalSetting',
             'themeSetting',
-            'chatbotSetting',
             'data',
             'next',
             'prev',

@@ -105,82 +105,6 @@
     <h1 class="d-none">{{$seo->page_keywords}}</h1>
     <h2 class="d-none">{{$seo->page_keywords}}</h2>
 
-    <!-- Awards -->
-    {{-- <section class="projects3 pt-5">
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col-md-auto " data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light mb-3">
-                        <div class="section-title m-0">{{$status=='completed' ? 'COMPLETED PROJECTS' : 'ONGOING PROJECTS'}}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @if($projects->total() > 0)
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 px-0">
-                @foreach ($projects->items() as $k => $v)
-                    @if(($k+1)%2!=0)
-                    <section class="projects3">
-                        <div class="container">
-                            <div class="row div-padding">
-                                <div class="col-md-8 " data-animate-effect="fadeInUp">
-                                    @if($v->banner_count>0)
-                                        <div class="img">
-                                            <a aria-label="{{$v->name}}" href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt=""></a>
-                                        </div>
-                                    @endif
-                                </div>
-                                <div class="col-md-4 valign " data-animate-effect="fadeInUp">
-                                    <div class="content">
-                                        <div class="cont">
-                                            <h3>{{$v->name}}</h3>
-                                            <p>{{ Str::limit($v->brief_description, 300) }}</p>
-                                            <div class="more"><a aria-label="{{$v->name}}" href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">Explore The Project</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    @else
-
-                    <section class="projects3 suffix-div">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4 order2 valign " data-animate-effect="fadeInUp">
-                                    <div class="content">
-                                        <div class="cont">
-                                            <h3>{{$v->name}}</h3>
-                                            <p>{{$v->brief_description}}</p>
-                                            <div class="more"><a aria-label="{{$v->name}}" href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="link-btn" tabindex="0">Explore The Project</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 order1 " data-animate-effect="fadeInUp">
-                                    @if($v->banner_count>0)
-                                        <div class="img">
-                                            <a aria-label="{{$v->name}}" href="{{route($status=='completed' ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}"><img fetchpriority="high" data-src="{{$v->banner[0]->image_link}}" class="lazyload" alt=""></a>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    @endif
-                @endforeach
-                <div class="py-5">
-                    {{$projects->onEachSide(5)->links('main.includes.pagination')}}
-                </div>
-            </div>
-        </div>
-    </div>
-    @endif --}}
-
     <section class="lets-talk hero hero-contact py-2 mt-0">
         <div class="container">
             <div class="row justify-content-center">
@@ -191,9 +115,9 @@
         </div>
     </section>
 
-    @if($projects->total() > 0)
+    @if(count($projects) > 0)
 
-    @foreach($projects->items() as $k => $v)
+    @foreach($projects as $k => $v)
         @if(($k+1)%2!=0)
         <section class="projects3 py-6">
             <div class="container">
@@ -250,16 +174,6 @@
         </section>
         @endif
     @endforeach
-
-    @endif
-
-    @if($projects->total() > 10)
-
-    <div class="container">
-        <div class="py-3">
-            {{$projects->onEachSide(5)->links('main.includes.pagination')}}
-        </div>
-    </div>
 
     @endif
 

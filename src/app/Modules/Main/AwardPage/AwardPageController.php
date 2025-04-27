@@ -51,10 +51,9 @@ class AwardPageController extends Controller
         $seo = $this->seoService->getBySlugMain('award-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
-        $projects = $this->projectService->main_all();
-        return view('main.pages.award', compact(['projects', 'awards', 'seo', 'awardHeading', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal']));
+        $projects = $this->projectService->main_listing();
+        return view('main.pages.award', compact(['projects', 'awards', 'seo', 'awardHeading', 'generalSetting', 'themeSetting', 'legal']));
     }
 
 }

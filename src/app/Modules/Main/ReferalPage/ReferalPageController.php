@@ -53,11 +53,10 @@ class ReferalPageController extends Controller
         $seo = $this->seoService->getBySlugMain('referal-page');
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
         $banner = $this->bannerService->main_all();
-        $projects = $this->projectService->main_all();
-        return view('main.pages.referral', compact(['seo', 'generalSetting', 'themeSetting', 'chatbotSetting', 'legal', 'banner', 'projects']));
+        $projects = $this->projectService->main_listing();
+        return view('main.pages.referral', compact(['seo', 'generalSetting', 'themeSetting', 'legal', 'banner', 'projects']));
     }
 
     public function post(ReferalFormRequest $request){
