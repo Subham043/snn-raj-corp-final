@@ -29,13 +29,16 @@ class ProjectCreateController extends Controller
         try {
             //code...
             $project = $this->projectService->create(
-                $request->except(['brochure', 'amenity', 'brochure_bg_image'])
+                $request->except(['brochure', 'amenity', 'brochure_bg_image', 'home_image'])
             );
             if($request->hasFile('brochure')){
                 $this->projectService->saveBrochure($project);
             }
             if($request->hasFile('brochure_bg_image')){
                 $this->projectService->saveImage($project);
+            }
+            if($request->hasFile('home_image')){
+                $this->projectService->saveHomeImage($project);
             }
             $amenities = array();
             foreach ($request->amenity as $key => $value) {

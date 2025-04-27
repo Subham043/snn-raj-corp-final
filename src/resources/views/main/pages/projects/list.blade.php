@@ -113,67 +113,9 @@
     <h1 class="d-none">{{$seo->page_keywords}}</h1>
     <h2 class="d-none">{{$seo->page_keywords}}</h2>
 
-    <!-- Awards -->
-    {{-- @if($projectHeading)
-    <section class="projects3 pt-5">
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col-md-4 " data-animate-effect="fadeInUp">
-                    <div class="sub-title border-bot-light">{{$projectHeading->sub_heading}}</div>
-                </div>
-                <div class="col-md-6 " data-animate-effect="fadeInUp">
-                    <h1 class="section-title">{!!$projectHeading->heading!!}</h1>
-                    <p>{!!$projectHeading->description!!}</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif --}}
-
-    {{-- <div class="projects2 project_old suffix-div mt-0 pb-0">
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col-md-2 " data-animate-effect="fadeInUp">
-                    <div class="section-title">ONGOING <br/><span>PROJECTS</span></div>
-                </div>
-                <div class="col-md-10 " data-animate-effect="fadeInUp">
-                    <div class="no-dot sub-title border-bot-light">&nbsp;</div>
-                </div>
-            </div>
-            <div class="row" data-animate-effect="fadeInUp">
-
-                @foreach($ongoing_projects as $k => $v)
-
-                    <div class="col-md-6 single-item {{$v->is_completed==true ? 'completed' : 'ongoing'}}">
-                        <div class="projects2-wrap p-relative" style="z-index: 5">
-                            @if($v->banner_count>0)
-                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">
-                                    <div class="projects-overlay">
-                                        <img src="{{ $v->banner[0]->image_link }}" class="h-100 obj-cover" fetchpriority="low" alt="">
-                                    </div>
-                                </a>
-                            @endif
-                            <div class="projects2-con" style="z-index: 5">
-                                <h3><a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}">{{$v->name}}</a></h3>
-                                <p><img src="{{asset('assets/location_dark.svg')}}" alt=""> {{Str::limit($v->location, 30)}}</p>
-                                <p><img src="{{asset('assets/status_dark.svg')}}" alt=""> {{$v->is_completed==true ? 'COMPLETED' : 'ONGOING'}}</p>
-                                <p><img src="{{asset('assets/floors_dark.svg')}}" alt=""> {{$v->floor}} FLOORS</p>
-                                <p><img src="{{asset('assets/tower_dark.svg')}}" alt=""> {{$v->tower}} TOWERS</p>
-                                <p><img src="{{asset('assets/acre_dark.svg')}}" alt=""> {{$v->acre}} ACRES</p>
-                                <a href="{{route($v->is_completed==true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug)}}" class="project2-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-        </div>
-    </div> --}}
 
     @if(count($ongoing_projects)>0)
     <section class="lets-talk hero hero-contact py-2 mt-0">
-        {{-- <div class="background bg-img bg-fixed" data-overlay-dark="6">
-        </div> --}}
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">

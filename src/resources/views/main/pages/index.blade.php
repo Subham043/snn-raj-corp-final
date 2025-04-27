@@ -766,7 +766,7 @@
                 </div>
             </div>
             <div class="grid-wrapper">
-                @foreach ($projects->chunk(5) as $group)
+                @foreach ($display_projects->chunk(5) as $group)
 
                     @foreach ($group->values() as $k => $v)
                     @php
@@ -785,7 +785,7 @@
                                 class="w-100 h-100"
                                 href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
                                 <div class="img-overlay">
-                                    <img data-src="{{ $v->banner[0]->image_link }}" class="lazyload" alt="{{ $v->name }}" />
+                                    <img data-src="{{ $v->home_image_link }}" class="lazyload" alt="{{ $v->name }}" />
                                 </div>
                                 <div class="grid-ribbon">
                                     <div class="grid-ribbon-content">
@@ -812,7 +812,7 @@
                                 class="w-100 h-100"
                                 href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
                                 <div class="img-overlay">
-                                    <img data-src="{{ $v->banner[0]->image_link }}" class="lazyload" alt="{{ $v->name }}" />
+                                    <img data-src="{{ $v->home_image_link }}" class="lazyload" alt="{{ $v->name }}" />
                                 </div>
                                 <div class="grid-ribbon">
                                     <div class="grid-ribbon-content">
@@ -840,7 +840,7 @@
                                         class="w-100 h-100"
                                         href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
                                         <div class="img-overlay">
-                                            <img data-src="{{ $v->banner[0]->image_link }}" class="lazyload" alt="{{ $v->name }}" />
+                                            <img data-src="{{ $v->home_image_link }}" class="lazyload" alt="{{ $v->name }}" />
                                         </div>
                                         <div class="grid-ribbon">
                                             <div class="grid-ribbon-content">

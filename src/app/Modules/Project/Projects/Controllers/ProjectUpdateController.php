@@ -31,7 +31,7 @@ class ProjectUpdateController extends Controller
         try {
             //code...
             $this->projectService->update(
-                $request->except(['brochure', 'amenity', 'brochure_bg_image']),
+                $request->except(['brochure', 'amenity', 'brochure_bg_image', 'home_image']),
                 $project
             );
             if($request->hasFile('brochure')){
@@ -39,6 +39,9 @@ class ProjectUpdateController extends Controller
             }
             if($request->hasFile('brochure_bg_image')){
                 $this->projectService->saveImage($project);
+            }
+            if($request->hasFile('home_image')){
+                $this->projectService->saveHomeImage($project);
             }
             $amenities = array();
             foreach ($request->amenity as $key => $value) {

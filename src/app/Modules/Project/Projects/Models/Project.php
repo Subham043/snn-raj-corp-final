@@ -10,11 +10,9 @@ use App\Modules\Project\CommonAmenitys\Models\CommonAmenity;
 use App\Modules\Project\GalleryImages\Models\GalleryImage;
 use App\Modules\Project\GalleryVideos\Models\GalleryVideo;
 use App\Modules\Project\PlanCategory\Models\PlanCategory;
-use App\Modules\Project\Plans\Models\Plan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Sitemap\Contracts\Sitemapable;
@@ -48,6 +46,9 @@ class Project extends Model implements Sitemapable
         'brochure_bg_image',
         'video',
         'use_in_banner',
+        'use_in_home',
+        'home_image',
+        'position',
         'is_draft',
         'is_completed',
         'page_keywords',
@@ -66,14 +67,16 @@ class Project extends Model implements Sitemapable
         'is_draft' => 'boolean',
         'is_completed' => 'boolean',
         'use_in_banner' => 'boolean',
+        'use_in_home' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 
     public $brochure_path = 'projects';
     public $brochure_bg_image_path = 'projects';
+    public $home_image_path = 'projects';
 
-    protected $appends = ['brochure_link', 'brochure_bg_image_link', 'meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce', 'video_id'];
+    protected $appends = ['brochure_link', 'brochure_bg_image_link', 'home_image_link', 'meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce', 'video_id'];
 
     protected function brochure(): Attribute
     {
@@ -100,6 +103,20 @@ class Project extends Model implements Sitemapable
     {
         return new Attribute(
             get: fn () => asset($this->brochure_bg_image),
+        );
+    }
+
+    protected function homeImage(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => 'storage/'.$this->home_image_path.'/'.$value,
+        );
+    }
+
+    protected function homeImageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset($this->home_image),
         );
     }
 

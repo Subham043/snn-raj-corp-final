@@ -144,6 +144,40 @@
 
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
+                            <h4 class="card-title mb-0 flex-grow-1">Home Page Feature</h4>
+                        </div><!-- end card header -->
+                        <div class="card-body">
+                            <div class="live-preview">
+                                <div class="row gy-4">
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.file_input', ['key'=>'home_image', 'label'=>'Home Page Image'])
+                                        @if(!empty($data->home_image))
+                                            <img src="{{$data->home_image_link}}" alt="" class="img-preview">
+                                        @endif
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'position', 'label'=>'Block Position', 'value'=>$data->position])
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="mt-4 mt-md-0">
+                                            <div>
+                                                <div class="form-check form-switch form-check-right mb-2">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="use_in_home" name="use_in_home" {{$data->use_in_home==false ? '' : 'checked'}}>
+                                                    <label class="form-check-label" for="use_in_home">Use the project in home page ?</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end row-->
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">Sell Do</h4>
                         </div><!-- end card header -->
                         <div class="card-body">
@@ -396,6 +430,30 @@ validation
         },
     },
   ])
+  .addField('#home_image', [
+    {
+        rule: 'minFilesCount',
+        value: 0,
+    },
+    {
+        rule: 'maxFilesCount',
+        value: 1,
+    },
+    {
+        rule: 'files',
+        value: {
+        files: {
+            extensions: ['jpeg', 'png', 'jpg', 'webp', 'avif'],
+            maxSize: 5000000,
+        },
+        },
+    },
+  ])
+  .addField('#position', [
+    {
+        validator: (value, fields) => true,
+    },
+  ])
   .addField('#map_location_link', [
     {
         validator: (value, fields) => true,
@@ -448,6 +506,7 @@ validation
     try {
         var formData = new FormData();
         formData.append('use_in_banner',document.getElementById('use_in_banner').checked ? 1 : 0)
+        formData.append('use_in_home',document.getElementById('use_in_home').checked ? 1 : 0)
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
         formData.append('is_completed',document.getElementById('is_completed').checked ? 1 : 0)
         formData.append('video',document.getElementById('video').value)
@@ -483,6 +542,12 @@ validation
             for (let index = 0; index < document.getElementById('amenity').length; index++) {
                 formData.append('amenity[]',document.getElementById('amenity')[index].value)
             }
+        }
+        if(document.getElementById('use_in_home').checked){
+            if((document.getElementById('home_image').files).length>0){
+                formData.append('home_image',document.getElementById('home_image').files[0])
+            }
+            formData.append('position',document.getElementById('position').value)
         }
 
         const response = await axios.post('{{route('project.update.post', $data->id)}}', formData)
@@ -542,6 +607,12 @@ validation
         }
         if(error?.response?.data?.errors?.brochure_bg_image){
             validation.showErrors({'#brochure_bg_image': error?.response?.data?.errors?.brochure_bg_image[0]})
+        }
+        if(error?.response?.data?.errors?.home_image){
+            validation.showErrors({'#home_image': error?.response?.data?.errors?.home_image[0]})
+        }
+        if(error?.response?.data?.errors?.position){
+            validation.showErrors({'#position': error?.response?.data?.errors?.position[0]})
         }
         if(error?.response?.data?.errors?.meta_title){
             validation.showErrors({'#meta_title': error?.response?.data?.errors?.meta_title[0]})

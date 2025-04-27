@@ -32,6 +32,9 @@ return new class extends Migration
             $table->string('brochure_bg_image', 500)->nullable();
             $table->string('video', 500)->nullable();
             $table->boolean('use_in_banner')->default(0);
+            $table->boolean('use_in_home')->default(0);
+            $table->string('home_image', 500)->nullable();
+            $table->string('position', 500)->nullable();
             $table->boolean('is_draft')->default(0);
             $table->boolean('is_completed')->default(0);
             $table->text('page_keywords')->nullable();
@@ -56,3 +59,6 @@ return new class extends Migration
         Schema::dropIfExists('projects');
     }
 };
+
+
+// ALTER TABLE `projects` ADD `use_in_home` TINYINT(1) NOT NULL DEFAULT '0' AFTER `use_in_banner`, ADD `home_image` VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `use_in_home`, ADD `position` VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `home_image`;
