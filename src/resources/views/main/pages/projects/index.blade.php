@@ -84,7 +84,7 @@
         }
 
         .projects3 .img img{
-            height: 300px;
+            height: 350px;
             object-fit: cover;
         }
 

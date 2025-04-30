@@ -451,7 +451,7 @@
         }
 
         .content-img{
-            height: 400px;
+            height: 500px;
             object-fit: cover;
         }
 
@@ -782,9 +782,9 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="text-center mt-5">
+                    {{-- <div class="text-center mt-5">
                         <button aria-label="Brochure Popup" type="button" data-bs-toggle="modal" data-bs-target="#contactModal" class="brochure-btn brochure-btn-2" aria-label="Download Brouchure">Download Brochure</button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

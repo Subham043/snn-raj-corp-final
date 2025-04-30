@@ -40,7 +40,7 @@
             padding: 5px;
             border-top-left-radius: 30px;
             border-bottom-right-radius: 30px;
-            height: 450px;
+            height: 570px;
             object-fit: cover;
         }
 
@@ -60,6 +60,11 @@
             .hero-main {
                 padding-top: 2rem !important;
                 padding-bottom: 1rem !important;
+            }
+
+            .about_banner_img {
+                height: auto;
+                object-fit: contain;
             }
         }
     </style>

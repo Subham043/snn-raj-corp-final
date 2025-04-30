@@ -193,6 +193,7 @@
         }
         .footer .top .item p, .footer .top .item .mail, .footer .top .item h3 span, .footer .bottom p, .footer .bottom p a{
             color: #fff;
+            margin: 0;
         }
         .slide-num span{
             color: black;
@@ -247,7 +248,7 @@
 
         .footer-bg{
             background-image: url('{{asset("assets/footer_bg_1.webp")}}');
-            padding: 150px 0px 150px 0px;
+            padding: 150px 0px 10px 0px;
             background-repeat: no-repeat;
             display: grid;
             place-content: center;

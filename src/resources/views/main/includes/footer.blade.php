@@ -46,14 +46,15 @@
                         <h3><span>Company</span></h3>
                         <a aria-label="about us" href="{{route('about_page.get')}}">About Us</a><br/>
                         <a aria-label="awards" href="{{route('awards_page.get')}}">Awards</a><br/>
-                        <a aria-label="csr" href="{{route('csr_page.get')}}">CSR</a>
+                        <a aria-label="csr" href="{{route('csr_page.get')}}">CSR</a><br/>
+                        <a aria-label="csr" href="{{route('projects.get')}}">Projects</a>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="item">
-                        <h3><span>Projects</span></h3>
-                        <a aria-label="ongoing projects" href="{{route('ongoing_projects.get')}}">Ongoing</a><br/>
-                        <a aria-label="completed projects" href="{{route('completed_projects.get')}}">Completed</a>
+                        <h3><span>News Letter</span></h3>
+                        {{-- <a aria-label="ongoing projects" href="{{route('ongoing_projects.get')}}">Blogs</a><br/> --}}
+                        <a aria-label="completed projects" href="{{route('blogs.get')}}">Blogs</a>
                     </div>
                 </div>
                 <div class="col-md-3">

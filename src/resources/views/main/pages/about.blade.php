@@ -110,7 +110,7 @@
         }
 
         .process .img img{
-            height: 300px;
+            height: 500px;
             object-fit: cover;
         }
 
@@ -182,6 +182,26 @@
             margin-top: 3.5rem;
         }
 
+        .clr-bg-about{
+            background-color: var(--theme-hero-color);
+            width: 80%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: -1;
+            border-radius: 10px;
+        }
+
+        .about-content-padding{
+            padding-left: 20px;
+            padding-right: 40px;
+        }
+
+        .p-relative{
+            position: relative;
+        }
+
         @media screen and (max-width: 600px) {
             .about_banner_img {
                 height: auto;
@@ -206,6 +226,36 @@
                 margin-bottom: 3rem;
             }
 
+            .mt-sm-5{
+                margin-top: 2rem !important;
+            }
+
+            .clr-bg-about{
+                width: 100%;
+                /* margin-top: -30px; */
+            }
+
+            .about-content-padding{
+                padding: 0;
+            }
+
+            .about.section-padding{
+                padding-bottom: 1rem !important;
+                padding-top: 1rem !important;
+            }
+
+            .about.section-padding .py-5{
+                padding-top: 3rem !important;
+            }
+
+            .about.suffix-div{
+                padding-bottom: 0 !important;
+            }
+
+            .about.secondary-div{
+                padding-top: 0 !important;
+            }
+
         }
     </style>
 
@@ -224,7 +274,7 @@
                         <div class="caption">
                             <div class="section-title">{!!$banner->heading!!}</div>
                             <p>{{$banner->description}}</p>
-                            <a href="{{$banner->button_link}}" aria-label="{{$banner->button_text}}" class="button-light">{{$banner->button_text}}</a>
+                            {{-- <a href="{{$banner->button_link}}" aria-label="{{$banner->button_text}}" class="button-light">{{$banner->button_text}}</a> --}}
                         </div>
                     </div>
                 </div>
@@ -237,23 +287,23 @@
     <h2 class="d-none">{{$seo->page_keywords}}</h2>
 
     @if($about)
-    <section class="about suffix-div mt-0 py-5 pb-6 mb-sm-5">
-        <div class="container">
+    <section class="about suffix-div py-6 pb-6 mt-5 mb-sm-5 mt-sm-5">
+        <div class="container py-5">
             <div class="row justify-content-center">
 
             </div>
-            <div class="row align-items-end">
-                <div class="col-md-3" data-animate-effect="fadeInUp">
+            <div class="row align-items-center">
+                <div class="col-md-4" data-animate-effect="fadeInUp">
                     @if($about->image)
                     <div class="con">
                         <img data-src="{{$about->image_link}}"  width="406" height="406" fetchpriority="low" class="img-fluid lazyload" alt="">
                     </div>
                     @endif
                 </div>
-                <div class="col-md-9 " data-animate-effect="fadeInUp">
+                <div class="col-md-8 px-3" data-animate-effect="fadeInUp">
                     <div class="row">
                         <div class="col-md-auto" data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light pb-0"><div class="section-title m-0">{!!$about->heading!!}</div></div>
+                            <div class="sub-title border-bot-light pb-0"><div class="section-title m-0 mb-3">{!!$about->heading!!}</div></div>
 
                         </div>
                     </div>
@@ -269,16 +319,13 @@
 
     <!-- Mission -->
     <!-- Vision -->
-    @if($banner)
+    {{-- @if($banner)
     <section class="mt-0 py-5 pb-3">
         <div class="container">
             <div class="row justify-content-between h-100">
                 <div class="col-md-6 col-sm-12 p-2 h-100 mb-sm-5" data-animate-effect="fadeInUp">
                     <div class="hero w-100 h-100 mb-0 p-1 br-1">
                         <span class="ribbon1"><span>Our Mission</span></span>
-                        {{-- <div class="col-md-12 mb-2" data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light pb-0"><h2 class="text-center m-0">Our Mission</h2></div>
-                        </div> --}}
                         <div class="col-md-12 mt-6" data-animate-effect="fadeInUp">
                             <p class="text-black text-center" style="color: black !important">{!!$banner->mission!!}</p>
                         </div>
@@ -287,9 +334,6 @@
                 <div class="col-md-6 col-sm-12 p-2 h-100" data-animate-effect="fadeInUp">
                     <div class="hero w-100 h-100 mb-0 p-1 br-1">
                         <span class="ribbon1"><span>Our Vision</span></span>
-                        {{-- <div class="col-md-12 mb-2" data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light pb-0"><h2 class="text-center m-0">Our Vision</h2></div>
-                        </div> --}}
                         <div class="col-md-12 mt-6" data-animate-effect="fadeInUp">
                             <p class="text-black text-center" style="color: black !important">{!!$banner->vission!!}</p>
                         </div>
@@ -298,26 +342,16 @@
             </div>
         </div>
     </section>
-    @endif
+    @endif --}}
 
     <!-- Management -->
     @if(count($management)>0)
-    <section class="about secondary-div mt-0 main-team-section pt-3 pb-3" id="callback-popup-trigger">
+    <section class="about secondary-div mt-0 main-team-section pt-5 pb-5" id="callback-popup-trigger">
         <div class="container">
-            {{-- <div class="row">
-                @if($managementHeading)
-                    <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light pb-0">{{$managementHeading->sub_heading}}</div>
-                    </div>
-                    <div class="col-md-auto " data-animate-effect="fadeInUp">
-                        <div class="sub-title border-bot-light pb-0"><div class="section-title m-0">{!!$managementHeading->heading!!}</div></div>
-                    </div>
-                @endif
-            </div> --}}
             <div class="row">
                 @foreach($management as $key=>$val)
                     @if($key==0)
-                        <div class="row mt-4">
+                        <div class="row mt-4 mb-4">
                             <div class="col-md-6 " data-animate-effect="fadeInUp">
                                 @if($managementHeading)
                                 <div class="sub-title border-bot-light pt-0 mt-0"><div class="section-title m-0">{!!$managementHeading->heading!!}</div></div>
@@ -328,10 +362,7 @@
                             </div>
                             <div class="col-md-6 " data-animate-effect="fadeInUp">
                                 <div class="wrap">
-                                    <div class="con mb-1"> <img fetchpriority="low" data-src="{{$val->image_link}}"  width="519" height="761" class="img-fluid lazyload" alt="">
-                                        {{-- <div class="info">
-                                            <h4 class="name">{{$val->name}}</h4>
-                                        </div> --}}
+                                    <div class="con mb-1"> <img fetchpriority="low" data-src="{{$val->image_link}}"  width="519" height="761" class="img-fluid lazyload br-1" alt="">
                                     </div>
                                     <h4 class="name text-center m-0">{{$val->name}}</h4>
                                     <p>{{$val->designation}}</p>
@@ -341,10 +372,7 @@
                     @else
                         <div class="col-md-6 " data-animate-effect="fadeInUp">
                             <div class="wrap">
-                                <div class="con mb-1"> <img fetchpriority="low" data-src="{{$val->image_link}}" width="519" height="761" class="img-fluid lazyload" alt="">
-                                    {{-- <div class="info">
-                                        <h4 class="name">{{$val->name}}</h4>
-                                    </div> --}}
+                                <div class="con mb-1"> <img fetchpriority="low" data-src="{{$val->image_link}}" width="519" height="761" class="img-fluid lazyload br-1" alt="">
                                 </div>
                                 <h4 class="name text-center m-0">{{$val->name}}</h4>
                                 <p>{{$val->designation}}</p>
@@ -353,25 +381,6 @@
                                 {!!$val->description!!}
                             </div>
                         </div>
-                        {{-- <div class="col-md-9 " data-animate-effect="fadeInUp">
-                            <div class="desc-ul">
-                                {!!$val->description!!}
-                            </div>
-                        </div> --}}
-
-                        {{-- <div class="col-md-3  text-center mt-3" data-animate-effect="fadeInUp">
-                            <div class="wrap wrap-2">
-                                <div class="con"> <img src="{{$val->image_link}}" class="img-fluid" alt="">
-                                    <div class="info">
-                                    </div>
-                                </div>
-                                <h4 class="name">{{$val->name}}</h4>
-                                <p>{{$val->designation}}</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 desc-ul mt-3" data-animate-effect="fadeInUp">
-                            {!!$val->description!!}
-                        </div> --}}
                     @endif
                 @endforeach
             </div>
@@ -381,7 +390,7 @@
 
     <!-- Staff -->
     @if(count($staffs)>0)
-    <section id="team-area" class="team section-padding pb-4 pt-2">
+    <section id="team-area" class="team section-padding pb-4 pt-3">
         <div class="container">
             <div class="row mb-3 justify-content-center">
                 @if($staffHeading)
@@ -389,7 +398,7 @@
                         <div class="sub-title border-bot-light pb-0">{{$staffHeading->sub_heading}}</div>
                     </div> --}}
                     <div class="col-md-auto">
-                        <div class="sub-title border-bot-light pb-0"><div class="section-title text-center m-0">{!!$staffHeading->heading!!}</div></div>
+                        <div class="sub-title border-bot-light pb-0"><div class="section-title text-center m-0 mb-3">{!!$staffHeading->heading!!}</div></div>
                     </div>
                 @endif
             </div>
@@ -410,6 +419,47 @@
             </div>
         </div>
     </section>
+    @endif
+
+    <!-- Mission -->
+    <!-- Vision -->
+    @if ($banner)
+        <section class="about section-padding pt-6 pb-6">
+            <div class="container p-relative py-5">
+                <div class="clr-bg-about"></div>
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6 col-sm-12" data-animate-effect="fadeInUp">
+                        <div class="con">
+                            <img src="{{ asset('assets/mission.webp') }}" fetchpriority="high" loading="eager" width="373"
+                                height="375" class="img-fluid shapeee br-1" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-6 col-sm-12 about-content-padding" data-animate-effect="fadeInUp">
+                        <div class="row">
+                            <div class="col-md-auto" data-animate-effect="fadeInUp">
+                                <div class="sub-title border-bot-light pb-0 mb-2">
+                                    <h3 class="m-0">OUR MISSON</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="desc-ul">
+                            {!!$banner->mission!!}
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-md-auto" data-animate-effect="fadeInUp">
+                                <div class="sub-title border-bot-light pb-0 mb-2">
+                                    <h3 class="m-0">OUR VISION</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="desc-ul">
+                            {!!$banner->vission!!}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
     @endif
 
     <!-- ADDITIONAL CONTENT -->
@@ -508,7 +558,7 @@
                         <div class="sub-title border-bot-light pb-0">{{$partnerHeading->sub_heading}}</div>
                     </div> --}}
                     <div class="col-md-auto mb-0">
-                        <div class="sub-title border-bot-light pb-0"> <div class="section-title text-center m-0">{!!$partnerHeading->heading!!}</div></div>
+                        <div class="sub-title border-bot-light pb-0"> <div class="section-title text-center m-0 mb-3">{!!$partnerHeading->heading!!}</div></div>
                     </div>
                 @endif
             </div>
