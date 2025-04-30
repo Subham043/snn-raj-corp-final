@@ -309,7 +309,7 @@
             grid-auto-rows: 200px;
             grid-auto-flow: dense; */
             grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: 400px;
+            grid-auto-rows: 350px;
             gap: 24px;
         }
         .grid-wrapper .wide {
@@ -532,6 +532,26 @@
                 border-radius: 2px;
             }
 
+            .clr-bg-about{
+                background-color: var(--theme-hero-color);
+                width: 80%;
+                height: 100%;
+                position: absolute;
+                right: 0;
+                top: 0;
+                z-index: -1;
+                border-radius: 10px;
+            }
+
+            .about-content-padding{
+                padding-left: 20px;
+                padding-right: 40px;
+            }
+
+            .sec-title{
+                color: var(--theme-highlight-text-color);
+            }
+
             @media screen and (max-width: 600px) {
                 .header-video-overflow {
                     height: auto;
@@ -552,6 +572,36 @@
                     object-fit: cover;
                     vertical-align: middle;
                     filter: blur(1.5px);
+                }
+
+                .clr-bg-about{
+                    width: 100%;
+                    /* margin-top: -30px; */
+                }
+
+                .about-content-padding{
+                    padding: 0;
+                }
+
+                .about.section-padding{
+                    padding-bottom: 1rem !important;
+                    padding-top: 1rem !important;
+                }
+
+                .about.section-padding .py-5{
+                    padding-top: 5rem !important;
+                }
+
+                #testimonials-area{
+                    padding-top: 5rem !important;
+                    padding-bottom: 2rem !important;
+                }
+
+                .special-contact-section {
+                    padding-bottom: 5rem !important;
+                }
+                #award-area {
+                    padding-top: 7rem !important;
                 }
             }
         </style>
@@ -634,71 +684,12 @@
     <!-- About -->
     <h1 class="d-none">{{ $seo->page_keywords }}</h1>
     <h2 class="d-none">{{ $seo->page_keywords }}</h2>
-    @if ($about)
-        <section class="about section-padding pt-6 pb-6">
-            <div class="container">
-                <div class="row justify-content-center">
-                    {{-- <div class="col-md-auto " data-animate-effect="fadeInUp"> --}}
-                    {{-- @if (!$about->image)
-                    @endif --}}
-                    {{-- <div class="sub-title border-bot-light pb-0">{{$about->sub_heading}}</div> --}}
-                    {{-- <div class="sub-title border-bot-light pb-0 mb-3"><h1 class="section-title m-0">{!!$about->heading!!}</h1></div> --}}
-                    {{-- </div> --}}
-                    {{-- <div class="col-md-8 " data-animate-effect="fadeInUp"> --}}
-                    {{-- @if ($about->image)
-                        <div class="sub-title border-bot-light pb-0">{{$about->sub_heading}}</div>
-                    @endif --}}
-                    {{-- <h1 class="section-title">{!!$about->heading!!}</h1> --}}
-
-                    {{-- </div> --}}
-                </div>
-                <div class="row align-items-end">
-                    <div class="col-md-4" data-animate-effect="fadeInUp">
-                        @if ($about->image)
-                            <div class="con">
-                                {{-- @if (request()->header('User-Agent') && preg_match('/mobile/i', request()->header('User-Agent'))) --}}
-                                <img src="{{ $about->image_link }}" fetchpriority="high" loading="eager" width="373"
-                                    height="375" class="img-fluid shapeee" alt="">
-                                {{-- @else --}}
-                                {{-- <img data-src="{{ $about->image_link }}" width="373" height="375"
-																																				fetchpriority="low" class="img-fluid shapeee lazyload" alt=""> --}}
-                                {{-- @endif --}}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="col-md-8" data-animate-effect="fadeInUp">
-                        <div class="row">
-                            <div class="col-md-auto" data-animate-effect="fadeInUp">
-                                <div class="sub-title border-bot-light pb-0 mb-2">
-                                    <div class="section-title m-0">{!! $about->heading !!}</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="desc-ul">
-                            {!! $about->description !!}
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
-
-    {{-- @if (!$about->use_in_banner)
-        <section class="about section-padding">
-            <div class="container">
-                <header class="p-relative header-video2-container">
-                    <iframe src="{{$about->video}}?autoplay=0&mute=0&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video2" width="560" height="315" frameborder="0"></iframe>
-                </header>
-            </div>
-        </section>
-    @endif --}}
 
     <!-- Counter -->
     @if (count($counters) > 0)
-        <section class="about lets-talk hero hero-contact pt-4 pb-4">
+        <section class="about lets-talk hero-contact pt-4 pb-4">
             <div class="background bg-img bg-fixed" data-overlay-dark="6">
-                <div class="container">
+                <div class="container pt-5 pb-1">
                     <div class="row justify-content-center">
                         @if ($counterHeading)
                             {{-- <div class="col-md-4 mb-30 " data-animate-effect="fadeInUp">
@@ -706,7 +697,7 @@
                         </div> --}}
                             <div class="col-md-auto" data-animate-effect="fadeInUp">
                                 <div class="sub-title border-bot-light pb-0 m-0">
-                                    <div class="section-title text-center m-0">{!! $counterHeading->heading !!}</div>
+                                    <div class="section-title sec-title text-center m-0">{!! $counterHeading->heading !!}</div>
                                 </div>
                             </div>
                         @endif
@@ -740,14 +731,60 @@
         </section>
     @endif
 
+    @if ($about)
+        <section class="about section-padding pt-6 pb-6">
+            <div class="container p-relative py-5">
+                <div class="clr-bg-about"></div>
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6 col-sm-12" data-animate-effect="fadeInUp">
+                        @if ($about->image)
+                            <div class="con">
+                                {{-- @if (request()->header('User-Agent') && preg_match('/mobile/i', request()->header('User-Agent'))) --}}
+                                <img src="{{ $about->image_link }}" fetchpriority="high" loading="eager" width="373"
+                                    height="375" class="img-fluid shapeee" alt="">
+                                {{-- @else --}}
+                                {{-- <img data-src="{{ $about->image_link }}" width="373" height="375"
+																																				fetchpriority="low" class="img-fluid shapeee lazyload" alt=""> --}}
+                                {{-- @endif --}}
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-lg-7 col-md-6 col-sm-12 about-content-padding" data-animate-effect="fadeInUp">
+                        <div class="row">
+                            <div class="col-md-auto" data-animate-effect="fadeInUp">
+                                <div class="sub-title border-bot-light pb-0 mb-3">
+                                    <div class="section-title m-0">{!! $about->heading !!}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="desc-ul">
+                            {!! $about->description !!}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
+    {{-- @if (!$about->use_in_banner)
+        <section class="about section-padding">
+            <div class="container">
+                <header class="p-relative header-video2-container">
+                    <iframe src="{{$about->video}}?autoplay=0&mute=0&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video2" width="560" height="315" frameborder="0"></iframe>
+                </header>
+            </div>
+        </section>
+    @endif --}}
+
     <!-- Projects 2 -->
-    <div class="projects2 project_old subject-div pt-5 pb-6" id="callback-popup-trigger">
+    <div class="projects2 project_old subject-div pt-4 pb-6" id="callback-popup-trigger">
         <div class="container">
             <div class="row mb-4">
                 @if ($projectHeading)
                     <div class="col-md-12" data-animate-effect="fadeInUp">
                         {{-- <div class="sub-title border-bot-light pb-0">{{$projectHeading->sub_heading}}</div> --}}
-                        <div class="sub-title border-bot-light pb-0 m-0">
+                        <div class="sub-title border-bot-light pb-0 m-0 mb-3">
                             <div class="section-title m-0 text-center">{!! $projectHeading->heading !!}</div>
                         </div>
                     </div>
@@ -912,8 +949,8 @@
 
     <!-- AWARDS -->
     @if (count($awards) > 0)
-        <section id="award-area" class="testimonials pt-5 pb-5">
-            <div class="container">
+        <section id="award-area" class="testimonials pt-6 pb-6 mt-5">
+            <div class="container py-5">
                 <div class="row justify-content-center">
                     <div class="col-md-auto">
                         <div class="sub-title border-bot-light pb-0">
@@ -949,15 +986,13 @@
 
     <!-- Testiominals -->
     @if (count($testimonials) > 0)
-        <section id="testimonials-area" class="testimonials pt-5 pb-5">
-            <div class="container">
+        <section id="testimonials-area" class="testimonials pt-4 pb-2">
+            <div class="container py-5">
                 <div class="row justify-content-center">
-                    @if ($testimonialHeading)
-                    @endif
                     <div class="col-md-auto">
                         @if ($testimonialHeading)
                             <div class="sub-title border-bot-light pb-0">
-                                <div class="section-title text-center m-0">{!! $testimonialHeading->heading !!}</div>
+                                <div class="section-title text-center m-0 mb-3">{!! $testimonialHeading->heading !!}</div>
                             </div>
                         @endif
                     </div>
@@ -1005,13 +1040,13 @@
     <!-- Blog -->
     @if (count($blogs) > 0)
         <section class="blog-home suffix-div mt-0 pt-5 pb-5">
-            <div class="container">
+            <div class="container py-5">
                 <div class="row mb-5 justify-content-center">
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light pb-0">Blog</div>
                     </div> --}}
                     <div class="col-md-auto">
-                        <div class="sub-title border-bot-light pb-0 m-0">
+                        <div class="sub-title border-bot-light pb-0 m-0 mb-3">
                             <div class="section-title text-center m-0"><span>Latest</span> News</div>
                         </div>
                     </div>
@@ -1045,11 +1080,11 @@
 
     {{-- @include('main.includes.referal') --}}
 
-    <section class="blog-home special-contact-section mt-0 pt-2 pb-5">
-        <div class="container-fluid">
+    <section class="blog-home special-contact-section mt-0 pt-0 pb-5">
+        <div class="container-fluid py-5">
             <div class="row mb-2 justify-content-center">
                 <div class="col-md-auto">
-                    <div class="sub-title border-bot-light pb-0 m-0">
+                    <div class="sub-title border-bot-light pb-0 m-0 mb-3">
                         <div class="section-title text-center m-0"><span>GET IN TOUCH</span></div>
                     </div>
                 </div>

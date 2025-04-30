@@ -57,10 +57,44 @@
         .no-line-heading.sub-title {
             font-size: 20px;
         }
+
+        .about_banner_img {
+            border: 1px solid #1c1919;
+            padding: 5px;
+            border-top-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            height: 570px;
+            object-fit: cover;
+        }
+
+        @media screen and (max-width: 600px) {
+            .about_banner_img {
+                height: auto;
+                object-fit: contain;
+            }
+        }
     </style>
 @stop
 
 @section('content')
+
+    <section class="hero hero-main section-padding py-4 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
+                    <div class="hero">
+                        <figure><img src="{{asset('assets/map.jpg')}}" fetchpriority="high" loading="eager" alt="" class="img-fluid about_banner_img" width="583" height="570"></figure>
+                        <div class="caption">
+                            <div class="section-title">Get in touch</div>
+                            <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line
+                        and we’ll get back to you shortly.</p>
+                            {{-- <a href="{{$banner->button_link}}" aria-label="{{$banner->button_text}}" class="button-light">{{$banner->button_text}}</a> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <h1 class="d-none">{{ $seo->page_keywords }}</h1>
@@ -69,14 +103,14 @@
     <!-- Contact -->
     <div class="contact secondary-div mt-0">
         <div class="container">
-            <div class="row mb-5 " data-animate-effect="fadeInUp">
+            <div class="row mb-3 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
-                    <div class="no-line-heading sub-title border-bot-light pb-0">Contact</div>
+                    {{-- <div class="no-line-heading sub-title border-bot-light pb-0">Contact</div> --}}
                 </div>
                 <div class="col-md-8">
-                    <div class="section-title">Get in touch</div>
-                    <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line
-                        and we’ll get back to you shortly.</p>
+                    <div class="section-title">Contact</div>
+                    {{-- <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line
+                        and we’ll get back to you shortly.</p> --}}
                 </div>
             </div>
             <div class="row">
