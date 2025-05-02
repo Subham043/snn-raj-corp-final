@@ -204,7 +204,7 @@
 
         .grid-wrapper .grid-item{
             position: relative;
-            padding: 15px;
+            /* padding: 15px; */
             display: flex;
             flex-direction: column;
             justify-content: end;
@@ -221,6 +221,9 @@
         .grid-wrapper .grid-item .img-content{
             color: white;
             position: relative;
+            padding: 15px;
+            background: #183E62;
+            background: linear-gradient(0deg, rgba(24, 62, 98, 1) 4%, rgba(24, 62, 98, 0.4) 77%, rgba(24, 62, 98, 0) 100%);
         }
 
         .grid-wrapper .grid-item .img-content h3{
@@ -256,7 +259,7 @@
 
         .grid-wrapper .grid-item .img-overlay::after {
             content: '';
-            background-color: #183e6275;
+            /* background-color: #183e6275; */
             position: absolute;
             top: 0;
             left: 0;
@@ -711,7 +714,7 @@
                                         <li class="col-md-4 col-sm-12 mx-0 p-2 text-center">
                                             <div class="numb valign justify-content-center">
                                                 <div class="counter-main m-0"><span class="purecounter" style="color: #bda588"
-                                                        data-purecounter-duration="5" data-purecounter-start="5000"
+                                                        data-purecounter-duration="1" data-purecounter-start="1000"
                                                         data-purecounter-end="{{ $counters->counter_number }}">0</span>
                                                     {{ $counters->counter_text }}</div>
                                             </div>

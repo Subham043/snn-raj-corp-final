@@ -4,7 +4,7 @@
         <div class="row mb-4 align-items-center justify-content-center">
             <div class="col-md-auto " data-animate-effect="fadeInUp">
                 {{-- <div class="sub-title border-bot-light pb-0">Referral Program</div> --}}
-                <div class="sub-title border-bot-light pb-0 m-0"><div class="section-title text-center m-0">BRING YOUR OWN <span>NEIGHBOUR</span> (SNN Raj Corp Home)</div></div>
+                <div class="sub-title border-bot-light pb-0 m-0"><div class="section-title text-center m-0"><span>BRING YOUR OWN NEIGHBOUR (SNN Raj Corp Home)</span></div></div>
             </div>
             <div class="col-md-12 mt-0 text-center" data-animate-effect="fadeInUp">
                 <p class="m-0" style="font-size:20px;">
