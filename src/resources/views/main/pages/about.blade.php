@@ -202,6 +202,11 @@
             position: relative;
         }
 
+        .vision-mision-img{
+            height: 400px;
+            object-fit: cover;
+        }
+
         @media screen and (max-width: 600px) {
             .about_banner_img {
                 height: auto;
@@ -254,6 +259,10 @@
 
             .about.secondary-div{
                 padding-top: 0 !important;
+            }
+
+            .vision-mision-img{
+                height: auto;
             }
 
         }
@@ -431,7 +440,7 @@
                     <div class="col-lg-5 col-md-6 col-sm-12" data-animate-effect="fadeInUp">
                         <div class="con">
                             <img src="{{ asset('assets/mission.webp') }}" fetchpriority="high" loading="eager" width="373"
-                                height="375" class="img-fluid shapeee br-1" alt="">
+                                height="375" class="img-fluid shapeee br-1 vision-mision-img" alt="">
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-6 col-sm-12 about-content-padding" data-animate-effect="fadeInUp">

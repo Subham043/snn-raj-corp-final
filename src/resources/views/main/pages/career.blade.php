@@ -92,6 +92,34 @@
 
 @section('content')
 
+    <section class="hero hero-main section-padding py-4 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 " data-animate-effect="fadeInUp">
+                    <div class="hero">
+                        <figure>
+                            {{-- <img src="{{asset('assets/map.jpg')}}" fetchpriority="high" loading="eager" alt="" class="img-fluid about_banner_img" width="583" height="570"> --}}
+                            <picture>
+                                <source srcset="{{ asset('assets/career_mobile.webp') }}"
+                                                media="(max-width: 991px)">
+                                <source srcset="{{ asset('assets/career.webp') }}"
+                                                media="(max-width: 1200px)">
+                                <img src="{{ asset('assets/career.webp') }}" width="1166" height="532" fetchpriority="high" loading="eager"
+                                    alt="career"
+                                    title="career" class="img-fluid about_banner_img">
+                            </picture>
+                        </figure>
+                        <div class="caption">
+                            <div class="section-title">Career</div>
+                            <p>If you’re looking for a career with us, drop us a line and we’ll get back to you shortly.</p>
+                            {{-- <a href="{{$banner->button_link}}" aria-label="{{$banner->button_text}}" class="button-light">{{$banner->button_text}}</a> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <h1 class="d-none">{{ $seo->page_keywords }}</h1>
     <h2 class="d-none">{{ $seo->page_keywords }}</h2>
@@ -99,10 +127,8 @@
     <!-- Contact -->
     <div class="contact secondary-div mt-0 pt-5">
         <div class="container">
-            <div class="row mb-5 image-row-min" data-animate-effect="fadeInUp">
+            {{-- <div class="row mb-5 image-row-min" data-animate-effect="fadeInUp">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
-                    {{-- <img src="{{ asset('assets/career.webp') }}" fetchpriority="high" alt=""
-                        class="img-fluid about_banner_img" width="1166" height="532"> --}}
                     <picture>
                         <source srcset="{{ asset('assets/career_mobile.webp') }}"
                                         media="(max-width: 991px)">
@@ -113,7 +139,7 @@
                             title="career" class="img-fluid about_banner_img">
                     </picture>
                 </div>
-            </div>
+            </div> --}}
             {{-- <div class="row mb-5 " data-animate-effect="fadeInUp">
                 <div class="col-md-4">
                     <div class="no-line-heading sub-title border-bot-light pb-0">Career</div>
@@ -125,8 +151,8 @@
             </div> --}}
             <div class="row">
                 <div class="col-md-12">
-                    <div class="section-title">Career</div>
-                    <p>If you’re looking for a career with us, drop us a line and we’ll get back to you shortly.</p>
+                    <div class="section-title">Apply Now</div>
+                    {{-- <p>If you’re looking for a career with us, drop us a line and we’ll get back to you shortly.</p> --}}
                 </div>
                 <!-- form -->
                 <div class="col-md-12 " data-animate-effect="fadeInUp">

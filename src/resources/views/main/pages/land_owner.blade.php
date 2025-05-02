@@ -99,6 +99,7 @@
                         </picture>
                     </div>
                     <div class="wrap">
+                        <div class="section-title">Land Owner</div>
                         {{-- <h1 class="section-title">Dear [ <span style="color: black; text-transform:capitalize">Land Owner</span> ]</h1> --}}
                         <p>We are always on the lookout for good land parcels for residential and commercial development. We
                             would be delighted to receive more information about the land you have available.</p>
@@ -144,7 +145,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="section-title">Land Owner</div>
+                    <div class="section-title">Land Owner Form</div>
                     {{-- <p>If you’re looking for a career with us, drop us a line and we’ll get back to you shortly.</p> --}}
                 </div>
                 <!-- form -->
