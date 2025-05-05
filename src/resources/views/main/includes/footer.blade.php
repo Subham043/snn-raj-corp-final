@@ -8,7 +8,7 @@
                         <a aria-label="logo" href="{{route('home_page.get')}}" class="duru-logo"><img fetchpriority="low" class="lazyload" width="130" height="130" data-src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a>
                         <div class="row justify-content-center py-3">
                             <div class="col-lg-6 col-md-6 col-sm-12 text-center">
-                                <p class="text-white m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quidem culpa a placeat nihil ex quasi, ab facilis fugiat? Quas similique distinctio alias eos amet vero quasi aliquam quidem vel.</p>
+                                <p class="text-white m-0">Building trust and transforming skylines since 1994. Discover premium residential and commercial spaces designed for modern living in Bangalore’s most sought-after locations.</p>
                             </div>
                         </div>
                         <div class="social mt-2">
