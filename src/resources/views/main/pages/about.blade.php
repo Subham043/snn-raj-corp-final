@@ -207,6 +207,10 @@
             object-fit: cover;
         }
 
+        .blue-title{
+            color: var(--theme-highlight-text-color);
+        }
+
         @media screen and (max-width: 600px) {
             .about_banner_img {
                 height: auto;
@@ -447,7 +451,7 @@
                         <div class="row">
                             <div class="col-md-auto" data-animate-effect="fadeInUp">
                                 <div class="sub-title border-bot-light pb-0 mb-2">
-                                    <h3 class="m-0">OUR MISSON</h3>
+                                    <h3 class="section-title blue-title m-0">OUR MISSON</h3>
                                 </div>
                             </div>
                         </div>
@@ -457,7 +461,7 @@
                         <div class="row mt-5">
                             <div class="col-md-auto" data-animate-effect="fadeInUp">
                                 <div class="sub-title border-bot-light pb-0 mb-2">
-                                    <h3 class="m-0">OUR VISION</h3>
+                                    <h3 class="section-title blue-title m-0">OUR VISION</h3>
                                 </div>
                             </div>
                         </div>
