@@ -126,7 +126,7 @@
                         </picture>
                     </div>
                     <div class="wrap">
-                        <div class="section-title">CHANNEL PARTNER EMPANELMENT.</div>
+                        <div class="section-title">CHANNEL PARTNER EMPANELMENT</div>
                         <p>
                             We greatly appreciate the value we place on building strong relationships with our business
                             associates. Our goal is to establish a long-lasting partnership, and we have made the process of

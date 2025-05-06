@@ -26,8 +26,8 @@
     <link rel="apple-touch-icon"
         href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link }}" />
 
-    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/land.webp') }}" as="image">
-    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/land_mobile.webp') }}" as="image">
+    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/land_owner.jpg') }}" as="image">
+    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/land_owner.jpg') }}" as="image">
 
     {!! $seo->meta_header_script !!}
     {!! $seo->meta_header_no_script !!}
@@ -89,11 +89,11 @@
                 <div class="col-md-12" data-animate-effect="fadeInUp">
                     <div class="img fr-img" data-animate-effect="fadeInUp">
                         <picture>
-                            <source srcset="{{ asset('assets/land_mobile.webp') }}"
+                            <source srcset="{{ asset('assets/land_owner.jpg') }}"
                                             media="(max-width: 991px)">
-                            <source srcset="{{ asset('assets/land.webp') }}"
+                            <source srcset="{{ asset('assets/land_owner.jpg') }}"
                                             media="(max-width: 1200px)">
-                            <img src="{{ asset('assets/land.webp') }}" width="583" height="351" fetchpriority="high" loading="eager"
+                            <img src="{{ asset('assets/land_owner.jpg') }}" width="583" height="351" fetchpriority="high" loading="eager"
                                 alt="land"
                                 title="land" class="img-fluid about_banner_img">
                         </picture>
