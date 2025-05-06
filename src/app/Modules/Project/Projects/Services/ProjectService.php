@@ -203,6 +203,7 @@ class ProjectService
                     ->whereHas('banner', function($q) use($status) {
                         $q->where('is_draft', true)->where('is_completed', $status)->limit(1);
                     })
+                    ->orderBy('created_at', 'asc')
                     ->get();
     }
 
