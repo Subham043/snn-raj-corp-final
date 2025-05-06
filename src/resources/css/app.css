@@ -333,11 +333,13 @@ ul {
 }
 /* links */
 a {
-    color: var(--theme-primary-color);
+    /* color: var(--theme-primary-color); */
+    color: var(--theme-highlight-text-color);
 }
 a:hover {
     text-decoration: none;
-    color: var(--theme-highlight-text-color);
+    /* color: var(--theme-highlight-text-color); */
+    color: var(--theme-primary-color);
 }
 a:link {
     text-decoration: none;

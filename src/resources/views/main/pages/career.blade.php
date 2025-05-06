@@ -26,8 +26,8 @@
     <link rel="apple-touch-icon"
         href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link }}" />
 
-    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/career.webp') }}" as="image">
-    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/career_mobile.webp') }}" as="image">
+    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/career.jpg') }}" as="image">
+    <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/career.jpg') }}" as="image">
 
     {!! $seo->meta_header_script !!}
     {!! $seo->meta_header_no_script !!}
@@ -100,11 +100,11 @@
                         <figure>
                             {{-- <img src="{{asset('assets/map.jpg')}}" fetchpriority="high" loading="eager" alt="" class="img-fluid about_banner_img" width="583" height="570"> --}}
                             <picture>
-                                <source srcset="{{ asset('assets/career_mobile.webp') }}"
+                                <source srcset="{{ asset('assets/career.jpg') }}"
                                                 media="(max-width: 991px)">
-                                <source srcset="{{ asset('assets/career.webp') }}"
+                                <source srcset="{{ asset('assets/career.jpg') }}"
                                                 media="(max-width: 1200px)">
-                                <img src="{{ asset('assets/career.webp') }}" width="1166" height="532" fetchpriority="high" loading="eager"
+                                <img src="{{ asset('assets/career.jpg') }}" width="1166" height="532" fetchpriority="high" loading="eager"
                                     alt="career"
                                     title="career" class="img-fluid about_banner_img">
                             </picture>
@@ -130,11 +130,11 @@
             {{-- <div class="row mb-5 image-row-min" data-animate-effect="fadeInUp">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <picture>
-                        <source srcset="{{ asset('assets/career_mobile.webp') }}"
+                        <source srcset="{{ asset('assets/career.jpg') }}"
                                         media="(max-width: 991px)">
-                        <source srcset="{{ asset('assets/career.webp') }}"
+                        <source srcset="{{ asset('assets/career.jpg') }}"
                                         media="(max-width: 1200px)">
-                        <img src="{{ asset('assets/career.webp') }}" width="1166" height="532" fetchpriority="high" loading="eager"
+                        <img src="{{ asset('assets/career.jpg') }}" width="1166" height="532" fetchpriority="high" loading="eager"
                             alt="career"
                             title="career" class="img-fluid about_banner_img">
                     </picture>

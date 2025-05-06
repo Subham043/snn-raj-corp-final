@@ -26,6 +26,8 @@
     <link rel="apple-touch-icon"
         href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link }}" />
 
+    <link rel="preload" fetchpriority="high" href="{{asset('assets/map.webp')}}" as="image" type="image/webp">
+
     {!! $seo->meta_header_script !!}
     {!! $seo->meta_header_no_script !!}
 
@@ -83,7 +85,7 @@
             <div class="row">
                 <div class="col-md-12 " data-animate-effect="fadeInUp">
                     <div class="hero">
-                        <figure><img src="{{asset('assets/map.jpg')}}" fetchpriority="high" loading="eager" alt="" class="img-fluid about_banner_img" width="583" height="570"></figure>
+                        <figure><img src="{{asset('assets/map.webp')}}" fetchpriority="high" loading="eager" alt="" class="img-fluid about_banner_img" width="583" height="570"></figure>
                         <div class="caption">
                             <div class="section-title">Get in touch</div>
                             <p>If you’re looking for a home or just want to find out more about us and our projects, drop us a line
