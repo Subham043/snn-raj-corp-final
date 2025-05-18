@@ -749,7 +749,7 @@
                 <div class="row mb-0 " data-animate-effect="fadeInUp">
                     <div class="row justify-content-center">
                         <div class="col-md-12 " data-animate-effect="fadeInUp">
-                            <div class="sub-title border-bot-light pb-0 mb-3">
+                            <div class="sub-title border-bot-light pb-0 mb-4">
                                 <div class="section-title text-center m-0"><span>Floor Plans</span></div>
                             </div>
                         </div>
@@ -759,7 +759,7 @@
             <!-- project slider -->
             <div class="row justify-content-center">
                 <div class="col-md-12">
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <ul class="nav nav-pills mb-5" id="pills-tab" role="tablist">
                         @foreach ($data->plan_category as $k=>$v)
                         <li class="nav-item" role="presentation">
                             <button class="nav-link {{$k==0 ? 'active' : ''}}" id="pills-tab-{{$k}}" data-bs-toggle="pill" data-bs-target="#pills-{{$k}}" type="button" role="tab" aria-controls="pills-{{$k}}" aria-selected="{{$k==0 ? 'true' : 'false'}}">{{$v->title}}</button>
