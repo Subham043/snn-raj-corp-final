@@ -401,7 +401,7 @@
         }
 
         #pills-tabContent .tab-regular, #pills-tabContent .tab-regular img{
-            min-height: 70vh;
+            min-height: 40vh;
             background-color: transparent !important;
             width: 100%;
             /* height: 100%; */
