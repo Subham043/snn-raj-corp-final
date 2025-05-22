@@ -468,6 +468,13 @@
             .header-video {
                 /* top: -20px; */
                 position: static;
+                aspect-ratio: auto 640 / 360; */
+                max-width: 100%;
+                display: inline-block;
+                width: 100vw !important;
+                height: 100vh !important;
+                object-fit: fill !important;
+                object-position: bottom;
             }
 
             /* .duru-header .duru-logo img {
@@ -479,9 +486,9 @@
             }
 
             .header-video-container {
-                position: static;
+                /* position: static; */
                 padding-bottom: 0;
-                max-height: 100dvh;
+                /* max-height: 100dvh; */
             }
 
             .header-video-overflow {
@@ -561,9 +568,9 @@
                 }
 
                 .header-video {
-                    top: 0px;
-                    height: 50dvh;
-                    object-fit: cover;
+                    /* top: 0px; */
+                    height: 50dvh !important;
+                    /* object-fit: cover; */
                 }
 
                 #ytplayer-mute {
@@ -618,7 +625,7 @@
     @if ($about->use_in_banner)
         <div class="header-video-overflow">
             <header class="header-video-container">
-                <video id="ytplayer" class="header-video" width="100" height="100" autoplay loop muted playsinline>
+                <video id="ytplayer" class="header-video" width="640" height="360" autoplay loop muted playsinline>
                     <source src="{{ asset('home_desktop.mp4') }}" id="ytplayer_src" type="video/mp4">
                     {{-- @if(preg_match('/Mobile|Android|iP(hone|od|ad)|IEMobile|BlackBerry/', request()->header('User-Agent')))
                     <source src="{{ asset('home_mobile.mp4') }}" type="video/mp4">
