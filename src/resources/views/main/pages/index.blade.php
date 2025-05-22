@@ -1095,25 +1095,25 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
-                        <img data-src="{{asset('assets/contact-1.webp')}}" class="lazyload" alt="CLIENTS">
+                        <img data-src="{{asset('assets/referral_contact.png')}}" class="lazyload" alt="CLIENTS">
                         <a href="{{route('referal_page.get')}}">REFERRAL</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
-                        <img data-src="{{asset('assets/contact-2.webp')}}" class="lazyload" alt="CHANNEL PARTNER">
+                        <img data-src="{{asset('assets/channel_partner_contact.png')}}" class="lazyload" alt="CHANNEL PARTNER">
                         <a href="{{route('channel_partner.get')}}">CHANNEL PARTNER</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
-                        <img data-src="{{asset('assets/contact-3.webp')}}" class="lazyload" alt="LAND OWNER">
+                        <img data-src="{{asset('assets/land_owner_contact.png')}}" class="lazyload" alt="LAND OWNER">
                         <a href="{{route('land_owner.get')}}">LAND OWNER</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
-                        <img data-src="{{asset('assets/contact-4.webp')}}" class="lazyload" alt="CAREER">
+                        <img data-src="{{asset('assets/career_contact.png')}}" class="lazyload" alt="CAREER">
                         <a href="{{route('career_page.get')}}">CAREER</a>
                     </div>
                 </div>
