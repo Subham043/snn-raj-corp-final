@@ -14,6 +14,7 @@
                 </li> --}}
                 <li><a aria-label="awards page" href="{{route('awards_page.get')}}">Awards</a></li>
                 <li><a aria-label="csr page" href="{{route('csr_page.get')}}">CSR</a></li>
+                <li><a aria-label="learn-more-about-engineering-and-labs" href="{{route('about_page.get')}}/learn-more-about-engineering-and-labs">Engineering & Labs</a></li>
                 <li><a aria-label="blogs page" href="{{route('blogs.get')}}">Blogs</a></li>
                 <li><a aria-label="contact us page" href="{{route('contact_page.get')}}">Contact</a></li>
                 <li><a aria-label="referral page" href="{{route('referal_page.get')}}">Referral</a></li>

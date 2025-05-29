@@ -61,8 +61,8 @@
         }
 
         .about_banner_img {
-            border: 1px solid #1c1919;
-            padding: 5px;
+            /* border: 1px solid #1c1919;
+            padding: 5px; */
             border-top-left-radius: 30px;
             border-bottom-right-radius: 30px;
             height: 570px;

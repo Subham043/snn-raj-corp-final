@@ -47,14 +47,17 @@
                         <a aria-label="about us" href="{{route('about_page.get')}}">About Us</a><br/>
                         <a aria-label="awards" href="{{route('awards_page.get')}}">Awards</a><br/>
                         <a aria-label="csr" href="{{route('csr_page.get')}}">CSR</a><br/>
+                        <a aria-label="about us" href="{{route('about_page.get')}}/learn-more-about-engineering-and-labs">Engineering & Labs</a><br/>
                         <a aria-label="csr" href="{{route('projects.get')}}">Projects</a>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="item">
-                        <h3><span>News Letter</span></h3>
+                        <h3><span>Media Center</span></h3>
                         {{-- <a aria-label="ongoing projects" href="{{route('ongoing_projects.get')}}">Blogs</a><br/> --}}
-                        <a aria-label="completed projects" href="{{route('blogs.get')}}">Blogs</a>
+                        <a aria-label="blogs" href="{{route('blogs.get')}}">Blogs</a><br/>
+                        <a aria-label="newsletter" href="#">News Letter</a><br/>
+                        <a aria-label="press release" href="#">Press Release</a>
                     </div>
                 </div>
                 <div class="col-md-3">
