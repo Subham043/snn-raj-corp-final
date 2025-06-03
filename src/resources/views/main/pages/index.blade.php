@@ -1217,7 +1217,7 @@
     @if (!$about->use_in_banner && count($banners) > 0)
         <script src="{{ asset('assets/js/home/banner_slider.js') }}" defer></script>
     @endif
-    <script src="{{ asset('assets/js/home.js') }}" defer></script>
+    <script src="{{ asset('assets/js/home.js') }}?v=v2" defer></script>
 
     {!! $seo->meta_footer_script_nonce !!}
     {!! $seo->meta_footer_no_script_nonce !!}
