@@ -615,6 +615,78 @@
                 }
             }
         </style>
+
+        {{-- video banner new --}}
+        <style nonce="{{ csp_nonce() }}">
+            .desktopVideo {
+                display: block !important;
+            }
+            .fullscreen {
+                height: 100%;
+                overflow: hidden;
+                width: 100%;
+            }
+            .video {
+                display: block;
+                left: 0px;
+                overflow: hidden;
+                padding-bottom: 100dvh;
+                position: absolute;
+                top: 50%;
+                width: 100%;
+                -webkit-transform-origin: 50% 0;
+                transform-origin: 50% 0;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+            .video .wrapper {
+                display: block;
+                height: 100%;
+                left: 0px;
+                overflow: hidden;
+                position: absolute;
+                bottom: 0%;
+                width: 100%;
+            }
+            .video video {
+                display: block;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            .video-wrapper {
+                -webkit-font-smoothing: subpixel-antialiased;
+                filter: blur(0);
+                -webkit-filter: blur(0);
+                perspective: 1000px;
+                -webkit-perspective: 1000px;
+                height: 100dvh;
+                position: relative;
+                transition: none;
+            }
+            .speaker-menu {
+                position: absolute !important;
+                bottom: 5%;
+                left: 30px !important;
+            }
+
+            .speaker-menu a{
+                cursor: pointer;
+            }
+
+            @media screen and (max-width: 600px) {
+                .video{
+                    padding-bottom: 50dvh;
+                }
+                .video video {
+                    object-fit: fill
+                }
+
+                .video-wrapper{
+                    height: 50dvh;
+                }
+            }
+        </style>
     @endif
 
 @stop
@@ -623,18 +695,24 @@
 
     <!-- Slider -->
     @if ($about->use_in_banner)
-        <div class="header-video-overflow">
-            <header class="header-video-container">
-                <video id="ytplayer" class="header-video" width="640" height="360" autoplay loop muted playsinline>
-                    <source src="{{ asset('home_desktop.mp4') }}" id="ytplayer_src" type="video/mp4">
-                    {{-- @if(preg_match('/Mobile|Android|iP(hone|od|ad)|IEMobile|BlackBerry/', request()->header('User-Agent')))
-                    <source src="{{ asset('home_mobile.mp4') }}" type="video/mp4">
-                    @else
-                    <source src="{{ asset('home_desktop.mp4') }}" type="video/mp4">
-                    @endif --}}
-                </video>
-                {{-- <div id="ytplayer" class="header-video"></div> --}}
-            </header>
+        <div class="video-wrapper">
+            <div class="fullscreen desktopVideo">
+                <div class="video">
+                    <div class="wrapper">
+                        <video id="video1" width="512" height="512" loop="" playsinline="" muted="" preload="metadata" autoplay="">
+                            <source src="{{asset('home_desktop.mp4')}}" type="video/mp4">
+                            <!--<source src="images/video-bg.webm" type="video/webm" />-->
+                        </video>
+                    </div>
+                </div>
+                <div class="speaker-menu" style="">
+                    <a style="z-index: 999" id="clickunmuteBtn">
+                        <img loading="lazy" alt="Maiaestates_ Best Builders In Bangalore" id="mutecase" src="{{asset('mute.png')}}" style="width: 25px; display: block;"></a>
+                    <a style="z-index: 999" id="clickmuteBtn">
+                        <img loading="lazy" alt="Top Developers In Bangalore
+    " id="unmutecase" src="{{asset('unmute.png')}}" style="width: 25px; display: none;"></a>
+                </div>
+            </div>
         </div>
     @else
         @if (count($banners) > 0)
