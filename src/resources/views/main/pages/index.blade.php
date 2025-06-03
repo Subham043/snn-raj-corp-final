@@ -685,6 +685,10 @@
                 .video-wrapper{
                     height: 50dvh;
                 }
+
+                .speaker-menu{
+                    display: none !important;
+                }
             }
         </style>
     @endif
