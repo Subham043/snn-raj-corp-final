@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col-md-12 text-center " data-animate-effect="fadeInLeft">
                 <div class="wrap" style="padding-top: 0">
-                    <a href="{{route('referal_page.get')}}" class="button-light goldern-btn-signup">Sign Up Now</a>
+                    <a href="{{route('referal_page.get')}}" id="referral_sign_up_button" class="button-light goldern-btn-signup">Sign Up Now</a>
                 </div>
             </div>
         </div>

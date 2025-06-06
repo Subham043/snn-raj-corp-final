@@ -426,6 +426,24 @@
             margin-top: 0 !important;
         }
 
+        .blog-home .item .cont{
+            margin-bottom: 0px !important;
+            background-image: none;
+            background-color: #fff;
+        }
+
+        .blog-home .item{
+            border-radius: 20px;
+            border: 3px double var(--theme-primary-color);;
+            border-style: double;
+            overflow: hidden;
+        }
+
+        .blog-home .item .post-img img{
+            border-radius: 0px !important;
+            border: none !important;
+        }
+
         @media screen and (max-width: 600px){
             .grid-wrapper .wide {
                 /* grid-column: span 2; */
@@ -885,7 +903,7 @@
                     @if ($projectHeading)
                         <p>{!! $projectHeading->description !!}</p>
                     @endif
-                    <div class="more w-100 d-flex justify-content-end"><a aria-label="All Projects" href="{{route('projects.get')}}" class="link-btn" tabindex="0">Explore More</a></div>
+                    <div class="more w-100 d-flex justify-content-end"><a aria-label="All Projects" href="{{route('projects.get')}}" class="link-btn" tabindex="0" id="home_page_all_projects_button">Explore More</a></div>
                     {{-- <div class="row" data-animate-effect="fadeInUp" style="--bs-gutter-x: 0rem;">
                         <ul id="projects2-filter" class="projects2-filter text-center">
                             <li class="active" data-filter=".ongoing">Ongoing Projects</li>
@@ -912,6 +930,7 @@
                                 <a
                                 aria-label="{{ $v->name }}"
                                 class="w-100 h-100"
+                                id="home_page_project_{{$k+1}}_button"
                                 href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
                                 <div class="img-overlay">
                                     <img data-src="{{ $v->home_image_link }}" class="lazyload" alt="{{ $v->name }}" />
@@ -939,6 +958,7 @@
                                 <a
                                 aria-label="{{ $v->name }}"
                                 class="w-100 h-100"
+                                id="home_page_project_{{$k+1}}_button"
                                 href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
                                 <div class="img-overlay">
                                     <img data-src="{{ $v->home_image_link }}" class="lazyload" alt="{{ $v->name }}" />
@@ -967,6 +987,7 @@
                                         <a
                                         aria-label="{{ $v->name }}"
                                         class="w-100 h-100"
+                                        id="home_page_project_{{$k+1}}_button"
                                         href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
                                         <div class="img-overlay">
                                             <img data-src="{{ $v->home_image_link }}" class="lazyload" alt="{{ $v->name }}" />
@@ -993,48 +1014,6 @@
 
 
             </div>
-            {{-- <div id="projects2-items" class="row projects2-items" data-animate-effect="fadeInUp">
-                @php
-                    $height = 0;
-                    $symbol = 'greater';
-                @endphp
-                @foreach ($projects as $k => $v)
-                    @php
-                        if ($symbol == 'greater') {
-                            $newHeight = rand(500, 600);
-                            $height = $newHeight > $height ? $newHeight : $height;
-                            $symbol = 'lesser';
-                        } else {
-                            $newHeight = rand(300, 400);
-                            $height = $newHeight < $height ? $newHeight : $height;
-                            $symbol = 'greater';
-                        }
-                    @endphp
-
-                    <div class="col-md-6 single-item {{ $v->is_completed == true ? 'completed' : 'ongoing' }}">
-                        <div class="projects2-wrap p-relative" style="z-index: 5">
-                            @if ($v->banner_count > 0)
-                                <a aria-label="{{ $v->name }}"
-                                    href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">
-                                    <div class="projects-overlay">
-                                        <img data-src="{{ $v->banner[0]->image_link }}"
-                                            class="h-300-cover obj-cover lazyload" style="border-radius:10px;"
-                                            fetchpriority="low" alt="">
-                                        <div class="mt-2" style="z-index: 5">
-                                            <h3 style="font-size: 20px;"><a aria-label="{{ $v->name }}"
-                                                    href="{{ route($v->is_completed == true ? 'completed_projects_detail.get' : 'ongoing_projects_detail.get', $v->slug) }}">{{ $v->name }}</a>
-                                            </h3>
-                                            <p><img data-src="{{ asset('assets/location-2.svg') }}" alt=""
-                                                    width="481" height="300" class="lazyload">
-                                                {{ Str::limit($v->location, 30) }}</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            @endif
-                        </div>
-                    </div>
-                @endforeach
-            </div> --}}
 
         </div>
     </div>
@@ -1094,7 +1073,7 @@
                         <div class="wrap">
                             <div id="vdo-play-btn" class="owl-carousel owl-theme">
 
-                                @foreach ($testimonials as $testimonials)
+                                @foreach ($testimonials as $k =>$testimonials)
                                     <div class="row">
                                         <div class="col-md-12" data-animate-effect="fadeInUp">
                                             <div class="vid-area mb-30">
@@ -1109,6 +1088,7 @@
                                                     <button class="video-gallery-button vid vdo-play-btn"
                                                         aria-label="{{ $testimonials->video_title }}"
                                                         data-iframe="yt_iframe_{{ $testimonials->id }}"
+                                                        id="home_page_testimonial_{{$k+1}}_button"
                                                         data-href="{{ $testimonials->video }}?autoplay=1"> <span
                                                             class="video-gallery-polygon">
                                                             <i class="ti-control-play"></i>
@@ -1131,24 +1111,25 @@
 
     <!-- Blog -->
     @if (count($blogs) > 0)
-        <section class="blog-home suffix-div mt-0 pt-5 pb-5">
+        <section class="blog-home suffix-div mt-0 pt-5 pb-3 mb-5">
             <div class="container py-5">
-                <div class="row mb-5 justify-content-center">
+                <div class="row justify-content-center">
                     {{-- <div class="col-md-4">
                         <div class="sub-title border-bot-light pb-0">Blog</div>
                     </div> --}}
                     <div class="col-md-auto">
-                        <div class="sub-title border-bot-light pb-0 m-0 mb-3">
-                            <div class="section-title text-center m-0"><span>Latest</span> News</div>
+                        <div class="sub-title border-bot-light pb-0 m-0">
+                            <div class="section-title text-center m-0 mb-4"><span>Latest News</span></div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     @foreach ($blogs as $k => $v)
                         <div class="col-md-4">
                             <div class="item mb-5">
                                 <div class="post-img">
                                     <a aria-label="{{ $v->name }}"
+                                        id="home_page_blog_image_{{$k+1}}_button"
                                         href="{{ route('blogs_detail.get', $v->slug) }}">
                                         <div class="img"> <img data-src="{{ $v->image_link }}" class="lazyload"
                                                 width="361" height="237" alt="" fetchpriority="low"> </div>
@@ -1156,8 +1137,11 @@
                                 </div>
                                 <div class="cont">
                                     <h4><a aria-label="{{ $v->name }}"
+                                            id="home_page_blog_name_{{$k+1}}_button"
                                             href="{{ route('blogs_detail.get', $v->slug) }}">{{ $v->name }}</a></h4>
-                                    <div class="date"><a aria-label="{{ $v->name }}"
+                                    <p class="m-0">{{ Str::limit($v->description_unfiltered, 200) }}</p>
+                                    <div class="date mt-2"><a aria-label="{{ $v->name }}"
+                                            id="home_page_blog_time_{{$k+1}}_button"
                                             href="{{ route('blogs_detail.get', $v->slug) }}"><span
                                                 class="ti-time"></span>&nbsp;&nbsp;<span>{{ $v->created_at->format('M d, Y h:i A') }}</span></a>
                                     </div>
@@ -1185,25 +1169,25 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
                         <img data-src="{{asset('assets/referral_contact.png')}}" class="lazyload" alt="CLIENTS">
-                        <a href="{{route('referal_page.get')}}">REFERRAL</a>
+                        <a href="{{route('referal_page.get')}}" id="home_page_referral_button">REFERRAL</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
                         <img data-src="{{asset('assets/channel_partner_contact.png')}}" class="lazyload" alt="CHANNEL PARTNER">
-                        <a href="{{route('channel_partner.get')}}">CHANNEL PARTNER</a>
+                        <a href="{{route('channel_partner.get')}}" id="home_page_channel_partner_button">CHANNEL PARTNER</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
                         <img data-src="{{asset('assets/land_owner_contact.png')}}" class="lazyload" alt="LAND OWNER">
-                        <a href="{{route('land_owner.get')}}">LAND OWNER</a>
+                        <a href="{{route('land_owner.get')}}" id="home_page_land_owner_button">LAND OWNER</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="contact-img-wrapper">
                         <img data-src="{{asset('assets/career_contact.png')}}" class="lazyload" alt="CAREER">
-                        <a href="{{route('career_page.get')}}">CAREER</a>
+                        <a href="{{route('career_page.get')}}" id="home_page_career_button">CAREER</a>
                     </div>
                 </div>
             </div>

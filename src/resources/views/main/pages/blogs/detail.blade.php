@@ -34,6 +34,44 @@
         .contact .phone, .contact .social a {
             color: #000;
         }
+
+        .duru-header {
+            position: fixed;
+        }
+
+        .suffix-div{
+            background: white;
+            padding: 0 !important;
+        }
+
+        .blog_image_banner{
+            width: 100%;
+            height: auto;
+        }
+
+        .blog_image_banner img{
+            width: 100%;
+            height: 100dvh;
+            object-fit: cover;
+        }
+
+        .blog_content h1, .blog_content h2, .blog_content h3, .blog_content h4, .blog_content h5, .blog_content h6{
+            color: var(--theme-highlight-text-color) !important;
+        }
+
+        .blog_content p {
+            color: var(--theme-text-color) !important;
+        }
+
+        @media screen and (max-width: 600px) {
+            .blog_image_banner img{
+                height: 100%;
+            }
+
+            .post h2{
+                font-size: 25px;
+            }
+        }
     </style>
 
 @stop
@@ -45,10 +83,12 @@
 
 <!-- Post  -->
 <section class="post suffix-div mt-0">
-    <div class="container">
+    <div class="blog_image_banner">
+        <img data-src="{{$data->image_link}}" class="img-responsive lazyload" alt="{{$data->heading}}" title="{{$data->heading}}">
+    </div>
+    <div class="container pt-5 pb-5 blog_content">
         <div class="row">
             <div class="col-md-12 " data-animate-effect="fadeInUp">
-                <img data-src="{{$data->image_link}}" class="img-responsive mb-5 lazyload" alt="">
                 <div class="date"> <span class="ti-time"></span> {{$data->created_at->format('M d, Y h:i A')}}</div>
                 <h2>{!!$data->heading!!}</h2>
                 <div class="desc-ul">
@@ -60,6 +100,7 @@
 </section>
 
 <!-- Prev-Next -->
+@if($next || $prev)
 <div class="prev-next">
     <div class="container">
         <div class="row">
@@ -81,6 +122,7 @@
         </div>
     </div>
 </div>
+@endif
 
     @include('main.includes.common_contact')
 

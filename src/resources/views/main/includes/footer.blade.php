@@ -12,10 +12,10 @@
                             </div>
                         </div>
                         <div class="social mt-2">
-                            <a aria-label="facebook" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
-                            <a aria-label="instagram" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
-                            <a aria-label="linkedin" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
-                            <a aria-label="youtube" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
+                            <a aria-label="facebook" id="footer_facebook_button" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
+                            <a aria-label="instagram" id="footer_instagram_button" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
+                            <a aria-label="linkedin" id="footer_linkedin_button" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
+                            <a aria-label="youtube" id="footer_youtube_button" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
                         </div>
                     </div>
 
@@ -44,30 +44,30 @@
                 <div class="col-md-3">
                     <div class="item">
                         <h3><span>Company</span></h3>
-                        <a aria-label="about us" href="{{route('about_page.get')}}">About Us</a><br/>
-                        <a aria-label="awards" href="{{route('awards_page.get')}}">Awards</a><br/>
-                        <a aria-label="csr" href="{{route('csr_page.get')}}">CSR</a><br/>
-                        <a aria-label="about us" href="{{route('about_page.get')}}/learn-more-about-engineering-and-labs">Engineering & Labs</a><br/>
-                        <a aria-label="csr" href="{{route('projects.get')}}">Projects</a>
+                        <a aria-label="about us" href="{{route('about_page.get')}}" id="footer_about_button">About Us</a><br/>
+                        <a aria-label="awards" href="{{route('awards_page.get')}}" id="footer_awards_button">Awards</a><br/>
+                        <a aria-label="csr" href="{{route('csr_page.get')}}" id="footer_csr_button">CSR</a><br/>
+                        <a aria-label="about us" href="{{route('about_page.get')}}/learn-more-about-engineering-and-labs" id="footer_engineering_button">Engineering & Labs</a><br/>
+                        <a aria-label="csr" href="{{route('projects.get')}}" id="footer_projects_button">Projects</a>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="item">
                         <h3><span>Media Center</span></h3>
                         {{-- <a aria-label="ongoing projects" href="{{route('ongoing_projects.get')}}">Blogs</a><br/> --}}
-                        <a aria-label="blogs" href="{{route('blogs.get')}}">Blogs</a><br/>
-                        <a aria-label="newsletter" href="#">News Letter</a><br/>
-                        <a aria-label="press release" href="#">Press Release</a>
+                        <a aria-label="blogs" href="{{route('blogs.get')}}" id="footer_blogs_button">Blogs</a><br/>
+                        <a aria-label="newsletter" href="#" id="footer_news_letter_button">News Letter</a><br/>
+                        <a aria-label="press release" href="#" id="footer_press_release_button">Press Release</a>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="item">
                         <h3><span>Get In Touch</span></h3>
-                        <a aria-label="contact us" href="{{route('contact_page.get')}}">Contact Us</a><br/>
-                        <a aria-label="referral" href="{{route('referal_page.get')}}">Referral</a><br/>
-                        <a aria-label="become a channel partner" href="{{route('channel_partner.get')}}">Become A Channel Partner</a><br/>
-                        <a aria-label="land owner" href="{{route('land_owner.get')}}">Land Owner</a><br/>
-                        <a aria-label="career" href="{{route('career_page.get')}}">Career</a>
+                        <a aria-label="contact us" href="{{route('contact_page.get')}}" id="footer_contact_button">Contact Us</a><br/>
+                        <a aria-label="referral" href="{{route('referal_page.get')}}" id="footer_referral_button">Referral</a><br/>
+                        <a aria-label="become a channel partner" href="{{route('channel_partner.get')}}" id="footer_channel_partner_button">Become A Channel Partner</a><br/>
+                        <a aria-label="land owner" href="{{route('land_owner.get')}}" id="footer_land_owner_button">Land Owner</a><br/>
+                        <a aria-label="career" href="{{route('career_page.get')}}" id="footer_career_button">Career</a>
                     </div>
                 </div>
             </div>
@@ -81,8 +81,8 @@
                 </div>
                 <div class="col-md-8">
                     <p class="right">
-                        @foreach($legal as $legal)
-                            <a aria-label="{{$legal->page_name}}" href="{{route('legal.get', $legal->slug)}}" class="mx-2">{{$legal->page_name}}</a>
+                        @foreach($legal as $k => $legal)
+                            <a aria-label="{{$legal->page_name}}" href="{{route('legal.get', $legal->slug)}}" id="footer_legal_{{$k+1}}_button" class="mx-2">{{$legal->page_name}}</a>
                         @endforeach
                     </p>
                 </div>

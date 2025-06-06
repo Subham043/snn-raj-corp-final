@@ -3,24 +3,24 @@
     <div class="duru-wrap-inner">
         <nav class="duru-menu">
             <ul>
-                <li><a aria-label="home page" href="{{route('home_page.get')}}">Home</a></li>
-                <li><a aria-label="about us page" href="{{route('about_page.get')}}">About Us</a></li>
-                <li><a aria-label="projects page" href="{{route('projects.get')}}">Projects</a></li>
+                <li><a aria-label="home page" href="{{route('home_page.get')}}" id="sidebar_home_button">Home</a></li>
+                <li><a aria-label="about us page" href="{{route('about_page.get')}}" id="sidebar_about_button">About Us</a></li>
+                <li><a aria-label="projects page" href="{{route('projects.get')}}" id="sidebar_projects_button">Projects</a></li>
                 {{-- <li class='duru-menu-sub'><a href='#'>Projects <i class="ti-angle-down"></i></a>
                     <ul>
                         <li><a href='{{route('completed_projects.get')}}'>Completed Projects</a></li>
                         <li><a href='{{route('ongoing_projects.get')}}'>Ongoing Projects</a></li>
                     </ul>
                 </li> --}}
-                <li><a aria-label="awards page" href="{{route('awards_page.get')}}">Awards</a></li>
-                <li><a aria-label="csr page" href="{{route('csr_page.get')}}">CSR</a></li>
-                <li><a aria-label="learn-more-about-engineering-and-labs" href="{{route('about_page.get')}}/learn-more-about-engineering-and-labs">Engineering & Labs</a></li>
-                <li><a aria-label="blogs page" href="{{route('blogs.get')}}">Blogs</a></li>
-                <li><a aria-label="contact us page" href="{{route('contact_page.get')}}">Contact</a></li>
-                <li><a aria-label="referral page" href="{{route('referal_page.get')}}">Referral</a></li>
-                <li><a aria-label="become a channel partner page" href="{{route('channel_partner.get')}}">Become A Channel Partner</a></li>
-                <li><a aria-label="land owner page" href="{{route('land_owner.get')}}">Land Owner</a></li>
-                <li><a aria-label="career page" href="{{route('career_page.get')}}">Career</a></li>
+                <li><a aria-label="awards page" href="{{route('awards_page.get')}}" id="sidebar_awards_button">Awards</a></li>
+                <li><a aria-label="csr page" href="{{route('csr_page.get')}}" id="sidebar_csr_button">CSR</a></li>
+                <li><a aria-label="learn-more-about-engineering-and-labs" href="{{route('about_page.get')}}/learn-more-about-engineering-and-labs" id="sidebar_engineering_button">Engineering & Labs</a></li>
+                <li><a aria-label="blogs page" href="{{route('blogs.get')}}" id="sidebar_blogs_button">Blogs</a></li>
+                <li><a aria-label="contact us page" href="{{route('contact_page.get')}}" id="sidebar_contact_button">Contact</a></li>
+                <li><a aria-label="referral page" href="{{route('referal_page.get')}}" id="sidebar_referral_button">Referral</a></li>
+                <li><a aria-label="become a channel partner page" href="{{route('channel_partner.get')}}" id="sidebar_channel_partner_button">Become A Channel Partner</a></li>
+                <li><a aria-label="land owner page" href="{{route('land_owner.get')}}" id="sidebar_land_owner_button">Land Owner</a></li>
+                <li><a aria-label="career page" href="{{route('career_page.get')}}" id="sidebar_career_button">Career</a></li>
             </ul>
         </nav>
     </div>

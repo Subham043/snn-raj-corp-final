@@ -75,13 +75,13 @@ class BlogService
 
     public function main_all()
     {
-        return Blog::where('is_draft', true)->limit(3)->latest()
+        return Blog::select('id', 'name', 'heading', 'slug', 'created_at', 'description_unfiltered', 'image')->where('is_draft', true)->limit(3)->latest()
         ->get();
     }
 
     public function main_paginate(Int $total = 10): LengthAwarePaginator
     {
-        $query = Blog::where('is_draft', true)
+        $query = Blog::select('id', 'name', 'heading', 'slug', 'created_at', 'description_unfiltered', 'image')->where('is_draft', true)
                     ->latest();
         return QueryBuilder::for($query)
                 ->allowedFilters([

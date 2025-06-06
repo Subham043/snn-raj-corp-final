@@ -28,6 +28,14 @@
         .contact .phone, .contact .social a {
             color: #000;
         }
+
+        .about_content h1, .about_content h1 span, .about_content h2, .about_content h3, .about_content h4, .about_content h5, .about_content h6{
+            color: var(--theme-highlight-text-color) !important;
+        }
+
+        .about_content p {
+            color: var(--theme-text-color) !important;
+        }
     </style>
 
 @stop
@@ -37,7 +45,7 @@
     <!-- Legal -->
     <section class="py-3">
         <div class="background bg-img bg-fixed" data-overlay-dark="6">
-            <div class="container">
+            <div class="container about_content">
                 <div class="row align-items-center">
                     <div class="col-md-12 " data-animate-effect="fadeInUp">
                         <div class="desc-ul">
