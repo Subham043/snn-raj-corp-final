@@ -124,13 +124,13 @@
                     <a aria-label="email" href="mailto:{{ empty($generalSetting) ? '' : $generalSetting->email }}"
                         class="mail">{{ empty($generalSetting) ? '' : $generalSetting->email }}</a>
                     <div class="social mt-2">
-                        <a aria-label="facebook" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook }}"><i
+                        <a aria-label="facebook" target="_blank" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook }}"><i
                                 class="ti-facebook"></i></a>
-                        <a aria-label="instagram" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram }}"><i
+                        <a aria-label="instagram" target="_blank" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram }}"><i
                                 class="ti-instagram"></i></a>
-                        <a aria-label="linkedin" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin }}"><i
+                        <a aria-label="linkedin" target="_blank" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin }}"><i
                                 class="ti-linkedin"></i></a>
-                        <a aria-label="youtube" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube }}"><i
+                        <a aria-label="youtube" target="_blank" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube }}"><i
                                 class="ti-youtube"></i></a>
                     </div>
                 </div>

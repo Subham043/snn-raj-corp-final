@@ -1130,7 +1130,7 @@
                                 <div class="post-img">
                                     <a aria-label="{{ $v->name }}"
                                         id="home_page_blog_image_{{$k+1}}_button"
-                                        href="{{ route('blogs_detail.get', $v->slug) }}">
+                                        target="_blank" href="{{ route('blogs_detail.get', $v->slug) }}">
                                         <div class="img"> <img data-src="{{ $v->image_link }}" class="lazyload"
                                                 width="361" height="237" alt="" fetchpriority="low"> </div>
                                     </a>
@@ -1138,11 +1138,11 @@
                                 <div class="cont">
                                     <h4><a aria-label="{{ $v->name }}"
                                             id="home_page_blog_name_{{$k+1}}_button"
-                                            href="{{ route('blogs_detail.get', $v->slug) }}">{{ $v->name }}</a></h4>
+                                            target="_blank" href="{{ route('blogs_detail.get', $v->slug) }}">{{ $v->name }}</a></h4>
                                     <p class="m-0">{{ Str::limit($v->description_unfiltered, 200) }}</p>
                                     <div class="date mt-2"><a aria-label="{{ $v->name }}"
                                             id="home_page_blog_time_{{$k+1}}_button"
-                                            href="{{ route('blogs_detail.get', $v->slug) }}"><span
+                                            target="_blank" href="{{ route('blogs_detail.get', $v->slug) }}"><span
                                                 class="ti-time"></span>&nbsp;&nbsp;<span>{{ $v->created_at->format('M d, Y h:i A') }}</span></a>
                                     </div>
                                 </div>

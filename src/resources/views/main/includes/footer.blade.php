@@ -12,10 +12,10 @@
                             </div>
                         </div>
                         <div class="social mt-2">
-                            <a aria-label="facebook" id="footer_facebook_button" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
-                            <a aria-label="instagram" id="footer_instagram_button" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
-                            <a aria-label="linkedin" id="footer_linkedin_button" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
-                            <a aria-label="youtube" id="footer_youtube_button" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
+                            <a aria-label="facebook" id="footer_facebook_button" target="_blank" href="{{ empty($generalSetting) ? '' : $generalSetting->facebook}}"><i class="ti-facebook"></i></a>
+                            <a aria-label="instagram" id="footer_instagram_button" target="_blank" href="{{ empty($generalSetting) ? '' : $generalSetting->instagram}}"><i class="ti-instagram"></i></a>
+                            <a aria-label="linkedin" id="footer_linkedin_button" target="_blank" href="{{ empty($generalSetting) ? '' : $generalSetting->linkedin}}"><i class="ti-linkedin"></i></a>
+                            <a aria-label="youtube" id="footer_youtube_button" target="_blank" href="{{ empty($generalSetting) ? '' : $generalSetting->youtube}}"><i class="ti-youtube"></i></a>
                         </div>
                     </div>
 

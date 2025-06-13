@@ -157,15 +157,15 @@
                     <div class="col-md-6 order2 valign " data-animate-effect="fadeInUp">
                         <div class="content">
                             <div class="cont">
-                                <a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}" class="mx-0" tabindex="0"><h3>{{$v->name}}</h3></a>
+                                <a aria-label="{{$v->name}}" target="_blank" href="{{route('blogs_detail.get', $v->slug)}}" class="mx-0" tabindex="0"><h3>{{$v->name}}</h3></a>
                                 <p>{{ Str::limit($v->description_unfiltered, 400) }}</p>
-                                <div class="more"><a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}" class="link-btn mx-0" tabindex="0">Continue Reading</a></div>
+                                <div class="more"><a aria-label="{{$v->name}}" target="_blank" href="{{route('blogs_detail.get', $v->slug)}}" class="link-btn mx-0" tabindex="0">Continue Reading</a></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 order1 " data-animate-effect="fadeInUp">
                         <div class="img">
-                            <a aria-label="{{$v->name}}" href="{{route('blogs_detail.get', $v->slug)}}"><img fetchpriority="low" data-src="{{$v->image_link}}" class="lazyload" alt="{{$v->name}}" title="{{$v->name}}"></a>
+                            <a aria-label="{{$v->name}}" target="_blank" href="{{route('blogs_detail.get', $v->slug)}}"><img fetchpriority="low" data-src="{{$v->image_link}}" class="lazyload" alt="{{$v->name}}" title="{{$v->name}}"></a>
                         </div>
                     </div>
                 </div>
