@@ -54,6 +54,7 @@ class ContentSecurityPolicy extends Basic
         //start of common
         ->addDirective(Directive::CONNECT, 'https://ipapi.co/json')
         ->addDirective(Directive::CONNECT, 'pgtrack.plumb5.com')
+        ->addDirective(Directive::CONNECT, 'pgchat.plumb5.com')
         ->addDirective(Directive::FORM_ACTION, 'pgtrack.plumb5.com')
         ->addDirective(Directive::CONNECT, 'www.googletagmanager.com')
         ->addDirective(Directive::CONNECT, 'www.google-analytics.com')
@@ -62,6 +63,7 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::IMG, 'cdn.jsdelivr.net')
         ->addDirective(Directive::IMG, 'www.google.com')
         ->addDirective(Directive::IMG, 'www.google.co.in')
+        ->addDirective(Directive::IMG, 'p5email-email-template-images.s3.amazonaws.com')
         ->addDirective(Directive::IMG, 'googleads.g.doubleclick.net')
         ->addDirective(Directive::SCRIPT, 'www.youtube.com/iframe_api')
         ->addDirective(Directive::SCRIPT, 'www.youtube.com')
