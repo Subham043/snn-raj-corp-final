@@ -20,6 +20,7 @@
         <link rel="preload" as="image" fetchpriority="high" href="{{ $about->image_link }}" type="image/webp">
     @endif
 
+    <link rel="preload" href="{{$video_poster}}" as="image" fetchpriority="high">
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/purecounter.js') }}">
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/jquery.isotope.v3.0.2.js') }}">
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/owl.carousel.min.js') }}">
@@ -733,7 +734,7 @@
                             poster="{{$video_poster}}"
                             autoplay=""
                         >
-                            <source src="{{$video}}" type="video/webm" fetchpriority="high">
+                            <source src="{{$video}}" type="video/webm">
                             <!--<source src="images/video-bg.webm" type="video/webm" />-->
                         </video>
                     </div>
