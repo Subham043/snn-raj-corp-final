@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @cspMetaTag(App\Http\Policies\ContentSecurityPolicy::class)
 
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">	
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link rel="dns-prefetch" href="https://src.plumb5.com/snnrajcorp_com.js">
+    <link rel="dns-prefetch" href="https://src.plumb5.com">
 
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://src.plumb5.com/snnrajcorp_com.js">
+    <link rel="preconnect" href="https://src.plumb5.com">
 
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/jq.min.js')}}">
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/bootstrap.min.js')}}">
@@ -22,8 +22,8 @@
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/intlTelInput.min.js') }}">
     <link rel="preload" as="script" href="{{ asset('assets/js/common_script.js') }}">
     <link rel="preload" as="script" href="{{ asset('assets/js/referral.js') }}">
-    
-    
+
+
     <link rel="preload" type="image/webp" fetchpriority="high" href="{{ asset('assets/black-logo.webp') }}" as="image">
     {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;1,300;1,400&amp;family=Oswald:wght@300;400&amp;display=swap"> --}}
     @vite(['resources/css/bootstrap.min.css', 'resources/css/themify-icons.css', 'resources/css/iziToast.min.css', 'resources/css/intlTelInput.css', 'resources/css/owl.carousel.min.css', 'resources/css/owl.theme.default.min.css', 'resources/css/app.css'])
@@ -757,12 +757,21 @@
     </script>
 
     <script type='text/javascript' nonce="{{ csp_nonce() }}">
-        window.requestIdleCallback(() => {
-            var p5 = document.createElement('script');
-            p5.type = 'text/javascript';
-            p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
-            document.body.appendChild(p5);
-        });
+    (function() {
+        const loadPlumb5 = () => {
+            const s = document.createElement('script');
+            s.src = "https://src.plumb5.com/snnrajcorp_com.js";
+            s.async = true;
+            document.body.appendChild(s);
+        };
+
+        if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(loadPlumb5);
+        } else {
+            // Fallback after the page becomes usable
+            setTimeout(loadPlumb5, 1500);
+        }
+    })();
     </script>
 
     {!! $seo->meta_footer_script_nonce !!}

@@ -6,11 +6,11 @@
 
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link rel="dns-prefetch" href="https://src.plumb5.com/snnrajcorp_com.js">
+    <link rel="dns-prefetch" href="https://src.plumb5.com">
 
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://src.plumb5.com/snnrajcorp_com.js">
+    <link rel="preconnect" href="https://src.plumb5.com">
 
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/jq.min.js')}}">
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/bootstrap.min.js')}}">

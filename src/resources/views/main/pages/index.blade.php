@@ -733,7 +733,7 @@
                             poster="{{$video_poster}}"
                             autoplay=""
                         >
-                            <source src="{{$video}}" type="video/webm">
+                            <source src="{{$video}}" type="video/webm" fetchpriority="high">
                             <!--<source src="images/video-bg.webm" type="video/webm" />-->
                         </video>
                     </div>

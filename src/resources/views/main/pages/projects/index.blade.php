@@ -186,13 +186,21 @@
     {!!$seo->meta_footer_no_script_nonce!!}
 
     <script type='text/javascript' nonce="{{ csp_nonce() }}">
-        (function () {
-        var p5 = document.createElement('script');
-        p5.type = 'text/javascript';
-        p5.src = 'https://src.plumb5.com/snnrajcorp_com.js';
-        var p5s = document.getElementsByTagName('script')[0];
-        p5s.parentNode.insertBefore(p5, p5s);
-        })();
+    (function() {
+        const loadPlumb5 = () => {
+            const s = document.createElement('script');
+            s.src = "https://src.plumb5.com/snnrajcorp_com.js";
+            s.async = true;
+            document.body.appendChild(s);
+        };
+
+        if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(loadPlumb5);
+        } else {
+            // Fallback after the page becomes usable
+            setTimeout(loadPlumb5, 1500);
+        }
+    })();
     </script>
 
 @stop

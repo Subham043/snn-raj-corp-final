@@ -53,6 +53,8 @@ class ContentSecurityPolicy extends Basic
 
         //start of common
         ->addDirective(Directive::CONNECT, 'https://ipapi.co/json')
+        ->addDirective(Directive::CONNECT, 'https://src.plumb5.com/signalr.min.js.map')
+        ->addDirective(Directive::CONNECT, 'https://src.plumb5.com/bootstrap.min.css.map')
         ->addDirective(Directive::CONNECT, 'pgtrack.plumb5.com')
         ->addDirective(Directive::CONNECT, 'pgchat.plumb5.com')
         ->addDirective(Directive::CONNECT, 'wss://pgchat.plumb5.com')
