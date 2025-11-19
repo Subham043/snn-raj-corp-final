@@ -670,7 +670,8 @@
                 display: block;
                 height: 100%;
                 width: 100%;
-                object-fit: fill;
+                /* object-fit: fill; */
+                object-fit: cover;
             }
             .video-wrapper {
                 -webkit-font-smoothing: subpixel-antialiased;
@@ -721,8 +722,18 @@
             <div class="fullscreen desktopVideo">
                 <div class="video">
                     <div class="wrapper">
-                        <video id="video1" width="512" height="512" loop="" playsinline="" muted="" preload="metadata" autoplay="">
-                            <source src="{{asset('home_desktop.mp4')}}" type="video/mp4">
+                        <video
+                            id="video1"
+                            width="512"
+                            height="512"
+                            loop=""
+                            playsinline=""
+                            muted=""
+                            preload="none"
+                            poster="{{$video_poster}}"
+                            autoplay=""
+                        >
+                            <source src="{{$video}}" type="video/webm">
                             <!--<source src="images/video-bg.webm" type="video/webm" />-->
                         </video>
                     </div>

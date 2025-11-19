@@ -86,6 +86,23 @@ class HomePageController extends Controller
         $generalSetting = $this->generalService->getById(1);
         $themeSetting = $this->themeService->getById(1);
         $awards = $this->awardService->latestLimit();
+
+        $userAgent = request()->header('User-Agent');
+
+        $isMobile = preg_match(
+            '/iPhone|iPod|Android|BlackBerry|Opera Mini|IEMobile|WPDesktop|Mobile|Tablet/i',
+            $userAgent
+        );
+
+        $video = $isMobile
+            ? asset('home_mobile.webm')
+            : asset('home_desktop.webm');
+
+        $video_poster = $isMobile
+            ? asset('home_mobile_poster.webp')
+            : asset('home_desktop_poster.webp');
+
+
         return view('main.pages.index', compact([
             'banners',
             'blogs',
@@ -102,6 +119,8 @@ class HomePageController extends Controller
             'generalSetting',
             'themeSetting',
             'awards',
+            'video',
+            'video_poster',
         ]));
     }
 
