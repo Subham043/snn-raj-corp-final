@@ -95,7 +95,7 @@ class HomePageController extends Controller
         );
 
         $video = $isMobile
-            ? asset('home_mobile_2.mp4')
+            ? asset('home_mobile_2.webm')
             : asset('home_desktop_2.mp4');
 
         $video_poster = $isMobile
