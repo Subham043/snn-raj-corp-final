@@ -20,7 +20,7 @@ class ParamantraService
         'alert_rep' => 0
     );
 
-    private $url = 'https://cloud.paramantra.com/paramantra/api/data/new/format/json';
+    private $url = 'https://cloud.paramantra.us/paramantra/api/data/new/format/json';
     private $api_key='16wDpCrI2FCutopxHIyK6rNz5p';
     private $app_name='HIrJA';
 
