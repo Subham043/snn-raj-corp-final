@@ -1091,7 +1091,7 @@
                                             <div class="vid-area mb-30">
                                                 <iframe id="yt_iframe_{{ $testimonials->id }}" loading="lazy"
                                                     src="" class="w-100 yt_iframe d-none" height="350"
-                                                    title="{{ $testimonials->video_title }}" allow='autoplay'
+                                                    title="{{ $testimonials->video_title }}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                     frameborder="0"></iframe>
                                                 <div class="vid-icon"> <img
                                                         data-src="https://i3.ytimg.com/vi/{{ $testimonials->video_id }}/maxresdefault.jpg"
