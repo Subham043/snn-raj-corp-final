@@ -87,6 +87,12 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::FONT, 'at.alicdn.com')
         ->addDirective(Directive::FONT, 'fonts.gstatic.com')
         ->addDirective(Directive::STYLE, 'fonts.googleapis.com')
+        ->addDirective(Directive::MEDIA, 'https://*.googlevideo.com')
+        ->addDirective(Directive::FRAME, 'https://www.youtube-nocookie.com')
+        ->addDirective(Directive::SCRIPT, 'https://www.youtube-nocookie.com')
+        ->addDirective(Directive::CONNECT, 'https://youtube.googleapis.com')
+        ->addDirective(Directive::CONNECT, 'https://*.googlevideo.com')
+        ->addDirective(Directive::IMG, 'https://*.ytimg.com')
         ->addDirective(Directive::FRAME, 'www.google.com')
         ->addDirective(Directive::FRAME, 'www.youtube.com');
     }
