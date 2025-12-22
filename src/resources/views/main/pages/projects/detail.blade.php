@@ -860,7 +860,7 @@
                 @foreach($data->gallery_video as $gallery_video)
                     <div class="col-md-6 " data-animate-effect="fadeInUp">
                         <div class="vid-area mb-30">
-                            <iframe loading="lazy" data-src="{{$gallery_video->video}}" title="{{$gallery_video->video_title}}" class="w-100 lazyload" height="350" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe loading="lazy" data-src="{{$gallery_video->video}}" title="{{$gallery_video->video_title}}" class="w-100 lazyload" height="350" frameborder="0"></iframe>
                             {{-- <div class="vid-icon"> <img src="https://i3.ytimg.com/vi/{{$gallery_video->video_id}}/maxresdefault.jpg" alt="YouTube">
                                 <a class="video-gallery-button vid" href="https://youtu.be/{{$gallery_video->video_id}}"> <span class="video-gallery-polygon">
                                         <i class="ti-control-play"></i>

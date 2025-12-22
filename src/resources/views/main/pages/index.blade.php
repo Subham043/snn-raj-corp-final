@@ -1091,7 +1091,7 @@
                                             <div class="vid-area mb-30">
                                                 <iframe id="yt_iframe_{{ $testimonials->id }}" loading="lazy"
                                                     src="" class="w-100 yt_iframe d-none" height="350"
-                                                    title="{{ $testimonials->video_title }}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    title="{{ $testimonials->video_title }}" allow='autoplay'
                                                     frameborder="0"></iframe>
                                                 <div class="vid-icon"> <img
                                                         data-src="https://i3.ytimg.com/vi/{{ $testimonials->video_id }}/maxresdefault.jpg"
@@ -1101,7 +1101,7 @@
                                                         aria-label="{{ $testimonials->video_title }}"
                                                         data-iframe="yt_iframe_{{ $testimonials->id }}"
                                                         id="home_page_testimonial_{{$k+1}}_button"
-                                                        data-href="{{ $testimonials->video }}"> <span
+                                                        data-href="{{ $testimonials->video }}?autoplay=1"> <span
                                                             class="video-gallery-polygon">
                                                             <i class="ti-control-play"></i>
                                                         </span> </button>
