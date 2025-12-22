@@ -1101,7 +1101,7 @@
                                                         aria-label="{{ $testimonials->video_title }}"
                                                         data-iframe="yt_iframe_{{ $testimonials->id }}"
                                                         id="home_page_testimonial_{{$k+1}}_button"
-                                                        data-href="{{ $testimonials->video }}?autoplay=1"> <span
+                                                        data-href="{{ $testimonials->video }}"> <span
                                                             class="video-gallery-polygon">
                                                             <i class="ti-control-play"></i>
                                                         </span> </button>
