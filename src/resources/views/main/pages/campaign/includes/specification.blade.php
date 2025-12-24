@@ -10,7 +10,7 @@
             <div class="row mt-5 justify-sm-around">
                 @foreach ($data->CampaignSpecification as $item)
                 <div class="col-lg-4 col-md-6 col-sm-12 amenities-col">
-                    <img data-src="{{ $item->icon_image_link }}" class="lazyload" alt="{{$item->title}}">
+                    <img data-src="{{ $item->icon_image_link }}" class="lazyload" alt="{{$item->title}}" width="75px" height="75px">
                     <p>{{$item->title}}</p>
                 </div>
                 @endforeach

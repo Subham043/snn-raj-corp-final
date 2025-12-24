@@ -58,6 +58,8 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::CONNECT, 'pgtrack.plumb5.com')
         ->addDirective(Directive::CONNECT, 'pgchat.plumb5.com')
         ->addDirective(Directive::CONNECT, 'wss://pgchat.plumb5.com')
+        ->addDirective(Directive::CONNECT, 'www.google.com')
+        ->addDirective(Directive::CONNECT, 'www.googleadservices.com')
         ->addDirective(Directive::FORM_ACTION, 'pgtrack.plumb5.com')
         ->addDirective(Directive::CONNECT, 'www.googletagmanager.com')
         ->addDirective(Directive::CONNECT, 'www.google-analytics.com')
@@ -93,6 +95,7 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::CONNECT, 'https://youtube.googleapis.com')
         ->addDirective(Directive::CONNECT, 'https://*.googlevideo.com')
         ->addDirective(Directive::IMG, 'https://*.ytimg.com')
+        ->addDirective(Directive::FRAME, 'www.googletagmanager.com')
         ->addDirective(Directive::FRAME, 'www.google.com')
         ->addDirective(Directive::FRAME, 'www.youtube.com');
     }

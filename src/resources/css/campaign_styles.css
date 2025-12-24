@@ -1,0 +1,762 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: "DM Serif Display", serif; */
+    font-family: "Roboto Flex", sans-serif;
+}
+header {
+    width: 100%;
+    position: relative;
+}
+header nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+header nav ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+header nav ul li {
+    list-style: none;
+}
+header nav ul li a {
+    text-decoration: none;
+    color: #fff !important;
+    transition: all 0.4s ease-in-out;
+}
+header nav ul li a:hover {
+    color: #3d833e !important;
+}
+header nav ul li:last-child a {
+    background-color: #fff;
+    color: #222 !important;
+    padding: 10px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+header nav .logo-holder {
+    width: auto;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 9999;
+}
+header nav .logo-holder a {
+    text-decoration: none;
+    width: auto;
+}
+header nav .logo-holder a img {
+    width: 120px;
+    object-fit: contain;
+    background-color: #000;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+section {
+    margin-bottom: 50px;
+    width: 100%;
+}
+.banner-holder {
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    z-index: 999;
+}
+.banner-holder2 {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 999;
+    background-image: url(../images/snn-viviente-banners-6.jpg);
+    padding: 20px;
+    background-position: center;
+    background-size: cover;
+}
+.banner-holder2 img {
+    width: 100%;
+    height: 100%;
+    max-height: 75vh;
+    object-fit: cover;
+    display: none;
+}
+.menu-holder {
+    box-shadow: 0 0 14px 5px #eee;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.menu-holder .menu-col {
+    text-align: center;
+}
+.menu-holder .menu-col a {
+    text-decoration: none;
+    color: #000;
+}
+.menu-holder .menu-col a h5 {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+.menu-holder .menu-col a i {
+    color: #3d833e;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+.main-title {
+    color: #000;
+    margin-bottom: 20px;
+}
+.main-title span {
+    color: #3d833e;
+    font-style: italic;
+    font-family: "DM Serif Display", serif;
+}
+.about-holder .slider-holder .slider-img,
+.about-holder .slider-holder .slider-img img {
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.about-holder .content-holder h6 {
+    color: #000;
+    margin-bottom: 25px;
+}
+.about-holder .content-holder h6 span {
+    color: #3d833e;
+    font-style: italic;
+}
+.about-holder .content-holder p {
+    color: #7a7a7a;
+    font-size: 0.9rem;
+}
+.logo-secondary img {
+    height: 220px;
+    object-fit: contain;
+}
+.amenities-holder .amenities-col {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.amenities-holder .amenities-col img {
+    width: auto;
+    height: 75px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+.amenities-holder .amenities-col h6 {
+    color: #3d833e;
+    text-transform: uppercase;
+}
+.gallery-holder .gallery-col {
+    width: auto;
+    margin-bottom: 20px;
+}
+.gallery-holder .gallery-col {
+    overflow: hidden;
+}
+.gallery-holder .gallery-col img {
+    width: auto;
+    max-width: 300px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: all 0.3s ease-in-out;
+    height: 300px;
+}
+.gallery-holder .gallery-col img:hover {
+    transform: scale(1.1);
+}
+.contact-holder {
+    width: 100%;
+    background-image: linear-gradient(
+            45deg,
+            rgba(245, 70, 66, 0.75),
+            rgba(8, 83, 156, 0.75)
+        ),
+        url(../images/snn-viviente-banners-10.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 150px 0;
+}
+.contact-holder .contact-col {
+    text-align: center;
+    color: #fff;
+}
+.contact-holder .contact-col a {
+    text-decoration: none;
+    color: #fff;
+}
+.contact-holder .contact-col .dark-holder,
+.contact-holder .contact-col .outline-holder {
+    border: 2px solid #3d833e;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 20px 10px;
+}
+.contact-holder .contact-col .dark-holder a,
+.contact-holder .contact-col .outline-holder a {
+    text-decoration: none;
+    color: #fff;
+}
+.contact-holder .contact-col .dark-holder {
+    background-color: #3d833e;
+}
+.contact-holder .contact-col .text-holder {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    text-align: left;
+}
+.contact-holder .contact-col .text-holder i {
+    font-size: 4.6rem;
+}
+.contact-holder .contact-col .text-holder h4 {
+    font-size: 1.9rem;
+}
+.connectivity-holder .image-col img {
+    width: 100%;
+}
+.connectivity-holder .map-col {
+    min-height: 400px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+.connectivity-holder .map-col iframe {
+    width: 100%;
+    height: 100%;
+}
+.connectivity-holder .text-col h6 {
+    color: #3d833e;
+}
+.connectivity-holder .text-col ul {
+    padding-left: 1rem;
+}
+.connectivity-holder .text-col li {
+    list-style: none;
+    font-size: 0.9rem;
+}
+.connectivity-holder .text-col li i {
+    color: #3d833e;
+}
+.creation-holder {
+    background-color: #f7f2ec;
+    padding: 50px 0;
+}
+.creation-holder .creation-slider-holder {
+    margin-top: 20px;
+    text-align: center;
+    padding: 0 10px;
+}
+.creation-holder .creation-slider-holder img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 20px;
+}
+.creation-holder .creation-slider-holder p i {
+    color: #3d833e;
+}
+.slick-next,
+.slick-prev {
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    outline: 0;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 10px;
+    z-index: 5;
+    border: none;
+}
+.slick-prev {
+    left: 0;
+    bottom: 50%;
+}
+.slick-next {
+    right: 0;
+    bottom: 50%;
+}
+footer {
+    background-color: #222;
+    padding-top: 40px;
+}
+footer img {
+    height: 100px;
+    object-fit: contain;
+}
+footer .footer-col ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-top: 20px;
+}
+footer .footer-col ul li {
+    padding: 10px 0;
+}
+footer .footer-col ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+footer .footer-col ul li a i {
+    color: #3d833e;
+}
+footer .footer-col h5 {
+    color: #3d833e;
+}
+footer .main-footer {
+    padding: 30px;
+}
+footer .footer-col-auto h5 {
+    color: #fff;
+    text-align: right;
+    font-size: 2rem;
+}
+footer .footer-col-auto li {
+    margin-bottom: 10px;
+}
+footer .footer-col-auto li a {
+    color: #fff;
+    text-decoration: none;
+}
+footer .footer-col-auto li a i {
+    margin-right: 10px;
+}
+footer .footer-col-auto {
+    width: auto;
+    max-width: 500px;
+}
+footer .new-footer-row {
+    justify-content: center;
+    gap: 20px;
+}
+.copy-holder {
+    background-color: #000;
+    padding: 30px;
+}
+.copy-holder p {
+    color: #fff;
+    margin: 0;
+    display: inline;
+    width: auto;
+}
+.copy-holder a.footer-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #3d833e;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    line-height: 2;
+}
+.copy-holder .footer-icon-col {
+    gap: 10px;
+}
+.plan-holder {
+    background-color: #f7f2ec;
+    padding: 50px 0;
+}
+.plan-holder .plan-header {
+    margin-bottom: 30px;
+}
+.plan-holder .plan-header .main-title {
+    width: auto;
+    margin-bottom: 0;
+}
+.plan-holder .plan-header button {
+    width: auto;
+    outline: 0;
+    border: 2px solid #3d833e;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #3d833e;
+    padding: 10px 10px;
+    color: #fff;
+}
+.plan-holder .tab-holder .tab-panels .panel {
+    padding: 0;
+    background-color: transparent !important;
+    width: 100%;
+    min-height: 100px;
+}
+.plan-holder .tab-holder .tab-panels ul li {
+    border: 2px solid #fff;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #fff;
+    padding: 10px 10px;
+    color: #000;
+    transition: all 0.3s ease-in-out;
+    display: block !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.plan-holder .tab-holder .tab-panels ul li.active,
+.plan-holder .tab-holder .tab-panels ul li:hover {
+    background-color: #000;
+    color: #fff;
+}
+.plan-holder .tab-holder .tab-panels {
+    position: relative;
+}
+.plan-holder .tab-holder .tab-panels .loader-div-tab {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 80px;
+}
+.plan-holder .tab-holder .slick-prev {
+    left: 15px;
+}
+.plan-holder .tab-holder .slick-next {
+    right: 15px;
+}
+.error {
+    color: red;
+}
+.formbackground {
+    background-color: #f1efe8 !important;
+    color: #1c1919;
+    border-radius: 8px;
+    padding: 10px;
+    padding-top: 20px;
+}
+#tophighlights {
+    max-width: 450px;
+    width: 100%;
+}
+#topform {
+    box-shadow: 0 0 0 2px #a1a1a1, 0 0 0 3px #fff, 0 0 15px 15px #0000004f;
+}
+.banner-form-container {
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    top: 15px;
+    right: 15px;
+    z-index: 999;
+}
+.banner-holder2 .banner-form-container h1 {
+    font-size: 1.2rem;
+}
+.banner-holder2 .banner-form-container li,
+.banner-holder2 .banner-form-container ul {
+    list-style: none;
+    font-weight: 400 !important;
+    margin: 0;
+    padding: 0;
+}
+.banner-holder2 .banner-form-container li {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+.banner-holder2 .banner-form-container li span {
+    font-weight: 400;
+    font-size: 1rem;
+}
+.formbuttonstyler {
+    background-color: green !important;
+    background-image: linear-gradient(315deg, #f0af00 0, #ffc820 74%);
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+    padding-left: 23px !important;
+    padding-right: 23px !important;
+    border: none;
+    color: #000;
+    border-radius: 5px;
+    box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+}
+.formbuttonstyler:hover {
+    background-color: #000 !important;
+    background-image: linear-gradient(315deg, #000 0, #000 74%);
+    color: #fff;
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+    padding-left: 23px !important;
+    padding-right: 23px !important;
+    border-radius: 5px;
+}
+.banner-holder .banner-form-container form {
+    padding: 15px 20px;
+    padding-top: 0;
+}
+.sticky-slider {
+    position: sticky;
+    top: 350px;
+}
+.tg {
+    border-collapse: inherit !important;
+    border-spacing: 0;
+    width: 100%;
+    border: 0;
+}
+.tg td {
+    font-size: 13px;
+    padding: 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    word-break: normal;
+    border-color: #b0b0b052;
+}
+.tg th {
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    word-break: normal;
+    border-color: #000;
+}
+.tg .tg-baqh {
+    text-align: center;
+    vertical-align: top;
+    color: #fff;
+    background-color: #072243;
+    background-color: #072243 !important;
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+.tg .tg-0lax {
+    text-align: center;
+    vertical-align: top;
+    font-weight: 400;
+    vertical-align: middle;
+}
+.tg .tg-0lay {
+    text-align: center;
+    vertical-align: top;
+    font-weight: 800;
+    padding: 6px 6px;
+    color: #000;
+    font-weight: 500;
+    text-align: center;
+    vertical-align: middle;
+}
+.unlockbuttonstyler {
+    background-color: #ce9600;
+    border: none;
+    margin-bottom: 0 !important;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 50%);
+    background-image: linear-gradient(315deg, #f0af00 0, #ffc820 74%);
+}
+.unlockbuttonstyler:hover {
+    background-color: #ce9600 !important;
+    background-image: linear-gradient(
+        315deg,
+        #ce9600 0,
+        #ce9600 74%
+    ) !important;
+    background: #ce9600;
+    color: #000 !important;
+}
+.connectivity-holder .accordion-button:not(.collapsed) {
+    color: #3f823f;
+    background-color: #559b5638;
+    box-shadow: none !important;
+}
+.connectivity-holder .accordion-button:focus {
+    box-shadow: none !important;
+}
+.accordion-button:not(.collapsed)::after {
+    background-image: var(--bs-accordion-btn-icon);
+}
+.tab-regular {
+    padding: 0 50px;
+    padding-bottom: 50px;
+}
+.gallery-slider {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #ccc;
+}
+.gallery-slider .slick-dots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.gallery-slider .slick-dots .slick-active {
+    border: 3px solid #3d833e;
+}
+.gallery-slider .slick-dots li {
+    list-style: none;
+}
+.gallery-slider .slick-dots li button {
+    border: none;
+    outline: 0;
+}
+.gallery-slider .slick-dots li button img {
+    height: 55px;
+    width: 100%;
+    object-fit: cover;
+}
+@media only screen and (max-width: 1024px) {
+    header nav {
+        display: block;
+    }
+    .navbar-nav {
+        background-color: #fff;
+    }
+    header nav ul li a {
+        color: #000 !important;
+    }
+    .row > * {
+        width: initial;
+    }
+    .justify-sm-around {
+        justify-content: space-around !important;
+    }
+    .justify-sm-center {
+        justify-content: center !important;
+    }
+    .menu-holder .menu-col {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .about-holder .content-holder {
+        margin-top: 20px;
+    }
+    .plan-holder .tab-holder .slick-prev {
+        left: 0;
+    }
+    .plan-holder .tab-holder .slick-next {
+        right: 0;
+    }
+    .plan-holder .tab-holder .tab-panels .col-sm-12 {
+        width: 100%;
+    }
+    .contact-holder .contact-col {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    .connectivity-holder .map-col {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    footer .main-footer .footer-col {
+        width: 100%;
+    }
+    .copy-holder .footer-icon-col {
+        margin-top: 13px;
+    }
+    .amenities-holder .col-sm-12 {
+        width: 100%;
+    }
+    .plan-holder .plan-header .main-title {
+        width: auto;
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .plan-holder .plan-header button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .connectivity-holder .text-col li {
+        width: 100%;
+    }
+    .menu-holder .menu-col {
+        width: 100%;
+    }
+    .banner-form-container {
+        position: relative;
+        top: -10px;
+        justify-content: center;
+        right: 0;
+    }
+    .connectivity-holder .text-col {
+        margin-top: 50px;
+    }
+    .banner-holder > section {
+        margin-bottom: 0;
+    }
+    .mb-sm-0 {
+        margin-bottom: 0;
+    }
+    .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 0;
+    }
+    .row > * {
+        width: 100% !important;
+    }
+    .gallery-holder .gallery-col {
+        text-align: center;
+    }
+    #tophighlights {
+        margin-right: 0;
+        max-width: 90%;
+    }
+    .banner-holder {
+        height: auto;
+    }
+    section {
+        margin-bottom: 25px;
+    }
+    .banner-holder2 img {
+        display: block;
+    }
+    .banner-holder2 {
+        background-image: none !important;
+        padding: 0;
+    }
+    .d-sm-none {
+        display: none;
+    }
+    footer .footer-col-auto h5 {
+        text-align: left;
+    }
+    footer .footer-col-auto ul {
+        margin: 0;
+        padding: 0;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .copy-holder p {
+        text-align: center;
+    }
+    .amenities-holder .amenities-col {
+        width: 50% !important;
+    }
+    header nav .logo-holder a img {
+        width: 75px !important;
+    }
+}

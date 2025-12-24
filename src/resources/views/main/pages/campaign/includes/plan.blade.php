@@ -34,7 +34,7 @@
                                     @foreach ($v->CampaignPlanImage as $item)
                                     <div class="slider-img">
                                         <img data-src="{{ $item->image_link }}" class="lazyload w-100"
-                                            alt="Plan Image {{$item->id}}">
+                                            alt="Plan Image {{$item->id}}" width="{{$isMobile ? '306px' : '976px'}}" height="{{$isMobile ? '204px' : '650px'}}">
                                     </div>
                                     @endforeach
                                 </div>

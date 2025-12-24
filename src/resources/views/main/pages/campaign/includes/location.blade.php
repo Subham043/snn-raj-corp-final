@@ -18,7 +18,7 @@
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 image-col">
-                    <img data-src="{{ $data->CampaignLocation->map_image_link }}" class="lazyload" alt="Map Image">
+                    <img data-src="{{ $data->CampaignLocation->map_image_link }}" class="lazyload" alt="Map Image" width="{{$isMobile ? '406px' : '636px'}}" height="{{$isMobile ? '208px' : '326px'}}">
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 text-col">
                     <h2 class="main-title text-center">

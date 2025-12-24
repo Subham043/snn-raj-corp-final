@@ -12,7 +12,6 @@ use App\Modules\Enquiry\ContactForm\Requests\OtpFormRequest;
 use App\Modules\Enquiry\ContactForm\Requests\ResendOtpFormRequest;
 use App\Modules\Enquiry\ProjectCampaignForm\Requests\ProjectCampaignFormRequest;
 use App\Modules\Enquiry\ProjectCampaignForm\Services\ProjectCampaignFormService;
-use App\Modules\Project\Projects\Models\Project;
 
 class CampaignEnquiryMainController extends Controller
 {

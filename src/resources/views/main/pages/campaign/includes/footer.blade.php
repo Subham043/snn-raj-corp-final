@@ -1,4 +1,4 @@
-<footer>
+<footer role="contentinfo">
     <div class="main-footer">
         <div class="container">
             <img class="lazyload" data-src="{{$data->footer_logo_link}}" alt="Logo">

@@ -21,6 +21,8 @@
     <link rel="icon" href="{{ empty($data->og_image) ? asset('campaign/images/favicon.png') : $data->og_image_link }}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($data->og_image) ? asset('campaign/images/favicon.png') : $data->og_image_link }}" />
 
+    <link rel="preconnect" href="https://kit.fontawesome.com">
+
 
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/jq.min.js')}}">
     <link rel="preload" as="script" href="{{ asset('assets/js/plugins/bootstrap.min.js')}}">
@@ -37,12 +39,9 @@
     <link rel="preload" href="{{ $data->CampaignBanner->banner_image_link }}" as="image" fetchpriority="high">
     @endif
 
-    @vite(['resources/css/bootstrap.min.css', 'resources/css/themify-icons.css', 'resources/css/iziToast.min.css', 'resources/css/intlTelInput.css', 'resources/css/owl.carousel.min.css', 'resources/css/owl.theme.default.min.css'])
+    @vite(['resources/css/bootstrap.min.css', 'resources/css/themify-icons.css', 'resources/css/iziToast.min.css', 'resources/css/intlTelInput.css', 'resources/css/owl.carousel.min.css', 'resources/css/owl.theme.default.min.css', 'resources/css/tabs.css', 'resources/css/slick.css', 'resources/css/campaign_styles.css'])
     <!-- Main Style CSS -->
-    <link rel="stylesheet" href="{{ asset('campaign/css/iziToast.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('campaign/css/slick.css')}}">
-    <link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}">
-    <link rel="stylesheet" href="{{ asset('campaign/css/styles.css')}}">
+    {{-- <link rel="stylesheet" href="{{ asset('campaign/css/iziToast.min.css')}}"> --}}
 
     <style>
         .iti {

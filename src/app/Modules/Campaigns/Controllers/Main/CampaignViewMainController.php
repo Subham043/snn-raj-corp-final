@@ -16,7 +16,13 @@ class CampaignViewMainController extends Controller
 
     public function get($slug){
         $data = $this->campaignService->getBySlug($slug);
-        return view('main.pages.campaign.index')->with('data', $data);
+        $userAgent = request()->header('User-Agent');
+
+        $isMobile = preg_match(
+            '/iPhone|iPod|Android|BlackBerry|Opera Mini|IEMobile|WPDesktop|Mobile|Tablet/i',
+            $userAgent
+        );
+        return view('main.pages.campaign.index')->with('data', $data)->with('isMobile', $isMobile);
     }
 
     public function thank($slug){
