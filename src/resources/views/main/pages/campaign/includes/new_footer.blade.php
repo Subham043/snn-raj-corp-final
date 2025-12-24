@@ -6,7 +6,7 @@
                     <h5>BOOK A SITE VISIT FOR SPECIAL OFFER</h5>
                 </div>
                 <div class="col-sm-12 footer-col-auto d-sm-none">
-                    <img src="{{$data->footer_logo_link}}" alt="Logo">
+                    <img class="lazyload" data-src="{{$data->footer_logo_link}}" alt="Logo">
                 </div>
                 <div class="col-sm-12 footer-col-auto">
                     <ul>

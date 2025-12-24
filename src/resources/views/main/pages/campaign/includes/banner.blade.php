@@ -1,7 +1,7 @@
 @if($data->CampaignBanner)
 <section class="">
     <div class="banner-holder2" style="background-image: url('{{$data->CampaignBanner->banner_image_link}}')">
-        <img src="{{ $data->CampaignBanner->banner_image_link }}" alt="Banner">
+        <img src="{{ $data->CampaignBanner->banner_image_link }}" alt="Banner"  fetchpriority="high" loading="eager">
         <div class="banner-form-container">
             <div id="tophighlights">
 

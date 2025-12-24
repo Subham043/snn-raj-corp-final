@@ -20,17 +20,28 @@
     <link rel="icon" href="{{ empty($data->og_image) ? asset('campaign/images/favicon.png') : $data->og_image_link }}" sizes="32x32" />
     <link rel="icon" href="{{ empty($data->og_image) ? asset('campaign/images/favicon.png') : $data->og_image_link }}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{ empty($data->og_image) ? asset('campaign/images/favicon.png') : $data->og_image_link }}" />
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('campaign/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
-    {{-- <link rel="stylesheet" href="https://kit.fontawesome.com/b6a944420c.css"> --}}
+
+
+    <link rel="preload" as="script" href="{{ asset('assets/js/plugins/jq.min.js')}}">
+    <link rel="preload" as="script" href="{{ asset('assets/js/plugins/bootstrap.min.js')}}">
+    <link rel="preload" as="script" href="{{ asset('admin/js/pages/just-validate.production.min.js') }}">
+    <link rel="preload" as="script" href="{{ asset('assets/js/plugins/lazysizes.min.js') }}">
+    <link rel="preload" as="script" href="{{ asset('assets/js/plugins/owl.carousel.min.js') }}">
+    <link rel="preload" as="script" href="{{ asset("assets/js/plugins/owl.carousel.min.js") }}">
+    <link rel="preload" as="script" href="{{ asset("campaign/js/slick.js") }}">
+    <link rel="preload" as="script" href="{{ asset('campaign/js/main.js') }}">
+
+    <link rel="preload" as="image" href="{{ asset('smartphone.svg') }}">
+    <link rel="preload" fetchpriority="high" href="{{ $data->header_logo_link }}" as="image">
+    @if($data->CampaignBanner)
+    <link rel="preload" href="{{ $data->CampaignBanner->banner_image_link }}" as="image" fetchpriority="high">
+    @endif
+
+    @vite(['resources/css/bootstrap.min.css', 'resources/css/themify-icons.css', 'resources/css/iziToast.min.css', 'resources/css/intlTelInput.css', 'resources/css/owl.carousel.min.css', 'resources/css/owl.theme.default.min.css'])
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{{ asset('campaign/css/iziToast.min.css')}}">
     <link rel="stylesheet" href="{{ asset('campaign/css/slick.css')}}">
     <link rel="stylesheet" href="{{ asset('campaign/css/tabs.css')}}">
-    <link rel="stylesheet" href="{{ asset('campaign/css/iziToast.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('campaign/css/img-previewer.css')}}">
-    <link rel="stylesheet" href="{{ asset('campaign/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('campaign/css/owl.theme.default.min.css')}}">
-    <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('campaign/css/styles.css')}}">
 
     <style>

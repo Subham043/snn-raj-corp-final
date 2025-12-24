@@ -1,7 +1,7 @@
 <footer>
     <div class="main-footer">
         <div class="container">
-            <img src="{{$data->footer_logo_link}}" alt="Logo">
+            <img class="lazyload" data-src="{{$data->footer_logo_link}}" alt="Logo">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-12 footer-col">
                     <ul>

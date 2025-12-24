@@ -5,12 +5,12 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 col-md-6 col-sm-12 slider-holder">
                     <div class="slider-img">
-                        <img src="{{ $data->CampaignAbout->left_image_link }}" class="w-100" alt="Project Image">
+                        <img data-src="{{ $data->CampaignAbout->left_image_link }}" class="lazyload w-100" alt="Project Image">
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-6 col-sm-12 content-holder">
                     <div class="logo-secondary text-center">
-                        <img src="{{ $data->CampaignAbout->about_logo_link }}" alt="Project Logo">
+                        <img data-src="{{ $data->CampaignAbout->about_logo_link }}" class="lazyload" alt="Project Logo">
                     </div>
                     <!-- <h2 class="main-title text-center">
                         Raj <span>Viviente</span>

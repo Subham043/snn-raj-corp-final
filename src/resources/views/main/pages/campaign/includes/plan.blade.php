@@ -33,7 +33,7 @@
                                 <div class="tab-regular slider owl-carousel">
                                     @foreach ($v->CampaignPlanImage as $item)
                                     <div class="slider-img">
-                                        <img src="{{ $item->image_link }}" class="w-100"
+                                        <img data-src="{{ $item->image_link }}" class="lazyload w-100"
                                             alt="Plan Image {{$item->id}}">
                                     </div>
                                     @endforeach
